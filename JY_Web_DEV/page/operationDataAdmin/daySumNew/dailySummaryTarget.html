@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>远程医疗管理系统-检查量</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../js/plugins/layer/skin/layer.css" />
+		<link rel="stylesheet" href="../../../css/element-ui.css">
+		<!--<script type="text/javascript" src="http://v1.vuejs.org/js/vue.min.js"></script>-->
+		<!--<script type="text/javascript" src="http://unpkg.com/iview@1.0.1/dist/iview.min.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/dailySummaryListNew.css" />
+		<link rel="stylesheet" href="../../../css/plugins/datapicker/datepicker3.css" />
+		<link rel="stylesheet" href="../../../css/bootstrap-select.min.css" />
+		<style type="text/css">
+			.has-gutter th {
+				background: #51659B !important;
+				color: #fff;
+			}
+			
+			.has-gutter th {
+				background: #51659B !important;
+				color: #fff;
+			}
+			
+			.el-table__body-wrapper .el-table__body tr:nth-of-type(even) {
+				background-color: #f9fafd;
+			}
+			
+			.el-table__footer-wrapper .has-gutter tr td {
+				background-color: #d9e0d2;
+			}
+			
+			@media screen and (max-width: 1300px) {
+				.queryContent {
+					width: 120px !important;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="bg"></div>
+		<div class="contain">
+			<div class="rightLoadContent">
+				<!--页面数据呈现区-->
+				<div class="disContents">
+					<!--搜素区域-->
+					<div class="reportQueryInfoHead topBox " style="overflow: initial !important;height: 46px!important;">
+						<form action="">
+							<!--<span for="searchHos"class="lf"style="height: 24px;line-height:24px;margin-left:20px;">医院名称</span>-->
+							<div class="lf space" id="searchHos">
+								<select class="querySelect selectpicker" data-live-search="true" id="InHos" name="InHos" style="height: 24px;padding:0px 5px;width:270px;">
+									<!--<option value="">医院名称</option>-->
+								</select>
+							</div>
+							<!--<span for="searchBox"class="lf"style="height: 24px;line-height:24px;margin-right: 5px;">设备信息</span>-->
+							<!--<input type="text"id="searchBox" class="lf"value=""placeholder="请输入设备名称、品牌或型号"/>-->
+							<div class="lf space">
+								<input type="text" id="searchBox" class="lf queryContent " value="" placeholder="设备信息" />
+							</div>
+							<div class="lf space">
+								<input type="text" id="patientInfo" class="lf queryContent " value="" placeholder="患者信息" />
+							</div>
+							<div class="lf space">
+								<input type="text" id="doctorBox" style="width: 200px !IMPORTANT;" class="lf queryContent " value="" placeholder="申请医生/操作技师/诊断医生" />
+							</div>
+							<div class="subscribeListSex input-daterange" id="datepicker">
+								<div class="subscribeListSex lf space">
+									<input type="text" style="float: left;" class="newin layer-date form-control required queryContent" id="beginTime" autocomplete="off" name="beginTime" placeholder="检查起始日期">
+								</div>
+
+								<div class="subscribeListSex lf space">
+									<input type="text" style="float: left;" class="newin layer-date form-control required queryContent" id="endTime" autocomplete="off" name="endTime" placeholder="检查结束日期">
+								</div>
+							</div>
+							<div class="lf searching topBtn queryBtn">
+								查询
+							</div>
+							<!--<div class="rt addData">
+						新增
+					</div>-->
+							<div id="reportQuerySearchClearBtn" class="topBtn resetbtn" style="float: left;cursor: pointer;margin-left: 14px;">
+								清空
+							</div>
+							<div id="export" class="topBtn addBtn" style="float: left;cursor: pointer;margin-left: 14px;">
+								导出
+							</div>
+						</form>
+
+					</div>
+					<div class="tableNav">检查量</div>
+					<!--列表区域-->
+					<div id="app">
+						<el-table v-loading="loading" :data="tableData" border @cell-click="handleCell" height="500" style="width: 100%;">
+							<el-table-column align='center' prop="hospitalName" label="医院名称">
+							</el-table-column>
+							<el-table-column align='center' prop="checkDate" label="检查日期">
+							</el-table-column>
+							<el-table-column align='center' prop="deviceType" label="设备类型">
+							</el-table-column>
+							<el-table-column align='center' prop="deviceName" width="120" label="设备名称及品牌">
+							</el-table-column>
+							<el-table-column align='center' prop="deviceModel" label="规格型号">
+							</el-table-column>
+							<el-table-column align='center' prop="patientName" label="患者姓名">
+							</el-table-column>
+							<el-table-column align='center' prop="patientSex" label="性别">
+							</el-table-column>
+							<el-table-column align='center' prop="patientAge" label="年龄">
+							</el-table-column>
+							<el-table-column align='center' prop="checkCode" label="检查号">
+
+							</el-table-column>
+							<el-table-column align='center' prop="inspectName" label="部位">
+							</el-table-column>
+							<el-table-column align='center' prop="shouldPrice" label="应收">
+							</el-table-column>
+							<el-table-column align='center' prop="factPrice" label="实收">
+							</el-table-column>
+							<el-table-column align='center' prop="billingDoctor" label="申请医生">
+							</el-table-column>
+							<el-table-column align='center' prop="operationDoctor" label="操作技师">
+							</el-table-column>
+							<el-table-column align='center' prop="diagnosticDoctor" label="诊断医生">
+							</el-table-column>
+							<el-table-column label="操作" align='center'>
+								<template slot-scope="scope">
+									<el-button type="text" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+								</template>
+							</el-table-column>
+						</el-table>
+						<!--<el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="currentPage4"
+      :page-sizes="[10, 20, 30, 40]"
+      :page-size="10"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="400">
+    </el-pagination>-->
+					</div>
+					<div id="" style="display: flex;justify-content: flex-end; margin-top: 20px;">
+						<div style="padding-right:20px ;">检查量：<span id="checkNumsum">--</span>例</div>
+						<div style="padding-right:20px ;">应收金额：<span id="shouldPricesum">--</span>元</div>
+						<div style="padding-right:20px ;">实收金额：<span id="factPricesum">--</span>元</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="pageN"></div>
+				</div>
+				<!--模态框-->
+				<div class="modal">
+				</div>
+				<!--新增配置信息弹框-->
+				<div id="newConfiguration">
+					<div class="newConfigurationTitle">
+						新增配置信息类型
+						<div class="rt">
+							<span class="newConfigCloseModel">
+                                      ×
+                                  </span>
+						</div>
+					</div>
+					<!--标题-->
+					<div class="currentModalMainTit">
+						新增配置信息类型
+					</div>
+					<form action="">
+						<div class="boxDiv1">
+							<textarea name="addInfoBox1" class="addInfoBox1" id="addInfoNames"></textarea>
+						</div>
+						<div class="boxDiv2">
+							<textarea name="addInfoBox2" class="addInfoBox2"></textarea>
+						</div>
+						<div class="sureAndCancelBtns">
+							<div class="sureBtn addNewBtn">
+								确认新增
+							</div>
+							<div class="addConfigcancelBtn">
+								取&nbsp;&nbsp;消
+							</div>
+						</div>
+					</form>
+				</div>
+				<!--修改配置信息弹框-->
+				<div id="changeConfiguration">
+					<div class="newConfigurationTitle">
+						配置信息类型修改
+						<div class="rt">
+							<span class="changeConfigCloseModel">
+                                      ×
+                                  </span>
+						</div>
+					</div>
+					<!--标题-->
+					<div class="currentModalMainTit">
+						配置信息类型修改
+					</div>
+					<form action="">
+						<div class="boxDiv1">
+							<textarea name="changeInfoBox1" class="changeInfoBox1"></textarea>
+						</div>
+						<div class="boxDiv2">
+							<textarea name="changeInfoBox2" class="changeInfoBox2"></textarea>
+						</div>
+						<div class="sureAndCancelBtns">
+							<div class="sureBtn sureChangeInfos">
+								确认修改
+							</div>
+							<div class="changeInfoCancelBtn">
+								取消修改
+							</div>
+						</div>
+						<span class="configListchangeId" style="display:none"></span>
+					</form>
+				</div>
+				<!--删除单行配置信息提示框-->
+				<div id="delListInfo">
+					<div class="delTopImg">
+						<img src="../../img/common/untitledquestionImg.png" alt="" />
+					</div>
+					<div class="delWarn">
+						<div class="delWarn1">删除信息后不可恢复，确定要删除</div>
+						<div class="delWarn2">
+							该条信息吗？
+						</div>
+					</div>
+					<div class="sureAndCancelBtns">
+						<div class="delInfoCancelBtn">
+							取&nbsp;&nbsp;&nbsp;&nbsp;消
+						</div>
+						<div class="sureBtn sureChangeInfos">
+							确定
+						</div>
+					</div>
+					<span class="configListdelChangeId" style="display:none"></span>
+				</div>
+				<!--查看详情页-->
+				<div id="lookingForDetails">
+					<div class="newConfigurationTitle">
+						新增配置信息类型
+						<div class="rt">
+							<span class="lookingForDetailsCloseModel">
+                                      ×
+                                  </span>
+						</div>
+					</div>
+					<div class="LoadDetails">
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../../js/plugins/layer/layer.min.js"></script>
+		<!--<script src="../../js/content.min.js?v=1.0.0"></script>-->
+		<script src="../../../js/demo/layer-demo.min.js"></script>
+		<script src="../../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script src="../../../js/plugins/echarts/echarts-all.js"></script>
+		<!-- import Vue before Element -->
+		<script src="../../../js/vue.js"></script>
+		<!-- import JavaScript -->
+		<script type="text/javascript" src="../../../js/element-ui.js"></script>
+		<script type="text/javascript" src="../../../js/config.js"></script>
+		<script type="text/javascript" src="../../../js/commonStyle.js"></script>
+		<script type="text/javascript" src="../../../js/common.js"></script>
+		<script type="text/javascript" src="../../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+		<script type="text/javascript" src="../../../js/exportExcel.js"></script>
+		<script type="text/javascript" src="../../../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../../js/bootstrap-select.min.js"></script>
+		<script>
+			var hosDevArr = []; //医院n设备
+			var checkNumArr = [] //检查量图表数组
+			$(document).ready(function() {
+				$("#datepicker").datepicker({
+					keyboardNavigation: !1,
+					forceParse: !1,
+					autoclose: !0
+				});
+			})
+			var currentPage = 1;
+			var offsetPage = 0; //传输的页起始条数
+			var showNum = 10; //页面需要显示的条数
+			var num_pages;
+			var sessionId = sessionStorage.getItem('sessionId');
+			//点击分页页数
+			$(document).delegate(".flipOver", 'click', function() {
+				$(this).addClass('active').siblings().removeClass('active');
+				currentPage = parseInt($(this).attr("pageId"));
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+			//点击上一页
+			$(document).delegate("#prev", 'click', function() {
+				if($(".flipOver.active").prev().attr("id") == "prev") {
+					return true
+				} else {
+					var page = parseInt($(".flipOver.active").attr("pageid")) - 1;
+					$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+				}
+				currentPage = page;
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+
+			//点击下一页
+			$(document).delegate("#Next", 'click', function() {
+				if($(".flipOver.active").next().attr("id") == "Next") {
+					return true
+				} else {
+					var page = parseInt($(".flipOver.active").attr("pageid")) + 1;
+					$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+				}
+				currentPage = page;
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+			//点击分页跳转页按钮
+			$(document).delegate(".srueToJumpPageBtn", 'click', function() {
+				currentPage = parseInt($(".toPageNum").val().trim());
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+
+			//            点击搜索按钮
+			$(document).on("click", ".searching", function() {
+				//      var search=$("#searchBox").val().trim();
+				app.getList()
+			});
+			//            点击导出按钮
+			$(document).on('click', '#export', function() {
+				let tHeader = [
+					'医院名称',
+					'检查日期',
+					'设备类型',
+					'设备名称及品牌',
+					'规格型号',
+					'患者姓名',
+					'性别',
+					'年龄',
+					'检查号',
+					'部位',
+					'应收(元)',
+					'实收(元)',
+					'申请医生',
+					'操作技师',
+					'诊断医生'
+				]
+				console.log(app.tableData)
+				let tbody = []
+				for(var i in app.tableData) { //表数据
+					console.log(app.tableData[i])
+
+					var dataObj = {
+						hospitalName: app.tableData[i].hospitalName,
+						checkDate: app.tableData[i].checkDate,
+						deviceType: app.tableData[i].deviceType,
+						deviceName: app.tableData[i].deviceName,
+						deviceModel: app.tableData[i].deviceModel,
+						patientName: app.tableData[i].patientName,
+						patientSex: app.tableData[i].patientSex,
+						patientAge: app.tableData[i].patientAge,
+						checkCode: app.tableData[i].checkCode,
+						inspectName: app.tableData[i].inspectName,
+						shouldPrice: app.tableData[i].shouldPrice,
+						factPrice: app.tableData[i].factPrice,
+						billingDoctor: app.tableData[i].billingDoctor,
+						operationDoctor: app.tableData[i].operationDoctor,
+						diagnosticDoctor: app.tableData[i].diagnosticDoctor
+					}
+					tbody.push(dataObj)
+				}
+				export2Excel(tHeader, tbody, '日汇总-检查量')
+			});
+			//  点击清除按钮
+			$("#reportQuerySearchClearBtn").click(function() {
+				$("#InHos").val("");
+				$("#searchBox").val("");
+				$("#doctorBox").val("");
+				$("#patientInfo").val("");
+				$("#searchHos button").attr('title', app.searchObj.hosipitalName); //医院
+				$("#searchHos button .filter-option").text(app.searchObj.hosipitalName); //医院
+				$("#beginTime").val("");
+				$("#endTime").val("");
+				app.getList()
+			});
+			//            点击删除里的取消按钮
+			$(".delInfoCancelBtn").click(function() {
+				$(this).parent().parent().css("display", "none");
+				$(".modal").css("display", "none");
+			});
+
+			//            点击删除按钮
+			$(".resultListsContents").on("click", ".delImg", function() {
+				var listId = $(this).parent().parent().find(".listId").text().trim(); //获取当前行的id
+				$("#delListInfo").css("display", "block");
+				$(".modal").css("display", "block");
+				$(".configListdelChangeId").text(listId);
+			});
+
+			//            删除列表功能
+			$("#delListInfo .sureChangeInfos").click(function() {
+				var CurrentId = $(this).parent().parent().parent().find(".configListdelChangeId").text();
+				$.ajax({
+					method: 'get',
+					url: config + '/oa/news/remove',
+					contentType: "application/json; charset=utf-8", //传到后台的数据格式
+					async: true,
+					data: {
+						'id': CurrentId,
+						'type': '1'
+					},
+					dataType: 'JSON', //接收值的格式
+					success: function(data) {
+						if(data.status == 1) {
+							$("#delListInfo").css("display", "none");
+							$(".modal").css("display", "none");
+							alert(data.message)
+							getorderList();
+						} else {
+							alert(data.message);
+							//            window.location.reload();
+						}
+					},
+					error: function(result) {
+						console.log(result);
+					}
+				});
+			});
+
+			//	医院列表渲染
+			LoadreadHospitalBooking()
+			//指定医院下拉框 初始化
+			function LoadreadHospitalBooking() {
+				$("#InHos").html('<option value="">请选择医院</option>');
+				ajaxGet('/hospital/info/getHospitalOptionList', {}, function(data) {
+					if(data.status == 0) {
+						var hospitalList = data.resultMap.hospitalList;
+						if(hospitalList != null) {
+							for(var s = 0; s < hospitalList.length; s++) {
+								var hospitalHtml = '';
+								hospitalHtml += '<option value="' + hospitalList[s].id + '">' + hospitalList[s].hospitalName + '</option>';
+								$("#InHos").append(hospitalHtml);
+							}
+							$('.selectpicker').selectpicker('refresh');
+							$('.selectpicker').selectpicker('render');
+						}
+					}
+				})
+			}
+
+			//  vue数据
+			var app = new Vue({
+				el: '#app',
+				data() {
+					return {
+						tableData: [],
+						total: 0,
+						currentPage4: 1,
+						hospitalId: '', // 医院id
+						searchObj: null,
+						loading: true
+					}
+				},
+				methods: {
+					handleClick(row) {
+						console.log(row);
+					},
+					handleSizeChange(val) {
+						console.log(`每页 ${val} 条`);
+					},
+					handleCurrentChange(val) {
+						console.log(`当前页: ${val}`);
+					},
+					//编辑
+					handleEdit(index, val) {
+						//	      		localStorage.setItem("newsEditId",listId);
+						console.log(val)
+						localStorage.setItem("newsEditId", val.id);
+						sessionStorage.setItem("jumpFromTarget", "1"); //从检查量跳转
+						sessionStorage.setItem("dailySummaryTargetTab", "page/operationDataAdmin/daySumNew/dailySummaryTarget.html?id=" + val.hospitalId);
+						parent.layer.open({
+							type: 2,
+							title: '编辑',
+							shadeClose: true,
+							shade: [0.5],
+							maxmin: true, //开启最大化最小化按钮
+							area: ['1150px', '650px'],
+							content: './page/operationDataAdmin/hosMemberPush/edithosMemberPush.html'
+						});
+					},
+					handleCell(row, column, cell, event) {
+						console.log("------------------")
+						console.log(row.hospitalId)
+						console.log(column)
+						console.log(cell)
+						console.log(event)
+						console.log("------------------")
+						if(column.label == "检查量（例）") {
+
+							RefreshManyIframe("page/operationDataAdmin/daySumNew/dailySummaryTarget.html?id=" + row.hospitalId, "dailySummaryTarget")
+						}
+					},
+					getList() {
+						let searchSectionId = '';
+						let searchHospitalId = '';
+						let searchUserName = '';
+						let offsetPage = 0;
+						let showNum = 10;
+						let _this = this;
+						if($("#InHos").val() == "") { //医院id
+							var hospitalId = _this.hospitalId;
+						} else {
+							var hospitalId = $("#InHos").val();
+						}
+						if($("#searchBox").val().trim() == "") { //设备信息
+							var searchBox = this.searchObj.searchBox;
+							$("#searchBox").val(searchBox)
+						} else {
+							var searchBox = $("#searchBox").val().trim();
+						}
+						if(this.searchObj.operateInfo == "") { //运营主管联系电话
+							var operateInfo = "";
+						} else {
+							var operateInfo = this.searchObj.operateInfo;
+
+						}
+						if($("#beginTime").val() == "") { //起始日期
+							var beginTime = this.searchObj.beginTime;
+							$("#beginTime").val(beginTime)
+						} else {
+							var beginTime = $("#beginTime").val();
+						}
+						if($("#endTime").val() == "") { //结束日期
+							var endTime = this.searchObj.endTime;
+							$("#endTime").val(endTime)
+						} else {
+							var endTime = $("#endTime").val();
+						}
+						if(this.searchObj.deviceId == "") { //设备ID
+							var deviceId = "";
+						} else {
+							var deviceId = this.searchObj.deviceId;
+						}
+						let doctorBox = $("#doctorBox").val().trim();
+						let patientInfo = $("#patientInfo").val().trim();
+						$(".resultListsContents form").html('');
+						//	        上级日汇总页面搜索传入
+						ajaxGet('/sys/statistics/getDateStatisticsReport', {
+							statisticsType: '列表',
+							deviceInfo: searchBox, //设备信息
+							doctorInfo: doctorBox, //医生信息
+							patientInfo: patientInfo, //患者信息
+							deviceId: deviceId, //设备ID
+							checkBeginDate: beginTime,
+							checkEndDate: endTime,
+							hospitalId: hospitalId,
+							operateInfo: operateInfo,
+							//              offset:offsetPage,//（页码-1）*每页显示条数
+							//              limit:showNum,//每页赢显示的条数
+						}, function(data) {
+							if(data.status == 0) {
+								_this.loading = false;
+								_this.tableData = data.resultMap.dateListReport;
+								var sumOperateDateStatistics = data.resultMap.sumOperateDateStatistics;
+								$("#checkNumsum").text(sumOperateDateStatistics.checkNum)
+								$("#shouldPricesum").text(sumOperateDateStatistics.shouldPrice)
+								$("#factPricesum").text(sumOperateDateStatistics.factPrice)
+								//						_this.total=parseInt(data.resultMap.total);
+
+								for(var i in _this.tableData) {
+									var hosDev = _this.tableData[i].hospitalName + " " + _this.tableData[i].deviceNum + "设备";
+									hosDevArr.push(hosDev);
+									checkNumArr.push(_this.tableData[i].checkNum)
+								}
+							} else {
+								alert(data.message);
+							}
+						});
+					},
+
+				},
+				created() {
+					this.hospitalId = getUrlParam("id").split("?")[0];
+					this.searchObj = JSON.parse(sessionStorage.getItem(this.hospitalId))
+					var options = $("#InHos option:selected");
+					options.text(this.searchObj.hosipitalName);
+					this.getList();
+				}
+			})
+		</script>
+	</body>
+
+</html>

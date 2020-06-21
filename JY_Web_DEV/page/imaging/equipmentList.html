@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>中康九悦远程医疗管理系统 - 用户信息修改</title>
+
+    <meta name="keywords" content="中康九悦远程医疗管理系统">
+    <meta name="description" content="中康九悦远程医疗管理系统">
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/animate.min.css" rel="stylesheet">
+    <link href="../../css/style.min.css" rel="stylesheet">
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/public.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/equipmentList.css"/>
+    <link href="../../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+	<style type="text/css">
+		.wrap{
+			white-space: nowrap;
+		}
+		input{
+			    border-radius: 0px !important;
+		}
+		.commonTop button{
+				    border: 1px solid #e5e6e7 !important;
+			}
+		@media screen and (max-width: 1300px) {
+			.cbhd{
+				height: 173px;
+			}
+		.ios-border {
+			appearance: none;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			  /*在选择框的最右侧中间显示小箭头图片*/
+ background: url(../../img/select.png) no-repeat scroll right center transparent;
+ background-origin: content-box;
+    		background-size: 6px 8px;
+    		background-origin: content-box;
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 11px;
+		}
+			}
+	</style>
+</head>
+<body>  <!--class="gray-bg"-->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="clients-list">
+            <ul class="nav nav-tabs" id="nav_ul">
+                <span class="pull-right small text-muted"></span>
+                <!--<li class="active"><a data-toggle="tab" href="#tab-1"><i class="fa fa-user-md"></i>CT</a></li>
+
+                <li class=""><a data-toggle="tab" href="#tab-2"><i class="fa fa-medkit"></i>DR</a></li>
+
+                <li class=""><a data-toggle="tab" href="#tab-3"><i class="fa fa-heartbeat"></i>MRI</a></li>
+
+                <li class=""><a data-toggle="tab" href="#tab-4"><i class="fa fa-heartbeat"></i>电生理</a></li>-->
+
+            </ul>
+            <div >
+            </div>
+            <div class="tab-content mt20" id="yyList_div" >
+                <script id="yyList_div_tpl" type="text/html" >
+
+                    <div id="tab-<%=ix%>" class="tab-pane <%=ix==1?'active':''%>">
+                        <div class="full-height-scroll">
+                            <div class="table-responsive" >
+
+                                <div class="date-picker input-daterange panel_new">
+                                    <div class="ibox-content ic_new">
+                                        <div class="row row-lg">
+                                            <div class="col-sm-12">
+                                                <div class="example-wrap">
+                                                    <div class="example form-horizontal">
+                                                        <div class="form-group col-md-3 ">
+                                                            <label class="col-sm-3 control-label plr0 wrap" >医院名称：</label>
+                                                            <div class="col-sm-8 commonTop">
+                                                                <select title="全部医院" class="form-control name_cx ios-border selectpicker" name="name_cx" id="name_cx" data-live-search="true">
+                                                                    <option value="">请选择</option>
+                                                                    <%for(var s=0;s< selectData.length;s++){%>
+                                                                    <option value="<%=selectData[s].id%>"><%=selectData[s].hospitalName%></option>
+                                                                    <%}%>
+                                                                </select>
+                                                                
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-group col-md-5 data_5 plr0" >
+                                                            <label class="col-sm-1 control-label plr0 wrap">时间：</label>
+                                                            <div class="col-sm-11 input-daterange plr0" id="datepicker">
+                                                                <div class="col-sm-5 plr0">
+                                                                    <input type="text" class=" form-control " id="start_date_cx" autocomplete="off" name="start_date_cx" placeholder="开始">
+                                                                </div>
+                                                                <label class="col-sm-1 control-label plr0" style="text-align: center;width: 30px;">至</label>
+                                                                <div class="col-sm-5 plr0">
+                                                                    <input type="text" class=" form-control " id="end_date_cx" autocomplete="off" name="end_date_cx" placeholder="结束">
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            <!--<div class="col-sm-8">
+                                                                <div class="input-daterange input-group" id="datepicker">
+                                                                    <input type="text" class="input-sm form-control" id="start_date_cx"  name="start_date_cx" placeholder="开始">
+                                                                    <span class="input-group-addon">到</span>
+                                                                    <input type="text" class="input-sm form-control" id="end_date_cx" name="end_date_cx" placeholder="结束">
+                                                                </div>
+                                                            </div>-->
+                                                        </div>
+                                                        <div class="form-group col-md-1 plr0 " style="width: 17%;">
+                                                            <button style="background-color: #51659B;color: white;height: 34px !important;" class="reportQueryBtnCheck topBtn queryBtn" onclick="findCX(this)" data-typeId="<%=typeId%>" data-ix="<%=ix%>">查询
+                                                            </button>
+                                                            <button style="height: 34px !important; margin-left: 20px;" class="reportQueryBtnClear topBtn resetbtn" onclick="reportQuerySearchClearBtn(this)" data-typeId="<%=typeId%>" data-ix="<%=ix%>" style="margin-left: 26px;">清空</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bj_div">
+                                <%if(dlist.length > 0){%>
+                                    <%for(var i = 0; i < dlist.length; i++){%>
+                                    <!--<%=dlist[i].cf_img%>-->
+                                        <div class="col-sm-4">
+                                            <div data-id="<%=dlist[i].id%>" class="contact-box  cbhd">
+                                                <div class="col-sm-7 plr0 h100">
+                                                    <img alt="image" class=" img-responsive equipmentImg" src="<%=dlist[i].filePath%>">
+                                                </div>
+                                                <div class="col-sm-5 h100 d_bc">
+                                                    <h3 class="con_h"><strong><%=dlist[i].hospitalName%></strong></h3>
+
+                                                    <div class="con_d">
+                                                        <div>名称：</div>
+                                                        <div><%=dlist[i].name%></div>
+                                                    </div>
+                                                    <div class="con_d">
+                                                        <div>型号：</div>
+                                                        <div><%=dlist[i].model%></div>
+                                                    </div>
+                                                    <div class="con_d">
+                                                        <div>状态：</div>
+                                                        <div class="yyzt"><%=dlist[i].reservationStatus%></div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+
+                                    <%}%>
+                                <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   <script type="text/javascript">
+                   	 $('.selectpicker').selectpicker('refresh');
+                     $('.selectpicker').selectpicker('render');
+                   </script>
+                </script>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../js/bootstrap.min.js?v=3.3.5" ></script>
+<script src="../../js/content.min.js?v=1.0.0"></script>
+<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-select.min.js"  ></script>
+<script src="../../js/template.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".contact-box").each(function () {
+            animationHover(this, "pulse")
+        });
+
+        //点击设备去预约
+        $(document).on("click", ".contact-box", function () {
+            if ($(this).find(".yyzt").text().trim() == "可约") {
+                var id=$(this).attr('data-id');
+                sessionStorage.setItem('c_equipment_id',id);
+                RefreshIframe("page/imaging/checkRequest.html", "checkRequest");
+            }
+        });
+
+
+        //初始化
+        oninit();
+
+    });
+    
+    //      点击清空效果
+    
+		function reportQuerySearchClearBtn(that) {
+//			console.log(that)
+//			$("#name_cx").val("");
+//	    	$("#start_date_cx").val("");
+//	    	$("#end_date_cx").val("");
+//	    	findCX()
+			var list_html="";
+    		console.log(that)
+			//获取查询的下标
+	    	var ix=$(that).attr('data-ix');
+	        var typeId=$(that).attr('data-typeId');
+	        var id='#tab-'+ix;
+	        $(id+' #name_cx').val("")
+	        $(id+' #start_date_cx').val("")
+	        $(id+' #end_date_cx').val("")
+	        //清空条件
+	        var jsonData={
+	            type:typeId
+	        };
+	        $(".commonTop button").attr('title','请选择医院');//医院
+		$(".commonTop button .filter-option").text('请选择医院');//医院
+	        initData(jsonData, id, list_html);
+		}
+    function oninit() {
+        hosInit(function (selectData) {
+            //设备类型初始化 
+            ajaxGet('/equipment/type/getEquipmentTypeList',{},function (res) {
+                var data =res.resultMap.list;
+                var type_html="";
+                var ix;
+                for(var i=0;i<data.length;i++){
+                    if(data[i]!=null){
+                        ix=i+1;
+                        if(ix==1){
+                            //选中
+                            type_html+='<li  class="active"><a  data-toggle="tab"  href="#tab-'+ix+'"><i class="fa fa-medkit"></i>'+data[i].name+'</a></li>';
+                        }else{
+                            type_html+='<li  class=""><a  data-toggle="tab"  href="#tab-'+ix+'"><i class="fa fa-medkit"></i>'+data[i].name+'</a></li>';
+                        }
+                        sbInit(data[i].id,ix,selectData);
+                    }
+                }
+                $('#nav_ul').html(type_html);
+            });
+        });
+    }
+    //指定医院下拉框 初始化
+    function hosInit(cn) {
+         ajaxGet('/hospital/info/getHospitalOptionList',{},function (res) {
+         	if(res.status==0){
+                    var hospitalList=res.resultMap.hospitalList;
+                    cn(hospitalList);                   
+               }	
+         })
+    }
+    
+    //查询
+    function findCX(that){
+    	var list_html="";
+    	console.log(that)
+    	//获取查询的下标
+    	var ix=$(that).attr('data-ix');
+        var typeId=$(that).attr('data-typeId');
+        var id='#tab-'+ix;
+    
+        //查询条件
+        var jsonData={
+            hospitalId:$(id+' #name_cx').val(),
+            start:$(id+' #start_date_cx').val(),
+            end:$(id+' #end_date_cx').val(),
+            type:typeId
+        };
+        initData(jsonData, id, list_html);
+    }
+    function initData(jsonData, id, list_html){
+    	//获取查询数据
+        ajaxGet('/equipment/equipmentInfo/getReservationList',jsonData,function (res) {
+            var dlist =res.resultMap.reservationList;
+            for(var i=0;i<dlist.length;i++) {
+                /*var state="未满";
+                if(dlist[i].num<=0){
+                    state="已满"
+                }*/
+
+
+                list_html+='<div class="col-sm-4">\n' +
+                    '                                            <div data-id="'+dlist[i].id+'" class="contact-box cbhd">\n' +
+                '                                                    <div class="col-sm-7 plr0 h100">\n' +
+            	'                                                            <img alt="image" class="img-responsive equipmentImg" src="'+ dlist[i].filePath +'">\n' +
+                '                                                    </div>\n' +
+                '                                                    <div class="col-sm-5 h100 d_bc">\n' +
+                '                                                        <h3 class="con_h"><strong>' + dlist[i].hospitalName+ '</strong></h3>\n' +
+                '                                                        <div class="con_d">\n' +
+                '                                                            <div>名称：</div>\n' +
+                '                                                            <div>' +dlist[i].name+ '</div>\n' +
+                '                                                        </div>\n' +
+                '                                                        <div class="con_d">\n' +
+                '                                                            <div>型号：</div>\n' +
+                '                                                            <div>' +dlist[i].model+ '</div>\n' +
+                '                                                        </div>\n' +
+                '                                                        <div class="con_d">\n' +
+                '                                                            <div>状态：</div>\n' +
+                '                                                            <div class="yyzt">' +dlist[i].reservationStatus+ '</div>\n' +
+                '                                                        </div>\n' +
+                '                                                    </div>\n' +
+                '                                                    <div class="clearfix"></div>\n' +
+                    '                                            </div>\n' +
+                    '                                        </div>';
+
+
+            }
+            //重新渲染此下标的html
+            $(id+'  .bj_div').html(list_html);
+        });
+    }
+    var user=JSON.parse(sessionStorage.getItem('user'));
+    console.log('user:::',user);
+    //设备列表初始化
+    function sbInit(typeId,ix,selectData){
+        var user_h_id=user.id==1?"":user.fkHospitalId;
+        ajaxGet('/equipment/equipmentInfo/getReservationList',{type:typeId},function (res) {
+            var tpl_data = {
+                'dlist':res.resultMap.reservationList,
+                'ix':ix,
+                'typeId':typeId,
+                'selectData':selectData,
+            };
+            console.log(tpl_data)
+            var html = template.render('yyList_div_tpl', tpl_data);
+            $("#yyList_div").append(html);
+
+            $(".data_5 .input-daterange").datepicker({
+                keyboardNavigation: !1,
+                forceParse: !1,
+                autoclose: !0
+            });
+        })
+    }
+
+
+</script>
+<script type="text/javascript" src="../../js/stats.js"charset="utf-8"></script>
+</body>
+
+</html>

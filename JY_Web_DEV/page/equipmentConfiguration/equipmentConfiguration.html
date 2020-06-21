@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设备配置</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../../css/bootstrap-select.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/element-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/equipmentConfiguration.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<style type="text/css">
+			.el-alert--error{
+				color: #f56c6c !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="web">
+			<el-tabs v-model="tabsActiveName" @tab-click="handleClick(tabsActiveName)">			    
+			    <el-tab-pane label="设备品牌" :name="equipmentBrand.type">
+			    	<!--顶部搜索条-->
+			    	<div class="topBox">
+			    		<div class="queryForm">
+							<!--<el-input class="queryContent" v-model="equipmentBrand.queryEquipmentBrand" placeholder="设备品牌"></el-input>-->
+							<el-select v-model="equipmentBrand.queryEquipmentBrand" filterable placeholder="设备品牌" class="queryContent">
+							    <el-option
+							      v-for="item in equipmentBrand.options"
+							      :key="item.id"
+							      :label="item.name"
+							      :value="item.name">
+							    </el-option>
+							</el-select>
+						</div>
+						<div class="addBtn topBtn queryBtn" @click="queryEquipmentBrandClick(tabsActiveName)">查询</div>
+						<div class="addBtn topBtn resetbtn" @click="resetEquipmentBrandClick(tabsActiveName)">清空</div>
+						<div class="addBtn topBtn" @click="equipmentBrandAddClick(tabsActiveName)">新增</div>
+			    	</div>
+			    	<!--表头-->
+					<div class="tableNav1">设备品牌</div>
+					<!--数据表格-->
+					<div class="outBoxBorder table">
+						<ul class="titleList">
+							<li 
+								class="boxRightBorder" 
+								v-for="(item, index) in equipmentBrand.titleList" 
+								:key="index"
+								:style="item.domStyle"
+								>
+							{{ item.name }}
+							</li>
+						</ul>
+						<ul class="dataList" v-for="(item, index) in equipmentBrand.dataList" :key="item.id">
+							<li class="boxRightBorder" style="width: 5%;display: none;">{{ item.id }}</li>
+							<li class="boxRightBorder" style="width: 5%;">{{ index | handleIndex }}</li>
+							<li class="boxRightBorder" style="width: 15%;">{{ item.name }}</li>
+							<li class="" style="width: 20%;">
+								<!--<a href="javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="queryEquipmentNameClick($event, item.id)">查看</a>-->
+								<a href="javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="changeEquipmentBrandClick($event, item.id)">编辑</a>
+								<a href="javascript:void(0)" class="reportQueryBtn-change delBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="cancelEquipmentBrandClick($event, item.id)">删除</a>
+							</li>
+						</ul>
+					</div>
+					<!--分页-->
+					<div class="equipmentBrandPageN"></div>
+			    </el-tab-pane>
+			    <el-tab-pane label="设备型号" :name="equipmentModel.type">
+			    	<!--顶部搜索条-->
+			    	<div class="topBox">
+			    		<div class="queryForm">
+							<!--<el-input class="queryContent" v-model="equipmentModel.queryEquipmentModel" placeholder="设备型号"></el-input>-->
+							<el-select v-model="equipmentModel.queryEquipmentModel" filterable placeholder="设备型号" class="queryContent">
+							    <el-option
+							      v-for="item in equipmentModel.options"
+							      :key="item.id"
+							      :label="item.name"
+							      :value="item.name">
+							    </el-option>
+							</el-select>
+						</div>
+						<div class="addBtn topBtn queryBtn" @click="queryEquipmentModelClick(tabsActiveName)">查询</div>
+						<div class="addBtn topBtn resetbtn" @click="resetEquipmentModelClick(tabsActiveName)">清空</div>
+						<div class="addBtn topBtn" @click="equipmentModelAddClick(tabsActiveName)">新增</div>
+			    	</div>
+			    	<!--表头-->
+					<div class="tableNav1">设备型号</div>
+					<!--数据表格-->
+					<div class="outBoxBorder table">
+						<ul class="titleList">
+							<li 
+								class="boxRightBorder" 
+								v-for="(item, index) in equipmentModel.titleList" 
+								:key="index"
+								:style="item.domStyle"
+								>
+							{{ item.name }}
+							</li>
+						</ul>
+						<ul class="dataList" v-for="(item, index) in equipmentModel.dataList" :key="item.id">
+							<li class="boxRightBorder" style="width: 5%;display: none;">{{ item.id }}</li>
+							<li class="boxRightBorder" style="width: 5%;">{{ index | handleIndex }}</li>
+							<li class="boxRightBorder" style="width: 15%;">{{ item.name }}</li>
+							<li class="" style="width: 20%;">
+								<!--<a href="javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="queryEquipmentNameClick($event, item.id)">查看</a>-->
+								<a href="javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="changeEquipmentModelClick($event, item.id)">编辑</a>
+								<a href="javascript:void(0)" class="reportQueryBtn-change delBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="cancelEquipmentModelClick($event, item.id)">删除</a>
+							</li>
+						</ul>
+					</div>
+					<!--分页-->
+					<div class="equipmentModelPageN"></div>
+			    </el-tab-pane>
+			    <el-tab-pane label="设备名称" :name="equipmentName.type">
+			    	<!--顶部搜索条-->
+			    	<div class="topBox">
+			    		<div class="queryForm">
+			    			<!--<select title="设备名称" class="queryContent" id="equipmentName_cx" data-live-search="true"></select>-->
+							<!--<el-input class="queryContent" v-model="equipmentName.queryEquipmentName" placeholder="设备名称"></el-input>-->
+							<el-select v-model="equipmentName.queryEquipmentName" filterable placeholder="设备名称" class="queryContent">
+							    <el-option
+							      v-for="item in equipmentName.options"
+							      :key="item.id"
+							      :label="item.name"
+							      :value="item.name">
+							    </el-option>
+							</el-select>
+						</div>
+						<div class="addBtn topBtn queryBtn" @click="queryEquipmentNameClick(tabsActiveName)">查询</div>
+						<div class="addBtn topBtn resetbtn" @click="resetEquipmentNameClick(tabsActiveName)">清空</div>
+						<div class="addBtn topBtn" @click="equipmentNameAddClick(tabsActiveName)">新增</div>
+			    	</div>
+			    	<!--表头-->
+					<div class="tableNav1">设备名称</div>
+					<!--数据表格-->
+					<div class="outBoxBorder table">
+						<ul class="titleList">
+							<li 
+								class="boxRightBorder" 
+								v-for="(item, index) in equipmentName.titleList" 
+								:key="index"
+								:style="item.domStyle"
+								>
+							{{ item.name }}
+							</li>
+						</ul>
+						<ul class="dataList" v-for="(item, index) in equipmentName.dataList" :key="item.id">
+							<li class="boxRightBorder" style="width: 5%;display: none;">{{ item.id }}</li>
+							<li class="boxRightBorder" style="width: 5%;">{{ index | handleIndex }}</li>
+							<li class="boxRightBorder" style="width: 15%;">{{ item.name }}</li>
+							<li class="" style="width: 20%;">
+								<!--<a href="javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="queryEquipmentNameClick($event, item.id)">查看</a>-->
+								<a href="javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="changeEquipmentNameClick($event, item.id)">编辑</a>
+								<a href="javascript:void(0)" class="reportQueryBtn-change delBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="cancelEquipmentNameClick($event, item.id)">删除</a>
+							</li>
+						</ul>
+					</div>
+					<!--分页-->
+					<div class="equipmentNamePageN"></div>
+			    </el-tab-pane>
+			    <el-tab-pane label="检查项目" :name="equipmentInspection.type">
+			    	<!--顶部搜索条-->
+			    	<div class="topBox">
+			    		<div class="queryForm">
+							<!--<el-input class="queryContent" v-model="equipmentInspection.queryEquipmentInspection" placeholder="检查项目"></el-input>-->
+							<el-select v-model="equipmentInspection.queryEquipmentInspection" filterable placeholder="检查项目" class="queryContent">
+							    <el-option
+							      v-for="item in equipmentInspection.options"
+							      :key="item.id"
+							      :label="item.name"
+							      :value="item.name">
+							    </el-option>
+							</el-select>
+						</div>
+						<!--<div class="queryForm">
+							<el-input class="queryContent" v-model="queryEquipmentPrice" placeholder="价格"></el-input>
+						</div>-->
+						<div class="addBtn topBtn queryBtn" @click="queryEquipmentInspectionClick(tabsActiveName)">查询</div>
+						<div class="addBtn topBtn resetbtn" @click="resetEquipmentInspectionClick(tabsActiveName)">清空</div>
+						<div class="addBtn topBtn" @click="equipmentInspectionAddClick(tabsActiveName)">新增</div>
+			    	</div>
+			    	<!--表头-->
+					<div class="tableNav1">检查项目</div>
+					<!--数据表格-->
+					<div class="outBoxBorder table">
+						<ul class="titleList">
+							<li 
+								class="boxRightBorder" 
+								v-for="(item, index) in equipmentInspection.titleList" 
+								:key="index"
+								:style="item.domStyle"
+								>
+							{{ item.name }}
+							</li>
+						</ul>
+						<ul class="dataList" v-for="(item, index) in equipmentInspection.dataList" :key="item.id">
+							<li class="boxRightBorder" style="width: 5%;display: none;">{{ item.id }}</li>
+							<li class="boxRightBorder" style="width: 5%;">{{ index | handleIndex }}</li>
+							<li class="boxRightBorder" style="width: 15%;">{{ item.name }}</li>
+							<li class="" style="width: 20%;">
+								<!--<a href="javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="queryEquipmentNameClick($event, item.id)">查看</a>-->
+								<a href="javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="changeEquipmentInspectionClick($event, item.id)">编辑</a>
+								<a href="javascript:void(0)" class="reportQueryBtn-change delBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="cancelEquipmentInspectionClick($event, item.id)">删除</a>
+							</li>
+						</ul>
+					</div>
+					<!--分页-->
+					<div class="equipmentInspectionPageN"></div>
+			    </el-tab-pane>
+			</el-tabs>
+			<!--设备名称删除弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentName.delEquipmentNameAlertFlag">
+				<div class="mask_content_box" v-show="equipmentName.delEquipmentNameAlertFlag">
+					<div class="content_header">
+						<div class="header_title">删除</div>
+						<div class="close" @click="closeEquipmentNameDelAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="chooseDel">
+									<div>
+										<img src="../../img/warn.png" width="55" height="48" style="vertical-align: -15px;"/>
+										删除信息
+									</div>
+									<div>您确定要删除此项吗</div>
+								</div>
+								<input type="hidden" id="delStatus" />
+							</div>
+							<div class="btnGroup delGroup" v-show="equipmentName.equipmentNameAlertFlagDel">
+								<button type="button" class="Btn comTempateSaveBtn" @click="equipmentNameClick(tabsActiveName)">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--设备名称新增弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentName.addEquipmentNameAlertFlag">
+				<div class="mask_content_box" v-show="equipmentName.addEquipmentNameAlertFlag">
+					<div class="content_header">
+						<div class="header_title">新增</div>
+						<div class="close" @click="closeEquipmentNameAddAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="formBox">
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="equipmentNameForm"><span style="color: #FF423F;">*</span>设备名称:</label>
+												<el-input class="equipmentNameForm" v-model="equipmentName.equipmentNameAddVal" placeholder="设备名称" @blur="handleAddEquipmentName" maxlength="20" v-bind:disabled="equipmentName.equipmentNameAddFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="equipmentName.tipAddEquipmentName" v-bind:type="equipmentName.tipAddEquipmentNameStatus" v-show="equipmentName.tipAddEquipmentNameShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="btnGroup addGroup" v-show="equipmentName.addEquipmentNameAlertFlag">
+								<button type="button" class="Btn comTempateSaveBtn" :class="equipmentName.addEquipmentNameActive ? 'formDisabledBtn' : ''" :disabled="equipmentName.addEquipmentNameActive" @click="addEquipmentNameSaveClick(tabsActiveName)">保存</button>
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</div>
+			<!--设备名称编辑弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentName.changeEquipmentNameAlertFlag">
+				<div class="mask_content_box" v-show="equipmentName.changeEquipmentNameAlertFlag">
+					<div class="content_header">
+						<div class="header_title">编辑</div>
+						<div class="close" @click="closeEquipmentNameChangeAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="formBox">
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="equipmentName"><span style="color: #FF423F;">*</span>设备名称:</label>
+												<el-input class="equipmentName" v-model="equipmentName.equipmentNameChangeVal" id="equipmentName" placeholder="设备名称" @blur="handleChangeEquipmentName" maxlength="20" v-bind:disabled="equipmentName.equipmentNameChangeFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="equipmentName.tipChangeEquipmentName" v-bind:type="equipmentName.tipChangeEquipmentNameStatus" v-show="equipmentName.tipChangeEquipmentNameShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="btnGroup addGroup" v-show="equipmentName.changeEquipmentNameAlertFlag">
+								<button type="button" class="Btn comTempateSaveBtn" :class="equipmentName.changeEquipmentNameActive ? 'formDisabledBtn' : ''" :disabled="equipmentName.changeEquipmentNameActive" @click="changeEquipmentNameSaveClick(tabsActiveName)">保存</button>
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</div>
+			<!--设备品牌删除弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentBrand.delEquipmentBrandAlertFlag">
+				<div class="mask_content_box" v-show="equipmentBrand.delEquipmentBrandAlertFlag">
+					<div class="content_header">
+						<div class="header_title">删除</div>
+						<div class="close" @click="closeEquipmentBrandDelAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="chooseDel">
+									<div>
+										<img src="../../img/warn.png" width="55" height="48" style="vertical-align: -15px;"/>
+										删除信息
+									</div>
+									<div>您确定要删除此项吗</div>
+								</div>
+								<input type="hidden" id="delStatus" />
+							</div>
+							<div class="btnGroup delGroup" v-show="equipmentBrand.equipmentBrandAlertFlagDel">
+								<button type="button" class="Btn comTempateSaveBtn" @click="equipmentBrandClick(tabsActiveName)">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--设备品牌新增弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentBrand.addEquipmentBrandAlertFlag">
+				<div class="mask_content_box" v-show="equipmentBrand.addEquipmentBrandAlertFlag">
+					<div class="content_header">
+						<div class="header_title">新增</div>
+						<div class="close" @click="closeEquipmentBrandAddAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="formBox">
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="equipmentBrandForm"><span style="color: #FF423F;">*</span>设备品牌:</label>
+												<el-input class="equipmentBrandForm" v-model="equipmentBrand.equipmentBrandAddVal" placeholder="设备品牌" @blur="handleAddEquipmentBrand" maxlength="20" v-bind:disabled="equipmentBrand.equipmentBrandAddFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="equipmentBrand.tipAddEquipmentBrand" v-bind:type="equipmentBrand.tipAddEquipmentBrandStatus" v-show="equipmentBrand.tipAddEquipmentBrandShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="btnGroup addGroup" v-show="equipmentBrand.addEquipmentBrandAlertFlag">
+								<button type="button" class="Btn comTempateSaveBtn" :class="equipmentBrand.addEquipmentBrandActive ? 'formDisabledBtn' : ''" :disabled="equipmentBrand.addEquipmentBrandActive" @click="addEquipmentBrandSaveClick(tabsActiveName)">保存</button>
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</div>
+			<!--设备品牌编辑弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentBrand.changeEquipmentBrandAlertFlag">
+				<div class="mask_content_box" v-show="equipmentBrand.changeEquipmentBrandAlertFlag">
+					<div class="content_header">
+						<div class="header_title">编辑</div>
+						<div class="close" @click="closeEquipmentBrandChangeAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="formBox">
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="equipmentBrand"><span style="color: #FF423F;">*</span>设备品牌:</label>
+												<el-input class="equipmentBrand" v-model="equipmentBrand.equipmentBrandChangeVal" placeholder="设备品牌" @blur="handleChangeEquipmentBrand" maxlength="20" v-bind:disabled="equipmentBrand.equipmentBrandChangeFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="equipmentBrand.tipChangeEquipmentBrand" v-bind:type="equipmentBrand.tipChangeEquipmentBrandStatus" v-show="equipmentBrand.tipChangeEquipmentBrandShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="btnGroup addGroup" v-show="equipmentBrand.changeEquipmentBrandAlertFlag">
+								<button type="button" class="Btn comTempateSaveBtn" :class="equipmentBrand.changeEquipmentBrandActive ? 'formDisabledBtn' : ''" :disabled="equipmentBrand.changeEquipmentBrandActive" @click="changeEquipmentBrandSaveClick(tabsActiveName)">保存</button>
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</div>
+			<!--设备型号删除弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentModel.delEquipmentModelAlertFlag">
+				<div class="mask_content_box" v-show="equipmentModel.delEquipmentModelAlertFlag">
+					<div class="content_header">
+						<div class="header_title">删除</div>
+						<div class="close" @click="closeEquipmentModelDelAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="chooseDel">
+									<div>
+										<img src="../../img/warn.png" width="55" height="48" style="vertical-align: -15px;"/>
+										删除信息
+									</div>
+									<div>您确定要删除此项吗</div>
+								</div>
+								<input type="hidden" id="delStatus" />
+							</div>
+							<div class="btnGroup delGroup" v-show="equipmentModel.equipmentModelAlertFlagDel">
+								<button type="button" class="Btn comTempateSaveBtn" @click="equipmentModelClick(tabsActiveName)">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--设备型号新增弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentModel.addEquipmentModelAlertFlag">
+				<div class="mask_content_box" v-show="equipmentModel.addEquipmentModelAlertFlag">
+					<div class="content_header">
+						<div class="header_title">新增</div>
+						<div class="close" @click="closeEquipmentModelAddAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="formBox">
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="equipmentModelForm"><span style="color: #FF423F;">*</span>设备型号:</label>
+												<el-input class="equipmentModelForm" v-model="equipmentModel.equipmentModelAddVal" placeholder="设备型号" @blur="handleAddEquipmentModel" maxlength="20" v-bind:disabled="equipmentModel.equipmentModelAddFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="equipmentModel.tipAddEquipmentModel" v-bind:type="equipmentModel.tipAddEquipmentModelStatus" v-show="equipmentModel.tipAddEquipmentModelShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="btnGroup addGroup" v-show="equipmentModel.addEquipmentModelAlertFlag">
+								<button type="button" class="Btn comTempateSaveBtn" :class="equipmentModel.addEquipmentModelActive ? 'formDisabledBtn' : ''" :disabled="equipmentModel.addEquipmentModelActive" @click="addEquipmentModelSaveClick(tabsActiveName)">保存</button>
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</div>
+			<!--设备型号编辑弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentModel.changeEquipmentModelAlertFlag">
+				<div class="mask_content_box" v-show="equipmentModel.changeEquipmentModelAlertFlag">
+					<div class="content_header">
+						<div class="header_title">编辑</div>
+						<div class="close" @click="closeEquipmentModelChangeAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="formBox">
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="equipmentModel"><span style="color: #FF423F;">*</span>设备型号:</label>
+												<el-input class="equipmentModel" v-model="equipmentModel.equipmentModelChangeVal" placeholder="设备型号" @blur="handleChangeEquipmentModel" maxlength="20" v-bind:disabled="equipmentModel.equipmentModelChangeFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="equipmentModel.tipChangeEquipmentModel" v-bind:type="equipmentModel.tipChangeEquipmentModelStatus" v-show="equipmentModel.tipChangeEquipmentModelShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="btnGroup addGroup" v-show="equipmentModel.changeEquipmentModelAlertFlag">
+								<button type="button" class="Btn comTempateSaveBtn" :class="equipmentModel.changeEquipmentModelActive ? 'formDisabledBtn' : ''" :disabled="equipmentModel.changeEquipmentModelActive" @click="changeEquipmentModelSaveClick(tabsActiveName)">保存</button>
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</div>
+			<!--检查项目删除弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentInspection.delEquipmentInspectionAlertFlag">
+				<div class="mask_content_box" v-show="equipmentInspection.delEquipmentInspectionAlertFlag">
+					<div class="content_header">
+						<div class="header_title">删除</div>
+						<div class="close" @click="closeEquipmentInspectionDelAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="chooseDel">
+									<div>
+										<img src="../../img/warn.png" width="55" height="48" style="vertical-align: -15px;"/>
+										删除信息
+									</div>
+									<div>您确定要删除此项吗</div>
+								</div>
+								<input type="hidden" id="delStatus" />
+							</div>
+							<div class="btnGroup delGroup" v-show="equipmentInspection.equipmentInspectionAlertFlagDel">
+								<button type="button" class="Btn comTempateSaveBtn" @click="equipmentInspectionClick(tabsActiveName)">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--检查项目新增弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentInspection.addEquipmentInspectionAlertFlag">
+				<div class="mask_content_box" v-show="equipmentInspection.addEquipmentInspectionAlertFlag">
+					<div class="content_header">
+						<div class="header_title">新增</div>
+						<div class="close" @click="closeEquipmentInspectionAddAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="formBox">
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="equipmentInspectionForm"><span style="color: #FF423F;">*</span>检查项目:</label>
+												<el-input class="equipmentInspectionForm" v-model="equipmentInspection.equipmentInspectionAddVal" placeholder="检查项目" @blur="handleAddEquipmentInspection" maxlength="20" v-bind:disabled="equipmentInspection.equipmentInspectionAddFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="equipmentInspection.tipAddEquipmentInspection" v-bind:type="equipmentInspection.tipAddEquipmentInspectionStatus" v-show="equipmentInspection.tipAddEquipmentInspectionShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="btnGroup addGroup" v-show="equipmentInspection.addEquipmentInspectionAlertFlag">
+								<button type="button" class="Btn comTempateSaveBtn" :class="equipmentInspection.addEquipmentInspectionActive ? 'formDisabledBtn' : ''" :disabled="equipmentInspection.addEquipmentInspectionActive" @click="addEquipmentInspectionSaveClick(tabsActiveName)">保存</button>
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</div>
+			<!--检查项目编辑弹窗-->
+			<div class="black_overlay" style="display: none;" v-show="equipmentInspection.changeEquipmentInspectionAlertFlag">
+				<div class="mask_content_box" v-show="equipmentInspection.changeEquipmentInspectionAlertFlag">
+					<div class="content_header">
+						<div class="header_title">编辑</div>
+						<div class="close" @click="closeEquipmentInspectionChangeAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="formBox">
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="equipmentInspection"><span style="color: #FF423F;">*</span>检查项目:</label>
+												<el-input class="equipmentInspection" v-model="equipmentInspection.equipmentInspectionChangeVal" placeholder="检查项目" @blur="handleChangeEquipmentInspection" maxlength="20" v-bind:disabled="equipmentInspection.equipmentInspectionChangeFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="equipmentInspection.tipChangeEquipmentInspection" v-bind:type="equipmentInspection.tipChangeEquipmentInspectionStatus" v-show="equipmentInspection.tipChangeEquipmentInspectionShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="btnGroup addGroup" v-show="equipmentInspection.changeEquipmentInspectionAlertFlag">
+								<button type="button" class="Btn comTempateSaveBtn" :class="equipmentInspection.changeEquipmentInspectionActive ? 'formDisabledBtn' : ''" :disabled="equipmentInspection.changeEquipmentInspectionActive" @click="changeEquipmentInspectionSaveClick(tabsActiveName)">保存</button>
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</div>
+			
+		</div>
+		<!--组件库JS-->
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/bootstrap-select.min.js"></script>
+		<script type="text/javascript" src="../../js/vue.js"></script>
+		<script src="../../js/element-ui.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="https://unpkg.com/element-ui/lib/index.js"></script>-->
+		<!--<script type="text/javascript" src="../../../js/element-ui.js"></script>-->
+		
+		<script src="../../js/plugins/layer/layer.min.js"></script>
+		<script src="../../js/plugins/layer/laydate/laydate5.0.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script type="text/javascript" src="js/equipmentConfiguration.js"></script>
+		<script type="text/javascript" src="js/currentPage.js"></script>
+	</body>
+</html>

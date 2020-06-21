@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>药品列表</title>
+		<meta name="viewport"content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<style type="text/css">
+		/*html,body,div,span,ul,li,a,img,input{
+			margin: 0;
+			padding: 0;
+		}*/
+		input,img{
+			outline: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		ul li{
+			list-style: none;
+		}
+		.drugList{
+			width: 96%;
+			height: 500px;
+			margin: 10px auto;
+			border: 1px solid #CCCCCC;
+		}
+		.drugListUL1 li{
+			float: left;
+			width: 10%;
+			text-align: center;
+			height: 30px;
+			line-height: 30px;
+			border-bottom: 1px solid #008EEA;
+			
+		}
+		.drugListUL2 li{
+			float: left;
+			width: 10%;
+			text-align: center;
+			height: 50px;
+			line-height: 25px;
+			border-bottom: 1px solid #CCCCCC;
+		}
+	</style>
+	<body>
+		<div class="drugList">
+			<ul class="drugListUL1">
+				<li class="drugListTitle">商品编号</li>
+				<li class="drugListTitle">商品名称</li>
+				<li class="drugListTitle">规格</li>
+				<li class="drugListTitle">拼音助记码</li>
+				<li class="drugListTitle">生产厂商</li>
+				<li class="drugListTitle">批准文号</li>
+				<li class="drugListTitle">商品条码</li>
+				<li class="drugListTitle">零售价</li>
+				<li class="drugListTitle">单位</li>
+				<li class="drugListTitle">备注</li>
+			</ul>
+			<ul class="drugListUL2">
+				<li class="drugListTitle">100002</li>
+				<li class="drugListTitle">医用棉球/5g/袋</li>
+				<li class="drugListTitle">5g/袋</li>
+				<li class="drugListTitle">YYMQ5GD</li>
+				<li class="drugListTitle">青岛盛久医疗用品有限公司</li>
+				<li class="drugListTitle">鲁青食药监械（准）字2014第1640013号</li>
+				<li class="drugListTitle">6921349101101</li>
+				<li class="drugListTitle">0</li>
+				<li class="drugListTitle">袋</li>
+				<li class="drugListTitle"></li>
+			</ul>
+			<ul class="drugListUL2">
+				<li class="drugListTitle">100003</li>
+				<li class="drugListTitle">医用棉球/25g/袋</li>
+				<li class="drugListTitle">25g/袋</li>
+				<li class="drugListTitle">YYMQ25GD</li>
+				<li class="drugListTitle">青岛盛久医疗用品有限公司</li>
+				<li class="drugListTitle">鲁青食药监械（准）字2014第1640013号</li>
+				<li class="drugListTitle">69213419101200</li>
+				<li class="drugListTitle">0</li>
+				<li class="drugListTitle">袋</li>
+				<li class="drugListTitle"></li>
+			</ul>
+			<ul class="drugListUL2">
+				<li class="drugListTitle">100004</li>
+				<li class="drugListTitle">医用棉签/单头</li>
+				<li class="drugListTitle">8cm/竹棒型/单头*100支/袋</li>
+				<li class="drugListTitle">YYMQDT</li>
+				<li class="drugListTitle">青岛盛久医疗用品有限公司</li>
+				<li class="drugListTitle">鲁青食药监械（准）字2013第1640091号</li>
+				<li class="drugListTitle">6921349102306</li>
+				<li class="drugListTitle">0</li>
+				<li class="drugListTitle">袋</li>
+				<li class="drugListTitle"></li>
+			</ul>
+			<ul class="drugListUL2">
+				<li class="drugListTitle">100005</li>
+				<li class="drugListTitle">（停）康复贴敷料/靓芙</li>
+				<li class="drugListTitle">圆形*7片/盒</li>
+				<li class="drugListTitle">TKFTFLLF</li>
+				<li class="drugListTitle">江苏知原药业有限公司</li>
+				<li class="drugListTitle">苏食药监械（准）字2013第2641274号</li>
+				<li class="drugListTitle">6921349101101</li>
+				<li class="drugListTitle">0</li>
+				<li class="drugListTitle">盒</li>
+				<li class="drugListTitle"></li>
+			</ul>
+			<ul class="drugListUL2">
+				<li class="drugListTitle">100006</li>
+				<li class="drugListTitle">（停）医用胶带</li>
+				<li class="drugListTitle">1cm*500cm*13</li>
+				<li class="drugListTitle">TYYJD</li>
+				<li class="drugListTitle">内蒙古科尔沁药业有限公司</li>
+				<li class="drugListTitle">内（通）食药监械（准）字2011第1640001号</li>
+				<li class="drugListTitle"></li>
+				<li class="drugListTitle">0</li>
+				<li class="drugListTitle">盒</li>
+				<li class="drugListTitle"></li>
+			</ul>
+			<ul class="drugListUL2">
+				<li class="drugListTitle">100007</li>
+				<li class="drugListTitle">防水创可贴/邦迪</li>
+				<li class="drugListTitle">5片*20包</li>
+				<li class="drugListTitle">FSCKTBD</li>
+				<li class="drugListTitle">上海强生有限公司</li>
+				<li class="drugListTitle">沪食药监械（准）字2010第1641305号</li>
+				<li class="drugListTitle">6916999215216</li>
+				<li class="drugListTitle">0</li>
+				<li class="drugListTitle">袋</li>
+				<li class="drugListTitle"></li>
+			</ul>
+			<ul class="drugListUL2">
+				<li class="drugListTitle">60089</li>
+				<li class="drugListTitle">（停）医用听诊器/玉兔</li>
+				<li class="drugListTitle">TZ-1</li>
+				<li class="drugListTitle">TYYTZQYT</li>
+				<li class="drugListTitle">上海医疗器械股份有限公司</li>
+				<li class="drugListTitle">沪食药监械（准）字2014第1200443号</li>
+				<li class="drugListTitle">6948276600101</li>
+				<li class="drugListTitle">0</li>
+				<li class="drugListTitle">袋</li>
+				<li class="drugListTitle"></li>
+			</ul>
+			<ul class="drugListUL2">
+				<li class="drugListTitle">60144</li>
+				<li class="drugListTitle">（停）台式血压计/玉兔</li>
+				<li class="drugListTitle">XJ11D</li>
+				<li class="drugListTitle">TTSXYJYT</li>
+				<li class="drugListTitle">上海医疗器械股份有限公司</li>
+				<li class="drugListTitle">沪食药监械（准）字2013第2200324号</li>
+				<li class="drugListTitle">6948276600019</li>
+				<li class="drugListTitle">0</li>
+				<li class="drugListTitle">盒</li>
+				<li class="drugListTitle"></li>
+			</ul>
+		</div>
+	</body>
+</html>

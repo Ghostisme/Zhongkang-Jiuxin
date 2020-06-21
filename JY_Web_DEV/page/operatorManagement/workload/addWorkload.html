@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>工作量汇总</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../../css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+	<link href="../../../css/animate.min.css" rel="stylesheet">
+	<link href="../../../css/style.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="addWorkload.css" />
+
+	<body>
+		<div class="box">
+			<form id="equipmentForm" onsubmit="return false;">
+
+				<ul class="appointment-ul2 ">
+					<li>
+						<div class="f_div">
+							<label class="f_lab">日期：</label>
+							<input class="newin layer-date form-control required" name="returnTime" id="returnTime" readonly="readonly" style="background: #fff;" />
+						</div>
+					</li>
+					<li>
+						<div class="f_div">
+							<label class="f_lab">内院：</label>
+							<input type="text" class="newin" id="inSide" name="inSide" value="" />
+						</div>
+					</li>
+					<li>
+						<div class="f_div">
+							<label class="f_lab">外院：</label>
+							<input type="text" class="newin" id="outSide" name="outSide" value="" />
+						</div>
+					</li>
+					<li>
+						<div class="f_div">
+							<label class="f_lab">收入：</label>
+							<input type="number" class="newin" id="income" name="income" value="" />
+						</div>
+					</li>
+					<li>
+						<div class="f_div">
+							<label class="f_lab">合计：</label>
+							<input type="number" class="newin" id="count" name="count" value="" />
+						</div>
+					</li>
+				</ul>
+				<div class="addGroup" style="text-align: center;margin-top: 30px;" id="query">
+					<button class="onebtn comTempateSaveBtn" id="saveOk" onclick="saveWorkload()">保存</button>
+				</div>
+				<div class="changeGroup"  >
+						<button type="button" class="onebtn comTempateSaveBtn" onclick="upDateWorkload()">修改</button>
+				</div>
+			</form>
+		</div>
+
+	</body>
+
+	<script src="../../../js/jquery.min.js?v=2.1.4"></script>
+	<script src="../../../js/bootstrap.min.js?v=3.3.5"></script>
+	<script src="../../../js/plugins/staps/jquery.steps.min.js"></script>
+	<script src="../../../js/plugins/validate/jquery.validate.min.js"></script>
+	<script src="../../../js/plugins/jquery.jqprint-0.3.js"></script>
+	<script src="../../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/config.js" type="text/javascript" charset="utf-8"></script>
+
+	<script>
+		//		初始加载
+		$(function() {
+			var changeId;
+			init() //页面初始
+			dateComponent() //时间组件
+		})
+		//		页面初始状态
+		function init() {
+			//edit_eqt_index判断新增或修改
+			if(edit_eqt_index != "") {
+				changeId=edit_eqt_index;
+				changeWorkload(edit_eqt_index)
+				$(".addGroup").css("display","none");
+				$(".changeGroup").css("display","block");
+			}
+		}
+		//		页面保存状态
+		function saveWorkload() {
+			var sendObj = {};
+			sendObj.time = $("#returnTime").val(); // 时间
+			sendObj.inHospital = $("#inSide").val();// 内院
+			sendObj.outName = $("#outSide").val(); // 外院 
+			sendObj.incomeMoney = $("#income").val(); // 收入  
+			sendObj.countMoney = $("#count").val(); // 合计
+			console.log(sendObj)
+			ajaxGet('/operate/work/save', sendObj, function(data) {	
+					console.log(data);
+					if(data.status == "0") {
+						alert(data.message);
+						setTimeout(function() {
+							parent.$(window.parent.document).find("#close3").click();
+						}, 300);
+						RefreshIframe("page/operatorManagement/workload/workloadList.html", "YYSJGL_JYYYXXWH");
+					} else {
+						alert(data.message);
+					}
+			})
+		}
+		
+		//	页面修改获取状态
+		function changeWorkload(id) {
+			ajaxGet('/operate/work/getOperateWork', {id:id}, function(data) {
+				console.log(data)
+				let dataObj = data.resultMap.operateWork;
+				if(data.status==0){
+					$("#returnTime").val(dataObj.time);
+					$("#inSide").val(dataObj.inHospital);
+					$("#outSide").val(dataObj.outHospital);
+					$("#income").val(dataObj.incomeMoney);
+					$("#count").val(dataObj.countMoney);
+				}
+				else{
+					alert(data.message)
+				}
+			})
+		}
+		//	页面修改状态
+		function upDateWorkload(){
+			var sendObj = {};
+			sendObj.id = changeId;
+			sendObj.time = $("#returnTime").val(); // 时间
+			sendObj.inHospital = $("#inSide").val();// 内院
+			sendObj.outName = $("#outSide").val(); // 外院 
+			sendObj.incomeMoney = $("#income").val(); // 收入  
+			sendObj.countMoney = $("#count").val(); // 合计
+			ajaxGet('/operate/work/update', sendObj, function(data) {
+				if(data.status == "0") {
+						alert(data.message);
+						setTimeout(function() {
+							parent.$(window.parent.document).find("#close3").click();
+						}, 300);
+						RefreshIframe("page/operatorManagement/workload/workloadList.html", "YYSJGL_JYYYXXWH");
+					} else {
+						alert(data.message);
+					}
+			})
+		}
+		//	时间组件
+		function dateComponent() {
+			var ins23 = laydate.render({
+				elem: '#returnTime',
+				trigger: 'click',
+				format: 'yyyy-MM-dd',
+				showBottom: false
+			});
+		}
+	</script>
+
+</html>

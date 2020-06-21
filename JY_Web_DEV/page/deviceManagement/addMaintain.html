@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>设备维护</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+
+	<link href="../../css/font/fontawesome.min.css" rel="stylesheet">
+	<link href="../../css/font/brands.css" rel="stylesheet">
+	<link href="../../css/font/solid.css" rel="stylesheet">
+	<link href="../../css/animate.min.css" rel="stylesheet">
+	<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+	<link href="../../css/addMaintain.css" rel="stylesheet">
+
+	<!--<link rel="stylesheet" type="text/css" href="../../css/appointment.css"/>-->
+
+	
+
+	<body>
+
+		<div class="box">
+			<form id="equipmentForm" onsubmit="return false;">
+
+				<ul class="appointment-ul2 ">
+					<li>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>检查项目：</label>
+							<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />
+						</div>
+					</li>
+					<li>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>检查部位：</label>
+							<!-- <input type="checkbox" class="" id="equipmentBrand1" name="checkpoint" value=""/>
+					<span>胳膊</span>
+					<label class="f_lab">胳膊</label>
+			        <input type="checkbox" class="" id="equipmentBrand2" name="checkpoint" value=""/>
+					<span>腿</span> -->
+							<div class="check_out_box oWrapper">
+								<div class="tpl checkBox">
+									<!-- <input type="checkbox" style="margin-top: 10px;" class="checkpoint" id="" name="equipmentPerDO" value=""/> -->
+									<!--<input type="checkbox" style="margin-top: 10px;" class="checkpoint" id="" name="projectPos" value=""/>-->
+									<label class="f_lab" style="width: 1%;margin-left: 5px;"></label>
+									<!--<input type="hidden" class="configInfoString" value="" />-->
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<!--<div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>医院：</label>
+                    <span class="hospital"></span>
+                    <input type="hidden" id="hospitalId" class="" value=""  />
+                </div>-->
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>医院名称：</label>
+							<select id="applyHos" name="applyHos" class="form-control required" style="width:258px;border-color: #999;">
+							</select>
+						</div>
+					</li>
+					<li>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>价格：</label>
+							<input type="number" class="newin" id="equipmentPrice" name="projectPrice" value="" />
+						</div>
+					</li>
+					<input type="hidden" id="createName" class="" value="" />
+					<input type="hidden" id="id" class="" value="" />
+				</ul>
+				<!-- <div id="ulist_div" class="ulist_div">
+           <div class="m5 ld"><input type="checkbox"> <label>15669851456 王桂兰</label></div>
+            <div class=" ld"><input type="checkbox"> <label>15669851456 王桂兰</label></div>
+            <div class=" ld"><input type="checkbox"> <label>15669851456 王桂兰</label></div>
+        </div> -->
+				<!-- <input type="hidden" id="equipmentUserId" name="equipmentUserId" value=""/> -->
+
+				<div style="text-align: center;margin-top: 30px;" id="query">
+					<!--<button class="towbtn" id="saveCancle">取消</button>-->
+					<button class="onebtn comTempateSaveBtn" id="saveOk" onclick="saveEquipment()">保存</button>
+				</div>
+				<div style="text-align: center;margin-top: 30px;display:none;" id="query1">
+					<!--<button class="towbtn" id="saveCancle1">取消</button>-->
+					<button class="onebtn comTempateSaveBtn" id="saveOk1" onclick="saveEquipment1()">保存</button>
+				</div>
+				<!--<div style="text-align: center;margin-top: 30px;display:none" id="closeBox">
+					<button class="towbtn" id="closeBtn">关闭</button>
+				</div>-->
+			</form>
+
+		</div>
+
+	</body>
+
+	<script src="../../js/jquery.min.js?v=2.1.4"></script>
+	<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+	<script src="../../js/content.min.js?v=1.0.0"></script>
+	<script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+
+	<script>
+		var imgUrL;
+		var userId=sessionStorage.getItem('userId');
+		function checkpointInit() {
+			ajaxGet('/sys/configType/list', {
+				name: "检查部位"
+			}, function(resData) {
+				//			var data = resData.resultMap.conInfo;
+				var data = resData.resultMap.configTypeList;
+				checkpointData(data);
+				//edit所用  必须放在这，不然组织还没渲染
+				if(edit_eqt_index != "") {
+					editInit(edit_eqt_index, edit_eqt_name);
+				}
+				//			else if (edit_eqt_index!="") {
+				//				editInit(edit_eqt_index, edit_eqt_name);
+				//			}
+			});
+		}
+		//渲染检查部位数据
+		function checkpointData(rm) {
+			//获取dom插入盒子
+			console.log(rm, "123asdad");
+			var oWrapper = $(".oWrapper");
+			rm.forEach(function(ele, index) {
+				//获取克隆dom
+				var oCloneDom = $(".tpl").clone().removeClass("tpl");
+				//			oCloneDom.css({
+				//				"display":"flex",
+				//				"margin-right": "20px",
+				//				"vertical-align": "-3px"
+				//			})
+				oCloneDom.addClass("checkBox");
+				oCloneDom.find(".f_lab").text(ele.name);
+				var configInfoStringArr = ele.configInfoString.split(";");
+				for(var i = 0; i < configInfoStringArr.length; i++) {
+					//				console.log(configInfoStringArr[i]);
+					if(configInfoStringArr[i] == "") {
+						continue;
+					} else {
+						oCloneDom.find(".f_lab").append("<input type='checkbox' style='vertical-align: -14px;margin-left: 5px;' class='checkpoint' id='' name='projectPos' value='" + configInfoStringArr[i] + "'/>" + configInfoStringArr[i]);
+//						if(configInfoStringArr.length == i + 2) {
+//							oCloneDom.find(".f_lab").append("<input type='checkbox' style='vertical-align: -2px;margin-left: 5px;' class='checkpoint' id='' name='projectPos' value='" + configInfoStringArr[i] + "'/>" + configInfoStringArr[i]).css({
+//								"margin-left": "5px"
+//							});
+//						} else {
+//							oCloneDom.find(".f_lab").append("<input type='checkbox' style='vertical-align: -2px;margin-left: 5px' class='checkpoint' id='' name='projectPos' value='" + configInfoStringArr[i] + "'/>" + configInfoStringArr[i]).css({
+//								"margin-left": "5px"
+//							});
+//						}
+					}
+
+				}
+				oCloneDom.find(".configInfoString").val(ele.configInfoString);
+				//数据插入
+				oWrapper.append(oCloneDom);
+			})
+		}
+
+		var ulist;
+		var user = JSON.parse(sessionStorage.getItem("user"));
+		$(function() {
+			$(".hospital").text(user.deptName).css({
+				"margin-top": "9px"
+			});
+			//		if (user.fkHospitalId == null) {
+			//			user.fkHospitalId = "无";
+			//		}
+			$("#hospitalId").val(user.fkHospitalId);
+			$("#createName").val(user.userName);
+			//医院下拉框 初始化
+			// applyreadHospitalBooking();
+			//搜索框自动补全
+			//		suggestStock();
+			//获取渲染组织下拉框
+			//selectDept();
+			//渲染检查部位数据(多选)
+			checkpointInit();
+			//		$("#saveOk").click(function(){
+			//			saveEquipment();
+			//		})
+		});
+		//编辑赋值初始化，放在下拉框初始化ajax里了
+		function editInit(index, statusName) {
+			//      var eqt=equipmentList[index];
+
+			if(statusName == "查看") {
+				disOninit();
+			} else {
+				disOninit1();
+			}
+			var eqt = equipmentList[index];
+			console.log(eqt, "asdada");
+			$('#equipmentType').val(eqt.inspectProject);
+			$(".hospital").text(eqt.hospital).css({
+				"margin-top": "9px"
+			});
+			applyreadHospitalBooking(eqt.hospitalId);
+			$("#id").val(eqt.id);
+			$("#equipmentPrice").val(eqt.projectPrice);
+			var eqtList;
+			if(eqt.projectPos.indexOf(",") != -1) {
+				eqtList = eqt.projectPos.split(",");
+				//			console.log(eqtList,"asdasdadas");
+				for(var i = 0; i < eqtList.length; i++) {
+					$("input[name='projectPos'][value='" + eqtList[i] + "']").attr("checked", "checked");
+				}
+			} else {
+				eqtList = eqt.projectPos;
+				//			console.log(eqtList,"asdad");
+				$("input[name='projectPos'][value='" + eqtList + "']").attr("checked", "checked");
+			}
+
+		}
+
+		function selectDept() {
+			//获取组织列表
+			ajaxGet('/sys/user/list', {}, function(res) {
+				ulist = res.resultMap.userList;
+
+				var newList = [];
+				for(var k in ulist) {
+					//组织名
+					var id = ulist[k].fkDeptId == null ? ulist[k].fkHospitalId : ulist[k].fkDeptId;
+					var newName = ulist[k].deptName == null ? ulist[k].hospitalName : ulist[k].deptName;
+					if(newList.indexOf(newName) < 0) {
+						newList.push(newName);
+						$('#permissions').append('<option value="' + id + '">' + newName + '</option>');
+					}
+				}
+				//主动调用一次选中事件
+				selectChange();
+
+				//edit所用  必须放在这，不然组织还没渲染
+				if(edit_eqt_index != "") {
+					editInit(edit_eqt_index);
+				}
+			})
+		}
+
+		//查看时 禁用初始化
+		function disOninit() {
+			$("#applyHos").attr("disabled", "disabled").addClass("disabledInput");
+			$("#applyDepartment").attr("disabled", "disabled").addClass("disabledInput");
+			$("#equipmentType").attr("disabled", "disabled").addClass("disabledInput");
+			$("#equipmentName").attr("disabled", "disabled").addClass("disabledInput");
+			$("#equipmentBrand").attr("disabled", "disabled").addClass("disabledInput");
+			$("#equipmentModel").attr("disabled", "disabled").addClass("disabledInput");
+			$(".checkpoint").attr("disabled", "disabled").addClass("disabledInput");
+			$("#equipmentPrice").attr("disabled", "disabled").addClass("disabledInput");
+			$("#equipmentFile").attr("disabled", "disabled").addClass("disabledInput");
+			$("#query").hide();
+			$("#query1").hide();
+			$("#closeBox").show();
+		}
+
+		function disOninit1() {
+			$("#query1").show();
+			$("#query").hide();
+			$("#closeBox").hide();
+		}
+		//搜索框自动补全
+		function suggestStock() {
+			ajaxGet('/oa/patinfo/list', {}, function(res) {
+				var resdata = res.resultMap.patinfoList;
+
+				var baiduBsSuggest = $("#equipmentUserName").bsSuggest({
+					//indexId: 0,//每组数据的第几个数据，作为输入输入框的数据id
+					//indexKey: 1,//每组数据的第几个数据，作为输入输入框的内容
+					idField: 'id', //每组数据的哪个字段作为 data-id，优先级高于 indexId 设置（推荐）
+					keyField: 'name', //每组数据的哪个字段作为输入框内容，优先级高于 indexKey 设置（推荐）
+					allowNoKeyword: false, //是否允许无关键字时请求数据
+					showHeader: true, //是否显示选择列表的 header，默认有效字段大于一列时显示，否则不显示
+					showBtn: true, //是否显示下拉按钮
+					listAlign: "auto", //提示列表对齐位置，left/right/auto
+					listStyle: {
+						"max-width": "200px",
+						"width": "100%"
+					},
+					effectiveFields: ["name", "idCode"], //有效显示于列表中的字段，非有效字段都会过滤
+					effectiveFieldsAlias: { //有效字段的别名
+						name: "姓名",
+						idCode: "身份证号"
+					},
+					data: {
+						"value": resdata
+					}
+				}).on("onSetSelectValue", function(a, b) { //选择商品后触发
+					$("#equipmentUserId").val(b.id);
+				});
+			})
+		}
+		//save前 非空验证
+		function fromIsNull(fromArray) {
+			var flag = false;
+			var c = 0;
+
+			console.log(fromArray);
+			$.each(fromArray, function(i, item) {
+
+				if(item['value'] == '') {
+					flag = true;
+					return false;
+				}
+				// if (item['name'] == "equipmentPerDO") {
+				//     c++;				
+				// }
+				
+				if(item['name'] == "projectPos") {
+					c++;
+				}
+			});
+			if(flag || c == 0) {
+				alert('信息不可为空');
+				return true;
+			}
+			return false;
+		}
+		//保存
+		// var fromData = {};
+		function saveEquipment() {
+			//上传头像函数执行
+			// uploadImg();
+			//判断表单数据是否为空
+			var fromArray = $('#equipmentForm').serializeArray();
+			console.log(fromArray, "asdasd");
+			// alert($("#applyHos").val());
+			//非空验证
+//		    if(fromIsNull(fromArray)){
+//		        return;
+//		    }
+			var fromData = {};
+			$.each(fromArray, function() {
+				if(this.name == "projectPos") {
+					var uv = fromData["projectPos"] == null ? this.value : fromData["projectPos"] + "," + this.value;
+					fromData["projectPos"] = uv;
+				} else {
+					fromData[this.name] = this.value;
+				}
+			});
+			//		fromData.equipmentUrl = imgUrL;
+			fromData.hospitalId = $("#applyHos").val();
+			fromData.createName = $("#createName").val();
+			fromData.hospital = $('#applyHos option:selected').text();;
+			console.log(fromData);
+			url = '/inspect/project/save';
+			ajaxGet(url, fromData, function(res) {
+				alert(res.message);
+				if(res.status == 1) {
+					location.reload();
+				}
+			})
+		}
+
+		function saveEquipment1() {
+			//上传头像函数执行
+			// uploadImg();
+			//判断表单数据是否为空
+			var fromArray = $('#equipmentForm').serializeArray();
+			console.log(fromArray, "asdasd");
+			// alert($("#applyHos").val());
+			//非空验证
+//		    if(fromIsNull(fromArray)){
+//		        return;
+//		    }
+			var fromData = {};
+			$.each(fromArray, function() {
+				if(this.name == "projectPos") {
+					var uv = fromData["projectPos"] == null ? this.value : fromData["projectPos"] + "," + this.value;
+					fromData["projectPos"] = uv;
+				} else {
+					console.log(this.value);
+					fromData[this.name] = this.value;
+				}
+			});
+			//		fromData.equipmentUrl = imgUrL;
+			fromData.hospitalId = $("#hospitalId").val();
+			fromData.createName = $("#createName").val();
+			fromData.hospital = $(".hospital").text();
+			fromData.id = $("#id").val();
+			console.log(fromData);
+			url = '/inspect/project/update';
+			ajaxGet(url, fromData, function(res) {
+				alert(res.message);
+				if(res.status == 1) {
+					location.reload();
+				}
+			})
+		}
+
+		//点击导入的新增信息 的取消
+		$("#saveCancle").click(function() {
+			$("#subscribeListLight1").css("display", "none");
+			$("#subscribeListFade").css("display", "none");
+		});
+		$("#saveCancle1").click(function() {
+			$("#subscribeListLight1").css("display", "none");
+			$("#subscribeListFade").css("display", "none");
+		});
+		//点击查看的信息的关闭
+		$("#closeBtn").click(function() {
+			$("#subscribeListLight1").css("display", "none");
+			$("#subscribeListFade").css("display", "none");
+		});
+
+		//		医院信息渲染
+		applyreadHospitalBooking();
+		//指定医院下拉框 初始化
+		function applyreadHospitalBooking(hosId) {
+			$("#applyHos").html('');
+			$.ajax({
+				type: "get",
+				url: config + "/sys/hospital/list",
+				async: false,
+				dataType: "jsonp",
+				jsonp: "jsoncallback",
+				data: {},
+				success: function(data) {
+					console.log(data);
+					if(data.status == 1) {
+						var hospitalList = data.resultMap.hospitalList;
+						if(hospitalList != null) {
+							for(var s = 0; s < hospitalList.length; s++) {
+								var hospitalHtml = '';
+								hospitalHtml += '<option value="' + hospitalList[s].id + '">' + hospitalList[s].name + '</option>';
+								$("#applyHos").append(hospitalHtml);
+							}
+						}
+					}
+					if(userId != 1) {
+						$("#applyHos").val(user.deptId);
+						$("#applyHos").attr("disabled", "disabled");
+					}
+					if(hosId!=''&&hosId!=null&&hosId!=undefined){
+						if(userId != 1) {
+							$("#applyHos").val(hosId);
+							$("#applyHos").attr("disabled", "disabled");
+						}else{
+							$("#applyHos").val(hosId);
+						}
+					}
+				},
+			});
+		}
+	</script>
+
+</html>

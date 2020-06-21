@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7,chrome=1" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="adress=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<title>患者管理</title>
+		<!--组件库CSS-->
+		<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/element-ui.css"/>
+		<!--<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">-->
+		<!--<link rel="stylesheet" type="text/css" href="../../css/element-ui.css"/>-->
+		<!--矢量字体库-->
+		<link rel="stylesheet" type="text/css" href="../equipmentType/font/iconfont.css"/>		
+		<!-- 本页面CSS -->
+		<link rel="stylesheet" type="text/css" href="css/patientNew.css"/>
+		<!-- 公共CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<style type="text/css">
+			.el-alert--error{
+				color: #f56c6c !important;
+			}
+			/*body{
+				color: #f56c6c !important;
+			}*/
+		</style>
+	</head>
+	<body>
+		<div id="web">
+			<div class="topBox firstBox">
+				<div class="queryForm">
+					<!--<el-input class="queryContent" v-model="queryUsername" id="username" placeholder="患者姓名"></el-input>-->
+					<el-select class="reportQueryNanmeRight querySelect" filterable v-model="queryUsername" placeholder="患者姓名">
+					    <el-option
+					      v-for="(item, index) in queryUsernameList"
+					      :key="index"
+					      :label="item"
+					      :value="item">
+					    </el-option>
+					</el-select>
+				</div>
+				<div class="queryForm">
+					<el-select class="queryContent" v-model="value" placeholder="性别">
+						<el-option 
+							v-for="item in sexList" 
+							:key="item.value" 
+							:label="item.label" 
+							:value="item.value"
+						>
+						</el-option>
+					</el-select>
+				</div>
+				<div class="queryForm">
+					<!--<el-input class="queryContent" v-model="queryAge" id="age" placeholder="年龄"></el-input>-->
+					<el-select class="reportQueryNanmeRight querySelect" filterable v-model="queryAge" placeholder="年龄">
+					    <el-option
+					      v-for="(item, index) in queryAgeList"
+					      :key="index"
+					      :label="item"
+					      :value="item">
+					    </el-option>
+					</el-select>
+				</div>
+				<div class="topBtn queryBtn btn" @click="queryClick">查询</div>
+				<div class="topBtn resetbtn btn" @click="resetClick">清空</div>
+				<div class="topBtn addBtn btn" @click="addClick">新增</div>
+			</div>
+			<!--表头-->
+			<div class="tableNav">患者中心</div>
+			<!--表格-->
+			<div class="outBoxBorder">
+				<div class="subscribeListInfoList-ul titleList">
+					<div class="subscribeListInfoList-proposer boxRightBorder" v-for="(item, index) in titleList" :key="index" v-if="item.name != '操作'" :style="item.domStyle">{{ item.name }}</div>
+					<div class="subscribeListInfoList-proposer" v-for="(item, index) in titleList" :key="index" v-if="item.name == '操作'" :style="item.domStyle">{{ item.name }}</div>
+				</div>
+				<div class="subscribeListAllInfoList-ul dataList" v-for="(item, index) in dataList" :key="item.id">
+					<div class="subscribeListInfoList-proposer boxRightBorder" style="width: 5%;">{{ index | handleIndex }}</div>
+					<div class="subscribeListInfoList-proposer boxRightBorder" style="width: 10%;">{{ item.name }}</div>
+					<div class="subscribeListInfoList-proposer boxRightBorder" style="width: 10%;">{{ item.sex }}</div>
+					<div class="subscribeListInfoList-proposer boxRightBorder" style="width: 10%;">{{ item.age }}</div>
+					<div class="subscribeListInfoList-proposer boxRightBorder" style="width: 15%;">{{ item.idCard }}</div>
+					<div class="subscribeListInfoList-proposer boxRightBorder" style="width: 10%;">{{ item.mobile }}</div>
+					<div class="subscribeListInfoList-proposer boxRightBorder" style="width: 20%;">{{ item.address }}</div>
+					<div class="subscribeListInfoList-proposer" style="width: 20%;">
+						<a href="javascript:void(0)" data-index="0" class="subListBtn-search btnTextColor" @click="queryHandleClick(item.id)" style="pointer-events: auto; opacity: 1;margin-right: 10px;">
+							<span>查看</span>
+						</a>
+						<a href="javascript:void(0)" data-index="0" class="subListBtn-search btnTextColor" @click="changeClick(item.id)" style="pointer-events: auto; opacity: 1;margin-right: 10px;">
+							<span>编辑</span>
+						</a>
+						<a href="javascript:void(0)" data-index="0" class="subListBtn-search btnTextColor" @click="pageClick(item.id)" style="pointer-events: auto; opacity: 1;">
+							<span>预约记录</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!--分页-->
+			<div class="doctorpageN"></div>
+			<!--灰背景-->
+			<div id="fade" class="black_overlay" style="display: none;" v-show="alertFlag">
+				<!--<el-popover
+				  placement="right"
+				  width="400"
+				  trigger="click">
+				  
+				</el-popover>-->
+				<div class="mask_content_box" v-show="alertFlag">
+					<div class="content_header">
+						<div class="header_title">{{ headerTitle }}</div>
+						<div class="close" @click="closeAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="imgBox">
+									<div class="imgPosBox">
+										<div class="upload" :class="alertFlag ? 'uploadActive upload' : 'upload'" @click="iconClick">
+											<div class="iconUpload">+</div>
+											<input type="file" name="iconUpload" class="chooseImg" id="iconUpload" value="" @change="uploadImg" />											
+										</div>
+										<div class="imageBox" v-show="alertFlag">
+											<span v-show="!alertFlag">
+												<i class="iconfont">&#xeb1b;</i>
+											</span>
+											<img src="../../img/a1.jpg" width="124" height="140"/>
+										</div>
+									</div>
+									<div class="imgText">(患者照片)</div>
+								</div>
+								<div class="chooseDel">
+									<div>
+										<img src="../../img/warn.png" width="55" height="48" style="vertical-align: -15px;"/>
+										删除信息
+									</div>
+									<div>您确定要删除此项吗</div>
+								</div>
+								<input type="hidden" id="delStatus" />
+								<div class="formBox">
+									<div class="formItemBox">
+										<div style="width: 42%;">
+											<div class="textBox">
+												<label for="name"><span style="color: #FF423F;">*</span>患者姓名:</label>
+												<el-input class="username" v-model="username" id="username" placeholder="患者姓名" @blur="handleUserName" maxlength="20" v-bind:disabled="dataFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="tipUserName" v-bind:type="tipUserNameStatus" v-show="tipUserNameShow" :closable="false" show-icon></el-alert>
+											<!--<el-alert v-bind:title="tipUserName" type="error" v-show="tipUserNameShow" :closable="false" show-icon></el-alert>-->
+										</div>
+										<div style="width: 40%;">
+											<div class="textBox">
+												<label for="age"><span style="color: #FF423F;">*</span>年龄(岁):</label>
+												<el-input v-model="age" id="age" placeholder="年龄" v-bind:disabled="dataFlag != 0" @blur="handleAge"  maxlength="20"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="tipAge" v-bind:type="tipAgeStatus" v-show="tipAgeShow" :closable="false" show-icon></el-alert>
+											<!--<el-alert v-bind:title="tipAge" type="error" v-show="tipAgeShow" :closable="false" show-icon></el-alert>-->
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div style="width: 42%;">
+											<div class="textBox">
+												<label for="sexValue"><span style="color: #FF423F;">*</span>性别:</label>
+												<el-select class="posSex" v-model="sexValue" placeholder="请选择" @change="handleSex" v-bind:disabled="dataFlag != 0">
+												    <el-option 
+														v-for="item in sexList" 
+														:key="item.sexValue" 
+														:label="item.label" 
+														:value="item.sexValue"
+													>
+												</el-select>
+												<!--<input type="text" name="sex" id="sex" value="" />-->
+											</div>
+											<el-alert v-bind:title="tipSex" v-bind:type="tipSexStatus" v-show="tipSexShow" :closable="false" show-icon></el-alert>
+										</div>
+										<div style="width: 40%;">
+											<div class="textBox">
+												<label for="mobile"><span style="color: #FF423F;">*</span>联系电话:</label>
+												<el-input v-model="mobile" id="phone" placeholder="联系电话" v-bind:disabled="dataFlag != 0"  @blur="handlePhone" maxlength="20"></el-input>
+												<!--<input type="text" name="mobile" id="phone" value="" />-->
+											</div>
+											<el-alert v-bind:title="tipPhone" v-bind:type="tipPhoneStatus" v-show="tipPhoneShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div>
+											<div class="textBox1">
+												<!--<label for="idCode"><span style="color: #FF423F;">*</span>身份证号:</label>-->
+												<label for="idCode" style="margin-right: 10px;">身份证号:</label>
+												<!--<el-input v-model="idCode" id="idCode" placeholder="身份证号" v-bind:disabled="dataFlag != 0" @blur="handleIdCode" maxlength="20"></el-input>-->
+												<el-input v-model="idCode" id="idCode" placeholder="身份证号" v-bind:disabled="dataFlag != 0" maxlength="20"></el-input>
+												<!--<input type="text" name="idCode" id="idCode" value="" />-->
+											</div>
+											<!--<el-alert v-bind:title="tipIdCode" v-bind:type="tipIdCodeStatus" v-show="tipIdCodeShow" :closable="false" show-icon></el-alert>-->
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div class="textBox1">
+											<!--<label for="address" style="margin-right: 28px;">地址:</label>-->
+											<label for="address" style="margin-right: 34px;">地址:</label>
+											<el-input v-model="address" id="address" placeholder="地址" v-bind:disabled="dataFlag != 0"  maxlength="20"></el-input>
+											<!--<input type="text" name="address" id="address" value="" />-->
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="btnGroup addGroup" v-show="alertFlagAdd">							
+								<!--<button type="button" class="resBtn resBtn1 Btn">取消</button>-->
+								<button type="button" class="Btn comTempateSaveBtn" :class="isActive ? 'formDisabledBtn' : ''" :disabled="isActive" @click="addSaveClick">保存</button>
+							</div>
+							<div class="btnGroup changeGroup" v-show="alertFlagChange">
+								<!--<button type="button" class="resBtn resBtn2 Btn">取消</button>-->
+								<button type="button" class="Btn comTempateSaveBtn" :class="isActive ? 'formDisabledBtn' : ''" :disabled="isActive" @click="changeSaveClick">保存</button>
+							</div>
+							<!--<div class="btnGroup delGroup" v-show="queryGroup">
+								<button type="button" class="Btn comTempateSaveBtn">确认</button>
+								<button type="button" class="resBtn resBtn3 Btn">取消</button>							
+							</div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--组件库JS-->
+		<script type="text/javascript" src="../../js/vue.js"></script>
+		<script type="text/javascript" src="../../js/element-ui.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<!--本页JS-->
+		<script type="text/javascript" src="../../js/patientNew.js"></script>
+		<!--分页js-->
+		<script type="text/javascript" src="../../js/currentPage.js"></script>
+	</body>
+</html>

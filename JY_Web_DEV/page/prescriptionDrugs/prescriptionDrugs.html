@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />-->
+		<title>药品处方</title>
+		<link href="../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+		<base target="_blank">
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/init.css">
+		<!-- 顶部内容CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/navbar.css"> -->
+		<!-- 本页面CSS -->
+		<link rel="stylesheet" type="text/css" href="css/prescriptionDrugs.css"/>
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="font/iconfont.css">
+		<!-- 搜索框CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/search.css"> -->
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<!-- 页面跳转方法JS -->
+		<!-- <script type="text/javascript" src="../../js/jumpPage.js"></script> -->
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/prescriptionDrugs.js" ></script>
+	</head>
+	<body>
+		<!-- 2019-05-20 -->		
+		<!-- 内容区域 -->
+		<div class="wrapper">			
+			<div class="recipelContent tpl">
+				<div class="title">
+					<span>就诊时间</span>
+					<span>2019/12/12  8:00</span>
+				</div>
+				<div class="recipel tplcontent">
+					
+				</div>
+			</div>
+			<div class="pull-right" style="margin-right: 20px;" id="btnBox">
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addrecipelModal">添加处方</button>
+				<button type="button" class="btn btn-primary uploadBtn">
+					上传
+					<input type="file" name="" id="" value="" class="chooseImg" />
+				</button>
+			</div>
+		</div>
+		<table border="0" cellspacing="0" cellpadding="0" class="tableContent table table-striped table-bordered table-hover dataTables-example tableclick">
+			<thead>
+				<tr>
+					<th>药品名称</th>
+					<th>化学名</th>
+					<th>厂商</th>
+					<th>用法用量</th>
+					<th>备注</th>
+				</tr>
+			</thead>
+			<tbody class="oWrapper">
+				<tr class="tpl1">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<!--<tr>
+					<td>苏打片</td>
+					<td>碳酸氢钠片</td>
+					<td>上海生物科技药业有限公司</td>
+					<td>一日3次，每次2-4片</td>
+					<td>过敏者过敏者过敏者过敏者过敏者过敏者</td>
+				</tr>-->
+			</tbody>
+		</table>
+		<div class="imglist">
+			<img src="" alt="这是一个图片" title="这是一个图片" class="imgtpl">
+		</div>
+		<!--添加处方模态框-->
+		<div class="modal fade" id="addrecipelModal" tabindex="-1" role="dialog" aria-labelledby="addrecipelLabel" aria-hidden="true" data-backdrop="static">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="iconfont">&#xe60b;</span></button>-->
+		        		<i class="Close iconfont pull-right" data-dismiss="modal" aria-label="Close">&#xe60b;</i>
+		        		<h4 class="modal-title" id="addrecipelLabel">添加处方</h4>
+		      		</div>
+			      	<div class="modal-body">
+			        	<iframe class="addrecipel" frameborder="no" src="../addrecipel/addrecipel.html"></iframe>
+			      	</div>
+			      	<div class="modal-footer">
+			        	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			        	<button type="button" class="btn btn-success" id="sumbtn">确定</button>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+	</body>
+</html>

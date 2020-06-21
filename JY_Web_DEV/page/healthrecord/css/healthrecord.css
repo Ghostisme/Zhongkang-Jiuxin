@@ -1,0 +1,248 @@
+/* 内容样式 */
+.headImg img{
+	/*width: 200px;
+	height: 200px;*/
+	width: 100px;
+	height: 100px;
+	margin-top: 20px;
+	/* border: 1px solid black; */
+}
+.essentialBox{
+	width: 485px;
+	margin-left: 29px;
+}
+.essential *{
+	font-size: 12px !important;
+}
+.essential div{
+	text-align: left;
+	/*margin: 20px 0;*/
+	font-size: 24px;
+	width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #EBEBEB;
+}
+.essential div span:nth-of-type(odd){
+	margin-right: 10px;	
+	color: #333;
+}
+.essential div span:nth-of-type(even){
+	width: 72%;
+	height: 52px;
+	line-height: 52px;
+	background: #F5F5F5;
+}
+.essential div span:nth-of-type(even) input{
+	text-align: left;
+	width: 100%;
+	height: 52px;
+	line-height: 52px;
+	background: #f0f3fa !important;
+}
+.essential div span:nth-of-type(even) select{
+	width: 100%;
+	height: 52px;
+	line-height: 50px;
+	/*border: 0px;*/
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1px solid #EBEBEB;
+	background: #f0f3fa !important;
+	/*padding-left: 17px;*/
+	text-indent: 17px;
+}
+/*input:disabled{
+	background-color: #FFFFFF;
+}*/
+.headImg{
+	position: relative;
+	text-align: left;
+	margin-left: 9px;
+}
+.chooseImg{
+	position: absolute;
+	/* left: 20px; */
+	top: 20px;
+    /*width: 200px;
+    padding: 85px 0;*/
+    opacity: 0;
+	height: 101px;
+    /* left: 50px; */
+    width: 100px;
+    padding: 57px 0;
+}
+.essential div span input{
+	/*border: 1px solid rgba(0, 0, 0, .4);*/
+	border: 0px;
+}
+
+.essential_patient div{
+	text-align: left;
+	margin: 20px 0;
+	font-size: 24px;
+	width: 65%;
+    display: flex;
+    justify-content: space-between;
+}
+.essential_patient *{
+	font-size: 14px !important;
+}
+.essential_patient div span:nth-of-type(odd){
+	margin-right: 10px;	
+	color: #333;
+}
+.essential{
+	border: 1px solid #EBEBEB;
+	border-bottom: 0px;
+}
+.recordTitle{
+	width: 25%;
+	height: 52px;
+	line-height: 52px;
+	text-align: left;
+	padding-left: 10px;
+	background: #fff;
+}
+.essential_patient div span:nth-of-type(even){
+	width: 65%;
+}
+.essential_patient div span:nth-of-type(even) input{
+	text-align: left;
+}
+.essential_patient div span:nth-of-type(even) select{
+	width: 100%;
+}
+.essential_patient div span input{
+	border: 1px solid rgba(0, 0, 0, .4);
+}
+
+
+#editSave{
+	width: 325px;
+	height: 42px;
+	text-align: center;
+	/*padding: 2px 25px;*/
+    font-size: 14px;
+    letter-spacing: 5px;
+    border-radius: 5px;
+    margin-top: 20px;
+    background-color: #018eea;
+    border-color: #018eea;
+}
+.wrapper{
+	/*border: 1px solid #ccc;*/
+    margin-top: 0px;
+	width: 100%;
+    height: 590px;
+}
+.wrapper_patient{
+    margin-top: 0px;
+    width: 100%;
+	padding-left: 14px;
+    height: 296px;
+}
+input{
+    padding: 1px 21px !important;
+}
+/* .wrapper{
+	background-color: #f5f5f5; 
+    padding-top: 0.001rem;
+    padding-bottom: 0.001rem;
+}
+.wrapper *{
+	font-size: 0.45rem;
+} */
+/* .wrapper .box{
+	background-color: #FFFFFF;
+	padding: 0.45rem 0.45rem 0rem;
+    margin-bottom: 0.425rem;
+}
+.wrapper div.box1{
+	background-color: #FFFFFF;
+	padding: 0.45rem 0 0rem 0.45rem; 
+	margin: 0 0 0.425rem 0;
+	border-radius: 0;
+}
+.wrapper .box .Title{
+	text-align: left;
+	font-weight: 600;
+} */
+/* .wrapper .box .Title img{
+	width: 0.7rem;
+	vertical-align: -8px;
+}
+.wrapper .box .Content>div{
+	display: flex;
+	justify-content: space-between;
+}
+.wrapper .box .Content div p{
+	text-align: left;
+	margin: 0.25rem 0 0.25rem 0.8rem;
+} */
+/* .wrapper .box .Content div p span:nth-of-type(1){
+	color: #727377;
+	font-size: 0.4rem;
+}
+.wrapper .box .Content div p span:nth-of-type(2){
+	color: #2B2724;
+	font-size: 0.4rem;
+} */
+/* .medicalHistoryBox .medicalHistory div{
+	display: block !important;
+} */
+/* 健康数据及诊疗信息 */
+/* .wrapper .healthDataBox,
+.wrapper .diagnosisTreatmentBox{
+	padding-right: 0rem;
+}
+.healthDataBox p,
+.diagnosisTreatmentBox p{
+	padding: 0.35rem 0;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.healthDataBox p:not(:last-of-type),
+.diagnosisTreatmentBox p:not(:last-of-type){
+	border-bottom: 1px solid #EDEDED;
+} */
+/* .healthDataBox p span,
+.diagnosisTreatmentBox p span{
+	display: block;
+} */
+/* .healthDataBox p span:nth-of-type(1),
+.diagnosisTreatmentBox p span:nth-of-type(1){
+	text-align: left;
+} */
+/* .healthDataBox p span:nth-of-type(1),
+.diagnosisTreatmentBox p span:nth-of-type(1){
+	margin-left: 0.15rem;
+} */
+/* .healthDataBox p span:nth-of-type(1) img,
+.diagnosisTreatmentBox p span:nth-of-type(1) img{
+	margin-right: 0.2rem;
+}
+.healthDataBox p span:nth-of-type(2),
+.diagnosisTreatmentBox p span:nth-of-type(2){
+	color: #727377;
+	text-align: right;
+	margin-right: 0.45rem;
+} */
+/* .wrapper .healthDataBox p span .upicon{
+	font-weight: 600;
+} */
+/*.healthDataBox .bloodsugar span:nth-of-type(2){
+	color: red;
+}*/
+/* .healthDataBox .bloodsugar span:nth-of-type(2) .rightBtn{
+	color: #727377 !important;
+} */
+
+/* .bloodpressure span:nth-of-type(2) span{
+	margin-right: 0;
+} */
+
+

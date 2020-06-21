@@ -1,0 +1,541 @@
+.tab-content {
+	margin-top: 30px;
+}
+
+.row {
+	margin: 0px;
+}
+
+.wizard>.content {
+	background: transparent;
+}
+
+.contact-box {
+	border: 0px;
+}
+
+.gohome {
+	display: none;
+}
+
+.wizard>.content>.body {
+	float: left;
+	position: initial;
+}
+
+.equipmentImg {
+	width: 100%;
+	max-height: 120px;
+}
+
+.contact-box {
+	background: transparent;
+}
+
+.contact-box {
+	padding: 0;
+}
+
+.equipmentImages {
+	padding-left: 0px;
+}
+
+.equipmentPrices {
+	margin-top: 10px;
+}
+
+
+/*向导条*/
+
+.tabsBar ul {
+	overflow: hidden;
+	padding: 0;
+}
+
+.tabsBar ul li {
+	list-style: none;
+	float: left;
+	width: 25%;
+	background: #ddd;
+	color: #323232;
+	border-radius: 5px;
+	margin-right: 1%;
+}
+
+
+/*.tabsBar ul li:first-child{
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.tabsBar ul li:nth-child(3){
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}*/
+
+.tabsBar ul li a {
+	display: block;
+	width: auto;
+	margin: 0.5em 0.5em;
+	padding: 8px;
+	text-decoration: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color: #323232;
+}
+
+
+/*当前步骤*/
+
+.tabsBar ul li.activeTabs {
+	background: #51659B;
+	color: #fff;
+}
+
+.tabsBar ul li.activeTabs a {
+	/*color: #fff;*/
+}
+
+
+/*隐藏当前f2和f3内容*/
+
+.finishedPrint,
+.f3 {
+	display: none;
+}
+
+
+/*.f1{
+	display: none;
+}*/
+
+
+/*表格线*/
+
+.clients-list table tr td {
+	/*border: 1px dashed darkgrey;*/
+}
+
+.warns {
+	color: #FF423F;
+}
+
+.chosePosition.form-control[disabled],
+.chosePosition.form-control[readonly],
+fieldset[disabled] .chosePosition.form-control {
+	background: #fff;
+	cursor: pointer;
+	width: 40%;
+}
+
+.lf {
+	float: left;
+}
+
+.rt {
+	float: right;
+}
+
+.requestOrder {
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+}
+
+#buttonschose {
+	width: 80px;
+	height: 34px;
+	background: #fff;
+	color: #11B6F4;
+	border: 0px;
+}
+
+.fullTd {
+	width: 100%;
+	background: #fff;
+}
+
+.makeSubmitBtn {
+	overflow: hidden;
+	padding: 0px 20px;
+	/*background: #F5F5F5;*/
+	height: 60px;
+	line-height: 60px;
+	display: none;
+	text-align: center;
+}
+
+.totlePrices {
+	color: #e4393c;
+}
+
+.sumPrices {
+	color: #e4393c;
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
+#buttonschoseImg {
+	width: 100px;
+	height: 100px;
+	border: 1px dashed #11B6F4;
+	color: #11B6F4;
+	text-align: center;
+	line-height: 100px;
+	position: absolute;
+}
+
+input.choseImgPosition {
+	width: 100px;
+	height: 100px;
+	opacity: 0!important;
+	position: relative;
+	z-index: 22;
+}
+
+.wizard>.actions {
+	display: none;
+}
+
+.SureBtn {
+	width: 110px;
+	background: #51659B;
+	color: #fff;
+	height: 30px;
+	text-align: center;
+	border-radius: 0px;
+}
+
+.sumBtn {
+	width: 110px;
+	background: #51659B;
+	color: #fff;
+	height: 30px;
+	text-align: center;
+	margin-top: 15px;
+	border-radius: 0px;
+}
+
+.printBtn {
+	background: #51659B;
+	color: #fff;
+	height: 30px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+.closeBtn {
+	border: 1px solid #51659B;
+	background: #fff;
+	color: #51659B;
+	height: 30px;
+	text-align: center;
+	margin-top: 15px;
+}
+.btn.closeBtn:hover{
+	color: #51659B;
+}
+.makeSureBtn {
+	text-align: center;
+}
+
+
+/*第三部分用章*/
+
+.chapter {
+	text-align: center;
+	height: 150px;
+	line-height: 150px;
+	color: darkgrey;
+}
+
+.monyChapter {
+	margin-right: 150px;
+}
+
+.erCodeDiv {
+	width: 100%;
+	height: 150px;
+	border: 1px dashed darkgrey;
+}
+
+.erCode {
+	width: 120px;
+	height: 120px;
+	margin: 0 auto;
+	background: #f5f5f5;
+	margin-top: 15px;
+}
+
+.erCode img {
+	width: 100%;
+}
+
+.printBtns {
+	text-align: center;
+}
+
+.tablesecondContent {
+	width: 40%;
+}
+
+#uploader .placeholder {
+	min-height: 170px;
+	padding-top: 40px;
+}
+
+#uploader .statusBar .btns .uploadBtn {
+	display: none;
+}
+
+#uploader .placeholder .webuploader-pick {
+	background: #51659B;
+}
+
+
+/*新修改进度条样式*/
+
+.table-responsive {
+	/*border: 0.5px solid #e5e6e7;*/
+	border-top: 0;
+	padding-bottom: 40px;
+	padding-right: 1px;
+	/*padding: 0px 20px;*/
+}
+form{
+	/*border: 0.5px solid #e5e6e7;*/
+}
+.flexBox {
+	display: -webkit-box;
+	/* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+	display: -moz-box;
+	/* Firefox 17- */
+	display: -webkit-flex;
+	/* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+	display: -moz-flex;
+	/* Firefox 18+ */
+	display: -ms-flexbox;
+	/* IE 10 */
+	display: flex;
+	/* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+}
+
+#equipment_div {
+	font-size: 12px;
+	line-height: 30px;
+	margin-top: 10px;
+	width: 200px;
+}
+
+#form label {
+	margin-bottom: 0px;
+}
+
+.table-bordered {
+	border: none;
+}
+
+.tableInput {
+	background: #fff;
+}
+
+.dropdown-toggle {
+	height: 36px;
+	border: 1px solid #e5e6e7;
+	border-left: none;
+}
+
+.dropdown-toggle:hover {
+	border: 1px solid #e5e6e7;
+	border-left: none;
+}
+
+.tdiv {
+	border: 1px solid #e5e6e7;
+	height: 36px;
+	line-height: 36px;
+	padding-left: 16px
+}
+
+.tabsBar ul {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	height: 64px;
+	padding: 15px;
+}
+
+.tabsBar ul li {
+	height: 2px;
+	position: relative;
+}
+
+.tabsBar ul li a {
+	text-align: center;
+}
+
+.tabsBar ul li div {
+	width: 19px;
+	height: 19px;
+	border-radius: 50%;
+	position: absolute;
+	right: -19px;
+	top: 6px;
+	z-index: 99999;
+	margin-top: -15px;
+	background: #ddd;
+}
+
+.mask_content_box {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%);
+	background: #fff;
+	width: 30%;
+}
+
+label {
+	color: #333;
+}
+
+.form-control {
+	border: 1px solid #e5e6e7 !important;
+}
+.ibox-content{
+	/*padding: 40px;*/
+}
+.tableInputText{
+	width: 10%;
+}
+.table{
+	margin-bottom: 0px;
+}
+#form textarea{
+	height: 86px !important;
+}
+#uploader .queueList {
+    margin: 20px 0px;
+    border: 3px dashed #e6e6e6;
+}
+.f1 .btn.focus,.f1 .btn:focus,.f1 .btn:hover,.btn.printBtn:hover{
+	color: #fff;
+}
+.form-control[disabled], fieldset[disabled] .form-control{
+	border: 1px solid #E5E6E7!important;
+}
+.addDeptRows .col-sm-12{
+	padding: 0px !important;
+}
+.adddDeptRow{
+	width: 100%;
+	padding: 0px ;
+}
+.adddDeptRow .labelsPosition{
+	width: 11.8%;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.adddDeptRow .deptSelectBox{
+	width: 100%;
+	/*padding-left: 7px;*/
+	padding: 0px;
+}
+.choseDeptPlate{
+	overflow: scroll;
+    clear: both;
+    width: 39%;
+    /* margin-left: 12%; */
+    height: 300px;
+    border: 1px solid #ddd;
+    display: none;
+    position: fixed;
+    z-index: 999;
+    background: #fff;
+}
+#specialDept,#specialDept1{
+	background: #fff !important;
+	width: 98%;
+    border: 0px !important;
+}
+.hiddenPermissionId{
+	display: none;
+}
+.tabsBar ul li div.activeTabs{
+	background:#51659B;
+}
+.subModal{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.3);
+	color: #fff;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 999;
+	padding-top: 20%;
+	text-align: center;
+	display: none;
+}
+#addDoctorPic,#changeDoctorPic{
+	/*border: 1px solid #e5e6e7 !important;*/
+	height: 80px;
+}
+.fileBox{
+	width: 60px;
+	height: 60px;
+	margin-right: 20px;
+}
+input.fileInput,input.fileInputNoclick{
+	width: 60px !important;
+	height: 60px !important;
+	position: relative;
+	top: 10px;
+	left: 0px;
+	z-index: 8;
+	opacity: 0;
+}
+.uploadImg{
+	position: relative;
+	top: -50px;
+	left: 0px;
+	z-index: 1;
+	width: 60px;
+	height: 60px;
+	line-height: 50px;
+	background: #fff;
+	border: 1px dotted #e5e6e7;
+	color: #e5e6e7;
+	font-size: 32px;
+	text-align: center;
+}
+/*删除按钮*/
+.delImgBtn{
+	position: relative;
+	/*top: 0px;
+	right: -2px;*/
+	top: -110px;
+    right: -45px;
+	width:15px;
+	height: 15px;
+	background: #333;
+	opacity: 0.5;
+	color: #fff;
+	text-align: center;
+    line-height: 15px;
+    z-index: 9;
+    cursor: pointer;
+}
+.uploadImg img{
+	width: 60px;
+	height: 60px;
+}
+/*查看信息diabled样式*/
+.infoDetails input[disabled="disabled"],.infoDetails textarea[disabled="disabled"],.infoDetails select[disabled="disabled"]{
+	background: #fff;
+	border: 0px !important;
+}
+#uploader{
+	overflow: hidden;
+	border: 1px solid #e5e6e7;
+}

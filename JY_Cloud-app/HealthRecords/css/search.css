@@ -1,0 +1,67 @@
+/* 搜索框样式 */
+.search{
+	background-color: rgba(237,237,239,1);
+	/* margin: 0.7rem; */
+	/* margin: 0 0.3rem 0.3rem 0.3rem; */
+	margin: 0.3rem;
+	/*text-align: left;*/
+	text-align: center;
+	/*text-indent: 8px;*/
+	border-radius: 0.05rem;
+}
+.search i{
+	font-size: 0.4rem;
+}
+.searchinput{
+	font-size: 0.4rem;
+	border: 0;
+	/* color: rgba(134,134,136,1); */
+	color: #000000;
+	background-color: transparent;
+	padding: 0.2rem 0 0.3rem;
+	/*text-align: left;*/
+	/*width: 80%;*/
+	text-align: left; 
+    width: 60%; 
+}
+.searchinput:focus{
+	outline: none;
+}
+/* 时间样式 */
+.selectdata{
+	display: flex;
+	justify-content: center;
+	padding: 0rem 1.5rem 0.3rem;
+	border-bottom: 1px solid #EBEBEB;
+}
+.selectdata div input{
+	width: 65%;
+	text-align: left;
+	font-size: 0.375rem;
+	/* text-shadow: 0 0 0.0125rem rgba(0,0,0,1); */
+	color: rgba(37,146,254,1);
+	/* text-shadow: 0 0 0.0125rem rgba(37,146,254,1); */
+}
+.selectdata div i{
+	font-size: 0.375rem;
+	font-weight: bold;
+	color: rgba(37,146,254,1);
+	/* text-shadow: 0 0 0.0125rem rgba(37,146,254,1); */
+}
+/* .selectdata .leftdate .dateinput{
+	color: rgba(37,146,254,1);
+	text-shadow: 0 0 0.0125rem rgba(37,146,254,1);
+}
+.selectdata .leftdate i{
+	color: rgba(37,146,254,1);
+	text-shadow: 0 0 0.0125rem rgba(37,146,254,1);
+} */
+.selectdata .text span{
+	font-size: 0.375rem;
+}
+.dateinput{
+	border: 0;	
+}
+.dateinput:focus{
+	outline: none;
+}

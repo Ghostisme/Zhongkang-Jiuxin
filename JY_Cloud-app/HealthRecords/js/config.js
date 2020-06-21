@@ -1,0 +1,11 @@
+//window.config="https://www.zk9x.cn/api";
+//window.config="https://cloud.zk9x.cn/api";
+//window.config="http://192.31.10.62:8003";
+//window.config="http://192.31.10.82:8002";
+//window.config="http://192.31.10.63:8001";
+//window.config="http://192.31.10.58:8001";
+//window.config="http://192.31.10.166:8001";
+//window.config = "https://jycloud.zk9x.cn/wsApi";
+//window.config = "http://cloud.zk9y.com/wsApi";
+window.config = "http://cloud-dev.zk9y.com:9000/api";
+//window.config = "http://192.31.10.230:9000/api";

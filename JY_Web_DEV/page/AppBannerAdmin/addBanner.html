@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>中康九悦远程医疗管理系统 - 远程会诊申请单</title>
+
+		<meta name="keywords" content="中康九悦远程医疗管理系统">
+		<meta name="description" content="中康九悦远程医疗管理系统">
+
+		<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css" rel="stylesheet">
+		<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/plugins/summernote/summernote.css" rel="stylesheet">
+    	<link href="../../css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+		
+		<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../css/plugins/webuploader/webuploader.css">
+		<link rel="stylesheet" type="text/css" href="../../css/demo/webuploader-demo.min.css">
+		<link href="../../css/style.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/editNews.css" />
+	</head>
+
+	<body>
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="ibox-content">
+					<form id="form"  class="wizard-big">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span class="redStar">*</span>标题：</label>
+                                <div class="col-sm-8">
+                                    <input id="cname" name="name" minlength="2" maxlength="50"type="text" class="form-control required" required=""aria-required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">副标题：</label>
+                                <div class="col-sm-8">
+                                    <input id="secondTitle" name="secondTitle" maxlength="250"type="text" class="form-control" >
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label class="col-sm-3 control-label">描述：</label>
+                                <div class="col-sm-8">
+                                    <textarea id="ccomment" name="comment" maxlength="500"class="form-control" ></textarea>
+                                </div>
+                            </div>-->
+                            <div class="row">
+                            	<label class="col-sm-3 control-label">内容：</label>
+					            <div class="col-sm-8"style="padding-left: 23px;padding-right: 23px;">
+					                <div class="ibox float-e-margins">
+					                    <div class="ibox-content no-padding">
+					
+					                        <div class="summernote">
+					                            <!--<h2>H+ 后台主题</h2>
+					                            <p>H+是一个完全响应式，基于Bootstrap3.3.5最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术，她提供了诸多的强大的可以重新组合的UI组件，并集成了最新的jQuery版本(v2.1.1)，当然，也集成了很多功能强大，用途广泛的就jQuery插件，她可以用于所有的Web应用程序，如<b>网站管理后台</b>，<b>网站会员中心</b>，<b>CMS</b>，<b>CRM</b>，<b>OA</b>等等，当然，您也可以对她进行深度定制，以做出更强系统。</p>
+					                            <p>
+					                                <b>当前版本：</b>v4.0.0
+					                            </p>
+					                            <p>
+					                                <b>定价：</b><span class="label label-warning">&yen;988（不开发票）</span>
+					                            </p>-->
+					
+					                        </div>
+					
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					        <div class="form-group">
+                                <label class="col-sm-3 control-label">立即发布：</label>
+                                <div class="switch col-sm-1">
+			                        <div class="onoffswitch">
+			                            <input type="checkbox" class="onoffswitch-checkbox" id="example2">
+			                            <label class="onoffswitch-label" for="example2">
+			                                <span class="onoffswitch-inner"></span>
+			                                <span class="onoffswitch-switch"></span>
+			                            </label>
+			                        </div>
+			                    </div>
+                            </div>
+                            <div class="form-group">
+                            	<label class="col-sm-3 control-label"><span class="redStar">*</span>附件：</label>
+	                            <div class="col-sm-8">
+				                    <div id="file-pretty">
+				                        <div class="form-group"style="border: 1px solid #eee;height: 36px;">
+				                            <div style="position: absolute;height: 36px;line-height: 36px;border: 0px;"class="col-sm-11">
+				                            	<span style="float:left;padding:0 20px;border-right: 1px solid #eee;"class="col-sm-2">选择文件</span>
+				                            	<input class="input-large col-sm-10" type="text"style="height: 34px !important;border: 0px !important;border-bottom: 0px;">
+				                            </div>
+				                            <input type="file" id="files"name="file"class="form-control required" required=""aria-required="true"style="opacity:0;position: absolute; z-index: 1;height: 40px;"accept=".gif,.jpg,.jpeg,.png">
+				                        </div>
+				                    </div>
+				                    <!--图片展示区域-->
+				                    <div class="imgShow"id="showImage">
+				                    	
+				                    </div>
+			                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-3 btnGroup">
+                                    <button type="submit" class="SureBtn comTempateSaveBtn">确认</button>
+                                </div>
+                            </div>
+                        </form>
+				</div>
+			</div>
+		</div>
+		
+		<div id="myModal" class="modal fade" name="tip-modal" data-backdrop="static" data-keyboard="false"style="text-align: center;">
+			<img src="../../img/loading-upload.gif" alt="" style="width:40px;height:40px;margin:0 auto; margin-top:200px;"/>
+		            	提交中......
+		</div>
+		<script src="../../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="../../js/plugins/staps/jquery.steps.min.js"></script>
+		<script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+		<script src="../../js/plugins/validate/messages_zh.min.js"></script>
+		<!--<script src="../../js/demo/form-validate-demo.min.js"></script>-->
+		<script src="../../js/plugins/summernote/summernote.min.js"></script>
+    	<script src="../../js/plugins/summernote/summernote-zh-CN.js"></script>
+		<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script src="../../js/content.min.js?v=1.0.0"></script>
+		<script type="text/javascript">
+			var BASE_URL = '../../js/plugins/webuploader';
+		</script>
+		<!--<script src="../../js/plugins/webuploader/webuploader.min.js"></script>-->
+		<!--<script src="../../js/demo/webuploader-demo.min.js"></script>-->
+		<script src="../../js/plugins/jquery.jqprint-0.3.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="../../js/demo/form-advanced-demo.min.js"></script>-->
+		<script>
+			$("#form").validate();
+			$(function() {
+			    $('#myModal').modal('hide');
+			});
+			$(document).ready(function(){$(".summernote").summernote({lang:"zh-CN"})});var edit=function(){$("#eg").addClass("no-padding");$(".click2edit").summernote({lang:"zh-CN",focus:true})};var save=function(){$("#eg").removeClass("no-padding");var aHTML=$(".click2edit").code();$(".click2edit").destroy()};
+			$(".SureBtn").click(function(event){
+				if($("#form").valid()){
+					event.preventDefault();
+					var formData = new FormData();
+					formData.append("file", $('#files')[0].files[0]); //附件
+					formData.append("title",$("#cname").val().trim());//标题
+					formData.append("titleSub",$("#secondTitle").val().trim());//副标题
+//					formData.append("memo",$("#ccomment").val().trim());//描述
+					formData.append("isShow",switchBtn);//是否发布
+					formData.append("content",$(".note-editable").html());//内容富文本
+					formData.append("type","2");//类型
+					$('#myModal').modal('show');
+					ajaxPost('/news/info/save',formData,
+						function(data){
+							console.log(data);
+							if(data.status==0){
+								$('#myModal').modal('hide');
+								swal({
+	                            title:"",text:"提交成功！"});
+								setTimeout(function(){ 
+	                            	parent.$(window.parent.document).find(".layui-layer-close").click();
+	                            }, 2000);
+								RefreshIframe("page/AppBannerAdmin/appBannerListPage.html","77");	
+							}else{
+								swal({
+	                            title:"",text:"提交失败！"});
+					        	$('#myModal').modal('hide');
+							}
+//							
+						})
+					}
+			})
+			var switchBtn=0;//定义开关默认值
+//			点击开关
+			$(".onoffswitch-label").click(function(){
+				if(switchBtn==0){
+					switchBtn=1;
+				}else{
+					switchBtn=0;
+				}
+			})
+			$("#files").change(function(e){
+				console.info(e.target.files[0]);//图片文件
+			    var dom =$(this)[0];
+			    console.info(dom.value);//这个是文件的路径 C:\fakepath\icon (5).png
+//			    console.log(e.target.value);//这个也是文件的路径和上面的dom.value是一样的
+				if(e.target.files[0]){
+					var reader = new FileReader();
+				    reader.onload = (function (file) {
+				        return function (e) {
+	//			           console.info(this.result); //这个就是base64的数据了
+				            var sss=$("#showImage");
+				            $("#showImage").html('<img src="'+this.result+'"style="width:200px;height:120px;">');
+				        };
+				    })(e.target.files[0]);
+				    reader.readAsDataURL(e.target.files[0]);
+				}else{
+					$("#showImage").html('');
+				}
+			    
+			});
+		</script>
+	</body>
+
+</html>

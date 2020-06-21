@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>远程医疗管理系统-公共页面</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/commonStyle.css"/>
+</head>
+<body>
+<div class="contain" style="position: relative;overflow: hidden;width: 100%;">
+    <div style="height:100%;overflow: hidden;">
+        <div class="leftNav lf"style="height:100%;overflow: hidden;">
+            <div id="logoAndName">
+                <div class="logoImg">
+                    <img src="../../img/home/homeLogo.png" alt=""/>
+                </div>
+            </div>
+            <div id="backBtn">
+                <i class="backLeftBtn rt"></i>
+            </div>
+            <div class="navs">
+                <ul id="navs">
+                    <!--<li class="firstItems">
+                        <i class="lf systemManage"/></i>
+                        <div class="lf">
+                            系统管理
+                        </div>
+                        <i class="lf arrowdown lastArrow"></i>
+                    </li>
+                    <ul class="navsList">
+                        <li class="listItem1">子菜单1</li>
+                        <li class="listItem2">子菜单2</li>
+                    </ul>
+                    <li class="firstItems">
+                        <i class="lf patientManage"/></i>
+                        <div class="lf">
+                            病人管理
+                        </div>
+                        <i class="lf arrowdown lastArrow"></i>
+                    </li>
+                    <li class="firstItems">
+                        <i class="lf personManage"/></i>
+                        <div class="lf">
+                            个人信息
+                        </div>
+                        <i class="lf arrowdown lastArrow"></i>
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="rightContent rt"id="rightDivs">
+            <div class="topNavs">
+                <div class="rt userImg">
+                    <img src="../../img/home/userDefaultImg.jpeg.jpg"/>
+                </div>
+                <i class="rt userImgDownArrow"></i>
+                <div class="rt userInfo">
+                    <span class="adminStyle">管理员</span>
+                    <span class="welcomeStyle">欢迎登陆</span>
+                </div>
+                <i class="rt" id="navLine"></i>
+                <div class="rt" id="AllInfo">
+                    <i class="lf AllInfoImg"></i>
+                    <b class="AllInfoNum">1</b>
+                </div>
+                <div id="quitBtnStyle">
+                    <b id="quitTriangle">
+                        <span></span>
+                    </b>
+                    <div class="quitInfo">
+                        <div id="changeIdentifyBtn">
+                            切换账户
+                        </div>
+                        <div class="quitLineStyle">
+                            <i id="quitLine"></i>
+                        </div>
+                        <div id="quitBtn">
+                            退出
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="mainContents">
+                <!--右边导航标签-->
+                <div id="contents">
+                    <div class="contentsTags">
+                        <!--每个页面的标签-->
+                        <div class="Tags contensCurrentsTag lf homeTag">
+								<span class="lf tagName">
+									首页
+								</span>
+                        </div>
+                    </div>
+                    <!--首页大图-->
+                    <div id="homeAllLoad">
+                        <div class="homeImg">
+                            <div class="homeBgs">
+                                <img src="../../img/home/untitled2.png" alt=""/>
+                            </div>
+                            <div class="homeBgs">
+                                <img src="../../img/home/untitled3.png" alt=""/>
+                            </div>
+                            <div class="homeBgs">
+                                <img src="../../img/home/untitled4.png" alt=""/>
+                            </div>
+                            <div class="homeBgs">
+                                <img src="../../img/home/untitled1.png" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/commonStyle.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/index.js"></script>
+<script>
+//	alert($(window).height());
+	$('.leftNav').css('height', $(window).height());
+	$("#rightDivs").css('height', $(window).height());
+</script>
+</body>
+</html>

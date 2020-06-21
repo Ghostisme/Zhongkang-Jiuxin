@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>远程医疗管理系统-检查项目</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/deviceConfiguration.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    
+</head>
+<body>
+<!--第一行信息-->
+<div class="subscribeListInfoHead topBox">
+    <div class="subscribeListSex">
+        <!--<span class="subscribeListSexLeft">设备名称/设备型号</span>-->
+        <!--<span class="subscribeListSexLeft">检查项目</span>-->
+        <input class="subscribeListNanmeRight queryContent" type="text" id="equipmentName_cx" name="equipmentName_cx" value="" placeholder="检查项目"/>
+    </div>
+    <div class="subscribeListNanme">
+        <!--<span class="subscribeListNanmeLeft">检查部位</span>-->
+        <input class="subscribeListNanmeRight queryContent" type="text" id="equipmentType_cx" name="equipmentType_cx" value="" placeholder="检查部位"/>
+    </div>
+    <!--<div class="subscribeListNanme">
+        <span class="subscribeListNanmeLeft">设备品牌</span>
+        <input class="subscribeListNanmeRight" type="text" id="equipmentBrand_cx" name="equipmentBrand_cx" value=""/>
+    </div>-->
+    <div id="topSearchBtns" class="topBtn queryBtn">
+		查询
+    </div>
+    <div id="appointmentAddInfosBtn" class="topBtn addBtn">
+		新增
+    </div>
+</div>
+<!--表头-->
+<div class="tableNav">检查项目</div>
+<!--信息列表-->
+<ul id="ulAppointmentList" class="outBoxBorder">
+    <ul class="subscribeListInfoList-ul titleList">
+    	<li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder" style="width: 5%;">序号</li>
+		<li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder" style="width: 10%;">检查项目</li>
+        <li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder" style="width: 25%;">检查部位</li>
+        <!-- <li class="subscribeListInfoList-proposer LiTextAlign">设备序列号</li> -->
+        <!--<li class="subscribeListInfoList-proposer LiTextAlign">设备通道号</li>-->
+        <li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder" style="width: 20%;">医院</li>
+        <li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder">价格(元)</li>
+        <!--<li class="subscribeListInfoList-proposer LiTextAlign" style="width:8%;">设备类型</li>-->
+        <!--<li class="subscribeListInfoList-proposer LiTextAlign">关联用户</li>-->
+        <!--<li class="subscribeListInfoList-proposer LiTextAlign" style="width:8%;">服务次数</li>-->
+        <!--<li class="subscribeListInfoList-proposer LiTextAlign">关联用户姓名</li>-->
+		<!--<li class="subscribeListInfoList-proposer LiTextAlign" style="width:8%;">检查部位</li>-->
+        <!--<li class="subscribeListInfoList-proposer LiTextAlign" style="width:8%;">价格(元)</li>-->
+        <!--<li class="subscribeListInfoList-proposer LiTextAlign" style="width:8%;">所属医院</li>-->
+        <!--<li class="subscribeListInfoList-proposer LiTextAlign" style="width:8%;">所属科室</li>-->
+		<!-- <li class="subscribeListInfoList-proposer LiTextAlign" style="width:8%;">状态</li> -->
+        <!--<li class="subscribeListInfoList-proposer LiTextAlign">可预约时间</li>-->
+        <li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder" style="width: 15%;">操作</li>
+    </ul>
+    <div id="subscribeListAllInfo">
+    </div>
+</ul>
+<div class="clearfix"></div>
+<!--分页-->
+<div class="subscribeListPageN"></div>
+
+<!--点击按钮新增-->
+<div id="subscribeListLight1" class="white_content">
+    <div class="white_contentHead">
+        <span class="infoTitle">检查项维护</span>
+        <a id="close3" class="close" href="javascript:void(0)"
+           onclick="document.getElementById('subscribeListLight1').style.display='none';document.getElementById('subscribeListFade').style.display='none'">&times;</a>
+    </div>
+    <div>
+        <div class="infoDetails-div" id="addSubscribeList">
+
+        </div>
+    </div>
+</div>
+
+<!--灰背景-->
+<div id="subscribeListFade" class="black_overlay"></div>
+<!--删除-->
+<div id="subscribeListLight2" class="white_content1">
+	<div class="content_header">
+		<div class="header_title">删除检查项目</div>
+		<div class="close" onclick="document.getElementById('subscribeListLight2').style.display='none';document.getElementById('subscribeListFade').style.display='none'">
+			<span>×</span>
+		</div>
+	</div>
+    <div class="content_middle">
+    	<div class="chooseDel">
+			<div>
+				<img src="../../img/warn.png" width="55" height="48"/>
+				删除信息
+			</div>
+			<div>您确定要删除此项吗</div>
+		</div>
+		<div class="btnGroup delGroup">
+			<button type="button" id="subscribeListDel-yes" class="subBtn subBtn3 Btn comTempateSaveBtn">确认</button>
+			<!--<button type="button" class="resBtn resBtn3 Btn">取消</button>-->							
+		</div>
+        <!--<img src="../../img/warn.png" width="55" height="48"/>-->
+                <!--删除信息-->
+    </div>
+    
+    <!--<p>您确定要删除此项吗</p>-->
+    <a id="close4" class="displayNoneBtn" href="javascript:void(0)"
+       onclick="document.getElementById('subscribeListLight2').style.display='none';document.getElementById('subscribeListFade').style.display='none'">取消</a>
+    <!--<button id="subscribeListDel-yes" class="comTempateSaveBtn">确定删除</button>-->
+    <input type="hidden" id="del_id" value="">
+
+</div>
+<!--修改状态-->
+<div id="subscribeListLight4" class="white_content1">
+    <div class="white_contentHead1">
+        <img src="../../img/common/untitledquestionImg.png"/>
+    </div>
+    <p>您确定要修改该信息状态吗？</p>
+    <a id="close5" href="javascript:void(0)"
+       onclick="document.getElementById('subscribeListLight4').style.display='none';document.getElementById('subscribeListFade').style.display='none'">取消</a>
+    <button id="subscribeListDel-yes1">确定</button>
+	<input type="hidden" id="del_id1" value="">
+</div>
+<!--点击按钮查看-->
+<!-- <div id="subscribeListLight3" class="white_content">
+    <div class="white_contentHead">
+        <span class="infoTitle">影像设备</span>
+        <a id="close5" class="close" href="javascript:void(0)"
+           onclick="document.getElementById('subscribeListLight3').style.display='none';document.getElementById('subscribeListFade').style.display='none'">&times;</a>
+    </div>
+    <div>
+        <div class="infoDetails-div" id="addSubscribeList1">
+
+        </div>
+    </div>
+</div> -->
+<div id="subscribeListLight10" class="white_content">
+	<div class="white_contentHead">
+		<span class="infoTitle">消息查看</span>
+		<a id="close1" class="close"href="javascript:void(0)"onclick="document.getElementById('subscribeListLight3').style.display='none';document.getElementById('subscribeListFade').style.display='none'">&times;</a>
+	</div>
+	<div class="infoDetails"style="overflow: hidden;">
+		<div class="infoDetailsHead">消息查看</div>
+		<ul class="infoDetails-ul">
+			<li><span class="infoDetails-title">消息内容：</span><textarea type="text" name="" style="width:400px;height:100px;" id="subscribeListLookDoctor" value=""></textarea></li>
+			<!-- <li><span class="infoDetails-title">指定科室：</span><input type="text" name="" id="subscribeListLookTechOffice" value=""/></li>
+			<li><span class="infoDetails-title">指定医生：</span><input type="text" name="" id="subscribeListLookDoctor" value=""/>
+			<li><span class="infoDetails-title">患者姓名：</span><input type="text" name="" id="subscribeListLookPatientId" value=""/></li>
+			<li><span class="infoDetails-title">状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：</span><input type="text" name="" id="subscribeListLookStatus" value=""/></li>
+			<li><span class="infoDetails-title">申&nbsp;&nbsp;请&nbsp;&nbsp;人：</span><input type="text" name="" id="subscribeListLookApplier" value=""/>
+			</li>
+			<li><span class="infoDetails-title">申请时间：</span><input type="text" name="" id="subscribeListLookApplyTime" value="" /></li> -->
+			<li class="subscribeListHiddenChangeHosId"style="display:none;"></li>
+			<li class="subscribeListHiddenChangeUserId"style="display:none;"></li>
+			<li class="subscribeListHiddenChangeTechId"style="display:none;"></li>
+			<li class="subscribeListHiddenChangeDoctorId"style="display:none;"></li>
+		</ul>
+	</div>
+	<button id="subscribeListCancel-ok"href = "javascript:void(0)" onclick = "document.getElementById('subscribeListLight3').style.display='none';document.getElementById('subscribeListFade').style.display='none'"style="margin-left: 45%;">关闭</button>
+</div>
+
+<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+    var currentPage = 1;
+    var offsetPage = 0;//传输的页起始条数
+    var showNum = 10;//页面需要显示的条数
+    var num_pages;
+    //点击分页页数
+    $(document).delegate(".flipOver", 'click', function () {
+        $(this).addClass('active').siblings().removeClass('active');
+        currentPage = parseInt($(this).attr("pageId"));
+        offsetPage = (currentPage - 1) * 10;//（页码-1）*每页显示条数
+        appointmentReadPreOrderList();
+        window.scrollTo(0, 0);
+    });
+    //点击上一页
+    $(document).delegate("#prev", 'click', function () {
+        if ($(".flipOver.active").prev().attr("id") == "prev") {
+            return true
+        } else {
+            var page = parseInt($(".flipOver.active").attr("pageid")) - 1;
+            $(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+        }
+        currentPage = page;
+        offsetPage = (currentPage - 1) * 10;//（页码-1）*每页显示条数
+        appointmentReadPreOrderList();
+        window.scrollTo(0, 0);
+    });
+
+
+    //点击下一页
+    $(document).delegate("#Next", 'click', function () {
+        if ($(".flipOver.active").next().attr("id") == "Next") {
+            return true
+        } else {
+            var page = parseInt($(".flipOver.active").attr("pageid")) + 1;
+            $(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+        }
+        currentPage = page;
+        offsetPage = (currentPage - 1) * 10;//（页码-1）*每页显示条数
+        appointmentReadPreOrderList();
+        window.scrollTo(0, 0);
+    });
+    //点击分页跳转页按钮
+    $(document).delegate(".srueToJumpPageBtn",'click',function(){
+        currentPage = parseInt($(".toPageNum").val().trim());
+        offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+        appointmentReadPreOrderList();
+        window.scrollTo(0,0);
+    });
+</script>
+<script>
+    var user = JSON.parse(sessionStorage.getItem("user"));
+    var equipmentList;
+    var edit_eqt_index="";
+    var edit_eqt_name = "";
+	var userId=sessionStorage.getItem('userId');
+    $(function () {
+        appointmentReadPreOrderList();
+
+
+        //点击查询按钮
+        $("#topSearchBtns").click(function () {
+        	currentPage = 1;
+        	offsetPage = 0;
+            appointmentReadPreOrderList();
+        });
+        //点击新增按钮
+        $("#appointmentAddInfosBtn").click(function () {
+            //灰背景
+            $("#subscribeListFade").fadeIn();
+            //框子
+            $("#subscribeListLight1").fadeIn();
+            //页面
+            edit_eqt_index="";//必须清空，不然则是修改
+            edit_eqt_name = "";
+            $("#addSubscribeList").load("./addMaintain.html");
+            $(".white_contentHead").find(".infoTitle").text("新增检查项目");
+        });
+        //点击查看(修改)按钮
+        $(document).on("click",".subListBtn-search",function(){
+            //灰背景
+            $("#subscribeListFade").fadeIn();
+            //框子
+            $("#subscribeListLight1").fadeIn();
+            //页面
+            edit_eqt_index=$(this).attr('data-index');//修改用id获取编辑数据(现改为获取下标i)
+            edit_eqt_name = $(this).attr("data-name");
+			// alert(edit_eqt_index);
+			// editInit(edit_eqt_index);
+            $("#addSubscribeList").load("./addMaintain.html");
+            $(".white_contentHead").find(".infoTitle").text("查看检查项目");
+        });
+        $(document).on("click",".subListBtn-change",function(){
+            //灰背景
+            $("#subscribeListFade").fadeIn();
+            //框子
+            $("#subscribeListLight1").fadeIn();
+            //页面
+            edit_eqt_index=$(this).attr('data-index');//修改用id获取编辑数据(现改为获取下标i)
+            edit_eqt_name = $(this).attr("data-name");
+			// alert(edit_eqt_index);
+			// editInit(edit_eqt_index);
+            $("#addSubscribeList").load("./addMaintain.html");
+            $(".white_contentHead").find(".infoTitle").text("修改检查项目");
+        });        
+		//点击删除
+		$(document).on("click",".subListBtn-del",function(){
+		    var del_eqt_id=$(this).attr('data-id');//修改用id获取编辑数据
+		    $('#del_id').val(del_eqt_id);
+		    $("#subscribeListLight2").fadeIn();
+		    $("#subscribeListFade").fadeIn();
+		});
+		//删除确认
+		$("#subscribeListDel-yes").click(function(){
+		    var del_id=$('#del_id').val();
+		    ajaxGet('/inspect/project/remove', {id: del_id}, function (data) {
+		        if(data.status==1){
+		            alert(data.message);
+		            $("#subscribeListLight2").css("display","none");
+		            $("#subscribeListFade").css("display","none");
+		            appointmentReadPreOrderList();
+		        }else{
+		            alert(data.message);
+		        }
+		    });
+		});
+//      点击设备排班
+		$(document).on("click",".deviceTime",function(){
+			var currentLineIds=$(this).parent().parent().find(".deviceLineIds").text();
+			var hospitalId = $(this).parent().parent().find(".deviceLineIds1").text();
+			console.log(currentLineIds);
+			// console.log($(this).parent().parent().find(".deviceLineIds"))
+			localStorage.setItem("deviceId",currentLineIds);
+			localStorage.setItem("hospitalId",hospitalId);
+			RefreshIframe('page/fullCalender/index.html','deviceTime');
+		});
+		//点击状态
+		// $(document).on("click","#status",function(){
+		// 	ajaxGet('/equipment/equipmentInfo/updateState', {
+		// 		id: $("#thisId").text()
+		// 	}, function (resData) {
+		// 		console.table(resData);
+		// 		var data = resData.resultMap.list;
+		// 		
+		// 		equipmentList=data;
+		// 		appointmentSetDataList(data,total);
+		// 	});
+		// });
+		//点击状态
+//		var status;
+//		$(document).on("click",".status",function(){
+//		    var del_eqt_id1=$(this).attr('data-id');//修改用id获取编辑数据
+//		    $('#del_id1').val(del_eqt_id1);
+//		    $("#subscribeListLight4").fadeIn();
+//		    $("#subscribeListFade").fadeIn();
+//			status = $(this).attr("data-status");
+//		});
+//		$("#subscribeListDel-yes1").click(function(){
+//			var del_id1=$('#del_id1').val();
+//		    ajaxGet('/equipment/equipmentInfo/updateState', {
+//				// id: $(".deviceLineIds").text(),
+//				id: del_id1,
+//				equipmentState: status
+//			}, function (data) {
+//		        if(data.status==1){
+//		            alert(data.message);					
+//		            $("#subscribeListLight4").css("display","none");
+//		            $("#subscribeListFade").css("display","none");
+//		            appointmentReadPreOrderList();
+//		        }else{
+//		            alert(data.message);
+//		        }
+//		    });
+//		});
+
+    });
+	// alert(user.fkHospitalId);
+    //接口获取数据
+    var fkHospitalId='';
+    function appointmentReadPreOrderList() {
+    	if(userId==1){//是admin
+    		fkHospitalId=''
+    	}else{
+    		fkHospitalId=user.fkHospitalId;
+    	}
+        ajaxGet('/inspect/project/list', {
+                offset: offsetPage, //（页码-1）*每页显示条数
+                limit: showNum, //每页显示的条数
+				hospitalId: fkHospitalId,
+//              equipmentName: $("#equipmentName_cx").val(),
+                inspectProject: $("#equipmentName_cx").val(),
+                projectPos: $("#equipmentType_cx").val()
+//              equipmentBrand: $("#equipmentBrand_cx").val()
+            }, function (resData) {
+                var data = resData.resultMap.list;
+                var total = resData.resultMap.total;//总条数
+                equipmentList=data;
+                appointmentSetDataList(data,total);
+            });
+    }
+    //渲染页面
+    function appointmentSetDataList(rm,total) {
+        num_pages = Math.ceil(parseInt(total) / 10);//总条数除以每页十条数据为总页码
+        if (rm != null && rm.length > 0) {
+            var rmHtml = '';
+            for (var i = 0, rmk = 0; i < rm.length; i++) {
+            	//可预约时间
+            	var appointmentDate = new Date(rm[i].createDate);
+            	//预约年
+				var	appointmentYear = appointmentDate.getFullYear();
+				//预约月
+				var	appointmentMonth = appointmentDate.getMonth() + 1;
+				//预约日
+				var	appointmentDay = appointmentDate.getDate();
+				//预约小时
+				var	appointmentHour = appointmentDate.getHours();
+				//预约分钟
+				var appointmentMin = appointmentDate.getMinutes();
+				//预约秒
+				var appointmentSen = appointmentDate.getSeconds();
+				//整合时间
+				var appointmentTime = appointmentYear + "-" + addZero(appointmentMonth) + "-" + addZero(appointmentDay) + " " + addZero(appointmentHour) + ":" + addZero(appointmentMin) + ":" + addZero(appointmentSen);
+                //补零操作
+				function addZero(num){
+				    if(parseInt(num) < 10){
+				        num = '0' + num;
+				    }
+				    return num;
+				}
+                $("#subscribeListAllInfo").html('');
+				if(rm[i].equipmentNum == null){
+					rm[i].equipmentNum = 0;
+				}
+				var ck = rmk++;
+				ck++;
+//				var currentPagek = ((currentPage - 1) * 10) + ck + 1;
+//              rmk++;
+                rmHtml += '<ul class="subscribeListAllInfoList-ul dataList">';
+                rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder" style="width: 5%;"><span>' + ck + '</span></li>';
+                rmHtml += '<li class="deviceLineIds LiTextAlign boxRightBorder" style="display:none;">' + rm[i].id + '</li>';//id
+				rmHtml += '<li class="deviceLineIds1 LiTextAlign boxRightBorder" style="display:none;">' + rm[i].hospitalId + '</li>';//医院id
+//				if (rm[i].equipmentUrl == null || rm[i].equipmentUrl == "") {
+//					rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign"></li>';//设备图片
+//				}else{
+//					rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign"><img src=' + rm[i].equipmentUrl + ' width="25" height="25" /></li>';//设备图片
+//				}
+				
+//              rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign">' + rm[i].equipmentName + '</li>';//设备名称
+//              rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign">' + rm[i].equipmentNumber + '</li>';
+                // rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign">' + rm[i].equipmentNumber + '</li>';//设备序列号
+//              rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign">' + rm[i].equipmentModel + '</li>';//设备型号
+//              rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign">' + rm[i].equipmentBrand + '</li>';//品牌
+//              rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign">' + rm[i].equipmentType + '</li>';//类型
+//              rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign">' + rm[i].equipmentNum + '</li>';//次数
+				rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder" style="width: 10%;">' + rm[i].inspectProject + '</li>';//检查项目
+				rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder" style="width: 25%;">' + rm[i].projectPos + '</li>';//检查部位
+                rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder" style="width: 20%;">' + rm[i].hospital + '</li>';//医院
+                rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder">' + rm[i].projectPrice + '</li>';//价格
+//				if(rm[i].hospital == null){
+//					rm[i].hospital = "";
+//					rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign">' + rm[i].hospital + '</li>';//医院
+//				}else{
+//					rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign">' + rm[i].hospital + '</li>';//医院
+//				}
+//              if(rm[i].yyks == null){
+//					rm[i].yyks = "";
+//					rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign">' + rm[i].yyks + '</li>';//科室
+//				}else{
+//					rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign">' + rm[i].yyks + '</li>';//科室
+//				}
+				var equipmentState = "";
+				// console.log(rm[i].equipmentState, "12312313")
+//				if (rm[i].equipmentState == "1") {
+//					equipmentState = "启用";
+//				} else{
+//					equipmentState = "停用";
+//				}
+//              rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign" >' + appointmentTime + '</li>';//可预约时间
+				rmHtml += '<li class="subscribeListInfoList-proposer LiTextAlign boxRightBorder" style="width:15%;">' +
+					'<a href = "javascript:void(0)" data-index="'+i+'" data-name="查看" class="subListBtn-search btnTextColor"><span>查看</span></a>' +
+					'<a href = "javascript:void(0)" data-index="'+i+'" data-name="修改" style="margin-left: 30px;" class="subListBtn-change btnTextColor"><span>修改</span></a>' +
+					'<a href = "javascript:void(0)" data-id="'+rm[i].id+'" style="margin-left: 30px;" class="subListBtn-del btnTextColor"><span>删除</span></a>' +
+					
+//					'<a href = "javascript:void(0)" style="margin-left: 30px;" class="deviceTime subListBtn-change btnTextColor">设备排班</a>' +
+//					'<a href = "javascript:void(0)" style="margin-left: 30px;" class="status subListBtn-change btnTextColor" id="status'+rm[i].id+'" data-id="'+rm[i].id+'" data-status="'+rm[i].equipmentState+'">'+ equipmentState +'</a>' +
+					'</li>';
+                // rmHtml += '<li class="deviceTime subscribeListInfoList-changeTitle LiTextAlign"></li>';
+                rmHtml += '</ul>';
+                $("#subscribeListAllInfo").append(rmHtml);
+                var pageHtml = page(parseInt(currentPage), num_pages);
+                $(".subscribeListPageN").html(pageHtml);
+            }
+        } else {
+            $("#subscribeListAllInfo").html('');
+        }
+		//搜索框显示
+//		if (user.fkHospitalId == "null" || user.fkHospitalId == "") {
+//			$(".subscribeListSex").show();
+//		} else{
+//			$(".subscribeListSex").hide();
+//		}
+    }
+
+</script>
+</body>
+</html>

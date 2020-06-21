@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>远程医疗管理系统-预约问诊</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style>
+        #ulSubscrbeList {
+            list-style: none;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        #ulSubscrbeList li {
+            height: 50px;
+            line-height: 50px;
+            overflow: hidden;
+            border: 1px solid #CAC8C6;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #ulSubscrbeList li:nth-child(odd) {
+            background: #fff;
+        }
+
+        #ulSubscrbeList li:nth-child(even) {
+            background: #ededed;
+        }
+
+        #ulSubscrbeList li div {
+            border-right: 1px solid #CAC8C6;
+            width: 12%;
+            text-align: center;
+        }
+
+        .orderBtns {
+            background: #008EEA;
+            color: #fff;
+            border-radius: 5px;
+            padding: 0 5px;
+            width: 60px;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 13px;
+            border: 0;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="ulSubscrbeList">
+    <!--表标题-->
+    <li class="OrderList">
+
+        <!--<div>会诊类型&lt;!&ndash;1：临床会诊 2影像会诊 3心电会诊 4病理会诊&ndash;&gt;</div>-->
+        <div>指定医院</div>
+        <div>指定科室</div>
+        <div>指定医生</div>
+        <!--<div>期望会诊时段&lt;!&ndash;1全天 2上午 3下午&ndash;&gt;</div>-->
+        <!--<div>紧急注记&lt;!&ndash; Y紧急 N一般&ndash;&gt;</div>-->
+        <div>病人id</div>
+        <!--<div>就诊科室id</div>-->
+        <!--<div>门急住别&lt;!&ndash; 1门诊 2急诊 3住院&ndash;&gt;</div>-->
+        <!--<div>入院时间</div>-->
+        <!--<div>主诉</div>-->
+        <!--<div>现病史</div>-->
+        <!--<div>既往史</div>-->
+        <!--<div>体征</div>-->
+        <!--<div>过敏史</div>-->
+        <!--<div>家族史</div>-->
+        <!--<div>预诊断</div>-->
+        <!--<div>入院后用药</div>-->
+        <!--<div>治疗经过</div>-->
+        <div>状态<!-- 1申请2完成--></div>
+        <!--<div>医师诊断</div>-->
+        <!--<div>治疗建议</div>-->
+        <div>申请人</div>
+        <!--<div>申请医院</div>-->
+        <div>申请时间</div>
+        <!--<div> 是否被删除（0：存在；1：删除）</div>-->
+        <div><!--占位--></div>
+    </li>
+
+
+
+</ul>
+
+<script>
+    var websocket = null;
+    //判断当前浏览器是否支持WebSocket
+    if ('WebSocket' in window) {
+        websocket = new WebSocket("ws://192.31.10.92:8001/websocket/admin");
+    } else {
+        alert('Not support websocket')
+    }
+    //接收到消息的回调方法
+    websocket.onmessage = function (event) {
+        console.log('event', event);
+        acceptMessage(event.data);
+    }
+    //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+    window.onbeforeunload = function () {
+        websocket.close();
+    }
+    //连接成功建立的回调方法
+    websocket.onopen = function (event) {
+        console.log('socket连接建立成功');
+    }
+
+    function acceptMessage(data) {
+        if (window.confirm('有视频邀请，是否接受？')) {
+            //alert("确定");
+            $('.YYGL_YYSP').click();
+            return true;
+        } else {
+            //alert("取消");
+            return false;
+        }
+    }
+
+</script>
+<script>
+    $(function () {
+        var user=JSON.parse(sessionStorage.getItem("user"));
+        ajaxGet('/oa/interrogationInfo/list', {fkUserId:user.id}, function (resData) {
+            var data = resData.resultMap.interrogationInfoList;
+            setDivData(data);
+        });
+    });
+
+    function setDivData(rm) {
+        //预约列表渲染
+        var yyhtml = '<li class="OrderList">\n' +
+            '    <div>指定医院</div>\n' +
+            '    <div>指定科室</div>\n' +
+            '    <div>指定医生</div>\n' +
+            '    <div>病人id</div>\n' +
+            '    <div>状态<!-- 1申请2完成--></div>\n' +
+            '    <div>申请人</div>\n' +
+            '    <div>申请时间</div>\n' +
+            '    <div><!--占位--></div>\n' +
+            '</li>';
+
+        if (rm!=null||rm.length > 0) {
+            for (var i = 0; i < rm.length; i++) {
+                yyhtml += '<li class="OrderList">\n' +
+                    '    <div>'+rm[i].fkHospitalId+'</div>\n' +
+                    '    <div>'+rm[i].fkSectionId+'</div>\n' +
+                    '    <div>'+rm[i].fkUserId+'</div>\n' +
+                    '    <div>'+rm[i].fkPatinfoId+'</div>\n' +
+                    '    <div>'+rm[i].state+'<!-- 1申请2完成--></div>\n' +
+                    '    <div>'+rm[i].applyUserId+'</div>\n' +
+                    '    <div>'+rm[i].applyTime+'</div>\n' +
+                    '    <div><input type="button" class="orderBtns" value="申请视频"></div>\n' +
+                    '    <input name="applyUserCode" type="hidden" value="'+rm[i].applyUserCode+'">\n' +
+                    '    <input name="appointUserCode" type="hidden" value="'+rm[i].appointUserCode+'">\n' +
+                    '</li>';
+            }
+        }
+        $('#ulSubscrbeList').html(yyhtml);
+    }
+
+    $(document).on("click", ".orderBtns", function () {
+        var applyUserCode = $(this).next('input[name="applyUserCode"]').val();
+        var appointUserCode = $(this).next('input[name="appointUserCode"]').val();
+
+        $.ajax({
+            method: 'get',
+            url: 'http://192.31.10.92:8001/sys/user/sendweb',
+            contentType: "application/json; charset=utf-8",//传到后台的数据格式
+            async: true,
+            data: {'applyUserCode':applyUserCode, 'appointUserCode': appointUserCode},
+            dataType: 'jsonp',//接收值的格式
+            jsonp: 'jsoncallback',
+            success: function (data) {
+                console.log(data.message);
+                $('.YYGL_YYSP').click();
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        });
+    });
+</script>
+</body>
+</html>

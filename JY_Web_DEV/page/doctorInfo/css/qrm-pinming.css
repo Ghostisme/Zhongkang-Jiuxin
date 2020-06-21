@@ -1,0 +1,117 @@
+
+.clearfix:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfix{zoom:1}
+ul,li{
+    list-style:none;
+}
+.qrm-input{
+    outline: none;
+    border:none;
+    height: 38px;
+    
+    position: absolute;
+    left: 4px;
+    top: 0;
+    padding: 0 10px;
+}
+.qrm-input-border{
+	position: relative;
+	height: 36px;
+}
+.qrm-pinming{
+    height: 38px;
+    line-height: 40px;
+    border:1px solid #dddddd;
+    /*border-radius: 5px;*/
+    position: relative;
+    /*width: 300px;*/
+    background-image: url("../images/qrm-arrow-down.png");
+    background-repeat: no-repeat;
+    background-position: 94%;
+}
+.qrm-pinming:hover{
+    cursor: pointer;
+}
+.qrm-pinming input:hover{
+    cursor: pointer;
+}
+.qrm-pinming-panel{
+    position: absolute;
+    top: 52px;
+    left: -1px;
+    z-index: 99999;
+    width: 350px;
+    height: 210px;
+    /*border: 1px solid #409EFF;*/
+    background: #ffffff;
+}
+.qrmBox{
+	float: left;
+    /*padding: 5px 10px;*/
+    height: auto;
+    border-right: 1px solid #f1f1f1;
+    position: relative;
+}
+
+.qrm-lev{
+    float: left;
+    width: 100%;
+    margin:0;
+    padding:0;
+    font-size: 12px;
+}
+.qrm-lev>li{
+    /*width: 95%;*/
+    position: relative;
+    display: block;
+    padding: 0px 10px;
+    height: 35px;
+    line-height: 35px;
+    cursor: pointer;
+}
+.qrm-lev>li:hover{
+    background: #4471d6;
+    color: #fff;
+}
+
+.qrm-arrow-right{
+    display: inline-block;
+    width: 4px;
+    height: 7px;
+    background: url("../images/qrm-arrow-right.png") no-repeat;
+    margin-left: 10px;
+    float: right;
+    margin-top: 15px;
+    /*position: absolute;*/
+    /*right: 7px;*/
+    /*top: 14px;*/
+}
+
+.qrm-lev-1>li.active{
+    background: #4471d6;
+    color: #fff;
+
+}
+.qrm-lev-2>li.active{
+    background: #4471d6;
+    color: #fff;
+
+}
+.qrm-lev-3>li.active{
+    background: #4471d6;
+    color: #fff;
+
+}
+.qrm-lev-4>li.active{
+    background: #4471d6;
+    color: #fff;
+}
+.qrm-lev>li.active{
+	background: #4471d6;
+    color: #fff;
+}
+.box{
+	width: 350px;
+	height: 300px;
+	margin: 0 auto;
+}

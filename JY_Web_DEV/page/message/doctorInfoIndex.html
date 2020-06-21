@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>医生信息管理</title>
+
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../js/plugins/layer/skin/layer.css" />
+	<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+	<link rel="stylesheet" href="css/qrm-pinming.css">
+	<link rel="stylesheet" type="text/css" href="../../css/doctorInfo.css" />
+	<!--<link rel="stylesheet" type="text/css" href="../../css/commonStyle.css" />-->
+	<!--<link rel="stylesheet" type="text/css" href="../../css/jcDate.css"/>-->
+
+	<body>
+		<div class="doctorInfoBox">
+			<!--第一行信息-->
+			<div class="doctorInfoHead topBox">
+				<div class="doctorSex">
+					<div class="deptSelectBox">
+						<div class="qrm-pinming">
+							<div class="qrm-input-border">
+								<input id="doctorInfoSearchHos" class="doctorSexRight querySelect" type="text" name="specialDept" placeholder="请选择" class="qrm-input form-control required"disabled="disabled">
+							</div>
+							
+						</div>
+						<div class="choseDeptPlateBox">
+							<div class="choseDeptPlate">
+							</div>
+						</div>
+						
+					</div>
+				</div>
+
+				<!--<div class="doctorSex">
+					<span class="doctorSexLeft">科室</span>
+					<select name="" class="doctorSexRight querySelect"id="doctorInfoSearchTechOffice">
+						
+					</select>
+				</div>-->
+				<div class="doctorNanme">
+					<!--<span class="doctorNanmeLeft">用户姓名</span>-->
+					<input class="doctorNanmeRight queryContent" placeholder="用户姓名" type="text" id="doctorInfoSearchName" value="" />
+				</div>
+
+				<button class="doctorBtnCheck topBtn queryBtn"id="doctorSearchBtns">查询</button>
+				<button class="doctorBtnClear topBtn resetbtn"id="doctorSearchClearData">清空</button>
+				<button class="doctorBtnAdd topBtn" id="addBtn">新增</button>
+			</div>
+			<!--信息列表-->
+			<div class="doctorInfoList outBoxBorder">
+				<div class="tableNav">账号管理</div>
+				<ul class="doctorInfoList-ul titleList">
+					<!--<li class="doctorInfoList-all">全选</li>-->
+					<li class="doctorInfoList-code LiTextAlign boxRightBorder">序号</li>
+					<li class="doctorInfoList-id LiTextAlign boxRightBorder">用户姓名</li>
+					<li class="doctorInfoList-name LiTextAlign boxRightBorder">机构名称</li>
+					<!--<li class="doctorInfoList-sex">医院科室</li>-->
+					<li class="doctorInfoList-tel LiTextAlign boxRightBorder">联系电话</li>
+					<li class="doctorInfoList-des LiTextAlign boxRightBorder">管理机构</li>
+					<li class="LiTextAlign doctorInfooTitleCheck">操作</li>
+					<!--<li class="doctorInfoList-change LiTextAlign">修改</li>-->
+					<!--<li class="doctorInfoList-del LiTextAlign">删除</li>-->
+				</ul>
+				<!--医生信息列表内容区-->
+				<div id="doctorContentList">
+					<!--<ul class="doctorInfoDetail-ul">
+					<li class="doctorInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+					<li class="doctorInfoDetail-code"><span>1</span></li>
+					<li class="doctorInfoDetail-name"><span>天津医科大学总医院</span></li>
+					<li class="doctorInfoDetail-sex"><span>心内科</span></li>
+					<li class="doctorInfoDetail-id"><span>王医生</span></li>
+					<li class="doctorInfoDetail-tel"><span>13612345678</span></li>
+					<li class="doctorDescript"><span>副主任医师，擅长治疗心内疾病，30年临床经验</span></li>
+					<li class="doctorInfoDetail-check"><a href = "javascript:void(0)" class="btn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+					<li class="doctorInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+					<li class="doctorInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>
+				</ul>-->
+				</div>
+
+			</div>
+			<div class="clearfix"></div>
+			<!--分页-->
+			<div class="doctorpageN"></div>
+
+			<!--患者信息查询-->
+
+			<div id="doctorlight1" class="white_content">
+				<div class="white_contentHead">
+					<span class="infoTitle">账号信息查询</span>
+					<a id="close"class="close" href="javascript:void(0)" onclick="document.getElementById('doctorlight1').style.display='none';document.getElementById('fade').style.display='none'">&times;</a>
+				</div>
+				<div class="infoDetails"style="overflow: hidden;">
+					<div class="infoDetailsHead">账号信息查询</div>
+					<ul class="infoDetails-ul">
+						<!--<li><span class="infoDetails-title">用户类型：</span><input type="text" name="" id="lookDoctorInfoUserType" value="" /></li>-->
+						<li class="lookHosInfos"><span class="infoDetails-title">机构名称：</span><input type="text" name="" id="lookDoctorInfoHospName" value="医科大学总医院" /><input type="texts"class="hiddenLookDoctorInfoHospId" style="display: none;"/></li>
+						<li class="lookOfficeInfos"><span class="infoDetails-title">科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;室：</span><input type="text" name="" id="lookDoctorInfoTechOffice" value="心内科" /><input type="texts"class="hiddenLookDoctorInfoTechOId" style="display: none;"/></li>
+						<!--<li class="lookDeptInfos"><span class="infoDetails-title">部&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;门：</span><input type="text" name="" id="lookDoctorInfoDept" value="" /><input type="texts"class="hiddenLookDoctorInfoDeptId" style="display: none;"/></li>-->
+						<li><span class="infoDetails-title">用户姓名：</span><input type="text" name="" id="lookDoctorInfoUserName" value="王医生" /></li>
+						<li><span class="infoDetails-title">联系电话：</span><input type="text" name="" id="lookDoctorInfoTel" value="00000000000000" /></li>
+						<li class="lookAdminOrganize">
+							<span class="infoDetails-title lf"style="display: inline-block;height:110px;line-height: 40px;">管理机构：&nbsp;</span>
+							<div class="lookOrganize lf"id="lookOrganize"style="height:110px;width:81%;overflow-y: scroll;padding: 5px;"></div>
+						</li>
+						<li class="liBig"><span class="infoDetails-title lf">用户描述：</span><textarea type="text" name="" id="lookDoctorInfoDetail"class="lf" value="副主任医师等等" /></textarea></li>
+						<!--<li class="liBig"><span class="infoDetails-title">过敏史：</span><input type="text" name="" id="" value="冠心病，高血压，心脏病，三高，前列腺炎，胸闷气短，憋气压抑等" /></li>-->
+					</ul>
+
+				</div>
+				<!--<button id="infoDetails-close">关闭</button>-->
+				<a id="close2" href="javascript:void(0)" onclick="document.getElementById('doctorlight1').style.display='none';document.getElementById('fade').style.display='none'">关闭</a>
+			</div>
+
+			<!--删除-->
+
+			<div id="doctorlight2" class="white_content1">
+				<div class="content_header">
+					<div class="header_title">删除用户</div>
+						<div class="close">
+						<span>×</span>
+					</div>
+				</div>
+				<div class="content_middle">
+					<div class="chooseDel">
+						<div>
+							<img src="../../img/warn.png" width="55" height="48">
+							删除信息
+						</div>
+						<div>删除后不可恢复，确定要删除该信息吗？</div>
+					</div>
+					<!--<a id="close3" href="javascript:void(0)" onclick="document.getElementById('doctorlight2').style.display='none';document.getElementById('fade').style.display='none'">取消</a>-->
+					<div class="delHiddenListId"style="display: none;"></div>
+					<div class="btnGroup">
+						<button id="del-yes" class="comTempateSaveBtn">确定</button>
+					</div>
+				</div>
+				
+			</div>
+
+			<!--医生新增-->
+			<div id="doctorlight4" class="white_content">
+				<div class="white_contentHead">
+					<span class="infoTitle">用户新增</span>
+					<a id="close" class="close"href="javascript:void(0)" onclick="document.getElementById('doctorlight4').style.display='none';document.getElementById('addDoctorInfoDeptLay').style.display='none';document.getElementById('fade').style.display='none'">&times;</a>
+				</div>
+				<div class="infoDetails">
+					<div class="infoDetailsHead">用户新增信息</div>
+					<ul class="infoDetails-ul">
+						<li class="doctorSelectUserIdentity">
+							<span class="infoDetails-title">岗位名称：
+                			<select name="" style="width: 70%;height: 30px;"id="addDoctorInfoUserInfo">
+                				<option value="1"selected="selected">医生</option>
+                				<!--<option value="2">服务人员</option>-->
+                				<!--<option value="3">患者</option>-->
+                				<option value="4">村医</option>
+                			</select>
+                		</li>
+                		<li class="AddDoctorInfohospitalName"><span class="infoDetails-title">机构名称：
+                			<select name="" style="width: 70%;height: 30px;"id="addDoctorInfoHspName">
+                				<!--<option value=""></option>
+                				<option value="医院1">医院1</option>
+                				<option value="医院2">医院2</option>
+                				<option value="医院3">医院3</option>-->
+                			</select>
+                		</li>
+                		<li class="AddDoctorInfoTechOffice"><span class="infoDetails-title">科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;室：
+                			<select name="" style="width: 70%;height: 30px;"id="addDoctorInfoTechOffice">
+                				<!--<option value=""></option>
+                				<option value="科室1">科室1</option>
+                				<option value="科室2">科室2</option>
+                				<option value="科室3">科室3</option>-->
+                			</select>
+                		</li>
+                		<li class="AddDoctorInfoChoseDept">
+                			<span class="infoDetails-title">部门：</span><input type="text" name="" id="addDoctorInfoDept" value="" placeholder="点击选择部门" disabled="disabled" /><input type="text" id="addDoctorInfoDeptHiddenId" style="display: none;" />
+						</li>
+						<li><span class="infoDetails-title">用户姓名：&nbsp;</span><input type="text" name="" id="addDoctorInfoDocName" value="" /></li>
+						<li><span class="infoDetails-title">联系电话：&nbsp;</span><input type="text" name="" id="addDoctorInfoDocTel" value="" /></li>
+						<li class="adminOrganize">
+							<span class="infoDetails-title lf"style="display: inline-block;height:110px;line-height: 40px;">管理机构：&nbsp;</span>
+							<div class="addOrganize lf"id="addOrganize"style="height:110px;width:81%;overflow-y: scroll;padding: 5px;"></div>
+							<div style="width: 100%;clear: both;padding-left: 8%;">
+								<input type="checkbox" class="addCheckedAll"style="width: 15px;height: 15px;"/>全选
+							</div>
+						</li>
+						<li class="liBig">
+							<span class="infoDetails-title lf"style="display: inline-block;height:40px;line-height: 40px;">用户描述：&nbsp;</span>
+							<textarea class="addDoctorInfoDetail lf"id="addDoctorInfoDetail"style="height:40px;width:90%;"></textarea>
+						</li>
+					</ul>
+					<!--部门弹出层-->
+					<div id="addDoctorInfoDeptLay">
+						<ul class="addDoctorInfoDept1 lf">
+							<!--<li class="activeChoseDept">
+                				部门1
+                			</li>-->
+						</ul>
+						<!--<ul class="addDoctorInfoDept2 lf">
+                			<li>
+                				部门11
+                			</li>
+                		</ul>-->
+					</div>
+
+				</div>
+				<!--<a id="close4" href="javascript:void(0)" onclick="document.getElementById('doctorlight4').style.display='none';document.getElementById('fade').style.display='none'">取消</a>-->
+				<div class="btnGroup ">
+					<button id="add-ok" class="comTempateSaveBtn">确定新增</button>
+				</div>
+				
+			</div>
+
+			<!--点击按钮修改-->
+
+			<div id="doctorlight5" class="white_content">
+				<div class="white_contentHead">
+					<span class="infoTitle">用户信息修改</span>
+					<a id="close"class="close" href="javascript:void(0)" onclick="document.getElementById('changeDoctorInfoDeptLay').style.display='none';document.getElementById('doctorlight5').style.display='none';document.getElementById('fade').style.display='none'">&times;</a>
+				</div>
+				<div class="infoDetails">
+					<div class="infoDetailsHead">用户信息修改</div>
+					<ul class="infoDetails-ul">
+						<!--<li class="changeDoctorSelectUserIdentity" style="">
+							<span class="infoDetails-title">岗位名称：
+                			<select name="" style="width: 70%;height: 30px;"id="changeDoctorInfoUserInfo">
+                				<option value="1"selected="selected">医生</option>
+                				<option value="4">村医</option>
+                			</select>
+                		</li>-->
+                		<li class="changeDoctorInfohospitalName"><span class="infoDetails-title">机构名称：
+                			<select name="" style="width: 70%;height: 30px;"id="changeDoctorInfoHspName">
+                				<!--<option value=""></option>
+                				<option value="医院1">医院1</option>
+                				<option value="医院2">医院2</option>
+                				<option value="医院3">医院3</option>-->
+                			</select>
+                		</li>
+                		<li class="changeDoctorInfoTechOffice"><span class="infoDetails-title">科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;室：
+                			<select name="" style="width: 70%;height: 30px;"id="changeDoctorInfoTechOffice">
+                				<!--<option value=""></option>
+                				<option value="科室1">科室1</option>
+                				<option value="科室2">科室2</option>
+                				<option value="科室3">科室3</option>-->
+                			</select>
+                		</li>
+                		<li class="changeDoctorInfoChoseDept" style="display: none;">
+                			<span class="infoDetails-title">部&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;门：</span><input type="text" name="" id="changeDoctorInfoDept" value="" placeholder="点击选择部门" disabled="disabled" /><input type="text" id="changeDoctorInfoDeptHiddenId" style="display: none;" />
+						</li>
+						<li><span class="infoDetails-title">用户姓名：</span><input type="text" name="" id="changeDoctorInfoDocName" value="" /></li>
+						<li><span class="infoDetails-title">联系电话：&nbsp;</span><input type="text" name="" id="changeDoctorInfoDocTel" value="" /></li>
+						<li class="changeAdminOrganize">
+							<span class="infoDetails-title lf"style="display: inline-block;height:110px;line-height: 40px;">管理机构：&nbsp;</span>
+							<div class="changeOrganize lf"id="changeOrganize"style="height:110px;width:81%;overflow-y: scroll;padding: 5px;"></div>
+							<div style="width: 100%;clear: both;padding-left: 8%;">
+								<input type="checkbox" class="changeCheckedAll"style="width: 15px;height: 15px;"/>全选
+							</div>
+						</li>
+						<li class="liBig">
+							<span class="infoDetails-title lf"style="display: inline-block;height:40px;line-height: 40px;">用户描述：&nbsp;</span>
+							<textarea class="lf"id="changeDoctorInfoDetail"style="height:40px;width:90%;"></textarea>
+						</li>
+						<!--<li class="liBig"><span class="infoDetails-title lf">用户描述：&nbsp;</span><textarea type="text" name="" id="changeDoctorInfoDetail" value="" /></textarea></li>-->
+					</ul>
+					<!--部门弹出层-->
+					<div id="changeDoctorInfoDeptLay">
+						<ul class="addDoctorInfoDept1 lf">
+							<!--<li class="activeChoseDept">
+                				部门1
+                			</li>-->
+						</ul>
+						<!--<ul class="addDoctorInfoDept2 lf">
+                			<li>
+                				部门11
+                			</li>
+                		</ul>-->
+					</div>
+					<div class="changeHiddenListId"style="display: none;"></div>
+				</div>
+				<!--<button id="change-cancle">确定修改</button>-->
+
+				<!--<a id="change-cancle" href="javascript:void(0)" onclick="document.getElementById('doctorlight5').style.display='none';document.getElementById('fade').style.display='none'">取消修改</a>-->
+				<div class="btnGroup">
+					<button id="change-ok" class="comTempateSaveBtn">确定修改</button>
+				</div>
+			</div>
+
+			<!--灰背景-->
+			<div id="fade" class="black_overlay"></div>
+
+		</div>
+
+	</body>
+	<!--<script src="../../js/jQuery-jcDate.js" type="text/javascript" charset="utf-8"></script>-->
+
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/plugins/layer/layer.min.js"></script>
+	<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+	<!--<script src="../../js/content.min.js?v=1.0.0"></script>-->
+	<script src="../../js/demo/layer-demo.min.js"></script>
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="js/qrm-pinming.js"></script>-->
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/javascript">
+		//			点击搜索按钮
+		$(document).on("click", ".searching", function() {
+			var search = $("#searchBox").val().trim();
+		});
+		//		点击查询按钮
+		$(document).on("click", ".btn-check", function() {
+			var lookDoctorInfoUserTypeId=$(this).parent().parent().find('.doctorInfoType').text();
+			var lookDoctorInfoUserType;
+			var lookdoctorInfofkHospitalName=$(this).parent().parent().find(".doctorInfofkHospitalName").text();//医院名称
+			var lookdoctorInfofkSectionName=$(this).parent().parent().find(".doctorInfofkSectionName").text();//科室名称
+			var lookdoctorInfofkDeptName=$(this).parent().parent().find(".doctorInfoDetail-name").text();//部门名称
+			var lookdoctorInfofkHospitalId=$(this).parent().parent().find(".doctorInfofkHospitalId").text();//医院id
+			var lookdoctorInfofkSectionId=$(this).parent().parent().find(".doctorInfofkSectionId").text();//科室id
+			var lookdoctorInfofkDeptId=$(this).parent().parent().find(".doctorInfofkDeptId").text();//部门id
+			var lookdoctorInfoUserName=$(this).parent().parent().find(".doctorInfoDetail-id span").text();//用户名
+			var lookdoctorInfoTels=$(this).parent().parent().find(".doctorInfoDetail-tel span").text();//用户电话
+			var lookdoctorInfoDetails=$(this).parent().parent().find(".doctorDescript span").text();//医生描述
+			var doctorInfoListId=$(this).parent().parent().find('.doctorInfoListId').text();
+			localStorage.setItem("doctorInfoListId",doctorInfoListId);
+//			var adminIds=JSON.parse($(this).parent().parent().find(".hosHiddenIds").text());
+//			if($(this).parent().parent().find(".roleIds").text()!=''&&$(this).parent().parent().find(".roleIds").text()!=null){
+//				var roleIds=JSON.parse($(this).parent().parent().find(".roleIds").text());
+//				var lookOrganize=$("#lookOrganize").find(".adminHosId");
+//				for(var k=0;k<adminIds.length;k++){
+//					for(var i=0;i<lookOrganize.length;i++){
+//						
+//						if(adminIds[k]==$(lookOrganize[i]).text()){
+//							$(lookOrganize[i]).next('input').prop("checked",'checked');
+//						}
+//					}
+//				}
+//				var hasRole=0;
+//				console.log(roleIds);
+//				for(var f=0;f<roleIds.length;f++){
+//					if(roleIds[f]==10){
+//						hasRole++;
+//					}
+//				}
+//				if(hasRole>0){//10为运营人员
+//					$(".lookAdminOrganize").css("display","block");
+//				}else{
+//					$(".lookAdminOrganize").css("display","none");
+//				}
+//			}else{
+//				$(".lookAdminOrganize").css("display","none");
+//			}
+			localStorage.setItem("userJumpFrom","userJumpCheck");
+			parent.layer.open({
+			    type: 2,
+			    title: '用户查询',
+			    shadeClose: true,
+			    shade: [0.5],
+			    maxmin: true, //开启最大化最小化按钮
+			    area: ['1000px', '550px'],
+			    content: './page/doctorInfo/editUserAdmin.html'
+			});
+			
+		});
+		var chosedDeptId;
+		$(".choseDeptPlate").html('');
+		function getDeptList(pid){
+			ajaxGet('/sys/dept/getDeptList',{//等级
+				pid:pid
+			},function(data){
+//				console.log(data.resultMap.deptList);
+				if(data.status==0){
+					if(pid==0){
+						$(".choseDeptPlate").html('');
+					}
+					if(data.resultMap.deptList.length>0){
+						var html='';
+						html+='<div class="qrm-borde'+pid+' qrmBox">';
+						html+='<span style="display:none;">'+pid+'</span>';
+						html+='<ul class="qrm-lev-'+pid+' qrm-lev">';
+						$.each(data.resultMap.deptList,function(i,val){  //遍历二维数组
+		//				    console.log(val);
+							html+='<li><span class="deptName">'+val.name+'</span>';
+							html+='<span style="display:none;" class="listIds">'+val.id+'</span>';
+							html+='<i class="qrm-arrow-right"></i>';
+							html+='</li>';
+						})
+						html+='</ul>';
+						html+='</div>';
+						$(".choseDeptPlate").append(html);
+					}else{
+						console.log($(".active"));
+						var str='';
+						chosedDeptId=pid;
+						$(".active").each(function(i,thisData){
+							if(i<$(".active").length-1){
+								str+=$(this).find(".deptName").text()+'/';
+							}else{
+								str+=$(this).find(".deptName").text()
+							}
+						});
+						$("#doctorInfoSearchHos").val(str);
+						$(".choseDeptPlateBox").hide();
+						$(".qrm-pinming").css("border","1px solid #ddd");
+            			$(".qrm-pinming").css("background-image","url(images/qrm-arrow-down.png)");
+					}
+				}
+				
+				
+			});
+			
+		}
+		$(document).on("click",".qrmBox li",function(){
+					$(this).addClass("active").siblings("li").removeClass("active");
+					$(this).parent().parent().nextAll().remove();
+					getDeptList($(this).find(".listIds").text().trim());
+				});
+			$(".qrm-input-border").click(function () {
+				getDeptList('0');
+		        $(".choseDeptPlateBox").toggle();
+		    });
+		//		点击删除按钮
+		$(document).on("click", ".btn-del", function() {
+			$(".delHiddenListId").text($(this).parent().parent().find(".doctorInfoListId").text());
+			$("#doctorlight2").fadeIn();
+			$("#fade").fadeIn();
+		});
+		//		点击新增按钮
+		var selectHosId; //定义新增默认选择的医院的id;
+		var deptPid = 0; //定义新增默认选择的部门第一层pid为0
+		var deptChoseName;//新增里的默认选择的部门名称
+		$(".doctorBtnAdd").click(function() {
+//			$("#doctorlight4").fadeIn();
+//			$("#fade").fadeIn();
+//			var doctorDivIds = $("#addDoctorInfoHspName").attr("id"); //获取当前添加医生信息里医院选项的select的id
+//			//			读取医院信息
+//			readHospital(doctorDivIds);
+//			//			读取部门信息
+//			var doctorSelectDeptIds = $("#addDoctorInfoDeptLay").attr("id");
+//			readDept(doctorSelectDeptIds, deptPid);
+//			$("#addDoctorInfoDocName").val(" ");
+//			$("#addDoctorInfoDocTel").val(" ");
+	        parent.layer.open({
+				    type: 2,
+				    title: '新增',
+				    shadeClose: true,
+				    shade: [0.5],
+				    maxmin: true, //开启最大化最小化按钮
+				    area: ['1000px', '550px'],
+				    content: './page/doctorInfo/addUsersAdmin.html'
+				});
+		});
+
+		//点击修改按钮
+		var changeInfoSelectHosId; //定义新增默认选择的医院的id;
+		var changeInfodeptPid = 0; //定义新增默认选择的部门第一层pid为0
+		var changeInfodeptChoseName;//新增里的默认选择的部门名称
+		var changeInfoCurrentId;
+$(document).on("click", ".btn-change", function() {
+			var changeDoctorInfoUserTypeId=$(this).parent().parent().find('.doctorInfoType').text();
+			var changeDoctorInfoUserType;
+			var changedoctorInfofkHospitalName=$(this).parent().parent().find(".doctorInfofkHospitalName").text();//医院名称
+			var changedoctorInfofkSectionName=$(this).parent().parent().find(".doctorInfofkSectionName").text();//科室名称
+			var changedoctorInfofkDeptName=$(this).parent().parent().find(".doctorInfoDetail-name").text();//部门名称
+			var changedoctorInfofkHospitalId=$(this).parent().parent().find(".doctorInfofkHospitalId").text();//医院id
+			var changedoctorInfofkSectionId=$(this).parent().parent().find(".doctorInfofkSectionId").text();//科室id
+			var changedoctorInfofkDeptId=$(this).parent().parent().find(".doctorInfofkDeptId").text();//部门id
+			var changedoctorInfoUserName=$(this).parent().parent().find(".doctorInfoDetail-id span").text();//用户名
+			var changedoctorInfoTels=$(this).parent().parent().find(".doctorInfoDetail-tel span").text();//用户电话
+			var changedoctorInfoDetails=$(this).parent().parent().find(".doctorDescript span").text();//医生描述
+			$(".changeHiddenListId").text($(this).parent().parent().find(".doctorInfoListId").text());
+			var doctorInfoListId=$(this).parent().parent().find('.doctorInfoListId').text();
+			localStorage.setItem("doctorInfoListId",doctorInfoListId);
+			var adminIds=JSON.parse($(this).parent().parent().find(".hosHiddenIds").text());
+//			var adminIds=['44','42'];
+//			console.log('adminIds',adminIds);
+			var changeOrganize=$("#changeOrganize").find(".adminHosId");
+			if($(this).parent().parent().find(".roleIds").text()!=''&&$(this).parent().parent().find(".roleIds").text()!=null){
+				var roleIds=JSON.parse($(this).parent().parent().find(".roleIds").text());
+				for(var k=0;k<adminIds.length;k++){
+					for(var i=0;i<changeOrganize.length;i++){
+						
+						if(adminIds[k]==$(changeOrganize[i]).text()){
+							$(changeOrganize[i]).next().prop("checked",'checked');
+						}
+					}
+				}
+				if(adminIds.length==changeOrganize.length){
+					$(".changeCheckedAll").prop("checked",'checked');
+				}
+				console.log('roleIds',roleIds);
+				var hasRole=0;
+				for(var f=0;f<roleIds.length;f++){
+					if(roleIds[f]==10){
+						hasRole++;
+					}
+				}
+				if(hasRole>0){//10为运营人员
+					$(".changeAdminOrganize").css("display","block");
+				}else{
+					$(".changeAdminOrganize").css("display","none");
+				}
+			}else{
+				$(".changeAdminOrganize").css("display","none");
+			}
+			localStorage.setItem("userJumpFrom","userJumpChange");
+			parent.layer.open({
+			    type: 2,
+			    title: '修改',
+			    shadeClose: true,
+			    shade: [0.5],
+			    maxmin: true, //开启最大化最小化按钮
+			    area: ['1000px', '550px'],
+			    content: './page/doctorInfo/editUserAdmin.html'
+			});			
+		})
+		// 	新增内容里医院和部门联动
+//		$(".doctorSelectUserIdentity select").change(function() {
+//			if($(this).val() == "1"||$(this).val() == "4") {
+//				$(".AddDoctorInfohospitalName").css("display", "block");
+//				$(".AddDoctorInfoTechOffice").css("display", "block");
+//				$(".AddDoctorInfoChoseDept").css("display", "none");
+//			} else {
+//				$(".AddDoctorInfohospitalName").css("display", "none");
+//				$(".AddDoctorInfoTechOffice").css("display", "none");
+//				$(".AddDoctorInfoChoseDept").css("display", "block");
+//			}
+//		});
+		//修改信息弹框里的医院和部门联动
+//		$(".changeDoctorSelectUserIdentity select").change(function() {
+//			if($(this).val() == "1"||$(this).val() == "4") {
+//				$(".changeDoctorInfohospitalName").css("display", "block");
+//				$(".changeDoctorInfoTechOffice").css("display", "block");
+//				$(".changeDoctorInfoChoseDept").css("display", "none");
+//			} else {
+//				$(".changeDoctorInfohospitalName").css("display", "none");
+//				$(".changeDoctorInfoTechOffice").css("display", "none");
+//				$(".changeDoctorInfoChoseDept").css("display", "block");
+//			}
+//		});
+		//点击新增里的医院选择框	
+		$("#addDoctorInfoHspName").change(function() {
+			//	console.log($(this).val());
+			var currentTechOfficeSlcId = $("#addDoctorInfoTechOffice").attr("id");
+			selectHosId = $(this).val();
+			techOffice(selectHosId, currentTechOfficeSlcId);
+		});
+		//点击修改框里的医院选择框
+		$("#changeDoctorInfoHspName").change(function() {
+			//	console.log($(this).val());
+			var changecurrentTechOfficeSlcId = $("#changeDoctorInfoTechOffice").attr("id");
+			changeInfoSelectHosId = $(this).val();
+			techOffice(changeInfoSelectHosId, changecurrentTechOfficeSlcId);
+		});
+		//点击增加的部门弹框里的内容时
+		var kIndex = 1; //初始化有几个ul
+		$("#doctorlight4").on("click", "#addDoctorInfoDeptLay li", function() {
+			//	console.log($(this).val());
+			var addDoctorInfoDeptLayId = $("#addDoctorInfoDeptLay").attr("id");
+			deptPid = parseInt($(this).find(".currentDeptId").text());
+			deptChoseName = $(this).find(".currentDeptName").text();
+			$("#addDoctorInfoDeptHiddenId").val(deptPid);
+			$("#addDoctorInfoDept").val(deptChoseName);
+			//	获取当前点击的是第几层
+			var index = $("#addDoctorInfoDeptLay ul").index($(this).parent()); //判断是第几个ul
+			kIndex = index + 2;
+			if($(this).parent().next().length == 0) { //如果当前点击的ul后面没有ul添加一个，如果有就不添加
+				//		k++;
+				sessionStorage.setItem("currentUlNum", kIndex); //当前有几个ul了，重新加载页面的时候记住并添加
+				$(this).parent().after('<ul class="addDoctorInfoDept' + kIndex + ' lf"></ul>');
+			}
+			readDept(addDoctorInfoDeptLayId, deptPid, index);
+		});
+		//点击修改弹框里的部门弹框里的内容时
+		var changekIndex = 1; //初始化有几个ul
+		$("#doctorlight5").on("click", "#changeDoctorInfoDeptLay li", function() {
+			//	console.log($(this).val());
+			var changeDoctorInfoDeptLay = $("#changeDoctorInfoDeptLay").attr("id");
+			changeInfodeptPid = parseInt($(this).find(".currentDeptId").text());
+			cahngeDeptChoseName = $(this).find(".currentDeptName").text();
+			$("#changeDoctorInfoDeptHiddenId").val(changeInfodeptPid);
+			$("#changeDoctorInfoDept").val(cahngeDeptChoseName);
+			//	获取当前点击的是第几层
+			var index = $("#changeDoctorInfoDeptLay ul").index($(this).parent()); //判断是第几个ul
+			changekIndex = index + 2;
+			if($(this).parent().next().length == 0) { //如果当前点击的ul后面没有ul添加一个，如果有就不添加
+				//		k++;
+				sessionStorage.setItem("currentUlNum", changekIndex); //当前有几个ul了，重新加载页面的时候记住并添加
+				$(this).parent().after('<ul class="changeDoctorInfoDept' + changekIndex + ' lf"></ul>');
+			}
+			readDept(changeDoctorInfoDeptLay, changeInfodeptPid, index);
+		});
+		//新增里的点击除按钮和弹框以外的地方弹框消失
+		//点击新增里的选择部门
+//		$(function(){
+//		　　$(document).bind("click",function(e){
+//				$(".AddDoctorInfoChoseDept").click(function(e) {
+//					e.stopPropagation();
+//					$("#addDoctorInfoDeptLay").toggle();
+//				});
+//		　　　　//id为menu的是菜单 
+//		　　　　if($(e.target).closest("#addDoctorInfoDeptLay").length == 0 && $(e.target).closest("#addDoctorInfoDeptLay li").length == 0){
+//		　　　　//点击id为menu之外且id，则触发
+//		　　　	$("#changeDoctorInfoDeptLay").css("display", "none");
+//		　　　　}
+//		　　})
+//		})
+		$("body").click(function (e) {
+		    if (!$(e.target).closest(".AddDoctorInfoChoseDept,#addDoctorInfoDeptLay").length) {
+		        $("#addDoctorInfoDeptLay").hide();
+		    }
+		});
+		$(".AddDoctorInfoChoseDept").click(function(e) {
+				$("#addDoctorInfoDeptLay").toggle();
+		});
+		//点击修改里的选择部门
+		$("body").click(function (e) {
+		    if (!$(e.target).closest(".changeDoctorInfoChoseDept,#changeDoctorInfoDeptLay").length) {
+		        $("#changeDoctorInfoDeptLay").hide();
+		    }
+		});
+		$(document).ready(function() {
+			$(".changeDoctorInfoChoseDept").click(function(e) {
+				$("#changeDoctorInfoDeptLay").toggle();
+			});
+		});
+		//		读取医院的接口
+		function readHospital(currentSelectIds,currentName,currentTid) { //参数为外层的selcect的id
+			console.log(currentSelectIds);
+			$("#" + currentSelectIds).html('<option value="0"selected="selected">请选择</option>');
+			$.ajax({
+				type: "get",
+				url: config + "/sys/hospital/list",
+				async: false,
+				dataType: "jsonp",
+				jsonp: "jsoncallback",
+				data: {},
+				success: function(data) {
+					console.log(data);
+					if(data.status == 1) {
+						var hospitalList = data.resultMap.hospitalList;
+						for(var s = 0; s < hospitalList.length; s++) {
+							var hospitalHtml = '';
+							hospitalHtml += '<option value="' + hospitalList[s].id + '">' + hospitalList[s].name + '</option>';
+							$("#" + currentSelectIds).append(hospitalHtml);
+						}
+					}
+					selectHosId = $("#addDoctorInfoHspName").val(); //定义默认选择的医院的id;
+					console.log(selectHosId);
+					selectHosId=currentName;
+					var currentTechOfficeSlcId = $("#" + currentSelectIds).parent().parent().next().find("select").attr("id");
+					if(currentTid!=""&&currentTid!=null&&currentTid!=undefined){
+						$("#" + currentSelectIds).val(selectHosId);
+					}else{
+						$("#" + currentSelectIds).val(0);
+					}
+					techOffice(selectHosId,currentTechOfficeSlcId,currentTid);
+				},
+			});
+		}
+//		readAdminHospital();
+//		读取管理机构
+		function readAdminHospital() { //参数为外层的selcect的id
+			$("#addOrganize").html('');
+			$("#changeOrganize").html('');
+			$("#lookOrganize").html('');
+			$.ajax({
+				type: "get",
+				url: config + "/sys/hospital/list",
+				async: false,
+				dataType: "jsonp",
+				jsonp: "jsoncallback",
+				data: {},
+				success: function(data) {
+					console.log(data);
+					if(data.status == 1) {
+						var hospitalList = data.resultMap.hospitalList;
+						for(var s = 0; s < hospitalList.length; s++) {
+							var adminHospital='';
+							adminHospital+='<span class="lf"style="width:25%;display:table;height:44px;"><span style="display:none;"class="adminHosId">'+ hospitalList[s].id+'</span><input type="checkbox"style="width:15px;height:15px;float:left;margin-top:15px;"><span style="display:table-cell;height:44px;vertical-align:middle;">' +hospitalList[s].name+ '</span></span>'
+							$("#addOrganize").append(adminHospital);
+							$("#changeOrganize").append(adminHospital);
+							$("#lookOrganize").append(adminHospital);
+						}
+					}
+				},
+			});
+		}
+		//读取科室
+		function techOffice(currentSelectHosIds, currentTechSelect,currentTid) { //参数为当前选择上的医院的id和科室的select的id
+			$("#" + currentTechSelect).html('<option value="0"selected="selected">请选择</option>');
+			$.ajax({
+				type: "get",
+				url: config + "/sys/section/list",
+				async: false,
+				dataType: "jsonp",
+				jsonp: "jsoncallback",
+				data: {
+					fkHospitalId: currentSelectHosIds
+				},
+				success: function(data) {
+					console.log(data);
+					if(data.status == 1) {
+						var sectionList = data.resultMap.sectionList;
+						for(var t = 0; t < sectionList.length; t++) {
+							var techOfficeHtml = '';
+							techOfficeHtml += '<option value="' + sectionList[t].id + '">' + sectionList[t].name + '</option>';
+							$("#" + currentTechSelect).append(techOfficeHtml);
+						}
+						if(currentTid!=""&&currentTid!=null&&currentTid!=undefined){
+							$("#" + currentTechSelect).val(currentTid);
+						}else{
+							$("#" + currentTechSelect).val(0);
+						}
+					}
+				},
+			});
+		}
+
+
+		//      以下是调取接口
+		//		加载列表
+		var userId = sessionStorage.getItem('userId');
+		//		分页
+		var currentPage = 1;
+		var offsetPage = 0; //传输的页起始条数
+		var showNum = 10; //页面需要显示的条数
+		var doctoNum_pages;
+		//点击分页页数
+		$(document).delegate(".flipOver", 'click', function() {
+			$(this).addClass('active').siblings().removeClass('active');
+			currentPage = parseInt($(this).attr("pageId"));
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			doctorList();
+			window.scrollTo(0, 0);
+		});
+		//点击上一页
+		$(document).delegate("#prev", 'click', function() {
+			if($(".flipOver.active").prev().attr("id") == "prev") {
+				return true
+			} else {
+				var page = parseInt($(".flipOver.active").attr("pageid")) - 1;
+				$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+			}
+			currentPage = page;
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			doctorList();
+			window.scrollTo(0, 0);
+		});
+
+		//点击下一页
+		$(document).delegate("#Next", 'click', function() {
+			if($(".flipOver.active").next().attr("id") == "Next") {
+				return true
+			} else {
+				var page = parseInt($(".flipOver.active").attr("pageid")) + 1;
+				$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+			}
+			currentPage = page;
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			doctorList();
+			window.scrollTo(0, 0);
+		});
+			//点击分页跳转页按钮
+	    $(document).delegate(".srueToJumpPageBtn",'click',function(){
+	        currentPage = parseInt($(".toPageNum").val().trim());
+	        offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+	        doctorList();
+	        window.scrollTo(0,0);
+	    });
+		//			读取用户列表
+		var searchHospitalId="";  
+		var searchSectionId="";  
+		var searchUserName="";
+		doctorList();
+		//	获取订单列表
+		function doctorList() {
+			$("#doctorContentList").html('');
+			ajaxGet('/sys/user/getUserList', {
+				deptId:chosedDeptId,
+				//员工姓名
+				userName:searchUserName,
+				offset: offsetPage, //（页码-1）*每页显示条数
+				limit: showNum //每页赢显示的条数	
+			},function(data) {
+					console.log("此处为医生管理列表信息");
+					console.log(data);
+					var doctorinfoList = data.resultMap.userList;
+					var doclistTotal = data.resultMap.total; //总条数
+					//							var index = data.viewIndex;
+//					alert(doclistTotal);
+					doctoNum_pages = Math.ceil(parseInt(doclistTotal) / 10); //总条数除以每页十条数据为总页码
+//					alert(doctoNum_pages);
+					for(var i = 0, k = 0; i < doctorinfoList.length; i++) {
+						console.log(doctorinfoList[i].name);
+						var doctorhtml = '';
+						k++;
+						doctorhtml += '<ul class="doctorInfoDetail-ul dataList">';
+						doctorhtml += '<li class="doctorInfoListId boxRightBorder"style="display:none">' + doctorinfoList[i].id + '</li>' ;//隐藏的用户身份
+//						doctorhtml += '<li class="doctorInfoType boxRightBorder"style="display:none">' + doctorinfoList[i].type + '</li>' ;//隐藏的用户身份
+//						doctorhtml += '<li class="doctorInfofkHospitalId boxRightBorder"style="display:none">' + doctorinfoList[i].fkHospitalId + '</li>';//隐藏的医院id
+//						doctorhtml += '<li class="doctorInfofkHospitalName boxRightBorder"style="display:none">' + doctorinfoList[i].hospitalName + '</li>';//隐藏的医院名称
+//						doctorhtml += '<li class="doctorInfofkSectionId boxRightBorder"style="display:none">' + doctorinfoList[i].fkSectionId + '</li>'; //隐藏的科室id
+//						doctorhtml += '<li class="doctorInfofkSectionName boxRightBorder"style="display:none">' + doctorinfoList[i].sectionName + '</li>';//隐藏的科室名称
+//						doctorhtml += '<li class="doctorInfofkDeptId boxRightBorder"style="display:none">' + doctorinfoList[i].fkDeptId + '</li>';//隐藏的部门id
+//						doctorhtml += '<li class="doctorInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>';
+						doctorhtml += '<li class="doctorInfoDetail-code LiTextAlign boxRightBorder"><span>' + k + '</span></li>';
+						doctorhtml += '<li class="doctorInfoDetail-id LiTextAlign boxRightBorder"><span>' + doctorinfoList[i].userName + '</span></li>'; //医生姓名
+						if(doctorinfoList[i].deptName) {
+							doctorhtml += '<li class="doctorInfoDetail-name LiTextAlign boxRightBorder"><span>' + doctorinfoList[i].deptName + '</span></li>'; //组织名称为医院和科室组织的
+						} else {
+							doctorhtml += '<li class="doctorInfoDetail-name LiTextAlign boxRightBorder"><span></span></li>'; //组织名称为医院和科室组织的
+						}
+						//								doctorhtml+='<li class="doctorInfoDetail-sex"><span>'+doctorinfoList[i].fkDeptId+'</span></li>';//科室
+						if(doctorinfoList[i].mobile) {
+							doctorhtml += '<li class="doctorInfoDetail-tel LiTextAlign boxRightBorder"><span>' + doctorinfoList[i].mobile + '</span></li>'; //医生电话
+						} else {
+							doctorhtml += '<li class="doctorInfoDetail-tel LiTextAlign boxRightBorder"><span></span></li>'; //医生电话
+						}
+						
+						
+//						if(doctorinfoList[i].roleList.length){
+//							var roleIds=[];
+//							var hasRoles=0;
+//							for(var u=0;u<doctorinfoList[i].roleList.length;u++){
+//									roleIds.push(doctorinfoList[i].roleList[u].id);
+//									doctorhtml += '<li class="roleIds LiTextAlign boxRightBorder"style="display:none">' + JSON.stringify(roleIds) + '</li>'; //医生描述
+//									if(doctorinfoList[i].roleList[u].id==5){
+//										hasRoles++;
+//									}
+//							}
+//						}
+//						if(hasRoles>0){//管理员
+//							var hosIds=[];
+//							doctorhtml += '<li class="doctorchoseHos LiTextAlign boxRightBorder"><span>全部</span></li>'
+//						}else{
+							if(doctorinfoList[i].hrList.length>0) {
+								var hosIds=[];
+								doctorhtml += '<li class="doctorchoseHos LiTextAlign boxRightBorder">'
+								for(var e=0;e<doctorinfoList[i].hrList.length;e++){
+									hosIds.push(doctorinfoList[i].hrList[e].hospitalId);
+									doctorhtml += '<span>' + doctorinfoList[i].hrList[e].hospitalName + '、</span>'; //医生描述
+								}
+								doctorhtml +='<span style="display:none;" class="hosHiddenIds boxRightBorder">'+JSON.stringify(hosIds)+'</span>'
+								doctorhtml += '</li>'
+							}else{
+								var hosIds=[];
+								doctorhtml += '<li class="doctorchoseHos LiTextAlign boxRightBorder"><span style="display:none;" class="hosHiddenIds">'+JSON.stringify(hosIds)+'</span></li>'
+							}
+//						}
+						doctorhtml += '<li class="doctorDescript LiTextAlign boxRightBorder"style="display:none;">'+doctorinfoList[i].password+'</li>'
+						doctorhtml += '<li class="doctorInfoDetail-check LiTextAlign"><a href = "javascript:void(0)" class="btn-check btnTextColor"><span>查询</span></a></li>';
+						doctorhtml += '<li class="doctorInfoDetail-change LiTextAlign"><a href = "javascript:void(0)" class="btn-change btnTextColor"><span>修改</span></a></li>';
+						doctorhtml += '<li class="doctorInfoDetail-del LiTextAlign"><a href = "javascript:void(0)" class="btn-del btnTextColor"><span>删除</span></a></li>';
+						doctorhtml += '<li class="doctorInfoDetail-reset LiTextAlign"><a href = "javascript:void(0)" class="btn-reset btnTextColor"><span>恢复初始密码</span></a></li>';
+						doctorhtml += '</ul>';
+						$("#doctorContentList").append(doctorhtml);
+						var pageHtml = page(parseInt(currentPage), doctoNum_pages);
+						$(".doctorpageN").html(pageHtml);
+					}
+				});
+		}
+		//		点击确认新增
+		$("#doctorlight4 #add-ok").click(function() {
+			var userIdentity = $("#addDoctorInfoUserInfo").val() //用户身份
+			var addDoctorInfoHspName = $("#addDoctorInfoHspName").val(); //医院名
+			var addDoctorInfoTechOffice = $("#addDoctorInfoTechOffice").val(); //科室
+			var addDoctorInfoDocName = $("#addDoctorInfoDocName").val(); //医生姓名
+			var addDoctorInfoDocTel = $("#addDoctorInfoDocTel").val().trim(); //医生电话
+			var addDoctorInfoDetail = $("#addDoctorInfoDetail").val(); //医生描述
+			var addDoctorInfoChoseDept = $("#addDoctorInfoDept").val(); //获取所选部门
+			var addDoctorInfoChoseDeptId = $("#addDoctorInfoDeptHiddenId").val(); //获取选择部门id
+			var AddDoctorInfo = {}; //定义一个对象存放参数
+			console.log($("#addDoctorInfoDetail"));
+//			管理机构数组
+			var addOrganize=$("#addOrganize").find("input");
+			var addOrganizeArrStr='';
+			if(addOrganize.length>0){
+				var addOrganizeArr=[];//存放管理的数组
+				for(var p=0;p<addOrganize.length;p++){
+					if($(addOrganize[p]).prop("checked")==true){
+						addOrganizeArr.push($(addOrganize[p]).prev('.adminHosId').text());
+						addOrganizeArrStr=addOrganizeArr;
+//						addOrganizeArrStr=JSON.stringify(addOrganizeArr);
+					}
+				}
+			}else{
+				addOrganizeArrStr='';
+			}
+			
+			console.log('addOrganizeArr',addOrganizeArrStr);
+//			if(userIdentity==1||userIdentity==4){//医生
+				if(addDoctorInfoHspName==0){
+				alert("请选择医院");
+				}else if(addDoctorInfoTechOffice==0){
+					alert("请选择科室");
+				}else if(addDoctorInfoDocName==""||addDoctorInfoDocName==null){
+					alert("请输入用户名");
+				}else if(addDoctorInfoDocTel==""||addDoctorInfoDocTel==null){
+					alert("请输入联系方式");
+				}else{
+//				if(userIdentity == "1"||userIdentity == "4") {
+					AddDoctorInfo = {
+						type: userIdentity,
+						fkHospitalId: addDoctorInfoHspName,
+						fkSectionId: addDoctorInfoTechOffice,
+						userName: addDoctorInfoDocName,
+						mobile: addDoctorInfoDocTel,
+						memo: addDoctorInfoDetail,
+						hospitalIds:addOrganizeArrStr
+					}
+					console.log("aa",AddDoctorInfo);
+//			} else {
+//				AddDoctorInfo = {
+//					type: userIdentity,
+//					fkDeptId: addDoctorInfoChoseDeptId,
+//					userName: addDoctorInfoDocName,
+//					mobile: addDoctorInfoDocTel,
+//					memo: addDoctorInfoDetail
+//				}
+//			}
+					$.ajax({
+						method: 'get',
+						url: config + '/sys/user/save',
+						contentType: "application/json; charset=utf-8", //传到后台的数据格式
+						async: true,
+						data: AddDoctorInfo,
+						dataType: 'jsonp', //接收值的格式
+						jsonp: 'jsoncallback',
+						traditional: true,
+						success: function(data) {
+							console.log(data);
+							if(data.status == 1) {
+								document.getElementById('doctorlight4').style.display = 'none';
+								document.getElementById('fade').style.display = 'none';
+								alert(data.message)
+								doctorList();
+							} else {
+								alert(data.message);
+								//		window.location.reload();
+							}
+						},
+						error: function(result) {
+							console.log(result);
+						}
+					});
+				}
+//			}
+//			else{
+////				if(addDoctorInfoChoseDept==""||addDoctorInfoChoseDept==null){
+////					alert("请选择部门");
+////				}else 
+//				if(addDoctorInfoDocName==""||addDoctorInfoDocName==null){
+//					alert("请输入用户名");
+//				}else if(addDoctorInfoDocTel==""||addDoctorInfoDocTel==null){
+//					alert("请输入联系方式");
+//				}else{
+//					if(userIdentity == "1"||userIdentity == "4") {
+//					AddDoctorInfo = {
+//						type: userIdentity,
+//						fkHospitalId: addDoctorInfoHspName,
+//						fkSectionId: addDoctorInfoTechOffice,
+//						userName: addDoctorInfoDocName,
+//						mobile: addDoctorInfoDocTel,
+//						memo: addDoctorInfoDetail
+//					}
+//					} else {
+//						AddDoctorInfo = {
+//							type: userIdentity,
+//							fkDeptId: addDoctorInfoChoseDeptId,
+//							userName: addDoctorInfoDocName,
+//							mobile: addDoctorInfoDocTel,
+//							memo: addDoctorInfoDetail
+//						}
+//					}
+//					$.ajax({
+//						method: 'get',
+//						url: config + '/sys/user/save',
+//						contentType: "application/json; charset=utf-8", //传到后台的数据格式
+//						async: true,
+//						data: AddDoctorInfo,
+//						dataType: 'jsonp', //接收值的格式
+//						jsonp: 'jsoncallback',
+//						success: function(data) {
+//							console.log(data);
+//							if(data.status == 1) {
+//								document.getElementById('doctorlight4').style.display = 'none';
+//								document.getElementById('fade').style.display = 'none';
+//								alert(data.message)
+//								doctorList();
+//							} else {
+//								alert(data.message);
+//								//		window.location.reload();
+//							}
+//						},
+//						error: function(result) {
+//							console.log(result);
+//						}
+//					});
+//				}
+//			}
+		})
+		
+		//		点击确认修改
+		$("#doctorlight5 #change-ok").click(function() {
+			var changeListIds=parseInt($(".changeHiddenListId").text()); //用户id
+			var userIdentity = $("#changeDoctorInfoUserInfo").val(); //用户身份
+			var changeDoctorInfoHspName = $("#changeDoctorInfoHspName").val(); //医院名
+			var changeDoctorInfoTechOffice = $("#changeDoctorInfoTechOffice").val(); //科室
+			var changeDoctorInfoDocName = $("#changeDoctorInfoDocName").val(); //医生姓名
+			var changeDoctorInfoDocTel = $("#changeDoctorInfoDocTel").val().trim(); //医生电话
+			var changeDoctorInfoDetail = $("#changeDoctorInfoDetail").val(); //医生描述
+			var changeDoctorInfoChoseDept = $("#changeDoctorInfoDept").val(); //获取所选部门
+			var changeDoctorInfoChoseDeptId = $("#changeDoctorInfoDeptHiddenId").val(); //获取选择部门id
+			var changeDoctorInfo = {}; //定义一个对象存放参数
+			console.log(changeDoctorInfoHspName+"kkk"+changeDoctorInfoTechOffice);
+			//			管理机构数组
+			var changeOrganize=$("#changeOrganize").find("input");
+			var addOrganizeArrStr='';
+			if(changeOrganize.length>0){
+				var addOrganizeArr=[];//存放管理的数组
+				for(var p=0;p<changeOrganize.length;p++){
+					if($(changeOrganize[p]).prop("checked")==true){
+						addOrganizeArr.push($(changeOrganize[p]).prev('.adminHosId').text());
+						addOrganizeArrStr=addOrganizeArr;
+//						addOrganizeArrStr=JSON.stringify(addOrganizeArr);
+					}
+				}
+			}else{
+				addOrganizeArrStr='';
+			}
+//			if(userIdentity == "1"||userIdentity == "4") {
+				if(changeDoctorInfoHspName==0||changeDoctorInfoHspName==null||changeDoctorInfoHspName==""){
+					alert("请选择医院");
+				}else if(changeDoctorInfoTechOffice==0||changeDoctorInfoTechOffice==null||changeDoctorInfoTechOffice==""){
+					alert("请选择科室");
+				}else if(changeDoctorInfoDocName==""||changeDoctorInfoDocName==null){
+					alert("请输入用户名");
+				}else if(changeDoctorInfoDocTel==""||changeDoctorInfoDocTel==null){
+					alert("请输入联系方式");
+				}else{
+					changeDoctorInfo = {
+						id:changeListIds,
+//						type: userIdentity,
+						fkHospitalId: changeDoctorInfoHspName,
+						fkSectionId: changeDoctorInfoTechOffice,
+						userName: changeDoctorInfoDocName,
+						mobile: changeDoctorInfoDocTel,
+						memo: changeDoctorInfoDetail,
+						hospitalIds:addOrganizeArrStr
+					}
+					$.ajax({
+						method: 'get',
+						url: config + '/sys/user/update',
+						contentType: "application/json; charset=utf-8", //传到后台的数据格式
+						async: true,
+						data: changeDoctorInfo,
+						dataType: 'jsonp', //接收值的格式
+						jsonp: 'jsoncallback',
+						traditional: true,
+						success: function(data) {
+							console.log(data);
+							if(data.status == 1) {
+								document.getElementById('doctorlight5').style.display = 'none';
+								document.getElementById('fade').style.display = 'none';
+								alert(data.message)
+								doctorList();
+							} else {
+								alert(data.message);
+								//		window.location.reload();
+							}
+						},
+						error: function(result) {
+							console.log(result);
+						}
+					});
+				}
+				
+
+			
+			
+		})
+//		删除单行数据
+		$("#doctorlight2 #del-yes").click(function(){
+			var changeListIds=parseInt($(".delHiddenListId").text()); //用户id
+			ajaxGet('/sys/user/remove',{id:changeListIds},function(data) {
+					console.log(data);
+					if(data.status == 0) {
+						document.getElementById('doctorlight2').style.display = 'none';
+						document.getElementById('fade').style.display = 'none';
+						swal({
+								title: "",
+								text: data.message
+							});
+						doctorList();
+					} else {
+						swal({
+								title: "",
+								text: data.message
+							});
+						document.getElementById('doctorlight2').style.display = 'none';
+						document.getElementById('fade').style.display = 'none';
+					}
+				});
+		});
+//		重置密码
+		$(document).on("click",".btn-reset",function(){
+			var changeListIds=parseInt($(this).parent().parent().find(".doctorInfoListId").text()); //用户id
+			ajaxGet('/sys/user/resetPwd',{id:changeListIds},function(data) {
+					console.log(data);
+					if(data.status == 0) {
+						swal({
+								title: "",
+								text: data.message
+							});
+						doctorList();
+					} else {
+						swal({
+								title: "",
+								text: data.message
+							});
+					}
+				});
+		});
+		$(".close").click(function(){
+			document.getElementById('doctorlight2').style.display = 'none';
+			document.getElementById('fade').style.display = 'none';
+		});
+//	加载页面时默认加载查询条件---医院 科室 医生
+	
+//	readHospital("doctorInfoSearchHos");
+	//	点击医院的时候联动科室
+	$("#doctorInfoSearchHos").change(function(){
+		var currentDoctorInfoSearchHos=$(this).val();
+		searchHospitalId=currentDoctorInfoSearchHos;
+		doctorList();
+		techOffice(currentDoctorInfoSearchHos,"doctorInfoSearchTechOffice");
+	});
+//	点击页面查询
+	$("#doctorSearchBtns").click(function(){
+		currentPage = 1
+		searchHospitalId=$("#doctorInfoSearchHos").val();
+		searchSectionId=$("#doctorInfoSearchTechOffice").val();
+		searchUserName=$("#doctorInfoSearchName").val();
+		doctorList();
+	});
+//点击清除按钮
+	$("#doctorSearchClearData").click(function(){
+		searchHospitalId="";
+		searchSectionId="";
+		searchUserName="";
+		chosedDeptId='';
+		$("#doctorInfoSearchHos").val("");
+		$("#doctorInfoSearchTechOffice").val("");
+		$("#doctorInfoSearchName").val("");
+		doctorList();
+	});
+//	点击医生身份选择时部门弹框消失
+$("#addDoctorInfoUserInfo").click(function(){
+//	$("#addDoctorInfoDeptLay").fadeOut();
+});
+$("#addDoctorInfoUserInfo").change(function(){
+	if($(this).val()=="10"){
+		$(".adminOrganize").css("display","block");
+	}else{
+		$(".adminOrganize").css("display","none");
+	}
+});
+$("#changeDoctorInfoUserInfo").click(function(){
+//	$("#changeDoctorInfoDeptLay").fadeOut();
+});
+var sessionId=sessionStorage.getItem('sessionId');
+//读取岗位
+//readRoleList("addDoctorInfoUserInfo");
+//readRoleList("changeDoctorInfoUserInfo");
+	//		读取医院的接口
+		function readRoleList(currentSelectIds) { //参数为外层的selcect的id
+			$("#" + currentSelectIds).html('<option value="0"selected="selected">请选择</option>');			
+			$.ajax({
+				type: "get",
+				url: config + "/sys/role/list",
+				async: false,
+				dataType: "jsonp",
+				jsonp: "jsoncallback",
+				data: {sessionId:sessionId},
+				success: function(data) {
+					console.log("岗位",data);
+						var roleList = data.resultMap.roleList;
+						for(var s = 0; s < roleList.length; s++) {
+							var hospitalHtml = '';
+							hospitalHtml += '<option value="' + roleList[s].id + '">' + roleList[s].name + '</option>';
+							$("#" + currentSelectIds).append(hospitalHtml);
+						}
+				},
+			});
+		}
+//		点击新增的全选
+		$(".addCheckedAll").click(function(){
+			if($(this).prop("checked")==true){
+				var addOrganize=$("#addOrganize").find("input");
+				for(var k=0;k<addOrganize.length;k++){
+					$(addOrganize[k]).prop("checked","checked")
+				}
+			}else{
+				var addOrganize=$("#addOrganize").find("input");
+				for(var k=0;k<addOrganize.length;k++){
+					$(addOrganize[k]).prop("checked",false);
+				}
+			}
+		})
+//		点击新增的checkBox
+		$("#addOrganize").on('click','input',function(){
+				var addOrganize=$("#addOrganize").find("input");
+				var checkedLen=0;
+				for(var k=0;k<addOrganize.length;k++){
+					if($(addOrganize[k]).prop("checked")==true){
+						checkedLen++;
+					}
+					
+				}
+				if(checkedLen==addOrganize.length){
+					$(".addCheckedAll").prop("checked","checked");
+				}else{
+					$(".addCheckedAll").prop("checked",false);
+				}
+		})
+		
+		//		点击修改的全选
+		$(".changeCheckedAll").click(function(){
+			if($(this).prop("checked")==true){
+				var changeOrganize=$("#changeOrganize").find("input");
+				for(var k=0;k<changeOrganize.length;k++){
+					$(changeOrganize[k]).prop("checked","checked")
+				}
+			}else{
+				var changeOrganize=$("#changeOrganize").find("input");
+				for(var k=0;k<changeOrganize.length;k++){
+					$(changeOrganize[k]).prop("checked",false);
+				}
+			}
+		})
+//		点击修改的checkBox
+		$("#changeOrganize").on('click','input',function(){
+				var changeOrganize=$("#changeOrganize").find("input");
+				var checkedLen=0;
+				for(var k=0;k<changeOrganize.length;k++){
+					if($(changeOrganize[k]).prop("checked")==true){
+						checkedLen++;
+					}
+					
+				}
+				if(checkedLen==changeOrganize.length){
+					$(".changeCheckedAll").prop("checked","checked");
+				}else{
+					$(".changeCheckedAll").prop("checked",false);
+				}
+		})
+		//点击空白处隐藏div
+$(document).click(function(event){
+        var x1 = $('.doctorInfoHead');  // 设置目标区域
+        if($(".choseDeptPlateBox").css("display")=="block"){
+	        if(!x1.is(event.target) && x1.has(event.target).length === 0){ // Mark 1
+	        	$(".qrm-border1").hide();
+	            $(".qrm-border2").hide();
+	            $(".qrm-border3").hide();
+	            $(".choseDeptPlateBox").hide();
+	            $(".qrm-pinming").css("border","1px solid #ddd");
+	            $(".qrm-pinming").css("background-image","url(images/qrm-arrow-down.png)");
+	           //$('#divTop').slideUp('slow');  //滑动消失
+	//         $('.qrm-pinming-panel').hide(300);     //淡出消失
+	        }
+        }
+       
+   });
+	</script>
+</html>

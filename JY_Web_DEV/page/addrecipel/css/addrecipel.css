@@ -1,0 +1,122 @@
+/* 顶部内容样式 */
+.right-close-btn{
+	position: absolute;
+	right: 0.425rem;
+	overflow: hidden;
+}
+.right-close-btn .closebtn{
+	background-color: transparent;
+	border: 0;
+	font-size: 0.45rem;
+	padding-right: 0.075rem;
+	color: #2292FE;
+}
+.right-close-btn .closebtn:focus{
+	outline: none;
+}
+/* 内容样式 */
+:root{
+	height: auto !important;
+}
+body{
+	height: auto;
+}
+.content{
+	text-align: left;
+	padding-top: 0.2rem;
+}
+.content p{
+	display: flex;
+	justify-content: space-between;
+	/*padding-bottom: 0.45rem;
+	margin-left: 0.45rem;*/
+	/*margin: 40px 40px 0 40px;*/
+}
+.box{
+	margin: 40px 40px 0 40px;
+}
+.box1{
+	margin: 20px 40px 0 40px;
+}
+/*.content p{
+	border-bottom: 1px solid #EDEDED;
+}*/
+/* .content p:not(:last-of-type){
+	border-bottom: 1px solid #EDEDED;
+} */
+.content p:first-of-type span:nth-of-type(2) i{
+	font-size: 14px;
+	color: #C3C3C3;
+}
+.content p span{
+	display: block;
+}
+.content p span:nth-of-type(odd){
+	text-align: left;
+	/*text-shadow: 0 0 0.0125rem rgba(0,0,0,1)*/
+}
+.content p span:nth-of-type(even){
+	color: #727377;
+	text-align: right;
+	border: 0;
+	font-size: 14px;
+	margin-right: 18px;
+	margin-left: -65px;
+}
+.content p span:nth-of-type(even) input{
+	color: #727377;
+	text-align: left;
+	width: 300px;
+	height: 33px;
+	line-height: 33px;
+	font-size: 14px;
+	text-indent: 6px;
+	border: 1px solid #D2D2D2;
+	/*border: 0;*/
+	/* margin-right: 0.45rem; */
+}
+/*.content p span:nth-of-type(even) input:focus{
+	outline: none;
+}*/
+.remarkstitle{
+	display: flex;
+	justify-content: flex-start;
+    padding-bottom: 18px;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+/*.remarksBox{
+	display: flex;
+	justify-content: flex-start;
+    margin-left: 40px;
+    margin-right: 18px;
+}
+.remarksBox textarea{
+	width: 96%;
+	text-align: left;
+	font-size: 14px;
+}*/
+.box2{
+	margin: 20px 40px 0 40px;
+}
+.box2 textarea{
+	width: 88%;
+    margin-right: 17px;
+    text-align: left;
+    font-size: 14px;
+    text-indent: 6px;
+    height: 88px;
+    border: 1px solid #D2D2D2;
+}
+.pos{
+	margin-right: 8px !important;
+}
+.drugName{
+	margin-right: 11px;
+}
+.chemistry{
+	margin-right: -11px;
+}
+.memotitle{
+	margin-left: 32px;
+}

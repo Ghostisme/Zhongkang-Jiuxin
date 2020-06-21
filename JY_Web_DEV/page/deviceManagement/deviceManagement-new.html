@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>远程医疗管理系统-设备信息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+		<!--组件库CSS-->
+		<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!--<link rel="stylesheet" type="text/css" href="../../css/element-ui.css"/>-->
+		<!--矢量字体库-->
+		<link rel="stylesheet" type="text/css" href="../equipmentType/font/iconfont.css"/>		
+		<!-- 本页面CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/deviceManagement.css" />
+		<!-- 公共CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+	</head>
+	<body>
+		<div id="web">
+			<!--顶部搜索条-->
+			<div class="topBox subscribeListInfoHead">
+				<div class="queryForm subscribeListSex">
+					<el-input class="queryContent subscribeListNanmeRight" v-model="equipmentName_cx" id="equipmentName_cx" placeholder="设备名称"></el-input>
+				</div>
+				<div class="queryForm subscribeListNanme">
+					<el-input class="queryContent subscribeListNanmeRight" v-model="equipmentBrand_cx" id="equipmentBrand_cx" placeholder="设备型号"></el-input>
+				</div>
+				<div class="queryForm subscribeListNanme">
+					<el-input class="queryContent subscribeListNanmeRight" v-model="equipmentType_cx" id="equipmentType_cx" placeholder="设备类型"></el-input>
+				</div>
+				<div id="topSearchBtns" class="topBtn queryBtn btn" @click="queryClick">查询</div>
+				<div id="resBtn" class="topBtn resetbtn addBtn clearMargin" @click="resetClick">清空</div>
+				<div id="appointmentAddInfosBtn" class="topBtn addBtn btn" @click="addClick">新增</div>
+			</div>
+			<!--表头-->
+			<div class="tableNav">设备中心</div>
+			<!--数据表格-->
+			<div class="outBoxBorder" id="ulAppointmentList">
+				<ul class="subscribeListInfoList-ul titleList">
+					<li class="subscribeListInfoList-proposer boxRightBorder" v-for="(item, index) in titleList" :key="index" v-if="item.name != '操作'" :style="item.domStyle">{{ item.name }}</li>
+					<li class="subscribeListInfoList-proposer" v-for="(item, index) in titleList" :key="index" v-if="item.name == '操作'" :style="item.domStyle">{{ item.name }}</li>
+				</ul>
+				<ul class="subscribeListAllInfoList-ul dataList" v-for="(item, index) in dataList" :key="item.id">
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 5%;display: none;">{{ item.hospitalId }}</li>
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 5%;">{{ index | handleIndex }}</li>					
+					<!--<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 8%;">{{ item.inspectAddress }}</li>-->
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 8%;">{{ item.hospitalName }}</li>
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 8%;">{{ item.sectionName }}</li>
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 8%;">{{ item.name }}</li>
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 5%;">{{ item.equipmentTypeName }}</li>
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 5%;">{{ item.brank }}</li>
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 8%;">{{ item.model }}</li>
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 8%;">{{ item.buyTime }}</li>
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 9%;">{{ item.examinationPlace }}</li>
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 8%;">{{ item.parts }}</li>
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 8%;" v-if="item.equipmentMaintenanceCount == 0">
+						{{ item.equipmentMaintenanceCount }}
+					</li>
+					<li class="subscribeListInfoList-proposer boxRightBorder" style="width: 8%;" v-else>
+						<a href="javascript:void(0)" :data-index="index | handleIndex" :data-id="item.id" class="repair subListBtn-repair btnTextColor">
+							<span>{{ item.equipmentMaintenanceCount }}</span>
+						</a>
+					</li>
+					<li class="subscribeListInfoList-proposer" style="width: 20%;">
+						<a href="javascript:void(0)" :data-index="index | handleIndex" data-status="0" :data-id="item.id" class="subListBtn-see btnTextColor"><span>查看</span></a>
+						<a href="javascript:void(0)" style="margin-left: 30px;" :data-index="index | handleIndex" data-status="1" :data-id="item.id" class="subListBtn-search btnTextColor"><span>修改</span></a>
+						<a href="javascript:void(0)" style="margin-left: 30px;" class="deviceTime subListBtn-change btnTextColor">设备排班</a>
+						<a href="javascript:void(0)" style="margin-left: 30px;" class="status subListBtn-change btnTextColor" :id="item.id | statusId" :data-id="item.id" :data-status="item.isEnable">
+							{{ item.isEnable | equipmentState }}
+						</a>
+						<a href="javascript:void(0)" :data-id="item.id" style="margin-left: 30px;" class="subListBtn-del btnTextColor"><span>删除</span></a>
+					</li>
+				</ul>
+			</div>
+			<!--分页-->
+			<div class="doctorpageN"></div>
+			<!--点击按钮新增-->
+			<div id="subscribeListLight1" class="white_content">
+			    <div class="white_contentHead">
+			        <span class="infoTitle header_title">影像设备</span>
+			        <a id="close3" class="close" href="javascript:void(0)"
+			           onclick="document.getElementById('subscribeListLight1').style.display='none';document.getElementById('subscribeListFade').style.display='none'">&times;</a>
+			    </div>
+			    <div>
+			        <div class="infoDetails-div" id="addSubscribeList">
+			
+			        </div>
+			    </div>
+			</div>
+			<!--灰背景-->
+			<div id="subscribeListFade" class="black_overlay"></div>
+			<!--删除-->
+			<div id="subscribeListLight2" class="white_content1">
+				<div class="content_header">
+					<div class="header_title">删除</div>
+					<div class="close" onclick="document.getElementById('subscribeListLight2').style.display='none';document.getElementById('subscribeListFade').style.display='none'">
+						<span>×</span>
+					</div>
+				</div>
+			    <div class="content_middle">
+			    	<div class="chooseDel">
+						<div>
+							<img src="../../img/warn.png" width="55" height="48"/>
+							删除信息
+						</div>
+						<div>确定要删除此项吗</div>
+					</div>
+					<div class="btnGroup delGroup">
+						<button type="button" id="subscribeListDel-yes" class="subBtn subBtn3 Btn comTempateSaveBtn">确认</button>					
+					</div>
+			    </div>
+			    <input type="hidden" id="del_id" value="">
+			</div>
+			<!--修改状态-->
+			<div id="subscribeListLight4" class="white_content1">
+				<div class="content_header">
+					<div class="header_title">停用</div>
+					<div class="close" onclick="document.getElementById('subscribeListLight4').style.display='none';document.getElementById('subscribeListFade').style.display='none'">
+						<span>×</span>
+					</div>
+				</div>
+			    <div class="content_middle">
+			    	<div class="chooseDel">
+						<div>
+							<img src="../../img/warn.png" width="55" height="48"/>
+							停用信息
+						</div>
+						<div>确定要停用此项吗</div>
+					</div>
+					<div class="btnGroup delGroup">
+						<button type="button" id="subscribeListDel-yes1" class="subBtn subBtn3 Btn comTempateSaveBtn">确认</button>					
+					</div>
+			    </div>
+			    <input type="hidden" id="del_id1" value="">
+			</div>
+		</div>
+		
+		<!--组件库JS-->
+		<script type="text/javascript" src="../../js/vue.js"></script>
+		<script type="text/javascript" src="../../js/element-ui.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../js/plugins/layer/layer.min.js"></script>
+		<script src="../../js/plugins/layer/laydate/laydate5.0.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script type="text/javascript" src="../../js/deviceManagementNew.js"></script>
+		<script type="text/javascript" src="../../js/currentPage.js"></script>
+		<script type="text/javascript" src="handle.js"></script>
+	</body>
+</html>

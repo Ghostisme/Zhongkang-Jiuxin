@@ -1,0 +1,571 @@
+ul li {
+	list-style-type: none;
+}
+
+.box {
+	width: 200px;
+	/*border: 1px solid red;*/
+}
+
+ul {
+	margin-left: -10px;
+	/*border: 1px solid blue;*/
+}
+
+.menuUl li {
+	margin: 10px 0;
+	font-size: 0.75em;
+}
+
+.menuUl li span:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.menuUl {
+	overflow: hidden;
+	position: relative;
+}
+
+.menuUl li {
+	position: relative;
+}
+
+.menuUl .menuborder {
+	position: absolute;
+	border-left: 1px dashed #555555;
+	height: 100%;
+	left: 45px;
+	top: -15px;
+	width: 50px;
+}
+
+.menuUl .liborder {
+	position: absolute;
+	border-bottom: 1px dashed #555555;
+	height: 100%;
+	left: 5px;
+	top: -10px;
+	width: 20px;
+}
+
+.fa {
+	width: 41px;
+	height: 13px;
+	display: block;
+	float: left;
+}
+
+.fa-file-o {
+	background: url("../img/common/treeicon.png");
+	background-position: 0px 13px;
+}
+
+.fa-folder-open-o {
+	background: url("../img/common/treeicon.png");
+	background-position: 0px 26px;
+}
+
+.fa-folder-o {
+	background: url("../img/common/treeicon.png");
+	background-position: 0px 0px;
+}
+
+.menuUl li i {
+	margin-right: 10px;
+	top: 0px;
+	cursor: pointer;
+	color: #161616;
+	content: '\20';
+}
+
+.mainContents {
+	width: 100%;
+	overflow: hidden;
+	background: #fff;
+	display: flex;
+	justify-content: space-between;
+}
+
+.leftTree {
+	width: 25%;
+	min-height: 500px;
+	overflow: hidden;
+	background: #fff;
+	border: 1px solid #EDEDED;
+}
+
+.innerUl {
+	display: none;
+}
+
+.treeTabs {
+	overflow: hidden;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #EDEDED;
+}
+
+.hospitalTab,
+.otherTab {
+	width: 50%;
+	text-align: center;
+	background: #F6F6F6;
+	cursor: pointer;
+}
+
+.treeTabs .tabActive {
+	border-top: 1px solid #FF7410;
+	background: #fff;
+}
+
+.rightDataShow {
+	width: 74%;
+	overflow: hidden;
+	padding-right: 10px;
+}
+
+
+/*所有部门信息*/
+
+#maintenanceAllInfo {
+	display: none;
+}
+
+#hospitalsAllInfo {
+	display: none;
+}
+
+#sectionAllInfo {
+	display: none;
+}
+
+#maintenanceAllInfo,
+#hospitalsAllInfo {
+	overflow: hidden;
+}
+
+
+/*右边部门信息*/
+
+.maintenance,
+.hospitals {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	padding: 10px;
+	overflow: hidden;
+}
+
+.borderAndClass {
+	color: #018EE8;
+	padding: 10px 10px 0px 10px;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #018EE8;
+}
+
+.maintenanceInfo,
+.hospitalsInfo {
+	width: 100%;
+	overflow: hidden;
+	/*border:1px solid #ededed;*/
+}
+
+.maintenanceEveryrow,
+.hospitalsEveryrow {
+	width: 100%;
+	overflow: hidden;
+	border: 1px solid #ededed;
+	margin-top: 10px;
+	border-bottom: 0px;
+}
+
+.maintenanceEveryrow,
+.hospitalsEveryrow {
+	width: 100%;
+}
+
+.firstCols {
+	width: 15%;
+	height: 30px;
+	line-height: 30px;
+	border-right: 1px solid #EDEDED;
+	text-align: center;
+}
+
+.rows {
+	overflow: hidden;
+	/*border-bottom:0.5px solid #F5F5F5;*/
+}
+
+/*.rows:nth-child(even) {
+	background: #F6F6F6;
+}*/
+
+.modelRow {
+	overflow: hidden;
+	border-bottom: 1px solid #EDEDED;
+}
+
+.twoCols {
+	width: 18%;
+	height: 30px;
+	line-height: 30px;
+	border-right: 1px solid #EDEDED;
+}
+
+.OperationState.twoCols,
+.hospitalOperationState.twoCols {
+	border: 0;
+}
+
+.longRow {
+	width: 84%;
+	height: 30px;
+	line-height: 30px;
+	/*border-right:1px solid #EDEDED;*/
+}
+
+.divideEquallyRow {
+	width: 24.9%;
+	height: 30px;
+	line-height: 30px;
+	border-right: 1px solid #EDEDED;
+	text-align: center;
+}
+
+.lastCols {
+	border: 0px;
+}
+
+.newMaintenance {
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.newMaintenance .newBtn {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	background: #7C90C5;
+	color: #fff;
+	margin: 0 auto;
+	cursor: pointer;
+}
+.newSubordinateBtn{
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	background: #E5ECFE;
+	border:1px solid #7C90C5;
+	color: #51659B;
+	margin: 0 auto;
+	margin-left: 20px;
+	cursor: pointer;
+}
+.delCurrentHosBtn,
+.delCurrentDeptBtn {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	/*background: #ECECEC;*/
+	border:1px solid #7C90C5;
+	color: #51659B;
+	margin: 0 auto;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+.model {
+	background: #000;
+	opacity: 0.5;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 888;
+}
+
+
+/*部门信息弹框*/
+
+#hospitalModels,
+#deptModels {
+	width: 40%;
+	/*height:500px;*/
+	background: #fff;
+	position: absolute;
+	top: 20%;
+	left: 30%;
+	z-index: 8888;
+	padding-bottom: 40px;
+}
+
+.changeInfoTitle {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 18px;
+	background: #1B79B6;
+	color: #fff;
+}
+
+.closeModel {
+	margin-top: 0px;
+	margin-right: 10px;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.ModelfirstCols {
+	width: 19%;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-right: 1px solid #EDEDED;
+}
+
+.ModelFourCols {
+	width: 30%;
+	height: 40px;
+	line-height: 40px;
+	border-right: 1px solid #EDEDED;
+}
+
+.modelTitles {
+	background: #F9F2F4;
+}
+
+.ModelFourCols input,
+.ModelFourCols select {
+	width: 100%;
+	height: 100%;
+	outline: none;
+	border: 0;
+	padding-left: 10px;
+}
+
+.modelLongStyle {
+	width: 80%;
+	height: 40px;
+	line-height: 40px;
+}
+
+.modelLongStyle select {
+	width: 30%;
+	height: 80%;
+	margin-left: 20px;
+	outline: none;
+}
+
+.modelLongStyle input {
+	width: 100%;
+	height: 100%;
+	outline: none;
+	border: 0;
+	padding-left: 10px;
+}
+
+.Modelremark {
+	height: 90px;
+	line-height: 90px;
+}
+
+.modelRemarks,
+.addModelRemarks {
+	width: 100%;
+	height: 83px;
+}
+
+
+/*模态框取消和修改*/
+
+.cancelAndChangeBtn {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.cancelAndChangeBtn .cancelBtn {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	background: #7C90C5;
+	color: #000;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.cancelAndChangeBtn .changeBtn {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	background: #ECECEC;
+	color: #000;
+	margin: 0 auto;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+#deptModels,
+#hospitalModels,
+.model,
+#changeHospitalModels,
+#AddHospitalModels,
+#changeDeptModels,
+#AddDeptModels {
+	display: none;
+}
+
+.hosOneUl {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	margin: 0;
+}
+
+.hosOneUl>li {
+	padding: 10px;
+}
+
+.hosOneUl>li:nth-child(odd) {
+	width: 15%;
+	/*border-right: 1px solid #ECECEC;*/
+}
+
+.hosOneUl>li:nth-child(even) {
+	width: 37%;
+}
+
+.hosOneUl>li:nth-child(2) {
+	/*border-right: 1px solid #ECECEC;*/
+}
+
+.hosTowUl {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	margin: 0;
+}
+
+.hosTowUl>li {
+	padding: 10px;
+	/*border-right: 1px solid #ECECEC;*/
+}
+
+.hosTowUl>li:nth-child(odd) {
+	width: 10%;
+}
+
+.hosTowUl>li:nth-child(even) {
+	width: 40%;
+}
+
+.hosThreeUl {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	margin: 0;
+}
+
+.hosThreeUl>li {
+	padding: 10px;
+	border-right: 1px solid #ECECEC;
+	width: 25%;
+}
+
+.df {
+	display: flex;
+}
+
+#allmap {
+	width: 100%;
+	height: 400px;
+	overflow: hidden;
+	text-align: center;
+	margin: 0 auto;
+	font-family: "微软雅黑";
+}
+
+.glyphicon-stop:before {
+	display: none;
+}
+
+.glyphicon-minus:before,
+.glyphicon-plus:before {
+	font-size: 12px;
+}
+
+.treeLeft {
+	padding-left: 10px;
+}
+
+.treeRight {
+	padding-right: 0px;
+	margin-top: 40px;
+}
+.ibox-content{
+	padding-top: 0px;
+	border: 0px;
+}
+#treeview4 ul{
+	max-height: 500px;
+	overflow-y: scroll;
+	
+}
+.node-treeview4{
+	font-size: 12px;
+}
+.orgnizeTitleBg{
+	background: rgba(234,237,243,1);
+	border-bottom: 0.5px solid #e1e1e1;
+	border-right:  0.5px solid #e1e1e1;
+	border-left:  0.5px solid #e1e1e1;
+	font-size: 12px;
+}
+.orgnizeTextBg{
+	border-bottom: 0.5px solid #F5F5F5;
+}
+.form-group{
+	margin-bottom: 25px;
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    /* width: 65px; */
+    height: 30px;
+    background: #E6E9F6;
+    border: 1px solid #4977E8;
+}
+#cityName,#searchName{
+	height: 30px;
+}
+.mapSearchBox{
+	margin-bottom: 19px;
+}
+#doctorSearchBtns{
+	margin:0px 10px;
+}
+#addNewBtn{
+	display: none;
+}
+.inmodal .modal-body{
+	background: #FFF;
+}
+.modal-footer{
+	border: 0px solid transparent;
+}
+.sweet-alert{
+	margin-left: -242px;
+}

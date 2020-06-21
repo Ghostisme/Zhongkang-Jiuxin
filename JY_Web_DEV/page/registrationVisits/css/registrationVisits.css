@@ -1,0 +1,299 @@
+body{
+	height: auto;
+}
+/*内容样式*/
+/*.essential{
+	margin-top: 6px;
+	text-align: left;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #EDEDED;
+}*/
+/*.essential img{
+	border-radius: 50%;
+	margin-left: 18px;
+}*/
+/*.essential .formBox{
+	display: flex;
+	justify-content: space-between;
+	padding: 14px 18px;
+}
+.essential .formBox p{
+	display: flex;
+	margin: 0;
+}
+.essential .formBox p span:nth-of-type(1){
+	margin: 2px 10px 0 0;
+}
+.essential .formBox p span:nth-of-type(2) input{
+	text-align: left;
+}
+.essential .IDcard{
+	display: flex;
+	justify-content: flex-start;
+	padding: 14px 0 14px 18px;
+}
+.essential .IDcard span:nth-of-type(1){
+	margin: 2px 10px 0 0;
+}
+.essential .IDcard span:nth-of-type(2){
+	width: 84%;
+}
+.essential .IDcard span:nth-of-type(2) input{
+	width: 100%;
+	text-align: left;
+	padding-left: 0;
+}
+.essential .formBox p span:nth-of-type(1).agePos{
+	margin-right: 24px;
+}*/
+/* 内容样式 */
+/*.wrapper{
+	background-color: #f5f5f5;
+}
+.wrapper>div{
+	background-color: #FFFFFF;
+}*/
+/*.essential{
+	text-align: center;
+	margin-top: 0.15rem;
+	border-bottom: 0.425rem solid #f5f5f5;
+}
+.essential img{
+	width: 1.9rem;
+	height: 1.775rem;
+	margin-left: 0.45rem;
+	border-radius: 6px;
+}*/
+/* 基本信息内容盒子 */
+/*.essential div{
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 0.35rem;
+	padding-left: 0.45rem;
+	margin-top: 0.35rem;
+    margin-bottom: 0;
+}
+.essential div:last-of-type{
+	border-bottom: 1px solid #EDEDED;
+}*/
+/*.essential p:first-of-type span:nth-of-type(2) i{
+	font-size: 0.45rem;
+	color: #C3C3C3;
+}*/
+/* .essential p:last-of-type{
+	margin-bottom: 0.3rem;
+} */
+/*.essential p span{
+	display: block;
+}
+.essential p span:nth-of-type(odd){
+	text-align: left;
+	font-size: 0.45rem;
+}
+.essential p span:nth-of-type(even){
+	color: #727377;
+	text-align: right;
+	margin-right: 0.45rem;
+	font-size: 0.45rem;
+}*/
+/* 内容底部样式及确定按钮 */
+/*.content-footer .contentFooterBox{
+	padding: 0.3rem 0.45rem 1.325rem;
+}
+.content-footer .contentFooterBox p{
+	text-align: left;
+	margin: 0;
+}
+.content-footer .contentFooterBox p span{
+	color: #707072;
+	font-size: 0.45rem;
+	line-height: 1rem;
+}
+.content-footer .contentFooterBtn{
+	margin: 0 0.45rem 0.15rem 0.45rem;
+}
+.content-footer .contentFooterBtn .submitbtn{
+	background-color: #2292FE;
+	white-space: nowrap;
+	width: 100%;
+	padding: 0.15rem 0;
+	border: 0;
+	color: #FFFFFF;
+	border-radius: 0.075rem;
+}*/
+/* .contentFooterBtn{
+	margin: 0 0.45rem;
+	position: fixed;
+	bottom: 0.65rem;	
+}
+.contentFooterBtn .sumbitbtn{
+	background-color: #2292FE;
+	white-space: nowrap;
+	padding: 0.425rem 4.3rem;
+	border: 0;
+	color: #FFFFFF;
+	border-radius: 0.075rem;
+} */
+
+/*input输入样式*/
+/*.essential p span input{
+	border: 0;
+	text-align: right;
+	font-size: 0.45rem;
+}
+.essential p span input:focus{
+	outline: none;
+}
+.essential p span .active{
+	color: #2292FE;
+}
+.essential p:nth-of-type(3) span:nth-of-type(2){
+	color: #000000;
+}*/
+/*.essential p span i{
+	padding-right: 0.15rem;
+}*/
+/*.essential p:nth-of-type(3) span:nth-of-type(2) span{
+	display: inline-block;
+	margin-right: 0;
+}
+.wrapper .buttonBox{
+	margin: 0 0.45rem 0.15rem 0.45rem;
+}
+.wrapper .buttonBox button{
+	background-color: #2292FE;
+	border: 0;
+	color: #FFFFFF;
+	white-space: nowrap;
+	width: 100%;
+	padding: 0.15rem 0;
+	border-radius: 0.075rem;
+}
+.wrapper .buttonBox button:focus{
+	outline: none;
+}*/
+
+.wrapper{
+	min-width: 727px;
+}
+.formBox>div{
+	display: flex;
+	justify-content: space-between;
+	margin: 40px 40px 20px 40px;
+	/*padding-bottom: 0.45rem;
+	margin-left: 0.45rem;*/
+}
+.formBox>div .itemBox{
+	width: 40%;
+	display: flex;
+	justify-content: space-between;
+	min-width: 200px;
+}
+.formBox>div .itemBox .errormsg{
+	width: 70%;
+}
+.formBox>div .textBox{
+	/*padding-right: 22px;*/
+}
+.formBox>div span:nth-of-type(odd){
+	text-align: right;
+	margin-top: 6px;
+	/*text-shadow: 0 0 0.0125rem rgba(0,0,0,1)*/
+}
+.formBox>div span:nth-of-type(even){
+	/*color: #727377;
+	text-align: right;
+	border: 0;
+	font-size: 0.45rem;
+	margin-right: 0.45rem;*/
+	color: #727377;
+	text-align: right;
+	border: 0;
+	font-size: 14px;
+	margin-right: 18px;
+	/*margin-left: -65px;*/
+	margin-left: -1px;
+}
+.formBox>div span:nth-of-type(even) *{
+	/*color: #727377;
+	text-align: right;
+	font-size: 0.45rem;
+	border: 0;*/
+	/* margin-right: 0.45rem; */
+	color: #727377;
+	text-align: left;
+	/* width: 190px; */
+	width: 100%;
+	height: 33px;
+	line-height: 33px;
+	font-size: 14px;
+	text-indent: 6px;
+	border: 1px solid #D2D2D2;
+}
+.formBox1>div{
+	display: flex;
+	justify-content: space-between;
+	margin: 40px 40px 20px 40px;
+	/*padding-bottom: 0.45rem;
+	margin-left: 0.45rem;*/
+}
+.formBox1>div .itemBox{
+	width: 50%;
+	display: flex;
+	min-width: 337px;
+	/* justify-content: flex-start; */
+}
+.formBox1>div .itemBox:nth-of-type(1){
+	justify-content: flex-start;
+}
+.formBox1>div .itemBox:nth-of-type(2){
+	justify-content: flex-end;
+}
+.formBox1>div .itemBox .errormsg{
+	width: 70%;
+}
+.formBox1>div span:nth-of-type(odd){
+	text-align: right;
+	margin-top: 6px;
+	/*text-shadow: 0 0 0.0125rem rgba(0,0,0,1)*/
+}
+.formBox1>div span:nth-of-type(even){
+	/*color: #727377;
+	text-align: right;
+	border: 0;
+	font-size: 0.45rem;
+	margin-right: 0.45rem;*/
+	color: #727377;
+	text-align: right;
+	border: 0;
+	font-size: 14px;
+	margin-right: 18px;
+	/*margin-left: 5%;*/
+	/*margin-left: 1.2%;*/
+	margin-left: 3%;
+}
+.formBox1>div span:nth-of-type(even) *{
+	/*color: #727377;
+	text-align: right;
+	font-size: 0.45rem;
+	border: 0;*/
+	/* margin-right: 0.45rem; */
+	color: #727377;
+	text-align: left;
+	/* width: 347px; */
+	height: 33px;
+	line-height: 33px;
+	font-size: 14px;
+	text-indent: 6px;
+	border: 1px solid #D2D2D2;
+}
+
+.contentFooterBox p{
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+	margin: 35px 40px;
+}
+/* .overBtn{
+	display: none;
+} */

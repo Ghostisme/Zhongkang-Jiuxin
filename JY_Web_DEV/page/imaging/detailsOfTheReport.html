@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>报告查询管理</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<!--<link rel="stylesheet" type="text/css" href="../../css/foundation.min.css"/>-->
+	<link href="../../css/foundation-datepicker.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+	<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../../css/reportQuery.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/calendar.css" />
+	<link href="../../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../../css/layerCommonStyle.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+	<link rel="stylesheet" href="../../css/bootstrap-select.min.css" />
+	<style>
+		.doctorAdvice img {
+			width: 278px;
+			height: 278px;
+			margin-right: 3.5%;
+			/*margin-bottom: 20px;*/
+			border: 1px solid #E2E3E3;
+			cursor: pointer;
+		}
+		
+		.doctorAdvice {
+			height: auto;
+			display: none;
+		}
+		
+		#J_pg {
+			z-index: 88888;
+		}
+		
+		.delImgAll span {
+			cursor: pointer;
+			font-size: 1.25em;
+			background: #1B1B1B;
+			opacity: 0.5;
+			color: #fff;
+			border-bottom-left-radius: 13px;
+		}
+		
+		.delImgAll span:hover {
+			background: #1B1B1B;
+			opacity: 0.5;
+			color: #fff;
+		}
+		
+		#datepicker .queryContent {
+			font-size: 12px;
+			text-align: left;
+		}
+		.queryHos .bootstrap-select{
+			padding: 0px!important;
+		}
+		.queryHosContent option{
+			visibility: hidden;
+		}
+		input {
+			border-radius: 0px !important;
+		}
+		
+		@media screen and (max-width: 1300px) {
+			.queryContent {
+				width: 120px !important;
+			}
+			.ios-border {
+				appearance: none;
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				/*在选择框的最右侧中间显示小箭头图片*/
+				background: url(../../img/select.png) no-repeat scroll right center transparent;
+				background-size: 6px 8px;
+				background-origin: content-box;
+				/*为下拉小箭头留出一点位置，避免被文字覆盖*/
+				padding-right: 11px;
+			}
+		}
+	</style>
+
+	<body>
+		<div class="reportQueryInfoBox">
+			<!--第一行信息-->
+			<div class="reportQueryInfoHead topBox" style="overflow: initial !important;">
+				<div class="reportQueryNanme">
+					<!--<span class="reportQueryNanmeLeft">患者姓名</span>-->
+					<input class="reportQueryNanmeRight queryContent" type="text" id="reportQueryName" value="" placeholder="患者姓名" />
+				</div>
+				<div class="checkNumber">
+					<!--<span class="reportQuerycheckNumberLeft">查询号</span>-->
+					<input class="reportQuerycheckNumberRight queryContent" type="text" id="checkNumber" value="" placeholder="检查号" />
+				</div>
+				<div class="reportQueryID">
+					<!--<span class="reportQueryIDLeft">身份证号</span>-->
+					<input type="text" id="idCode" value="" class="reportQueryIDright queryContent" placeholder="身份证号" />
+				</div>
+				<div class="queryHos lf" >
+					<!--<span class="reportQueryIDLeft">医院</span>-->
+					<select name="" class="queryHosContent reportQueryIDright queryContent ios-border selectpicker" id="reviewStatus" data-live-search="true">
+						<option value="">选择医院</option>
+					</select>
+				</div>
+				<div class="queryTime lf">
+					<div class="form-group">
+						<div class="lf input-daterange" id="datepicker">
+							<input placeholder="检查开始日期" class="layer-date reportQueryIDright queryContent" id="start" style="width: 110px;padding-left: 10px;">
+							<input placeholder="检查结束日期" class="layer-date reportQueryIDright queryContent" id="end" style="width: 110px;padding-left: 10px;    margin-left: 24px;">
+						</div>
+					</div>
+				</div>
+				<button class="reportQueryBtnCheck topBtn queryBtn" id="reportQuerySearchBtns">查询</button>
+				<button class="reportQueryBtnClear topBtn resetbtn" id="reportQuerySearchClearBtn">清空</button>
+			</div>
+			<div class="tableNav">报告查询</div>
+			<!--信息列表-->
+			<div class="reportQueryInfoList outBoxBorder">
+				<ul class="reportQueryInfoList-ul titleList">
+					<!--<li class="reportQueryInfoList-all">全选</li>-->
+					<li class="reportQueryInfoList-code LiTextAlign boxRightBorder">序号</li>
+					<li class="reportQueryInfoList-name LiTextAlign boxRightBorder">患者姓名</li>
+					<li class="reportQueryInfoList-sex LiTextAlign boxRightBorder">性别</li>
+					<li class="reportQueryInfoList-sex LiTextAlign boxRightBorder">年龄</li>
+					<li class="reportQueryInfoList-sex LiTextAlign boxRightBorder">检查号</li>
+					<li class="reportQueryInfoList-tel LiTextAlign boxRightBorder">申请时间</li>
+					<li class="reportQueryInfoList-id LiTextAlign boxRightBorder">检查日期</li>
+					<li class="reportQueryInfoList-history LiTextAlign boxRightBorder" style="width: 7%;">检查类型</li>
+					<li class="reportQueryInfoList-circ LiTextAlign boxRightBorder" style="width: 7%;">报告状态</li>
+					<!--<li class="reportQueryInfoList-circ LiTextAlign"style="width: 7%;">使用者</li>
+				<li class="reportQueryInfoList-circ LiTextAlign"style="width: 7%;">医院名称</li>-->
+					<li class="reportQueryInfoList-allergic LiTextAlign" style="width: 10%">图像状态</li>
+					<!--<li class="reportQueryInfoList-circ LiTextAlign"style="width: 7%;">申请医生</li>
+				<li class="reportQueryInfoList-oparate LiTextAlign">操作</li>-->
+				</ul>
+				<!--列表内容-->
+				<input type="text" style="display: none;" id="formUserId" />
+				<input type="text" style="display: none;" id="formSessionId" />
+				<input type="text" style="display: none;" />
+				<div id="reportQueryInfoContents">
+					<!--<ul class="reportQueryInfoDetail-ul">
+						<li class="reportQueryInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+						<li class="reportQueryInfoDetail-code"><span>1</span></li>
+						<li class="reportQueryInfoDetail-name"><span>某某某</span></li>
+						<li class="reportQueryInfoDetail-sex"><span>男</span></li>
+						<li class="reportQueryInfoDetail-id"><span>120105198506891157</span></li>
+						<li class="reportQueryInfoDetail-tel"><span>13612345678</span></li>
+						<li class="reportQueryInfoDetail-history"><span>糖尿病</span></li>
+						<li class="reportQueryInfoDetail-allergic"><span>无过敏史</span></li>
+						<li class="reportQueryInfoDetail-circ"><a href = "javascript:void(0)" class="btn-circ"><img src="../../img/common/1.jpg"/></a></li>
+						<li class="reportQueryInfoDetail-check"><a href = "javascript:void(0)" class="reportQueryBtn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+						<li class="reportQueryInfoDetail-change"><a href = "javascript:void(0)" class="reportQueryBtn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+						<li class="reportQueryInfoDetail-del"><a href = "javascript:void(0)" class="reportQueryBtn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>
+					</ul>-->
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<!--分页-->
+			<div class="reportQuerypageN"></div>
+			<!--灰背景-->
+			<div id="reportQueryFade" class="black_overlay"></div>
+			<div id="reportQueryFadeUpload" class="black_overlay"></div>
+			<div id="uploadingImg" style="display: none;text-align: center;"><img src="../../css/plugins/blueimp/img/loading.gif" alt="" style="width:40px;height:40px;" />上传中......</div>
+		</div>
+
+	</body>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+	<script src="../../js/plugins/layer/layer.min.js"></script>
+	<script src="../../js/demo/layer-demo.min.js"></script>
+	<script src="../../js/foundation-datepicker.js"></script>
+	<script src="../../js/foundation-datepicker.min.js"></script>
+	<script src="../../js/plugins/layer/laydate/laydate.js"></script>
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+	<script src="../../js/bootstrap.min.js?v=3.3.5" ></script>
+	<script type="text/javascript" src="../../js/bootstrap-select.min.js"  ></script>
+	<!--<script src="jquery-photo-gallery/jquery.js"></script>-->
+	<!--<script src="jquery-photo-gallery/jquery.photo.gallery.js"></script>-->
+	<script type="text/javascript">
+		//  获取用户id       
+		var userId = sessionStorage.getItem('userId');
+		var sessionId = sessionStorage.getItem('sessionId');
+		$(function() {
+			$("#datepicker").datepicker({
+				keyboardNavigation: !1,
+				forceParse: !1,
+				autoclose: !0
+			});
+		})
+		//		点击图像查看按钮
+		$("#reportQueryInfoContents").on("click", ".reportQueryBtn-check", function() {
+			//			获取页面当行信息
+			var currentLineIds = $(this).parent().parent().find(".reportQueryInfoDetail-lineId").text();
+			localStorage.setItem("reportQueryId", currentLineIds);
+			
+			parent.layer.open({
+				type: 2,
+				title: '影像',
+				shadeClose: true,
+				shade: [0.5],
+				maxmin: true, //开启最大化最小化按钮
+				area: ['1150px', '650px'],
+				content: 'https://cloudimage.zk9y.com/JYDicomBrowser/Home/Index?IDType=0&id=' + currentLineIds
+			});
+		});
+		//		点击用户名跳转到用户报告单页面
+		//		点击查询按钮
+		$("#reportQueryInfoContents").on("click", ".jumpUserReportInfo", function() {
+			//			获取页面当行信息
+			var currentLineIds = $(this).parent().find(".reportQueryInfoDetail-lineId").text();
+			localStorage.setItem("reportQueryInfoDetailId", currentLineIds);
+			RefreshIframe('page/imaging/ImagingDiagnosisReport.html', 'reportQueryInfoDetailId');
+			//			RefreshIframe('page/imaging/detailsOfTheReport.html','reportQueryInfoDetailId');
+			//			$("#btnLogin").click();
+		});
+		//时间戳转时间方法
+		function formatDateTime(timeStamp) {
+			var date = new Date(parseInt(timeStamp));
+			Y = date.getFullYear();
+			M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+			D = date.getDate();
+			h = date.getHours() + ':';
+			m = date.getMinutes() + ':';
+			s = date.getSeconds();
+			return Y + '-' + M + '-' + D;
+		};
+		//	点击清空
+		$("#reportQuerySearchClearBtn").click(function () {
+		$("#reportQueryName").val("");  //患者姓名
+		$("#checkNumber").val(""); //检查号
+		$("#idCode").val(""); //身份证号
+		$("#reviewStatus").val("");
+		$("#start").val("");
+		$("#end").val("");
+		 $(".reportQuerypageN").hide();
+		getreportQueryList();
+		});
+		//	获取订单列表
+		function getreportQueryList() {
+			$("#reportQueryInfoContents").html('');
+			var hosipitalName = $("#reviewStatus").val();
+			console.log(hosipitalName)
+			ajaxGet('/img/browse/getExamInfo', {
+				hospital: hosipitalName,
+				IDCard: idCode, 
+				beginTime: startTime,
+				endTime: endTime,
+				pName: reportQueryName,
+				checkNumber: checkNumber,
+				pageIndex: currentPage,
+				pageSize: 10,
+			}, function(data) {
+				console.log(data);
+				var patinfoList = data.ResultData;
+				if(patinfoList != "" && patinfoList != null) {
+					patinfoList = JSON.parse(patinfoList);
+					console.log("patinfoList:::", patinfoList);
+					var listTotal = patinfoList[0].TotalCount; //总条数
+					var index = data.viewIndex;
+					num_pages = Math.ceil(parseInt(listTotal) / 10); //总条数除以每页十条数据为总页码
+					console.log("patinfoList:::", patinfoList);
+					if(patinfoList.length > 0) {
+						 $(".reportQuerypageN").show();
+						console.log(patinfoList);
+						for(var i = 0, k = 0; i < patinfoList.length; i++) {
+							var pathtml = '';
+							k++;
+							pathtml += '<ul class="reportQueryInfoDetail-ul dataList">';
+							pathtml += '<li class="reportQueryInfoDetail-lineId boxRightBorder" style="display:none">' + patinfoList[i].ExamID + '</li>';
+							//								pathtml+='<li class="reportQueryInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>';	
+							pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder"><span>' + k + '</span></li>';
+							pathtml += '<li class="reportQueryInfoDetail-name LiTextAlign jumpUserReportInfo boxRightBorder"><span><a class="jumpUserReport"style="cursor:pointer;">' + patinfoList[i].PName + '</a></span></li>';
+							pathtml += '<li class="reportQueryInfoDetail-sex LiTextAlign boxRightBorder"><span>' + patinfoList[i].Sex + '</span></li>';
+							pathtml += '<li class="reportQueryInfoDetail-sex LiTextAlign boxRightBorder"><span>' + patinfoList[i].Age + '</span></li>';
+							pathtml += '<li class="reportQueryInfoDetail-sex LiTextAlign boxRightBorder"><span>' + patinfoList[i].CheckNumber + '</span></li>';
+							pathtml += '<li class="reportQueryInfoDetail-tel LiTextAlign boxRightBorder"><span>' + patinfoList[i].SubmitTime + '</span></li>'; //申请时间
+							pathtml += '<li class="reportQueryInfoDetail-id LiTextAlign boxRightBorder"><span>' + patinfoList[i].PhotoDate + '</span></li>'; //检查日期
+							pathtml += '<li class="reportQueryInfoDetail-birthday LiTextAlign boxRightBorder"style="width:7%;"><span>' + patinfoList[i].ExamMethod + '</span></li>'; //设备类型
+							pathtml += '<li class="reportQueryInfoDetail-Addr LiTextAlign boxRightBorder"style="width:7%;"><span>' + patinfoList[i].RptFlag + '</span></li>'; //报告状态
+							//									pathtml+='<li class="reportQueryInfoDetail-Addr LiTextAlign"style="width:7%;"><span>'+patinfoList[i].address+'</span></li>';
+							//									pathtml+='<li class="reportQueryInfoDetail-Addr LiTextAlign"style="width:7%;"><span>'+patinfoList[i].address+'</span></li>';
+							pathtml += '<li class="reportQueryInfoDetail-oparate LiTextAlign"style="text-align:left;width:11%"><a href = "javascript:void(0)"id="ImageCheck"class="J_menuItem reportQueryBtn-check btnTextColor"><span>图像查看</span></a></li>';
+							pathtml += '</ul>';
+							$("#reportQueryInfoContents").append(pathtml);
+							var pageHtml = page(parseInt(currentPage), num_pages);
+							$(".reportQuerypageN").html(pageHtml);
+						}
+					}
+				}
+			})
+		}
+
+		var reportQueryName = '';
+		var checkNumber = '';
+		var idCode = '';
+		var choseHos = '';
+		var startTime = '';
+		var endTime = '';
+		$("#reportQuerySearchBtns").click(function() {
+			currentPage = 1;
+			offsetPage = 0;
+			reportQueryName = $("#reportQueryName").val();
+			checkNumber = $("#checkNumber").val();
+			idCode = $("#idCode").val();
+			choseHos = $(".queryHosContent").find("option:selected").text();
+			startTime = $("#start").val();
+			endTime = $("#end").val();
+			console.log(reportQueryName);
+			console.log(checkNumber);
+
+			if(choseHos == "选择医院") {
+				swal({
+					title: '',
+					text: "请选择医院！"
+				});
+			} else {
+				getreportQueryList();
+			}
+		});
+
+		LoadreadHospitalBooking();
+		//	 获取医院列表
+		function LoadreadHospitalBooking() {
+			$(".queryHosContent").html('<option value="">选择医院</option>');
+			ajaxGet('/img/browse/getHospitals', {}, function(data) {
+				console.log(data);
+				if(data.ResultCode == 1) {
+					var hospitalList = data.ResultData;
+					hospitalList = JSON.parse(hospitalList);
+					console.log(hospitalList);
+					if(hospitalList != null) {
+						for(var s = 0; s < hospitalList.length; s++) {
+							var hospitalHtml = '';
+							hospitalHtml += '<option  value="' + hospitalList[s].GroupName + '">' + hospitalList[s].GroupName + '</option>';
+							$(".queryHosContent").append(hospitalHtml);
+						}
+					 $('.selectpicker').selectpicker('refresh');
+                     $('.selectpicker').selectpicker('render');
+					}
+				}
+
+			})
+		}
+
+		//点击分页跳转页按钮
+		$(document).delegate(".srueToJumpPageBtn", 'click', function() {
+			currentPage = parseInt($(".toPageNum").val().trim());
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+		//点击分页页数
+		$(document).delegate(".flipOver", 'click', function() {
+			$(this).addClass('active').siblings().removeClass('active');
+			currentPage = parseInt($(this).attr("pageId"));
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+		//点击上一页
+		$(document).delegate("#prev", 'click', function() {
+			if($(".flipOver.active").prev().attr("id") == "prev") {
+				return true
+			} else {
+				var page = parseInt($(".flipOver.active").attr("pageid")) - 1;
+				$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+			}
+			currentPage = page;
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+
+		//点击下一页
+		$(document).delegate("#Next", 'click', function() {
+			if($(".flipOver.active").next().attr("id") == "Next") {
+				return true
+			} else {
+				var page = parseInt($(".flipOver.active").attr("pageid")) + 1;
+				$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+			}
+			currentPage = page;
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+	</script>
+
+</html>

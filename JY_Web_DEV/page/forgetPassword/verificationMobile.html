@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>忘记密码</title>
+		<meta name="keywords" content="中康九悦远程医疗管理系统">
+		<meta name="description" content="中康九悦远程医疗管理系统">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../../css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../../css/animate.min.css" />
+		<link rel="stylesheet" href="../../css/jigsaw.css" />
+		<link rel="stylesheet" href="../../css/style.min.css" />
+		<link rel="stylesheet" href="../../css/login.css" />
+		<link rel="stylesheet" href="../../css/verificationMobile.css" />
+		<style type="text/css">
+			.contentBox .error_max {
+				margin-left: 46px;
+			}
+		</style>
+	</head>
+
+	<body style="background:#F4F4F4">
+
+		<div class="middle-box text-center loginscreen animated fadeInDown">
+			<header>
+				<div class="headers">
+					<div class="lf logoImg">
+						<img src="../../img/logo1.png" id="img">
+						<i class="rt"></i>
+					</div>
+					<div class="lf systemName">
+						<div class="systemChinaName">九悦云影像平台</div>
+						<div class="systemEName">JIUYUE CLOUD IMAGE PLATFORM</div>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div class="inputBox">
+			<div class="inputTitle">忘记密码</div>
+			<div class="subhead">手机验证</div>
+			<div class="contentBox">
+				<div class="f_div">
+					<label class="f_lab">手机号</label>
+					<input type="phone" class="newin" id="phoneNumber" maxlength="11" name="phoneNumber" value="" placeholder="请输入手机号" />
+					<div class="error_max" id="phoneNumberError"><i class="fa fa-times-circle"></i><span id="textError">必填</span></div>
+				</div>
+				<div class="f_div">
+					<label class="f_lab">验证码</label>
+					<input type="text" class="newin ver_input" id="verificationCode" maxlength="250" name="verificationCode" value="" placeholder="请输入验证码" />
+					<button id="code-btn" class="ver_code">获取验证码</button>
+					<div class="error_max" id="codeError"><i class="fa fa-times-circle"></i>必填</div>
+				</div>
+				<button class="confirm" id="nextConfirm">下一步</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var code = ""; //接收验证码   
+			$("#phoneNumber").blur(function() { //手机号校验
+				if($("#phoneNumber").val() == "" || $("#phoneNumber").val() == null) {
+					$("#phoneNumberError").css("display", "block");
+					$("#textError").text("必填");
+				} else {
+					var phone = $("#phoneNumber").val();
+					if(!(/^1[3456789]\d{9}$/.test(phone))) {
+						$("#phoneNumberError").css("display", "block")
+						$("#textError").text("手机号码有误");
+					} else {
+						$("#phoneNumberError").css("display", "none")
+					}
+				}
+
+			})
+				$("#verificationCode").blur(function() {  //验证码校验
+					if($("#verificationCode").val() == "" || $("#verificationCode").val() == null) {
+						$("#codeError").css("display", "block");
+					}else{
+						$("#codeError").css("display", "none");
+					}
+				})
+	
+			$('#code-btn').click(function() {
+				if($("#phoneNumber").val() == "" || $("#phoneNumber").val() == null) {
+					$("#phoneNumberError").css("display", "block");
+					$("#textError").text("必填");
+					return false;
+				} else {
+					var phone = $("#phoneNumber").val();
+					if(!(/^1[3456789]\d{9}$/.test(phone))) {
+						$("#phoneNumberError").css("display", "block")
+						$("#textError").text("手机号码有误");
+						return false;
+					} else {
+						$("#phoneNumberError").css("display", "none")
+					}
+				}
+				var count = 30;
+				var phone = $("#phoneNumber").val(); //手机号码  
+				//开始计时  
+				$("#code-btn").attr('disabled', 'disabled');
+				$("#code-btn").html("倒计时" + count + "秒");
+				var timer = setInterval(function() {
+					count--;
+					$("#code-btn").html("倒计时" + count + "秒");
+					if(count == 0) {
+						clearInterval(timer);
+						$("#code-btn").attr("disabled", false); //启用按钮  
+						$("#code-btn").html("重新发送");
+						code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效 
+					}
+				}, 1000);
+
+				//向后台发送处理数据  
+//				$.ajax({
+//					type: "POST", //用POST方式传输  
+//					dataType: "text", //数据格式:JSON  
+//					url: '', //目标地址  
+//					data: "phone=" + phone + "&code=" + code,
+//					error: function(XMLHttpRequest, textStatus, errorThrown) {},
+//					success: function(msg) {}
+//				});
+				ajaxGet("/sys/user/smsSend", {
+					mobile: phone,
+				}, function(data){
+					if(data.status!=0){				
+						alert(data.message)
+					}
+				})
+			});
+			$('#nextConfirm').click(function() {
+				if($("#phoneNumber").val() == "" || $("#phoneNumber").val() == null) {
+					$("#phoneNumberError").css("display", "block");
+					$("#textError").text("必填");
+					return false;
+				} else {
+					var phone = $("#phoneNumber").val();
+					if(!(/^1[3456789]\d{9}$/.test(phone))) {
+						$("#phoneNumberError").css("display", "block")
+						$("#textError").text("手机号码有误");
+						return false;
+					} else {
+						$("#phoneNumberError").css("display", "none")
+					}
+				}
+				if($("#verificationCode").val() == "" || $("#verificationCode").val() == null) {
+						$("#codeError").css("display", "block");
+						return false;
+					}else{
+						$("#codeError").css("display", "none");
+					}
+					var phone = $("#phoneNumber").val();
+					var code = $("#verificationCode").val();
+				ajaxGet("/sys/user/verifySmscode", {
+					mobile: phone,
+					smsCode:code
+				}, function(data){
+					if(data.status==0){
+						window.location.href="newPassword.html?mobile="+phone;
+					}else{
+						alert(data.message)
+					}
+				})	
+					
+			})
+		</script>
+	</body>
+
+</html>

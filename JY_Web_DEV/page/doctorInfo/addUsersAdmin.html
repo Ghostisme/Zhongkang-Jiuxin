@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>中康九悦远程医疗管理系统 - 远程会诊申请单</title>
+
+		<meta name="keywords" content="中康九悦远程医疗管理系统">
+		<meta name="description" content="中康九悦远程医疗管理系统">
+
+		<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css" rel="stylesheet">
+		<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/plugins/summernote/summernote.css" rel="stylesheet">
+		<link href="../../css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../js/baiduMapAPI/DrawingManager_min.css" />
+		<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../css/plugins/webuploader/webuploader.css">
+		<link rel="stylesheet" type="text/css" href="../../css/demo/webuploader-demo.min.css">
+		<link href="../../css/style.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="css/qrm-pinming.css">
+		<link rel="stylesheet" href="../../css/addUsersAdmin.css" />
+	</head>
+
+	<body>
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="ibox-content">
+					<form id="form" class="wizard-big">
+						<!--用户信息-->
+						<div class="hosInfos">
+							<!--标题-->
+							<div class="infosNav">
+								用户信息
+							</div>
+							<div class="form-group addRows">
+								<div class="col-sm-4">
+									<label class="col-sm-4 control-label labelsPosition"><span class="redStar">*</span>用户姓名：</label>
+									<div class="col-sm-6">
+										<input id="hosName" name="hosName" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true" placeholder="用户姓名">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<label class="col-sm-4 control-label labelsPosition"><span class="redStar">*</span>用户账号：</label>
+									<div class="col-sm-6">
+										<input id="hosEasyName" name="hosEasyName" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true" placeholder="用户账号">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<label class="col-sm-4 control-label labelsPosition"><span class="redStar">*</span>联系电话：</label>
+									<div class="col-sm-6">
+										<input id="hosLevel" name="hosLevel" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true" placeholder="联系电话">
+									</div>
+								</div>
+							</div>
+							<div class="form-group addRows">
+								<div class="col-sm-8 adddDeptRow">
+									<label class="col-sm-2 control-label labelsPosition"><span class="redStar">*</span>所属机构：</label>
+									<div class="col-sm-8 deptSelectBox">
+										<div class="qrm-pinming">
+											<div class="qrm-input-border">
+												<!--<select id="specialDept" name="name" type="text" class="form-control required">
+													<option value="0">机构1</option>
+													<option value="1">机构2</option>
+												</select>-->
+												<input id="specialDept" type="text" name="specialDept" placeholder="请选择" class="qrm-input form-control required"disabled="disabled">
+											</div>
+											
+										</div>
+										<div class="choseDeptPlate">
+										</div>
+									</div>
+									
+								</div>
+								<!--<div class="col-sm-4">
+									<label class="col-sm-4 control-label labelsPosition"><span class="redStar">*</span>机构下级：</label>
+									<div class="col-sm-6">
+										<select id="bedNum" name="name" type="text" class="form-control required" required="" aria-required="true">
+											<option value="0">下级机构1</option>
+											<option value="1">下级机构2</option>
+										</select>
+									</div>
+								</div>-->
+							</div>
+
+						</div>
+						<!--角色-->
+						<div class="hosInfos">
+							<!--标题-->
+							<div class="infosNav">
+								角色
+							</div>
+							<div class="deptList col-sm-11">
+								<div class="col-sm-12 addDeptBoxWidth">
+									<div class="col-sm-12 deptBoxs">
+										<div class="roleList lf col-sm-2">
+											<span class="hiddenRoleId">0</span>
+											<input class="deptInput lf" name="name" minlength="2" maxlength="50" type="checkbox" class="form-control required" required="" aria-required="true" placeholder="科室名称">
+											<span class="editRoleText">管理员</span>
+											<div class="indexBox">
+												
+											</div>
+										</div>
+										<div class="roleList lf col-sm-2">
+											<span class="hiddenRoleId">2</span>
+											<input class="deptInput lf" name="name" minlength="2" maxlength="50" type="checkbox" class="form-control required" required="" aria-required="true" placeholder="科室名称">
+											<span class="editRoleText">申请医生</span>
+											<div class="indexBox">
+												
+											</div>
+										</div>
+										<div class="roleList lf col-sm-2">
+											<span class="hiddenRoleId">10</span>
+											<input class="deptInput lf" name="name" minlength="2" maxlength="50" type="checkbox" class="form-control required" required="" aria-required="true" placeholder="科室名称">
+											<span class="editRoleText">运营人员</span>
+											<div class="indexBox">
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<!--管理机构信息-->
+						<div class="hosInfos"id="changeAdminOrganize">
+							<!--标题-->
+							
+							<div class="form-group">
+								<div class="infosNav">
+									管理机构
+									<span class="addInfoBtns rt" id="addCheckedAll">全选</span>
+								</div>
+								<!--院长-->
+								<div class="form-group personInChargeRows">
+									<div class="col-sm-12">
+										<div class="col-sm-12 personInChargeLineRows">
+											<div class="roleList lf col-sm-3">
+												<input class="deptInput lf" name="name" minlength="2" maxlength="50" type="checkbox" class="form-control required" required="" aria-required="true" placeholder="科室名称">
+												<span class="editRoleText">南阳医学高等专科学校第三附属医院</span>
+												<div class="indexBox">
+													
+												</div>
+											</div>
+											<div class="roleList lf col-sm-3">
+												<input class="deptInput lf" name="name" minlength="2" maxlength="50" type="checkbox" class="form-control required" required="" aria-required="true" placeholder="科室名称">
+												<span class="editRoleText">总部</span>
+												<div class="indexBox">
+													
+												</div>
+											</div>
+											<div class="roleList lf col-sm-3">
+												<input class="deptInput lf" name="name" minlength="2" maxlength="50" type="checkbox" class="form-control required" required="" aria-required="true" placeholder="科室名称">
+												<span class="editRoleText">晋城康复医院</span>
+												<div class="indexBox">
+													
+												</div>
+											</div>
+											<div class="roleList lf col-sm-3">
+												<input class="deptInput lf" name="name" minlength="2" maxlength="50" type="checkbox" class="form-control required" required="" aria-required="true" placeholder="科室名称">
+												<span class="editRoleText">德州中医院</span>
+												<div class="indexBox">
+													
+												</div>
+											</div>
+										</div>
+											
+									</div>
+								</div>
+								<!--院长结束-->
+							</div>
+						</div>
+						<!--发票信息-->
+						<div class="hosInfos">
+							<div class="infosNav">
+								用户权限
+							</div>
+							<div class="permissionBox">
+								<div class="form-group addRows">
+									<div class="col-sm-12">
+										<label class="col-sm-2 control-label labelsPosition">配置信息维护：</label>
+										<div class="col-sm-9">
+											<div class="lf limits">新增配置信息类型</div>
+											<div class="lf limits">查询配置信息类型</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group addRows">
+									<div class="col-sm-12">
+										<label class="col-sm-2 control-label labelsPosition">配置信息维护：</label>
+										<div class="col-sm-9">
+											<div class="lf limits">新增配置信息类型</div>
+											<div class="lf limits">查询配置信息类型</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="form-group">
+                            <div class="col-sm-12 btnGroup">
+                                <button type="submit" class="SureBtn comTempateSaveBtn">确认</button>
+                            </div>
+                        </div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div id="myModal" class="modal fade" name="tip-modal" data-backdrop="static" data-keyboard="false" style="text-align: center;">
+			<img src="../../img/loading-upload.gif" alt="" style="width:40px;height:40px;margin:0 auto; margin-top:200px;" /> 提交中......
+		</div>
+		<script src="../../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="../../js/plugins/staps/jquery.steps.min.js"></script>
+		<script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+		<script src="../../js/plugins/validate/messages_zh.min.js"></script>
+		<!--<script src="../../js/demo/form-validate-demo.min.js"></script>-->
+		<script src="../../js/plugins/summernote/summernote.min.js"></script>
+		<script src="../../js/plugins/summernote/summernote-zh-CN.js"></script>
+		<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script src="../../js/content.min.js?v=1.0.0"></script>
+		<script type="text/javascript">
+			var BASE_URL = '../../js/plugins/webuploader';
+		</script>
+		<!--<script src="../../js/plugins/webuploader/webuploader.min.js"></script>-->
+		<!--<script src="../../js/demo/webuploader-demo.min.js"></script>-->
+		<script src="../../js/plugins/jquery.jqprint-0.3.js"></script>
+		<script src="js/qrm-pinming.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script type="text/javascript" src="../../js/BMaps.js"></script>-->
+		<script>
+			$("#form").validate();
+			$(function() {
+				$('#myModal').modal('hide');
+			});
+			$(document).ready(function() {
+				$(".summernote").summernote({
+					lang: "zh-CN"
+				})
+			});
+			var edit = function() {
+				$("#eg").addClass("no-padding");
+				$(".click2edit").summernote({
+					lang: "zh-CN",
+					focus: true
+				})
+			};
+			var save = function() {
+				$("#eg").removeClass("no-padding");
+				var aHTML = $(".click2edit").code();
+				$(".click2edit").destroy()
+			};
+			$(".SureBtn").click(function(event) {
+				if($("#form").valid()) {
+					if(!chosedDeptId){
+						swal({
+								title: "",
+								text: "请选择所属机构！"
+							});
+							return false;
+					}
+					if($(".deptBoxs input[type='checkbox']:checked").length==0){
+						swal({
+								title: "",
+								text: "请至少选择一个角色！"
+							});
+							return false;
+					}
+					if($(".personInChargeLineRows input[type='checkbox']:checked").length==0){
+						swal({
+								title: "",
+								text: "请至少选择一个机构！"
+							});
+							return false;
+					}
+					event.preventDefault();
+					var formData = new FormData();
+					formData.append("userName",$("#hosName").val().trim() ); //用户姓名
+					formData.append("userCode", $("#hosEasyName").val().trim()); //用户账号
+					formData.append("mobile", $("#hosLevel").val().trim()); //联系电话
+					formData.append("deptId",chosedDeptId);//所属机构id
+					formData.append("deptFullName",$("#specialDept").val().trim());//所属机构名称
+					formData.append("roleIdJson", roleLastArr); //角色
+					formData.append("hospitalIdJson", deptChoseLastArr); //管理机构
+//					formData.append("type", "1"); //类型
+					$('#myModal').modal('show');
+					ajaxPost('/sys/user/save',formData,function(data) {
+							console.log(data);
+							$('#myModal').modal('hide');
+							swal({
+								title: "",
+								text: data.message
+							});
+							setTimeout(function() {
+								parent.$(window.parent.document).find(".layui-layer-close").click();
+							}, 2000);
+							RefreshIframe("page/doctorInfo/doctorInfoIndex.html", "23");
+						});
+				}
+			})
+			var switchBtn = 0; //定义开关默认值
+			//			点击开关
+			$(".onoffswitch-label").click(function() {
+				if(switchBtn == 0) {
+					switchBtn = 1;
+				} else {
+					switchBtn = 0;
+				}
+			})
+			$("#files").change(function(e) {
+				console.info(e.target.files[0]); //图片文件
+				var dom = $(this)[0];
+				//			    console.info(dom.value);//这个是文件的路径 C:\fakepath\icon (5).png
+				//			    console.log(e.target.value);//这个也是文件的路径和上面的dom.value是一样的
+				var reader = new FileReader();
+				reader.onload = (function(file) {
+					return function(e) {
+						//			           console.info(this.result); //这个就是base64的数据了
+						var sss = $("#showImage");
+						$("#showImage").html('<img src="' + this.result + '"style="width:200px;height:120px;">');
+					};
+				})(e.target.files[0]);
+				reader.readAsDataURL(e.target.files[0]);
+			});
+//			新增科室
+			$("#addDept").click(function(){
+				$(".deptList").append(`<div class="col-sm-2 addDeptBoxWidth">
+									<div class="col-sm-12 deptBoxs">
+										<input id="deptInput" name="name" maxlength="50" type="text" class="form-control" placeholder="科室名称">
+										<span class="delIcon deptDel">×</span>
+									</div>
+								</div>`);
+			//			鼠标移上去
+				$(".deptBoxs").hover(function(){
+					console.log($(".deptBoxs").length);
+					if($(".deptBoxs").length>1){
+						$(this).find(".delIcon").css('display',"inline-block");
+					}
+				},function(){
+					$(this).find(".delIcon").css('display',"none");
+				});
+				//			删除新增的科室
+				$(".deptList").on("click",".deptDel",function(){
+					$(this).parent().parent().remove();
+				});
+			});
+//			新增院长
+			$(".addPresident").click(function(){
+				if($(this).hasClass('addPresidentInput')){
+					$(this).before(`<div class="col-sm-111 addDeptBoxWidth presidentInputBox">
+												<input class="president" name="name" maxlength="50" type="text" class="form-control"placeholder="院长姓名及电话">
+												<span class="delIcon deptDel">×</span>
+											</div>`);
+				}else if($(this).hasClass('addDepartmentHeadInput')){
+					$(this).before(`<div class="col-sm-111 addDeptBoxWidth presidentInputBox">
+												<input class="departmentHead" name="name" maxlength="50" type="text" class="form-control" placeholder="院长姓名及电话">
+												<span class="delIcon deptDel">×</span>
+											</div>`);
+				}else{
+					$(this).before(`<div class="col-sm-111 addDeptBoxWidth presidentInputBox">
+												<input class="operator" name="name" maxlength="50" type="text" class="form-control" placeholder="院长姓名及电话">
+												<span class="delIcon deptDel">×</span>
+											</div>`);
+				}
+//			鼠标移上去
+				$(".presidentInputBox").hover(function(){
+					if($(this).parent().find(".presidentInputBox").length>1){
+						$(this).find(".delIcon").css('display',"inline-block");
+					}
+				},function(){
+					$(this).find(".delIcon").css('display',"none");
+				});
+				//			删除新增的院长、负责人、运营人员
+				$(".presidentInputBox").on("click",".deptDel",function(){
+					$(this).parent().remove();
+				});
+			});
+		
+
+//		选择运营人员时出现机构选择框
+//		$(".deptBoxs").on("click","input.deptInput",function(){
+//			isCheck();
+//		});
+		
+
+		
+//		判断是否选择了运营人员
+		function isCheck(){
+			var hasRole=0;
+			var roleIds=$(".deptBoxs").find("input");
+			for(var f=0;f<roleIds.length;f++){
+				if($(roleIds[f]).prop("checked")){
+					if($(roleIds[f]).prev(".hiddenRoleId").text().trim()==10){
+						hasRole++;
+					}
+				}
+			}
+			if(hasRole>0){//10为运营人员
+				$("#changeAdminOrganize").css("display","block");
+			}else{
+				$("#changeAdminOrganize").css("display","none");
+			}
+		}
+		var pid=0;//默认等级
+//		最终选择的机构id
+		var chosedDeptId;
+//		getDeptList('0');//初始化等级
+		$(".choseDeptPlate").html('');
+		function getDeptList(pid){
+			ajaxGet('/sys/dept/getDeptList',{//等级
+				pid:pid
+			},function(data){
+//				console.log(data.resultMap.deptList);
+				if(data.status==0){
+					if(pid==0){
+						$(".choseDeptPlate").html('');
+					}else{
+						console.log(currentClickQRMBoxParent.nextAll())
+						currentClickQRMBoxParent.nextAll().remove();
+					}
+					if(data.resultMap.deptList.length>0){
+						var html='';
+						html+='<div class="qrm-borde'+pid+' qrmBox">';
+						html+='<span style="display:none;">'+pid+'</span>';
+						html+='<ul class="qrm-lev-'+pid+' qrm-lev">';
+						$.each(data.resultMap.deptList,function(i,val){  //遍历二维数组
+		//				    console.log(val);
+							html+='<li><span class="deptName">'+val.name+'</span>';
+							html+='<span style="display:none;" class="listIds">'+val.id+'</span>';
+							html+='<i class="qrm-arrow-right"></i>';
+							html+='</li>';
+						})
+						html+='</ul>';
+						html+='</div>';
+						$(".choseDeptPlate").append(html);
+					}else{
+						console.log($(".active"));
+						var str='';
+						chosedDeptId=pid;
+						$(".active").each(function(i,thisData){
+							if(i<$(".active").length-1){
+								str+=$(this).find(".deptName").text()+'/';
+							}else{
+								str+=$(this).find(".deptName").text()
+							}
+						});
+						$("#specialDept").val(str);
+						$(".choseDeptPlate").hide();
+						$(".qrm-pinming").css("border","1px solid #ddd");
+            			$(".qrm-pinming").css("background-image","url(images/qrm-arrow-down.png)");
+					}
+				}
+				
+				
+			});
+			
+		}
+//		获取角色
+		roleList();
+		function roleList(){//等级
+			$(".deptBoxs").html('');
+			ajaxGet('/sys/role/getRoleList',{},function(data){
+				console.log(data);
+				if(data.status==0){
+
+					if(data.resultMap.roleList.length>0){
+						$.each(data.resultMap.roleList,function(i,val){  //遍历二维数组
+			    			$(".deptBoxs").append(`<div class="roleList lf col-sm-2">
+											<span class="hiddenRoleId">`+val.id+`</span>
+											<input class="deptInput lf" name="name" maxlength="50" type="checkbox" class="form-control"placeholder="科室名称">
+											<span class="editRoleText">`+val.name+`</span>
+											<div class="indexBox">
+												
+											</div>
+										</div>`);
+						})
+					
+						
+					}
+				}
+				
+				
+			});
+		}
+		var roleLastArr;
+		var deptChoseLastArr;
+		var currentClickQRMBoxParent;
+		window.onload=function(){
+			$(document).on("click",".qrmBox li",function(){
+					$(this).addClass("active").siblings("li").removeClass("active");
+					$(this).parent().parent().nextAll().remove();
+					currentClickQRMBoxParent=$(this).parent().parent();
+					getDeptList($(this).find(".listIds").text().trim());
+				});
+			$(".qrm-input-border").click(function () {
+				getDeptList('0');
+		        $(".choseDeptPlate").toggle();
+		    });
+//		点击checkbox加背景色
+			$(document).on("click",".deptInput",function(){
+				var roleId=$(this).parent().find(".hiddenRoleId").text();
+				var roleIdArr=[];
+				if($(this).prop("checked")){
+					$(this).parent().find(".indexBox").addClass("indexCheckedBox");
+				}else{
+					$(this).parent().find(".indexBox").removeClass("indexCheckedBox");	
+				}
+				$(".deptBoxs input.deptInput").each(function(i,item){
+					if($(item).prop("checked")==true){
+						roleIdArr.push(parseInt($(item).parent().find(".hiddenRoleId").text()));
+					}
+				});
+				getPermission(window.JSON.stringify(roleIdArr));
+				roleLastArr=window.JSON.stringify(roleIdArr);
+			});
+//		点击管理机构的checkBox
+			$(document).on('click','.personInChargeRows input.deptInput',function(){
+					var addDeptInput=$(".personInChargeRows").find("input.deptInput");
+					var checkedLen=0;
+					var addDeptArr=[];
+					for(var k=0;k<addDeptInput.length;k++){
+						if($(addDeptInput[k]).prop("checked")==true){
+							checkedLen++;
+							addDeptArr.push(parseInt($(addDeptInput[k]).parent().find(".hiddenPermissionId").text()));
+						}
+						
+					}
+					deptChoseLastArr=window.JSON.stringify(addDeptArr);
+					if(checkedLen==addDeptInput.length){
+						$("#addCheckedAll").text("反选");
+	//					$(".addCheckedAll").prop("checked","checked");
+					}else{
+						$("#addCheckedAll").text("全选");
+	//					$(".addCheckedAll").prop("checked",false);
+					}
+			});
+//			联动管理机构点击label
+			$(document).on("click",".personInChargeRows .roleList .editRoleText",function(){
+				var deptLineId=$(this).parent().find(".hiddenPermissionId").text();
+				if($(this).parent().find(".deptInput").prop("checked")){
+					$(this).parent().find(".deptInput").prop("checked",false);
+					$(this).parent().find(".indexBox").removeClass("indexCheckedBox");
+				}else{
+					$(this).parent().find(".deptInput").prop("checked",'checked');
+					$(this).parent().find(".indexBox").addClass("indexCheckedBox");	
+				}
+				var addDeptInput=$(".personInChargeRows").find("input.deptInput");
+				var checkedLen=0;
+				var addDeptArr=[];
+				$(".personInChargeRows input.deptInput").each(function(i,item){
+					if($(item).prop("checked")==true){
+						checkedLen++;
+						addDeptArr.push(parseInt($(item).parent().find(".hiddenPermissionId").text()));
+					}
+				});
+				deptChoseLastArr=window.JSON.stringify(addDeptArr);
+				if(checkedLen==addDeptInput.length){
+						$("#addCheckedAll").text("反选");
+	//					$(".addCheckedAll").prop("checked","checked");
+					}else{
+						$("#addCheckedAll").text("全选");
+	//					$(".addCheckedAll").prop("checked",false);
+					}
+			});
+//		    角色获取权限
+			$(document).on("click",".deptBoxs .roleList .editRoleText",function(){
+				var roleId=$(this).parent().find(".hiddenRoleId").text();
+				if($(this).parent().find(".deptInput").prop("checked")){
+					$(this).parent().find(".deptInput").prop("checked",false);
+					$(this).parent().find(".indexBox").removeClass("indexCheckedBox");
+				}else{
+					$(this).parent().find(".deptInput").prop("checked",'checked');
+					$(this).parent().find(".indexBox").addClass("indexCheckedBox");	
+				}
+				var roleIdArr=[];
+				$(".deptBoxs input.deptInput").each(function(i,item){
+					if($(item).prop("checked")==true){
+						console.log($(item).parent().find(".hiddenRoleId").text());
+						roleIdArr.push(parseInt($(item).parent().find(".hiddenRoleId").text()));
+					}
+				});
+				getPermission(window.JSON.stringify(roleIdArr));
+				roleLastArr=window.JSON.stringify(roleIdArr);
+			});
+			//		点击管理机构的全选
+		$("#addCheckedAll").click(function(){
+			var addDeptArr=[];
+			if($(this).text().trim()=="全选"){
+				$(this).text("反选");
+				var addDeptInput=$(".personInChargeRows").find("input.deptInput");
+				for(var k=0;k<addDeptInput.length;k++){
+					$(addDeptInput[k]).prop("checked","checked");
+					$(addDeptInput[k]).parent().find(".indexBox").addClass("indexCheckedBox");
+					addDeptArr.push(parseInt($(addDeptInput[k]).parent().find(".hiddenPermissionId").text()));
+				}
+			}else{
+				$(this).text("全选");
+				var addDeptInput=$(".personInChargeRows").find("input.deptInput");
+				for(var k=0;k<addDeptInput.length;k++){
+					$(addDeptInput[k]).prop("checked",false);
+					$(addDeptInput[k]).parent().find(".indexBox").removeClass("indexCheckedBox");
+				}
+			}
+			deptChoseLastArr=window.JSON.stringify(addDeptArr);
+		})
+		}
+		function getPermission(roleIdJson){
+			ajaxGet('/sys/menu/getMenuListByRole',{roleIdJson:roleIdJson},function(data){
+				console.log(data);
+				if(data.status==0){
+					$(".permissionBox").html('');
+					if(data.resultMap.tree.children.length>0){
+						for(var i=0;i<data.resultMap.tree.children.length;i++){
+							var firstTree=data.resultMap.tree.children[i];
+							var html='';
+							html+='<div class="form-group addRows">';
+							html+='<div class="col-sm-12">';
+							html+='<label class="col-sm-2 control-label labelsPosition">'+firstTree.text+'：</label>';
+							html+='<div class="col-sm-9">';
+							for(var k=0;k<firstTree.children.length;k++){
+								var secondTree=firstTree.children[k];
+								html+='<div class="lf limits">'+secondTree.text;
+								for(var j=0;j<secondTree.children.length;j++){
+									var thirdTree=secondTree.children[j]
+									html+='<span>('+thirdTree.text+')</span>';
+								}
+								html+='</div>';
+							}
+							html+='</div>';
+							html+='</div>';
+							html+='</div>';
+							$(".permissionBox").append(html);
+						}
+						
+					}
+				}
+				
+				
+			});
+		}
+		gethos();
+		function gethos(){
+			ajaxGet('/hospital/info/getHospitalOptionList',{},function(data){
+				console.log(data);
+				if(data.status==0){
+					$(".personInChargeLineRows").html('');
+					if(data.resultMap.hospitalList.length>0){
+						$.each(data.resultMap.hospitalList,function(i,val){  //遍历二维数组
+			    			$(".personInChargeLineRows").append(`<div class="roleList lf col-sm-3">
+			    								<span class="hiddenPermissionId">`+val.id+`</span>
+												<input class="deptInput lf" name="name" maxlength="50" type="checkbox" class="form-control" placeholder="科室名称">
+												<span class="editRoleText">`+val.hospitalName+`</span>
+												<div class="indexBox">
+												</div>
+											</div>`);
+						})
+					
+						
+					}
+				}
+				
+				
+			});
+		}
+		$("#hosName").blur(function(){
+			$("#hosEasyName").val("Y"+$(this).val());
+		});
+		</script>
+	</body>
+
+</html>

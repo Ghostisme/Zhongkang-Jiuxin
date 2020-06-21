@@ -1,0 +1,93 @@
+.lineMargin{
+	margin-top: 0px;
+	background: #E5E8F0 !important;
+}
+.cardMapTitle{
+	/*margin-top: 50px;*/
+	margin-bottom: 16px;
+}
+.cardHeight{
+	/*min-height: 195px;*/
+	background: #fff;
+	padding: 20px 0px;
+}
+.cardTopLine{
+	margin-right: 20px;
+	border-bottom: 0.5px solid #DFDFDF;
+}
+.titleRowHeight{
+	height: 59px;
+	line-height: 59px;
+	padding-left: 17px;
+}
+.blueText{
+	color: #0E6DE9;
+}
+.lightBlueText{
+	color: #528BFB;
+}
+.greenText{
+	color: #7BD636;
+}
+.BigFont{
+	font-size: 32px;
+}
+.smallFont{
+	font-size: 11px;
+}
+.purpleText{
+	color: #8A4CFA;
+}
+.orangeText{
+	color: #F6BA29;
+}
+.redText{
+	color: #FA1313;
+}
+.font14{
+	font-size: 14px;
+}
+.dataLineMarin{
+	margin-top: 21px;
+	padding-left: 10px;
+}
+.divLineHeight{
+	margin-top: 12px;
+}
+.paddingRow{
+	padding: 20px 0px;
+}
+.bottomMargin{
+	margin-top: 20px;
+}
+.card-body1{
+	/*height: 295px;*/
+	height: 403px;
+}
+#crurrentMonthcharts{
+	/*height: 230px;*/
+	height: 330px;
+}
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.mapContainer{
+	background: #fff;
+}
+.lineMargin{
+	padding-top: 20px;
+}
+#vueDataBox{
+	margin-top: 20px;
+}
+.el-table .el-table__header th{
+    background-color: #51659B;
+    color: #fff;
+}
+			.el-table__row td:nth-child(2),
+			.el-table__row td:nth-child(3) {
+				color: #4169e2;
+				text-decoration: underline;
+				cursor: pointer;
+			}

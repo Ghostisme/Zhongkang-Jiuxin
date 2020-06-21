@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>项目配置</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/element-ui.css"/>
+		<!--<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">-->
+		<!--<link rel="stylesheet" type="text/css" href="font/iconfont.css"/>-->
+		<link rel="stylesheet" type="text/css" href="css/projectConfiguration.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<style type="text/css">
+			.el-alert--error{
+				color: #f56c6c !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="web">
+			<!--顶部搜索条-->
+			<div class="topBox reportQueryInfoHead">
+				<!--<div class="queryForm reportQueryNanme">
+					<el-date-picker class="reportQueryNanmeRight queryContent" v-model="queryTime" value-format="yyyy-MM-dd" type="date" placeholder="选择日期"></el-date-picker>
+					<el-input class="reportQueryNanmeRight queryContent" v-model="queryTime" id="ListreportQueryTime" placeholder="日期"></el-input>
+				</div>-->
+				<div class="queryForm reportQueryNanme">
+					<!--<el-input class="reportQueryNanmeRight queryContent" v-model="queryProjectName" id="ListreportQueryName" placeholder="项目名称"></el-input>-->
+					<el-select class="reportQueryNanmeRight querySelect" filterable v-model="queryProjectName" placeholder="项目名称">
+					    <el-option
+					      v-for="(item, index) in queryProjectNameList"
+					      :key="index"
+					      :label="item.name"
+					      :value="item.name">
+					    </el-option>
+					</el-select>
+				</div>
+				<div class="queryForm reportQueryNanme">
+					<!--<el-input class="reportQueryNanmeRight queryContent" v-model="queryName" id="ListreportQueryName" placeholder="负责人"></el-input>-->
+					<el-select class="reportQueryNanmeRight querySelect" filterable v-model="queryName" placeholder="负责人">
+					    <el-option
+					      v-for="(item, index) in queryNameList"
+					      :key="index"
+					      :label="item.userName"
+					      :value="item.userName">
+					    </el-option>
+					</el-select>
+				</div>
+				<div class="reportQueryBtnCheck addBtn topBtn queryBtn" id="reportQuerySearchBtns" @click="queryTopClick">查询</div>
+				<div class="reportQueryBtnClear addBtn topBtn resetbtn" id="reportQuerySearchClearBtn" @click="resetClick">清空</div>
+				<div class="reportQueryBtnCheck addBtn topBtn" id="" @click="addClick">新增</div>
+			</div>
+			<!--表头-->
+			<div class="tableNav">项目配置</div>
+			<!--数据表格-->
+			<div class="outBoxBorder reportQueryInfoList">
+				<ul class="reportQueryInfoList-ul titleList">
+					<li 
+						class="reportQueryInfoList-code boxRightBorder" 
+						v-for="(item, index) in titleList" 
+						:key="index"
+						:style="item.domStyle"
+						>
+					{{ item.name }}
+					</li>
+				</ul>
+				<ul class="reportQueryInfoDetail-ul dataList" v-for="(item, index) in dataList" :key="item.id">
+					<li class="reportQueryInfoDetail-code boxRightBorder" style="width: 5%;display: none;">{{ item.id }}</li>
+					<li class="reportQueryInfoDetail-code boxRightBorder" style="width: 5%;">{{ index | handleIndex }}</li>					
+					<!--<li class="reportQueryInfoDetail-code boxRightBorder" style="width: 8%;">{{ item.inspectAddress }}</li>-->
+					<!--日期-->
+					<!--<li class="reportQueryInfoDetail-code boxRightBorder" style="width: 15%;">
+						<span v-for="(item, index) in item.children" :key="index" v-if="index == 0">
+							{{ item.time | resTime }}
+						</span>
+						<span>
+							{{ item.time | resTime }}
+						</span>
+						{{ item.hospitalName }}
+					</li>-->
+					<!--项目名称-->
+					<li class="reportQueryInfoDetail-code boxRightBorder" style="width: 15%;">{{ item.name }}</li>
+					<li class="reportQueryInfoDetail-code boxRightBorder" style="width: 15%;">{{ item.operatorUserName }}</li>
+					<!--<li class="reportQueryInfoDetail-code boxRightBorder" style="width: 15%;">{{ item.name }}</li>-->
+					<li class="reportQueryInfoDetail-code boxRightBorder" style="width: 15%;">{{ item.createTime }}</li>
+					<li class="reportQueryInfoDetail-code boxRightBorder" style="width: 15%;">{{ item.createUserName }}</li>
+					<li class="reportQueryInfoDetail-code" style="width: 20%;">
+						<a href="javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="queryClick($event, item.id)">查看</a>
+						<a href="javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="changeClick($event, item.id)">编辑</a>
+						<a href="javascript:void(0)" class="reportQueryBtn-change delBtn btnTextColor" style="margin-right:30px;" :data-index="index | handleIndex" @click="cancelClick($event, item.id)">删除</a>
+						<!--<a href="javascript:void(0)" :data-index="index | handleIndex" data-status="0" :data-id="item.id" class="subListBtn-see btnTextColor"><span>查看</span></a>-->
+						<!--<a href="javascript:void(0)" style="margin-left: 30px;" :data-index="index | handleIndex" data-status="1" :data-id="item.id" class="subListBtn-search btnTextColor"><span>修改</span></a>
+						<a href="javascript:void(0)" style="margin-left: 30px;" class="deviceTime subListBtn-change btnTextColor">设备排班</a>
+						<a href="javascript:void(0)" :data-id="item.id" style="margin-left: 30px;" class="subListBtn-del btnTextColor"><span>删除</span></a>-->
+					</li>
+				</ul>
+			</div>
+			<!--分页-->
+			<div class="doctorpageN"></div>
+			<!--灰背景-->
+			<!--<div id="subscribeListFade" class="black_overlay"></div>-->
+			<!--删除弹窗显示-->
+			<!--<div id="subscribeListLight2" class="white_content1">
+				<div class="content_header">
+					<div class="header_title">删除</div>
+					<div class="close" onclick="document.getElementById('subscribeListLight2').style.display='none';document.getElementById('subscribeListFade').style.display='none'">
+						<span>×</span>
+					</div>
+				</div>
+			    <div class="content_middle">
+			    	<div class="chooseDel">
+						<div>
+							<img src="../../../img/warn.png" width="55" height="48"/>
+							删除信息
+						</div>
+						<div>确定要删除此项吗</div>
+					</div>
+					<div class="btnGroup delGroup">
+						<button type="button" id="subscribeListDel-yes" class="subBtn subBtn3 Btn comTempateSaveBtn">确认</button>						
+					</div>
+			    </div>
+			    <input type="hidden" id="del_id" value="">
+			</div>-->
+			<!--del-->
+			<div class="black_overlay" style="display: none;" v-show="delAlertFlag">
+				<!--<el-popover
+				  placement="right"
+				  width="400"
+				  trigger="click">
+				  
+				</el-popover>-->
+				<div class="mask_content_box" v-show="delAlertFlag">
+					<div class="content_header">
+						<div class="header_title">删除</div>
+						<div class="close" @click="closeDelAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="chooseDel">
+									<div>
+										<img src="../../../img/warn.png" width="55" height="48" style="vertical-align: -15px;"/>
+										删除信息
+									</div>
+									<div>您确定要删除此项吗</div>
+								</div>
+								<input type="hidden" id="delStatus" />
+							</div>
+							<div class="btnGroup delGroup" v-show="alertFlagDel">
+								<button type="button" class="Btn comTempateSaveBtn" @click="determineClick">确定</button>
+							</div>
+							<!--<div class="btnGroup addGroup" v-show="alertFlagAdd">
+								<button type="button" class="Btn comTempateSaveBtn" :class="isActive ? 'formDisabledBtn' : ''" :disabled="isActive" @click="addSaveClick">保存</button>
+							</div>-->
+							<!--<div class="btnGroup changeGroup" v-show="alertFlagChange">
+								<button type="button" class="Btn comTempateSaveBtn" :class="isActive ? 'formDisabledBtn' : ''" :disabled="isActive" @click="changeSaveClick">保存</button>
+							</div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--add-->
+			<div class="black_overlay" style="display: none;" v-show="addAlertFlag">
+				<div class="mask_content_box" v-show="addAlertFlag">
+					<div class="content_header">
+						<div class="header_title">新增</div>
+						<div class="close" @click="closeAddAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="formBox">
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="project"><span style="color: #FF423F;">*</span>项目名称:</label>
+												<el-input class="project" v-model="project" id="project" placeholder="项目名称" @blur="handleProject" maxlength="20" v-bind:disabled="projectFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="tipProject" v-bind:type="tipProjectStatus" v-show="tipProjectShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="checkBoxBox">负责人</label>
+											</div>
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="checkBoxBox"><span style="color: #FF423F;">*</span>角色:</label>
+												<el-select class="posSex" v-model="roleValue" placeholder="请选择" @change="handleRole" v-bind:disabled="projectFlag != 0">
+												    <el-option 
+														v-for="item in roleList" 
+														:key="item.id" 
+														:value="item.id"
+														:label="item.name"
+													>
+												</el-select>
+											</div>
+											<el-alert v-bind:title="tipRole" v-bind:type="tipRoleStatus" v-show="tipRoleShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="checkBoxBox" style="white-space: nowrap;"><span style="color: #FF423F;">*</span>用户名称:</label>
+												<div class="checkBoxBox">
+													<el-checkbox 
+														v-for="item in checkList"
+														:key="item.userId"
+														:label="item.userName"
+														@change="handleCheck"
+														v-model="checkChooseList"
+													>
+													</el-checkbox>
+													<!--<el-checkbox-group v-model="checkChooseList">
+													    <el-checkbox 
+															v-for="item in checkList"
+															:key="item.userId"
+															:label="item.userName"
+															@change="handleCheck"
+														>
+														</el-checkbox>
+													</el-checkbox-group>-->
+													<!--<el-checkbox 
+														v-for="item in checkList"
+														:key="item.userId"
+														:label="item.userName"
+														@change="handleCheck"
+													>
+													</el-checkbox>-->
+												</div>
+												<!--v-model="checked"-->
+											</div>
+											<el-alert v-bind:title="tipChecked" v-bind:type="tipCheckedStatus" v-show="tipCheckedShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--<div class="btnGroup delGroup" v-show="alertFlagChange">
+								<button type="button" class="Btn comTempateSaveBtn" :class="isActive ? 'formDisabledBtn' : ''" :disabled="isActive" @click="determineClick">确定</button>
+							</div>-->
+							<div class="btnGroup addGroup" v-show="alertFlagAdd">
+								<button type="button" class="Btn comTempateSaveBtn" :class="addIsActive ? 'formDisabledBtn' : ''" :disabled="addIsActive" @click="addSaveClick">保存</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--query-->
+			<div class="black_overlay" style="display: none;" v-show="addQueryFlag">
+				<div class="mask_content_box" v-show="addQueryFlag">
+					<div class="content_header">
+						<div class="header_title">查看</div>
+						<div class="close" @click="closeQueryAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="formBox">
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="project"><span style="color: #FF423F;">*</span>项目名称:</label>
+												<el-input class="project" v-model="project" id="project" placeholder="项目名称" @blur="handleProject" maxlength="20" v-bind:disabled="projectFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<!--<el-alert v-bind:title="tipProject" v-bind:type="tipProjectStatus" v-show="tipProjectShow" :closable="false" show-icon></el-alert>-->
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="checkBoxBox">负责人</label>
+											</div>
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="checkBoxBox"><span style="color: #FF423F;">*</span>角色:</label>
+												<!--<span>{{ roleValue }}</span>-->
+												<el-select class="posSex queryPos" v-model="roleValue" placeholder="请选择" @change="handleRole" v-bind:disabled="projectFlag != 0">
+												    <el-option 
+														v-for="item in roleList" 
+														:key="item.id" 
+														:value="item.id"
+														:label="item.name"
+													>
+												</el-select>
+											</div>
+											<!--<el-alert v-bind:title="tipRole" v-bind:type="tipRoleStatus" v-show="tipRoleShow" :closable="false" show-icon></el-alert>-->
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="checkBoxBox" style="white-space: nowrap;"><span style="color: #FF423F;">*</span>用户名称:</label>
+												<div class="checkBoxBox queryCheckBox">
+													<el-checkbox-group v-model="checkChooseList">
+													    <el-checkbox 
+															v-for="item in checkList"
+															:key="item.userId"
+															:label="item.userName"
+															@change="handleCheck"
+															v-bind:disabled="projectFlag != 0"
+														>
+														</el-checkbox>
+													</el-checkbox-group>
+													<!--<el-checkbox 
+														v-for="item in checkList"
+														:key="item.userId"
+														:label="item.userName"
+														@change="handleCheck"
+													>
+													</el-checkbox>-->
+												</div>
+												<!--v-model="checked"-->
+											</div>
+											<!--<el-alert v-bind:title="tipChecked" v-bind:type="tipCheckedStatus" v-show="tipCheckedShow" :closable="false" show-icon></el-alert>-->
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--<div class="btnGroup delGroup" v-show="alertFlagChange">
+								<button type="button" class="Btn comTempateSaveBtn" :class="isActive ? 'formDisabledBtn' : ''" :disabled="isActive" @click="determineClick">确定</button>
+							</div>-->
+							<!--<div class="btnGroup addGroup" v-show="alertFlagAdd">
+								<button type="button" class="Btn comTempateSaveBtn" :class="addIsActive ? 'formDisabledBtn' : ''" :disabled="addIsActive" @click="addSaveClick">保存</button>
+							</div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--change-->
+			<div class="black_overlay" style="display: none;" v-show="changeAlertFlag">
+				<div class="mask_content_box" v-show="changeAlertFlag">
+					<div class="content_header">
+						<div class="header_title">编辑</div>
+						<div class="close" @click="closeChangeAlert">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div class="contentBox">
+								<div class="formBox">
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="project"><span style="color: #FF423F;">*</span>项目名称:</label>
+												<el-input class="project" v-model="project" id="project" placeholder="项目名称" @blur="handleProject1" maxlength="20" v-bind:disabled="projectFlag != 0"></el-input>
+												<!--<input type="text" name="" id="categoryName" value="" />-->
+											</div>
+											<el-alert v-bind:title="tipProject" v-bind:type="tipProjectStatus" v-show="tipProjectShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="checkBoxBox">负责人</label>
+											</div>
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="checkBoxBox"><span style="color: #FF423F;">*</span>角色:</label>
+												<el-select class="posSex" v-model="roleValue" placeholder="请选择" @change="handleRole1" v-bind:disabled="projectFlag != 0">
+												    <el-option 
+														v-for="item in roleList" 
+														:key="item.id" 
+														:value="item.id"
+														:label="item.name"
+														v-bind:disabled="projectFlag != 0"
+													>
+												</el-select>
+											</div>
+											<el-alert v-bind:title="tipRole" v-bind:type="tipRoleStatus" v-show="tipRoleShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+									<div class="formItemBox">
+										<div>
+											<div class="textBox">
+												<label for="checkBoxBox" style="white-space: nowrap;"><span style="color: #FF423F;">*</span>用户名称:</label>
+												<div class="checkBoxBox">
+													<el-checkbox-group v-model="checkChooseList">
+													    <el-checkbox 
+															v-for="item in checkList"
+															:key="item.userId"
+															:label="item.userName"
+															@change="handleCheck1"
+														>
+														</el-checkbox>
+													</el-checkbox-group>
+													<!--<el-checkbox 
+														v-for="item in checkList"
+														:key="item.userId"
+														:label="item.userName"
+														@change="handleCheck"
+													>
+													</el-checkbox>-->
+												</div>
+												<!--v-model="checked"-->
+											</div>
+											<el-alert v-bind:title="tipChecked" v-bind:type="tipCheckedStatus" v-show="tipCheckedShow" :closable="false" show-icon></el-alert>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="btnGroup delGroup" v-show="alertFlagChange">
+								<button type="button" class="Btn comTempateSaveBtn" :class="changeIsActive ? 'formDisabledBtn' : ''" :disabled="changeIsActive" @click="changeSaveClick">保存</button>
+							</div>
+							<!--<div class="btnGroup addGroup" v-show="alertFlagAdd">
+								<button type="button" class="Btn comTempateSaveBtn" :class="addIsActive ? 'formDisabledBtn' : ''" :disabled="addIsActive" @click="addSaveClick">保存</button>
+							</div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+		<!--组件库JS-->
+		<script type="text/javascript" src="../../../js/vue.js"></script>
+		<script src="../../../js/element-ui.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="https://unpkg.com/element-ui/lib/index.js"></script>-->
+		<!--<script type="text/javascript" src="../../../js/element-ui.js"></script>-->
+		<script type="text/javascript" src="../../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../../js/plugins/layer/layer.min.js"></script>
+		<script src="../../../js/plugins/layer/laydate/laydate5.0.js"></script>
+		<script type="text/javascript" src="../../../js/config.js"></script>
+		<script type="text/javascript" src="../../../js/common.js"></script>
+		<script type="text/javascript" src="js/projectConfiguration.js"></script>
+		<script type="text/javascript" src="../../../js/currentPage.js"></script>
+		<!--<script type="text/javascript" src="handle.js"></script>-->
+	</body>
+</html>

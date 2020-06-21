@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>部门维护</title>
+	</head>
+	<link href="../../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="dist/themes/default/style.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../../css/post.css"/>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    	
+    	label{
+    		cursor: pointer;
+    	}
+    	
+    </style>
+	<body>
+		<div class="box2">
+				<!--<h5 id="userInfo">新增岗位</h5>-->
+				<div class="userName2">
+					<div id="positionName" class="lf">
+						<span id="positionNameLeft">
+							<span id="star">*</span>
+							<span id="star-right">角色名称：</span>
+							
+						</span>
+						<span id="positionNameRight">
+							<input type="text" id="add_name"/>
+						</span>
+					</div>
+					<div id="positionDes" class="rt">
+						<span id="positionDesleft">
+							岗位描述：
+						</span>
+						<span id="positionDesright">
+							<input type="text" id="add_memo"name="postDescribe"/>
+							<!--<textarea name="postDescribe" rows="" cols=""id="add_memo"></textarea>-->
+						</span>
+					</div>
+				</div>
+				<!--tab选项卡-->
+				<div class="tab">
+					<div class="row">
+						<div class="col-md-6">
+							<div>
+								<h4 class="titlePadding">web岗位角色</h4>
+							</div>
+							<div id="menuTree">
+						
+							</div>
+						</div>
+						<!--<div class="col-md-6">
+							<div>
+								<h4 class="titlePadding">app岗位角色</h4>
+							</div>
+							<div id="menuTreeRight">
+						
+							</div>
+						</div>-->
+					</div>
+					<div class="submitBtns"style="cursor:pointer;"id="doAdd">
+							提交
+					</div>
+					
+				</div>
+		</div>
+	</body>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/checkform.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/foundation-datepicker.js"></script>	
+	<script type="text/javascript" src="../../js/contabs.min.js"></script>
+	<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+	<script src="dist/jquery-3.0.0.min.js"></script>
+	<script src="dist/jstree.min.js"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="dist/postChange.js"></script>
+	<script type="text/javascript">
+	window.onload=function(){
+		$("#postListTab li:first-child").addClass("cur");
+		$(".aaa:first-child").addClass("on");
+		var allperInfo=$(".personalInfo");
+		for(var q=0;q<allperInfo.length;q++){
+			if($(allperInfo[q]).next('ul').html()==""||$(allperInfo[q]).next('ul').html()==null){
+				$(allperInfo[q]).next('ul').remove();
+				$(allperInfo[q]).remove();
+			}
+		}
+		var allInfos=$(".aaa");
+		for(var s=0;s<allInfos.length;s++){
+			console.log($(allInfos[s]).find('.personalInfo').length);
+			if($(allInfos[s]).find('.personalInfo').length==0){
+				$(allInfos[s]).html('');
+			}
+		}
+        $(".tab .change").click(function(){
+        $(".tab .change").eq($(this).index()).addClass("cur").siblings().removeClass('cur');
+        $(".aaa").hide().eq($(this).index()).show();
+        });
+   
+		//  全选和反选
+	    var checkAll = $('.btnChoice1');
+	    var othercheck = $('.btnChoice2');
+	    
+	    $(document).on("click",".btnChoice1",function(){
+	    	var checkBox = $(this).parent().parent().find('input[type="checkbox"]');
+	    	console.log(checkBox.length);
+	    	for(i=0;i<checkBox.length;i++){
+	    		console.log(checkBox.length);
+	            checkBox[i].checked=true;
+	        };
+	    });
+	    $(document).on("click",".btnChoice2",function(){
+	    	var checkBox = $(this).parent().parent().find('input[type="checkbox"]');
+	    	for(i=0;i<checkBox.length;i++){
+	            if(checkBox[i].checked==true){
+	                checkBox[i].checked=false;
+		        }else{
+		            checkBox[i].checked=true
+		        }
+	        };
+	    });
+//	    $("#doAdd").click(function() {
+//				var name = $("#add_name").val();
+//				var memo = $("#add_memo").val();
+//				if(name==""||name==null){
+//					swal({title: "",text: '请输入角色名称！'});
+//				}else if(memo==""||memo==null){
+//					swal({title: "",text: '请简单描述该角色！'});
+//				}else{
+//					var sperIds =[]; 
+//					$('select[name="sperIds"]').each(function(){ 
+//						var vvv=$(this).val();
+//						if(vvv&&vvv!='0'){
+//							sperIds.push($(this).val()); 
+//						}
+//					});
+//					var perIds =[]; 
+//					$('input[name="perIds"]:checked').each(function(){ 
+//						perIds.push($(this).parent().find(".permissionId").text()); 
+//					});
+//					if(sperIds.length==0&&perIds.length==0){
+//						swal({title: "",text: '请选择角色包含的权限！'});
+//						return false;
+//					}
+//					perIds=window.JSON.stringify(perIds);
+//					var params = {
+//						'id':patientInfoDetailLineId,
+//						'name' : name,
+//						'remark' : memo,
+//						'menuIdJson' : perIds,
+//					};
+//					console.log(params);
+//					ajaxGet('/sys/role/update', params,function(data) {
+//							var status = data.status;
+//							console.log(data);
+//							if (status == 0) {
+//								swal({title:'',text:'修改成功！'});
+//								setTimeout(function() {
+//									parent.$(window.parent.document).find(".layui-layer-close").click();
+//								}, 2000);
+//								RefreshIframe("page/permissionList/permissionList.html", "5");
+//								
+//							} else {
+//								swal({title:'',text:data.message});
+//							}
+//						});
+//				}
+//				
+//			});
+	};
+
+    	var userId=sessionStorage.getItem('userId');
+		var sessionId=sessionStorage.getItem('sessionId');
+		var patientInfoDetailLineId=parseInt(localStorage.getItem("patientInfoDetail-lineId"));
+//      以下为调取接口的部分
+		var currentPage = 1;
+				var offsetPage=0;//传输的页起始条数
+				var showNum=10;//页面需要显示的条数
+				var num_pages;
+			//点击分页页数
+				$(document).delegate(".flipOver",'click',function(){
+					$(this).addClass('active').siblings().removeClass('active');
+					currentPage = parseInt($(this).attr("pageId"));
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getPatientList();
+					window.scrollTo(0,0);
+				});
+			//点击上一页
+				$(document).delegate("#prev",'click',function(){	
+					if($(".flipOver.active").prev().attr("id") == "prev"){
+						return true
+					}else{
+						var page = parseInt($(".flipOver.active").attr("pageid"))-1;
+						$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+					}
+					currentPage = page;
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getPatientList();
+					window.scrollTo(0,0);
+				});
+				
+				
+			//点击下一页
+				$(document).delegate("#Next",'click',function(){
+					if($(".flipOver.active").next().attr("id") == "Next"){
+						return true
+					}else{
+						var page = parseInt($(".flipOver.active").attr("pageid"))+1;
+						$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+					}
+					currentPage = page;
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getPatientList();
+					window.scrollTo(0,0);
+				});	
+//				getPatientList();
+//				//	获取列表
+//				function getPatientList(){
+////					console.log("coming......");
+//					$("#patientInfoContents").html('');
+//					$.ajax({
+//						type:"get",
+//						url:config+"/sys/role/detail",
+//						async:false,
+//						dataType:"jsonp",
+//						jsonp:"jsoncallback",
+//						data:{
+//							sessionId:sessionId,
+//							id:patientInfoDetailLineId
+//						},
+//						success:function(data){
+//							console.log("岗位修改");
+//							console.log(data);
+//							$("#add_name").val(data.resultMap.role.name);
+//							$("#add_memo").val(data.resultMap.role.memo);
+//							var patinfoList=data.resultMap.rolePerList;
+////							var listTotal=data.resultMap.total;//总条数
+////							var index = data.viewIndex;
+////							num_pages = Math.ceil(parseInt(listTotal)/10);//总条数除以每页十条数据为总页码
+//							$("#postListTab").html('');
+//							$(".allInfoPostList").html('<div class="submitBtns"style="cursor: pointer;"id="doAdd">提交</div>');
+//							for(var i=0;i<patinfoList.length;i++){
+//								var tabHtml='';
+//								var aDiv='';
+//								tabHtml+='<li class="change">'+patinfoList[i].name+'</li>';
+//								aDiv+='<div class="aaa"id="'+patinfoList[i].code+'">';
+//								if(patinfoList[i].menuList.length!=0){
+//									aDiv+='<div class="choice">';
+//									aDiv+='<button class="btnChoice1">全选</button>';
+//									aDiv+='<button class="btnChoice2">反选</button>';
+//									aDiv+='</div>';
+//								}
+//								
+//								aDiv+='</div>';
+//								$("#postListTab").append(tabHtml);
+//								$('.allInfoPostList .submitBtns').before(aDiv);
+//								var postMenulist=patinfoList[i].menuList;
+//								for(var k=0;k<postMenulist.length;k++){
+//									var menuListHtml='';
+//									menuListHtml+='<div class="personalInfo"id="'+postMenulist[k].code+'">'+postMenulist[k].name+'</div>';
+//									menuListHtml+='<ul class="dep-workpartList">';
+//									menuListHtml+='</ul>';
+//									$("#"+patinfoList[i].code).find('.choice').before(menuListHtml);
+//									if($.isEmptyObject(postMenulist[k].perMap)==false){
+//										var thisKey=postMenulist[k].name;
+//										var perMapHtml='';
+//										for(var p in postMenulist[k].perMap){
+//											var currentmenus=postMenulist[k].perMap[p];
+//											if(currentmenus.scope==null||currentmenus.scope==""){
+////												console.log(currentmenus);
+//												perMapHtml+='<li>';
+//												if(currentmenus.isSelected=="1"){
+//													perMapHtml+='<input class="check_box" style="cursor: pointer;" name="perIds" type="checkbox" checked="checked"value="'+currentmenus.id+'">';
+//												}else{
+//													perMapHtml+='<input class="check_box" style="cursor: pointer;" name="perIds" type="checkbox" value="'+currentmenus.id+'">';
+//												}
+//												perMapHtml+='<span title="'+currentmenus.memo+'" class="option_cont" style="cursor: default;">'+currentmenus.name+'</span>';
+//												perMapHtml+='</li>';
+//											}else{
+//												perMapHtml+='<li>';
+//												perMapHtml+='<span title="'+currentmenus.memo+'" style="cursor: default;">'+currentmenus.name+'</span>';
+//												perMapHtml+='<select id="sperIds'+currentmenus.id+'" name="sperIds">'+currentmenus.scope+'</select>';
+//												perMapHtml+='</li>';
+//											}
+//											
+//										}
+//										$("#"+postMenulist[k].code).next('ul').append(perMapHtml);
+//									}
+//								}
+//							}
+//						},
+//					});
+//					
+//			}
+//新版获取权限列表
+
+//function getPatientList(){
+////					console.log("coming......");
+//			$("#patientInfoContents").html('');
+//			ajaxGet('/sys/role/getRole', {id:patientInfoDetailLineId},function(data){
+//					console.log("岗位新增");
+//					console.log(data);
+//					$("#add_name").val(data.resultMap.role.name);
+//					$("#add_memo").val(data.resultMap.role.remark);
+//					var patinfoList=data.resultMap.roleMenuTree.children;
+////							var listTotal=data.resultMap.total;//总条数
+////							var index = data.viewIndex;
+////							num_pages = Math.ceil(parseInt(listTotal)/10);//总条数除以每页十条数据为总页码
+//					$("#postListTab").html('');
+////							$(".allInfoPostList").html('<div class="submitBtns"style="cursor: pointer;"id="doAdd">提交</div>');
+//					for(var i=0;i<patinfoList.length;i++){
+//						var limitListHtml='';
+//						limitListHtml +='<div class="rowMenu">';
+//						limitListHtml +='<span class="lf firstMenuWidth">'+patinfoList[i].text+'</span>';
+//						limitListHtml +='<div class="secondMenuBox lf">';
+//						for(var k=0;k<patinfoList[i].children.length;k++){
+//							limitListHtml +='<div class="secondMenu">';
+//							limitListHtml +='<span class="lf secondMenuWidth">'+patinfoList[i].children[k].text+'</span>';
+//							limitListHtml +='<div class="thirdMenuBox lf">';
+//							if(patinfoList[i].children[k].children.length>0){
+//								console.log(patinfoList[i].children[k].children);
+//								for(j=0;j<patinfoList[i].children[k].children.length;j++){
+//									limitListHtml +='<div class="thirdMenu">';
+//									limitListHtml +='<span class="lf thirdMenuWidth">'+patinfoList[i].children[k].children[j].text+'</span>';
+//									limitListHtml +='<div class="limitListBox lf col-sm-10">';
+//									
+//									if(patinfoList[i].children[k].children[j].children.length==0){
+////										for(var p in patinfoList[i].children[k].children[j]){
+//												limitListHtml +='<div class="col-sm-3 lf">';
+//												limitListHtml +='<div class="permissionId">'+patinfoList[i].children[k].children[j].id+'</div>';
+//												
+//												if(patinfoList[i].children[k].children[j].checked){
+//													limitListHtml +='<input type="checkbox" class="limitCheckBox lf"name="perIds"checked="checked"/>'				
+//													limitListHtml +='<span class="editRoleText">'+patinfoList[i].children[k].children[j].text+'</span>'				
+//													limitListHtml +='<div class="indexBox indexCheckedBox"></div>'		
+//												}else{
+//													limitListHtml +='<input type="checkbox" class="limitCheckBox lf"name="perIds"/>'				
+//													limitListHtml +='<span class="editRoleText">'+patinfoList[i].children[k].children[j].text+'</span>'				
+//													limitListHtml +='<div class="indexBox"></div>'
+//												}
+//																
+//												limitListHtml +='</div>'			
+////											}
+//										}
+//									limitListHtml +='</div>';
+//									limitListHtml +='</div>';
+//								}
+//							}else{
+//									limitListHtml +='<div class="thirdMenu">';
+//									limitListHtml +='<span class="lf thirdMenuWidth"></span>';
+//									limitListHtml +='<div class="limitListBox lf col-sm-10">';
+//									
+//									if(patinfoList[i].children[k].children.length==0){
+////										for(var p in patinfoList[i].children[k]){
+//												limitListHtml +='<div class="col-sm-3 lf">';
+//												limitListHtml +='<div class="permissionId">'+patinfoList[i].children[k].id+'</div>';
+//												if(patinfoList[i].children[k].checked){
+//													limitListHtml +='<input type="checkbox" class="limitCheckBox lf"name="perIds"checked="checked"/>'
+//													limitListHtml +='<span class="editRoleText">'+patinfoList[i].children[k].text+'</span>'
+//													limitListHtml +='<div class="indexBox indexCheckedBox"></div>'
+//												}else{
+//													limitListHtml +='<input type="checkbox" class="limitCheckBox lf"name="perIds"/>'
+//													limitListHtml +='<span class="editRoleText">'+patinfoList[i].children[k].text+'</span>'
+//													limitListHtml +='<div class="indexBox"></div>'
+//												}
+//																
+//																
+//												limitListHtml +='</div>'			
+////											}
+//									}
+//									limitListHtml +='</div>';
+//									limitListHtml +='</div>';
+//							}
+//							limitListHtml +='</div>';
+//							limitListHtml +='</div>';
+//						}
+//						$("#postListTab").append(limitListHtml);
+//					}
+//						
+////						$('.allInfoPostList .submitBtns').before(aDiv);
+////						var postMenulist=patinfoList[i].menuList;
+//
+//				});
+//			
+//	}
+
+//		点击checkbox加背景色
+		$(document).on("click",".limitCheckBox",function(){
+			if($(this).prop("checked")){
+				$(this).parent().find(".indexBox").addClass("indexCheckedBox");
+			}else{
+				$(this).parent().find(".indexBox").removeClass("indexCheckedBox");	
+			}
+			var addDeptInput=$(".limitCheckBox");
+			var checkedLen=0;
+			for(var k=0;k<addDeptInput.length;k++){
+				if($(addDeptInput[k]).prop("checked")==true){
+					checkedLen++;
+				}
+				
+			}
+			if(checkedLen==addDeptInput.length){
+				$(".choice .editRoleText").text("反选");
+				$(".choice .deptInputAll").prop("checked","checked");
+				$(".choice .chosedRadio").css("display","block");
+			}else{
+				$(".choice .editRoleText").text("全选");
+				$(".choice .deptInputAll").prop("checked",false);
+				$(".choice .chosedRadio").css("display","none");
+			}
+		});
+//		选择运营人员时出现机构选择框
+		//		选择运营人员时出现机构选择框
+		$(".deptBoxs").on("click","input.limitCheckBox",function(){
+			if(localStorage.getItem("userJumpFrom")=="userJumpChange"){
+				isCheck();
+			}
+		});
+		//		点击新增的全选
+		$(".choice .deptInputAll").click(function(){
+			if($(this).parent().find(".editRoleText").text().trim()=="全选"){
+				$(this).parent().find(".editRoleText").text("反选");
+				$(".choice .deptInputAll").prop("checked","checked");
+				$(".choice .chosedRadio").css("display","block");
+				var addDeptInput=$(".limitCheckBox");
+				for(var k=0;k<addDeptInput.length;k++){
+					$(addDeptInput[k]).prop("checked","checked");
+					$(addDeptInput[k]).parent().find(".indexBox").addClass("indexCheckedBox");
+				}
+			}else{
+				$(".choice .editRoleText").text("全选");
+				$(".choice .deptInputAll").prop("checked",false);
+				$(".choice .chosedRadio").css("display","none");
+				var addDeptInput=$(".limitCheckBox");
+				for(var k=0;k<addDeptInput.length;k++){
+					$(addDeptInput[k]).prop("checked",false);
+					$(addDeptInput[k]).parent().find(".indexBox").removeClass("indexCheckedBox");
+				}
+			}
+		})
+	</script>
+</html>

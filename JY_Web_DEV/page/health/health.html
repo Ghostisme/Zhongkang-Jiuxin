@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" /> -->
+		<title>健康记录TAB</title>
+		<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+		<link href="../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+		<base target="_blank">
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/init.css" />
+		<!-- 顶部内容CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/navbar.css"> -->
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont.css">
+		<!-- 本页CSS -->
+		 <link type="text/css" rel="stylesheet" href="css/health.css" /> 
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<!-- <script src="../../js/content.min.js?v=1.0.0"></script> -->
+		<!-- 页面跳转方法JS -->
+		<!-- <script type="text/javascript" src="../../js/jumpPage.js"></script> -->
+		<!-- 本页JS -->
+		<!-- <script type="text/javascript" src="js/health.js"></script> -->
+	</head>
+	<body>
+		<!-- 2019-05-28完成 -->
+		
+		<div class="wrapper wrapper-content animated fadeIn">
+			<!--<div class="pull-right">
+				<button type="button" class="btn btn-sm btn-info" id="btn">刷新</button>
+			</div>-->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel blank-panel">
+						<div class="panel-heading">
+							<div class="panel-options">
+								<ul class="nav nav-tabs">
+									<li class="active">
+										<a data-toggle="tab" href="health.html#tab-1">基本信息</a>
+									</li>
+									<!--<li class="">
+										<a data-toggle="tab" href="health.html#tab-2">病史</a>
+									</li>
+									<li class="">
+										<a data-toggle="tab" href="health.html#tab-3">慢病病症</a>
+									</li>
+									<li class="">
+										<a data-toggle="tab" href="health.html#tab-4">生活习惯</a>
+									</li>
+									<li class="">
+										<a data-toggle="tab" href="health.html#tab-5">健康数据</a>
+									</li>
+									<li class="">
+										<a data-toggle="tab" href="health.html#tab-6">诊疗信息</a>
+									</li>-->
+								</ul>
+							</div>
+						</div>
+
+						<div class="panel-body">
+							<div class="tab-content">
+								<div id="tab-1" class="tab-pane active">
+									<iframe frameborder="no" width="100%" height="600px" src="../healthrecord/healthrecord.html"></iframe>
+								</div>
+								<div id="tab-2" class="tab-pane">
+									<iframe frameborder="no" width="100%" height="650px" src="../medicalHistory/medicalHistory.html"></iframe>
+								</div>
+								<div id="tab-3" class="tab-pane">
+									<iframe frameborder="no" width="100%" height="670px" src="../chronicDisease/chronicDisease.html"></iframe>
+								</div>
+								<div id="tab-4" class="tab-pane">
+									<iframe frameborder="no" width="100%" height="600px" src="../habitscustoms/habitscustoms.html"></iframe>
+								</div>
+								<div id="tab-5" class="tab-pane">
+									<iframe frameborder="no" width="100%" height="600px" src="../healthData/healthData.html"></iframe>
+								</div>
+								<div id="tab-6" class="tab-pane">
+									<iframe frameborder="no" width="100%" height="600px" src="../prescriptionDrugs/prescriptionDrugs.html"></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

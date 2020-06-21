@@ -1,0 +1,248 @@
+body{
+	height: 600px;
+	min-width: 1024px;
+    min-height: 600px;
+}
+.el-tabs{
+	height: 600px;
+}
+.el-tabs__content{
+	height: inherit;
+}
+/*顶部搜索条*/
+.topBox {
+	width: 100%;
+	height: 50px;
+	padding: 10px 0px;
+	box-sizing: border-box;
+}
+.queryForm {
+	float: left;
+	margin-top: 3px;
+}
+.queryContent {
+	width: 110px;
+	height: 30px;
+	box-sizing: border-box;
+	margin-top: -3px;
+}
+.addBtn {
+	width: 85px;
+	height: 24px;
+	border-radius: 5px;
+	background-color: #1C79B6;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	color: #FFFFFF;
+	margin-left: 20px;
+	line-height: 24px;
+	letter-spacing: 5px;
+	cursor: pointer;
+}
+.tableNav1 {
+	width: 100%;
+    height: 36px;
+    line-height: 36px;
+    background-color: #EAEDF3;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    padding-left: 25px;
+    text-align: left;
+}
+/*表格*/
+.table {
+	width: 100%;
+}
+.titleList {
+	width: 100%;
+	height: 36px;
+	background-color: #e2eff7;
+	display: flex;
+}
+.titleList li {
+	list-style-type: none;
+	/*float: left;*/
+	height: 36px;
+	line-height: 36px;
+}
+.dataList {
+	width: 100%;
+	height: 36px;
+	border-bottom: 1px solid #eeeeee;
+	display: flex;
+}
+
+.dataList li {
+	list-style-type: none;
+	/*float: left;*/
+	height: 36px;
+	line-height: 36px;
+	width: 13%;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+}
+.equipmentNamePageN,.equipmentBrandPageN,.equipmentModelPageN,.equipmentInspectionPageN{
+	text-align: right;
+}
+/*弹框样式*/
+
+.black_overlay {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index: 1001;
+	-moz-opacity: 1;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.mask_content_box {
+	width: 25%;
+	background-color: #FFF;
+	border-radius: 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.header_title {
+	text-align: left;
+	width: 100%;
+	height: 36px;
+	line-height: 36px;
+	font-size: 15px;
+	color: #FFF;
+	font-weight: 600;
+	padding-left: 38px;
+}
+.content_middle {
+	padding-top: 0px;
+}
+.middle_content label {
+	margin-right: 10px;
+	font-size: 14px;
+	color: #333;
+	white-space: nowrap;
+}
+.middle_content input{
+	width: 156px;
+	height: 30px;
+	color: #666;
+}
+
+.btnGroup {
+	text-align: center;
+}
+
+.Btn {
+	border: 0;
+	border-radius: 0px;
+	font-size: 14px;
+}
+
+.el-alert--error.is-light{
+	background-color: #FFF;
+}
+.el-alert{
+	padding: 4px 16px;
+	text-indent: 70px;
+}
+.el-input__icon{
+	width: 15px;
+	height: 15px;
+	line-height: 15px;
+}
+.formBox{
+	width: 100%;
+}
+.formItemBox{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	width: 100%;
+}
+.textBox{	
+	text-align: left;
+	display: flex;
+}
+.el-input{
+	width: auto;
+}
+.el-input__inner{
+	border-radius: 0;
+	height: 30px !important;
+}
+.contentBox{
+    display: flex;
+	justify-content: center;
+}
+.middle_content {
+    text-align: center;
+    margin-bottom: 40px !important;
+    padding: 0 36px;
+    margin-top: 20px !important;
+}
+label{
+	margin-top: 5px;
+}
+.addGroup{
+	margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 900px) and (max-width: 1600px) {
+	body{
+		overflow-x: hidden !important;
+	}
+	.topBox{
+		width: 98% !important;
+	}
+	.tableNav1{
+		width: 98% !important;
+	}
+	.titleList{
+		width: 98% !important;
+	}
+	.dataList{
+		width: 98% !important;
+	}
+	.mask_content_box{
+		/*max-height: 350px;
+		overflow-y: scroll;*/
+		width: 60% !important;
+	}
+}

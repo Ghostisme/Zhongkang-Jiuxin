@@ -1,0 +1,619 @@
+html,body,div,span,p,input,img,h1,h2,h3,h4,h5,h6,hr,a,ul,li,select,option,button{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+ul li{
+	list-style: none;
+}
+select, option{
+	outline: 0;
+}
+button{
+	outline: 0;
+	border: 0;
+}
+.box{
+	padding: 10px;
+	box-sizing: border-box;
+	/*width: 1500px;*/
+	width: 100%;
+	height: 500px;
+	/*position: absolute;
+	top: 80px;
+    right: 100px;*/
+     min-width: 1024px;
+     margin-bottom: 100px;
+}
+.box2{
+	padding: 10px;
+    box-sizing: border-box;
+    /*width: 1500px;*/
+   width: 100%;
+    height: 600px;
+    /*position: absolute;
+    top: 80px;
+    right: 100px;*/
+    /*min-width: 1500px;*/
+    margin-bottom: 100px;
+     min-width: 980px;
+}
+#userInfo{
+	font-family: "microsoft yahei";
+	color: #008fec;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #008FEC;
+    font-size: 14px;
+}
+
+.userName{
+	width: 100%;
+	height: 36px;
+	/*border: 1px solid #e6e0e0;*/
+	margin-top: 15px;
+}
+#userNameLeft,#userNameRight{
+	width: 30%;
+	height: 100%;
+	float: left;
+	border: 1px solid #e6e0e0;
+	margin-right:10%;
+}
+#userNameLeftL,#userNameRgihtL{
+	width: 110px;
+	border-right: 1px solid #e6e0e0; 
+	height: 36px;
+	display: inline-block;
+	background-color: #018eea;
+	color: #fff;
+	text-align: center;
+	line-height: 36px;
+	font-size: 14px;
+}
+
+#userNameLeftR,#userNameRgihtR{
+	/*padding-left: 10px;*/
+	padding: 5px 10px 0px;
+	box-sizing: border-box;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	color: #676767;
+}
+
+/*选项卡切换样式*/
+.tab ul:first-child .cur{
+	/*background:#018eea;*/
+	font-family: "microsoft yahei";
+	/*color: #FFFFFF;*/
+	}		
+.tab .on{
+	display:block;
+	}
+.aaa{
+	display: none;
+	border:1px solid #e6e1de;
+	}
+		
+.tab{
+	width: 100%;
+	height: 400px;
+	margin-top: 30px;
+	/*background-color: #f2f2f2;*/
+}
+
+.tab ul:first-child{
+	width: 100%;
+	/*height: 50px;*/
+	/*border-bottom: 1px solid #008FEC;*/
+}
+.tab ul:first-child li{
+	/*float: left;*/
+	width: 140px;
+	/*height: 50px;*/
+	/*line-height: 50px;*/
+	text-align: center;
+	font-family: "microsoft yahei";
+	color: #1b1b1b;
+	text-align: center;
+	/*background-color: #f6f6f6;*/
+	cursor: pointer;
+}
+.personalInfo,.workpart{
+	width: 100%;
+	height: 42px;
+	line-height: 42px;
+	background-color: #f6f6f6;
+	border: 1px solid #e6e1de;
+	border-top: none;
+	padding-left: 30px;
+	box-sizing: border-box;
+	color: #1c1c1c;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+}
+.way{
+	widows: 100%;
+	height: 50px;
+	border: 1px solid #e6e1de;
+	border-top: none;
+}
+.wayLeft{
+	width: 400px;
+	height: 50px;
+	float: left;
+	border-right:1px solid #e6e1de;
+}
+.wayRight{
+	width: auto;
+	height: 50px;
+	float: left;
+}
+#wayLeftTiitle{
+	display: inline-block;
+	line-height: 50px;
+	height: 50px;
+	padding-left: 30px;
+	box-sizing: border-box;
+	color: #1c1c1c;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	
+}
+.wayLeft select{
+	width: 170px;
+	height: 32px;
+	border-right:1px solid #e6e1de;
+	padding-left: 10px;
+	color: #1c1c1c;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	border: 1px solid #d2d2d2;
+	border-radius: 3px;
+	border: 1px solid #d2d2d2;
+    border-radius: 3px;
+}
+.wayLeft select option{
+	padding-left: 5px;
+	color: #1c1c1c;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+}
+.wayRight{
+	padding: 15px 0px 15px 20px;
+	box-sizing: border-box;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+}
+#workpartList{
+	width: 100%;
+	height: 300px;
+	border-bottom: none;
+}
+#workpartList li{
+	/*width: 470px;*/
+	width: 25%;
+	height: 55px;
+	float: left;
+	border:1px solid #e6e1de;
+	line-height: 55px;
+	font-family: "microsoft yahei";
+	color: #323232;
+	font-size: 14px;
+	background-color: #FFFFFF;
+	text-align: left;
+	padding-left: 30px;
+	box-sizing: border-box;
+}
+#workpartList .redText{
+	line-height: 55px;
+	font-family: "microsoft yahei";
+	color: #c84243;
+	font-size: 14px;
+}
+.change{
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background-color: #018eea;
+	color: #FFFFFF;
+	/*margin: 40px auto 0px auto;*/
+	display: block;
+	letter-spacing: 5px;
+	cursor: pointer;
+	margin:0 auto;
+}
+.submitBtns{
+	width: 110px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background-color: #51659B;
+	color: #FFFFFF;
+	/*margin: 40px auto 0px auto;*/
+	display: block;
+	letter-spacing: 5px;
+	cursor: pointer;
+	margin:40px auto;
+
+}
+.titlePadding{
+	padding-left: 10px;
+	margin-bottom: 20px;
+}
+.leftMenuBox{
+	border-right: 1px solid #aaa;
+}
+/*部门维护页面样式*/
+.dep-workpartList{
+	width: 100%;
+    /*max-height: 340px;*/
+	border-bottom: none;
+	overflow: hidden;
+	border-bottom:1px solid #e6e1de;
+}
+.dep-workpartList li{
+	/*width: 470px;*/
+	width: 25%;
+	height: 76px;
+	float: left;
+	border:1px solid #e6e1de;
+	line-height: 76px;
+	font-family: "microsoft yahei";
+	color: #323232;
+	font-size: 14px;
+	background-color: #FFFFFF;
+	border-top: none;
+	text-align: left;
+	padding-left: 30px;
+	box-sizing: border-box;
+	list-style: none;
+	/*border-right:none;*/
+}
+.dep-workpartList li select{
+	/*width: 170px;*/
+	width: 40%;
+	height: 32px;
+	padding-left: 10px;
+	box-sizing: border-box;
+	border: 1px solid #d2d2d2;
+	border-radius: 3px;
+}
+
+.dep-workpartList li select option{
+	vertical-align: middle;
+}
+.dep-workpartList .choice{
+	width: 100%;
+	height: 76px;
+	text-align: center;
+	padding: 0;
+}
+.choice{
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	padding: 0;
+	margin-top:30px;
+	padding-left: 28px;
+}
+.btnChoice1,.btnChoice2{
+	width: 150px;
+	height: 30px;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	letter-spacing: 2px;
+	cursor: pointer;
+}
+.btnChoice1{
+	background-color: #018eea;
+	color: #fff;
+}
+
+.btnChoice2{
+	background-color: #ececec;
+	color: #5b5b5b;
+}
+
+
+/*岗位名称样式*/
+#positionName{
+	width: 48%;
+	height: 36px;
+}
+#positionNameLeft{
+	width: 22.85%;
+	font-weight: bold;
+	height: 36px;
+	float: left;
+	line-height: 36px;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+#positionNameRight{
+	width: 76%;
+	height: 36px;
+	float: left;
+	line-height: 36px;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	/*padding-left: 10px;*/
+	box-sizing: border-box;
+}
+#positionNameRight input{
+	width: 100%;
+	border: 0;
+	height:32px;
+	padding-left: 12px;
+}
+#positionNameRight input:focus{
+	outline:none;
+}
+#star{
+	color: #d40000;
+	height: 36px;
+	width: 10px;
+	float: left;
+	margin-top: 3px;
+	width:10%;
+}
+#star-right{
+	float: left;
+	width:90%;
+}
+#positionDes{
+	width: 100%;
+}
+
+.userName2{
+    width: 100%;
+	/*height: 140px;*/
+	margin-top: 15px;
+	overflow: hidden;
+}
+#positionDes{
+	width: 48%;
+	/*height: 105px;*/
+	/*background-color: #f6f6f6;*/
+	overflow: hidden;
+}
+#positionDesleft{
+	float: left;
+	width: 16.85%;
+	height: 36px;
+	font-weight: bold;
+	font-family: "microsoft yahei";
+	text-align: center;
+	line-height: 36px;
+}
+#positionDesright{
+	float: left;
+	width: 80%;
+}
+#positionDesright input{
+	border: none;
+	border-right: 1px solid #d2d2d2;
+	width: 100%;
+	height: 100px;
+	padding: 0px;
+	padding-left: 12px;
+}
+#positionDesright input:focus{
+	outline: none;
+}
+
+/*权限checkbox按钮设置*/
+.roleList{
+	position: relative;
+	margin-right: 30px;
+}
+.deptList .deptInput,.personInChargeRows .deptInput,.choice input{
+	width: 12px;
+	height: 12px;
+	margin:0px !important;
+	opacity: 0;
+	position: relative;
+	z-index: 2;
+	left: -15px;
+	cursor: pointer;
+}
+
+.editRoleText{
+	height: 36px;
+	display: table-cell;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+/*权限选择上浮动的按钮*/
+.indexBox{
+	position: absolute;
+    left: 0px;
+    top: 12px;
+	width: 12px;
+	height: 12px;
+	background: #fff;
+	border: 1px solid #51659B;
+	z-index: 1;
+}
+.indexCheckedBox{
+	position: absolute;
+    left: 0px;
+    top: 12px;
+	width: 12px;
+	height: 12px;
+	background: #4E6195;
+	border: 1px solid #51659B;
+	z-index: 1;
+}
+/*单选浮动样式*/
+.indexRadioBox{
+	position: absolute;
+    left: 0px;
+    top: 12px;
+	width: 12px;
+	height: 12px;
+	background: #fff;
+	border: 1px solid #51659B;
+	z-index: 1;
+	border-radius: 50%;
+}
+.chosedRadio{
+	width: 8px;
+	height: 8px;
+	background: #4E6195;
+	border-radius: 50%;
+	margin-top: 1.1px;
+    margin-left: 1.1px;
+    display: none;
+}
+/*权限配置标题*/
+.infosNav {
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    background-color: #EAEDF3;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    padding-left: 25px;
+    /*border-bottom: 0.5px solid #999;*/
+}
+
+/*一级菜单*/
+.allInfoPostList{
+	border: 0.5px solid #d5d6d8;
+	text-align: left;
+	border-bottom: 0px;
+}
+.rowMenu{
+	overflow: hidden;
+	border-bottom: 0.5px solid #d5d6d8;
+}
+.rowMenu:nth-child(even){
+	background: #F4F5F6;
+}
+.firstMenu{
+	float: left;
+	width: 100%;
+}
+.firstMenuWidth{
+	width: 15%;
+	padding-left: 10px;
+	min-height: 36px;
+	line-height: 300%;
+	text-align: center;
+}
+.secondMenuWidth{
+	width: 15%;
+	padding-left: 10px;
+	text-align: center;
+}
+.secondMenuBox{
+	width: 85%;
+	border-left:0.5px solid #d5d6d8;
+	overflow: hidden;
+}
+.secondMenu{
+	width: 100%;
+	min-height: 36px;
+	line-height: 300%;
+	overflow: hidden;
+	border-bottom: 0.5px solid #d5d6d8;
+}
+.secondMenu:last-child{
+	border-bottom: 0px;
+}
+.thirdMenuWidth{
+	width: 20%;
+	min-height: 36px;
+	padding-left: 10px;
+	text-align: center;
+}
+.thirdMenu{
+	width: 100%;
+	overflow: hidden;
+}
+.thirdMenuBox{
+	border-left:0.5px solid #d5d6d8;
+	width: 85%;
+}
+/*权限checkbox*/
+
+.limitCheckBox{
+	width: 12px;
+    height: 12px;
+    margin: 0px !important;
+    opacity: 0;
+    position: relative;
+    z-index: 2;
+    left: -15px;
+}
+.limitListBox{
+	width: 80%;
+	padding-left: 30px;
+	border-left: 0.5px solid #d5d6d8;
+	border-bottom: 0.5px solid #d5d6d8;
+	border-right: 0.5px solid #d5d6d8;
+}
+.limitListBox:last-child{
+	border-bottom: 0px;
+}
+/*权限标题*/
+.limitTitles{
+	width: 100%;
+	height: 36px;
+	background: #F4F5F6;
+	border-left: 0.5px solid #d5d6d8;
+	border-top: 0.5px solid #d5d6d8;
+	border-right: 0.5px solid #d5d6d8;
+}
+.firstTitle{
+	width: 15.1%;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	border-right: 0.5px solid #d5d6d8;
+	padding-left: 10px;
+}
+.secondTitle{
+	width: 12.8%;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	border-right: 0.5px solid #d5d6d8;
+	padding-left: 10px;
+}
+.thirdTitle{
+	width: 14.5%;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	border-right: 0.5px solid #d5d6d8;
+	padding-left: 10px;
+}
+.limitLastTitle{
+	height: 36px;
+	line-height: 36px;
+	text-align: left;
+	padding-left: 20px;
+	width: 53.8%;
+	text-align: center;
+}
+@media screen and (max-width: 1400px){
+	body {
+	    min-height: 0px!important;
+	    min-width: 900px!important;
+	}
+	.col-sm-3 {
+	    width: 30%;
+	}
+}
+.permissionId{
+	display: none;
+}

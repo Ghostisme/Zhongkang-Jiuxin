@@ -1,0 +1,58 @@
+.equipmentImg{
+	width: 100%;
+	height: 100%;
+}
+.gohome{
+	display: none;
+}
+.equipmentPrices{
+	margin:10px 0;
+}
+.quipmentStatus{
+	margin: 20px 0;
+}
+.pt25{
+	padding-top: 25px;
+}
+.panel_new{
+	margin-bottom: 20px;
+}
+.ic_new{
+	border-bottom:1px solid rgb(231, 234, 236);
+	border-top: 0;
+}
+.mt20{
+	margin-top: 20px;
+}
+.plr0{
+	padding-left: 0!important;
+	padding-right: 0!important;
+}
+.con_d{
+	display: flex;
+	margin: 10px 0;
+}
+.con_d>div:first-child{
+	color: black;
+}
+.con_h{
+	color: black;
+	margin: 20px 0 15px 0;
+}
+.cbhd{
+	height:200px;
+	padding: 0!important;
+	cursor: pointer;
+}
+
+
+.cbhd:hover{
+	border-color: #018EEA;
+}
+.h100{
+	height: 100%;
+}
+.d_bc{
+	background-color:#FAFAFA ;
+}
+

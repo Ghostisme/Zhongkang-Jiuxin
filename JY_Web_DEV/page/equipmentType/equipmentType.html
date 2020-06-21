@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>设备类型</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<!--<link rel="stylesheet" type="text/css" href="../../css/foundation.min.css"/>-->
+	<!--<link href="../../css/foundation-datepicker.css" rel="stylesheet" type="text/css">-->
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../css/bootstrap-select.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/equipmentType.css" />
+	<link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
+	
+	<!--<link rel="stylesheet" type="text/css" href="../../css/calendar.css"/>-->
+
+	<style>
+		.doctorAdvice img {
+			width: 278px;
+			height: 278px;
+			margin-right: 3.5%;
+			/*margin-bottom: 20px;*/
+			border: 1px solid #E2E3E3;
+			cursor: pointer;
+		}
+		
+		.doctorAdvice {
+			height: auto;
+			display: none;
+		}
+		
+		#J_pg {
+			z-index: 88888;
+		}
+		
+		.delImgAll span {
+			cursor: pointer;
+			font-size: 1.25em;
+			background: #1B1B1B;
+			opacity: 0.5;
+			color: #fff;
+			border-bottom-left-radius: 13px;
+		}
+		
+		.delImgAll span:hover {
+			background: #1B1B1B;
+			opacity: 0.5;
+			color: #fff;
+		}
+		#iconUploadTip{
+			text-indent: 0px;
+			white-space: nowrap;
+		}
+	</style>
+
+	<body>
+
+		<div class="reportQueryInfoBox">
+			<!--第一行信息-->
+			<div class="reportQueryInfoHead topBox" style="overflow: initial !important;">
+				<div class="reportQueryNanme">
+					<!--<span class="reportQueryNanmeLeft">设备类型</span>-->
+					<!--<input class="reportQueryNanmeRight queryContent" placeholder="设备类型" type="text" id="ListreportQueryName" value="" />-->
+					<select title="设备类型" class="reportQueryNanmeRight querySelect queryContent" id="ListreportQueryName" data-dropup-auto="false" data-live-search="true"></select>
+				</div>
+				<button class="reportQueryBtnCheck topBtn queryBtn" id="reportQuerySearchBtns">查询</button>
+				<button class="reportQueryBtnClear topBtn resetbtn" id="reportQuerySearchClearBtn">清空</button>
+				<!--<div class="newBtn" style="float: right;text-align:center;width: 85px;color:#fff;
+					height: 24px;line-height:24px;border-radius: 5px;background-color: #ff7510;font-size: 14px;color: #FFFFFF;letter-spacing: 5px;cursor: pointer;font-family: "microsoft yahei";">
+		        	新增
+		    	</div>-->
+		    	<button class="reportQueryBtnCheck topBtn" id="addBtn">新增</button>
+				<!--<div class="topBtn">新增</div>-->
+			</div>
+			<!--表头-->
+			<div class="tableNav">设备类型</div>
+			<!--信息列表-->
+			<div class="reportQueryInfoList outBoxBorder">
+				<ul class="reportQueryInfoList-ul titleList">
+					<li class="reportQueryInfoList-all boxRightBorder">序号</li>
+					<li class="reportQueryInfoList-name boxRightBorder" style="width: 10%;">图片</li>
+					<li class="reportQueryInfoList-code boxRightBorder">设备类型名称</li>					
+					<!--<li class="reportQueryInfoList-sex LiTextAlign">分类</li>-->
+					<li class="reportQueryInfoList-oparate boxRightBorder" style="width: 20%;">操作</li>
+					<!--<li class="reportQueryInfoList-tel LiTextAlign"style="width:7%;">储藏条件</li>
+				<li class="reportQueryInfoList-tel LiTextAlign"style="width:12%;">生产厂商</li>
+				<li class="reportQueryInfoList-tel LiTextAlign"style="width:7%;">价格</li>
+				<li class="reportQueryInfoList-oparate LiTextAlign"style="width: 7%;">操作</li>-->
+				</ul>
+				<!--列表内容-->
+				<input type="text" style="display: none;" id="formUserId" />
+				<input type="text" style="display: none;" id="formSessionId" />
+				<input type="text" style="display: none;" />
+				<div id="reportQueryInfoContents">
+					<!--<ul class="reportQueryInfoDetail-ul">
+						<li class="reportQueryInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+						<li class="reportQueryInfoDetail-code"><span>1</span></li>
+						<li class="reportQueryInfoDetail-name"><span>某某某</span></li>
+						<li class="reportQueryInfoDetail-sex"><span>男</span></li>
+						<li class="reportQueryInfoDetail-id"><span>120105198506891157</span></li>
+						<li class="reportQueryInfoDetail-tel"><span>13612345678</span></li>
+						<li class="reportQueryInfoDetail-history"><span>糖尿病</span></li>
+						<li class="reportQueryInfoDetail-allergic"><span>无过敏史</span></li>
+						<li class="reportQueryInfoDetail-circ"><a href = "javascript:void(0)" class="btn-circ"><img src="../../img/common/1.jpg"/></a></li>
+						<li class="reportQueryInfoDetail-check"><a href = "javascript:void(0)" class="reportQueryBtn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+						<li class="reportQueryInfoDetail-change"><a href = "javascript:void(0)" class="reportQueryBtn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+						<li class="reportQueryInfoDetail-del"><a href = "javascript:void(0)" class="reportQueryBtn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>
+					</ul>-->
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<!--分页-->
+			<div class="reportQuerypageN"></div>
+			<!--灰背景-->
+			<!--<div id="reportQueryFade" class="black_overlay"></div>-->
+			<div id="reportQueryFadeUpload" class="black_overlay"></div>
+			<div id="uploadingImg" style="display: none;text-align: center;"><img src="../../css/plugins/blueimp/img/loading.gif" alt="" style="width:40px;height:40px;" />上传中......</div>
+			<div id="reportQueryFade" class="black_overlay">
+				<div class="mask_content_box">
+					<div class="content_header">
+						<div class="header_title">新增</div>
+						<div class="close">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div>
+								<div class="textBox">
+									<label for="categoryName"><span style="color: red;">*</span>设备类型:</label>
+									<input type="text" name="" id="categoryName" value="" placeholder="设备类型" />
+								</div>
+								<div class="alert alert-danger" id="categoryNameTip" role="alert" style="display: none;">
+									<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+									必填
+								</div>
+							</div>
+							<div class="uploadImg">
+								<div><span style="color: red;">*</span>图片:</div>
+								<div class="upload">
+									<div class="iconUpload">+</div>
+									<input type="file" name="iconUpload" accept="image/*" class="chooseImg" id="iconUpload" value="" onchange="uploadImg();" />
+									<!--<input type="file" name="iconUpload" class="chooseImg" id="iconUpload" value="" />-->
+									<div class="imageBox">
+										<span>
+											<i class="iconfont">&#xeb1b;</i>
+										</span>
+										<img src="../../img/a1.jpg"/>
+									</div>
+									<!--<input type="hidden" id="file" />-->
+									<div class="alert alert-danger" id="iconUploadTip" role="alert" style="display: none;">
+										<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+										请上传图片
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="chooseDel">
+							<div>
+								<img src="../../img/warn.png" width="55" height="48"/>
+								删除信息
+							</div>
+							<div>确定要删除此项吗</div>
+						</div>
+						<input type="hidden" id="delStatus" />
+						<div class="btnGroup addGroup">							
+							<!--<button type="button" class="resBtn resBtn1 Btn">取消</button>-->
+							<button type="button" class="subBtn subBtn1 Btn comTempateSaveBtn formDisabledBtn" disabled="disabled">保存</button>
+						</div>
+						<div class="btnGroup changeGroup">
+							<!--<button type="button" class="resBtn resBtn2 Btn">取消</button>-->
+							<button type="button" class="subBtn subBtn2 Btn comTempateSaveBtn formDisabledBtn" disabled="disabled">保存</button>
+						</div>
+						<div class="btnGroup delGroup">
+							<button type="button" class="subBtn subBtn3 Btn comTempateSaveBtn">确认</button>
+							<!--<button type="button" class="resBtn resBtn3 Btn">取消</button>-->							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/bootstrap-select.min.js"></script>
+	<script src="../../js/foundation-datepicker.js"></script>
+	<script src="../../js/foundation-datepicker.min.js"></script>
+	
+	<!--<script src="../../js/plugins/layer/laydate/laydate.js"></script>-->
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+	
+	<!--<script src="jquery-photo-gallery/jquery.js"></script>-->
+	<!--<script src="jquery-photo-gallery/jquery.photo.gallery.js"></script>-->
+	<script type="text/javascript">
+		//  获取用户id       
+		var userId = sessionStorage.getItem('userId');
+		var sessionId = sessionStorage.getItem('sessionId');
+		//$('#addreportQueryBornTime').fdatepicker({format: 'yyyy-mm-dd'});
+		$('#changeInforeportQueryBornTime').fdatepicker({
+			format: 'yyyy-mm-dd'
+		});
+
+		//		window.onload=function(){
+		//			$(document).on("click",".delBtn",function(){
+		//				var imgId=$(this).parent().find(".imgId").text();
+		//				var currentLineIds=$(this).parent().parent().find(".hiddenreportQueryId").text();
+		////			删除单条历史医嘱
+		//				var mymessage=confirm("您确定要删除此医嘱吗?");
+		//			    if(mymessage==true){   
+		//			    	ajaxGet('/oa/patinfo/removeImage', {
+		//		            	imgId:imgId,
+		//			        }, function (resData) {
+		//			            alert("删除成功！");
+		//			            readHistoryAdvice(currentLineIds);
+		//		        });  
+		//			    }
+		//			});
+		//		}
+
+		//		点击查询按钮
+		//		$("#reportQueryInfoContents").on("click",".reportQueryInfoDetail-oparate",function(){
+		//			获取页面当行信息
+		//			var currentLineIds=$(this).parent().find(".reportQueryInfoDetail-lineId").text();
+		//			var currentLineName=$(this).parent().parent().find(".reportQueryInfoDetail-name span").text();
+		//			var currentLineSex=$(this).parent().parent().find(".reportQueryInfoDetail-sex span").text();
+		//			var currentLineAddr=$(this).parent().parent().find(".reportQueryInfoDetail-Addr span").text();
+		//			var currentLineMarriage=$(this).parent().parent().find(".reportQueryInfoDetail-marriage span").text();
+		//			var currentLineidCode=$(this).parent().parent().find(".reportQueryInfoDetail-id span").text();
+		//			var currentLineTel=$(this).parent().parent().find(".reportQueryInfoDetail-tel span").text();
+		//			var currentLinePh=$(this).parent().parent().find(".reportQueryInfoDetail-history span").text();
+		//			var currentLineDa=$(this).parent().parent().find(".reportQueryInfoDetail-allergic span").text();
+		//			var currentLineBornTime=$(this).parent().parent().find(".reportQueryInfoDetail-birthday span").text().trim();
+		//			var currentLinePastHistory=$(this).parent().parent().find(".reportQueryInfoDetail-pastHistory span").text();//既往史
+		//			var currentLineFamilyHistory=$(this).parent().parent().find(".reportQueryInfoDetail-familyHistory span").text();//家族史
+		//			$("#reportQueryLight1").fadeIn();
+		//			$("#reportQueryFade").fadeIn();
+		//			$("#reportQueryLight1 input").attr("disabled","disabled");
+		//			$("#reportQueryLight1 #thisUploadFIle").attr("disabled",false);
+		//			$("#reportQueryLight1 .hiddenLineIds").text(currentLineIds);
+		//			$("#reportQueryLight1 #lookForreportQueryName").val(currentLineName);//患者名
+		//			$("#reportQueryLight1 #lookForreportQuerySex").val(currentLineSex);//患者性别
+		//			$("#reportQueryLight1 #lookForreportQueryAddr").val(currentLineAddr);//患者地址
+		//			$("#reportQueryLight1 #lookForreportQueryTel").val(currentLineTel);//患者联系电话
+		//			$("#reportQueryLight1 #lookForreportQueryIdCode").val(currentLineidCode);//患者身份证号
+		//			$("#reportQueryLight1 #lookForreportQueryBornTime").val(formatDateTime(currentLineBornTime));//患者出生日期
+		//			$("#reportQueryLight1 #lookForreportQueryMarriage").val(currentLineMarriage);//婚姻状况
+		//			$("#reportQueryLight1 #lookForreportQueryMh").val(currentLinePh);//患者病史
+		//			$("#reportQueryLight1 #lookForreportQueryDa").val(currentLineDa);//患者过敏史
+		//			$("#reportQueryLight1 #lookForreportQuerypastHistory").val(currentLinePastHistory);//既往史
+		//			$("#reportQueryLight1 #lookForreportQueryfamilyHistory").val(currentLineFamilyHistory);//家族史
+		//			readHistoryAdvice(currentLineIds);
+		//			console.log(currentLineIds);
+		//			localStorage.setItem("AppliedId",currentLineIds);
+		//			RefreshIframe('page/remoteConsultation/appliedDetail.html','searchApplied');
+
+		//		});
+
+		//时间戳转时间方法
+		function formatDateTime(timeStamp) {
+			var date = new Date(parseInt(timeStamp));
+			Y = date.getFullYear();
+			M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+			D = date.getDate();
+			h = date.getHours() + ':';
+			m = date.getMinutes() + ':';
+			s = date.getSeconds();
+			return Y + '-' + M + '-' + D;
+		};
+		var nameAndTel = ''; //搜索条件-姓名、手机号
+		// var startTime='';//搜索条件-开始时间
+		// var endTime='';//搜索条件-结束时间
+		//以下为调取接口的部分
+		var currentPage = 1;
+		//var currentPage = 0;
+		var offsetPage = 0; //传输的页起始条数
+		var showNum = 10; //页面需要显示的条数
+		var num_pages;
+		//点击分页页数
+		$(document).delegate(".flipOver", 'click', function() {
+			$(this).addClass('active').siblings().removeClass('active');
+			currentPage = parseInt($(this).attr("pageId"));
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+		//点击上一页
+		$(document).delegate("#prev", 'click', function() {
+			if($(".flipOver.active").prev().attr("id") == "prev") {
+				return true
+			} else {
+				var page = parseInt($(".flipOver.active").attr("pageid")) - 1;
+				$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+			}
+			currentPage = page;
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+
+		//点击下一页
+		$(document).delegate("#Next", 'click', function() {
+			if($(".flipOver.active").next().attr("id") == "Next") {
+				return true
+			} else {
+				var page = parseInt($(".flipOver.active").attr("pageid")) + 1;
+				$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+			}
+			currentPage = page;
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+		//点击分页跳转页按钮
+		$(document).delegate(".srueToJumpPageBtn", 'click', function() {
+			currentPage = parseInt($(".toPageNum").val().trim());
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+		getreportQueryList();
+		//	获取订单列表
+		var dataList;
+		function getreportQueryList() {
+			//console.log("coming......");
+			$("#reportQueryInfoContents").html('');
+			//console.log(nameAndTel);
+			//console.log(startTime);
+			//console.log(endTime);
+			ajaxGet("/equipment/type/getEquipmentTypeList", {
+				offset: offsetPage,
+				name: nameAndTel,
+				limit: showNum
+			}, function(data){
+					//console.log("aaaaaaaaaaaaaaaaaaa");
+					console.log(data);
+					var applyInfoList = data.resultMap.list;
+					if(applyInfoList.length == 0) {
+						var a = $(".flipOver");
+						console.log(a);
+					};
+					dataList = data.resultMap.list;
+					var listTotal = data.resultMap.total; //总条数
+					//var index = data.viewIndex;
+					num_pages = Math.ceil(parseInt(listTotal) / 10); //总条数除以每页十条数据为总页码
+					if(applyInfoList.length > 0) {
+						for(var i = 0, k = 0; i < applyInfoList.length; i++) {
+							var pathtml = '';
+							var ck = k++;
+							var currentPagek = ((currentPage - 1) * 10) + ck + 1;
+							pathtml += '<ul class="reportQueryInfoDetail-ul dataList">';
+							pathtml += '<li class="reportQueryInfoDetail-id LiTextAlign" style="display:none">' + applyInfoList[i].id + '</li>';
+							//pathtml+='<li class="reportQueryInfoDetail-foreignId LiTextAlign" style="display:none">'+applyInfoList[i].foreignId+'</li>';
+							//pathtml+='<li class="reportQueryInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>';	
+							pathtml += '<li class="reportQueryInfoDetail-radio boxRightBorder"><span class="applyNumber">' + currentPagek + '</span></li>';
+							if(applyInfoList[i].filePath == null) {
+								applyInfoList[i].filePath = "无";
+								pathtml += '<li class="reportQueryInfoDetail-name LiTextAlign boxRightBorder"><span>' + applyInfoList[i].filePath + '</span></li>';
+							} else {
+								pathtml += '<li class="reportQueryInfoDetail-name LiTextAlign boxRightBorder"><img src=' + applyInfoList[i].filePath + ' style="width:30px;height:30px;"/></li>';
+							};
+							if (applyInfoList[i].name == null || applyInfoList[i].name == undefined) {
+								applyInfoList[i].name = "";
+							}
+							pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder"><span class="applyNumber">' + applyInfoList[i].name + '</span></li>';
+							
+							//									var status;
+							//									if (applyInfoList[i].isClosed == 1) {
+							//										status = "上架";
+							//										pathtml+='<li class="reportQueryInfoDetail-sex LiTextAlign"><span>'+status+'</span></li>';
+							//									} else{
+							//										status = "下架";
+							//										pathtml+='<li class="reportQueryInfoDetail-sex LiTextAlign"><span>'+status+'</span></li>';
+							//									};
+							//操作
+							pathtml += '<li class="reportQueryInfoDetail-id LiTextAlign boxRightBorder" style="width: 20%">' +
+								'<a href = "javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" data-index="' + i + '">修改</a>' +
+								'<a href = "javascript:void(0)" class="reportQueryBtn-change delBtn btnTextColor" style="margin-right:30px;" data-index="' + i + '">删除</a>' +
+								'<a href = "javascript:void(0)" class="reportQueryBtn-change upBtn btnTextColor" style="margin-right:30px;" data-val="0" data-id="' + applyInfoList[i].id + '" data-typeSort="' + applyInfoList[i].sort + '">' +
+								'<i class="glyphicon glyphicon-arrow-up"></i>' +
+								'</a>' +
+								'<a href = "javascript:void(0)" class="reportQueryBtn-change downBtn btnTextColor" data-val="1" data-id="' + applyInfoList[i].id + '" data-typeSort="' + applyInfoList[i].sort + '">' +
+								'<i class="glyphicon glyphicon-arrow-down"></i>' +
+								'</a>' +
+								'</li>';
+							//									pathtml+='<li class="reportQueryInfoDetail-tel LiTextAlign"style="width:7%;"><span>'+applyInfoList[i].storageCondition+'</span></li>';//会诊医院
+							//									pathtml+='<li class="reportQueryInfoDetail-tel LiTextAlign"style="width:12%;"><span>'+applyInfoList[i].manufacturer+'</span></li>';//会诊科室
+							//									pathtml+='<li class="reportQueryInfoDetail-tel LiTextAlign"style="width:7%;"><span>'+applyInfoList[i].retailPrice+'</span></li>';//会诊医生
+							//									pathtml+='<li class="reportQueryInfoDetail-oparate LiTextAlign"style="width:7%;"><a href = "javascript:void(0)" class="reportQueryBtn-check btnTextColor"><span>编辑</span></a></li>';	
+							//								pathtml+='<li class="reportQueryInfoDetail-change"><a href = "javascript:void(0)" class="reportQueryBtn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>';	
+							//								pathtml+='<li class="reportQueryInfoDetail-del"><a href = "javascript:void(0)" class="reportQueryBtn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>';	
+							pathtml += '</ul>';
+							$("#reportQueryInfoContents").append(pathtml);
+							var pageHtml = page(parseInt(currentPage), num_pages);
+							$(".reportQuerypageN").html(pageHtml);
+						}
+						changeData(".changeBtn", 2);
+						changeData(".delBtn", 3);
+						upSort(".upBtn");
+						upSort(".downBtn");
+						//								console.log(offsetPage);
+					} else {
+						var pageHtml = page(2, 1);
+						$(".reportQuerypageN").html(pageHtml);
+					};
+				})
+			}
+		//模态框
+		//$("#reportQueryFade").css("height",window.screen.height);
+		//$("#reportQueryFade").css("width",window.screen.width);
+		$("#addBtn").click(function() {
+			$("#categoryName").val("");
+			initData(null, 1);
+			$(".header_title").text("新增");
+			$(".mask_content_box").css({
+				"height": "420px",
+				"top": "calc(50% - 210px)"
+			});
+			$(".imageBox").css({
+				"opacity": "0"
+			});
+			$(".iconUpload").show();
+			$("#categoryName").blur(function(){
+				if ($("#categoryName").val() == "") {
+					$("#categoryNameTip").show();
+//					$(".subBtn1").attr("disabled","disabled").addClass("formDisabledBtn");
+				}else{
+//					$(".subBtn1").removeAttr("disabled").removeClass("formDisabledBtn");
+					$("#categoryNameTip").hide();
+				}				
+				if(fileObj == undefined){
+					$("#iconUploadTip").show();
+				}else{
+					$("#iconUploadTip").hide();
+				}
+				formCheck(".subBtn1");
+			})
+		});
+		$(".subBtn1").click(function() {
+//			if ($("#categoryName").val() == "") {
+//				alert("设备类型不能为空!");
+//				return false;
+//			}
+//			if ($("#iconUpload").val() == "") {
+//				alert("图片不能为空!");
+//				return false;
+//			}
+			var formData = new FormData();
+			formData.append('file', fileObj);
+			formData.append('name', $("#categoryName").val());
+			ajaxPost("/equipment/type/save", formData, function(data){
+				console.log(data);
+				if(data.status == "0") {
+					alert(data.message);
+					$("#reportQueryFade").hide();
+					$("#iconUpload").val("");
+					getreportQueryList();
+					fileObj = undefined;
+				} else {
+					alert(data.message);
+				}
+			})
+		});
+		
+		//			function ClickFun(data, url){
+		//				this.data = data;
+		//				this.url = url;
+		//				this.onclick = function(){
+		//					console.log("sadweq----");
+		//					$.ajax({
+		//						type:"get",
+		//						url:config+this.url,
+		//						async:true,
+		//						data:this.data,
+		//						success: function(data){
+		//							console.log(data);
+		//							if (data.status == "1") {
+		//								alert(data.message);
+		//								$("#reportQueryFade").hide();
+		//								getreportQueryList();
+		//							}else{
+		//								alert(data.message);
+		//							}
+		//						},
+		//						error: function(data){
+		//							console.log(data);
+		//						}
+		//					});
+		//				};
+		//			};
+		////		var subBtn1 = new ClickFun({name: $("#categoryName").val()}, "/drug/maintain/save");
+		//			subBtn1.onclick();
+		//			$(".changeBtn").click(function(){
+		//				var index = $(this).attr("data-index");
+		//				console.log(dataList[index]);
+		//				initData(dataList[index], 2);								
+		//			});
+		$(".subBtn2").click(function() {
+//			if ($("#categoryName").val() == "") {
+//				alert("设备类型不能为空!");
+//				return false;
+//			};
+//			if ($("#iconUpload").val() == "") {
+//				alert("图片不能为空!");
+//				return false;
+//			}
+			var formData = new FormData();
+//			if(fileObj != undefined) {
+//				formData.append('file', fileObj);
+//			}else{
+//				alert("图片不可为空！");
+//				return;
+//			}
+			if(fileObj != undefined) formData.append('file', fileObj);
+			formData.append('name', $("#categoryName").val());
+			formData.append('id', $("#delStatus").val());
+			ajaxPost("/equipment/type/update", formData, function(data){
+				console.log(data);
+				if(data.status == "0") {
+					alert(data.message);
+					$("#reportQueryFade").hide();
+					$("#iconUpload").val("");
+					getreportQueryList();
+				} else {
+					alert(data.message);
+				}
+			})
+		});
+		//			$(".delBtn").click(function(){
+		//				var index = $(this).attr("data-index");
+		//				console.log(dataList[index]);
+		//				initData(dataList[index], 3);
+		//			});	
+		$(".subBtn3").click(function() {
+			ajaxGet("/equipment/type/remove", {id: $("#delStatus").val()}, function(data){
+				console.log(data);
+				if(data.status == "0") {
+					alert(data.message);
+					$("#reportQueryFade").hide();
+					getreportQueryList();
+				} else {
+					alert(data.message);
+				}
+			})
+		});
+		$(".imageBox").find("span").click(function(){
+			$(".iconUpload").show();
+			$(".imageBox").css({
+				"opacity": "0"
+			});
+			fileObj = undefined;
+			$("#iconUpload").val("");
+			formCheck(".subBtn1");
+			formCheck(".subBtn2");
+			$("#iconUploadTip").show();
+		})
+		function changeData(eledom, num) {
+			$(eledom).click(function() {
+				if(num == 3) {
+					$(".mask_content_box").css({
+						"height": "250px",
+						"top": "calc(50% - 125px)"
+					});
+					$(".header_title").text("删除");					
+				} else {
+					$(".mask_content_box").css({
+						"height": "370px",
+						"top": "calc(50% - 185px)"
+					});
+					$(".header_title").text("修改");					
+					//$(".imageBox").css({"opacity":"1"});
+					//$(".iconUpload").hide();
+					if($(".imageBox").find("img").attr("src") == "无" || $(".imageBox").find("img").attr("src") == "null") {
+						$(".iconUpload").show();
+						$(".imageBox").css({
+							"opacity": "0"
+						});
+					} else {
+						$(".iconUpload").hide();
+						$(".imageBox").find("span").show();
+						$(".imageBox").css({
+							"opacity": "1"
+						});	
+					}
+					$("#categoryName").blur(function(){
+						if ($("#categoryName").val() == "") {
+							$("#categoryNameTip").show();
+//							$(".subBtn2").attr("disabled","disabled").addClass("formDisabledBtn");
+						}else{
+//							$(".subBtn2").removeAttr("disabled").removeClass("formDisabledBtn");
+							$("#categoryNameTip").hide();
+						}
+						if(filePath == undefined){
+							$("#iconUploadTip").show();
+						}else{
+							$("#iconUploadTip").hide();
+						}
+						formCheck(".subBtn2");
+					})
+				}
+				var index = $(this).attr("data-index");
+				fileObj = dataList[index].filePath;
+				var filePath = dataList[index].filePath;
+//				$("#iconUpload").val(fileObj);
+				console.log(dataList[index]);
+				initData(dataList[index], num);
+			});
+		};
+
+		function initData(data, status) {
+			$("#reportQueryFade").show();
+			if(status == 1) {
+				$(".chooseDel").hide();
+				$(".middle_content").show();
+				$(".addGroup").show();
+				$(".changeGroup").hide();
+				$(".delGroup").hide();
+			} else if(status == 2) {
+				$(".chooseDel").hide();
+				$(".middle_content").show();
+				$(".addGroup").hide();
+				$(".changeGroup").show();
+				$(".delGroup").hide();
+			} else {
+				$(".middle_content").hide();
+				$(".chooseDel").show();
+				$(".addGroup").hide();
+				$(".changeGroup").hide();
+				$(".delGroup").show();
+			};
+			if(data != undefined || data != null) {
+				$("#categoryName").val(data.name);
+				$("#delStatus").val(data.id);
+				if(data.filePath == "无"){
+					data.filePath = "";
+					$(".imageBox").css({"opacity": "0"});
+					$(".iconUpload").show();
+				}else{
+					$(".imageBox").find("img").attr("src", data.filePath).css({
+						"opacity": "1"
+					});
+				}
+				
+			} else {
+				return;
+			}
+		};
+
+		function upSort(eleDom) {
+			$(eleDom).click(function() {
+				ajaxGet("/equipment/type/direction", {
+					id: $(this).attr("data-id"),
+					sort: $(this).attr("data-typeSort"),
+					isUp: $(this).attr("data-val")
+				}, function(data){
+					console.log(data);
+					if(data.status == "0") {
+						alert(data.message);
+						getreportQueryList();
+					} else {
+						alert(data.message);
+					}
+				})
+			});
+		};
+		//上传图片
+//		var formData = new FormData();
+		var fileObj;
+		function uploadImg() {
+			var url = null;  
+			fileObj = document.getElementById("iconUpload").files[0];
+			if (window.createObjcectURL != undefined) {  
+			    url = window.createOjcectURL(fileObj);  
+			} else if (window.URL != undefined) {  
+			    url = window.URL.createObjectURL(fileObj);  
+			} else if (window.webkitURL != undefined) {  
+			    url = window.webkitURL.createObjectURL(fileObj);  
+			}
+			$(".imageBox").css({"opacity": "1"});
+			$(".imageBox").find("img").attr("src", url).css({
+				"opacity": "1"
+			});
+//			$("#file").val(fileObj);
+			//imgUrL = data.resultMap.imageUrl;
+			$(".iconUpload").hide();
+			$("#iconUploadTip").hide();
+			formCheck(".subBtn1");
+			formCheck(".subBtn2");
+			if ($("#categoryName").val() == "") {
+				$("#categoryNameTip").show();
+			}else{
+				$("#categoryNameTip").hide();
+			}
+		};
+		$(".close").click(function() {
+			$("#reportQueryFade").hide();
+		});
+		$(".resBtn").click(function() {
+			$("#reportQueryFade").hide();
+		});
+		
+		//最后表单判断
+		function formCheck(btnId){
+			if ($("#categoryName").val() == "" || fileObj == undefined) {
+				$(btnId).attr("disabled","disabled").addClass("formDisabledBtn");
+			} else{
+				$(btnId).removeAttr("disabled").removeClass("formDisabledBtn");
+			}
+		}
+		//	加载日期插件
+
+		// var start = {
+		// 	elem: "#start",
+		// 	format: "YYYY-MM-DD",//YYYY/MM/DD hh:mm:ss
+		//// 	min: laydate.now(),
+		// 	max: "2099-06-16 23:59:59",
+		// 	istime: true,
+		// 	istoday: false,
+		// 	fixed: true, //是否固定在可视区域
+		// 	choose: function(datas) {
+		// 		end.min = datas;
+		// 		end.start = datas
+		// 		
+		// 	}
+		// };
+		// var end = {
+		// 	elem: "#end",
+		// 	format: "YYYY-MM-DD",//YYYY/MM/DD hh:mm:ss
+		//// 	min: laydate.now(),
+		// 	max: "2099-06-16 23:59:59",
+		// 	istime: true,
+		// 	istoday: false,
+		// 	fixed: true, //是否固定在可视区域
+		// 	choose: function(datas) {
+		// 		start.max = datas
+		// 	}
+		// };
+		// laydate(start);
+		// laydate(end);
+
+		// 点击搜索查询按钮
+		$("#reportQuerySearchBtns").click(function() {
+			nameAndTel = $("#ListreportQueryName").val();
+			fileObj = undefined;
+			//	startTime=$("#start").val();//开始时间
+			//	endTime=$("#end").val();//结束时间
+			//	if(startTime==""&&endTime!=""){
+			//		alert("查询时间必须为时间区间");
+			//	}else if(startTime!=""&&endTime==""){
+			//		alert("查询时间必须为时间区间");
+			//	}else{
+			currentPage = 1;
+			offsetPage = 0;
+			getreportQueryList();
+			//	};
+		});
+		//点击清空按钮
+		$("#reportQuerySearchClearBtn").click(function() {
+			$('#ListreportQueryName').selectpicker('val',['noneSelectedText'])
+//			$("#ListreportQueryName").val("");
+			//	$("#start").val("");
+			//	$("#end").val("");
+			nameAndTel = "";
+			//	startTime="";//开始时间
+			//	endTime="";//结束时间
+			currentPage = 1;
+			offsetPage = 0;
+			getreportQueryList();
+		});
+		equipmentData("#ListreportQueryName", "设备类型");
+		function equipmentData(domId, placeText){
+			$(domId).selectpicker({liveSearchPlaceholder: placeText});
+			ajaxGet('/equipment/type/getEquipmentTypeList',{},function(data){
+				console.log(data);
+				if(data.status == "0"){
+					$(domId).html('');
+					if(data.resultMap.list.length > 0){
+						$.each(data.resultMap.list, function(i,val){  //遍历二维数组
+			    			$(domId).append(`<option value="`+val.name+`">`+val.name+`</option>`);
+						})
+						$(domId).selectpicker('refresh');
+		  				$(domId).selectpicker('render');
+					}
+				}
+			});
+		}
+	</script>
+
+</html>

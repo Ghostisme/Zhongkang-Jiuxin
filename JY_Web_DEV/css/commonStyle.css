@@ -1,0 +1,363 @@
+* {
+	margin: 0;
+}
+
+.leftNav {
+	/*width:8%;
+	height:1080px;
+	border:1px solid #000;
+	background: #1C79B6;
+	padding:20px;*/
+	width: 10%;
+	/*min-height: 900px;*/
+	background: #1C79B6;
+	overflow: hidden;
+}
+.jumpUrls{
+	display: none;
+}
+.rightContent {
+	/*border:1px solid #000;*/
+	width: 90%;
+	height: 100%;
+	overflow: hidden;
+}
+
+
+/*左边菜单设置*/
+
+#logoAndName {
+	width: 100%;
+	height: 53px;
+	/*padding: 20px 0px 0px 20px;*/
+}
+
+.logoImg {
+	width: 90%;
+	overflow: hidden;
+	margin: 20px 0px 20px 5px;
+}
+
+#logoAndName img {
+	width: 100%;
+	height: 2%;
+}
+
+#backBtn {
+	width: 100%;
+	text-align: right;
+	/*font-size:1.2em;*/
+	color: #fff;
+	margin-top: 10px;
+	overflow: hidden;
+}
+
+.navs {
+	width: 100%;
+}
+
+/*.leftNav {
+	width: 100%;
+}*/
+
+ul#navs {
+	padding: 0px;
+	list-style: none;
+	color: #fff;
+	font-family: "黑体";
+	overflow: hidden;
+	width: 100%;
+	margin-top:10px;
+}
+
+ul#navs>li {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	overflow: hidden;
+	cursor: pointer;
+	padding-left: 20px;
+}
+
+ul.navsList {
+	list-style: none;
+	display: none;
+	padding: 0px;
+}
+
+ul.navsList>li {
+	cursor: pointer;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 55px;
+	margin-top:5px;
+}
+
+ul#navs>li:hover {
+	background: #16669B;
+}
+
+ul.navsList>li:hover {
+	background: #16669B;
+}
+
+i.systemManage {
+	width: 18px;
+	height: 16px;
+	background: url("../img/common/commonIcons.png") 0px -20px no-repeat;
+	margin-top: 12px;
+	margin-right: 10px;
+}
+
+i.backLeftBtn {
+	width: 18px;
+	height: 15px;
+	background: url("../img/common/commonIcons.png") -1px -154px no-repeat;
+	margin-top: 12px;
+	margin-right: 10px;
+}
+/*向右的箭头*/
+i.arrowdown {
+	/*width:10px;
+				height:8px;
+				/*background: url("../img/common/commonIcons.png") -1px -80px no-repeat;*/
+	/*以上是点开之后的坐标*/
+	width: 8px;
+	height: 10px;
+	background: url("../img/common/commonIcons.png") -1px -64px no-repeat;
+	margin-top: 15px;
+	margin-left: 50px;
+}
+/*向下的箭头*/
+i.arrowUp{
+	width: 10px;
+	height: 8px;
+	background: url("../img/common/commonIcons.png") -1px -80px no-repeat;
+	margin-top: 15px;
+	margin-left: 50px;
+}
+i.patientManage {
+	width: 18px;
+	height: 20px;
+	background: url("../img/common/commonIcons.png") 0px -40px no-repeat;
+	margin-top: 12px;
+	margin-right: 10px;
+}
+
+i.personManage {
+	width: 19px;
+	height: 18px;
+	background: url("../img/common/commonIcons.png") 0px -95px no-repeat;
+	margin-top: 12px;
+	margin-right: 10px;
+}
+
+
+/*右边nav*/
+
+.topNavs {
+	height: 73px!important;
+	background: #fff;
+	overflow: hidden;
+	padding: 10px 20px;
+}
+
+.userImg {
+	width: 53px;
+	height: 53px;
+	border: 1px solid #F9F2F4;
+	text-align: center;
+	line-height: 53px;
+}
+
+.userImg img {
+	width: 53px;
+	height: 53px;
+}
+
+.adminStyle {
+	color: #FF7410;
+	font-size: 24px;
+}
+
+.welcomeStyle {
+	color: #BCBCBC;
+	font-family: "微软雅黑";
+	font-size: 0.75em;
+}
+
+.userInfo {
+	height: 73px;
+	line-height: 52px;
+	margin-right: 20px;
+	font-weight: bold;
+	font-family: "微软雅黑";
+}
+
+i.userImgDownArrow {
+	width: 20px;
+	height:20px;
+	background: url("../img/common/commonIcons.png") -1px -142px no-repeat;
+	margin-top: 25px;
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+i#navLine {
+	width: 1px;
+	height: 50px;
+	margin-left: 25px;
+	display: inline-block;
+	background: -webkit-linear-gradient(#fff, #C0C0C0, #fff);
+	/* Safari 5.1 - 6.0 */
+	background: -moz-linear-gradient(#fff, #C0C0C0, #fff);
+	/* Opera 11.1 - 12.0 */
+	background: -o-linear-gradient(#fff, #C0C0C0, #fff);
+	/* Firefox 3.6 - 15 */
+	background: linear-gradient(#fff, #C0C0C0, #fff);
+	/* 标准的语法 */
+	margin-right: 20px;
+}
+.homeImg{
+	display: none;
+}
+i.AllInfoImg {
+	width: 15px;
+	height: 19px;
+	background: url("../img/common/commonIcons.png") -1px -120px no-repeat;
+	margin-top: 16px;
+	margin-right: 0px;
+}
+
+b.AllInfoNum {
+	position: absolute;
+	top: 20px;
+	/*right: 306px;*/
+	background: #e4393c;
+	padding: 0px 4px;
+	border-radius: 14px;
+	font-family: "微软雅黑";
+	font-size: 0.75em;
+	color: #fff;
+	display: none;
+}
+.homeBgs img{
+	width:100%;
+	display: block;
+	height:190px;
+}
+
+/*右边标签导航*/
+#contents{
+	width:100%;
+	overflow: hidden;
+	/*display: none;*/
+}
+.contentsTags{
+	width:100%;
+	overflow: hidden;
+	background: #eee;
+}
+.contentsTags .Tags{
+	height:40px;
+	line-height: 40px;
+	padding:0px 20px;
+	background: #1B79B6;
+	color:#fff;
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin-right:20px;
+	cursor: pointer;
+}
+.currentLeftTagName{
+	background: #16669B;
+}
+.del{
+	padding:0 5px;
+	margin-left:10px;
+	cursor: pointer;
+}
+.del:hover{
+	color:#E4393C;
+}
+.contentsTags .contensCurrentsTag{
+	background: #fff;
+	color:#333;
+}
+/*右边img*/
+#homeAllLoad{
+	
+}
+/*退出登录*/
+.quitInfo{
+	width:5%;
+	height:70px;
+	background: #fff;
+	position:absolute;
+	top:75px;
+	right:60px;
+	border: 1px solid #dfe0e0;
+	box-shadow: 1px 1px 3px #dfe0e0; 
+	border-radius: 5px;
+}
+#changeIdentifyBtn{
+	width:100%;
+	height:30px;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: underline;
+	cursor: pointer;
+}
+/*退出登录部分*/
+#quitBtnStyle{
+	display: none;
+}
+#quitBtn{
+	width:100%;
+	height:30px;
+	line-height: 30px;
+	text-align: center;
+	color:#e4393c;
+	cursor: pointer;
+}
+.quitLineStyle{
+	width:100%;
+	height:10px;
+	line-height: 5px;
+}
+#quitLine{
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	height: 1px;
+	/*margin-left: 25px;*/
+	display: inline-block;
+	background: -webkit-linear-gradient(to right,#fff, #C0C0C0, #fff);/* Safari 5.1 - 6.0 */
+	background: -moz-linear-gradient(to right,#fff, #C0C0C0, #fff);/* Opera 11.1 - 12.0 */
+	background: -o-linear-gradient(to right,#fff, #C0C0C0, #fff);/* Firefox 3.6 - 15 */
+	background: linear-gradient(to right,#fff, #C0C0C0, #fff);/* 标准的语法 */
+	/*margin-right: 20px;*/
+}
+/*退出登录的小三角*/
+#quitTriangle{
+	border-width:0 10px 10px;
+    border-style:solid;
+    border-color:transparent transparent #dfe0e0;/*透明 透明  灰*/
+	position:absolute;
+	top:67px;
+	right:100px;
+	z-index: 8;
+}
+#quitTriangle span{
+    display:block; 
+    width:0; 
+    height:0; 
+    border-width:0 10px 10px; 
+    border-style:solid; 
+    border-color:transparent transparent #fff;/*透明 透明  白*/
+    position:absolute; 
+    top:1px; 
+    left:-10px;
+    z-index: 80;
+}

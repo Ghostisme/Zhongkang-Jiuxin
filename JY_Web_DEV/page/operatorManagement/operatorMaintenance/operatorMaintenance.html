@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>运营团队</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<!--<link rel="stylesheet" type="text/css" href="../../css/foundation.min.css"/>-->
+	<!--<link href="../../css/foundation-datepicker.css" rel="stylesheet" type="text/css">-->
+	<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../../css/bootstrap-select.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+	<!--<link rel="stylesheet" type="text/css" href="font/iconfont.css"/>-->
+	<link rel="stylesheet" type="text/css" href="multiple-select.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/operatorMaintenance.css" />
+	<!--<link rel="stylesheet" type="text/css" href="../../css/calendar.css"/>-->
+
+	<style>
+		.doctorAdvice img {
+			width: 278px;
+			height: 278px;
+			margin-right: 3.5%;
+			/*margin-bottom: 20px;*/
+			border: 1px solid #E2E3E3;
+			cursor: pointer;
+		}
+		
+		.doctorAdvice {
+			height: auto;
+			display: none;
+		}
+		
+		#J_pg {
+			z-index: 88888;
+		}
+		
+		.delImgAll span {
+			cursor: pointer;
+			font-size: 1.25em;
+			background: #1B1B1B;
+			opacity: 0.5;
+			color: #fff;
+			border-bottom-left-radius: 13px;
+		}
+		
+		.delImgAll span:hover {
+			background: #1B1B1B;
+			opacity: 0.5;
+			color: #fff;
+		}
+		.multipleSelect{
+			width: 200px;
+			border-color: #999;
+			padding: 0;
+			border-radius: 0px;
+			border: 0;
+		}
+		.ms-choice{
+			height: inherit;
+			/*border-color: transparent;*/
+			/*border: 0px;*/
+			border-radius: 0px;
+			border-color: #e5e6e7;
+		}
+		.ms-drop{
+			border-radius: 0px;
+			border-color: #e5e6e7;
+		}
+		.ms-drop input[type="radio"], .ms-drop input[type="checkbox"]{
+			width: 15px;
+			height: 18px !important;
+		}
+		.ms-choice>span{
+			top: 4px;
+		}
+	</style>
+
+	<body>
+
+		<div class="reportQueryInfoBox">
+			<!--第一行信息-->
+			<div class="reportQueryInfoHead topBox" style="overflow: initial !important;">
+				<div class="reportQueryNanme">
+					<!--<span class="reportQueryNanmeLeft">设备类型</span>-->
+					<!--<input class="reportQueryNanmeRight queryContent" placeholder="项目名称" type="text" id="ListreportQueryName" value="" />-->
+					<!--<input class="reportQueryNanmeRight queryContent" placeholder="姓名" type="text" id="queryName" value="" />-->
+					<select title="姓名" class="reportQueryNanmeRight querySelect queryContent" id="queryName" data-dropup-auto="false" data-live-search="true"></select>
+				</div>
+				<div class="reportQueryNanme">
+					<!--<span class="reportQueryNanmeLeft">设备类型</span>-->
+					<!--<input class="reportQueryNanmeRight queryContent" placeholder="项目名称" type="text" id="ListreportQueryName" value="" />-->
+					<!--<input class="reportQueryNanmeRight queryContent" placeholder="职务" type="text" id="queryPosition" value="" />-->
+					<select title="职务" class="reportQueryNanmeRight querySelect queryContent" id="queryPosition" data-dropup-auto="false" data-live-search="true"></select>
+				</div>
+				<div class="reportQueryNanme">
+					<!--<span class="reportQueryNanmeLeft">设备类型</span>-->
+					<!--<input class="reportQueryNanmeRight queryContent" placeholder="项目名称" type="text" id="ListreportQueryName" value="" />-->
+					<!--<input class="reportQueryNanmeRight queryContent" placeholder="联系方式" type="text" id="queryPhone" value="" />-->
+					<select title="联系方式" class="reportQueryNanmeRight querySelect queryContent" id="queryPhone" data-dropup-auto="false" data-live-search="true"></select>
+				</div>
+				<!--<div class="reportQueryNanme">
+					<span class="reportQueryNanmeLeft">设备类型</span>
+					<input class="reportQueryNanmeRight queryContent" placeholder="项目名称" type="text" id="ListreportQueryName" value="" />
+					<input class="newin layer-date queryContent" name="time" id="checkTime" readonly="readonly" placeholder="时间" style="background-color: #FFF;" value="" />
+				</div>-->
+				<!--至-->
+				<!--<div class="reportQueryNanme">
+					<span class="reportQueryNanmeLeft">设备类型</span>
+					<input class="reportQueryNanmeRight queryContent" placeholder="项目名称" type="text" id="ListreportQueryName" value="" />
+					<input class="newin layer-date queryContent" name="time" id="checkTime1" readonly="readonly" placeholder="结束时间" style="background-color: #FFF;" value="" />
+				</div>-->
+				<div class="reportQueryNanme">
+					<!--<input class="reportQueryNanmeRight queryContent" placeholder="所属医院" type="text" id="queryResponsibleHospital" value="" />-->
+					<select title="所属医院" class="reportQueryNanmeRight querySelect queryContent" id="queryResponsibleHospital" data-dropup-auto="false" data-live-search="true"></select>
+				</div>
+				<button class="reportQueryBtnCheck topBtn queryBtn" id="reportQuerySearchBtns">查询</button>
+				<button class="reportQueryBtnClear topBtn resetbtn" id="reportQuerySearchClearBtn">清空</button>
+				<!--<div class="newBtn" style="float: right;text-align:center;width: 85px;color:#fff;
+					height: 24px;line-height:24px;border-radius: 5px;background-color: #ff7510;font-size: 14px;color: #FFFFFF;letter-spacing: 5px;cursor: pointer;font-family: "microsoft yahei";">
+		        	新增
+		    	</div>-->
+		    	<button class="reportQueryBtnCheck topBtn" id="addBtn">新增</button>
+				<!--<div class="topBtn">新增</div>-->
+			</div>
+			<!--表头-->
+			<div class="tableNav">运营人员维护</div>
+			<!--信息列表-->
+			<div class="reportQueryInfoList outBoxBorder">
+				<ul class="reportQueryInfoList-ul titleList">
+					<li class="reportQueryInfoList-all boxRightBorder" style="width: 5%;">序号</li>
+					<li class="reportQueryInfoList-name boxRightBorder" style="width: 10%;">姓名</li>
+					<li class="reportQueryInfoList-code boxRightBorder" style="width: 5%;">性别</li>
+					<li class="reportQueryInfoList-code boxRightBorder" style="width: 15%;">职务</li>	
+					<li class="reportQueryInfoList-code boxRightBorder" style="width: 10%;">联系电话</li>	
+					<li class="reportQueryInfoList-code boxRightBorder" style="width: 25%;">负责的医院</li>
+					<!--<li class="reportQueryInfoList-sex LiTextAlign">分类</li>-->
+					<li class="reportQueryInfoList-oparate" style="width: 30%;">操作</li>
+					<!--<li class="reportQueryInfoList-tel LiTextAlign"style="width:7%;">储藏条件</li>
+				<li class="reportQueryInfoList-tel LiTextAlign"style="width:12%;">生产厂商</li>
+				<li class="reportQueryInfoList-tel LiTextAlign"style="width:7%;">价格</li>
+				<li class="reportQueryInfoList-oparate LiTextAlign"style="width: 7%;">操作</li>-->
+				</ul>
+				<!--列表内容-->
+				<input type="text" style="display: none;" id="formUserId" />
+				<input type="text" style="display: none;" id="formSessionId" />
+				<input type="text" style="display: none;" />
+				<div id="reportQueryInfoContents">
+					<!--<ul class="reportQueryInfoDetail-ul">
+						<li class="reportQueryInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+						<li class="reportQueryInfoDetail-code"><span>1</span></li>
+						<li class="reportQueryInfoDetail-name"><span>某某某</span></li>
+						<li class="reportQueryInfoDetail-sex"><span>男</span></li>
+						<li class="reportQueryInfoDetail-id"><span>120105198506891157</span></li>
+						<li class="reportQueryInfoDetail-tel"><span>13612345678</span></li>
+						<li class="reportQueryInfoDetail-history"><span>糖尿病</span></li>
+						<li class="reportQueryInfoDetail-allergic"><span>无过敏史</span></li>
+						<li class="reportQueryInfoDetail-circ"><a href = "javascript:void(0)" class="btn-circ"><img src="../../img/common/1.jpg"/></a></li>
+						<li class="reportQueryInfoDetail-check"><a href = "javascript:void(0)" class="reportQueryBtn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+						<li class="reportQueryInfoDetail-change"><a href = "javascript:void(0)" class="reportQueryBtn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+						<li class="reportQueryInfoDetail-del"><a href = "javascript:void(0)" class="reportQueryBtn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>
+					</ul>-->
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<!--分页-->
+			<div class="reportQuerypageN"></div>
+			<!--灰背景-->
+			<!--<div id="reportQueryFade" class="black_overlay"></div>-->
+			<div id="reportQueryFadeUpload" class="black_overlay"></div>
+			<div id="uploadingImg" style="display: none;text-align: center;"><img src="../../../css/plugins/blueimp/img/loading.gif" alt="" style="width:40px;height:40px;" />上传中......</div>
+			<div id="reportQueryFade" class="black_overlay">
+				<div class="mask_content_box">
+					<div class="content_header">
+						<div class="header_title">新增</div>
+						<div class="close">
+							<span>×</span>
+						</div>
+					</div>
+					<div class="content_middle">
+						<div class="middle_content">
+							<div>
+								<div class="textBox">
+									<label for="categoryName"><span style="color: red;">*</span>姓名:</label>
+									<input type="text" name="name" id="name" value="" placeholder="姓名" />
+								</div>
+								<div class="alert alert-danger" id="nameTip" role="alert" style="display: none;">
+									<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+									必填
+								</div>
+							</div>
+							<div class="textBox">
+								<label for="categoryName"><span style="color: red;">*</span>性别:</label>
+								<select id="sex" name="sex" class="form-control required" style="width:200px;border-color: #999;">
+									<option value="0">男</option>
+									<option value="1">女</option>
+								</select>
+								<!--<input type="text" name="" id="categoryName" value="" />-->
+							</div>
+							<div>
+								<div class="textBox">
+									<label for="categoryName"><span style="color: red;">*</span>职务:</label>
+									<!--<select id="position" name="position" class="form-control required" style="width:200px;border-color: #999;">
+									</select>-->
+									<input type="text" name="position" id="position" value="" placeholder="职务" />
+								</div>
+								<div class="alert alert-danger" id="positionTip" role="alert" style="display: none;">
+									<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+									必填
+								</div>
+							</div>
+							<div>
+								<div class="textBox">
+									<label for="categoryName"><span style="color: red;">*</span>联系电话:</label>
+									<input type="text" name="phone" id="phone" value="" placeholder="联系电话" />
+								</div>
+								<div class="alert alert-danger" id="phoneTip" role="alert" style="display: none;">
+									<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+									必填
+								</div>
+							</div>
+							<div>
+								<div class="textBox">
+									<label for="categoryName"><span style="color: red;">*</span>负责的医院:</label>
+									<select id="applyHos" name="responsibleHospitalId" multiple="multiple" class="form-control required  multipleSelect">
+									</select>
+									<!--<input type="text" name="" id="categoryName" value="" />-->
+								</div>
+								<div class="alert alert-danger" id="applyHosTip" role="alert" style="display: none;">
+									<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+									必填
+								</div>
+							</div>
+						</div>
+						<div class="chooseDel">
+							<div>
+								<img src="../../../img/warn.png" width="55" height="48"/>
+								删除信息
+							</div>
+							<div>确定要删除此项吗</div>
+						</div>
+						<input type="hidden" id="delStatus" />
+						<input type="hidden" name="dataId" id="dataId" value="" />
+						<div class="btnGroup addGroup">							
+							<!--<button type="button" class="resBtn resBtn1 Btn">取消</button>-->
+							<button type="button" class="subBtn subBtn1 Btn comTempateSaveBtn formDisabledBtn" disabled="disabled">保存</button>
+						</div>
+						<div class="btnGroup changeGroup">
+							<!--<button type="button" class="resBtn resBtn2 Btn">取消</button>-->
+							<button type="button" class="subBtn subBtn2 Btn comTempateSaveBtn">保存</button>
+						</div>
+						<div class="btnGroup delGroup">
+							<button type="button" class="subBtn subBtn3 Btn comTempateSaveBtn">确认</button>
+							<!--<button type="button" class="resBtn resBtn3 Btn">取消</button>-->							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="../../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/bootstrap-select.min.js"></script>
+	<script src="../../../js/plugins/layer/layer.min.js"></script>
+	<script src="../../../js/plugins/layer/laydate/laydate5.0.js"></script>
+	<script src="../../../js/foundation-datepicker.js"></script>
+	<script src="../../../js/foundation-datepicker.min.js"></script>
+	<!--<script src="../../js/plugins/layer/laydate/laydate.js"></script>-->
+	<script src="multiple-select.min.js"></script>
+	<script src="../../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/config.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="jquery-photo-gallery/jquery.js"></script>-->
+	<!--<script src="jquery-photo-gallery/jquery.photo.gallery.js"></script>-->
+	<script type="text/javascript">
+		$(document).ready(function(){	
+		    var ins22 = laydate.render({
+			  elem: '#checkTime'
+			  ,trigger: 'click'
+			});
+			
+//			var ins23 = laydate.render({
+//			  elem: '#checkTime1'
+//			  ,trigger: 'click'
+//			});
+		})
+	</script>
+	<script type="text/javascript">
+		//  获取用户id       
+		var userId = sessionStorage.getItem('userId');
+		var sessionId = sessionStorage.getItem('sessionId');
+		//$('#addreportQueryBornTime').fdatepicker({format: 'yyyy-mm-dd'});
+		$('#changeInforeportQueryBornTime').fdatepicker({
+			format: 'yyyy-mm-dd'
+		});
+		ajaxGet("/hospital/info/getHospitalOptionList", {}, function(res){
+			var hospitalList = res.resultMap.hospitalList;
+			if(hospitalList != null) {
+				var hospitalHtml = '';
+				for(var s = 0; s < hospitalList.length; s++) {
+					hospitalHtml += '<option data-name="' + hospitalList[s].hospitalName + '" value="' + hospitalList[s].id + '">' + hospitalList[s].hospitalName + '</option>';
+				}
+				$("#applyHos").html(hospitalHtml);
+			}
+			$('#applyHos').multipleSelect({
+				selectAll: true,
+				selectAllText: "选择全部",
+				allSelected: "全部",
+				placeholder: "负责的医院"
+			});			
+		});
+		
+		getSelectData("#queryName", "姓名");
+		getSelectData("#queryPosition", "职务");
+		getSelectData("#queryPhone", "联系方式");
+		getSelectData("#queryResponsibleHospital", "所属医院");
+		function getSelectData(domId, placeText){
+			$(domId).selectpicker({liveSearchPlaceholder: placeText});
+			if (domId == "#queryName") {
+				ajaxGet("/operate/info/getOperateInfoList",{},function(data){
+					console.log(data);
+					if(data.status == "0"){
+						$(domId).html('');
+						if(data.resultMap.list.length > 0){
+							$.each(data.resultMap.list, function(i,val){  //遍历二维数组
+				    			$(domId).append(`<option value="`+val.name+`">`+val.name+`</option>`);
+							})
+							$(domId).selectpicker('refresh');
+			  				$(domId).selectpicker('render');
+						}
+					}
+				});
+			} else if (domId == "#queryPosition") {
+				ajaxGet("/operate/info/getOperateInfoSearchList",{type: 1},function(data){
+					console.log(data);
+					if(data.status == "0"){
+						$(domId).html('');
+						if(data.resultMap.list.length > 0){
+							$.each(data.resultMap.list, function(i,val){  //遍历二维数组
+				    			$(domId).append(`<option value="`+val.position+`">`+val.position+`</option>`);
+							})
+							$(domId).selectpicker('refresh');
+			  				$(domId).selectpicker('render');
+						}
+					}
+				});
+			} else if (domId == "#queryPhone") {
+				ajaxGet("/operate/info/getOperateInfoSearchList",{type: 2},function(data){
+					console.log(data);
+					if(data.status == "0"){
+						$(domId).html('');
+						if(data.resultMap.list.length > 0){
+							$.each(data.resultMap.list, function(i,val){  //遍历二维数组
+				    			$(domId).append(`<option value="`+val.phone+`">`+val.phone+`</option>`);
+							})
+							$(domId).selectpicker('refresh');
+			  				$(domId).selectpicker('render');
+						}
+					}
+				});
+			} else{
+				ajaxGet("/hospital/info/getHospitalOptionList",{},function(data){
+					console.log(data);
+					if(data.status == "0"){
+						$(domId).html('');
+						if(data.resultMap.hospitalList.length > 0){
+							$.each(data.resultMap.hospitalList, function(i,val){  //遍历二维数组
+				    			$(domId).append(`<option value="`+val.hospitalName+`">`+val.hospitalName+`</option>`);
+							})
+							$(domId).selectpicker('refresh');
+			  				$(domId).selectpicker('render');
+						}
+					}
+				});
+			}
+		}
+		//时间戳转时间方法
+		function formatDateTime(timeStamp) {
+			var date = new Date(parseInt(timeStamp));
+			Y = date.getFullYear();
+			M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+			D = date.getDate();
+			h = date.getHours() + ':';
+			m = date.getMinutes() + ':';
+			s = date.getSeconds();
+			return Y + '-' + M + '-' + D;
+		};
+		var nameAndTel = ''; //搜索条件-姓名、手机号
+		var positionVal = ''; //搜索条件-职务
+		var phoneVal = ''; //搜索条件-联系方式
+		var responsibleHospitalVal = ''; //搜索条件-所属医院
+//		 var startTime='';//搜索条件-开始时间
+		// var endTime='';//搜索条件-结束时间
+		//以下为调取接口的部分
+		var currentPage = 1;
+		//var currentPage = 0;
+		var offsetPage = 0; //传输的页起始条数
+		var showNum = 10; //页面需要显示的条数
+		var num_pages;
+		//点击分页页数
+		$(document).delegate(".flipOver", 'click', function() {
+			$(this).addClass('active').siblings().removeClass('active');
+			currentPage = parseInt($(this).attr("pageId"));
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+		//点击上一页
+		$(document).delegate("#prev", 'click', function() {
+			if($(".flipOver.active").prev().attr("id") == "prev") {
+				return true
+			} else {
+				var page = parseInt($(".flipOver.active").attr("pageid")) - 1;
+				$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+			}
+			currentPage = page;
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+
+		//点击下一页
+		$(document).delegate("#Next", 'click', function() {
+			if($(".flipOver.active").next().attr("id") == "Next") {
+				return true
+			} else {
+				var page = parseInt($(".flipOver.active").attr("pageid")) + 1;
+				$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+			}
+			currentPage = page;
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+		//点击分页跳转页按钮
+		$(document).delegate(".srueToJumpPageBtn", 'click', function() {
+			currentPage = parseInt($(".toPageNum").val().trim());
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getreportQueryList();
+			window.scrollTo(0, 0);
+		});
+		getreportQueryList();
+		//	获取订单列表
+		var dataList;
+		function getreportQueryList() {
+			//console.log("coming......");
+			$("#reportQueryInfoContents").html('');
+			//console.log(nameAndTel);
+			//console.log(startTime);
+			//console.log(endTime);
+			//retailPriceStart:"", 
+					//retailPriceEnd:"", 
+					//parId:"",
+					//categoryId:"",
+//					equipmentType: nameAndTel,
+			var data = {
+//				time: startTime,
+//				createTime: "2020-01-09",
+				name: nameAndTel,
+				position: positionVal,
+				phone: phoneVal,
+				responsibleHospital: responsibleHospitalVal,
+//				name: "范里西",
+				offset: offsetPage, //（页码-1）*每页显示条数				
+				limit: showNum //每页赢显示的条数	
+			}
+			ajaxGet("/operate/info/getOperateInfoList", data, function(data){
+			
+					//console.log("aaaaaaaaaaaaaaaaaaa");
+					console.log(data);
+					var applyInfoList = data.resultMap.list;
+					if(applyInfoList.length == 0) {
+						var a = $(".flipOver");
+						console.log(a);
+					};
+					dataList = data.resultMap.list;
+					var listTotal = data.resultMap.total; //总条数
+					//var index = data.viewIndex;
+					num_pages = Math.ceil(parseInt(listTotal) / 10); //总条数除以每页十条数据为总页码
+					if(applyInfoList.length > 0) {
+						for(var i = 0, k = 0; i < applyInfoList.length; i++) {
+							var pathtml = '';
+							var ck = k++;
+							var currentPagek = ((currentPage - 1) * 10) + ck + 1;
+							pathtml += '<ul class="reportQueryInfoDetail-ul dataList">';
+							pathtml += '<li class="reportQueryInfoDetail-id LiTextAlign" style="display:none">' + applyInfoList[i].id + '</li>';
+							//pathtml+='<li class="reportQueryInfoDetail-foreignId LiTextAlign" style="display:none">'+applyInfoList[i].foreignId+'</li>';
+							//pathtml+='<li class="reportQueryInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>';	
+							pathtml += '<li class="reportQueryInfoDetail-radio boxRightBorder"><span class="applyNumber">' + currentPagek + '</span></li>';
+//							if(applyInfoList[i].typeUrl == null) {
+//								applyInfoList[i].typeUrl = "无";
+//								pathtml += '<li class="reportQueryInfoDetail-name LiTextAlign boxRightBorder" style="width: 5%;"><span>' + applyInfoList[i].name + '</span></li>';
+//							} else {
+//								pathtml += '<li class="reportQueryInfoDetail-name LiTextAlign boxRightBorder" style="width: 5%;"><img src=' + applyInfoList[i].typeUrl + ' style="width:30px;height:30px;"/></li>';
+//							};
+							if (applyInfoList[i].name == null) {
+								applyInfoList[i].name = "";
+								pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder" style="width: 10%;"><span class="applyNumber"></span></li>';
+							}else{
+								pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder" style="width: 10%;"><span class="applyNumber">' + applyInfoList[i].name + '</span></li>';
+							}
+							if (applyInfoList[i].sex == null) {
+								pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder" style="width: 5%;"><span class="applyNumber"></span></li>';
+							} else{
+								applyInfoList[i].sex == "0" ? applyInfoList[i].sex = "男" : applyInfoList[i].sex = "女";
+								pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder" style="width: 5%;"><span class="applyNumber">' + applyInfoList[i].sex + '</span></li>';
+							}
+							if (applyInfoList[i].position == null) {
+								applyInfoList[i].position = "";
+								pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder" style="width: 15%;"><span class="applyNumber"></span></li>';
+							} else{
+								pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder" style="width: 15%;"><span class="applyNumber">' + applyInfoList[i].position + '</span></li>';
+							}
+							if (applyInfoList[i].phone == null) {
+								applyInfoList[i].phone = "";
+								pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder" style="width: 10%;"><span class="applyNumber"></span></li>';
+							} else{
+								pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder" style="width: 10%;"><span class="applyNumber">' + applyInfoList[i].phone + '</span></li>';
+							}
+							var str = "";
+							for(var j = 0; j < applyInfoList[i].hospitalList.length; j++){
+								str += applyInfoList[i].hospitalList[j].responsibleHospital + ",";								
+							}
+							str = str.substring(0, str.length -1);
+							if (str == null) {
+								str = "";
+								pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder" style="width: 25%;"><span class="applyNumber"></span></li>';
+							} else{
+								pathtml += '<li class="reportQueryInfoDetail-code LiTextAlign boxRightBorder" style="width: 25%;"><span class="applyNumber">' + str + '</span></li>';
+							}
+							
+							//									var status;
+							//									if (applyInfoList[i].isClosed == 1) {
+							//										status = "上架";
+							//										pathtml+='<li class="reportQueryInfoDetail-sex LiTextAlign"><span>'+status+'</span></li>';
+							//									} else{
+							//										status = "下架";
+							//										pathtml+='<li class="reportQueryInfoDetail-sex LiTextAlign"><span>'+status+'</span></li>';
+							//									};
+							//操作
+							pathtml += '<li class="reportQueryInfoDetail-id LiTextAlign" style="width: 30%">' +
+								'<a href = "javascript:void(0)" class="reportQueryBtn-change changeBtn btnTextColor" style="margin-right:30px;" data-index="' + i + '" data-id="' + applyInfoList[i].id + '">修改</a>' +
+								'<a href = "javascript:void(0)" class="reportQueryBtn-change delBtn btnTextColor" style="margin-right:30px;" data-index="' + i + '" data-id="' + applyInfoList[i].id + '">删除</a>' +
+								'</li>';
+							//									pathtml+='<li class="reportQueryInfoDetail-tel LiTextAlign"style="width:7%;"><span>'+applyInfoList[i].storageCondition+'</span></li>';//会诊医院
+							//									pathtml+='<li class="reportQueryInfoDetail-tel LiTextAlign"style="width:12%;"><span>'+applyInfoList[i].manufacturer+'</span></li>';//会诊科室
+							//									pathtml+='<li class="reportQueryInfoDetail-tel LiTextAlign"style="width:7%;"><span>'+applyInfoList[i].retailPrice+'</span></li>';//会诊医生
+							//									pathtml+='<li class="reportQueryInfoDetail-oparate LiTextAlign"style="width:7%;"><a href = "javascript:void(0)" class="reportQueryBtn-check btnTextColor"><span>编辑</span></a></li>';	
+							//								pathtml+='<li class="reportQueryInfoDetail-change"><a href = "javascript:void(0)" class="reportQueryBtn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>';	
+							//								pathtml+='<li class="reportQueryInfoDetail-del"><a href = "javascript:void(0)" class="reportQueryBtn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>';	
+							pathtml += '</ul>';
+							$("#reportQueryInfoContents").append(pathtml);
+							var pageHtml = page(parseInt(currentPage), num_pages);
+							$(".reportQuerypageN").html(pageHtml);
+						}
+						changeData(".changeBtn", 2);
+						changeData(".delBtn", 3);
+						//								console.log(offsetPage);
+					} else {
+						var pageHtml = page(2, 1);
+						$(".reportQuerypageN").html(pageHtml);
+					};
+				})
+			}
+		
+		//模态框
+		//$("#reportQueryFade").css("height",window.screen.height);
+		//$("#reportQueryFade").css("width",window.screen.width);
+		$("#addBtn").click(function() {
+			$("#categoryName").val("");
+			initData(null, 1);
+			$(".header_title").text("新增");	
+			$("#name").val('');
+			$("#sex").val('0');
+			$("#position").val('');
+			$("#phone").val('');
+			$("#applyHos").multipleSelect('setSelects', []);
+//			$("#applyHos").val("");
+			allFormCheck(1);
+			handleClose(1);
+		});
+		function formNull(val){
+			if (val == "" || val == null) {
+				alert("信息不可为空！");
+				return true;
+			}
+			return false;
+		}
+		$(".subBtn1").click(function() {
+//			if (formNull($("#name").val())) {
+//				return;
+//			}
+//			if (formNull($("#sex").val())) {
+//				return;
+//			}
+//			if (formNull($("#position").val())) {
+//				return;
+//			}
+//			if (formNull($("#phone").val())) {
+//				return;
+//			}
+//			if (formNull($("#applyHos").val())) {
+//				return;
+//			}
+			var data = {};
+			var jsonList = $("#applyHos").val();
+			var arr = [];
+			jsonList.map(item => {
+				var obj = {};
+				obj.hospitalId = item;
+				arr.push(obj);
+			})
+			console.log(arr);
+//			if ($("#name").val() == "") {
+//				alert("姓名不可为空！");
+//				return;
+//			}
+//			if ($("#sex").val() == "") {
+//				alert("性别不可为空！");
+//				return;
+//			}
+//			if ($("#position").val() == "") {
+//				alert("职务不可为空！");
+//				return;
+//			}
+//			if ($("#phone").val() == "") {
+//				alert("联系电话不可为空！");
+//				return;
+//			}
+//			if (arr.length == 0) {
+//				alert("负责的医院不可为空！");
+//				return;
+//			}
+			data = {
+				name: $("#name").val(),
+				sex: $("#sex").val(),
+				position: $("#position").val(),
+				phone: $("#phone").val(),
+				jsonInfo: JSON.stringify(arr)
+			}
+			ajaxGet("/operate/info/save", data, function(data){
+				console.log(data);
+				if(data.status == "0") {
+					alert(data.message);
+					$("#reportQueryFade").hide();
+					getreportQueryList();
+				} else {
+					alert(data.message);
+				}
+			});
+		});
+		
+		//			function ClickFun(data, url){
+		//				this.data = data;
+		//				this.url = url;
+		//				this.onclick = function(){
+		//					console.log("sadweq----");
+		//					$.ajax({
+		//						type:"get",
+		//						url:config+this.url,
+		//						async:true,
+		//						data:this.data,
+		//						success: function(data){
+		//							console.log(data);
+		//							if (data.status == "1") {
+		//								alert(data.message);
+		//								$("#reportQueryFade").hide();
+		//								getreportQueryList();
+		//							}else{
+		//								alert(data.message);
+		//							}
+		//						},
+		//						error: function(data){
+		//							console.log(data);
+		//						}
+		//					});
+		//				};
+		//			};
+		////		var subBtn1 = new ClickFun({name: $("#categoryName").val()}, "/drug/maintain/save");
+		//			subBtn1.onclick();
+		//			$(".changeBtn").click(function(){
+		//				var index = $(this).attr("data-index");
+		//				console.log(dataList[index]);
+		//				initData(dataList[index], 2);								
+		//			});
+		$(".subBtn2").click(function() {
+//			if (formNull($("#name").val())) {
+//				return;
+//			}
+//			if (formNull($("#sex").val())) {
+//				return;
+//			}
+//			if (formNull($("#position").val())) {
+//				return;
+//			}
+//			if (formNull($("#phone").val())) {
+//				return;
+//			}
+//			if (formNull($("#applyHos").val())) {
+//				return;
+//			}
+			var data = {};
+			var jsonList = $("#applyHos").val();
+			console.log(jsonList)
+			var arr = [];
+			jsonList.map(item => {
+				var obj = {};
+				obj.hospitalId = item;
+				arr.push(obj);
+			})
+			console.log(arr);
+//			if ($("#name").val() == "") {
+//				alert("姓名不可为空！");
+//				return;
+//			}
+//			if ($("#sex").val() == "") {
+//				alert("性别不可为空！");
+//				return;
+//			}
+//			if ($("#position").val() == "") {
+//				alert("职务不可为空！");
+//				return;
+//			}
+//			if ($("#phone").val() == "") {
+//				alert("联系电话不可为空！");
+//				return;
+//			}
+//			if (arr.length == 0) {
+//				alert("负责的医院不可为空！");
+//				return;
+//			}
+			data = {
+				id: $("#dataId").val(),
+				name: $("#name").val(),
+				sex: $("#sex").val(),
+				position: $("#position").val(),
+				phone: $("#phone").val(),
+				jsonInfo: JSON.stringify(arr)
+			}
+			ajaxGet("/operate/info/update", data, function(data){
+				console.log(data);
+				if(data.status == "0") {
+					alert(data.message);
+					$("#reportQueryFade").hide();
+					getreportQueryList();
+				} else {
+					alert(data.message);
+				}
+			})
+			
+		});
+		//			$(".delBtn").click(function(){
+		//				var index = $(this).attr("data-index");
+		//				console.log(dataList[index]);
+		//				initData(dataList[index], 3);
+		//			});	
+		$(".subBtn3").click(function() {
+			ajaxGet("/operate/info/remove", {id: $("#dataId").val()}, function(data){
+				console.log(data);
+				if(data.status == "0") {
+					alert(data.message);
+					$("#reportQueryFade").hide();
+					getreportQueryList();
+				} else {
+					alert(data.message);
+				}
+			})
+		});
+		function changeData(eledom, num) {
+			$(eledom).click(function() {
+				var id = $(this).attr("data-id");
+				$("#dataId").val(id);
+				if(num == 3) {
+					$(".header_title").text("删除");						
+				} else {
+					allFormCheck(2);
+					handleClose(2);
+					$(".header_title").text("修改");	
+					ajaxGet("/operate/info/getOperateInfo", {id: $(this).attr("data-id")}, function(res){
+						console.log(res);
+						if (res.status == "0") {
+							$("#name").val(res.resultMap.operateInfo.name);
+							$("#sex").val(res.resultMap.operateInfo.sex);
+							$("#position").val(res.resultMap.operateInfo.position);
+							$("#phone").val(res.resultMap.operateInfo.phone);
+//							$("#applyHos").val(res.resultMap.operateInfo.responsibleHospitalId);
+							var hospitalListId = res.resultMap.operateInfo.hospitalList;
+							var arr = [];
+							for(var i = 0; i < hospitalListId.length; i++){
+								arr.push(hospitalListId[i].hospitalId);
+							}
+							$("#applyHos").multipleSelect('setSelects', arr);
+//							医院下拉修改赋值
+//							if ($("#applyHos").val() == $("#applyHos").find("option").val()) {
+//								$("#applyHos").find("option").attr("selected","selected");
+//							}
+						}else{
+							alert(res.message);
+						}
+					});
+					
+				}
+				var index = $(this).attr("data-index");				
+				console.log(dataList[index]);
+				initData(dataList[index], num);
+			});
+		};
+
+		function initData(data, status) {
+			$("#reportQueryFade").show();
+			if(status == 1) {
+				$(".chooseDel").hide();
+				$(".middle_content").show();
+				$(".addGroup").show();
+				$(".changeGroup").hide();
+				$(".delGroup").hide();
+			} else if(status == 2) {
+				$(".chooseDel").hide();
+				$(".middle_content").show();
+				$(".addGroup").hide();
+				$(".changeGroup").show();
+				$(".delGroup").hide();
+			} else {
+				$(".middle_content").hide();
+				$(".chooseDel").show();
+				$(".addGroup").hide();
+				$(".changeGroup").hide();
+				$(".delGroup").show();
+			};
+			if(data != undefined || data != null) {
+				$("#categoryName").val(data.equipmentType);
+				$("#delStatus").val(data.id);
+			} else {
+				return;
+			}
+		};
+
+		function handleClose(num){
+			if (num == 1) {
+				//新增关闭
+				$(".subBtn1").attr("disabled","disabled").addClass("formDisabledBtn");
+//				$("#applyHos").val("");
+				$(".close").click(function() {
+					$("#reportQueryFade").hide();
+				});
+			} else{
+				//修改关闭
+				$(".subBtn2").removeAttr("disabled").removeClass("formDisabledBtn");
+				$(".close").click(function() {
+					$("#reportQueryFade").hide();
+				});
+			}
+			$("#nameTip").hide();
+			$("#positionTip").hide();
+			$("#phoneTip").hide();
+			$("#applyHosTip").hide();
+//			inputCheck("#name", "#nameTip", ".subBtn1");
+//			inputCheck("#position", "#positionTip", ".subBtn1");
+//			inputCheck1("#phone", "#phoneTip", ".subBtn1", "联系电话填写错误！");
+//			selectCheck("#applyHos", "#applyHosTip", ".subBtn1");
+		}
+		$(".close").click(function() {
+			$("#reportQueryFade").hide();
+		});
+		$(".resBtn").click(function() {
+			$("#reportQueryFade").hide();
+		});
+		//	加载日期插件
+
+		// var start = {
+		// 	elem: "#start",
+		// 	format: "YYYY-MM-DD",//YYYY/MM/DD hh:mm:ss
+		//// 	min: laydate.now(),
+		// 	max: "2099-06-16 23:59:59",
+		// 	istime: true,
+		// 	istoday: false,
+		// 	fixed: true, //是否固定在可视区域
+		// 	choose: function(datas) {
+		// 		end.min = datas;
+		// 		end.start = datas
+		// 		
+		// 	}
+		// };
+		// var end = {
+		// 	elem: "#end",
+		// 	format: "YYYY-MM-DD",//YYYY/MM/DD hh:mm:ss
+		//// 	min: laydate.now(),
+		// 	max: "2099-06-16 23:59:59",
+		// 	istime: true,
+		// 	istoday: false,
+		// 	fixed: true, //是否固定在可视区域
+		// 	choose: function(datas) {
+		// 		start.max = datas
+		// 	}
+		// };
+		// laydate(start);
+		// laydate(end);
+
+		// 点击搜索查询按钮
+		$("#reportQuerySearchBtns").click(function() {			
+//			nameAndTel = $("#ListreportQueryName").val();
+			//	startTime=$("#start").val();//开始时间
+			//	endTime=$("#end").val();//结束时间
+			//	if(startTime==""&&endTime!=""){
+			//		alert("查询时间必须为时间区间");
+			//	}else if(startTime!=""&&endTime==""){
+			//		alert("查询时间必须为时间区间");
+			//	}else{
+//			startTime = $("#checkTime").val();
+			nameAndTel = $("#queryName").val();
+			positionVal = $("#queryPosition").val();
+			phoneVal = $("#queryPhone").val();
+			responsibleHospitalVal = $("#queryResponsibleHospital").val();			
+			currentPage = 1;
+			offsetPage = 0;
+			getreportQueryList();
+			//	};	
+
+		});
+		//点击清空按钮
+		$("#reportQuerySearchClearBtn").click(function() {
+			//	$("#start").val("");
+			//	$("#end").val("");
+//			$("#checkTime").val('');
+//			$("#queryName").val('');
+//			$("#queryPosition").val('');
+//			$("#queryPhone").val('');
+//			$("#queryResponsibleHospital").val('');
+			$('#queryName').selectpicker('val',['noneSelectedText']);
+			$('#queryPosition').selectpicker('val',['noneSelectedText']);
+			$('#queryPhone').selectpicker('val',['noneSelectedText']);
+			$('#queryResponsibleHospital').selectpicker('val',['noneSelectedText']);
+			nameAndTel = "";
+			positionVal = "";
+			phoneVal = "";
+			responsibleHospitalVal = "";
+//			startTime = "";//开始时间
+			//	endTime="";//结束时间
+			currentPage = 1;
+			offsetPage = 0;
+			getreportQueryList();
+		});
+		function formCheck(btnId){
+			var posPattern = /^1[34578]\d{9}$/;
+			if ($("#name").val() == "" || $("#position").val() == "" || $("#phone").val() == "" || $("#applyHos").val() == "" || !posPattern.test($("#phone").val())) {
+				$(btnId).attr("disabled","disabled").addClass("formDisabledBtn");
+			} else{
+				$(btnId).removeAttr("disabled").removeClass("formDisabledBtn");
+			}
+		}
+		//下拉框验证
+		function selectCheck(dom, tipDom, btnId){
+		//	$(dom).change(function() {
+				if ($(dom).val() == "") {
+					$(tipDom).show();
+		//			$(btnId).attr("disabled","disabled").addClass("formDisabledBtn");
+				}else{
+		//			$(btnId).removeAttr("disabled").removeClass("formDisabledBtn");
+					$(tipDom).hide();
+				}
+				formCheck(btnId);
+		//	});
+			
+		}
+		//输入框验证
+		function inputCheck(dom, tipDom, btnId){
+		//	$(dom).blur(function(){
+				if ($(dom).val() == "") {
+					$(tipDom).show();
+		//			$(btnId).attr("disabled","disabled").addClass("formDisabledBtn");
+				}else{
+		//			$(btnId).removeAttr("disabled").removeClass("formDisabledBtn");
+					$(tipDom).hide();
+				}
+				formCheck(btnId);
+		//	})
+			
+		}
+		function inputCheck1(dom, tipDom, btnId, tipText){
+			var posPattern = /^1[34578]\d{9}$/;
+		//	$(dom).blur(function(){
+				if ($(dom).val() == "") {
+					$(tipDom).show();
+		//			$(btnId).attr("disabled","disabled").addClass("formDisabledBtn");
+				}else if(!posPattern.test($(dom).val())){
+					$(tipDom).html('<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>' + tipText);
+					$(tipDom).show();
+		//			$(btnId).attr("disabled","disabled").addClass("formDisabledBtn");
+				}else{
+		//			$(btnId).removeAttr("disabled").removeClass("formDisabledBtn");
+					$(tipDom).hide();
+				}
+				formCheck(btnId);
+		//	})
+			
+		}
+		function allFormCheck(status){
+			if (status == 1) {
+				//新增
+				$("#name").blur(function(){
+					inputCheck("#name", "#nameTip", ".subBtn1");
+					inputCheck("#position", "#positionTip", ".subBtn1");
+					inputCheck1("#phone", "#phoneTip", ".subBtn1", "联系电话填写错误！");
+					selectCheck("#applyHos", "#applyHosTip", ".subBtn1");
+				})
+				$("#position").blur(function(){
+					inputCheck("#name", "#nameTip", ".subBtn1");
+					inputCheck("#position", "#positionTip", ".subBtn1");
+					inputCheck1("#phone", "#phoneTip", ".subBtn1", "联系电话填写错误！");
+					selectCheck("#applyHos", "#applyHosTip", ".subBtn1");
+				})
+				$("#phone").blur(function(){
+					inputCheck("#name", "#nameTip", ".subBtn1");
+					inputCheck("#position", "#positionTip", ".subBtn1");
+					inputCheck1("#phone", "#phoneTip", ".subBtn1", "联系电话填写错误！");
+					selectCheck("#applyHos", "#applyHosTip", ".subBtn1");
+				})
+				$("#applyHos").change(function(){
+					inputCheck("#name", "#nameTip", ".subBtn1");
+					inputCheck("#position", "#positionTip", ".subBtn1");
+					inputCheck1("#phone", "#phoneTip", ".subBtn1", "联系电话填写错误！");
+					selectCheck("#applyHos", "#applyHosTip", ".subBtn1");
+				})
+			} else{
+				//修改
+				$("#name").blur(function(){
+					inputCheck("#name", "#nameTip", ".subBtn2");
+					inputCheck("#position", "#positionTip", ".subBtn2");
+					inputCheck1("#phone", "#phoneTip", ".subBtn2", "联系电话填写错误！");
+					selectCheck("#applyHos", "#applyHosTip", ".subBtn2");
+				})
+				$("#position").blur(function(){
+					inputCheck("#name", "#nameTip", ".subBtn2");
+					inputCheck("#position", "#positionTip", ".subBtn2");
+					inputCheck1("#phone", "#phoneTip", ".subBtn2", "联系电话填写错误！");
+					selectCheck("#applyHos", "#applyHosTip", ".subBtn2");
+				})
+				$("#phone").blur(function(){
+					inputCheck("#name", "#nameTip", ".subBtn2");
+					inputCheck("#position", "#positionTip", ".subBtn2");
+					inputCheck1("#phone", "#phoneTip", ".subBtn2", "联系电话填写错误！");
+					selectCheck("#applyHos", "#applyHosTip", ".subBtn2");
+				})
+				$("#applyHos").change(function(){
+					inputCheck("#name", "#nameTip", ".subBtn2");
+					inputCheck("#position", "#positionTip", ".subBtn2");
+					inputCheck1("#phone", "#phoneTip", ".subBtn2", "联系电话填写错误！");
+					selectCheck("#applyHos", "#applyHosTip", ".subBtn2");
+				})
+			}
+		}
+	</script>
+
+</html>

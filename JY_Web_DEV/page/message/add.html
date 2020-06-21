@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>消息类型</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+
+<link href="../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+<link href="../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+<link href="../../css/animate.min.css" rel="stylesheet">
+<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+
+
+<!--<link rel="stylesheet" type="text/css" href="../../css/appointment.css"/>-->
+
+<style>
+    .appointment-ul2 {
+        text-align: center;
+        margin-top: 20px;
+
+    }
+
+    .appointment-ul2 li {
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .newin {
+        height: 33px;
+        width: 200px;
+    }
+
+    .onebtn {
+        background-color: #018eea;
+        color: #FFFFFF;
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .towbtn {
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+    }
+    #ulist_div{
+        text-align: left;
+    }
+
+    .appointment-ul2>li>span{
+        width: 100px;
+    }
+</style>
+<body>
+
+
+<div class="box">
+    <form id="equipmentForm" onsubmit="return false;">
+
+        <ul class="appointment-ul2 ">
+            <li><span><span style="color:#FF423F">*</span>消息类型名称：</span>
+                <input type="text" class="newin" id="wname" name="wname" value=""/>
+            </li>
+
+        </ul>
+        <input type="hidden" id="id" name="id" value=""/>
+
+        <div style="text-align: center;margin-top: 30px;">
+            <button class="towbtn" id="saveCancle">取消</button>
+            <button class="onebtn" id="saveOk" onclick="saveMessageType()">保存</button>
+        </div>
+    </form>
+
+</div>
+
+</body>
+
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+<script src="../../js/content.min.js?v=1.0.0"></script>
+<script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+
+<script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+<script src="../../js/plugins/validate/messages_zh.min.js"></script>
+
+<script>
+    $("#equipmentForm").validate();
+
+
+
+    var ulist;
+    $(function () {
+        if(edit_eqt_id!=""){
+           editInit(edit_eqt_id);
+        }
+    });
+    //编辑赋值初始化，放在下拉框初始化ajax里了
+    function editInit(eqt_id) {
+        ajaxGet('/oa/wsmessageType/get', {id:eqt_id}, function (res) {
+            var eqt=res.resultMap.messageType;
+            //1.普通框 赋值
+            $('#wname').val(eqt.wname);
+            
+        });
+
+    }
+
+    //save前 非空验证
+    function  fromIsNull(fromArray){
+        var flag = false;
+        fromArray.pop();
+        $.each(fromArray, function (i, item) {
+            if (item['value'] == '') {
+                flag = true;
+                return false;
+            }
+        });
+        if (flag) {
+            alert('信息不可为空');
+            return true;
+        }
+        return false;
+    }
+    //保存
+    function saveMessageType() {
+        if($("#equipmentForm").valid()){
+
+        };
+        //判断表单数据是否为空
+        var fromArray = $('#equipmentForm').serializeArray();
+        //非空验证
+        if(fromIsNull(fromArray)){
+            return;
+        }
+        var fromData = {};
+        $.each(fromArray, function () {
+            fromData[this.name] = this.value;
+        });
+        //修改and新增判断
+        if(edit_eqt_id && edit_eqt_id!=""){
+            url='/oa/wsmessageType/update';
+            fromData["id"]=edit_eqt_id;
+        }else{
+            url='/oa/wsmessageType/save';
+        }
+        ajaxGet(url, fromData, function (res) {
+            alert(res.message);
+            if (res.status == 1) {
+                location.reload();
+            }
+        })
+
+    }
+
+    //点击导入的新增信息 的取消
+    $("#saveCancle").click(function () {
+        $("#subscribeListLight1").css("display", "none");
+        $("#subscribeListFade").css("display", "none");
+    });
+</script>
+</html>

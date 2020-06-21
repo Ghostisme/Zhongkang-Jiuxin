@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<title>健康数据</title>
+		<!--<link rel="shortcut icon" href="favicon.ico">--> 
+		<link href="../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+		<base target="_blank">
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/init.css" />
+		<!-- 顶部内容CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/navbar.css"> -->
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="font/iconfont.css">
+		<!-- 本页CSS -->
+		<link type="text/css" rel="stylesheet" href="css/healthData.css" />
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<!-- <script src="../../js/content.min.js?v=1.0.0"></script> -->
+		<!-- 页面跳转方法JS -->
+		<!-- <script type="text/javascript" src="../../js/jumpPage.js"></script> -->
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/healthData.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="row">
+				<div class="col-sm-12 box">
+					<div class="btnBox">
+						<a data-toggle="tab" class="btn btn-primary Active tabBtn1" href="healthData.html#tab-1">血压</a>
+						<a data-toggle="tab" class="btn btn-primary tabBtn2" href="healthData.html#tab-2">血糖</a>
+						<a data-toggle="tab" class="btn btn-primary tabBtn3" href="healthData.html#tab-3">BMI</a>
+						<!-- <button type="button" class="btn btn-success active">
+							<a data-toggle="tab" href="healthData.html#tab-1">血压</a>
+						</button>
+						<button type="button" class="btn btn-success">
+							<a data-toggle="tab" href="healthData.html#tab-2">血糖</a>
+						</button>
+						<button type="button" class="btn btn-success">
+							<a data-toggle="tab" href="healthData.html#tab-3">BMI</a>
+						</button> -->
+						<div class="pull-right btnbox">
+							<button type="button" class="btn btn-sm btnInput" data-toggle="modal" data-target="#pressureModal">手动输入</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active">
+						<iframe frameborder="no" width="100%" height="600px" src="../bloodPressure/bloodPressure.html"></iframe>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<iframe frameborder="no" width="100%" height="600px" src="../bloodSugar/bloodSugar.html"></iframe>
+					</div>
+					<div id="tab-3" class="tab-pane">
+						<iframe frameborder="no" width="100%" height="600px" src="../BMI/BMI.html"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--血压模态框-->
+		<div class="modal fade" id="pressureModal" tabindex="-1" role="dialog" aria-labelledby="pressureLabel" aria-hidden="true" data-backdrop="static">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+		        		<i class="Close iconfont pull-right" data-dismiss="modal" aria-label="Close">&#xe60b;</i>
+		        		<h4 class="modal-title" id="pressureLabel">血压</h4>
+		      		</div>
+			      	<div class="modal-body">
+			        	<iframe class="pressure" id="pressure" frameborder="no" src="../bPmanualInput/bPmanualInput.html"></iframe>
+			      	</div>
+			      	<div class="modal-footer">
+			        	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			        	<button type="button" class="btn btn-success" id="pressureBtn">确定</button>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+		<!--血糖模态框-->
+		<div class="modal fade" id="sugarModal" tabindex="-1" role="dialog" aria-labelledby="sugarLabel" aria-hidden="true" data-backdrop="static">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+		        		<i class="Close iconfont pull-right" data-dismiss="modal" aria-label="Close">&#xe60b;</i>
+		        		<h4 class="modal-title" id="sugarLabel">血糖</h4>
+		      		</div>
+			      	<div class="modal-body">
+			        	<iframe class="sugar" id="sugar" frameborder="no" src="../bSmanualInput/bSmanualInput.html"></iframe>
+			      	</div>
+			      	<div class="modal-footer">
+			        	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			        	<button type="button" class="btn btn-success" id="sugarBtn">确定</button>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+		<!--BMI模态框-->
+		<div class="modal fade" id="BMIModal" tabindex="-1" role="dialog" aria-labelledby="BMILabel" aria-hidden="true" data-backdrop="static">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+		        		<i class="Close iconfont pull-right" data-dismiss="modal" aria-label="Close">&#xe60b;</i>
+		        		<h4 class="modal-title" id="BMILabel">BMI</h4>
+		      		</div>
+			      	<div class="modal-body">
+			        	<iframe class="BMI" id="BMI" frameborder="no" src="../BMIinput/BMIinput.html"></iframe>
+			      	</div>
+			      	<div class="modal-footer">
+			        	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			        	<button type="button" class="btn btn-success" id="BMIbtn">确定</button>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+	</body>
+</html>

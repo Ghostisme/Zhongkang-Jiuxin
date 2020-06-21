@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>中康九悦远程医疗管理系统 - 远程会诊申请单</title>
+
+		<meta name="keywords" content="中康九悦远程医疗管理系统">
+		<meta name="description" content="中康九悦远程医疗管理系统">
+
+		<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css" rel="stylesheet">
+		<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/plugins/summernote/summernote.css" rel="stylesheet">
+		<link href="../../css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../js/baiduMapAPI/DrawingManager_min.css" />
+		<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../css/plugins/webuploader/webuploader.css">
+		<link rel="stylesheet" type="text/css" href="../../css/demo/webuploader-demo.min.css">
+		<link href="../../css/style.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/editHosAdmin.css" />
+	</head>
+
+	<body>
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="ibox-content">
+					<form id="form" class="wizard-big">
+						<!--医院信息-->
+						<div class="hosInfos"id="hosBox">
+							<!--标题-->
+							<div class="infosNav">
+								医院信息
+								<span class="addInfoBtns rt hosEdit" id="hosEdit">编辑</span>
+							</div>
+							<div class="form-group addRows">
+								<div class="col-sm-4">
+									<label class="col-sm-4 control-label labelsPosition">医院名称：</label>
+									<div class="col-sm-6">
+										<input id="hosName" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"disabled="disabled">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<label class="col-sm-4 control-label labelsPosition">医院简称：</label>
+									<div class="col-sm-6">
+										<input id="hosEasyName" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"disabled="disabled">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<label class="col-sm-4 control-label labelsPosition">医院等级：</label>
+									<div class="col-sm-6">
+										<input id="hosLevel" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"disabled="disabled">
+									</div>
+								</div>
+							</div>
+							<div class="form-group addRows">
+								<div class="col-sm-4">
+									<label class="col-sm-4 control-label labelsPosition">特色科室：</label>
+									<div class="col-sm-6">
+										<input id="specialDept" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"disabled="disabled">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<label class="col-sm-4 control-label labelsPosition">床位数量：</label>
+									<div class="col-sm-6">
+										<input id="bedNum" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"disabled="disabled">
+									</div>
+								</div>
+							</div>
+							<div class="form-group addRows">
+								<div class="col-sm-12">
+									<label class="col-sm-112 control-label labelsDetailPosition">医院简介：</label>
+									<div class="col-sm-10 allLineInputPadding">
+										<textarea id="hosInfo" name="secondTitle" maxlength="250" type="text" class="form-control allTextAreaHeight"disabled="disabled"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="form-group addRows">
+								<div class="col-sm-12">
+									<label class="col-sm-112 control-label labelsDetailPosition">医院地址：</label>
+									<div class="col-sm-10 allLineInputPadding">
+										<textarea id="hosAddr" name="secondTitle" maxlength="250" type="text" class="form-control allTextAreaHeight"disabled="disabled"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="form-group addRows">
+								<div class="col-sm-11">
+									<label class="col-sm-112 control-label labelsDetailPosition">地图：</label>
+									<div class="col-sm-9 allLineInputPadding">
+										<input id="longitude" name="longitude" type="hidden">
+										<input id="latitude" name="latitude" type="hidden">
+										<div id="allmap" style="overflow:hidden;zoom:1;">
+											<div class="mapSearchBox">
+												<input class="BMapLib_box " onclick="closeDraw()" value="拖动地图" type="button">
+												<input class="BMapLib_box " onclick="openDraw(1)" value="画点" type="button">
+												<!--             <button class="BMapLib_box " onclick="openDraw(2)">画折线</button>
+										            <button class="BMapLib_box " onclick="openDraw(4)">画圆</button>
+										            <button class="BMapLib_box " onclick="openDraw(5)">画多边形</button>
+										            <button class="BMapLib_box " onclick="openDraw(3)">画矩形</button> 
+										            <button type="button" onclick="clearAll()">清除所有绘制的覆盖物</button>
+										            <button type="button" onclick="openDis()">开启鼠标测距</button>
+										            <button type="button" onclick="openRectangleZoom()">开启拉框放大</button>
+										            <button type="button" onclick="closeRectangleZoom()">关闭拉框</button> -->
+												<span>城市名：</span>
+												<input id="cityName" type="text" name="cityName" value="天津" style="width:10%;">
+												<button type="button" onclick="theCityLocation()">切换城市</button>
+												<span>搜索地物：</span>
+												<input id="searchName" type="text" value="" style="width:10%;">
+												<button type="button" onclick="search(1)">搜索</button>
+												<button type="button" onclick="cityLocation('天津')">地图复位</button>
+											</div>
+											<div id="map" style="height:80%;-webkit-transition: all 0.5s ease-in-out;transition: all 0.5s ease-in-out; margin:0px;padding:0px;"></div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<ul id="drawlist">
+									</ul>
+								</div>
+							</div>
+
+						</div>
+						<!--科室信息-->
+						<div class="hosInfos"id="deptBox">
+							<!--标题-->
+							<div class="infosNav">
+								科室信息
+								<span class="addInfoBtns rt deptEdit" id="deptEdit">编辑</span>
+								<span class="addInfoBtns rt" id="addDept">新增</span>
+							</div>
+							<div class="deptList col-sm-11">
+								<div class="col-sm-2 addDeptBoxWidth">
+									<div class="col-sm-12 deptBoxs">
+										<input class="deptInput" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true" placeholder="科室名称"disabled="disabled">
+										<span class="delIcon deptDel">×</span>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<!--负责人信息-->
+						<div class="hosInfos"id="presidentBox">
+							<!--标题-->
+							
+							<div class="form-group">
+								<div class="infosNav">
+									负责人信息
+									<span class="addInfoBtns rt" id="presidentEdit">编辑</span>
+								</div>
+								<!--院长-->
+								<div class="form-group personInChargeRows">
+									<div class="col-sm-12">
+										<label class="col-sm-112 control-label labelsPosition">医院院长：</label>
+										<div class="col-sm-10">
+											<div class="col-sm-111 addDeptBoxWidth presidentInputBox">
+												<input class="president" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="院长姓名及电话"disabled="disabled">
+												<span class="delIcon deptDel">×</span>
+											</div>
+											<div class="addPresident col-sm-1 addPresidentInput">新增</div>
+										</div>
+											
+									</div>
+								</div>
+								<!--院长结束-->
+								<!--科室负责人开始-->
+								<div class="form-group personInChargeRows">
+									<div class="col-sm-12">
+										<label class="col-sm-112 control-label labelsPosition">科室负责人：</label>
+											<div class="col-sm-10">
+												<div class="col-sm-111 addDeptBoxWidth presidentInputBox">
+													<input class="departmentHead" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="负责人姓名及电话"disabled="disabled">
+													<span class="delIcon deptDel">×</span>
+												</div>
+												<div class="addPresident col-sm-1 addDepartmentHeadInput">新增</div>
+											</div>										
+									</div>
+								</div>
+								<!--科室负责人结束-->
+								<div class="form-group personInChargeRows">
+									<div class="col-sm-12">
+										<label class="col-sm-112 control-label labelsPosition">运营人员：</label>
+										<div class="col-sm-10">
+											<div class="col-sm-111 addDeptBoxWidth presidentInputBox">
+												<input class="operator" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="运营人姓名及电话"disabled="disabled">
+												<span class="delIcon deptDel">×</span>
+											</div>
+											<div class="addPresident col-sm-1 addOperatorInput">新增</div>
+										</div>										
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--发票信息-->
+						<div class="hosInfos"id="billBox">
+							<div class="infosNav">
+								发票信息
+								<span class="addInfoBtns rt billEdit" id="billEdit">编辑</span>
+							</div>
+							<div class="form-group addRows">
+								<div class="col-sm-6">
+									<label class="col-sm-3 control-label labelsPosition">发票抬头：</label>
+									<div class="col-sm-7">
+										<input id="cname" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="填写单位全称"disabled="disabled">
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<label class="col-sm-3 control-label labelsPosition">开票内容：</label>
+									<div class="col-sm-7">
+										<input id="cname" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="租赁款/技术服务费"disabled="disabled">
+									</div>
+								</div>
+							</div>
+							<div class="form-group addRows">
+								<div class="col-sm-6">
+									<label class="col-sm-3 control-label labelsPosition">纳税人识别号：</label>
+									<div class="col-sm-7">
+										<input id="cname" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="统一社会信用代码"disabled="disabled">
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<label class="col-sm-3 control-label labelsPosition">公司地址：</label>
+									<div class="col-sm-7">
+										<input id="cname" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="公司注册地址"disabled="disabled">
+									</div>
+								</div>
+							</div>
+							<div class="form-group addRows">
+								<div class="col-sm-6">
+									<label class="col-sm-3 control-label labelsPosition">开户行地址：</label>
+									<div class="col-sm-7">
+										<input id="cname" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="公司账户开户银行地址"disabled="disabled">
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<label class="col-sm-3 control-label labelsPosition">公司电话：</label>
+									<div class="col-sm-7">
+										<input id="cname" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="注册公司预留电话"disabled="disabled">
+									</div>
+								</div>
+							</div>
+							<div class="form-group addRows">
+								<div class="col-sm-6">
+									<label class="col-sm-3 control-label labelsPosition">开户行电话：</label>
+									<div class="col-sm-7 openBankTel">
+										<input id="cname" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="开户银行电话"disabled="disabled">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--<div class="form-group">
+                            <div class="col-sm-12 btnGroup">
+                                <button type="submit" class="SureBtn comTempateSaveBtn">确认</button>
+                            </div>
+                        </div>-->
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div id="myModal" class="modal fade" name="tip-modal" data-backdrop="static" data-keyboard="false" style="text-align: center;">
+			<img src="../../img/loading-upload.gif" alt="" style="width:40px;height:40px;margin:0 auto; margin-top:200px;" /> 提交中......
+		</div>
+		<script src="../../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="../../js/plugins/staps/jquery.steps.min.js"></script>
+		<script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+		<script src="../../js/plugins/validate/messages_zh.min.js"></script>
+		<!--<script src="../../js/demo/form-validate-demo.min.js"></script>-->
+		<script src="../../js/plugins/summernote/summernote.min.js"></script>
+		<script src="../../js/plugins/summernote/summernote-zh-CN.js"></script>
+		<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script src="../../js/content.min.js?v=1.0.0"></script>
+		<script type="text/javascript">
+			var BASE_URL = '../../js/plugins/webuploader';
+		</script>
+		<!--<script src="../../js/plugins/webuploader/webuploader.min.js"></script>-->
+		<!--<script src="../../js/demo/webuploader-demo.min.js"></script>-->
+		<script src="../../js/plugins/jquery.jqprint-0.3.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script type="text/javascript" src="../../js/BMaps.js"></script>-->
+		<script type="text/javascript" src="//api.map.baidu.com/api?v=3.0&ak=EImTER6Ip7xIAuDEUvuhHul61k0dElRY"></script>
+		<!--图形计算工具-->
+		<script type="text/javascript" src="../../js/baiduMapAPI/GeoUtils_min.js"></script>
+		<!--加载鼠标绘制工具-->
+		<script type="text/javascript" src="../../js/baiduMapAPI/DrawingManager_min.js"></script>
+		<!--加载鼠标测距-->
+		<script type="text/javascript" src="../../js/baiduMapAPI/DistanceTool_min.js"></script>
+		<!--加载鼠标拖拽-->
+		<script type="text/javascript" src="../../js/baiduMapAPI/RectangleZoom_min.js"></script>
+		<!--初始化地图-->
+		<script type="text/javascript" src="../../js/projectInfo/initMap.js"></script>
+		<!--鼠标绘制操作实例-->
+		<script type="text/javascript" src="../../js/projectInfo/drawAction.js"></script>
+		<script>
+			$("#form").validate();
+			$(function() {
+				$('#myModal').modal('hide');
+			});
+			$(document).ready(function() {
+				$(".summernote").summernote({
+					lang: "zh-CN"
+				})
+			});
+			var edit = function() {
+				$("#eg").addClass("no-padding");
+				$(".click2edit").summernote({
+					lang: "zh-CN",
+					focus: true
+				})
+			};
+			var save = function() {
+				$("#eg").removeClass("no-padding");
+				var aHTML = $(".click2edit").code();
+				$(".click2edit").destroy()
+			};
+			$(".SureBtn").click(function(event) {
+				if($("#form").valid()) {
+					event.preventDefault();
+					var formData = new FormData();
+					formData.append("file", $('#files')[0].files[0]); //附件
+					formData.append("title", $("#cname").val().trim()); //标题
+					formData.append("titleSub", $("#secondTitle").val().trim()); //副标题
+					//					formData.append("memo",$("#ccomment").val().trim());//描述
+					formData.append("isShow", switchBtn); //是否发布
+					formData.append("context", $(".note-editable").html()); //内容富文本
+					formData.append("type", "1"); //类型
+					$('#myModal').modal('show');
+					$.ajax({
+						url: config + '/oa/news/save',
+						//		url:"http://192.168.18.189:8080/gcafu_commerce/rest/upload/product",
+						type: 'POST',
+						data: formData,
+						async: false,
+						cache: false,
+						dataType: 'JSON', //接收值的格式
+						enctype: 'multipart/form-data',
+						contentType: false,
+						processData: false,
+						success: function(data) {
+							console.log(data);
+							$('#myModal').modal('hide');
+							swal({
+								title: "",
+								text: "提交成功！"
+							});
+							setTimeout(function() {
+								parent.$(window.parent.document).find(".layui-layer-close").click();
+							}, 2000);
+							RefreshIframe("page/Appnews/appListPage.html", "NEWSADMIN_NEWS");
+						},
+						error: function() {
+							alert("提交失败！");
+							$('#myModal').modal('hide');
+						}
+					})
+				}
+			})
+			var switchBtn = 0; //定义开关默认值
+			//			点击开关
+			$(".onoffswitch-label").click(function() {
+				if(switchBtn == 0) {
+					switchBtn = 1;
+				} else {
+					switchBtn = 0;
+				}
+			})
+			$("#files").change(function(e) {
+				console.info(e.target.files[0]); //图片文件
+				var dom = $(this)[0];
+				//			    console.info(dom.value);//这个是文件的路径 C:\fakepath\icon (5).png
+				//			    console.log(e.target.value);//这个也是文件的路径和上面的dom.value是一样的
+				var reader = new FileReader();
+				reader.onload = (function(file) {
+					return function(e) {
+						//			           console.info(this.result); //这个就是base64的数据了
+						var sss = $("#showImage");
+						$("#showImage").html('<img src="' + this.result + '"style="width:200px;height:120px;">');
+					};
+				})(e.target.files[0]);
+				reader.readAsDataURL(e.target.files[0]);
+			});
+			
+//			点击医院编辑
+			$(".hosEdit").click(function(){
+				if($(this).text()=='编辑'){
+					$(this).text('完成');
+					$("#hosBox").find("input").removeAttr("disabled");
+					$("#hosBox").find("textarea").removeAttr("disabled");
+				}else{
+					$(this).text('编辑');
+					$("#hosBox").find("input").attr("disabled","disabled");
+					$("#hosBox").find("textarea").attr("disabled","disabled");
+				}
+			});
+//			点击部门编辑
+			$(".deptEdit").click(function(){
+				if($(this).text()=='编辑'){
+					$(this).text('完成');
+					$("#deptBox").find("input").removeAttr("disabled");
+					$("#addDept").css("display","block");
+				}else{
+					$(this).text('编辑');
+					$("#deptBox").find("input").attr("disabled","disabled");
+					$("#addDept").css("display","none");
+				}
+			});
+			
+//			负责人信息编辑
+			$("#presidentEdit").click(function(){
+				if($(this).text()=='编辑'){
+					$(this).text('完成');
+					$("#presidentBox").find("input").removeAttr("disabled");
+					$(".addPresident").css("display","block");
+				}else{
+					$(this).text('编辑');
+					$("#presidentBox").find("input").attr("disabled","disabled");
+					$(".addPresident").css("display","none");
+				}
+			});
+//			发票信息编辑
+			$(".billEdit").click(function(){
+				if($(this).text()=='编辑'){
+					$(this).text('完成');
+					$("#billBox").find("input").removeAttr("disabled");
+				}else{
+					$(this).text('编辑');
+					$("#billBox").find("input").attr("disabled","disabled");
+				}
+			});
+//			新增科室
+			$("#addDept").click(function(){
+				$(".deptList").append(`<div class="col-sm-2 addDeptBoxWidth">
+									<div class="col-sm-12 deptBoxs">
+										<input id="deptInput" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true" placeholder="科室名称">
+										<span class="delIcon deptDel">×</span>
+									</div>
+								</div>`);
+			//			鼠标移上去
+				$(".deptBoxs").hover(function(){
+					console.log($(".deptBoxs").length);
+					if($(".deptBoxs").length>1){
+						$(this).find(".delIcon").css('display',"inline-block");
+					}
+				},function(){
+					$(this).find(".delIcon").css('display',"none");
+				});
+				//			删除新增的科室
+				$(".deptList").on("click",".deptDel",function(){
+					$(this).parent().parent().remove();
+				});
+			});
+//			新增院长
+			$(".addPresident").click(function(){
+				if($(this).hasClass('addPresidentInput')){
+					$(this).before(`<div class="col-sm-111 addDeptBoxWidth presidentInputBox">
+												<input class="president" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="院长姓名及电话">
+												<span class="delIcon deptDel">×</span>
+											</div>`);
+				}else if($(this).hasClass('addDepartmentHeadInput')){
+					$(this).before(`<div class="col-sm-111 addDeptBoxWidth presidentInputBox">
+												<input class="departmentHead" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="院长姓名及电话">
+												<span class="delIcon deptDel">×</span>
+											</div>`);
+				}else{
+					$(this).before(`<div class="col-sm-111 addDeptBoxWidth presidentInputBox">
+												<input class="operator" name="name" minlength="2" maxlength="50" type="text" class="form-control required" required="" aria-required="true"placeholder="院长姓名及电话">
+												<span class="delIcon deptDel">×</span>
+											</div>`);
+				}
+//			鼠标移上去
+				$(".presidentInputBox").hover(function(){
+					if($(this).parent().find(".presidentInputBox").length>1){
+						$(this).find(".delIcon").css('display',"inline-block");
+					}
+				},function(){
+					$(this).find(".delIcon").css('display',"none");
+				});
+				//			删除新增的院长、负责人、运营人员
+				$(".presidentInputBox").on("click",".deptDel",function(){
+					$(this).parent().remove();
+				});
+			});
+			
+		</script>
+	</body>
+
+</html>

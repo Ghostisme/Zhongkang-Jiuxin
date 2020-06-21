@@ -1,0 +1,369 @@
+/*body{
+	position: relative;
+	 height: 100%; 
+}*/
+/* 顶部内容样式 */
+/* .navbar{
+	border-bottom: 1px solid #dedbdb;
+	padding: 0.4rem 0.45rem 0.375rem;
+	margin-top: 0.35rem;
+	display: flex;
+	justify-content: space-between;
+} */
+.header{
+	border-bottom: 1px solid #EBEBEB;
+}
+.navbar{
+	position: relative;	
+}
+.navbackbtn span{
+	font-size: 0.45rem;
+	color: rgba(37,146,254,1);
+}
+.right-close-btn{
+	position: absolute;
+	right: 0.425rem;
+}
+.right-close-btn .closebtn{
+	background-color: transparent;
+	border: 0;
+	font-size: 0.45rem;
+}
+.right-close-btn i{
+	font-size: 0.55rem;
+	color: #2292FE;
+	vertical-align: -2px;
+}
+.right-close-btn .closebtn:focus{
+	outline: none;
+}
+/* 按钮通用样式 */
+.btn{
+	background-color: #FFF;
+	border: 0;
+	color: rgba(34,146,254,1);
+}
+.btn:focus{
+	outline: none;
+}
+/* 患者管理标题 */
+.navtitle span{
+	font-weight: bold;
+}
+/* 时间日期样式 */
+.text{
+	/* padding-top: 2px; */
+	padding-top: 0.125rem;
+	color: #FFFFFF;
+}
+.kinerDatePickerInput {
+	/* width: 100%; */
+	/* height: 0.5rem; */
+	/* font-size: 0.35rem; */
+	/* background-color: #FFFFFF; */
+	text-align: left;
+	/* display: flex; */
+	font-size: 0.4rem;
+	margin: 0.17rem 0.25rem 0rem 0rem;	
+	/* color: #2292FE; */
+	color: #FFFFFF;
+}
+.kinerDatePickerInput1 {
+	/* width: 100%; */
+	/* height: 0.5rem; */
+	/* font-size: 0.35rem; */
+	/* background-color: #FFFFFF; */
+	text-align: left;
+	font-size: 0.4rem;
+	/* display: flex; */
+	margin: 0.17rem 0rem 0rem 0.25rem;	
+	/* color: #2292FE; */
+	color: #FFFFFF;
+}
+.table-title{
+	margin-left: 0.5rem;
+    margin-top: 0.25rem;
+    /*border-left: 1px solid #FFFFFF;*/
+    padding-left: 0.2rem;
+    height: 0.4rem;
+    line-height: 0.35rem;
+}
+.table-title .allnum{
+	font-size: 0.4rem;
+	color: #FFFFFF;
+}
+/* 表格样式 */
+.tablecontent{
+	/* margin: 0 0.35rem; */
+}
+/* .tablecontent .table-title{
+	text-align: right;
+	margin-right: 0.35rem;
+}
+.tablecontent .table-title span{
+	font-size: 0.35rem;
+} */
+.tablecontent table{
+	width: 100%;
+	overflow-y: auto;
+}
+/* .tablecontent{
+	display: flex;
+	justify-content: center;
+	padding-top: 0.9rem;
+	position: relative;
+	width: 100%;
+	margin: 0 0.35rem;
+	overflow: auto;
+	padding: 0.5rem 0.45rem 0;
+} */
+/* .tablecontent .table-title{
+	position: absolute;
+	right: 0.45rem;
+	top: 0.1rem;
+	text-align: right;
+	margin-right: 0.35rem;
+	margin-bottom: 0.45rem;
+}
+.tablecontent .table-title span{
+	font-size: 0.35rem;
+	color: #2592FE;
+	font-weight: bold;
+}
+
+.tablecontent table{
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	display: block;
+	margin-left: 0.45rem;
+	margin-right: 0.45rem;
+} */
+.tablecontent table thead tr th{
+	font-size: 0.375rem;
+	/* font-size: 0.3rem; */
+	/* background-color: rgba(37,146,254,1); */
+	/* background-color: rgb(212, 212, 212); */
+	background-color: rgba(212, 212, 212, .5);	
+	color: #6d6b6b;
+	text-align: left;
+	/* color: #FFFFFF; */
+	font-weight: normal;
+	white-space: nowrap;
+	padding: 0.29rem 0rem;	
+}
+.tablecontent table thead tr th:first-of-type{
+	text-indent: 0.3rem;
+}
+.tablecontent table thead tr th:nth-of-type(2){
+	width: 1.5rem;
+	max-width: 1.5rem; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/* .tablecontent table thead tr th:not(:last-of-type){
+	border-right: 1px solid #FFFFFF;
+}
+.tablecontent table thead tr th:nth-of-type(1),
+.tablecontent table thead tr th:nth-of-type(3),
+.tablecontent table thead tr th:nth-of-type(4),
+.tablecontent table thead tr th:nth-of-type(5){
+	padding: 0.29rem 0.1rem;
+}
+.tablecontent table tbody tr{
+	width: 100%;
+} */
+.tablecontent table tbody tr td{
+	/* width: 20%; */
+	font-size: 0.375rem;
+	/* font-size: 0.3rem; */
+	white-space: nowrap;
+	height: 1.1rem;
+	line-height: 1.1rem;
+	/* text-shadow: 0 0 0.0125rem rgba(0,0,0,1); */
+	border-bottom: 1px solid #EDEDEF;
+	text-align: left;
+	
+}
+.tablecontent table tbody tr td:nth-of-type(2){
+	width: 1.5rem;
+	max-width: 1.5rem; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.tablecontent table tbody tr td:first-of-type{
+	text-indent: 0.3rem;
+}
+.tablecontent table tbody tr:nth-of-type(odd){
+	/* background-color: #FFFFFF; */
+	background-color: rgba(212, 212, 212, .2);
+}
+.tablecontent table tbody tr:nth-of-type(even){
+	/* background-color: rgba(212, 212, 212, .2); */
+	background-color: #FFFFFF;
+}
+.tablecontent table tbody tr td:nth-of-type(6){
+	display: none;
+}
+/*,
+.tablecontent table tbody tr td:nth-of-type(7)*/
+/* 三个点的更多按钮样式 */
+.moreContent{
+	position: absolute;
+	right: 0.1rem;
+	top: 1.625rem;
+	/* border: 1px solid black; */
+	background-color: rgba(0,0,0,.5);
+	border-radius: 4px;
+	display: none;
+	/* right: -2.75rem; */
+	transition: all 3s linear;
+}
+.moreContent ul{
+	margin: 0;
+	padding: 0;
+}
+.moreContent ul li{
+	color: #F5F5F5;
+	font-size: 0.35rem;
+	margin: 0.15rem 0rem 0.15rem 0.35rem;
+	padding-right: 0.35rem;
+	text-align: left;
+}
+.moreContent ul li:nth-of-type(1){
+	border-bottom: 1px solid rgba(245,245,245, .5);
+	padding-bottom: 0.15rem;
+}
+.moreContent ul div:before{
+	content: "";
+	width: 0;
+	height: 0;
+	/* border-bottom: 10px solid rgba(0,0,0, .5); */
+	border: 0.25rem solid transparent;
+	border-bottom-color: rgba(0,0,0, .5);
+	position: absolute;
+	top: -0.5rem;
+	right: 0.375rem;
+}
+/* 模糊搜索框样式 */
+.searchbox{
+	position: relative;
+}
+.dimsearch{
+	margin: 0 0.3rem;
+	/* background-color: #F1F1F1; */
+	background-color: #368fea;
+	position: absolute;
+	width: 94%;
+	left: 0;
+	top: 1.05rem;
+	display: none;
+}
+.dimsearch ul li{
+	font-size: 0.35rem;
+	padding: 0.15rem 0;
+	margin: 0 0.45rem;
+	color: #FFFFFF;
+}
+.dimsearch ul li:not(:last-of-type){
+	border-bottom: 1px solid #FFFFFF;
+}
+
+/*头像*/
+.headicon{
+	width: 0.65rem;
+	height: 0.65rem;
+	vertical-align: -0.2rem;
+}
+/* 顶部盒子 */
+.locationBox{
+	/* background-color: #0E90FE; */
+	/* opacity: .8; */
+	/* background-color: rgba(42,139,251, .8); */
+	/* background-color: #549ef5; */
+	/* background-color: #429bf7; */
+	/* background-color: #37acff; */
+	background-color: #0E90FE;
+}
+
+.locationScroll{
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	/* background-color: #FFFFFF; */
+	/* background-color: #37acff; */
+	background-color: #0E90FE;
+}
+/* 时间样式 */
+.selectdata{
+	display: flex;
+	/*justify-content: center;*/
+	justify-content: flex-end;
+	margin-right: 0.3rem;
+	/* padding: 0rem 1.5rem 0.3rem; */
+	padding-bottom: 0.3rem;
+	/* border-bottom: 1px solid #EBEBEB; */
+}
+.selectdata div input{
+	width: 65%;
+	text-align: left;
+	font-size: 0.375rem;
+	/* text-shadow: 0 0 0.0125rem rgba(0,0,0,1); */
+	color: rgba(37,146,254,1);
+	/* text-shadow: 0 0 0.0125rem rgba(37,146,254,1); */
+}
+.selectdata div i{
+	font-size: 0.375rem;
+	font-weight: bold;
+	color: rgba(37,146,254,1);
+	/* text-shadow: 0 0 0.0125rem rgba(37,146,254,1); */
+}
+.selectdata .text span{
+	font-size: 0.375rem;
+}
+.dateinput{
+	border: 0;	
+}
+.dateinput:focus{
+	outline: none;
+}
+.search{
+	/*background-color: rgba(237,237,239,1);*/
+	/* margin: 0.3rem; */
+	margin: 0 0.3rem 0.3rem 0.3rem;
+	text-align: center;
+	border-radius: 0.05rem;
+	display: flex;
+	justify-content: space-between;
+}
+.search i{
+	font-size: 0.4rem;
+}
+.search>div{
+	/* background-color: rgba(237,237,239,1); */
+	background-color: #FFFFFF;
+	width: 100%;
+	margin-top: 0.25rem;
+}
+.search div:nth-of-type(1){
+	/* margin-right: 0.125rem; */
+}
+.searchinput{
+	font-size: 0.4rem;
+	border: 0;
+	color: #000000;
+	background-color: transparent;
+	padding: 0.2rem 0 0.3rem;
+	text-align: left; 
+    width: 80%; 
+}
+.oWrapper{
+	overflow-y: scroll;
+}
+.operation{
+	font-size: 0.375rem;
+	color: #0E90FE;
+}

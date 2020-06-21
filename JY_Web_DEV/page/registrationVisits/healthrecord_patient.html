@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>健康记录</title>
+		<link rel="shortcut icon" href="favicon.ico"> 
+		<link href="../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/init.css" />
+		<!-- 顶部内容CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/navbar.css"> -->
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont.css">
+		<!-- 本页CSS -->
+		<link type="text/css" rel="stylesheet" href="../healthrecord/css/healthrecord.css" />
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="../../js/content.min.js?v=1.0.0"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<!-- <script type="text/javascript" src="js/registrationVisits.js" ></script> -->
+		<!-- 页面跳转方法JS -->
+		<!-- <script type="text/javascript" src="../../js/jumpPage.js"></script> -->
+		<!-- 本页JS -->
+		<script src="../../js/plugins/staps/jquery.steps.min.js"></script>
+	    <script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+	    <script src="../../js/plugins/validate/messages_zh.min.js"></script>
+		<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		
+		<script type="text/javascript" src="js/registrationVisits.js"></script>
+		<style>
+	    	.contentFooterBtn button{
+	    		padding: 6px 28px !important;
+	    	}
+	    	.contentFooterBtn .resbtn{
+	    		margin-left: 9px;
+	    	}
+	    	label.error {
+			    color: #cc5965 !important;
+			    display: inline-block !important;
+			    margin-left: 15px !important;
+			    width: auto !important;
+			    height: auto !important;
+			    border: 0 !important;
+			    text-indent: inherit !important;
+			    line-height: normal !important;
+			    font-size: 12px;
+			    position: absolute;
+			    top: 27px;
+				left: -3px;
+			}
+			label.warn {
+				color: #f8ac59 !important;
+				display: inline-block !important;
+				margin-left: 18px !important; 
+				width: auto !important;
+				height: auto !important;
+				border: 0 !important;
+				text-indent: inherit !important;
+				line-height: normal !important;
+				font-size: 12px;
+				position: absolute;
+				top: 27px;
+				left: -3px;
+			}
+			/*p{
+				position: relative !important;
+			}*/
+			.errormsg{
+				position: relative !important;
+			}
+			.fa{
+			    border: 0 !important;
+    			display: inline !important;
+    			color: #cc5965 !important;
+			}
+			.fa1{
+			    border: 0 !important;
+				display: inline !important;
+				color: #f8ac59 !important;
+			}
+			/* label.warn {
+				color:  #f8ac59;
+				display: inline-block;
+				margin-left: 5px
+			} */
+	    </style>
+	</head>
+	<body>
+		<!-- 内容区域 -->
+		<div class="wrapper_patient">
+			<div class="row">
+				
+				<form enctype="multipart/form-data" id="form">
+				<div class="col-sm-1">
+					<div class="headImg">
+						<img src="../../img/default.png"  alt="这是一个头像" title="这是一个头像"/>
+						<input type="file" name="" id="" value="" class="chooseImg" disabled="disabled" />
+					</div>
+				</div>
+				<div class="col-sm-6 essentialBox">
+					<div class="essential_patient">
+						<div>
+							<span>患者姓名:</span>
+							<span class="errormsg">
+								<input name="name" id="username" type="text" name="" id="" value="" class="username" maxlength="10" />
+							</span>
+						</div>
+						<div>
+							<span>性别:</span>
+							<spa  class="errormsg" style="width: 65%;">
+								<!--<input type="text" disabled="true" name="" id="" value="" class="sex" />-->
+								<select name="sex" id="sex" name="" class="sex" style="width:86%;">
+									<option value="男">男</option>
+									<option value="女">女</option>
+								</select>
+							</span>
+						</div>
+						<div>
+							<span>年龄(岁):</span>
+							<span class="errormsg">
+								<input type="text" maxlength="3" name="" id="" value="" class="age"  name="age" maxlength="3" id="age"/>
+							</span>
+						</div>
+						<div>
+							<span>身份证号:</span>
+							<span class="errormsg">
+								<input type="text" name="idCode" maxlength="18" id="iDcard" name="" id="" value="" class="IDcard"/>
+							</span>
+						</div>
+						<div>
+							<span>手机号:</span>
+							<span class="errormsg">
+								<input type="text"  name="mobile" maxlength="11" id="phone" name="" id="" value="" class="mobile" />
+							</span>
+						</div>
+						<div>
+							<span>日期：<span id="time"></span></span>
+						</div>
+						<!-- <div>
+							<span>住址:</span>
+							<span>
+								<input type="text" name="" id="" value="" class="address"/>
+							</span>
+						</div> -->
+					</div>
+				</div>				
+				</form>
+			</div>
+			<!-- 基本信息内容 -->
+			<div class="essentialBox box">
+			</div>
+			<div class="contentFooterBtn btngroup">
+				<button type="button" class="resbtn btn btn-sm">取消</button>
+				<button type="submit" class="sumbitbtn btn btn-sm btn-success">确定</button>
+			</div> 
+			<div class="contentFooterBtn btngroup1">
+				<button type="button" class="overBtn btn btn-sm btn-success">结束就诊</button>
+			</div>
+	</body>
+</html>

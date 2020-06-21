@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>部门维护</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    	
+    	label{
+    		cursor: pointer;
+    	}
+    	
+    </style>
+	<body>
+		<div class="box2">
+			<h5 id="userInfo">新增岗位</h5>
+			<div class="userName2">
+				<div id="positionName">
+					<span id="positionNameLeft">
+						<span id="star">*</span>
+						<span id="star-right">岗位名称</span>
+						
+					</span>
+					<span id="positionNameRight">
+						中房置换
+					</span>
+				</div>
+				<div id="positionDes">
+					<span id="positionDesleft">
+						岗位描述
+					</span>
+					<span id="positionDesright">
+						
+					</span>
+				</div>
+			</div>
+			<!--tab选项卡-->
+			<div class="tab">
+				<ul>
+					<li class="change">维护系统</li>
+					<li class="cur change">个人空间</li>
+					<li class="change">人力资源</li>
+					<li class="change">信息管理</li>
+				</ul>
+				<div class="aaa">
+					aaa
+				</div>
+				<div class="on aaa">
+					<div id="personalInfo">
+						个人信息
+					</div>
+					
+					<div class="way">
+						<div class="wayLeft">
+							<span id="wayLeftTiitle">
+								会诊方式：
+							</span>
+							<select name="">
+								<option value="1">无</option>
+								<option value="2">1</option>
+								<option value="3">2</option>
+							</select>
+							
+							
+						</div>
+						<div class="wayRight">
+							<label for="check"><input type="checkbox" name="" id="check" value="" />查看信息</label>
+						</div>
+						
+						
+					</div>
+					
+					<div id="workpart">
+						    工作助手
+					</div>
+					
+					<ul id="dep-workpartList">
+						<li>查看公司联系人：
+							<select>
+							  <option value="无">无</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							</select>
+						</li>
+						<li>查看公司联系人：
+							<select>
+							  <option value="无">无</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							</select>
+						</li>
+						<li class="redText">查看公司联系人（本部）</li>
+						<li>查看公司联系人：
+							<select>
+							  <option value="无">无</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							</select>
+						</li>
+						<li class="redText">投诉/建议查询（本人）</li>
+						<li><label for="adv"><input type="checkbox" name="" id="adv" value="" />投诉/建议查询(功能)</label></li>
+						<li><label for="adv4"><input type="checkbox" name="" id="adv4" value="" />投诉/建议查询(功能)</label></li>
+						<li>查看公司联系人：
+							<select>
+							  <option value="无">无</option>	
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							</select>
+						</li>
+						<li><label for="adv2"><input type="checkbox" name="" id="adv2" value="" />投诉/建议查询(功能)</label></li>
+						<li>查看公司联系人：
+							<select>
+							  <option value="无">无</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							</select>
+						</li>
+						<li><label for="adv3"><input type="checkbox" name="" id="adv3" value="" />投诉/建议查询(功能)</label></li>
+						<li>查看公司联系人：
+							<select>
+							  <option value="本人">本人</option>
+							  <option value="本部">本部</option>
+							  <option value="跨部">跨部</option>
+							</select>
+						</li>
+						<li id="choice">
+							<button id="btnChoice1">全选</button>
+							<button id="btnChoice2">反选</button>
+						</li>
+					</ul>
+					
+					<button id="change" style="cursor: pointer;">修改</button>
+					
+					
+				</div>
+				<div class="aaa">
+					ccc
+				</div>
+				<div class="aaa">
+					ddd
+				</div>
+				
+			</div>
+			
+			
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+	$(document).ready(function(){
+        $(".tab .change").click(function(){
+        $(".tab .change").eq($(this).index()).addClass("cur").siblings().removeClass('cur');
+        $(".aaa").hide().eq($(this).index()).show();
+        });
+    });
+//  全选和反选
+    var checkAll = document.getElementById('btnChoice1');
+    var othercheck = document.getElementById('btnChoice2');
+    var checkBox = document.getElementsByTagName("input")
+     checkAll.onclick=function(){
+              for(i=0;i<checkBox.length;i++){
+                     checkBox[i].checked=true;
+                 };
+        };
+    
+    othercheck.onclick=function(){
+            for(i=0;i<checkBox.length;i++){
+                     if(checkBox[i].checked==true){
+                            checkBox[i].checked=false;
+                        }
+                     else{
+                        checkBox[i].checked=true
+                        }
+                    
+                };         };
+    
+	</script>
+</html>

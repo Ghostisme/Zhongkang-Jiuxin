@@ -1,0 +1,1230 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>中康九悦远程医疗管理系统 - 远程会诊申请单</title>
+
+		<meta name="keywords" content="中康九悦远程医疗管理系统">
+		<meta name="description" content="中康九悦远程医疗管理系统">
+
+		<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome.min.css" rel="stylesheet">
+		<link href="../../../css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="../../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+		<link href="../../../css/animate.min.css" rel="stylesheet">
+		<link href="../../../css/plugins/summernote/summernote.css" rel="stylesheet">
+    	<link href="../../../css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../../css/bootstrap-select.min.css" />
+		<link href="../../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<link href="../../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../../css/plugins/webuploader/webuploader.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/demo/webuploader-demo.min.css">
+		<link href="../../../css/style.min.css" rel="stylesheet">
+		<!--<link rel="stylesheet" href="../../css/public.css" />-->
+		<link rel="stylesheet" href="../../../css/editNews.css" />
+		
+		<!--<link href="../../../css/bootstrap.min.css" rel="stylesheet">-->
+	    <!--<link href="../../../css/font-awesome.min.css" rel="stylesheet">-->
+	    <!--<link href="../../../css/plugins/iCheck/custom.css" rel="stylesheet">-->
+	    <!--<link href="../../../css/plugins/steps/jquery.steps.css" rel="stylesheet">-->
+	    <!--<link href="../../../css/animate.min.css" rel="stylesheet">-->
+	    <!--<link href="../../../css/style.min.css" rel="stylesheet">-->
+	    <!--<link href="../../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">-->
+	    <!--<link href="../../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">-->
+	    <!--<link rel="stylesheet" type="text/css" href="../../../css/plugins/webuploader/webuploader.css">-->
+	    <!--<link rel="stylesheet" type="text/css" href="../../../css/demo/webuploader-demo.min.css">-->
+	    <link rel="stylesheet" href="../../../css/public.css" />
+	    <link rel="stylesheet" href="../../../css/apply.css" />
+	    <link rel="stylesheet" href="addhosMemberPush.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+	    
+
+	</head>
+
+	<body>
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="ibox-content">
+					<form id="form"  class="wizard-big">
+						<ul class="appointment-ul2">
+							<li>
+								<div class="topText">设备中心</div>
+								<div class="contentBox">
+									<!--<div>-->
+										<div class="hosDivBox">
+											<div class="f_div">					
+											    <label class="f_lab"><span style="color: red;">*</span>医院名称：</label>
+											    <div>
+											        <!--<select class="newin" id="applyHos" name="hospitalId">
+											        </select>-->
+											        <select title="医院名称" class="newin" name="hospitalId" id="applyHos" data-dropup-auto="false" data-live-search="true"></select>
+											    </div>
+											</div>
+											<div class="alert alert-danger" id="applyHosTip" role="alert" style="display: none;">
+												<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+												必填
+											</div>
+										</div>
+										<div class="hosDivBox">
+											<div class="f_div">
+							                    <label class="f_lab"><span style="color: red;">*</span>设备类型：</label>
+							                    <!--<select class="newin" id="equipmentType2" name="deviceId"></select>-->
+							                    <select title="设备类型" class="newin" name="deviceId" id="equipmentType2" data-dropup-auto="false" data-live-search="true"></select>
+							                </div>
+							                <div class="alert alert-danger" id="equipmentType2Tip" role="alert" style="display: none;">
+												<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+												必填
+											</div>
+										</div>
+										<div class="hosDivBox">
+											<div class="f_div">
+							                    <label class="f_lab"><span style="color: red;">*</span>设备信息：</label>
+							                    <!--<select class="newin" id="equipmentType" name="deviceId"></select>-->
+							                    <select title="设备信息" class="newin" name="deviceId" id="equipmentType" data-dropup-auto="false" data-live-search="true"></select>
+							                    <!--<input type="text" class="newin" id="equipmentBrand" name="deviceId" value=""/>-->
+							                </div>
+							                <div class="alert alert-danger" id="equipmentTypeTip" role="alert" style="display: none;">
+												<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+												必填
+											</div>
+										</div>
+									<!--</div>-->
+									<!--<div>
+										<div class="f_div" style="width: 50%;">
+										    <label class="f_lab">设备名称：</label>
+										    <select class="newin" id="equipmentType" name="deviceId"></select>
+										    <input type="text" class="newin" id="equipmentName" name="deviceId" value=""/>
+										</div>
+										<div class="f_div">
+						                    <label class="f_lab">设备型号：</label>
+						                    <select class="newin" id="equipmentType1" name="deviceId"></select>
+						                    <input type="text" class="newin" id="equipmentType1" name="deviceId" value=""/>
+						                </div>  
+									</div>-->
+								</div>
+							</li>
+							<li>
+								<div class="topText">患者信息</div>
+								<div class="contentBox">
+									<div class="hosDivBox">
+										<div class="f_div">
+										    <label class="f_lab"><span style="color: red;">*</span>患者姓名：</label>
+										    <input type="text" class="newin" id="patientName" maxlength="250" name="patientName" value="" placeholder="患者姓名"/>
+										    <!--<select title="患者姓名" class="newin" name="patientName" id="patientName" data-dropup-auto="false" data-live-search="true"></select>-->
+										</div>
+										<div class="alert alert-danger" id="patientNameTip" role="alert" style="display: none;">
+											<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+											必填
+										</div>
+									</div>
+									<div class="hosDivBox">
+										<div class="f_div">
+										    <label class="f_lab"><span style="color: red;">*</span>患者性别：</label>
+										    <!--<input type="text" class="newin" id="equipmentName" name="equipmentName" value=""/>-->
+										    <select class="newin" id="patientSex" name="patientSex">
+										    	<option value="">请选择</option>
+			                                	<option value="男">男</option>
+			                                	<option value="女">女</option>
+			                                </select>
+										</div>
+										<div class="alert alert-danger" id="patientSexTip" role="alert" style="display: none;">
+											<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+											必填
+										</div>
+									</div>
+									<div class="hosDivBox">
+										<div class="f_div">
+										    <label class="f_lab"><span style="color: red;">*</span>患者年龄：</label>
+										    <input type="text" class="newin" id="patientAge" maxlength="250" name="patientAge" value="" placeholder="患者年龄"/>
+										</div>
+										<div class="alert alert-danger" id="patientAgeTip" role="alert" style="display: none;">
+											<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+											必填
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="topText">检查项目及价格</div>
+								<div class="contentBox1">
+									<div>
+										<div class="hosDivBox">
+											<div class="f_div">
+											    <label class="f_lab"><span style="color: red;">*</span>检查号：</label>
+											    <input type="text" class="newin" id="checkCode" maxlength="250" name="checkCode" value="" placeholder="检查号"/>
+											</div>
+											<div class="alert alert-danger" id="checkCodeTip" role="alert" style="display: none;">
+												<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+												必填
+											</div>
+										</div>
+										<div class="hosDivBox">
+											<div class="f_div">
+											    <label class="f_lab"><span style="color: red;">*</span>检查项目：</label>
+											    <!--<input type="text" class="newin" id="equipmentName" name="equipmentName" value=""/>-->
+											    <!--<select class="newin" id="inspectName" name="inspectName" placeholder="检查项目"></select>-->
+											    <select title="检查项目" class="newin" name="inspectName" id="inspectName" data-dropup-auto="false" data-live-search="true"></select>
+											</div>
+											<div class="alert alert-danger" id="inspectNameTip" role="alert" style="display: none;">
+												<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+												必填
+											</div>
+										</div>
+										<div class="hosDivBox">
+											<div class="f_div">
+											    <label class="f_lab">应收金额：</label>
+											    <input type="text" class="newin" disabled="disabled" id="shouldPrice" maxlength="250" name="shouldPrice" value="" style="margin-right: 5px;" placeholder="应收金额"/>元
+											</div>
+										</div>
+									</div>
+									<div>
+										<div class="hosDivBox">
+											<div class="f_div">
+											    <label class="f_lab"><span style="color: red;">*</span>实收金额：</label>
+											    <input type="text" class="newin" id="factPrice" maxlength="250" name="factPrice" style="margin-right: 5px;" value="" placeholder="实收金额"/>元
+											</div>
+											<div class="alert alert-danger" id="factPriceTip" role="alert" style="display: none;">
+												<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+												必填
+											</div>
+										</div>
+										<div class="hosDivBox">
+											<div class="f_div">
+											    <label class="f_lab"><span style="color: red;">*</span>检查时间：</label>
+											    <!--<input type="text" class="newin" id="equipmentName" name="equipmentName" value=""/>-->
+											    <input class="newin layer-date form-control required" name="checkTime" id="checkTime" readonly="readonly" style="background: #fff;" placeholder="检查时间"/>
+											</div>
+											<div class="alert alert-danger" id="checkTimeTip" role="alert" style="display: none;">
+												<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+												必填
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="topText">医生信息</div>
+								<div class="contentBox">
+									<div class="hosDivBox">
+										<div class="f_div">
+										    <label class="f_lab">申请医生：</label>
+										    <!--<select class="newin" name="billingDoctor" id="billingDoctor"></select>-->
+										    <select title="申请医生" class="newin" name="billingDoctor" id="billingDoctor" data-live-search="true"></select>
+										    <!--<input type="text" class="newin" id="billingDoctor" maxlength="250" name="billingDoctor" value="" placeholder="开单医生"/>-->
+										</div>
+									</div>
+									<div class="hosDivBox">
+										<div class="f_div">
+										    <label class="f_lab">操作技师：</label>
+										    <!--<select class="newin" name="operationDoctor" id="operationDoctor"></select>-->
+										    <select title="操作技师" class="newin" name="operationDoctor" id="operationDoctor" data-live-search="true"></select>
+										    <!--<input type="text" class="newin" id="operationDoctor" name="operationDoctor" value="" placeholder="操作医生"/>-->
+										</div>
+									</div>
+									<div class="hosDivBox">
+										<div class="f_div">
+										    <label class="f_lab">诊断医生：</label>
+										    <!--<select class="newin" name="diagnosticDoctor" id="diagnosticDoctor"></select>-->
+										    <select title="诊断医生" class="newin" name="diagnosticDoctor" id="diagnosticDoctor" data-live-search="true"></select>
+										    <!--<input type="text" class="newin" id="diagnosticDoctor" maxlength="250" name="diagnosticDoctor" value="" placeholder="诊断医生"/>-->
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="topText">备注</div>
+								<div class="contentBox">
+									<div class="f_div memoBox">
+									    <!--<label class="f_lab">备注：</label>-->
+									    <textarea class="newin" id="memo" name="memo" style="resize: none;padding-left: 2px;" placeholder="备注"></textarea>
+									</div>
+								</div>
+								<!--<div class="f_div memoBox">
+								    <label class="f_lab">备注：</label>
+								    <textarea class="newin" id="memo" name="memo" style="resize: none;"></textarea>
+								</div>-->
+							</li>
+						</ul>
+						<!--<span style="color: red;">*</span>-->
+						<!--<div class="f_div form-group">
+						    <label class="f_lab col-sm-3 control-label">医院名称：</label>
+						    <div class="col-sm-8">
+						        <select class="newin form-control required" style="margin-bottom: 10px;" id="applyHos" name="hospitalId">
+						        </select>
+						    </div>
+						</div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">设备名称及品牌：</label>
+                            <div class="col-sm-8">
+                            	<select class="newin form-control required" style="margin-bottom: 10px;" id="equipmentType" name="deviceId"></select>
+                            </div>
+                        </div>
+                       <div class="form-group">
+                            <label class="col-sm-3 control-label">设备规格型号：</label>
+                            <div class="col-sm-8">
+                            	<select class="newin form-control required" style="margin-bottom: 10px;" id="equipmentType1" name="deviceId"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">设备类型：</label>
+                            <div class="col-sm-8">
+                            	<select class="newin form-control required" style="margin-bottom: 10px;" id="equipmentType2" name="deviceId"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            
+                            <label class="col-sm-3 control-label">患者姓名：</label>
+                            <div class="col-sm-8">
+                                <input id="patientName" name="patientName" maxlength="250"type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">患者性别：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control required" id="patientSex" name="patientSex">
+                                	<option value="男">男</option>
+                                	<option value="女">女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">患者年龄：</label>
+                            <div class="col-sm-8">
+                                <input id="patientAge" name="patientAge" maxlength="250"type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">检查号：</label>
+                            <div class="col-sm-8">
+                                <input id="checkCode" name="checkCode" maxlength="250"type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="f_div form-group">
+						    <label class="f_lab col-sm-3 control-label">检查部位：</label>
+						    <div class="col-sm-8">
+						        <select class="newin form-control required" style="margin-bottom: 10px;" id="inspectName" name="inspectName">
+						        </select>
+						    </div>
+						</div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">应收金额：</label>
+                            <div class="col-sm-8">
+                                <input id="shouldPrice" name="shouldPrice" maxlength="250"type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">实收金额：</label>
+                            <div class="col-sm-8">
+                                <input id="factPrice" name="factPrice" maxlength="250"type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">检查时间：</label>
+                            <div class="col-sm-8">
+                            	<input class="layer-date form-control required" name="checkTime" id="checkTime" readonly="readonly" style="background: #fff;" placeholder="检查时间"/>
+                            </div>
+                        </div>-->
+                        <!--<div class="form-group">
+                            <label class="col-sm-3 control-label">录入人ID：</label>
+                            <div class="col-sm-8">
+                                <input id="secondTitle" name="secondTitle" maxlength="250"type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">录入人名字：</label>
+                            <div class="col-sm-8">
+                                <input id="secondTitle" name="secondTitle" maxlength="250"type="text" class="form-control" >
+                            </div>
+                        </div>-->
+                        <!--<div class="form-group">
+                            <label class="col-sm-3 control-label">录入人手机：</label>
+                            <div class="col-sm-8">
+                                <input id="secondTitle" name="secondTitle" maxlength="250"type="text" class="form-control" >
+                            </div>
+                        </div>-->
+                        <!--<div class="form-group">
+                            <label class="col-sm-3 control-label">备注：</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" id="memo" name="memo" style="resize: none;"></textarea>
+                            </div>
+                        </div>-->
+                        <!--<div class="form-group">
+                            <label class="col-sm-3 control-label">描述：</label>
+                            <div class="col-sm-8">
+                                <textarea id="ccomment" name="comment" maxlength="500"class="form-control" ></textarea>
+                            </div>
+                        </div>-->
+                        <!--<div class="row">
+                        	<label class="col-sm-3 control-label">患者姓名：</label>
+				            <div class="col-sm-8"style="padding-left: 23px;padding-right: 23px;">
+				                <div class="ibox float-e-margins">
+				                    <div class="ibox-content no-padding">
+				
+				                        <div class="summernote">
+				                            <h2>H+ 后台主题</h2>
+				                            <p>H+是一个完全响应式，基于Bootstrap3.3.5最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术，她提供了诸多的强大的可以重新组合的UI组件，并集成了最新的jQuery版本(v2.1.1)，当然，也集成了很多功能强大，用途广泛的就jQuery插件，她可以用于所有的Web应用程序，如<b>网站管理后台</b>，<b>网站会员中心</b>，<b>CMS</b>，<b>CRM</b>，<b>OA</b>等等，当然，您也可以对她进行深度定制，以做出更强系统。</p>
+				                            <p>
+				                                <b>当前版本：</b>v4.0.0
+				                            </p>
+				                            <p>
+				                                <b>定价：</b><span class="label label-warning">&yen;988（不开发票）</span>
+				                            </p>
+				
+				                        </div>
+				
+				                    </div>
+				                </div>
+				            </div>
+				        </div>-->
+				        <!--<div class="form-group">
+                            <label class="col-sm-3 control-label">立即发布：</label>
+                            <div class="switch col-sm-1">
+		                        <div class="onoffswitch">
+		                            <input type="checkbox" class="onoffswitch-checkbox" id="example2">
+		                            <label class="onoffswitch-label" for="example2">
+		                                <span class="onoffswitch-inner"></span>
+		                                <span class="onoffswitch-switch"></span>
+		                            </label>
+		                        </div>
+		                    </div>
+                        </div>-->
+                        <!--<div class="form-group">
+                        	<label class="col-sm-3 control-label">附件：</label>
+                            <div class="col-sm-8">
+			                    <div id="file-pretty">
+			                        <div class="form-group"style="border: 1px solid #eee;height: 40px;">
+			                            <div style="position: absolute;height: 40px;line-height: 40px;"class="col-sm-11">
+			                            	<span style="float:left;padding:0 20px;border-right: 1px solid #eee;"class="col-sm-2">选择文件</span>
+			                            	<input class="input-large col-sm-10" type="text"style="height: 39px;border: 0px;border-bottom: 1px solid #eee;">
+			                            </div>
+			                            <input type="file" id="files"name="file"class="form-control required" required=""aria-required="true"style="opacity:0;position: absolute; z-index: 1;height: 40px;"accept=".gif,.jpg,.jpeg,.png">
+			                        </div>
+			                    </div>
+			                    图片展示区域
+			                    <div class="imgShow"id="showImage">
+			                    	
+			                    </div>
+		                    </div>
+                        </div>-->
+                        <div class="form-group">
+                            <div style="text-align: center;margin-top: 30px;">
+                                <button type="button" class="comTempateSaveBtn formDisabledBtn" disabled="disabled" id="sumbitBtn">保存</button>
+                                <!--<button type="submit" class="btn btn-w-m btn-success SureBtn" id="sumbitBtn">确认</button>-->
+                            </div>
+                        </div>
+                        <input type="hidden" id="deviceId" />
+                        <input type="hidden" id="deviceModel" />
+                        <input type="hidden" id="deviceName" />
+                        <input type="hidden" id="deviceType" />
+                        <input type="hidden" id="inspectName1" />
+                        <input type="hidden" id="inspectId" />
+                    </form>
+				</div>
+			</div>
+		</div>
+		
+		<div id="myModal" class="modal fade" name="tip-modal" data-backdrop="static" data-keyboard="false"style="text-align: center;">
+			<img src="../../../img/loading-upload.gif" alt="" style="width:40px;height:40px;margin:0 auto; margin-top:200px;"/>
+		            	提交中......
+		</div>
+		<script src="../../../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../../../js/plugins/layer/layer.min.js"></script>
+		<script src="../../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="../../../js/bootstrap-select.min.js"></script>
+		<script src="../../../js/foundation-datepicker.js"></script>
+		<script src="../../../js/foundation-datepicker.min.js"></script>	
+		<script src="../../../js/plugins/layer/laydate/laydate5.0.js"></script>
+		<script src="../../../js/plugins/staps/jquery.steps.min.js"></script>
+		<script src="../../../js/plugins/validate/jquery.validate.min.js"></script>
+		<script src="../../../js/plugins/validate/messages_zh.min.js"></script>
+		<!--<script src="../../js/demo/form-validate-demo.min.js"></script>-->
+		<script src="../../../js/plugins/summernote/summernote.min.js"></script>
+    	<script src="../../../js/plugins/summernote/summernote-zh-CN.js"></script>
+		<script src="../../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script src="../../../js/content.min.js?v=1.0.0"></script>
+		<script type="text/javascript">
+			var BASE_URL = '../../../js/plugins/webuploader';
+		</script>
+		<!--<script src="../../js/plugins/webuploader/webuploader.min.js"></script>-->
+		<!--<script src="../../js/demo/webuploader-demo.min.js"></script>-->
+		<script src="../../../js/plugins/jquery.jqprint-0.3.js"></script>
+		<script src="../../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="../../js/demo/form-advanced-demo.min.js"></script>-->
+		<script>
+			$("#form").validate();
+			$(function() {
+				$('#myModal').modal('hide');
+				function currentDate(){
+					var d = new Date(),
+						month = '' + (d.getMonth() + 1),
+						day = '' + d.getDate(),
+						year = d.getFullYear();
+					var hours= d.getHours()<10?'0'+d.getHours():d.getHours();
+					var minutes=d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+					var seconds=d.getSeconds()<10?'0'+d.getSeconds():d.getSeconds();
+					if (month.length < 2) month = '0' + month;
+					if (day.length < 2) day = '0' + day;
+					return [year, month, day].join('-')+" "+hours+":"+minutes+":"+seconds;
+				}
+			    
+			    var ins22 = laydate.render({
+				  elem: '#checkTime'
+//				  ,min: currentDate()
+				  ,type: 'datetime'
+//				  ,max: '2080-10-14'
+//					,istime: true
+//					,istoday: false
+					,trigger: 'click'
+					,done: function(value, date, endDate){
+						console.log(value); //得到日期生成的值，如：2017-08-18
+					    console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+					    console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+					  	if(value == ""){
+//					  		console.log("---")
+					  		$("#checkTimeTip").show();
+							formCheck("#sumbitBtn");
+					  	}else{
+					  		console.log("123")
+							$("#checkTimeTip").hide();
+							formCheck("#sumbitBtn");
+					  	}
+					}
+//				  ,ready: function(){
+//				    //ins22.hint('日期可选值设定在 <br> '+formatDate()+'到 2080-10-14');
+//				    var e=new Date();
+//				    var hours= e.getHours()<10?'0'+e.getHours():e.getHours();
+//					var minutes=e.getMinutes()<10?'0'+e.getMinutes():e.getMinutes();
+//					var seconds=e.getSeconds()<10?'0'+e.getSeconds():e.getSeconds();
+//				    minTimes=hours+":"+minutes+":"+seconds;
+//				  }
+				});
+
+			});
+			$(document).ready(function(){$(".summernote").summernote({lang:"zh-CN"})});var edit=function(){$("#eg").addClass("no-padding");$(".click2edit").summernote({lang:"zh-CN",focus:true})};var save=function(){$("#eg").removeClass("no-padding");var aHTML=$(".click2edit").code();$(".click2edit").destroy()};
+//			$(".SureBtn").click(function(event){
+//				if($("#form").valid()){
+//					event.preventDefault();
+//					var formData = new FormData();
+//					formData.append("file", $('#files')[0].files[0]); //附件
+//					formData.append("title",$("#cname").val().trim());//标题
+//					formData.append("titleSub",$("#secondTitle").val().trim());//副标题
+////					formData.append("memo",$("#ccomment").val().trim());//描述
+//					formData.append("isShow",switchBtn);//是否发布
+//					formData.append("context",$(".note-editable").html());//内容富文本
+//					formData.append("type","1");//类型
+//					$('#myModal').modal('show');
+//					$.ajax({
+////					   	url:config+'/oa/news/save',
+//					   	url:config+'/statistics/hospitalInfo/save',
+//				//		url:"http://192.168.18.189:8080/gcafu_commerce/rest/upload/product",
+//					    type:'POST',
+//						data:formData,
+//						async: false,  
+//		          		cache: false, 
+//						dataType:'JSON', //接收值的格式
+//						enctype:'multipart/form-data',
+//						contentType: false,
+//						processData: false,
+//						success:function(data){
+//							console.log(data);
+//							$('#myModal').modal('hide');
+//							swal({
+//                          title:"",text:"提交成功！"});
+//							setTimeout(function(){ 
+//                          	parent.$(window.parent.document).find(".layui-layer-close").click();
+//                          }, 2000);
+//							RefreshIframe("page/Appnews/appListPage.html","NEWSADMIN_NEWS");
+//						},  
+//					    error: function () {  
+//					        alert("提交失败！");
+//					        $('#myModal').modal('hide');
+//					    } 
+//					})
+//				}
+//			})
+			var switchBtn=0;//定义开关默认值
+//			点击开关
+			$(".onoffswitch-label").click(function(){
+				if(switchBtn==0){
+					switchBtn=1;
+				}else{
+					switchBtn=0;
+				}
+			})
+			$("#files").change(function(e){
+				console.info(e.target.files[0]);//图片文件
+			    var dom =$(this)[0];
+//			    console.info(dom.value);//这个是文件的路径 C:\fakepath\icon (5).png
+//			    console.log(e.target.value);//这个也是文件的路径和上面的dom.value是一样的
+			    var reader = new FileReader();
+			    reader.onload = (function (file) {
+			        return function (e) {
+//			           console.info(this.result); //这个就是base64的数据了
+			            var sss=$("#showImage");
+			            $("#showImage").html('<img src="'+this.result+'"style="width:200px;height:120px;">');
+			        };
+			    })(e.target.files[0]);
+			    reader.readAsDataURL(e.target.files[0]);
+			});
+		</script>
+		<script type="text/javascript">
+			//add医院下拉
+			var hospital;
+			$(document).ready(function(){
+//				getAlertSelectData("#applyHos", )
+		        applyreadHospitalBooking();
+//		        checkpointInit();		        
+//		        equipmentType();
+//				$("#applyHos").html('<option value="">请选择</option>');
+//				$("#equipmentType2").html('<option value="">请选择</option>');
+//				$("#equipmentType").html('<option value="">请选择</option>');
+//				$("#inspectName").html('<option value="">请选择</option>');
+		        $("#applyHos").change(function(){
+//		        	console.log(this)
+//		        	console.log($(this).val());
+		        	hospital = $(this).val();
+		        	checkeQuipmentType(hospital);
+		        	applyBillingDoctorBooking(hospital);
+		        	applyOperationDoctorBooking(hospital);
+		        	applyDiagnosticDoctorBooking(hospital);
+//		        	getUserName($(this).find("option:selected").attr("data-name"));
+//		        	checkeQuipmentType1("", "");
+//		        	equipmentType("", "");
+		        });		        
+			});
+			var user = JSON.parse(sessionStorage.getItem("user"));
+			var userId=sessionStorage.getItem('userId');
+			
+			
+			
+			function applyreadHospitalBooking() {
+				$("#applyHos").selectpicker({liveSearchPlaceholder: "医院名称"});
+				ajaxGet("/hospital/relation/getHospitalRelationList",{userId: userId},function(data){
+					console.log(data);
+					if(data.status == "0"){
+						$("#applyHos").append('<option value="">请选择</option>');
+//						$("#applyHos").html('');
+						if(data.resultMap.list.length > 0){
+							$.each(data.resultMap.list, function(i,val){  //遍历二维数组
+				    			$("#applyHos").append(`<option data-name="`+val.hospitalName+`" value="`+val.hospitalId+`">`+val.hospitalName+`</option>`);
+							})
+							$("#applyHos").selectpicker('refresh');
+			  				$("#applyHos").selectpicker('render');
+						}
+					}
+					if($("#applyHos").val() == $("#applyHos").find("option").val()){
+						$("#applyHos").attr("data-name", $("#applyHos").find("option:selected").attr("data-name"));
+					}
+				});
+//			    $("#applyHos").html('<option value="">请选择</option>');
+//			    ajaxGet("/hospital/relation/getHospitalRelationList", {userId: userId}, function(data){
+//			    	var hospitalList=data.resultMap.list;
+//	                if(hospitalList!=null){
+//	                    var hospitalHtml='';
+//	                    for(var s=0;s<hospitalList.length;s++){
+////	                    	hospitalHtml+='<option value="">请选择</option>';
+//	                        hospitalHtml+='<option data-name="'+hospitalList[s].hospitalName+'" value="'+hospitalList[s].hospitalId+'">'+hospitalList[s].hospitalName+'</option>';
+//	                    }
+//	                    $("#applyHos").append(hospitalHtml);		
+//	                }
+//					if($("#applyHos").val() == $("#applyHos").find("option").val()){
+//						$("#applyHos").attr("data-name", $("#applyHos").find("option:selected").attr("data-name"));
+//					}
+//			    })
+//			    $.ajax({
+//			        type: "get",
+//			        url: config + "/sys/hospital/hrList",
+//			        async: false,
+//			        data:{sessionId:sessionId},
+//			        dataType: "jsonp",
+//			        jsonp: "jsoncallback",
+//			        success: function(data) {
+////			            console.log("医院数据：：：",data);
+//		                var hospitalList=data.resultMap.hospitalList;
+//		                if(hospitalList!=null){
+//		                    var hospitalHtml='';
+//		                    for(var s=0;s<hospitalList.length;s++){
+//		                        hospitalHtml+='<option data-name="'+hospitalList[s].name+'" value="'+hospitalList[s].id+'">'+hospitalList[s].name+'</option>';
+//		                    }
+//		                    $("#applyHos").html(hospitalHtml);		
+//		                }
+//						if($("#applyHos").val() == $("#applyHos").find("option").val()){
+//							$("#applyHos").attr("data-name", $("#applyHos").find("option:selected").attr("data-name"));
+//						}
+//			            if(userId != 1) {
+//							$("#applyHos").val(user.deptId);
+//							$("#applyHos").attr("disabled", "disabled");
+//							initHosIds=user.deptId;
+//						}
+//			        }
+//			    });
+			}
+			//医生信息下拉
+			//申请医生下拉
+//			$("#billingDoctor").append('<option value="">请选择</option>');
+			function applyBillingDoctorBooking(id) {
+				$("#billingDoctor").selectpicker({liveSearchPlaceholder: "申请医生"});
+				ajaxGet("/hospital/doctor/getDoctorList",{type: 1, hospitalId: id},function(data){
+					console.log(data);
+					if(data.status == "0"){
+//						$("#billingDoctor").append('<option value="">请选择</option>');
+						$("#billingDoctor").html('<option value="">请选择</option>');
+						if(data.resultMap.doctorList.length > 0){
+							$.each(data.resultMap.doctorList, function(i,val){  //遍历二维数组
+				    			$("#billingDoctor").append(`<option data-name="`+val.name+`" value="`+val.id+`">`+val.name+`</option>`);
+							})
+							$("#billingDoctor").selectpicker('refresh');
+			  				$("#billingDoctor").selectpicker('render');
+						}else{
+							
+							$("#billingDoctor").selectpicker('refresh');
+			  				$("#billingDoctor").selectpicker('render');
+						}
+					}
+					if($("#billingDoctor").val() == $("#billingDoctor").find("option").val()){
+						$("#billingDoctor").attr("data-name", $("#billingDoctor").find("option:selected").attr("data-name"));
+					}
+				});
+//			    $("#billingDoctor").html("");
+//			    ajaxGet("/hospital/doctor/getDoctorList", {type: 1, hospitalId: id}, function(data){
+//			    	var hospitalList=data.resultMap.doctorList;
+//			    	if(hospitalList.length == 0){
+//			    		$("#billingDoctor").append('<option value="">请选择</option>');
+//			    	}else{
+//			    		if(hospitalList!=null){
+//		                	$("#billingDoctor").append('<option value="">请选择</option>');
+//		                    var hospitalHtml='';
+//		                    for(var s=0;s<hospitalList.length;s++){
+//	//	                    	hospitalHtml+='<option value="">请选择</option>';
+//		                        hospitalHtml+='<option data-name="'+hospitalList[s].name+'" value="'+hospitalList[s].id+'">'+hospitalList[s].name+'</option>';
+//		                    }
+//		                    	
+//		                }
+//	                	$("#billingDoctor").append(hospitalHtml);
+//			    	}
+//	                
+//					if($("#billingDoctor").val() == $("#billingDoctor").find("option").val()){
+//						$("#billingDoctor").attr("data-name", $("#billingDoctor").find("option:selected").attr("data-name"));
+//					}
+//			    })
+			}
+			//操作技师下拉
+//			$("#operationDoctor").append('<option value="">请选择</option>');
+			function applyOperationDoctorBooking(id) {
+				$("#operationDoctor").selectpicker({liveSearchPlaceholder: "操作技师"});
+				ajaxGet("/hospital/doctor/getDoctorList",{type: 5, hospitalId: id},function(data){
+					console.log(data);
+					if(data.status == "0"){
+//						$("#operationDoctor").append('<option value="">请选择</option>');
+						$("#operationDoctor").html('<option value="">请选择</option>');
+						if(data.resultMap.doctorList.length > 0){
+							$.each(data.resultMap.doctorList, function(i,val){  //遍历二维数组
+				    			$("#operationDoctor").append(`<option data-name="`+val.name+`" value="`+val.id+`">`+val.name+`</option>`);
+							})
+							$("#operationDoctor").selectpicker('refresh');
+			  				$("#operationDoctor").selectpicker('render');
+						}else{
+							
+							$("#operationDoctor").selectpicker('refresh');
+			  				$("#operationDoctor").selectpicker('render');
+						}
+					}
+					if($("#operationDoctor").val() == $("#operationDoctor").find("option").val()){
+						$("#operationDoctor").attr("data-name", $("#operationDoctor").find("option:selected").attr("data-name"));
+					}
+				});
+//			    $("#operationDoctor").html("");
+//			    ajaxGet("/hospital/doctor/getDoctorList", {type: 5, hospitalId: id}, function(data){
+//			    	var hospitalList=data.resultMap.doctorList;
+//			    	if(hospitalList.length == 0){
+//			    		$("#operationDoctor").append('<option value="">请选择</option>');
+//			    	}else{
+//			    		if(hospitalList!=null){
+//		                	$("#operationDoctor").append('<option value="">请选择</option>');
+//		                    var hospitalHtml='';
+//		                    for(var s=0;s<hospitalList.length;s++){
+//	//	                    	hospitalHtml+='<option value="">请选择</option>';
+//		                        hospitalHtml+='<option data-name="'+hospitalList[s].name+'" value="'+hospitalList[s].id+'">'+hospitalList[s].name+'</option>';
+//		                    }
+//		                    
+//		                }
+//		                $("#operationDoctor").append(hospitalHtml);		
+//			    	}
+//	                
+//					if($("#operationDoctor").val() == $("#operationDoctor").find("option").val()){
+//						$("#operationDoctor").attr("data-name", $("#operationDoctor").find("option:selected").attr("data-name"));
+//					}
+//			    })
+			}
+			//诊断医生下拉
+//			$("#diagnosticDoctor").append('<option value="">请选择</option>');
+			function applyDiagnosticDoctorBooking(id) {
+				$("#diagnosticDoctor").selectpicker({liveSearchPlaceholder: "诊断医生"});
+				ajaxGet("/hospital/doctor/getDoctorList",{type: 4, hospitalId: id},function(data){
+					console.log(data);
+					if(data.status == "0"){
+//						$("#diagnosticDoctor").append('<option value="">请选择</option>');
+						$("#diagnosticDoctor").html('<option value="">请选择</option>');
+						if(data.resultMap.doctorList.length > 0){
+							$.each(data.resultMap.doctorList, function(i,val){  //遍历二维数组
+				    			$("#diagnosticDoctor").append(`<option data-name="`+val.name+`" value="`+val.id+`">`+val.name+`</option>`);
+							})
+							$("#diagnosticDoctor").selectpicker('refresh');
+			  				$("#diagnosticDoctor").selectpicker('render');
+						}else{
+							$("#diagnosticDoctor").selectpicker('refresh');
+			  				$("#diagnosticDoctor").selectpicker('render');
+						}
+					}
+					if($("#diagnosticDoctor").val() == $("#diagnosticDoctor").find("option").val()){
+						$("#diagnosticDoctor").attr("data-name", $("#diagnosticDoctor").find("option:selected").attr("data-name"));
+					}
+				});
+//			    $("#diagnosticDoctor").html("");
+//			    ajaxGet("/hospital/doctor/getDoctorList", {type: 4, hospitalId: id}, function(data){
+//			    	var hospitalList=data.resultMap.doctorList;
+//			    	if(hospitalList.length == 0){
+//			    		$("#diagnosticDoctor").append('<option value="">请选择</option>');
+//			    	}else{
+//			    		if(hospitalList!=null){
+//		                	$("#diagnosticDoctor").append('<option value="">请选择</option>');
+//		                    var hospitalHtml='';
+//		                    for(var s=0;s<hospitalList.length;s++){
+//	//	                    	hospitalHtml+='<option value="">请选择</option>';
+//		                        hospitalHtml+='<option data-name="'+hospitalList[s].name+'" value="'+hospitalList[s].id+'">'+hospitalList[s].name+'</option>';
+//		                    }
+//		                    	
+//		                }
+//		                $("#diagnosticDoctor").append(hospitalHtml);
+//			    	}
+//	                	
+//					if($("#diagnosticDoctor").val() == $("#diagnosticDoctor").find("option").val()){
+//						$("#diagnosticDoctor").attr("data-name", $("#diagnosticDoctor").find("option:selected").attr("data-name"));
+//					}
+//			    })
+			}
+			//add设备下拉
+			//设备名称及品牌下拉
+			$("#equipmentType2").selectpicker({liveSearchPlaceholder: "设备类型"});
+			function checkeQuipmentType(id){
+				ajaxGet("/equipment/type/getEquipmentTypeList",{hospitalId:id},function(data){
+					console.log(data);
+					if(data.status == "0"){
+						$("#equipmentType2").html('<option value="">请选择</option>');
+//						$("#equipmentType2").html('');
+						if(data.resultMap.list.length > 0){
+							$.each(data.resultMap.list, function(i,val){  //遍历二维数组
+				    			$("#equipmentType2").append(`<option data-name="`+val.name+`" value="`+val.id+`">`+val.name+`</option>`);
+							})
+							$("#equipmentType2").selectpicker('refresh');
+			  				$("#equipmentType2").selectpicker('render');
+						}else{
+							
+							$("#equipmentType2").selectpicker('refresh');
+			  				$("#equipmentType2").selectpicker('render');
+						}
+//						equipmentType($("#equipmentType2").find("option:selected").val(), hospital);
+					}
+					$("#equipmentType2").change(function(){
+		            	$("#deviceId").val($(this).val());
+		            	$("#deviceModel").val($(this).find("option:selected").attr("data-name"));
+		            	equipmentType($("#equipmentType2").find("option:selected").val(), hospital);
+		            })
+				});
+//				ajaxGet('/equipment/type/getEquipmentTypeList', {hospitalId:id}, function (resData) {			
+//					var rm = resData.resultMap.list;
+////					console.log("设备类型",rm)
+//					$("#equipmentType2").html('<option value="">请选择</option>');
+//		            if(rm != null){
+//		                for(var s = 0; s < rm.length; s++){
+//		                    var equipmentTypeHtml = '';
+//		                    equipmentTypeHtml += '<option data-name="' + rm[s].name + '" value="' + rm[s].id + '">' + rm[s].name + '</option>';
+//		                    $("#equipmentType2").append(equipmentTypeHtml);		                   
+//		                }
+//		                equipmentType($("#equipmentType2").find("option:selected").val(), hospital);
+//		            }
+//		            $("#equipmentType2").change(function(){
+//		            	$("#deviceId").val($(this).val());
+//		            	$("#deviceModel").val($(this).find("option:selected").attr("data-name"));
+//		            	equipmentType($("#equipmentType2").find("option:selected").val(), hospital);
+//		            })
+////		            checkeQuipmentType1($("#equipmentType").find("option:selected").attr("data-name"), hospital);
+////		            equipmentType($("#equipmentType").find("option:selected").val(), hospital);
+//		        });
+			}
+			//设备规格型号下拉
+//			function checkeQuipmentType1(name, id){	
+//				console.log(name)
+//				console.log(id)
+//				ajaxGet('/equipment/equipmentInfo/searchEquipmentInfoList', {type: name, hospitalId:id}, function (resData) {			
+//					var rm = resData.resultMap.list;
+//					$("#equipmentType1").html('');
+////					console.log("设备类型",rm)
+//		            if(rm != null){
+//		                for(var s = 0; s < rm.length; s++){
+//		                    var equipmentTypeHtml = '';
+//		                    equipmentTypeHtml += '<option data-name="' + rm[s].equipmentModel + '" value="' + rm[s].id + '">' + rm[s].equipmentModel + '</option>';
+//		                    $("#equipmentType1").append(equipmentTypeHtml);
+//		                }
+//		            }
+////		            cn();
+//		        });
+//			}
+			//设备类型下拉
+			$("#equipmentType").selectpicker({liveSearchPlaceholder: "设备类型"});
+			function equipmentType(name, id){
+//				if (user.fkHospitalId == null) {
+//					user.fkHospitalId = "";
+//				} else{
+//					user.fkHospitalId = user.fkHospitalId;
+//				}
+				ajaxGet("/equipment/equipmentInfo/searchEquipmentInfoList",{type: name, hospitalId:id},function(data){
+					console.log(data);
+					if(data.status == "0"){
+						$("#equipmentType").html('<option value="">请选择</option>');
+//						$("#equipmentType").html('');
+						if(data.resultMap.list.length > 0){
+							$.each(data.resultMap.list, function(i,val){  //遍历二维数组
+				    			$("#equipmentType").append(`<option data-name="`+val.equipmentBrankName+`" value="`+val.id+`">`+val.equipmentBrankName+`</option>`);
+							})
+							$("#equipmentType").selectpicker('refresh');
+			  				$("#equipmentType").selectpicker('render');
+						}else{
+							
+							$("#equipmentType").selectpicker('refresh');
+			  				$("#equipmentType").selectpicker('render');
+						}
+						checkpointInit($("#equipmentType").find("option:selected").val());
+					}
+					$("#equipmentType").change(function(){
+		            	$("#deviceType").val($(this).val());
+		            	$("#deviceName").val($(this).find("option:selected").attr("data-name"));
+		            	checkpointInit($("#equipmentType").find("option:selected").val());
+		            })
+				});
+//				ajaxGet('/equipment/equipmentInfo/searchEquipmentInfoList', {type: name, hospitalId:id}, function (resData) {			
+//					var rm = resData.resultMap.list;
+//					$("#equipmentType").html('<option value="">请选择</option>');
+////					console.log("设备类型",rm)
+//		            if(rm != null){
+//		                for(var s = 0; s < rm.length; s++){
+//		                    var equipmentTypeHtml = '';
+//		                    equipmentTypeHtml += '<option data-name="' + rm[s].equipmentBrankName + '" value="' + rm[s].id + '">' + rm[s].equipmentBrankName + '</option>';
+//		                    $("#equipmentType").append(equipmentTypeHtml);		                    
+//		                }
+//		                checkpointInit($("#equipmentType").find("option:selected").val());
+//		            }
+//		            $("#equipmentType").change(function(){
+//		            	$("#deviceType").val($(this).val());
+//		            	$("#deviceName").val($(this).find("option:selected").attr("data-name"));
+//		            	checkpointInit($("#equipmentType").find("option:selected").val());
+//		            })
+////		            cn();
+//		        });
+			}
+			//add检查部位下拉
+			$("#inspectName").selectpicker({liveSearchPlaceholder: "检查项目"});
+			function checkpointInit(id) {
+				ajaxGet("/equipment/subsidiary/getEquipmentInfoSubsidiaryList",{equipmentId: id},function(data){
+					console.log(data);
+					if(data.status == "0"){
+						$("#inspectName").html('<option value="">请选择</option>');
+//						$("#equipmentType").html('');
+						if(data.resultMap.list.length > 0){
+							$.each(data.resultMap.list, function(i,val){  //遍历二维数组
+				    			$("#inspectName").append(`<option data-name="`+val.part+`" value="`+val.id+`">`+val.part+`</option>`);
+							})
+							$("#inspectName").selectpicker('refresh');
+			  				$("#inspectName").selectpicker('render');
+						}else{
+							
+							$("#inspectName").selectpicker('refresh');
+			  				$("#inspectName").selectpicker('render');
+						}
+					}
+					$("#inspectName").change(function(){
+						$("#inspectId").val($(this).val());
+		            	$("#inspectName1").val($(this).find("option:selected").attr("data-name"));
+		            	amountReceivable($("#inspectName").find("option:selected").attr("data-name"), $("#inspectName").find("option:selected").val());
+					})
+				});
+//				ajaxGet('/equipment/subsidiary/getEquipmentInfoSubsidiaryList', {equipmentId: id}, function(resData) {
+//					//			var data = resData.resultMap.conInfo;
+////					console.log(resData)
+//					var data = resData.resultMap.list;
+//					$("#inspectName").html("<option value=''>请选择</option>");
+////					checkpointData(data);
+//					//edit所用  必须放在这，不然组织还没渲染
+//					if(data != null){	                    
+//	                    for(var s = 0; s < data.length; s++){
+//	                    	var configTypeHtml = '';
+//	                        configTypeHtml += '<option data-name="' + data[s].part + '" value="' + data[s].id + '">' + data[s].part + '</option>';
+//	                    	$("#inspectName").append(configTypeHtml);
+//	                    }
+//	                    
+//	                    
+//	                }
+//					$("#inspectName").change(function(){
+//						$("#inspectId").val($(this).val());
+//		            	$("#inspectName1").val($(this).find("option:selected").attr("data-name"));
+//		            	amountReceivable($("#inspectName").find("option:selected").attr("data-name"), $("#inspectName").find("option:selected").val());
+//					})
+////					if($("#inspectName").val() == $("#inspectName").find("option").val()){
+////						$("#inspectName").attr("data-name", $("#inspectName").find("option:selected").attr("data-name"));
+////					}
+//				});
+			}
+			//应收金额
+			function amountReceivable(name, id) {
+				ajaxGet('/equipment/subsidiary/getEquipmentInfoSubsidiaryList', {part: name,id: id}, function(resData) {
+					//			var data = resData.resultMap.conInfo;
+//					console.log(resData)
+					var data = resData.resultMap.list;
+//					checkpointData(data);
+					//edit所用  必须放在这，不然组织还没渲染
+					if(data != null){
+	                    var configTypeHtml = '';
+	                    for(var s = 0; s < data.length; s++){
+//	                        configTypeHtml += '<option data-name="' + data[s].part + '" value="' + data[s].id + '">' + data[s].part + '</option>';
+							$("#shouldPrice").val(data[s].price);	
+	                    }	
+	                }
+//					if($("#inspectName").val() == $("#inspectName").find("option").val()){
+//						$("#inspectName").attr("data-name", $("#inspectName").find("option:selected").attr("data-name"));
+//					}
+				});
+			}
+			//患者姓名下拉
+//			function getUserName(hospital) {
+//				$("#patientName").selectpicker({liveSearchPlaceholder: "患者姓名"});
+//				ajaxGet("/img/browse/getExamInfo",{hospital: hospital},function(data){
+//					console.log(data);
+//					if(data.status == "0"){
+//						$("#patientName").append('<option value="">请选择</option>');
+//						if(data.resultMap.doctorList.length > 0){
+//							$.each(data.resultMap.doctorList, function(i,val){  //遍历二维数组
+//				    			$("#patientName").append(`<option data-name="`+val.name+`" value="`+val.id+`">`+val.name+`</option>`);
+//							})
+//							$("#patientName").selectpicker('refresh');
+//			  				$("#patientName").selectpicker('render');
+//						}else{
+//							$("#patientName").selectpicker('refresh');
+//			  				$("#patientName").selectpicker('render');
+//						}
+//					}
+//				});
+//			}
+		</script>
+		<!--表单校验script-->
+		<script type="text/javascript">
+//			var posPattern = /^\d+$/;
+			var posPattern = /^\d*\.?\d+$/;
+			$(document).ready(function(){
+				$("#applyHos").change(function(){
+					selectCheck("#applyHos", "#applyHosTip", "#sumbitBtn");
+					selectCheck("#equipmentType2", "#equipmentType2Tip", "#sumbitBtn");
+					selectCheck("#equipmentType", "#equipmentTypeTip", "#sumbitBtn");
+					selectCheck("#patientSex", "#patientSexTip", "#sumbitBtn");
+					selectCheck("#inspectName", "#inspectNameTip", "#sumbitBtn");
+					inputCheck("#patientName", "#patientNameTip", "#sumbitBtn");
+					inputCheck1("#patientAge", "#patientAgeTip", "#sumbitBtn", "年龄填写错误！");
+					inputCheck("#checkCode", "#checkCodeTip", "#sumbitBtn");
+					inputCheck1("#factPrice", "#factPriceTip", "#sumbitBtn", "实收金额填写错误！");
+					inputCheck("#checkTime", "#checkTimeTip", "#sumbitBtn");
+					formCheck("#sumbitBtn");
+				})
+				$("#equipmentType2").change(function(){
+					selectCheck("#applyHos", "#applyHosTip", "#sumbitBtn");
+					selectCheck("#equipmentType2", "#equipmentType2Tip", "#sumbitBtn");
+					selectCheck("#equipmentType", "#equipmentTypeTip", "#sumbitBtn");
+					selectCheck("#patientSex", "#patientSexTip", "#sumbitBtn");
+					selectCheck("#inspectName", "#inspectNameTip", "#sumbitBtn");
+					inputCheck("#patientName", "#patientNameTip", "#sumbitBtn");
+					inputCheck1("#patientAge", "#patientAgeTip", "#sumbitBtn", "年龄填写错误！");
+					inputCheck("#checkCode", "#checkCodeTip", "#sumbitBtn");
+					inputCheck1("#factPrice", "#factPriceTip", "#sumbitBtn", "实收金额填写错误！");
+					inputCheck("#checkTime", "#checkTimeTip", "#sumbitBtn");
+					formCheck("#sumbitBtn");
+				})
+				$("#equipmentType").change(function(){
+					selectCheck("#applyHos", "#applyHosTip", "#sumbitBtn");
+					selectCheck("#equipmentType2", "#equipmentType2Tip", "#sumbitBtn");
+					selectCheck("#equipmentType", "#equipmentTypeTip", "#sumbitBtn");
+					selectCheck("#patientSex", "#patientSexTip", "#sumbitBtn");
+					selectCheck("#inspectName", "#inspectNameTip", "#sumbitBtn");
+					inputCheck("#patientName", "#patientNameTip", "#sumbitBtn");
+					inputCheck1("#patientAge", "#patientAgeTip", "#sumbitBtn", "年龄填写错误！");
+					inputCheck("#checkCode", "#checkCodeTip", "#sumbitBtn");
+					inputCheck1("#factPrice", "#factPriceTip", "#sumbitBtn", "实收金额填写错误！");
+					inputCheck("#checkTime", "#checkTimeTip", "#sumbitBtn");
+					formCheck("#sumbitBtn");
+				})
+				$("#patientSex").change(function(){
+					selectCheck("#applyHos", "#applyHosTip", "#sumbitBtn");
+					selectCheck("#equipmentType2", "#equipmentType2Tip", "#sumbitBtn");
+					selectCheck("#equipmentType", "#equipmentTypeTip", "#sumbitBtn");
+					selectCheck("#patientSex", "#patientSexTip", "#sumbitBtn");
+					selectCheck("#inspectName", "#inspectNameTip", "#sumbitBtn");
+					inputCheck("#patientName", "#patientNameTip", "#sumbitBtn");
+					inputCheck1("#patientAge", "#patientAgeTip", "#sumbitBtn", "年龄填写错误！");
+					inputCheck("#checkCode", "#checkCodeTip", "#sumbitBtn");
+					inputCheck1("#factPrice", "#factPriceTip", "#sumbitBtn", "实收金额填写错误！");
+					inputCheck("#checkTime", "#checkTimeTip", "#sumbitBtn");
+					formCheck("#sumbitBtn");
+				})
+				$("#inspectName").change(function(){
+					selectCheck("#applyHos", "#applyHosTip", "#sumbitBtn");
+					selectCheck("#equipmentType2", "#equipmentType2Tip", "#sumbitBtn");
+					selectCheck("#equipmentType", "#equipmentTypeTip", "#sumbitBtn");
+					selectCheck("#patientSex", "#patientSexTip", "#sumbitBtn");
+					selectCheck("#inspectName", "#inspectNameTip", "#sumbitBtn");
+					inputCheck("#patientName", "#patientNameTip", "#sumbitBtn");
+					inputCheck1("#patientAge", "#patientAgeTip", "#sumbitBtn", "年龄填写错误！");
+					inputCheck("#checkCode", "#checkCodeTip", "#sumbitBtn");
+					inputCheck1("#factPrice", "#factPriceTip", "#sumbitBtn", "实收金额填写错误！");
+					inputCheck("#checkTime", "#checkTimeTip", "#sumbitBtn");
+					formCheck("#sumbitBtn");
+				})
+				$("#patientName").blur(function(){
+					selectCheck("#applyHos", "#applyHosTip", "#sumbitBtn");
+					selectCheck("#equipmentType2", "#equipmentType2Tip", "#sumbitBtn");
+					selectCheck("#equipmentType", "#equipmentTypeTip", "#sumbitBtn");
+					selectCheck("#patientSex", "#patientSexTip", "#sumbitBtn");
+					selectCheck("#inspectName", "#inspectNameTip", "#sumbitBtn");
+					inputCheck("#patientName", "#patientNameTip", "#sumbitBtn");
+					inputCheck1("#patientAge", "#patientAgeTip", "#sumbitBtn", "年龄填写错误！");
+					inputCheck("#checkCode", "#checkCodeTip", "#sumbitBtn");
+					inputCheck1("#factPrice", "#factPriceTip", "#sumbitBtn", "实收金额填写错误！");
+					inputCheck("#checkTime", "#checkTimeTip", "#sumbitBtn");
+					formCheck("#sumbitBtn");
+				})
+				$("#patientAge").blur(function(){
+					selectCheck("#applyHos", "#applyHosTip", "#sumbitBtn");
+					selectCheck("#equipmentType2", "#equipmentType2Tip", "#sumbitBtn");
+					selectCheck("#equipmentType", "#equipmentTypeTip", "#sumbitBtn");
+					selectCheck("#patientSex", "#patientSexTip", "#sumbitBtn");
+					selectCheck("#inspectName", "#inspectNameTip", "#sumbitBtn");
+					inputCheck("#patientName", "#patientNameTip", "#sumbitBtn");
+					inputCheck1("#patientAge", "#patientAgeTip", "#sumbitBtn", "年龄填写错误！");
+					inputCheck("#checkCode", "#checkCodeTip", "#sumbitBtn");
+					inputCheck1("#factPrice", "#factPriceTip", "#sumbitBtn", "实收金额填写错误！");
+					inputCheck("#checkTime", "#checkTimeTip", "#sumbitBtn");
+					formCheck("#sumbitBtn");
+				})
+				$("#checkCode").blur(function(){
+					selectCheck("#applyHos", "#applyHosTip", "#sumbitBtn");
+					selectCheck("#equipmentType2", "#equipmentType2Tip", "#sumbitBtn");
+					selectCheck("#equipmentType", "#equipmentTypeTip", "#sumbitBtn");
+					selectCheck("#patientSex", "#patientSexTip", "#sumbitBtn");
+					selectCheck("#inspectName", "#inspectNameTip", "#sumbitBtn");
+					inputCheck("#patientName", "#patientNameTip", "#sumbitBtn");
+					inputCheck1("#patientAge", "#patientAgeTip", "#sumbitBtn", "年龄填写错误！");
+					inputCheck("#checkCode", "#checkCodeTip", "#sumbitBtn");
+					inputCheck1("#factPrice", "#factPriceTip", "#sumbitBtn", "实收金额填写错误！");
+					inputCheck("#checkTime", "#checkTimeTip", "#sumbitBtn");
+					formCheck("#sumbitBtn");
+				})
+				$("#factPrice").blur(function(){
+					selectCheck("#applyHos", "#applyHosTip", "#sumbitBtn");
+					selectCheck("#equipmentType2", "#equipmentType2Tip", "#sumbitBtn");
+					selectCheck("#equipmentType", "#equipmentTypeTip", "#sumbitBtn");
+					selectCheck("#patientSex", "#patientSexTip", "#sumbitBtn");
+					selectCheck("#inspectName", "#inspectNameTip", "#sumbitBtn");
+					inputCheck("#patientName", "#patientNameTip", "#sumbitBtn");
+					inputCheck1("#patientAge", "#patientAgeTip", "#sumbitBtn", "年龄填写错误！");
+					inputCheck("#checkCode", "#checkCodeTip", "#sumbitBtn");
+					inputCheck1("#factPrice", "#factPriceTip", "#sumbitBtn", "实收金额填写错误！");
+					inputCheck("#checkTime", "#checkTimeTip", "#sumbitBtn");
+					formCheck("#sumbitBtn");
+				})
+				$("#checkTime").blur(function(){
+					selectCheck("#applyHos", "#applyHosTip", "#sumbitBtn");
+					selectCheck("#equipmentType2", "#equipmentType2Tip", "#sumbitBtn");
+					selectCheck("#equipmentType", "#equipmentTypeTip", "#sumbitBtn");
+					selectCheck("#patientSex", "#patientSexTip", "#sumbitBtn");
+					selectCheck("#inspectName", "#inspectNameTip", "#sumbitBtn");
+					inputCheck("#patientName", "#patientNameTip", "#sumbitBtn");
+					inputCheck1("#patientAge", "#patientAgeTip", "#sumbitBtn", "年龄填写错误！");
+					inputCheck("#checkCode", "#checkCodeTip", "#sumbitBtn");
+					inputCheck1("#factPrice", "#factPriceTip", "#sumbitBtn", "实收金额填写错误！");
+					inputCheck("#checkTime", "#checkTimeTip", "#sumbitBtn");
+					formCheck("#sumbitBtn");
+				})
+//				selectCheck("#applyHos", "#applyHosTip", "#sumbitBtn");
+//				selectCheck("#equipmentType2", "#equipmentType2Tip", "#sumbitBtn");
+//				selectCheck("#patientSex", "#patientSexTip", "#sumbitBtn");
+//				selectCheck("#inspectName", "#inspectNameTip", "#sumbitBtn");
+//				inputCheck("#patientName", "#patientNameTip", "#sumbitBtn");
+//				inputCheck1("#patientAge", "#patientAgeTip", "#sumbitBtn", "年龄填写错误！");
+//				inputCheck("#checkCode", "#checkCodeTip", "#sumbitBtn");
+//				inputCheck1("#factPrice", "#factPriceTip", "#sumbitBtn", "实收金额填写错误！");
+//				inputCheck("#checkTime", "#checkTimeTip", "#sumbitBtn");
+				
+			})
+			//下拉框验证
+			function selectCheck(dom, tipDom, btnId){
+//				$(dom).change(function() {
+					if ($(dom).val() == "") {
+						$(tipDom).show();
+//						$(btnId).attr("disabled","disabled").addClass("formDisabledBtn");
+					}else{
+//						$(btnId).removeAttr("disabled").removeClass("formDisabledBtn");
+						$(tipDom).hide();
+					};
+//				});
+			}
+			//输入框验证
+			function inputCheck(dom, tipDom, btnId){
+//				$(dom).blur(function(){
+					if ($(dom).val() == "") {
+						$(tipDom).show();
+//						$(btnId).attr("disabled","disabled").addClass("formDisabledBtn");
+					}else{
+//						$(btnId).removeAttr("disabled").removeClass("formDisabledBtn");
+						$(tipDom).hide();
+					};
+//				})
+			}
+			//校验的input
+			function inputCheck1(dom, tipDom, btnId, tipText){
+				
+//				$(dom).blur(function(){
+					if ($(dom).val().trim() == "") {
+						$(tipDom).show();
+//						$(btnId).attr("disabled","disabled").addClass("formDisabledBtn");
+					}else if(!posPattern.test($(dom).val().trim())){
+						$(tipDom).html('<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>' + tipText);
+						$(tipDom).show();
+//						$(btnId).attr("disabled","disabled").addClass("formDisabledBtn");
+					}else{
+//						$(btnId).removeAttr("disabled").removeClass("formDisabledBtn");
+						$(tipDom).hide();
+					};
+//				})
+			}
+			
+			function formCheck(btnId){
+				setTimeout(function() {
+					if ($("#applyHos").val() == "" || $("#equipmentType2").val() == "" || $("#equipmentType").val() == "" || $("#patientSex").val() == "" || $("#inspectName").val() == "" || $("#patientName").val() == "" || $("#patientAge").val() == "" || $("#checkCode").val() == "" || $("#factPrice").val() == "" || $("#checkTime").val() == "") {
+						$(btnId).attr("disabled","disabled").addClass("formDisabledBtn");
+					}else{
+						$(btnId).removeAttr("disabled").removeClass("formDisabledBtn");
+					}
+				}, 0);
+			}
+		</script>
+		<script type="text/javascript" src="addhosMemberPush.js"></script>
+	</body>
+
+</html>

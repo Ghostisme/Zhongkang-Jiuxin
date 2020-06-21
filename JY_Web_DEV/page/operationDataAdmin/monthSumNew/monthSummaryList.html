@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>远程医疗管理系统-月损益</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../js/plugins/layer/skin/layer.css" />
+		<link rel="stylesheet" href="../../../css/element-ui.css">
+		<!--<script type="text/javascript" src="http://v1.vuejs.org/js/vue.min.js"></script>-->
+		<!--<script type="text/javascript" src="http://unpkg.com/iview@1.0.1/dist/iview.min.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/dailySummaryListNew.css" />
+		<link rel="stylesheet" href="../../../css/plugins/datapicker/datepicker3.css" />
+		<link rel="stylesheet" href="../../../css/bootstrap-select.min.css" />
+		<style type="text/css">
+			.fixed_top {
+				width: 97.5%;
+				position: fixed;
+				z-index: 1000;
+				top: 15px;
+				background: #EAEDF3;
+				height: auto;
+				padding: 6px 0px !important;
+			}
+			
+			.bg {
+				height: 130px;
+				background: #fff;
+				position: fixed;
+				z-index: 999;
+				width: 100%;
+				top: 0px;
+			}
+			/*下拉搜索字体*/
+			.bootstrap-select button .filter-option{ 
+				color: #454545;
+			}
+			.empty {
+				height: 10px !important;
+				background: #fff !important;
+				margin-top: 44px !important;
+			}
+			/*表单样式*/
+			
+			.has-gutter th {
+				background: #51659B !important;
+				color: #fff;
+				/*position: fixed;
+				top: 60px;
+				z-index: 999;*/
+			}
+			
+			.el-table__header-wrapper {
+				position: fixed;
+				z-index: 999;
+			}
+			
+			.el-table__body-wrapper {
+				margin-top: 50px;
+			}
+			
+			.el-table__body-wrapper .el-table__body tr:nth-of-type(even) {
+				background-color: #f9fafd;
+			}
+			
+			.el-table__footer-wrapper .has-gutter tr td {
+				background-color: #d9e0d2;
+			}
+			/*月损益报表可点击样式*/
+			
+			.el-table__row td:nth-child(1),
+			.el-table__row td:nth-child(2),
+			.el-table__row td:nth-child(3) {
+				color: #4169e2;
+				text-decoration: underline;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="bg"></div>
+		<div id="app">
+
+			<div class="contain">
+				<div class="">
+					<!--页面数据呈现区-->
+					<div class="disContents">
+						<!--搜素区域-->
+						<div class="fixed_top">
+							<form action="">
+								<!--医院下拉-->
+								<div class="lf space commonTop" style="" id="searchHos">
+									<select title="全部医院" class="querySelect selectpicker" id="InHos" name="InHos" data-live-search="true"  style="height: 24px;padding:0px 5px;width:270px;">
+										<!--<option value="">医院名称</option>-->
+									</select>
+								</div>
+								<!--按年或者按月下拉-->
+								<div class="lf space" style="" id="yearSelect">
+									<select id="ymSelect" class="querySelect" @change="year_month" name="year_month" style="height: 24px;padding:0px 5px;width:270px;">
+										<option value="0">按年统计</option>
+										<option value="1">按月统计</option>
+									</select>
+								</div>
+								<!--按年统计-->
+								<div class="subscribeListSex input-daterange" id="yearpicker">
+									<div class="subscribeListSex lf space">
+										<input class="newin layer-date form-control required queryContent" style="width: 220px!important;" name="yearTime" id="yearTime" readonly="readonly" style="background: #fff;" placeholder="按年统计,默认(2020全年)" />
+									</div>
+								</div>
+								<!--按月统计-->
+								<div class="subscribeListSex input-daterange" id="monthpicker">
+									<div class="subscribeListSex lf space">
+										<input class="newin layer-date form-control required queryContent" style="width: 220px!important;" name="monthTime" id="monthTime" readonly="readonly" style="background: #fff;" placeholder="按月统计,默认(全月)" />
+									</div>
+								</div>
+
+								<div class="lf searching topBtn queryBtn">
+									查询
+								</div>
+								<div id="reportQuerySearchClearBtn" class="topBtn resetbtn" style="float: left;cursor: pointer;margin-left: 14px;">
+									清空
+								</div>
+								<div id="export" class="topBtn addBtn" style="float: left;cursor: pointer;margin-left: 14px;">
+									导出
+								</div>
+								<div class="topBtn addBtn" style="cursor: pointer;width: 85px !important; background: #465477 !important;" id="historySum">
+									历史月统计
+								</div>
+							</form>
+							<div class="empty"></div>
+							<div class="tableNav">月损益</div>
+
+						</div>
+
+						<!--按年列表-->
+						<div style="margin-top: 86px;">
+							<div class="empty"></div>
+							<el-table v-loading="loading" :data="tableData" border :summary-method="getSummaries" @cell-click="handleCell" show-summary style="width: 100%">
+								<el-table-column align='center' prop="hospitalName" label="医院名称">
+								</el-table-column>
+								<el-table-column align='center' prop="checkMonth" label="日期" v-if="ymVal==1">
+								</el-table-column>
+								<el-table-column align='center' prop="deviceNum" label="设备数量(台)">
+								</el-table-column>
+								<el-table-column align='center' prop="checkNum" label="检查量（例）">
+								</el-table-column>
+								<el-table-column align='center' prop="shouldPrice" label="应收入(元)">
+								</el-table-column>
+								<el-table-column align='center' prop="factPrice" label="实收入(元)">
+								</el-table-column>
+								<el-table-column align='center' prop="returnShouldFee" label="应收回款(元)">
+								</el-table-column>
+								<el-table-column align='center' prop="returnFactFee" label="实收回款(元)">
+								</el-table-column>
+								<el-table-column align='center' prop="cost" label="成本(支出)">
+								</el-table-column>
+								<el-table-column align='center' prop="grossProfit" label="毛利">
+								</el-table-column>
+							</el-table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="staticChart" style="width: 100%;height:400px; margin-top:20px ;"></div>
+		<div id="priceChart" style="width: 100%;height:400px; margin-top:30px ;"></div>
+		<script type="text/javascript" src="../../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../../js/plugins/layer/layer.min.js"></script>
+		<script src="../../../js/plugins/layer/laydate/laydate5.0.js"></script>
+		<!--<script src="../../js/content.min.js?v=1.0.0"></script>-->
+		<script src="../../../js/demo/layer-demo.min.js"></script>
+		<script src="../../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script src="../../../js/plugins/echarts/echarts-all.js"></script>
+		<!-- import Vue before Element -->
+		<script src="../../../js/vue.js"></script>
+		<!-- import JavaScript -->
+		<script type="text/javascript" src="../../../js/element-ui.js"></script>
+		<script type="text/javascript" src="../../../js/config.js"></script>
+		<script type="text/javascript" src="../../../js/commonStyle.js"></script>
+		<script type="text/javascript" src="../../../js/common.js"></script>
+		<script type="text/javascript" src="../../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+		<script type="text/javascript" src="../../../js/exportExcel.js"></script>
+		<script type="text/javascript" src="../../../js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="../../../js/bootstrap-select.min.js" ></script>
+		<script>
+			var myChart = echarts.init(document.getElementById('staticChart'));
+			var priceChart = echarts.init(document.getElementById('priceChart'));
+			//			var hosDevArr = []; //医院n设备
+			var checkNumArr = []; //检查量图表数组
+			var returnFactFeeArr = []; //实收数组
+			var costArr = []; // 成本数组
+			var grossProfitArr = []; //毛利数组
+			//			option = app.option;
+			var closeTab = parent.$(window.parent.document).find(".page-tabs .active .fa-times-circle");
+			closeTab.click(function(e) {
+				sessionStorage.removeItem("jumpFormHosToDayCheck")
+			})
+			$(function() {
+				init() //初始化
+				LoadreadHospitalBooking() //	医院列表渲染
+				$('.selectpicker').selectpicker({
+		  });
+			})
+			//            点击查询按钮
+			$(document).on("click", ".searching", function() {
+				app.getList()
+			});
+			//            点击导出按钮
+			$(document).on('click', '#export', function() {
+				var tbody = [];
+				
+				let tHeader = [
+						'医院名称',
+						'设备数量(台)',
+						'检查量(例)',
+						'应收入(元)',
+						'实收入(元)',
+						'应收回款(元)',
+						'实收回款(元)',
+						'成本(支出)',
+						'毛利'
+					]
+				if($("#ymSelect").val() == 1) {  //按月
+					tHeader.splice(1,0,"日期")
+					for(var i in app.tableData) { //表数据
+						var month_t = app.tableData[i].checkMonth;
+						var new_month= month_t.replace("-","年")
+						var dataObj = {
+							hospitalName: app.tableData[i].hospitalName,
+//							checkMonth:app.tableData[i].checkMonth,
+							checkMonth:new_month+'月',
+							deviceNum: app.tableData[i].deviceNum,
+							checkNum: app.tableData[i].checkNum,
+							shouldPrice: app.tableData[i].shouldPrice,
+							factPrice: app.tableData[i].factPrice,
+							returnShouldFee:app.tableData[i].returnShouldFee,
+							returnFactFee:app.tableData[i].returnFactFee,
+							cost:app.tableData[i].cost,
+							grossProfit:app.tableData[i].grossProfit
+						}
+						tbody.push(dataObj)
+					}
+					var sum = { //总价
+						hospitalName: "总价",
+						checkMonth:"无",
+						deviceNum: app.sumData.deviceNum,
+						checkNum: app.sumData.checkNum,
+						shouldPrice: app.sumData.shouldPrice,
+						factPrice: app.sumData.factPrice,
+						returnShouldFee:app.sumData.returnShouldFee,
+						returnFactFee:app.sumData.returnFactFee,
+						cost:app.sumData.cost,
+						grossProfit:app.sumData.grossProfit
+					}
+					tbody.push(sum)
+					export2Excel(tHeader, tbody, '月汇总-按月统计')
+				} else {   //按年		
+					for(var i in app.tableData) { //表数据
+						var operateName;
+						app.tableData[i].operateName == null ? operateName = "无" : operateName = app.tableData[i].operateName;
+						var dataObj = {
+							hospitalName: app.tableData[i].hospitalName,
+							deviceNum: app.tableData[i].deviceNum,
+							checkNum: app.tableData[i].checkNum,
+							shouldPrice: app.tableData[i].shouldPrice,
+							factPrice: app.tableData[i].factPrice,
+							returnShouldFee:app.tableData[i].returnShouldFee,
+							returnFactFee:app.tableData[i].returnFactFee,
+							cost:app.tableData[i].cost,
+							grossProfit:app.tableData[i].grossProfit
+						}
+						tbody.push(dataObj)
+					}
+					var sum = { //总价
+						hospitalName: "总价",
+						deviceNum: app.sumData.deviceNum,
+						checkNum: app.sumData.checkNum,
+						shouldPrice: app.sumData.shouldPrice,
+						factPrice: app.sumData.factPrice,
+						returnShouldFee:app.sumData.returnShouldFee,
+						returnFactFee:app.sumData.returnFactFee,
+						cost:app.sumData.cost,
+						grossProfit:app.sumData.grossProfit
+					}
+					tbody.push(sum)
+					export2Excel(tHeader, tbody, '月汇总-按年统计')
+				}
+
+				
+			});
+			//  点击清除按钮 
+			$(document).on("click", "#reportQuerySearchClearBtn", function() {
+				$("#InHos").val("");
+				$("#monthTime").val("");
+				$("#yearTime").val("");
+				$(".commonTop button").attr('title','全部医院');//医院
+		$(".commonTop button .filter-option").text('全部医院');//医院
+				app.getList()
+				app.timeOut()
+			});
+			//历史汇总
+			$(document).on("click", "#historySum", function() {
+				RefreshManyIframe("page/operationDataAdmin/monthSum/monthSummaryList.html", "monthSummaryList")
+			});
+			//  vue数据
+			var app = new Vue({
+				el: '#app',
+				data() {
+					return {
+						tableData: [],
+						ymVal: 0, //默认(按年0),按月1
+						dateVal: "", //搜索时间
+						checkBeginDate: "", //搜索起始时间
+						checkEndDate: "", //搜索结束时间
+						option: '',
+						priceOption: '',
+						sumData:null,//后台的总计
+						loading: true
+					}
+				},
+				methods: {
+					//					下拉按年或者按月
+					year_month(val) {
+						this.ymVal = val.target.value;
+						if(this.ymVal == 1) {
+							//							$("#yearTime").val("");
+							$("#yearpicker").hide();
+							$("#monthpicker").show();
+
+						} else {
+							//							$("#monthTime").val("");
+							$("#yearpicker").show()
+							$("#monthpicker").hide()
+						}
+						this.getList()
+						this.timeOut(val.target.value)
+					},
+					//点击列表单元格
+					handleCell(row, column, cell, event) {
+						if(row.checkMonth == null) {
+							var sendObj = {
+								ymVal: this.ymVal,
+								dateArr: this.dateVal,
+								hosipitalName: row.hospitalName,
+								selectType: this.ymVal,
+								beginTime: this.checkBeginDate,
+								endTime: this.checkEndDate
+							}
+						} else {
+							var sendObj = {
+								ymVal: this.ymVal,
+								dateArr: this.dateVal,
+								hosipitalName: row.hospitalName,
+								selectType: this.ymVal,
+								beginTime: row.checkMonth,
+								endTime: row.checkMonth
+							}
+						}
+						if(column.label == "检查量（例）") {
+							sessionStorage.setItem(row.hospitalId, JSON.stringify(sendObj))
+							RefreshManyIframe("page/operationDataAdmin/monthSumNew/monthSummaryTarget.html?id=" + row.hospitalId, "monthSummaryTarget")
+						} else if(column.label == "设备数量(台)" || column.label == "日期") {
+							sessionStorage.setItem(row.hospitalId, JSON.stringify(sendObj))
+							RefreshManyIframe("page/operationDataAdmin/monthSumNew/monthSummaryDevice.html?id=" + row.hospitalId, "monthSummaryDevice")
+						} else if(column.label == "医院名称" || column.label == "成本(支出)") {
+							if(this.ymVal == 0) { //按年点击医院名称跳转，按月不跳
+								this.ymVal = 1 //点击医院跳转按月查询，传入医院id
+								$("#ymSelect").val(this.ymVal)
+								$("#yearpicker").hide();
+								$("#monthpicker").show();
+								this.timeOut()
+								var clickHospitalId = row.hospitalId; //医院ID
+								this.getList(clickHospitalId)
+							}
+						}
+					},
+					//总计
+					getSummaries(param) {
+						const {
+							columns,
+							data
+						} = param;
+						const sums = [];
+						columns.forEach((column, index) => {
+							if(index === 0) {
+								sums[index] = '总价';
+								return;
+							}
+
+							const values = data.map(item => Number(item[column.property]));
+							if(!values.every(value => isNaN(value))) {
+								sums[index] = values.reduce((prev, curr) => {
+									const value = Number(curr);
+									if(!isNaN(value)) {
+										return prev + curr;
+									} else {
+										return prev;
+									}
+								}, 0);
+								if(this.ymVal == 1) {
+									switch(index) { //按月总计单位
+										case 1:
+											sums[index] += '';
+											break;
+										case 2:
+											sums[index] += ' 台';
+											break;
+										case 3:
+											sums[index] += ' 例';
+											break;
+										default:
+											sums[index] = sums[index].toFixed(2);
+											sums[index] += ' 元';
+									}
+								} else { //按年总计单位
+									switch(index) {
+										case 1:
+											sums[index] += ' 台';
+											break;
+										case 2:
+											sums[index] += ' 例';
+											break;
+										default:
+											sums[index] = sums[index].toFixed(2);
+											sums[index] += ' 元';
+									}
+								}
+							} else {
+								sums[index] = '';
+							}
+						});
+						return sums;
+					},
+					getList(clickHospitalId) {
+						if(this.ymVal == 1) {
+							this.dateVal = $("#monthTime").val()
+						} else {
+							this.dateVal = $("#yearTime").val()
+						}
+						if(this.dateVal == "") {
+							this.checkBeginDate = "";
+							this.checkEndDate = "";
+						} else {
+							this.checkBeginDate = this.dateVal.split("~")[0].trim();
+							this.checkEndDate = this.dateVal.split("~")[1].trim();
+						}
+						//						if(sessionStorage.getItem("jumpFormHosToDayCheck")==2) { //医院id
+						//							var hospitalId = _this.searchObj.hosId;
+						//						} else {
+						//							var hospitalId = $("#InHos").val();
+						//						}
+						if(clickHospitalId == undefined) { //如果按年点击医院ID
+							if(sessionStorage.getItem("jumpFormHosToDayCheck") == 2) {
+								var hospitalId = JSON.parse(sessionStorage.getItem("monthCheckHosInfo")).hosId;
+							} else {
+								var hospitalId = $("#InHos").val(); //医院ID
+							}
+						} else {
+							var hospitalId = clickHospitalId; //按月
+						}
+						let _this = this;
+						let searchHospitalId = '';
+						let beginTime = $("#beginTime").val(); //起始日期
+						let endTime = $("#endTime").val(); //结束日期
+						
+						$(".resultListsContents form").html('');
+						ajaxGet('/sys/statistics/getMonthStatisticsReport', {
+							statisticsType: '医院',
+							hospitalId: hospitalId, //医院ID
+							selectType: _this.ymVal, //默认(按年0),按月1
+							checkBeginDate: _this.checkBeginDate, //年或月起始日期
+							checkEndDate: _this.checkEndDate, //年或月结束日期		
+						}, function(data) {
+							if(data.status == 0) {
+								_this.loading = false;
+								_this.tableData = data.resultMap.monthListReport;
+			 					_this.sumData = data.resultMap.sumOperateMonthStatistics;
+							
+								if(_this.tableData.length == 0) {
+									$("#staticChart").hide();
+									$("#priceChart").hide();
+								} else {
+									$("#staticChart").show();
+									$("#priceChart").show();
+									_this.option = {
+										title: {
+											text: '检查量 ↓'
+										},
+										olor: '#e4393c',
+										tooltip: {
+											trigger: 'axis',
+										},
+										legend: {
+											data: ['检查量']
+										},
+										grid: {
+											left: '5%',
+											right: '4%',
+											bottom: '3%',
+											x: 80,
+											x2: 38,
+											y2: 100,
+											containLabel: true
+										},
+										toolbox: {
+											feature: {
+												saveAsImage: {}
+											},
+											dataView: {
+												readOnly: false
+											},
+											restore: {}
+										},
+										xAxis: {
+											type: 'category',
+											boundaryGap: true,
+
+											axisLabel: {
+												interval: 0,
+												rotate: 40,
+												formatter: function(value) {
+													//x轴的文字改为竖版显示
+													var str = value.split(" ");
+													return str.join("\n");
+												}
+											},
+											data: []
+										},
+										yAxis: {
+											type: 'value'
+										},
+
+										series: [{
+											name: '检查量',
+											type: 'bar',
+											stack: '总量',
+											itemStyle: {
+												normal: {
+													color: '#e4393c'
+												}
+											},
+											barWidth: 20,
+											data: []
+										}, ]
+									};
+									_this.priceOption = {
+										title: {
+											text: '回款'
+										},
+										olor: '#e4393c',
+										tooltip: {
+											trigger: 'axis',
+										},
+										legend: {
+											data: ['实收回款', '成本', '毛利']
+										},
+										grid: {
+											left: '5%',
+											right: '4%',
+											bottom: '3%',
+											x: 80,
+											x2: 38,
+											y2: 100,
+											containLabel: true
+										},
+										toolbox: {
+											feature: {
+												saveAsImage: {}
+											}
+										},
+										xAxis: {
+											type: 'category',
+											boundaryGap: true,
+
+											axisLabel: {
+												interval: 0,
+												rotate: 40,
+												formatter: function(value) {
+													//x轴的文字改为竖版显示
+													var str = value.split(" ");
+													return str.join("\n");
+												}
+											},
+											data: []
+										},
+										yAxis: {
+											type: 'value'
+										},
+
+										series: [{
+												name: '实收回款',
+												type: 'bar',
+												stack: '实收回款',
+												itemStyle: {
+													normal: {
+														color: '#9efbcc'
+													}
+												},
+												barWidth: 20,
+												data: []
+											},
+											{
+												name: '成本',
+												type: 'bar',
+												stack: '成本',
+												itemStyle: {
+													normal: {
+														color: '#e4393c'
+													}
+												},
+												barWidth: 20,
+												data: []
+											},
+											{
+												name: '毛利',
+												type: 'bar',
+												stack: '毛利',
+												itemStyle: {
+													normal: {
+														color: '#51659B'
+													}
+												},
+												barWidth: 20,
+												data: []
+											},
+										]
+									};
+									for(var i in _this.tableData) {
+										
+										if(_this.tableData[i].checkMonth == null) {
+											var checkMonth1 = "";
+										} else {
+											var checkMonth1 = _this.tableData[i].checkMonth
+										}
+										var hosDev = _this.tableData[i].hospitalName;
+										_this.option.xAxis.data[i] = hosDev + ' ' + checkMonth1;
+										_this.option.series[0].data[i] = _this.tableData[i].checkNum; //检查量
+										_this.priceOption.xAxis.data[i] = _this.tableData[i].hospitalName;
+										_this.priceOption.series[0].data[i] = _this.tableData[i].returnFactFee; //实收回款
+										_this.priceOption.series[1].data[i] = _this.tableData[i].cost; //成本
+										_this.priceOption.series[2].data[i] = _this.tableData[i].grossProfit; //毛利
+									}
+									myChart.setOption(_this.option, true);
+									priceChart.setOption(_this.priceOption, true);
+									
+								}
+								_this.timeOut() //异步延时加载动态CSS
+							} else {
+								alert(data.message);
+							}
+						});
+					},
+					timeOut(e) {
+						
+						$("#ymSelect").val(this.ymVal)
+						if(this.ymVal == 1) {
+
+							setTimeout(function() {
+								$('.el-table__row td:nth-child(1)').css({
+									"color": "#696b6f",
+									"text-decoration": "none",
+									"cursor": "default"
+								})
+								$('.el-table__row td:nth-child(4)').css({
+									"color": "#4169e2",
+									"text-decoration": "underline",
+									"cursor": "pointer"
+								})
+								$('.el-table__row td:nth-child(8)').css({
+									"color": "#696b6f",
+									"text-decoration": "none",
+									"cursor": "default"
+								})
+							}, 10)
+
+						} else {
+							setTimeout(function() {
+								$('.el-table__row td:nth-child(1)').css({
+									"color": "#4169e2",
+									"text-decoration": "underline",
+									"cursor": "pointer"
+								})
+								$('.el-table__row td:nth-child(4)').css({
+									"color": "#696b6f",
+									"text-decoration": "none",
+									"cursor": "default"
+								})
+								$('.el-table__row td:nth-child(8)').css({
+									"color": "#4169e2",
+									"text-decoration": "underline",
+									"cursor": "pointer"
+								})
+							}, 10)
+						}
+					},
+				},
+				created() {
+//					this.timeOut() //异步延时加载动态CSS
+				}
+			})
+			//初始化
+			function init() {
+				$("#monthpicker").hide()
+				var date = new Date();
+				var month = date.getMonth() + 1; //获取当月
+				var yearVal = date.getFullYear(); //获取本年
+				if(month > 9) {
+					var monthVal = month;
+				} else {
+					var monthVal = '0' + month;
+				}
+				var ins24 = laydate.render({
+					elem: '#monthTime',
+					type: 'month',
+					value: yearVal + '-' + monthVal + ' ~ ' + yearVal + '-' + monthVal,
+					range: '~', //或 range: '~' 来自定义分割字符
+				});
+				var ins23 = laydate.render({
+					elem: '#yearTime',
+					type: 'year',
+					value: yearVal + ' ~ ' + yearVal,
+					range: '~', //或 range: '~' 来自定义分割字符
+				});
+				app.getList()
+			}
+			//指定医院下拉框 初始化
+			function LoadreadHospitalBooking() {
+				$("#InHos").html('<option value="">全部医院</option>');
+				ajaxGet('/hospital/info/getHospitalOptionList', {}, function(data) {
+					
+					if(data.status == 0) {
+						var hospitalList = data.resultMap.hospitalList;
+						if(hospitalList != null) {
+							for(var s = 0; s < hospitalList.length; s++) {
+								var hospitalHtml = '';
+								hospitalHtml += '<option value="' + hospitalList[s].id + '">' + hospitalList[s].hospitalName + '</option>';
+								$("#InHos").append(hospitalHtml);
+							}
+							$('.selectpicker').selectpicker('refresh');
+		  					$('.selectpicker').selectpicker('render');
+							if(sessionStorage.getItem("jumpFormHosToDayCheck") == 2) { //医院id
+								var searchObj = JSON.parse(sessionStorage.getItem("monthCheckHosInfo"))
+								var options = $("#InHos option:selected");
+								options.text(searchObj.hosName);
+							}
+						}
+					}
+				})
+			}
+		</script>
+	</body>
+
+</html>

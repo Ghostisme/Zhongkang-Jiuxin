@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<template v-for="(item, index) in formDomList" :key="index">
+							<li v-if="index == 0">
+								<div class="topText">{{ item.name }}</div>
+								<div class="contentBox1">
+									<div>
+										<div class="f_div" v-for="(item, index) in item.formDomListChildren" :key="index">
+											<label class="f_lab" :style="item.labelStyle">{{ item.name }}</label>
+											<el-input class="newin" :v-model="item.idName" :value="item.idName | handleValue"  :name="item.inputVar" :placeholder="item.placeholder"></el-input>
+											<!--<input type="text" class="newin" id="projectName" name="projectName" value="" placeholder="项目名称" />-->
+										</div>
+									</div>
+								</div>
+								<!--<button type="button" @click="handleClick">click</button>-->
+							</li>
+							<li v-else>
+								<div class="topText">
+									{{ item.name }}
+									<span class="rightBtn btnTextColor" @click="handleClick(item.flag, $event)">{{ item.btnText }}</span>
+								</div>
+								<div class="box innerBox">
+									<template v-for="(item, index) in item.formDomListChildren" :key="index">
+										<template>
+											<div class="firstBox" v-for="(item, index) in item" :key="index">
+												<template v-if="index == 0">
+													<div class="f_div" v-for="(item, index) in item" :key="index" :style="item.boxStyle">
+														<label class="f_lab" :style="item.labelStyle">{{ item.name }}</label>
+														<el-input 
+															class="newin" 
+															:v-model="item.idName" 
+															:value="item.idName | handleValue"  
+															:name="item.inputVar"  
+															:placeholder="item.placeholder"
+															v-if="index != 4"
+															>
+														</el-input>
+														<input 
+															v-else 
+															class="newin layer-date" 
+															:name="item.inputVar" 
+															readonly="readonly" 
+															:placeholder="item.placeholder"
+															style="background-color: #FFF;" 
+															value="" 
+															/>
+															<!--:id="item.idName"--> 
+													</div>
+												</template>
+												<template v-else>
+													<div class="f_div">
+														<label class="f_lab" :style="item.labelStyle">{{ item.name }}</label>
+														<el-input 
+															type="textarea" 
+															class="newin textareaBox" 
+															:v-model="item.idName" 
+															:name="item.inputVar"  
+															:placeholder="item.placeholder"
+															>
+														</el-input>
+													</div>
+												</template>
+											</div>
+										</template>
+									</template>
+									<el-collapse accordion class="cloneBox">
+										<!--<div v-for="(item, index) in item.formDomListChildren" :key="index" class="innerBoxTpl">-->
+										<!--<div class="innerBoxTpl" v-for="(item, index) in item" :key="index">-->
+											
+												<el-collapse-item v-for="(item, index) in item.formDomListChildren" :key="index" class="innerBoxTpl">
+													<!--:name="index | handleIndexNum"-->
+													<template slot="title">
+														2019-01-01
+														<!--<i class="header-icon el-icon-info"></i>-->
+														<div class="cloneBoxBtnGroup">
+															<span class="btnTextColor" @click="handleUpdata">编辑</span>
+															<span class="btnTextColor" @click="handleCancel">删除</span>
+														</div>
+												    </template>
+													<div class="cloneBoxIn" v-for="(item, index) in item" :key="index">
+														<template v-if="index == 0">
+															<div class="f_div" v-for="(item, index) in item" :key="index" :style="item.boxStyle">
+																<label class="f_lab" :style="item.labelStyle">{{ item.name }}</label>
+																<el-input 
+																	class="newin" 
+																	:v-model="item.idName" 
+																	:value="item.idName | handleValue"  
+																	:name="item.inputVar"  
+																	:placeholder="item.placeholder"
+																	v-if="index != 4"
+																	>
+																</el-input>
+																<input 
+																	v-else 
+																	class="newin layer-date" 
+																	:name="item.inputVar" 
+																	readonly="readonly" 
+																	:placeholder="item.placeholder"
+																	style="background-color: #FFF;" 
+																	value="" 
+																	/>
+															</div>
+														</template>
+														<template v-else>
+															<div class="f_div">
+																<label class="f_lab" :style="item.labelStyle">{{ item.name }}</label>
+																<el-input 
+																	type="textarea" 
+																	class="newin textareaBox" 
+																	:v-model="item.idName" 
+																	:name="item.inputVar" 
+																	:placeholder="item.placeholder"
+																	>
+																</el-input>
+															</div>
+														</template>
+													</div>
+												</el-collapse-item>
+											
+										<!--</div>-->
+										<!--</div>-->
+									</el-collapse>
+								</div>
+							</li>
+						</template>
+	</body>
+	//表单展示数据
+			formDomList: [{
+				name: "基础信息",
+				formDomListChildren: [{
+					name: "项目名称：",
+					placeholder: "项目名称",
+					idName: "projectName1",
+					inputVar: "projectName",
+					labelStyle: ""
+				},{
+					name: "项目运营负责人：",
+					placeholder: "负责人姓名",
+					idName: "outName",
+					inputVar: "name",
+					labelStyle: "width: 110px;"
+				},{
+					name: "地址：",
+					placeholder: "地址",
+					idName: "address",
+					inputVar: "address",
+					labelStyle: ""
+				},{
+					name: "联系方式：",
+					placeholder: "联系方式",
+					idName: "outPhone",
+					inputVar: "phone",
+					labelStyle: "margin-right: 50px;"
+				}]
+			},{
+				name: "院内",
+				flag: 0,
+				btnText: "新增",
+				formDomListChildren: [[
+				[{
+					name: "职务：",
+					placeholder: "职务",
+					idName: "projectName",
+					inputVar: "projectName",
+//					labelStyle: "margin-right: 6px;",
+					labelStyle: "margin-right: 11px;",
+					boxStyle: ""
+				},{
+					name: "姓名：",
+					placeholder: "姓名",
+					idName: "outName",
+					inputVar: "name",
+					labelStyle: "",
+					boxStyle: "width: 15%;"
+				},{
+					name: "所属科室：",
+					placeholder: "所属科室",
+					idName: "address",
+					inputVar: "address",
+					labelStyle: "",
+					boxStyle: ""
+				},{
+					name: "联系方式：",
+					placeholder: "联系方式",
+					idName: "outPhone",
+					inputVar: "phone",
+					labelStyle: "",
+					boxStyle: ""
+				},{
+					name: "时间：",
+					placeholder: "时间",
+					idName: "outPhone",
+					inputVar: "phone",
+					labelStyle: "",
+					boxStyle: "width: 15%;"
+				}],{
+					name: "内容：",
+					placeholder: "内容",
+					idName: "content",
+					inputVar: "content",
+					labelStyle: ""
+				},{
+					name: "成果：",
+					placeholder: "成果",
+					idName: "achievements",
+					inputVar: "achievements",
+					labelStyle: ""
+				},{
+					name: "存在问题：",
+					placeholder: "存在问题",
+					idName: "existingProblems",
+					inputVar: "existingProblems",
+					labelStyle: ""
+				},{
+					name: "解决方案：",
+					placeholder: "解决方案",
+					idName: "solution",
+					inputVar: "solution",
+					labelStyle: ""
+				}]]
+			},{
+				name: "院外",
+				flag: 1,
+				btnText: "新增",
+				formDomListChildren: [[
+				[{
+					name: "单位：",
+					placeholder: "单位",
+					idName: "projectName",
+					inputVar: "projectName",
+					labelStyle: "margin-right: 6px;"
+				},{
+					name: "科室：",
+					placeholder: "科室",
+					idName: "outName",
+					inputVar: "name",
+					labelStyle: ""
+				},{
+					name: "联系人：",
+					placeholder: "联系人",
+					idName: "address",
+					inputVar: "address",
+					labelStyle: ""
+				},{
+					name: "联系方式：",
+					placeholder: "联系方式",
+					idName: "outPhone",
+					inputVar: "phone",
+					labelStyle: ""
+				},{
+					name: "时间：",
+					placeholder: "时间",
+					idName: "outPhone",
+					inputVar: "phone",
+					labelStyle: ""
+				}],{
+					name: "内容：",
+					placeholder: "内容",
+					idName: "content",
+					inputVar: "content",
+					labelStyle: ""
+				},{
+					name: "成果：",
+					placeholder: "成果",
+					idName: "achievements",
+					inputVar: "achievements",
+					labelStyle: ""
+				},{
+					name: "存在问题：",
+					placeholder: "存在问题",
+					idName: "existingProblems",
+					inputVar: "existingProblems",
+					labelStyle: ""
+				},{
+					name: "解决方案：",
+					placeholder: "解决方案",
+					idName: "solution",
+					inputVar: "solution",
+					labelStyle: ""
+				}]]
+//				formDomListChildren: [{
+//					list: [{
+//						name: "单位：",
+//						placeholder: "单位",
+//						idName: "projectName",
+//						inputVar: "projectName",
+//						labelStyle: "margin-right: 6px;"
+//					},{
+//						name: "科室：",
+//						placeholder: "科室",
+//						idName: "outName",
+//						inputVar: "name",
+//						labelStyle: ""
+//					},{
+//						name: "联系人：",
+//						placeholder: "联系人",
+//						idName: "address",
+//						inputVar: "address",
+//						labelStyle: ""
+//					},{
+//						name: "联系方式：",
+//						placeholder: "联系方式",
+//						idName: "outPhone",
+//						inputVar: "phone",
+//						labelStyle: ""
+//					},{
+//						name: "时间：",
+//						placeholder: "时间",
+//						idName: "outPhone",
+//						inputVar: "phone",
+//						labelStyle: ""
+//					}],
+//					secondList: [{
+//						name: "内容：",
+//						placeholder: "内容",
+//						idName: "content",
+//						inputVar: "content",
+//						labelStyle: ""
+//					},{
+//						name: "成果：",
+//						placeholder: "成果",
+//						idName: "achievements",
+//						inputVar: "achievements",
+//						labelStyle: ""
+//					},{
+//						name: "存在问题：",
+//						placeholder: "存在问题",
+//						idName: "existingProblems",
+//						inputVar: "existingProblems",
+//						labelStyle: ""
+//					},{
+//						name: "解决方案：",
+//						placeholder: "解决方案",
+//						idName: "solution",
+//						inputVar: "solution",
+//						labelStyle: ""
+//					}]
+//				}]
+			}],
+			handleValue(value){
+//			console.log(value);
+			let that = this;
+//			console.log(that.value);
+			if (that.value != undefined || that.value != null) {
+				return that.value;
+			}else{
+				return "";
+			}
+		},
+			handleIndex(value){			
+//			console.log(value);
+			let num = value+6;
+			return num;
+		},
+		handleIndexNum(value){
+//			console.log(value);
+			value++;
+//			console.log(value);
+			return value;
+		}
+</html>
+
+//			that.hospitalInnerName1 = that.hospitalInnerName;
+//			that.hospitalInnerName1++;			
+//			let projectName = "projectName" + that.hospitalInnerName;
+//			let name1 = "name" + that.hospitalInnerName;
+//			let sections = "sectionsIn" + that.hospitalInnerName;
+//			let phone = "phoneIn" + that.hospitalInnerName;
+//			let content = "contentIn" + that.hospitalInnerName;
+//			let achievements = "achievementsIn" + that.hospitalInnerName;
+//			let existingProblems = "existingProblemsIn" + that.hospitalInnerName;
+//			let solution = "solutionIn" + that.hospitalInnerName;
+//			this.addList
+//			this.addList = Object.assign({}, this.addList, {
+//				projectName: "",
+//				name1: "",
+//				sections: "",
+//				phone: "",
+//				content: "",
+//				achievements: "",
+//				existingProblems: "",
+//				solution: "",
+//			})
+//			this.$set(that, that.addList.projectName, "");
+//			this.$set(that.addList, that.addList.name, null);
+//			this.$set(that.addList, that.addList.sections, null);
+//			this.$set(that.addList, that.addList.phone, null);
+//			this.$set(that.addList, that.addList.content, null);
+//			this.$set(that.addList, that.addList.achievements, null);
+//			this.$set(that.addList, that.addList.existingProblems, null);
+//			this.$set(that.addList, that.addList.solution, null);
+//			console.log(projectName)
+//			console.log(that,"VUE实例");
+//			let time = "time" + that.hospitalInnerName;
+//			var str = '#'+time;
+//			$(document).ready(function(){
+//				var ins22 = laydate.render({
+//				  elem: str
+//				  ,trigger: 'click'
+//				});
+//			})

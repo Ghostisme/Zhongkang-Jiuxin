@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>中康九悦远程医疗管理系统 - 远程会诊申请单</title>
+
+    <meta name="keywords" content="中康九悦远程医疗管理系统">
+    <meta name="description" content="中康九悦远程医疗管理系统">
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+    <link href="../../css/animate.min.css" rel="stylesheet">
+    <link href="../../css/style.min.css" rel="stylesheet">
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" type="text/css" href="../../css/demo/webuploader-demo.min.css">
+    <link rel="stylesheet" href="../../css/public.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="css/qrm-pinming.css">
+    <link rel="stylesheet" href="../../css/apply.css" />
+</head>
+<body>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+			<div class="clients-list">
+	            <div class="tab-content">
+	                <div>
+	                	<!--状态-->
+	                	<div class="tabsBar">
+	                		<ul>
+								<li id="writeCheckForm" class="activeTabs">
+									<div style="left: -19px;background: #51659B;">
+									</div>
+									<div class="activeTabs">
+
+									</div>
+									<a>1.填写检查申请单</a>
+								</li>
+								<li id="sureCheckForm">
+									<div id="sureCheckForm1">
+
+									</div>
+									<a>2.确认检查申请单</a>
+								</li>
+								<li id="sendSuccess">
+									<div id="sendSuccess1">
+
+									</div>
+									<a>3.发送成功</a>
+
+								</li>
+								</ul>
+	                	</div>
+	                    <div class="full-height-scroll">
+	                        <div class="table-responsive">
+	                        	<div class="tableNav">远程会诊-已申请</div>
+	                        	<form id="form"  class="wizard-big">
+		                           <!-- <h1>填写检查申请单</h1>-->
+		                            <fieldset class="f1">
+		                                <div class="row">
+		                                	<div class="ibox-content">
+
+												<table class="table table-bordered tableInput">
+						                            <tbody>
+						                                <tr>
+						                                    <td class="tableInputTitle"><label><span class="warns">*</span>患者姓名</label></td>
+						                                    <td style="width: 42%;">
+						                                    	<div class="row">
+									                                <div class="col-lg-12"style="padding: 0px;">
+									                                    <div class="input-group">
+									                                    	<input type="hidden" id="patientId"/>
+									                                        <input type="text" class="form-control" id="test_data"style="background: #fff;!important">
+									                                        <div class="input-group-btn">
+									                                            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown">
+									                                                <span class="caret"></span>
+									                                            </button>
+									                                            <ul class="dropdown-menu dropdown-menu-right" role="menu"id="chosePatient">
+									                                            </ul>
+									                                        </div>
+									                                        <!-- /btn-group -->
+									                                    </div>
+									                                </div>
+									                            </div>
+						                                    </td>
+						                                    <td class="tableInputTitle"><label><span class="warns">*</span>性别</label></td>
+						                                    <td style="width: 15.08%;">
+						                                    	<select id="sex" name="userSex"class="form-control required"disabled="disabled">
+						                                    		<option value="0">
+						                                    			男
+						                                    		</option>
+						                                    		<option value="1">
+						                                    			女
+						                                    		</option>
+						                                    	</select>
+						                                    </td>
+						                                    <td class="tableInputTitle"><label><span class="warns">*</span>年龄</label></td>
+						                                    <td>
+						                                    	<input id="userAge" name="userAge" type="number" class="form-control required"disabled="disabled">
+						                                    </td>
+						                                </tr>
+						                                <tr>
+						                                    <td class="tableInputTitle"><label><span class="warns">*</span>患者手机号</label></td>
+						                                    <td>
+						                                    	<input id="userTel" name="userTel" type="text" class="form-control required"readonly="readonly">
+						                                    	<span class="warns">(非常重要,紧急情况便于联系和查看检查结果)</span>
+						                                    </td>
+						                                    <td class="tableInputTitle"><label><span class="warns">*</span>身份证号</label></td>
+						                                    <td colspan="3">
+						                                    	<input id="identityCode" name="identityCode" type="text" class="form-control"disabled="disabled">
+						                                    </td>
+						                                    
+						                                    
+						                                </tr>
+						                            </tbody>
+						                        </table>
+						                        <table class="table table-bordered tableInput">
+						                            <tbody>
+						                                <tr>
+						                                	<!--<td class="tableInputTitle"><label>会诊模式</label></td>
+						                                	<td class="tablesecondContent">
+						                                    	<select id="Model" name="Model"class="form-control required">
+						                                    		<option value="0">
+						                                    			图文会诊
+						                                    		</option>
+						                                    		<option value="1">
+						                                    			视频会诊
+						                                    		</option>
+						                                    	</select>
+						                                    </td>-->
+						                                    <td class="tableInputTitle"><label><span class="warns">*</span>会诊时间</label></td>
+						                                    <td  class="tablesecondContent">
+						                                    	<!--<select id="checkTime" name="checkTime"class="form-control required">
+						                                    		<option value="0">
+						                                    			上午
+						                                    		</option>
+						                                    		<option value="1">
+						                                    			下午
+						                                    		</option>
+						                                    	</select>-->
+						                                    	<input placeholder="会诊日期" class="layer-date form-control required" name="checkTime"id="checkTime"readonly="readonly"style="background: #fff;">
+						                                    </td>
+						                                    <td class="tableInputTitle"><label><span class="warns">*</span>会诊单位</label></td>
+						                                	<td class="tablesecondContent">
+						                                    	<!--<select id="InHos" name="InHos"class="form-control required">
+						                                    		<option value="0">
+						                                    			河南**医院
+						                                    		</option>
+						                                    		<option value="1">
+						                                    			北京**医院
+						                                    		</option>
+						                                    	</select>-->
+						                                    	<div class="form-group addRows addDeptRows">
+																	<div class="col-sm-12 adddDeptRow">
+																		<!--<label class="col-sm-2 control-label labelsPosition"><span class="redStar">*</span>所属机构：</label>-->
+																		<div class="col-sm-12 deptSelectBox">
+																			<div class="qrm-pinming">
+																				<div class="qrm-input-border">
+																					<!--<select id="specialDept" name="name" type="text" class="form-control required">
+																						<option value="0">机构1</option>
+																						<option value="1">机构2</option>
+																					</select>-->
+																					<span class="hiddenDeptId" style="display: none;"></span>
+																					<input id="specialDept" type="text" name="specialDept" placeholder="请选择" class="qrm-input form-control required"readonly="readonly">
+																				</div>
+																				
+																			</div>
+																			<div class="choseDeptPlate">
+																			</div>
+																		</div>
+																		
+																	</div>
+																</div>
+						                                    </td>
+						                                </tr>
+						                                <tr>
+						                                    <!--<td class="tableInputTitle"><label><span class="warns">*</span>会诊科室</label></td>
+						                                	<td>
+						                                    	<select id="department" name="department"class="form-control required">
+						                                    		<option value="0">
+						                                    			普外科
+						                                    		</option>
+						                                    		<option value="1">
+						                                    			内科
+						                                    		</option>
+						                                    	</select>
+						                                    </td>-->
+						                                    <td class="tableInputTitle"><label><span class="warns">*</span>会诊医生</label></td>
+						                                	<td>
+						                                    	<select id="InDoctor" name="InDoctor"class="form-control required">
+						                                    		<option value="0">
+						                                    			王宏剑医生
+						                                    		</option>
+						                                    		<option value="1">
+						                                    			海量医生
+						                                    		</option>
+						                                    	</select>
+						                                    </td>
+						                                    <td class="tableInputTitle"><label><span class="warns">*</span>申请医院</label></td>
+						                                	<td class="tablesecondContent"id="applyBox">
+						                                    	<!--<select id="applyHos" name="applyHos"class="form-control required">
+						                                    		<option value="0">
+						                                    			河北**医院
+						                                    		</option>
+						                                    		<option value="1">
+						                                    			湖南**医院
+						                                    		</option>
+						                                    	</select>-->
+						                                    	<div class="form-group addRows addDeptRows">
+																	<div class="col-sm-12 adddDeptRow">
+																		<!--<label class="col-sm-2 control-label labelsPosition"><span class="redStar">*</span>所属机构：</label>-->
+																		<div class="col-sm-12 deptSelectBox">
+																			<div class="qrm-pinming">
+																				<div class="qrm-input-border">
+																					<!--<select id="specialDept" name="name" type="text" class="form-control required">
+																						<option value="0">机构1</option>
+																						<option value="1">机构2</option>
+																					</select>-->
+																					<span class="hiddenDeptId1" style="display: none;"></span>
+																					<input id="specialDept1" type="text" name="specialDept" placeholder="请选择" class="qrm-input form-control required"disabled="disabled">
+																				</div>
+																				
+																			</div>
+																			<div class="choseDeptPlate">
+																			</div>
+																		</div>
+																		
+																	</div>
+																</div>
+						                                    </td>
+						                                </tr>
+						                                 <!--<tr>
+						                                 	
+						                                    <td class="tableInputTitle"><label><span class="warns">*</span>申请医院</label></td>
+						                                	<td>
+						                                    	<select id="applyHos" name="applyHos"class="form-control required">
+						                                    		<option value="0">
+						                                    			河北**医院
+						                                    		</option>
+						                                    		<option value="1">
+						                                    			湖南**医院
+						                                    		</option>
+						                                    	</select>
+						                                    </td>
+						                                    <td class="tableInputTitle"><label><span class="warns">*</span>申请科室</label></td>
+							                                <td class="tablesecondContent">
+							                                	<select id="applyDepartment" name="applyDepartment"class="form-control required">
+						                                    		<option value="0">
+						                                    			云竹医生
+						                                    		</option>
+						                                    		<option value="1">
+						                                    			于洋医生
+						                                    		</option>
+						                                    	</select>
+							                                </td>
+						                                </tr>-->
+						                                <tr>
+						                                	
+						                                	<td class="tableInputTitle"><label><span class="warns">*</span>申请医生</label></td>
+							                                <td class="tablesecondContent">
+							                                	<select id="applyDoctor" name="applyDoctor"class="form-control required">
+						                                    		<option value="0">
+						                                    			云竹医生
+						                                    		</option>
+						                                    		<option value="1">
+						                                    			于洋医生
+						                                    		</option>
+						                                    	</select>
+							                                </td>
+							                                <td class="tableInputTitle"><label><span class="warns">*</span>联系电话</label></td>
+							                                <td>
+							                                    <input id="contactTel" name="contactTel" type="text" class="form-control required">
+							                                </td>
+						                                </tr>
+						                               
+						                            </tbody>
+						                        </table>
+						                        <table class="table table-bordered tableInput">
+						                            <tbody>
+						                                <tr>
+						                                	<td class="tableInputTitle"><label><span class="warns">*</span>主诉</label></td>
+							                                <td>
+							                                    <textarea id="mainSuit"maxlength="200" name="mainSuit" type="text" class="form-control required"placeholder="请输入不超过200字的主诉"></textarea>
+							                                </td>
+						                                </tr>
+						                                <tr>
+						                                	<td class="tableInputTitle"><label>个人史</label></td>
+							                                <td>
+							                                    <textarea id="personalHistory"maxlength="200" name="personalHistory" type="text" class="form-control"placeholder="请输入不超过200字的个人史"></textarea>
+							                                </td>
+						                                </tr>
+						                                <tr>
+						                                	<td class="tableInputTitle"><label>体格检查</label></td>
+							                                <td>
+							                                    <textarea id="physicalExamination"maxlength="200" name="physicalExamination" type="text" class="form-control"placeholder="请输入不超过200字的体格检查"></textarea>
+							                                </td>
+						                                </tr>
+						                                <tr>
+						                                	<td class="tableInputTitle"><label>备注</label></td>
+							                                <td>
+							                                    <textarea id="memo"maxlength="200" name="memo" type="text" class="form-control"placeholder="请输入不超过200字的备注信息"></textarea>
+							                                </td>
+						                                </tr>
+						                                 <!--<tr>
+						                                	<td class="tableInputTitle"><label>辅助检查</label></td>
+							                                <td id="assistantExamination">
+							                                    <div id="uploader" class="wu-example">
+									                                <div class="queueList">
+									                                    <div id="dndArea" class="placeholder">
+									                                        <div id="filePicker"></div>
+									                                        <p>或将照片拖到这里，单次最多可选20张</p>
+									                                    </div>
+									                                </div>
+									                                <div class="statusBar" style="display:none;">
+									                                    <div class="progress">
+									                                        <span class="text">0%</span>
+									                                        <span class="percentage"></span>
+									                                    </div>
+									                                    <div class="info"></div>
+									                                    <div class="btns">
+									                                        <div id="filePicker2"></div>
+									                                        <div class="uploadBtn"style="display:none;">开始上传</div>
+									                                    </div>
+									                                </div>
+									                            </div>
+							                                </td>
+						                                </tr>-->
+						                                <tr>
+						                                	<td class="tableInputTitle"><label>辅助检查</label></td>
+							                                <td id="assistantExamination">
+							                                    <div id="uploader" class="wu-example">
+									                                <div class="addDoctorInfoDetail lf"id="addDoctorPic"style="height:80px;width:100%;padding: 0px 20px;overflow-y: scroll;">
+																		<!--<div class="fileBox lf">
+																			<input type="file" class="fileInput"/>
+																			<div class="uploadImg">
+																				<img src="../../img/default.png" alt="" />
+																				<div class="delImgBtn">
+																					×
+																				</div>
+																			</div>
+																			
+																		</div>-->
+																		<div class="fileBox lf"id="empertyInput">
+																			<input type="file" class="fileInput"accept="image/*"/>
+																			<div class="uploadImg">
+																				+
+																			</div>
+																		</div>
+																	</div>
+									                            </div>
+							                                </td>
+						                                </tr>
+						                            </tbody>
+						                        </table>
+						                    </div>
+		                                </div>
+										<div class="row makeSureBtn">
+											<button type="submit" class="btn btn-w-m SureBtn">确认</button>
+											<!--<a href="#next" class="SureBtn"role="menuitem">下一步</a>-->
+										</div>
+										<!--第二步合计按钮-->
+										<div class="row makeSubmitBtn">
+											<button type="button" class="btn btn-w-m sumBtn">确认提交</button>
+										</div>
+		                            </fieldset>
+		                            <!--<h1>确认检查申请单</h1>-->
+		                            <div class="finishedPrint">
+			                            <fieldset class="f2"id="f2">
+			                                <div class="row">
+			                                    <div class="ibox-content">
+													<h4><span>申请单号:</span><span class="applyOrderNumber"></span></h4>
+							                       
+													<table class="table table-bordered tableInput">
+							                            <tbody>
+							                                <tr>
+							                                    <td class="tableInputTitle"><label>患者姓名</label></td>
+							                                    <td class="printUserName tableInputContent">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>性别</label></td>
+							                                    <td class="printSex tableInputContent">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>年龄</label></td>
+							                                    <td class="printAge">
+							                                    	
+							                                    </td>
+							                                </tr>
+							                                <tr>
+							                                    <td class="tableInputTitle"><label>患者手机号<span class="warns" style="display: none;">(非常重要,紧急情况便于联系和查看检查结果)</span></label></td>
+							                                    <td class="printTel tableInputContent">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>身份证号</label></td>
+							                                    <td class="printIdentityCode tableInputContent"colspan="3">
+							                                </tr>
+							                            </tbody>
+							                        </table>
+							                        <table class="table table-bordered tableInput">
+						                            <tbody>
+						                                <tr>
+						                                	<!--<td class="tableInputTitle"><label>会诊模式</label></td>
+						                                	<td class="tablesecondContent printModel">
+						                                    	
+						                                    </td>-->
+						                                    <td class="tableInputTitle"><label>会诊时间</label></td>
+						                                    <td  class="tablesecondContent printCheckTime">
+						                                    	
+						                                    </td>
+						                                    <td class="tableInputTitle"><label>会诊单位</label></td>
+						                                	<td class="tablesecondContent printHos">
+						                                    	
+						                                    </td>
+						                                </tr>
+						                                <tr>
+						                                   	
+						                                    <!--<td class="tableInputTitle"><label>会诊科室</label></td>
+						                                	<td class="printDepartment">
+						                                    	
+						                                    </td>-->
+						                                    <td class="tableInputTitle"><label>会诊医生</label></td>
+						                                	<td class="tablesecondContent printDoctor">
+						                                    	
+						                                    </td>
+						                                    <td class="tableInputTitle"><label>申请医院</label></td>
+						                                	<td class="printApplyHos">
+						                                    	
+						                                    </td>
+						                                </tr>
+						                                 <!--<tr>
+						                                 	
+						                                    
+						                                    <td class="tableInputTitle"><label>申请科室</label></td>
+						                                	<td class="printApplyDepartment">
+						                                    	
+						                                    </td>
+						                                </tr>-->
+						                                <tr>
+						                                	
+						                                	<td class="tableInputTitle"><label>申请医生</label></td>
+							                                <td class="tablesecondContent printApplyDoctor">
+							                                	
+							                                </td>
+							                                <td class="tableInputTitle"><label>联系电话</label></td>
+							                                <td class="printContactTel">
+							                                </td>
+						                                </tr>
+						                                <tr>
+						                                	
+						                                </tr>
+						                            </tbody>
+						                        </table>
+						                        <table class="table table-bordered tableInput">
+						                            <tbody>
+						                                <tr>
+						                                	<td class="tableInputTitle"><label>主诉</label></td>
+							                                <td class="printMainSuit">
+							                                    
+							                                </td>
+						                                </tr>
+						                                <tr>
+						                                	<td class="tableInputTitle"><label>个人史</label></td>
+							                                <td class="printPersonalHistory">
+							                                    
+							                                </td>
+						                                </tr>
+						                                <tr>
+						                                	<td class="tableInputTitle"><label>体格检查</label></td>
+							                                <td class="printPhysicalExamination">
+							                                    
+							                                </td>
+						                                </tr>
+						                                <tr>
+						                                	<td class="tableInputTitle"><label>备注</label></td>
+							                                <td class="printMemo">
+							                                    
+							                                </td>
+						                                </tr>
+						                                 <tr>
+						                                	<td class="tableInputTitle"><label>辅助检查</label></td>
+							                                <td class="printUploadImg">
+							                                    
+							                                </td>
+						                                </tr>
+						                            </tbody>
+						                        </table>
+						                        <span>申请时间:</span><span class="printApplyTime">2019/5/17 17:13:45</span>
+							                    </div>
+			                                </div>
+			                            </fieldset>
+										<div class="row printBtns">
+							                <button type="button" class="btn btn-w-m printBtn">打印</button>
+							                <button type="button" class="btn btn-w-m closeBtn">关闭</button>
+							            </div>
+		                            </div>
+		                            
+		                            <!--<h1>发送成功</h1>-->
+		                            <fieldset class="f3">
+		                                <div class="text-center" style="margin-top: 120px">
+		                                    <h2></h2>
+		                                </div>
+		                            </fieldset>
+		                            <input type="hidden"name="uploadImgs" />
+		                        </form>
+	                        </div>
+	                    </div>
+	                </div>
+	                
+	                <div id="tab-3" class="tab-pane">
+	                    <div class="full-height-scroll">
+	                        <div class="table-responsive">
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+        </div>
+    </div>
+    <div class="subModal">
+    	正在努力提交中...
+    </div>
+    <script src="../../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="../../js/foundation-datepicker.js"></script>
+	<script src="../../js/foundation-datepicker.min.js"></script>	
+	<!--<script src="../../js/plugins/layer/laydate/laydate.js"></script>-->
+	<script src="../../js/plugins/layer/laydate/laydate5.0.js"></script>
+    <script src="../../js/plugins/staps/jquery.steps.min.js"></script>
+    <script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="../../js/plugins/validate/messages_zh.min.js"></script>
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../js/content.min.js?v=1.0.0"></script>
+    <script type="text/javascript">
+        var BASE_URL = '../../js/plugins/webuploader';
+    </script>
+    <script src="../../js/plugins/webuploader/webuploader.min.js"></script>
+    <script src="../../js/demo/webuploader-demo.min.js"></script>
+    <script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+    <script src="../../js/plugins/jquery.jqprint-0.3.js"></script>
+    <script type="text/javascript" src="js/qrm-pinming.js"></script>
+    <script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+    	var userId=sessionStorage.getItem('userId');
+    	var user=JSON.parse(sessionStorage.getItem('user'));
+		var sessionId=sessionStorage.getItem('sessionId');
+        $(document).ready(function(){
+        	$(".contact-box").each(function(){
+        		animationHover(this,"pulse")
+			})
+		});
+//		点击确定按钮
+		$("#form").validate();
+		$(".SureBtn").click(function(event){
+			var idcard_patter = /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/;//身份证号校验
+			if($("#form").valid()){
+		     	event.preventDefault();
+		     	console.log(idcard_patter.test($("#identityCode").val()));
+		     	//			校验填写的项目
+//			    if(!(/^1[34578]\d{9}$/.test($("#userTel").val()))){
+//			    	$("#userTel").siblings().remove();
+//					$("#userTel").after('<label id="userTel-error" class="error" for="userTel"><i class="fa fa-times-circle"></i>  请输入正确手机号</label>')
+//				}else if(idcard_patter.test($("#identityCode").val())==false){
+//					$("#identityCode").siblings().remove();
+//					$("#identityCode").after('<label id="identityCode-error" class="error" for="identityCode"><i class="fa fa-times-circle"></i>  请输入正确身份证号</label>')
+//				}else 
+				if(!(/^1[345789]\d{9}$/.test($("#contactTel").val()))){
+					$("#contactTel").siblings().remove();
+					$("#contactTel").after('<label id="contactTel-error" class="error" for="contactTel"><i class="fa fa-times-circle"></i>  请输入正确手机号</label>')
+				}else{
+//					跳转第二步
+					$("#sureCheckForm").addClass("activeTabs");
+					$("#sureCheckForm1").addClass("activeTabs");
+					$("#form input").attr("disabled","disabled");
+					$("#form select").attr("disabled","disabled");
+					$("#form textarea").attr("disabled","disabled");
+					$("#specialDept").parent().css({"pointer-events":"none"});
+					$("#specialDept1").parent().css({"pointer-events":"none"});
+					$(".makeSubmitBtn").css("display","block");
+					$(".makeSureBtn").css("display","none");
+//					隐藏空fileInput
+					$("#empertyInput").css("display","none");
+					$(".fileInput").css("z-index",0);
+//					隐藏图片上的删除按钮
+					$(".delImgBtn").css("display","none");
+					$(".filelist .file-panel").css("display","none");
+					$(".statusBar").css("display","none");
+					$("#uploader .statusBar .btns .uploadBtn, #uploader .statusBar .btns .uploadBtn.state-paused, #uploader .statusBar .btns .uploadBtn.state-uploading, #uploader .statusBar .btns .webuploader-pick").css("display","none");
+				}
+		 	
+		}
+	});
+//	$(document).on("click",".uploadImg img",function(){
+//		window.top.zoomImg(1,$(this).attr("src"))
+//	});	
+//	文件上传接口
+function fileUp(formData){
+	ajaxPost('/file/uploadFiles',formData,function(response){
+		console.log(response);
+		swal.close();
+		$(".subModal").css("display","block");
+		if(response.status==0){//上传成功
+			var ImgArr=[];
+			$.each(response.resultMap.fileList, function(i,item) {
+				console.log(item.name);
+				ImgArr.push({
+		    		name:item.name,
+		    		type:item.type,
+		    		mongoFileId:item.mongoFileId,
+		    	});
+			});
+			console.log(ImgArr);
+		var formData = new FormData();
+//			formData.append("file", $('input[type="file"]')[0].files[0]); 
+//			formData.append("fkPatinfoId",userId);
+//			formData.append("sessionId",sessionId);
+			formData.append("patientId",$("#patientId").val().trim());//患者id
+			formData.append("patientName",$("#test_data").val().trim());//患者姓名
+			formData.append("sex",$("#sex").find("option:selected").text().trim());//患者性别
+			formData.append("conType",$("#Model").find("option:selected").text().trim());//会诊方式//会诊模式
+			formData.append("age",parseInt($("#userAge").val().trim()));//患者年龄
+			formData.append("patientTelephone",$("#userTel").val().trim());//患者手机号
+			formData.append("patientIdNumber",$("#identityCode").val().trim());//患者身份证号
+//			formData.append("expectType",$("#checkTime").find("option:selected").text().trim());//会诊时间
+			formData.append("expectType",$("#checkTime").val().trim());//会诊时间
+			formData.append("assignDeptId",parseInt($(".hiddenDeptId").text()));//会诊单位
+//			formData.append("assignSectionId",parseInt($("#department").val()));//会诊科室
+			formData.append("assignDoctorId",parseInt($("#InDoctor").val()));//会诊医生
+			if($(".hiddenDeptId1").text()==""||$(".hiddenDeptId1").text()==null){
+				formData.append("applyDeptId",'');//申请医院
+			}else{
+				formData.append("applyDeptId",parseInt($(".hiddenDeptId1").text()));//申请医院
+			}
+//			if($("#applyDepartment").val()==""||$("#applyDepartment").val()==null){
+//				formData.append("applySectionId",'');//申请科室
+//			}else{
+//				formData.append("applySectionId",parseInt($("#applyDepartment").val()));//申请科室
+//			}
+			formData.append("applyDoctorId",parseInt($("#applyDoctor").val()));//申请医生
+			formData.append("applyTelephone",$("#contactTel").val().trim());//联系电话
+			formData.append("chiefComplaint",$("#mainSuit").val().trim());//主诉
+			formData.append("personalHistory",$("#personalHistory").val().trim());//个人史
+			formData.append("physicalExamination",$("#physicalExamination").val().trim());//体格检查
+			formData.append("memo",$("#memo").val().trim());//备注
+			formData.append("fileList",JSON.stringify(ImgArr));//辅助检查
+			uploadFiles(formData);
+//			console.info(formData.get("sessionId"));
+//			console.log(document.getElementById(fileElementId).files[0]);		
+	
+		}else{
+			swal("图片上传失败，请重新上传后再提交！");
+			$(".subModal").css("display","none");
+		}
+	
+		
+	});	
+}
+
+//	点击第二步的提交
+	$(".sumBtn").click(function(event){
+		swal({
+		title: "您所填信息是否已检查无误？",
+		text: "提交后将无法再修改，请检查无误后提交！",
+		type: "warning",
+		showCancelButton: true,
+		cancelButtonText:"取消",
+		confirmButtonColor: "#DD6B55",
+		confirmButtonText: "确定",
+		closeOnConfirm: false
+	}, function() {
+		var formData = new FormData();
+		var filesLen=0;//定义file的长度
+		$("#addDoctorPic .fileInput").each(function(i,item){
+			if(item.files[0]){
+				filesLen++;
+				console.log(item.files[0]);
+				formData.append('files',item.files[0]);
+			}
+		});
+		if(filesLen==0){
+			formData.append('files','');
+		}
+		console.log(formData.getAll('files'));
+		fileUp(formData);
+	})
+	})
+	
+//	提交表单
+	function uploadFiles(formData){
+		ajaxPost('/cons/applyInfo/save',formData,function(data){ 
+			        console.log(data);
+			        swal("提交成功！");
+			        $(".subModal").css("display","none");
+			        $("#sendSuccess").addClass("activeTabs");
+			        $("#sendSuccess1").addClass("activeTabs");
+			//		把值带到打印预览页面
+					$(".printUserName").text($("#test_data").val().trim());//患者姓名
+					if($("#sex").val().trim()=="0"){
+						$(".printSex").text("男");//患者性别
+					}else{
+						$(".printSex").text("女");//患者性别
+					}
+					$(".applyOrderNumber").text(data.resultMap.applyInfo.applyNo);//申请单号
+					$(".printAge").text($("#userAge").val().trim());//患者年龄
+					$(".printTel").text($("#userTel").val().trim());//患者手机号
+					$(".printIdentityCode").text($("#identityCode").val().trim());//患者身份证号
+					$(".printModel").text($("#Model").find("option:selected").text());//会诊模式
+					$(".printCheckTime").text(data.resultMap.applyInfo.expectType);//会诊时间
+					$(".printHos").text($("#InHos").find("option:selected").text());//会诊单位
+					$(".printHos").text($("#specialDept").val().trim());//会诊单位
+					$(".printDepartment").text($("#department").find("option:selected").text());//会诊科室
+					$(".printDoctor").text($("#InDoctor").find("option:selected").text());//会诊医生
+//					$(".printApplyHos").text($("#applyHos").find("option:selected").text());//申请医院
+					$(".printApplyHos").text($("#specialDept1").val().trim());//申请医院
+					$(".printApplyDepartment").text($("#applyDepartment").find("option:selected").text());//申请科室
+					$(".printApplyDoctor").text($("#applyDoctor").find("option:selected").text());//申请医生
+					$(".printContactTel").text($("#contactTel").val().trim());//联系电话
+					$(".printMainSuit").text($("#mainSuit").val().trim());//主诉
+					$(".printPersonalHistory").text($("#personalHistory").val().trim());//个人史
+					$(".printPhysicalExamination").text($("#physicalExamination").val().trim());//体格检查
+					$(".printMemo").text($("#memo").val().trim());//备注
+					$(".printUploadImg").html($("#assistantExamination").html());//辅助检查
+//					var applyTime=new Date(data.resultMap.inputTime);
+//					var applyYear=applyTime.getFullYear();
+//					var applyMonth=applyTime.getMonth()+1;
+//					var applyDate=applyTime.getDate();
+//					var applyHours=applyTime.getHours()<10?"0"+applyTime.getHours():applyTime.getHours();       //获取当前小时数(0-23)
+//					var applyMinutes=applyTime.getMinutes()<10?"0"+applyTime.getMinutes():applyTime.getMinutes();     //获取当前分钟数(0-59)
+//					var applySeconds=applyTime.getSeconds()<10?"0"+applyTime.getSeconds():applyTime.getSeconds(); 
+//					$(".printApplyTime").text(applyYear+'/'+applyMonth+'/'+applyDate+' '+applyHours+":"+applyMinutes+":"+applySeconds);//订单时间
+//					alert(applyTime);
+					$(".printApplyTime").text(data.resultMap.applyInfo.createTime);
+					$(".f1").css("display","none");
+					$(".finishedPrint").css("display","block");
+					$("#uploader").css("border","0px");
+			    });
+//		$.ajax({
+//			   	url:config+'/cons/applyInfo/save',
+//		//		url:"http://192.168.18.189:8080/gcafu_commerce/rest/upload/product",
+//			    type:'POST',
+//				data:formData,
+//				async: false,  
+//        		cache: false, 
+//				dataType:'JSON', //接收值的格式
+//				enctype:'multipart/form-data',
+//				contentType: false,
+//				processData: false,
+//				success:function(data){ 
+//			        console.log(data);
+//			        swal("提交成功！");
+//			        
+//			        $("#sendSuccess").addClass("activeTabs");
+//			//		把值带到打印预览页面
+//					$(".printUserName").text($("#test_data").val().trim());//患者姓名
+//					if($("#sex").val().trim()=="0"){
+//						$(".printSex").text("男");//患者性别
+//					}else{
+//						$(".printSex").text("女");//患者性别
+//					}
+//					$(".applyOrderNumber").text(data.resultMap.applyInfo.applyNo);//申请单号
+//					$(".printAge").text($("#userAge").val().trim());//患者年龄
+//					$(".printTel").text($("#userTel").val().trim());//患者手机号
+//					$(".printIdentityCode").text($("#identityCode").val().trim());//患者身份证号
+//					$(".printModel").text($("#Model").find("option:selected").text());//会诊模式
+//					$(".printCheckTime").text(data.resultMap.applyInfo.expectType);//会诊时间
+//					$(".printHos").text($("#InHos").find("option:selected").text());//会诊单位
+//					$(".printDepartment").text($("#department").find("option:selected").text());//会诊科室
+//					$(".printDoctor").text($("#InDoctor").find("option:selected").text());//会诊医生
+//					$(".printApplyHos").text($("#applyHos").find("option:selected").text());//申请医院
+//					$(".printApplyDepartment").text($("#applyDepartment").find("option:selected").text());//申请科室
+//					$(".printApplyDoctor").text($("#applyDoctor").find("option:selected").text());//申请医生
+//					$(".printContactTel").text($("#contactTel").val().trim());//联系电话
+//					$(".printMainSuit").text($("#mainSuit").val().trim());//主诉
+//					$(".printPersonalHistory").text($("#personalHistory").val().trim());//个人史
+//					$(".printPhysicalExamination").text($("#physicalExamination").val().trim());//体格检查
+//					$(".printMemo").text($("#memo").val().trim());//备注
+//					$(".printUploadImg").html($("#assistantExamination").html());//辅助检查
+//					var applyTime=new Date(data.resultMap.applyInfo.inputTime);
+//					var applyYear=applyTime.getFullYear();
+//					var applyMonth=applyTime.getMonth()+1;
+//					var applyDate=applyTime.getDate();
+//					var applyHours=applyTime.getHours()<10?"0"+applyTime.getHours():applyTime.getHours();       //获取当前小时数(0-23)
+//					var applyMinutes=applyTime.getMinutes()<10?"0"+applyTime.getMinutes():applyTime.getMinutes();     //获取当前分钟数(0-59)
+//					var applySeconds=applyTime.getSeconds()<10?"0"+applyTime.getSeconds():applyTime.getSeconds(); 
+//					$(".printApplyTime").text(applyYear+'/'+applyMonth+'/'+applyDate+' '+applyHours+":"+applyMinutes+":"+applySeconds);//订单时间
+//					alert(applyTime);
+//					$(".f1").css("display","none");
+//					$(".finishedPrint").css("display","block");
+//			    },  
+//			    error: function () {  
+//			        alert("上传失败！");  
+//			    }  
+//			}); 
+	}
+//	点击打印按钮
+	$(".printBtn").click(function(){
+        $("#f2").jqprint({ 
+        	debug: false,
+          	importCSS: true,
+          	printContainer: true,
+          	operaSupport: false
+        });
+//		window.print();
+	})
+//	点击关闭
+	$(".closeBtn").click(function(){
+       closeIframe("page/remoteConsultation/apply.html");
+	})
+//	当进行到第二步时可退回到第一步
+	$("#writeCheckForm").click(function(){
+		if(!($("#sendSuccess").hasClass("activeTabs"))){
+			$(".f1").css("display","block");
+			$("#sureCheckForm").removeClass("activeTabs");
+			$("#sureCheckForm1").removeClass("activeTabs");
+			$("#sendSuccess").removeClass("activeTabs");
+			$("#sendSuccess1").removeClass("activeTabs");
+			$("#form input").removeAttr("disabled");
+			$("#form select").removeAttr("disabled");
+			$("#form textarea").removeAttr("disabled");
+			$("#specialDept").parent().css({"pointer-events":"inherit"});
+			if(user.userCode=='admin'){//管理员身份
+				$("#specialDept1").parent().css({"pointer-events":"inherit"});
+				$("#applyDoctor").removeAttr('disabled');
+			}else{
+				$("#specialDept1").parent().css({"pointer-events":"none"});
+				$("#applyDoctor").attr('disabled',"disabled");
+			}
+			$("#sex").attr("disabled","disabled");
+			$("#userAge").attr("disabled","disabled");
+			$("#userTel").attr("disabled","disabled");
+			$("#identityCode").attr("disabled","disabled");
+			$(".makeSubmitBtn").css("display","none");
+			$(".makeSureBtn").css("display","block");
+			$(".filelist .file-panel").css("display","block");
+			$(".statusBar").css("display","block");
+			$("#uploader .statusBar .btns .uploadBtn.state-paused, #uploader .statusBar .btns .uploadBtn.state-uploading, #uploader .statusBar .btns .webuploader-pick").css("display","inline-block");
+			if(userId!=1){
+				$("#applyHos").attr("disabled","disabled");
+				$("#applyDepartment").attr("disabled","disabled");
+				$("#applyDoctor").attr("disabled","disabled");
+			}
+			//					显示空fileInput
+					$("#empertyInput").css("display","block");
+					$(".fileInput").css("z-index",'8');
+//					显示图片上的删除按钮
+					$(".delImgBtn").css("display","block");
+		}
+	})
+	
+	
+	//指定医院选择 联动 科室
+        $("#InHos").change(function(){
+            //联动查询 此医院下的科室
+            LoadtechOfficeBooking($("#InHos").val());
+        });
+        //指定医院选择 联动医生
+        $("#department").change(function(){
+            //联动查询 此医院下的医生
+            LoadtheDoctorBooking($("#department").val());
+        });
+//      LoadreadHospitalBooking()
+       //指定医院下拉框 初始化
+    function LoadreadHospitalBooking() {
+        $("#InHos").html('');
+        $.ajax({
+            type: "get",
+            url: config + "/sys/hospital/list",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data: {},
+            success: function(data) {
+                console.log(data);
+                if(data.status==1){
+                    var hospitalList=data.resultMap.hospitalList;
+                    if(hospitalList!=null){
+                        for(var s=0;s<hospitalList.length;s++){
+                            var hospitalHtml='';
+                            hospitalHtml+='<option value="'+hospitalList[s].id+'">'+hospitalList[s].name+'</option>';
+                            $("#InHos").append(hospitalHtml);
+                        }
+                    }
+                }
+                LoadtechOfficeBooking($("#InHos").val());
+            },
+        });
+    }
+    //指定科室初始化
+    function LoadtechOfficeBooking(selectHosId){//参数为当前选择上的医院的id和科室的select的id
+        $("#department").html('');
+        $.ajax({
+            type: "get",
+            url: config + "/sys/section/list",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data: {fkHospitalId:selectHosId},
+            success: function(data) {
+                console.log(data);
+                if(data.status==1){
+                    var sectionList=data.resultMap.sectionList;
+                    if(sectionList!=null) {
+
+                        for (var t = 0; t < sectionList.length; t++) {
+                            var techOfficeHtml = '';
+                            techOfficeHtml += '<option value="' + sectionList[t].id + '">' + sectionList[t].name + '</option>';
+                            $("#department").append(techOfficeHtml);
+                        }
+                    }
+                    LoadtheDoctorBooking($("#department").val());
+                }
+            },
+        });
+    }
+    //指定医生初始化
+    function LoadtheDoctorBooking(selectHosId){//参数为当前选择上科室的select的id
+        $("#InDoctor").html('');
+        console.log(selectHosId);
+        $.ajax({
+            type: "get",
+            url: config + "/sys/user/list",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data: {
+//              type:1,
+                fkSectionId:selectHosId
+            },
+            success: function(data) {
+                console.log(data);
+                if(data.status==1){
+                    var fkUserList=data.resultMap.userList;
+
+                    if(fkUserList!=null) {
+                        for (var t = 0; t < fkUserList.length; t++) {
+                            var techOfficeHtml = '';
+                            techOfficeHtml += '<option value="' + fkUserList[t].id + '">' + fkUserList[t].userName + '</option>';
+                            $("#InDoctor").append(techOfficeHtml);
+                        }
+                    }
+                }
+            },
+        });
+    }
+    
+//  以下是申请医院的联动............................................................................
+
+		console.log(user);
+        
+	//指定医院选择 联动 科室
+        $("#applyHos").change(function(){
+            //联动查询 此医院下的科室
+            applytechOfficeBooking($("#applyHos").val());
+        });
+        //指定医院选择 联动医生
+        $("#applyDepartment").change(function(){
+            //联动查询 此医院下的医生
+            applytheDoctorBooking($("#applyDepartment").val());
+        });
+//     applyreadHospitalBooking();
+       //指定医院下拉框 初始化
+    function applyreadHospitalBooking() {
+        $("#applyHos").html('');
+        $.ajax({
+            type: "get",
+            url: config + "/sys/hospital/list",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data: {},
+            success: function(data) {
+                console.log(data);
+                if(data.status==1){
+                    var hospitalList=data.resultMap.hospitalList;
+                    if(hospitalList!=null){
+                        for(var s=0;s<hospitalList.length;s++){
+                            var hospitalHtml='';
+                            hospitalHtml+='<option value="'+hospitalList[s].id+'">'+hospitalList[s].name+'</option>';
+                            $("#applyHos").append(hospitalHtml);
+                        }
+                    }
+                }
+                if(userId!=1){
+		        	$("#applyHos").val(user.deptId);
+		        	$("#applyHos").attr("disabled","disabled");
+		        }
+                applytechOfficeBooking($("#applyHos").val());
+            },
+        });
+    }
+    //指定科室初始化
+    function applytechOfficeBooking(selectHosId){//参数为当前选择上的医院的id和科室的select的id
+        $("#applyDepartment").html('');
+        $.ajax({
+            type: "get",
+            url: config + "/sys/section/list",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data: {fkHospitalId:selectHosId},
+            success: function(data) {
+                console.log(data);
+                if(data.status==1){
+                    var sectionList=data.resultMap.sectionList;
+                    if(sectionList!=null) {
+
+                        for (var t = 0; t < sectionList.length; t++) {
+                            var techOfficeHtml = '';
+                            techOfficeHtml += '<option value="' + sectionList[t].id + '">' + sectionList[t].name + '</option>';
+                            $("#applyDepartment").append(techOfficeHtml);
+                        }
+                    }
+                    if(userId!=1){
+			        	$("#applyDepartment").val(user.fkSectionId);
+			        	$("#applyDepartment").attr("disabled","disabled");
+			        }
+                    applytheDoctorBooking($("#applyDepartment").val());
+                }
+            },
+        });
+    }
+    //指定医生初始化
+    function applytheDoctorBooking(selectHosId){//参数为当前选择上科室的select的id
+        $("#applyDoctor").html('');
+        $.ajax({
+            type: "get",
+            url: config + "/sys/user/list",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data: {
+//              type:1,
+                fkSectionId:selectHosId
+            },
+            success: function(data) {
+                console.log(data);
+                if(data.status==1){
+                    var fkUserList=data.resultMap.userList;
+
+                    if(fkUserList!=null) {
+                        for (var t = 0; t < fkUserList.length; t++) {
+                            var techOfficeHtml = '';
+                            techOfficeHtml += '<option value="' + fkUserList[t].id + '">' + fkUserList[t].userName + '</option>';
+                            $("#applyDoctor").append(techOfficeHtml);
+                        }
+                    }
+                }
+                if(userId!=1){
+			        $("#applyDoctor").val(user.id);
+			        $("#applyDoctor").attr("disabled","disabled");
+			    }
+            },
+        });
+    }
+//  读取患者姓名
+	var patientArr=[];
+	readPatientName()
+	function readPatientName(){
+		ajaxGet("/patient/getPatientList",{deptId:userId.deptId},function(data) {
+                console.log(data);
+                var patinfoList=data.resultMap.patientList;
+                for(var i=0;i<patinfoList.length;i++){
+                	var patientObj={
+                		"id": patinfoList[i].id,
+	                    "word": patinfoList[i].name,
+	                    "description":patinfoList[i].mobile
+                	};
+                	patientArr.push(patientObj);
+                }
+                var testdataBsSuggest = $("#test_data").bsSuggest({
+		            indexId: 0,
+		            indexKey: 1,
+		            data: {
+		                "value": patientArr
+		            }
+		        }).on("onSetSelectValue", function (a, b) {//选择商品后触发
+		        	console.log(b.id);
+					checkUserInfo(b.id);
+            });
+            });
+	}
+	
+//	根据用户id查询出用户信息
+	function checkUserInfo(patientId){
+		ajaxGet("/patient/getPatient",{id:patientId},function(data) {
+                console.log(data);
+//              var patinfoList=data.resultMap.patinfoList;
+				if(data.resultMap.patient.sex=="男"){
+					$("#sex").val(0);//患者性别
+				}else{
+					$("#sex").val(1);//患者性别
+				}   
+				$("#patientId").val(data.resultMap.patient.id);
+                $("#userAge").val(data.resultMap.patient.age);//患者年龄
+                $("#userTel").val(data.resultMap.patient.mobile);//患者电话
+                $("#identityCode").val(data.resultMap.patient.idCard);//患者身份证号码
+                $("#sex").attr("disabled","disabled");
+                $("#userAge").attr("disabled","disabled");
+                $("#userTel").attr("disabled","disabled");
+                $("#identityCode").attr("disabled","disabled");
+           });
+	}
+	
+	
+	//	加载日期插件
+ 
+// var start = {
+// 	elem: "#checkTime",
+// 	format: "YYYY-MM-DD hh:mm",//YYYY/MM/DD hh:mm:ss
+// 	min: laydate.now(),
+// 	max: "2099-06-16 23:59",
+// 	istime: true,
+// 	istoday: false,
+// 	fixed: true, //是否固定在可视区域
+// 	choose: function(datas) {
+//// 		end.min = datas;
+//// 		end.start = datas 	
+// 	}
+// };
+// laydate(start);
+//限定可选日期
+function formatDate() {
+	var d = new Date(),
+		month = '' + (d.getMonth() + 1),
+		day = '' + d.getDate(),
+		year = d.getFullYear();
+	if (month.length < 2) month = '0' + month;
+	if (day.length < 2) day = '0' + day;
+	return [year, month, day].join('-');
+}
+function currentDate(){
+	var d = new Date(),
+		month = '' + (d.getMonth() + 1),
+		day = '' + d.getDate(),
+		year = d.getFullYear();
+	var hours= d.getHours()<10?'0'+d.getHours():d.getHours();
+	var minutes=d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+	var seconds=d.getSeconds()<10?'0'+d.getSeconds():d.getSeconds();
+	if (month.length < 2) month = '0' + month;
+	if (day.length < 2) day = '0' + day;
+	return [year, month, day].join('-')+" "+hours+":"+minutes+":"+seconds;
+}
+console.log(currentDate());
+var minTimes=0;
+var ins22 = laydate.render({
+  elem: '#checkTime'
+  ,min: currentDate()
+  ,type: 'datetime'
+  ,max: '2080-10-14'
+	,istime: true
+	,istoday: false
+  ,ready: function(){
+    //ins22.hint('日期可选值设定在 <br> '+formatDate()+'到 2080-10-14');
+    var e=new Date();
+    var hours= e.getHours()<10?'0'+e.getHours():e.getHours();
+	var minutes=e.getMinutes()<10?'0'+e.getMinutes():e.getMinutes();
+	var seconds=e.getSeconds()<10?'0'+e.getSeconds():e.getSeconds();
+    minTimes=hours+":"+minutes+":"+seconds;
+  }
+});
+
+//获取会诊机构
+var chosedDeptId;
+$(".choseDeptPlate").html('');
+		function getDeptList(pid,choseId){
+			ajaxGet('/sys/dept/getDeptList',{//等级
+				pid:pid
+			},function(data){
+				console.log(data.resultMap.deptList);
+				if(data.status==0){
+					if(pid==0){
+						$(".choseDeptPlate").html('');
+					}
+					if(data.resultMap.deptList.length>0){
+						var html='';
+						html+='<div class="qrm-borde'+pid+' qrmBox">';
+						html+='<span style="display:none;">'+pid+'</span>';
+						html+='<ul class="qrm-lev-'+pid+' qrm-lev">';
+						$.each(data.resultMap.deptList,function(i,val){  //遍历二维数组
+		//				    console.log(val);
+							html+='<li><span class="deptName">'+val.name+'</span>';
+							html+='<span style="display:none;" class="listIds">'+val.id+'</span>';
+							html+='<i class="qrm-arrow-right"></i>';
+							html+='</li>';
+						})
+						html+='</ul>';
+						html+='</div>';
+						$(".choseDeptPlate").append(html);
+					}else{
+						console.log($(".active"));
+						var str='';
+						chosedDeptId=pid;
+						$(".active").each(function(i,thisData){
+							if(i<$(".active").length-1){
+								str+=$(this).find(".deptName").text()+'/';
+							}else{
+								str+=$(this).find(".deptName").text()
+							}
+						});
+						$("#"+choseId).val(str);
+						console.log($("#"+choseId).parent().parent().parent().parent().parent().parent().parent().next().find("select").attr("id"));
+						if(user.userCode!='admin'){
+							$("#specialDept1").val(user.deptFullName);
+						}
+						$("#"+choseId).prev('span').text(pid);
+						var currentDoctorDomId=$("#"+choseId).parent().parent().parent().parent().parent().parent().parent().next().find("select").attr("id");
+						getDocList(chosedDeptId,currentDoctorDomId)
+						$(".choseDeptPlate").hide();
+						$(".qrm-pinming").css("border","1px solid #ddd");
+            			$(".qrm-pinming").css("background-image","url(images/qrm-arrow-down.png)");
+						
+					}
+				}
+				
+				
+			});
+			
+		}
+//		获取医生列表
+		function getDocList(chosedDeptId,currentDoctorDomId){
+			ajaxGet('/sys/user/getUserList',{//等级
+				deptId:chosedDeptId
+			},function(data){
+				console.log(data);
+				if(data.status==0){
+					$("#"+currentDoctorDomId).html('');
+                    var fkUserList=data.resultMap.userList;
+
+                    if(fkUserList!=null) {
+                        for (var t = 0; t < fkUserList.length; t++) {
+                            var techOfficeHtml = '';
+                            techOfficeHtml += '<option value="' + fkUserList[t].id + '">' + fkUserList[t].userName + '</option>';
+                            $("#"+currentDoctorDomId).append(techOfficeHtml);
+                        }
+                    }
+                }
+                if(userId!=1){
+			        $("#applyDoctor").val(user.id);
+			        $("#applyDoctor").attr("disabled","disabled");
+			    }
+			});
+		}
+		window.onload=function(){
+			$(document).on("click",".qrmBox li",function(){
+					$(this).addClass("active").siblings("li").removeClass("active");
+					$(this).parent().parent().nextAll().remove();
+					console.log($(this).parent().parent().parent().parent().find("input").attr("id"));
+					getDeptList($(this).find(".listIds").text().trim(),$(this).parent().parent().parent().parent().find("input").attr("id"));
+				});
+			$(".qrm-input-border").click(function () {
+				getDeptList('0');
+		        $(this).parent().next(".choseDeptPlate").toggle();
+		    });
+//		    判断是否为管理员
+			console.log(user.userCode);
+			if(user.userCode=='admin'){//管理员身份
+				$("#specialDept1").parent().css({"pointer-events":"inherit"});
+				$("#applyDoctor").removeAttr('disabled');
+			}else{
+				getDeptList(user.deptId,'specialDept1');
+				$("#specialDept1").val(user.deptFullName);
+				$("#hiddenDeptId1").val(user.id);
+				$("#applyDoctor").val(user.id);
+				$("#specialDept1").parent().css({"pointer-events":"none"});
+				$("#applyDoctor").attr('disabled',"disabled");
+			}
+		}
+		
+		//		文件解析图片
+		$(document).on("change", ".fileInput", function (e) {
+			var defalutId=0;//0是添加新的元素，1是修改
+			if($(this).parent().attr("id")){
+				defalutId=0;
+			}else{
+				defalutId=1;
+			}
+		    readURL(this,defalutId);
+		})
+
+		function readURL(input,defalutId) {
+		    $.each(input.files, function (index, row) {
+		        var reader = new FileReader();
+			console.log(input.files[0]);
+		        reader.onload = function (e) {
+//		            $("#showimg").attr('src', e.target.result);
+					if(defalutId==0){
+						$(input).next(".uploadImg").html(`<img src="`+e.target.result+`" alt="">`);
+										$(input).parent().append(`<div class="delImgBtn">
+											×
+										</div>`);
+						$(input).parent().after(`<div class="fileBox lf"id="empertyInput">
+									<input type="file" class="fileInput"accept="image/*"/>
+									<div class="uploadImg">
+										+
+									</div>
+								</div>`);
+								$(input).parent().removeAttr("id");
+//						$("#empertyInput .fileInput").val('');		
+					}else{
+//						$(input).parent().find(".hiddenFiles").text(input.files[0]).replace(/\"/g, "'");
+						$(input).next().find("img").attr("src",e.target.result);
+					}
+					
+		        }
+		        reader.readAsDataURL(row);
+		    });
+		}
+		//		删除新增中的file
+		$(document).on("click","#addDoctorPic .delImgBtn",function(){
+			$(this).parent().remove();
+		});
+    </script>
+    <script type="text/javascript" src="../../js/stats.js"charset="utf-8"></script>
+</body>
+
+</html>

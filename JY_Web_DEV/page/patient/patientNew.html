@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7,chrome=1" />
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" /> -->
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="email=no">
+		<meta name="format-detection" content="adress=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<title>患者管理</title>
+		
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../css/patientInfo.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/calendar.css" />
+		<link href="../../css/font-awesome.min.css" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/style.min.css" rel="stylesheet">
+		<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/init.css">
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="font/iconfont.css">
+		<!-- 本页面CSS -->
+		<link rel="stylesheet" type="text/css" href="css/patient.css"/>
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/patient.js" ></script>
+		<!-- 其他页JS -->
+		<!-- <script type="text/javascript" src="../registrationVisits/js/registrationVisits.js"></script> -->
+		<!--<script type="text/javascript" src="js/newpatient.js" ></script>-->
+	</head>
+	<body>
+		<!-- 2019-05-26完成 -->		
+		<!-- 内容区域搜索条及表格展示 -->
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12 topBox1">
+					<div class="col-sm-1" style="width: 14%;">
+						<div class="input-group">
+							<!--<input type="text" placeholder="输入患者、身份证号、手机号" class="input-sm form-control">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-sm btn-primary"> 搜索</button>
+							</span>-->
+						</div>
+						<div class="input-group formBox">
+							<!--<label for="username"style="width: 40%;">患者姓名</label>-->
+							<input type="text" placeholder="患者姓名" id="username" class="input-sm form-control queryContent" style="width: 55%;"/>
+						</div>
+					</div>
+					<div class="col-sm-1" style="width: 16%;">
+						<div class="input-group formBox">
+							<!--<input type="text" placeholder="输入性别" class="input-sm form-control">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-sm btn-primary"> 搜索</button>
+							</span>-->
+							<!--<label for="sex"style="width: 40%;">性别</label>-->
+							<select name="" id="sex" class="querySelect" style="width: 55%;">
+								<option value="">性别</option>
+								<option value="男">男</option>
+								<option value="女">女</option>
+							</select>
+						</div>						
+					</div>
+					<div class="col-sm-1" style="width: 14%;">
+						<div class="input-group formBox">
+							<!--<input type="text" placeholder="输入年龄" class="input-sm form-control">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-sm btn-primary"> 搜索</button>
+							</span>-->
+							<!--<label for="age"style="width: 40%;">年龄</label>-->
+							<input type="text" placeholder="年龄" id="age" class="input-sm form-control queryContent" style="width: 55%;border-radius: 3px;">
+						</div>
+					</div>
+					<div class="col-sm-1 col-lg-1" style="width: 5%;">
+						<div class="input-group formBox">
+							<button type="button" class="querybtn topBtn" id="querybtn">查询</button>
+						</div>
+					</div>
+					<div class="col-sm-1 col-lg-1" style="width: 5%;">
+						<div class="input-group formBox">
+							<button type="button" class="resetbtn topBtn">清空</button>
+						</div>
+					</div>
+					<div class="col-sm-1 col-lg-1" style="width: 5%;">
+						<div class="input-group formBox">
+							<button type="button" id="addBtn" class="addbtn topBtn" data-toggle="modal" style="margin-left: 0px !important;" data-target="#registrationModal">新增</button>
+							<button type="button" class="overbtn" data-toggle="modal" data-target="#registrationOverModal">结束就诊</button>
+						</div>
+					</div>
+					<!--<div class="col-sm-2 pull-right">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#registrationModal">登记</button>
+							</span>
+						</div>
+					</div>-->
+					<!--<div class="pull-right">
+						<button type="button" id="btn">刷新</button>
+					</div>-->
+				</div>
+			</div>
+		</div>
+		
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-content">
+							<div class="table-title">
+								<span class="allnum">共计：20人</span>
+							</div>
+							<!--表头-->
+							<div class="tableNav">设备信息</div>
+							<table class="table table-striped table-bordered table-hover dataTables-example tableclick" border="0" cellspacing="0" cellpadding="0" id="">
+								<thead>
+									<tr>
+										<th class="boxRightBorder" style="width: 5%;">序号</th>
+										<th class="boxRightBorder" style="width: 6%;">头像</th>
+										<th class="boxRightBorder" style="width: 10%;">患者姓名</th>
+										<th class="boxRightBorder" style="width: 6%;">性别</th>
+										<th class="boxRightBorder" style="width: 6%;">年龄</th>
+										<th class="boxRightBorder" style="width: 15%;">身份证号</th>
+										<th class="boxRightBorder" style="width: 10%;">手机号</th>
+										<th class="boxRightBorder" style="width: 10%;">操作</th>
+									</tr>
+								</thead>
+								<tbody class="oWrapper">
+									<tr class="tpl">
+										<td class="boxRightBorder"></td>
+										<td class="boxRightBorder">
+											<img src="../../img/user.png" class="headicon">
+										</td>
+										<td class="boxRightBorder"></td>
+										<td class="boxRightBorder"></td>
+										<td class="boxRightBorder"></td>
+										<td class="boxRightBorder"></td>
+										<td class="boxRightBorder"></td>
+										<td class="boxRightBorder">
+											<button type="button" class="query btnTextColor">查看</button>
+											<button type="button" class="change btnTextColor">修改</button>
+										</td>
+										<td class="boxRightBorder"></td>
+										<td class="boxRightBorder"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--<ul class="pagination">
+				<li class=""><a href="#">&laquo;</a></li>
+				<li class="active"><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">&raquo;</a></li>
+			</ul>-->
+		</div>
+		<!--登记模态框-->
+		<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationLabel" aria-hidden="true" data-backdrop="static">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        		<h4 class="modal-title" id="registrationLabel">新增</h4>
+		      		</div>
+			      	<div class="modal-body">
+			        	<iframe class="registration" name="registration" id="registration" frameborder="no" src="../registrationVisits/registrationVisits.html"></iframe>
+			      	</div>
+			      	<!--<div class="modal-footer">			        	
+			        	<button type="button" class="btn btn-primary btn-success" id="sumbtn">确定</button>
+			        	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+		      		</div>-->
+		    	</div>
+		  	</div>
+		</div>
+		<!--结束模态框-->
+		<div class="modal fade" id="registrationOverModal" tabindex="-1" role="dialog" aria-labelledby="registrationLabel1" aria-hidden="true" data-backdrop="static">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        		<h4 class="modal-title" id="registrationLabel1">结束就诊</h4>
+		      		</div>
+			      	<div class="modal-body">
+			        	<!--<iframe class="registration" name="registration" id="registration1" frameborder="no" src="../registrationVisits/registrationVisits.html"></iframe>-->
+			      	</div>
+			      	<!--<div class="modal-footer">			        	
+			        	<button type="button" class="btn btn-primary btn-success" id="sumbtn">确定</button>
+			        	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+		      		</div>-->
+		    	</div>
+		  	</div>
+		</div>
+		<!--分页-->
+		<div class="doctorpageN"></div>
+		<!-- 结束就诊人ID存储 -->
+		<input type="hidden" value="" id="overId" />
+		<!--医生新增-->
+		<!--<div id="doctorlight4" class="white_content">
+			<div class="white_contentHead">
+				<span class="infoTitle">发送消息</span>
+				<a id="close" class="close"href="javascript:void(0)" onclick="closeF()">&times;</a>
+			</div>
+			<div class="infoDetails">
+				<div class="infoDetailsHead">发送消息</div>
+				<ul class="infoDetails-ul">
+                    
+                        <li style="width:100%">
+                                <span class="infoDetails-title" style="display: inline-block;height:20px;width: 98px;text-align: right;">消息标题：</span><input type="text" name="" id="title" value=""/>
+                        </li>
+                    <li><span class="infoDetails-title">发送消息类型：</span>
+                        <select name=""  class="liinput" style="width: 70%;height: 30px;"id="changeMessageType">
+                            </select>
+                    </li>
+                    <li style="padding-top:4px;"><div class="infoDetails-title" style="float:left;">发送端：</div>
+                        <div>
+                                <label style="margin-right: 10px;">
+                                    <input type="checkbox" style="height:15px;width:15px;vertical-align: sub;" value="1" name="ck" id="inlineCheckbox1">PC</label>
+                                <label>
+                                    <input type="checkbox" style="height:15px;width:15px;vertical-align: sub;" value="1" id="inlineCheckbox2">手机端</label>
+                            </div></li>
+					<li class="liBig">
+						<span class="infoDetails-title lf"style="display: inline-block;height:100px;width: 98px;text-align: right;">消息内容：</span>
+						<textarea class="liinput" id="addDoctorInfoDetail"style="height:100px;width:538px !important;"></textarea>
+					</li>
+				</ul>
+            </div>
+            <div class="progress" style="display: none;">
+                    <div id="progress" style="width: 0%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" role="progressbar" class="progress-bar progress-bar-success">
+                        <span class="sr-only">35% Complete (success)</span>
+                    </div>
+                </div>
+			<button id="add-ok">发送</button>
+
+			<a id="close4" href="javascript:void(0)" onclick="closeF()">取消</a>
+		</div>-->
+		<!--灰背景-->
+		<div id="fade" class="black_overlay"></div>
+
+
+		<script src="../../js/bootstrap.min.js"></script>
+		<script src="../../js/plugins/jeditable/jquery.jeditable.js"></script>
+		<script src="../../js/plugins/dataTables/jquery.dataTables.js"></script>
+		<script src="../../js/plugins/dataTables/dataTables.bootstrap.js"></script>
+		<script src="../../js/content.min.js"></script>
+	</body>
+	<!--<script src="../../test.js"></script>-->
+</html>

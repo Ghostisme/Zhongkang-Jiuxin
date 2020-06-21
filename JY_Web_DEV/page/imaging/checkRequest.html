@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>中康九悦远程医疗管理系统 - 用户信息修改</title>
+
+		<meta name="keywords" content="中康九悦远程医疗管理系统">
+		<meta name="description" content="中康九悦远程医疗管理系统">
+
+		<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css" rel="stylesheet">
+		<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/style.min.css" rel="stylesheet">
+		<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../css/plugins/webuploader/webuploader.css">
+		<link rel="stylesheet" type="text/css" href="../../css/demo/webuploader-demo.min.css">
+		<link rel="stylesheet" href="../../css/public.css" />
+		<link rel="stylesheet" href="../../css/checkRequest.css" />
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/element-ui.css" />
+		<style type="text/css">
+			.table-responsive {
+				border: 0.5px solid #e5e6e7;
+				border-top: 0;
+				padding-bottom: 40px;
+				padding-right: 1px;
+			}
+			
+			.flexBox {
+				display: -webkit-box;
+				/* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+				display: -moz-box;
+				/* Firefox 17- */
+				display: -webkit-flex;
+				/* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+				display: -moz-flex;
+				/* Firefox 18+ */
+				display: -ms-flexbox;
+				/* IE 10 */
+				display: flex;
+				/* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+			}
+			
+			#equipment_div {
+				font-size: 12px;
+				line-height: 30px;
+				margin-top: 10px;
+				width: 200px;
+			}
+			
+			#form label {
+				margin-bottom: 0px;
+			}
+			
+			.table-bordered {
+				border: none;
+			}
+			
+			.tableInput {
+				background: #fff;
+			}
+			
+			.dropdown-toggle {
+				height: 36px;
+				border: 1px solid #e5e6e7;
+				border-left: none;
+			}
+			
+			.dropdown-toggle:hover {
+				border: 1px solid #e5e6e7;
+				border-left: none;
+			}
+			
+			.tdiv {
+				border: 1px solid #e5e6e7;
+				height: 36px;
+				line-height: 36px;
+				padding-left: 16px
+			}
+			
+			.tabsBar ul {
+				display: flex;
+				justify-content: center;
+				align-items: baseline;
+				height: 64px;
+				padding: 15px;
+			}
+			
+			.tabsBar ul li {
+				height: 2px;
+				position: relative;
+			}
+			
+			.tabsBar ul li a {
+				text-align: center;
+			}
+			
+			.tabsBar ul li div {
+				width: 19px;
+				height: 19px;
+				border-radius: 50%;
+				position: absolute;
+				right: -19px;
+				top: 6px;
+				z-index: 99999;
+				margin-top: -15px;
+				background: #ddd;
+			}
+			
+			.mask_content_box {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translateX(-50%);
+				background: #fff;
+				width: 30%;
+			}
+			
+			.input-group-btn .caret {
+				border-top: 6.5px dashed;
+				border-right: 3px solid transparent;
+				border-left: 3px solid transparent;
+			}
+			
+			.printProj {
+				margin-left: 88px;
+			}
+			
+			label {
+				color: #333;
+			}
+			
+			.form-control {
+				border: 1px solid #e5e6e7 !important;
+			}
+			
+			.select-time,
+			.patient-phone {
+				width: 35%;
+			}
+			
+			#deleteClear {
+				position: absolute;
+				width: 27px;
+				top: 13px;
+				right: -18px;
+				cursor: pointer;
+				display: none;
+			}
+			
+			@media screen and (max-width: 1300px) {
+				.equipmentImg {
+					max-height: 76px;
+				}
+				.select-time {
+					width: 32%;
+				}
+				.patient-phone {
+					width: 33.5%;
+				}
+				.ios-border {
+					appearance: none;
+					-moz-appearance: none;
+					-webkit-appearance: none;
+					/*在选择框的最右侧中间显示小箭头图片*/
+					background: url(../../img/select.png) no-repeat scroll right center transparent;
+					background-origin: content-box;
+					background-size: 6px 8px;
+					/*为下拉小箭头留出一点位置，避免被文字覆盖*/
+					padding-right: 11px !important;
+				}
+			}
+		</style>
+	</head>
+
+	<body style="padding: 0px;">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div>
+				<div class="clients-list">
+					<div class="tab-content">
+						<div>
+							<!--状态-->
+							<div class="tabsBar">
+								<ul>
+									<li id="writeCheckForm" class="activeTabs">
+										<div style="left: -19px;background: #51659B;">
+
+										</div>
+										<div class="activeTabs">
+
+										</div>
+										<a>1.填写检查申请单</a>
+									</li>
+									<li id="sureCheckForm">
+										<div id="sureCheckForm1">
+
+										</div>
+										<a>2.确认检查申请单</a>
+									</li>
+									<li id="sendSuccess">
+										<div id="sendSuccess1">
+
+										</div>
+										<a>3.发送成功</a>
+
+									</li>
+								</ul>
+							</div>
+							<div class="full-height-scroll">
+								<div class="table-responsive">
+									<h3 class="requestOrder">MR检查申请单</h3>
+									<form id="form" class="wizard-big ">
+
+										<!--<h1>填写检查申请单</h1>-->
+										<fieldset class="f1">
+											<div class="flexBox" style=" margin-top: 15px;">
+												<div style="width: 17%">
+													<div>
+														<div class="contact-box" style="padding-left: 40px;">
+															<a>
+																<div class="equipmentImages">
+																	<div class="text-center">
+																		<img alt="image" class="img-responsive equipmentImg" src="../../img/login-background.jpg">
+																	</div>
+																</div>
+																<div id="equipment_div">
+																	<div><strong id="es_hospital">aa医院</strong></div>
+																	<div><strong>设备名称: </strong><span id="es_equipmentName">设备名称</span></div>
+																	<div><strong>设备品牌: </strong><span id="es_equipmentBrand">设备品牌</span></div>
+																	<div>
+																		<strong>设备型号: </strong>
+																		<span class="sku" id="es_equipmentModel">型号</span>
+																	</div>
+																	<div class="equipmentPrices" style="display: none">
+																		<span>价格：</span>
+																		<span class="originalPrice" id="es_price"></span>元
+																		<!--<span style="margin-left: 20px;">价格：</span>
+																		<span class="presentPrice">350</span>元-->
+																	</div>
+
+																</div>
+																<div class="clearfix"></div>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div style="width: 80%; padding-right:20px ;">
+													<div class="ibox-content" style="padding-top: 0px;">
+
+														<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>检查医院</label></td>
+																	<td class="tableInputContent InputCheckHos" style="width: 35%;">
+																		<div id="td_hospital" class="tdiv" style="background-color: rgb(236, 237, 239);">
+
+																		</div>
+																	</td>
+																	<td class="tableInputTitle InputCheckType" style="text-indent: 14px;"><label>设备类型</label></td>
+																	<td>
+																		<div id="td_equipmentName" class="tdiv" style="background-color: rgb(236, 237, 239);">
+
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>选择检查时间</label></td>
+																	<td class="tableInputContent select-time">
+																		<select id="checkTime" name="checkTime" class="form-control required ios-border" style="border: 1px solid #e5e6e7 !IMPORTANT;">
+																			<!--<option value="0">
+																			周一
+																		</option>
+																		<option value="1">
+																			周二
+																		</option>
+																		<option value="1">
+																			周四
+																		</option>
+																		<option value="1">
+																			周五
+																		</option>
+																		<option value="1">
+																			周日
+																		</option>-->
+																		</select>
+																	</td>
+																	<td class="tableInputTitle" style="text-indent: 14px;"><label>检查地点</label></td>
+																	<td>
+																		<div id="td_address" class="tdiv" style="background-color: rgb(236, 237, 239);">
+
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>患者姓名</label></td>
+																	<td style="width: 35%; position: relative;">
+																		<!--<input id="userName" name="userName" type="text" class="form-control required">-->
+																		<div class="row">
+																			<div class="col-lg-12" style="padding: 0px;border: 1px solid #e5e6e7;">
+																				<div class="input-group">
+																					<input type="text" class="form-control" id="test_data" style="border: 1px solid #e5e6e7 !IMPORTANT; background: #fff !important;border-right: 1px solid transparent !important;">
+																					<div class="input-group-btn">
+																						<button id="dropdownName" type="button" class="btn-white dropdown-toggle" data-toggle="dropdown">
+																						<span class="caret" style="margin-left: 37px;"></span>
+																					</button>
+																						<ul class="dropdown-menu dropdown-menu-right" role="menu" id="chosePatient">
+																						</ul>
+
+																					</div>
+																					<!-- /btn-group -->
+																				</div>
+																			</div>
+																		</div>
+																		<img id="deleteClear" src="../../img/delete.png" />
+																	</td>
+																	<td class="tableInputTitle" style="text-indent: 14px;"><label>性别</label></td>
+																	<td style="width: 18%;">
+																		<select id="sex" name="userSex" class="form-control required ios-border" style="border: 1px solid #e5e6e7 !IMPORTANT;">
+																			<option value="0">
+																				男
+																			</option>
+																			<option value="1">
+																				女
+																			</option>
+																		</select>
+																	</td>
+																	<td class="tableInputTitle" style="text-indent: 14px;"><label>年龄</label></td>
+																	<td>
+																		<input id="userAge" name="userAge" type="text" class="form-control required">
+																	</td>
+																</tr>
+
+															</tbody>
+														</table>
+														<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>患者手机号</label></td>
+																	<td class="patient-phone">
+																		<input id="userTel" name="userTel" type="text" class="form-control required">
+																		<span class="warns" style="white-space: initial;">(非常重要,紧急情况便于联系和查看检查结果)</span>
+																	</td>
+																	<td class="tableInputTitle" style="text-indent: 14px;"><label>身份证号</label></td>
+																	<td style="width: 18%;">
+																		<input id="identityCode" name="identityCode" type="text" class="form-control">
+																	</td>
+																	<td class="tableInputTitle" style="text-indent: 14px;"><label>住院/门诊</label></td>
+																	<td>
+																		<div class="tdiv" id="InHos" style="background-color: rgb(236, 237, 239);">
+																			门诊
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+
+														<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>检查项目</label></td>
+																	<td>
+																		<input style="width: 37.3%;" type="text" readonly="readonly" value="请选择" placeholder="请选择" class="form-control required chosePosition lf chosePyBtn" />
+																		<img src="../../img/select.png" style="width: 6px;position: relative;left: -15px;top: 8px;" />
+																	</td>
+																</tr>
+
+																<tr class="regionsContent">
+
+																	<td class="fullTd" colspan="3" style="position: relative">
+																		<div class="chosedProj" id="div_jxList" style="margin-left: 7.5%;">
+																			<!--<span class="Regions chosedProjs">头部</span>
+																		<span class="Regions chosedProjs">颈部</span>
+																		<span class="Regions chosedProjs">胸腔</span>-->
+																		</div>
+																		<!--悬停显示-->
+																		<div class="xtjcbw">￥345.00(腹部，腹部)</div>
+
+																		<div class="totlePrices rt">
+																			￥<span class="totlePricesNum">340.00</span>
+																		</div>
+
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+
+														<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>简要病史</label></td>
+																	<td>
+																		<textarea id="briefHistory" maxlength="200" name="briefHistory" type="text" class="form-control required" placeholder="最多可输入200字"></textarea>
+
+																		<!--<label style="display: none;color: #cc5965;margin-left: 5px;" class="error_max"><i class="fa fa-times-circle"></i>  最多可输入200字</label>-->
+																		<script>
+																			/*function max_check(that) {
+																																																																																																																																																																																																																																																																										var val=$(that).val();
+																																																																																																																																																																																																																																																																										if(val.length>199){
+																																																																																																																																																																																																																																																							                                                                                $(that).parent().find('.error_max').show();
+																																																																																																																																																																																																																																																																										}else{
+																																																																																																																																																																																																																																																							                                                                                $(that).parent().find('.error_max').hide();
+																																																																																																																																																																																																																																																							                                                                            }
+																																																																																																																																																																																																																																																							                                                                        }*/
+																		</script>
+																	</td>
+																</tr>
+
+															</tbody>
+														</table>
+														<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>查体</label></td>
+																	<td>
+																		<textarea id="physicalExamination" maxlength="200" name="physicalExamination" type="text" class="form-control required" placeholder="最多可输入200字"></textarea>
+																		<!--<label style="display: none;color: #cc5965;margin-left: 5px;" class="error_max"><i class="fa fa-times-circle"></i>  最多可输入200字</label>-->
+
+																	</td>
+
+																</tr>
+															</tbody>
+														</table>
+														<!--<table class="table table-bordered tableInput">
+														<tbody>
+															<tr>
+																<td class="tableInputTitle"><label>图片上传</label></td>
+																<td id="assistantExamination">
+																	<div id="uploader" class="wu-example">
+																		<div class="queueList">
+																			<div id="dndArea" class="placeholder">
+																				<div id="filePicker"></div>
+																				<p>或将照片拖到这里，单次最多可选300张</p>
+																			</div>
+																		</div>
+																		<div class="statusBar" style="display:none;">
+																			<div class="progress">
+																				<span class="text">0%</span>
+																				<span class="percentage"></span>
+																			</div>
+																			<div class="info"></div>
+																			<div class="btns">
+																				<div id="filePicker2"></div>
+																				<div class="uploadBtn"style="display:none;">开始上传</div>
+																			</div>
+																		</div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>-->
+													</div>
+												</div>
+											</div>
+											<div class="row makeSureBtn">
+												<button type="submit" id="addBtn" style="width: 110px;" class=" btn btn-w-m SureBtn">确认</button>
+											</div>
+
+											<!--弹窗-->
+
+											<div id="reportQueryFade" class="black_overlay" style="display: none;z-index: 999;">
+												<div class="mask_content_box" style="height: 250px; top: calc(50% - 125px);">
+													<div class="content_header">
+														<div class="header_title">提交信息</div>
+														<div class="close" id="cancel">×
+															<!--<span>×</span>-->
+														</div>
+													</div>
+													<div class="content_middle">
+														<div class="chooseDel" style="">
+															<div>
+																<img src="../../img/warn.png" width="55" height="48"> 提交信息
+															</div>
+															<div>您所填信息是否已检查无误？</div>
+														</div>
+														<div class="btnGroup delGroup" style="">
+															<button type="button" class="subBtn subBtn3 Btn comTempateSaveBtn" id="confirm" style="border: none;">确认</button>
+															<!--<button type="button" class="resBtn resBtn3 Btn">取消</button>-->
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!--第二步合计按钮-->
+											<div class="row makeSubmitBtn">
+												<div style="margin: 0 auto;width: 15%;">
+
+													<button type="button" style="width: 110px;" class="btn addBtn btn  sumBtn rt SureBtn">提交</button>
+													<div class="sumPrices lf">
+														￥
+														<span class="totlePricesNum2">340.00</span>
+													</div>
+												</div>
+											</div>
+										</fieldset>
+										<!--<h1>确认检查申请单</h1>-->
+										<div class="finishedPrint">
+											<fieldset class="f2" id="f2">
+												<div class="row">
+													<div class="ibox-content" style="padding: 10px;">
+														<h4><span style="margin-left: 7px;">申请单号:</span><span id="sqdh_sp">413257854255</span></h4>
+														<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>检查医院</label></td>
+																	<td class="tableInputContent printHosName">
+																		***医院
+																	</td>
+																	<td class="tableInputTitle"><label>设备类型</label></td>
+																	<td class="printType">
+																		核共振
+																	</td>
+																</tr>
+																<tr>
+																	<td class="tableInputTitle"><label>选择检查时间</label></td>
+																	<td class="tableInputContent printTime">
+
+																	</td>
+																	<td class="tableInputTitle"><label>检查地点</label></td>
+																	<td class="printAddr">
+
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>患者姓名</label></td>
+																	<td class="printUserName tableInputContent">
+
+																	</td>
+																	<td class="tableInputTitle"><label>性别</label></td>
+																	<td class="printSex tableInputContent">
+
+																	</td>
+																	<td class="tableInputTitle"><label>年龄</label></td>
+																	<td class="printAge">
+
+																	</td>
+																</tr>
+																<tr>
+																	<td class="tableInputTitle"><label>患者手机号<span class="warns" style="white-space: initial;">(非常重要,紧急情况便于联系和查看检查结果)</span></label></td>
+																	<td class="printTel tableInputContent">
+
+																	</td>
+																	<td class="tableInputTitle"><label>身份证号</label></td>
+																	<td class="printIdentityCode tableInputContent">
+
+																	</td>
+																	<td class="tableInputTitle"><label>住院/门诊</label></td>
+																	<td class="printInhos">
+
+																	</td>
+																</tr>
+
+															</tbody>
+														</table>
+
+														<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>简要病史</label></td>
+																	<td class="printBriefHistory">
+
+																	</td>
+																</tr>
+																<tr>
+																	<td class="tableInputTitle"><label>查体</label></td>
+																	<td class="printPhyExamination">
+
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>检查项目</label></td>
+																	<td class="printChosedProj">
+																		已选择以下项目
+																	</td>
+																</tr>
+																<tr>
+																	<td colspan="3">
+																		<div class="printProj">
+																			无论何时，都不要忘记，我拥有一个充满奇迹与感动的地方，家人，何时都在等我回去 </div>
+																		<div class="totlePrices rt">
+																			￥<span class="totlePricesNum3">340.00</span>
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+
+														<!--<table class="table table-bordered tableInput">
+															<tbody>
+																<tr>
+																	<td class="tableInputTitle"><label>图片</label></td>
+																	<td class="printImg">
+
+																	</td>
+																</tr>
+															</tbody>
+														</table>-->
+														<h4>
+															<span style="margin-left: 7px;">申请时间:</span><span id="sq_date">2019/5/17 17:13:45</span>
+															<span class="sumPrices rt" style="padding-right: 20px;">应付金额:￥ <span class="tolMoney" style="font-size: 18px;">1520.00</span></span>
+														</h4>
+														<!--<div class="chapter">
+															<span class="monyChapter">财务章</span>
+															<span>医联体转诊章</span>
+														</div>
+														<div class="row">
+															<div class="erCodeDiv">
+																<div class="erCode">
+																	<img src="../../img/qr_code.png" alt="" />
+																</div>
+															</div>
+														</div>-->
+
+													</div>
+												</div>
+											</fieldset>
+											<div class="row printBtns flexBox" style="justify-content: center;">
+												<button type="button" class="btn btn-w-m printBtn addBtn" style="width: 110px;">打印</button>
+												<!--<button type="button" class="btn btn-w-m closeBtn">关闭</button>-->
+											</div>
+										</div>
+
+										<!--<h1>发送成功</h1>-->
+										<fieldset class="f3">
+											<div class="text-center" style="margin-top: 120px">
+												<h2></h2>
+											</div>
+										</fieldset>
+										<input type="hidden" id="uploadImgs" name="uploadImgs">
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<div id="tab-3" class="tab-pane">
+							<div class="full-height-scroll">
+								<div class="table-responsive">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--正在加载loding-->
+			<div id="app">
+				<div  v-loading.fullscreen.lock="fullscreenLoading">		
+				</div>
+			</div>
+		</div>
+		<script src="../../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="../../js/foundation-datepicker.js"></script>
+		<script src="../../js/foundation-datepicker.min.js"></script>
+		<script src="../../js/plugins/layer/laydate/laydate.js"></script>
+		<script src="../../js/plugins/staps/jquery.steps.min.js"></script>
+		<script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+		<script src="../../js/plugins/validate/messages_zh.min.js"></script>
+		<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script src="../../js/content.min.js?v=1.0.0"></script>
+		<script type="text/javascript" src="../../js/vue.js"></script>
+		<script type="text/javascript" src="../../js/element-ui.js"></script>
+		<script type="text/javascript">
+			var BASE_URL = '../../js/plugins/webuploader';
+		</script>
+		<script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+		<script src="../../js/plugins/jquery.jqprint-0.3.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/template.js"></script>
+
+		<script>
+			var sessionId = sessionStorage.getItem('sessionId');
+			//  vue数据  正在加载
+			var app = new Vue({
+				el: '#app',
+				data() {
+					return {
+						fullscreenLoading: false
+					}
+				}
+			})
+			function getdate() {
+				var date = new Date();
+				//年
+				var year = date.getFullYear();
+				//月
+				var month = date.getMonth() + 1;
+				//日
+				var day = date.getDate();
+				//时
+				var hh = date.getHours();
+				//分
+				var mm = date.getMinutes();
+				//秒
+				var ss = date.getSeconds();
+				month = month < 10 ? "0" + month : month;
+				day = day < 10 ? "0" + day : day;
+				hh = hh < 10 ? "0" + hh : hh;
+				mm = mm < 10 ? "0" + mm : mm;
+				ss = ss < 10 ? "0" + ss : ss;
+				var rq = year + "-" + month + "-" + day + " " + hh + ":" + mm + ":" + ss;
+				return rq;
+			}
+			$(document).ready(function() {
+
+				$('#sq_date').html(getdate());
+
+				$(".contact-box").each(function() {
+					animationHover(this, "pulse")
+				})
+				$(".totlePricesNum").text($(".presentPrice").text());
+				$(".totlePricesNum2").text($(".presentPrice").text());
+				$(".totlePricesNum3").text($(".presentPrice").text());
+
+				var equipment_id = sessionStorage.getItem('c_equipment_id');
+				sbInit(equipment_id);
+
+				$('#test_data').blur(function() {
+					var val = $(this).val();
+					if(val == "") {
+						$("#sex").val(0); //患者性别
+						$("#userAge").val(''); //患者年龄
+						$("#userTel").val(''); //患者手机号
+						$("#identityCode").val(''); //患者身份证号
+
+						$("#sex").attr("disabled", false);
+						$("#userAge").attr("disabled", false);
+						$("#userTel").attr("disabled", false);
+						$("#identityCode").attr("disabled", false);
+					} else {
+						$("#deleteClear").show();
+					}
+					if(val != "" && $("#identityCode").val() == "") {
+						// alert('请去患者中心添加此患者');
+					}
+				});
+			});
+			var einfoList;
+			var equipment;
+
+			function sbInit(equipment_id) {
+				//设备列表初始化
+				ajaxGet('/checkup/toCheckup', {
+					equipmentId: equipment_id
+				}, function(res) {
+					if(res.status == 1) {
+						alert(res.message)
+						return false;
+					}
+					equipment = res.resultMap.equipment;
+					var address = equipment.examinationPlace;
+
+					$('.requestOrder').html(equipment.equipmentTypeName + "检查申请单");
+
+					$('#es_hospital').html(equipment.hospitalName);
+					$('#es_equipmentName').html(equipment.name);
+					$('#es_equipmentBrand').html(equipment.brank);
+					$('#es_equipmentModel').html(equipment.model);
+					$('#es_price').html(equipment.price);
+					$(".totlePricesNum").text($('#es_price').text());
+					$('#td_hospital').html(equipment.hospitalName);
+					$('#td_equipmentName').html(equipment.equipmentTypeName);
+					if(equipment.equipmentUrl != "" && equipment.filePath != null) {
+						$('.equipmentImg').attr("src", equipment.filePath);
+					}
+					//循环渲染检查时间
+					var erList = res.resultMap.checkupTimeList;
+					var erHtml = "";
+					for(var i = 0; i < erList.length; i++) {
+						erHtml += '<option value="' + erList[i].timeId + '">' + erList[i].timeStr + '</option>';
+					}
+					$('#checkTime').html(erHtml);
+					$('#td_address').html(address);
+
+					einfoList = res.resultMap.subsidiaryList;
+					var einfoHtml = "";
+					for(var j = 0; j < einfoList.length; j++) {
+						einfoHtml += '<span class="Regions chosedProjs jcbw_span"  data-einfo_ix="' + j + '" >' + einfoList[j].part + '</span>';
+
+					}
+					//渲染检查项目
+					$('#div_jxList').html(einfoHtml);
+					$('#td_total_price').html(0);
+
+					//检查项目 悬停显示详细
+					$('.jcbw_span').mouseover(function() {
+						var eix = $(this).attr('data-einfo_ix');
+						var xtjcbwHtml = '<div style="display: flex"><div style="min-width: 70px;">' + $(this).html() + '</div></div>';
+						xtjcbwHtml += '<div>价    格：<span  style="color: red;">￥' + einfoList[eix].price + '</span></div>';
+
+						$('.xtjcbw').html(xtjcbwHtml);
+						$('.xtjcbw').show();
+					});
+					$('.jcbw_span').mouseout(function() {
+						$('.xtjcbw').hide();
+					});
+				})
+			}
+
+			//		点击确定按钮
+			$("#form").validate();
+			$(".SureBtn").click(function(event) {
+				var idcard_patter = /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/; //身份证号校验
+				if($("#form").valid()) {
+					event.preventDefault();
+					//			校验填写的项目
+					/*if(!(/^1[34578]\d{9}$/.test($("#userTel").val()))){
+			    	$("#userTel").siblings().remove();
+					$("#userTel").after('<label id="userTel-error" class="error" for="userTel"><i class="fa fa-times-circle"></i>  请输入正确手机号</label>')
+				}else */
+				if($("#identityCode").val()!=""){
+					if(idcard_patter.test($("#identityCode").val()) == false) {
+						$("#identityCode").siblings().remove();
+						$("#identityCode").after('<label id="identityCode-error" class="error" for="identityCode"><i class="fa fa-times-circle"></i>  请输入正确身份证号</label>')
+						return false;
+					} 
+				}
+					if($(".chosedRegion").length <= 0) {
+						swal("请至少选择一项检查项目！")
+					} else {
+						//					跳转第二步
+						$("#sureCheckForm").addClass("activeTabs");
+						$("#sureCheckForm1").addClass("activeTabs");
+						$("#form input").attr("disabled", "disabled");
+						$("#form select").attr("disabled", "disabled");
+						$("#form textarea").attr("disabled", "disabled");
+						$(".makeSubmitBtn").css("display", "block");
+						$(".makeSureBtn").css("display", "none");
+						//					隐藏图片上的删除按钮
+						$(".filelist .file-panel").css("display", "none");
+
+						$("#dropdownName").attr("disabled", "disabled")
+						$("#deleteClear").hide();
+						$(".statusBar").css("display", "none");
+						$("#uploader .statusBar .btns .uploadBtn, #uploader .statusBar .btns .uploadBtn.state-paused, #uploader .statusBar .btns .uploadBtn.state-uploading, #uploader .statusBar .btns .webuploader-pick").css("display", "none");
+						//					将选择后的检查项目带到第二步   因为没有后台数据 所以暂时这么处理
+						var RegionsLen = $(".Regions");
+						for(var i = 0; i < RegionsLen.length; i++) {
+							if($(RegionsLen[i]).hasClass("chosedRegion")) {
+								$(RegionsLen[i]).css("display", "inline-block");
+							} else {
+								$(RegionsLen[i]).css("display", "none");
+							}
+							$(RegionsLen[i]).removeClass("chosedProjs");
+						}
+						$(".totlePricesNum").parent().css("display", "none"); //部位后的总计隐藏
+
+						//					去掉隐藏和显示选项卡功能
+						$(".chosePosition").removeClass("chosePyBtn");
+						//					显示部位选择区域
+						$(".regionsContent").css("display", "table-row");
+					}
+
+				}
+			})
+
+			function sbSave(formData, cn) {
+
+				ajaxGet('/checkup/save', formData, function(data) {
+
+					cn(data);
+				})
+			}
+			var insubStatus = 0;
+			//	点击第二步的提交
+			$(".sumBtn").click(function(event) {
+				$("#reportQueryFade").css("display", "block")
+				$('body').css({　　
+					"overflow-x": "hidden",
+					　　"overflow-y": "hidden"
+				});
+
+			})
+			//弹窗提交
+			$("#confirm").click(function() {
+				if(insubStatus == 1) {
+					return;
+				}
+				insubStatus = 1;
+				app.fullscreenLoading = true;
+				var user = JSON.parse(sessionStorage.getItem('user'));
+				//检查项目list
+				// var rpList=[];
+				var rpIds = "";
+				var i = 0;
+				$(".chosedRegion").each(function() {
+					var eix = $(this).attr('data-einfo_ix');
+					if(i == 0) {
+						rpIds += einfoList[eix].id;
+					} else {
+						rpIds += "," + einfoList[eix].id;
+					}
+					i++;
+				})
+				//如果不是选择人员，则是输入患者
+				if(xz_user == undefined) {
+					var age = $('#userAge').val(); //患者年龄
+					if($('#sex').val() == 1) {
+						var sex = "女"
+					} else {
+						var sex = "男"
+					}
+					var mobile = $('#userTel').val(); //患者电话 
+					var idCode = $('#identityCode').val();
+				} else {
+					var age = xz_user.age;
+					var sex = xz_user.sex;
+					var mobile = xz_user.mobile;
+					var idCode = xz_user.idCard;
+				}
+				console.log(rpIds)
+				var equipment_id_num = sessionStorage.getItem('c_equipment_id');
+				console.log(equipment)
+				console.log(xz_user)
+				if(xz_user==undefined){
+					var patientId=""
+				}else{
+					var patientId=xz_user.id
+				}
+				var formData = {
+					patientId:patientId,
+					userId: user.id, //操作人ID（即登陆人ID）
+					deptId: user.deptId, //操作人部门ID（即登陆人部门ID）
+					equipmentId: Number(equipment_id_num), //预约检查设备ID
+					checkupType: equipment.equipmentTypeName, //设备类型
+					checkupTimeId: $("#checkTime").val(), //检查时间
+					checkupTime: $("#checkTime option:selected").text(), //检查时间字符串
+					checkupAddress: $("#td_address").html(), //检查地点
+					patientName: $('#test_data').val(), //患者姓名
+					patientSex: sex, //患者性别
+					patientAge: age, //患者年龄
+					patientMobile: mobile, //患者手机
+					patientIdcard: idCode, //患者身份证号
+					brief: $('#briefHistory').val(), //简要病史
+					physical: $('#physicalExamination').val(), //查体
+					totalPrice: $(".totlePricesNum").text(), //检查总费用
+					// reviewUrl:$('#uploadImgs').val(),//图片地址数组 String[]
+					checkupProjectIds: rpIds //检查项目string[]
+				};
+				sbSave(formData, function(res) {
+					
+					insubStatus = 0;
+					if(res.status == 1) {
+						swal(res.message);
+						return;
+					}
+					app.fullscreenLoading = false;
+					swal("提交成功");
+					$('body').css({　　
+						"overflow-x": "auto",
+						　　"overflow-y": "auto"
+					});
+					$("#sendSuccess").addClass("activeTabs");
+					$("#sendSuccess1").addClass("activeTabs");
+					//		把值带到打印预览页面
+					$(".printHosName").text($(".InputCheckHos").text().trim()); //检查医院
+					$(".printType").text($("#td_equipmentName").text().trim()); //检查类型
+					$(".printTime").text($("#checkTime").find("option:selected").text().trim()); //检查时间
+					$(".printAddr").text($("#td_address").html().trim()); //检查地点
+					$(".printUserName").text($("#test_data").val().trim()); //患者姓名
+					$(".printSex").text($("#sex").find("option:selected").text().trim()); //患者性别
+					$(".printAge").text($("#userAge").val().trim()); //患者年龄
+					$(".printTel").text($("#userTel").val().trim()); //患者手机号
+					$(".printIdentityCode").text($("#identityCode").val().trim()); //患者身份证号
+					$(".printInhos").text("门诊");
+					//					$(".printInhos").text($("#InHos").find("option:selected").text().trim()); //住院或门诊
+					//			$(".printApplyHos").text($("#applyHos").val().trim());//申请医院
+					//			$(".printApplyDoctor").text($("#applyDoctor").val().trim());//申请医生
+					//			$(".printContactTel").text($("#contactTel").val().trim());//联系电话
+					$(".printBriefHistory").text($("#briefHistory").val().trim()); //简要病史
+					$(".printPhyExamination").text($("#physicalExamination").val().trim()); //查体
+					// $(".printChosedProj span").text($(".chosedProj span").length);//检查项目总数
+					$(".printProj").html($(".chosedProj").html()); //检查项目
+					$(".f1").css("display", "none");
+					$(".finishedPrint").css("display", "block");
+					$(".totlePricesNum3").parent().css("display", "none"); //部位后的总计隐藏
+					$(".tolMoney").text($(".totlePricesNum").text()); //实际应付款
+
+					//申请单号
+					$('#sqdh_sp').html(res.resultMap.reviewCode);
+				});
+
+			})
+			//弹窗取消
+			$("#cancel").click(function() {
+				$("#reportQueryFade").css("display", "none")
+				$('body').css({　　
+					"overflow-x": "auto",
+					　　"overflow-y": "auto"
+				});
+			})
+			//	点击打印按钮
+			$(".printBtn").click(function() {
+				$("#f2").jqprint({
+					debug: false,
+					importCSS: true,
+					printContainer: true,
+					operaSupport: false
+				});
+				//		window.print();
+			})
+
+			//	当进行到第二步时可退回到第一步
+			$("#writeCheckForm").click(function() {
+				if(!($("#sendSuccess").hasClass("activeTabs"))) {
+					$(".f1").css("display", "block");
+					$("#sureCheckForm").removeClass("activeTabs");
+					$("#sendSuccess").removeClass("activeTabs");
+					$("#sendSuccess1").removeClass("activeTabs");
+					$("#sureCheckForm1").removeClass("activeTabs");
+					$("#deleteClear").show();
+
+					//					$("#form select").removeAttr("disabled");
+					//					$("#form textarea").removeAttr("disabled");
+
+					$(".makeSubmitBtn").css("display", "none");
+					$(".makeSureBtn").css("display", "block");
+					$(".filelist .file-panel").css("display", "block");
+					$(".statusBar").css("display", "block");
+					$("#dropdownName").removeAttr("disabled"); //患者姓名去掉禁用
+					$("#form .chosePosition").removeAttr("disabled"); //去掉部位禁用
+					$("#form select").removeAttr("disabled"); //简要病史
+					$("#form textarea").removeAttr("disabled"); //查体
+					$("#uploader .statusBar .btns .uploadBtn.state-paused, #uploader .statusBar .btns .uploadBtn.state-uploading, #uploader .statusBar .btns .webuploader-pick").css("display", "inline-block");
+					$("#sex").attr("disabled", "disabled");
+					//			价格和选择部位因无数据 暂时这样处理
+					var RegionsLen = $(".Regions");
+					for(var i = 0; i < RegionsLen.length; i++) {
+						$(RegionsLen[i]).css("display", "inline-block");
+						$(RegionsLen[i]).addClass("chosedProjs");
+					}
+					$(".totlePricesNum").parent().css("display", "block"); //部位后的总计显示
+					//					放开隐藏和显示选项卡功能
+					$(".chosePosition").removeClass("chosePyBtn");
+				}
+			})
+
+			//  以下是申请医院的联动
+
+			//指定医院选择 联动 科室
+			$("#applyHos").change(function() {
+				//联动查询 此医院下的科室
+				applytechOfficeBooking($("#applyHos").val());
+			});
+			//指定医院选择 联动医生
+			$("#applyDepartment").change(function() {
+				//联动查询 此医院下的医生
+				applytheDoctorBooking($("#applyDepartment").val());
+			});
+			$("#chosePatient").click(function() {
+				$("#chosePatient").css("display", "none")
+
+			});
+			//点击清空按钮
+			$("#deleteClear").click(function() {
+				$("#test_data").removeAttr("disabled");
+				$("#test_data").val("");
+				$("#sex").val(0); //患者性别
+				$("#userAge").val(''); //患者年龄
+				$("#userTel").val(''); //患者手机号
+				$("#identityCode").val(''); //患者身份证号
+				$("#sex").attr("disabled", false);
+				$("#userAge").attr("disabled", false);
+				$("#userTel").attr("disabled", false);
+				$("#identityCode").attr("disabled", false);
+			});
+			//指定科室初始化
+			function applytechOfficeBooking(selectHosId) { //参数为当前选择上的医院的id和科室的select的id
+				$("#applyDepartment").html('');
+				ajaxGet('/sys/section/list', {
+					fkHospitalId: selectHosId
+				}, function(data) {
+					var sectionList = data.resultMap.sectionList;
+					if(sectionList != null) {
+
+						for(var t = 0; t < sectionList.length; t++) {
+							var techOfficeHtml = '';
+							techOfficeHtml += '<option value="' + sectionList[t].id + '">' + sectionList[t].name + '</option>';
+							$("#applyDepartment").append(techOfficeHtml);
+						}
+					}
+					applytheDoctorBooking($("#applyDepartment").val());
+				})
+			}
+			//指定医生初始化
+			function applytheDoctorBooking(selectHosId) { //参数为当前选择上科室的select的id
+				$("#applyDoctor").html('');
+				ajaxGet('/sys/user/list', {
+					fkSectionId: selectHosId //              type:1,
+				}, function(data) {
+					var fkUserList = data.resultMap.userList;
+
+					if(fkUserList != null) {
+						for(var t = 0; t < fkUserList.length; t++) {
+							var techOfficeHtml = '';
+							techOfficeHtml += '<option value="' + fkUserList[t].id + '">' + fkUserList[t].userName + '</option>';
+							$("#applyDoctor").append(techOfficeHtml);
+						}
+					}
+				})
+			}
+			//  读取患者姓名
+			var patientArr = [];
+			readPatientName()
+
+			function readPatientName() {
+				ajaxGet('/patient/getPatientList', {}, function(data) {
+					var patinfoList = data.resultMap.patientList;
+					for(var i = 0; i < patinfoList.length; i++) {
+						var patientObj = {
+							"id": patinfoList[i].id,
+							"word": patinfoList[i].name,
+							"description": patinfoList[i].mobile
+						};
+						patientArr.push(patientObj);
+					}
+					var testdataBsSuggest = $("#test_data").bsSuggest({
+						indexId: 0,
+						indexKey: 1,
+						data: {
+							"value": patientArr
+						}
+					}).on("onSetSelectValue", function(a, b) { //选择商品后触发
+						checkUserInfo(b.id);
+					});
+				})
+			}
+
+			var xz_user; //当前选中的患者
+
+			//	根据用户id查询出用户信息
+			function checkUserInfo(patientId) {
+
+				ajaxGet('/patient/getPatient', {
+					id: patientId
+				}, function(data) {
+					xz_user = data.resultMap.patient;
+					console.log("患者：：：：：：：：", xz_user);
+					if(data.resultMap.patient.sex == "男") {
+						$("#sex").val(0); //患者性别
+					} else {
+						$("#sex").val(1); //患者性别
+					}
+					$("#userAge").val(data.resultMap.patient.age); //患者年龄
+					$("#userTel").val(data.resultMap.patient.mobile); //患者电话
+					$("#identityCode").val(data.resultMap.patient.idCard); //患者身份证号码
+
+					$("#test_data").attr("disabled", "disabled");
+					$("#sex").attr("disabled", "disabled");
+					$("#userAge").attr("disabled", "disabled");
+					$("#userTel").attr("disabled", "disabled");
+					$("#identityCode").attr("disabled", "disabled");
+				})
+			}
+
+			// 点击部位选择
+			$(document).on("click", ".chosedProjs", function() {
+				var eix = $(this).attr('data-einfo_ix');
+				if($(this).hasClass("chosedRegion")) {
+					$(this).removeClass("chosedRegion");
+					var price = $(".totlePricesNum").text() * 1 - einfoList[eix].price;
+					$(".totlePricesNum").text(price);
+					$(".totlePricesNum2").text(price);
+					$(".totlePricesNum3").text(price);
+				} else {
+					$(this).addClass("chosedRegion");
+					var price = $(".totlePricesNum").text() * 1 + einfoList[eix].price;
+					$(".totlePricesNum").text(price);
+					$(".totlePricesNum2").text(price);
+					$(".totlePricesNum3").text(price);
+				}
+			});
+
+			//	点击 请选择部位
+			$(".chosePyBtn").click(function() {
+				$(this).parent().parent().next("tr").toggle();
+			})
+			
+		</script>
+		<script type="text/javascript" src="../../js/stats.js" charset="utf-8"></script>
+	</body>
+
+</html>

@@ -1,0 +1,9 @@
+.mask_content_box{
+	 height: 250px;
+    left: 50%;
+    top: 50%;
+    background: #fff;
+    width: 30%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}

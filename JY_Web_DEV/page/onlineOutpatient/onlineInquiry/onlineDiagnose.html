@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线诊断</title>
+    <link href="../../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+
+    <link href="../../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../css/animate.min.css" rel="stylesheet">
+    <link href="../../../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../css/public.css">
+
+</head>
+
+<body class="gray-bg">
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <form class="form-horizontal m-t" id="signupForm" novalidate="novalidate">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+
+                        <div class="clients-list">
+                            <ul class="nav nav-tabs">
+                                <span class="pull-right small text-muted redStar">
+                                    若视频插件未启动，请点击<a>开启</a>
+                                </span>
+                                <li class="active"><a data-toggle="tab" href="#tab-1"><i class="fa fa-user"></i> 患者信息</a>
+                                </li>
+                                <li class=""><a data-toggle="tab" href="#tab-2"><i class="fa fa-briefcase"></i> 诊断</a>
+                                </li>
+                            </ul>
+                            <style>
+                                .cont_add{
+                                    margin-top: 20px;border: 1px solid #ddd
+                                }
+                            </style>
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane active">
+                                    <!--患者信息-->
+                                    <div class="col-sm-12 cont_add"  >
+                                        <div class="form-group" style="text-align: right;padding: 10px 20px 0 0">
+                                            <button type="button" class="btn  btn-success" >更新</button>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-title">
+                                                        <h5>患者信息</h5>
+                                                    </div>
+                                                    <div class="ibox-content">
+                                                        <div style="width: 80%;margin: 0 auto;" >
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>姓名</th>
+                                                                    <th>性别</th>
+                                                                    <th>年龄</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>1</td>
+                                                                    <td>张三</td>
+                                                                    <td>男</td>
+                                                                    <td>23</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2</td>
+                                                                    <td>李四</td>
+                                                                    <td>男</td>
+                                                                    <td>27</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3</td>
+                                                                    <td>王麻子</td>
+                                                                    <td>男</td>
+                                                                    <td>65</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+
+
+
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div id="tab-2" class="tab-pane">
+                                    <!--诊断-->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+
+<script src="../../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../../js/bootstrap.min.js?v=3.3.5"></script>
+<script src="../../../js/content.min.js?v=1.0.0"></script>
+
+<script src="../../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/plugins/sweetalert/sweetalert.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+
+    });
+</script>
+</body>
+</html>

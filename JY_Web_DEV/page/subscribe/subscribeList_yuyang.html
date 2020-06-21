@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>远程医疗管理系统-视频预约列表</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <style>
+        #OrderAllList {
+            list-style: none;
+            overflow: hidden;
+        }
+
+        #OrderAllList li {
+            height: 60px;
+            line-height: 60px;
+            padding-left: 20px;
+            border-bottom: 1px solid #CAC8C6;
+            overflow: hidden;
+            border-left: 1px solid #CAC8C6;
+        }
+
+        #OrderAllList li:nth-child(odd) {
+            background: #fff;
+        }
+
+        #OrderAllList li:nth-child(even) {
+            background: #ededed;
+        }
+
+        #OrderAllList li div {
+            display: inline-block;
+        }
+
+        .infoList1 {
+            width: 20%;
+            text-align: center;
+        }
+
+        .infoList2 {
+            width: 10%;
+            text-align: center;
+        }
+
+        .infoList3 {
+            width: 20%;
+            text-align: center;
+        }
+
+        .infoList4 {
+            width: 20%;
+            text-align: center;
+        }
+
+        .infoList5 {
+            width: 28%;
+        }
+
+        .orderBtns {
+            background: #008EEA;
+            margin-left: 20px;
+            color: #fff;
+            border-radius: 5px;
+            padding: 0 20px;
+            width: 5%;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 13px;
+        }
+
+        .lf {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<ul id="OrderAllList">
+    <!--列表1-->
+    <li class="OrderList">
+        <div class="infoList1 lf">王宏健</div>
+        <div class="infoList2 lf">王宏健</div>
+        <div class="infoList3 lf">王宏健</div>
+        <div class="infoList4 lf">王宏健</div>
+        <div class="infoList5 orderBtns lf">申请视频</div>
+        <input name="code" type="hidden" value="wanghongjian">
+
+    </li>
+    <!--列表2-->
+    <li class="OrderList">
+        <div class="infoList1 lf">admin</div>
+        <div class="infoList2 lf">admin</div>
+        <div class="infoList3 lf">admin</div>
+        <div class="infoList4 lf">admin</div>
+        <div class="infoList5 orderBtns lf">申请视频</div>
+        <input name="code" type="hidden" value="admin">
+
+    </li>
+</ul>
+<script src="../../js/jquery-3.0.0.min.js"></script>
+<script>
+    var websocket = null;
+    //判断当前浏览器是否支持WebSocket
+    if ('WebSocket' in window) {
+        websocket = new WebSocket("ws://192.31.10.92:8001/websocket/yuyang");
+    } else {
+        alert('Not support websocket')
+    }
+    //接收到消息的回调方法
+    websocket.onmessage = function (event) {
+        acceptMessage(event.data);
+    }
+    //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+    window.onbeforeunload = function () {
+        websocket.close();
+    }
+    //连接成功建立的回调方法
+    websocket.onopen = function (event) {
+        alert('socket连接建立成功');
+    }
+
+    function acceptMessage(data) {
+        $('.YYGL_YYSP').click();
+    }
+
+</script>
+<script>
+    $(document).on("click", ".orderBtns", function () {
+        var code = $(this).next('input').val();
+
+        $.ajax({
+            method: 'get',
+            url: 'http://192.31.10.92:8001/sys/user/sendweb',
+            contentType: "application/json; charset=utf-8",//传到后台的数据格式
+            async: true,
+            data: {'sessionId': sessionStorage.getItem('sessionId'), 'userCode': code},
+            dataType: 'jsonp',//接收值的格式
+            jsonp: 'jsoncallback',
+            success: function (data) {
+                alert(data.message);
+                $('.YYGL_YYSP').click();
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        });
+    });
+</script>
+</body>
+</html>

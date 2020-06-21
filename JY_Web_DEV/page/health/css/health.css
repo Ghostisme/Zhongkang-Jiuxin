@@ -1,0 +1,127 @@
+/* 内容样式 */
+/* .wrapper{
+	background-color: #f5f5f5; 
+    padding-top: 0.001rem;
+    padding-bottom: 0.001rem;
+}
+.wrapper *{
+	font-size: 0.45rem;
+} */
+/* .wrapper .box{
+	background-color: #FFFFFF;
+	padding: 0.45rem 0.45rem 0rem;
+    margin-bottom: 0.425rem;
+}
+.wrapper div.box1{
+	background-color: #FFFFFF;
+	padding: 0.45rem 0 0rem 0.45rem; 
+	margin: 0 0 0.425rem 0;
+	border-radius: 0;
+}
+.wrapper .box .Title{
+	text-align: left;
+	font-weight: 600;
+} */
+/* .wrapper .box .Title img{
+	width: 0.7rem;
+	vertical-align: -8px;
+}
+.wrapper .box .Content>div{
+	display: flex;
+	justify-content: space-between;
+}
+.wrapper .box .Content div p{
+	text-align: left;
+	margin: 0.25rem 0 0.25rem 0.8rem;
+} */
+/* .wrapper .box .Content div p span:nth-of-type(1){
+	color: #727377;
+	font-size: 0.4rem;
+}
+.wrapper .box .Content div p span:nth-of-type(2){
+	color: #2B2724;
+	font-size: 0.4rem;
+} */
+/* .medicalHistoryBox .medicalHistory div{
+	display: block !important;
+} */
+/* 健康数据及诊疗信息 */
+/* .wrapper .healthDataBox,
+.wrapper .diagnosisTreatmentBox{
+	padding-right: 0rem;
+}
+.healthDataBox p,
+.diagnosisTreatmentBox p{
+	padding: 0.35rem 0;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.healthDataBox p:not(:last-of-type),
+.diagnosisTreatmentBox p:not(:last-of-type){
+	border-bottom: 1px solid #EDEDED;
+} */
+/* .healthDataBox p span,
+.diagnosisTreatmentBox p span{
+	display: block;
+} */
+/* .healthDataBox p span:nth-of-type(1),
+.diagnosisTreatmentBox p span:nth-of-type(1){
+	text-align: left;
+} */
+/* .healthDataBox p span:nth-of-type(1),
+.diagnosisTreatmentBox p span:nth-of-type(1){
+	margin-left: 0.15rem;
+} */
+/* .healthDataBox p span:nth-of-type(1) img,
+.diagnosisTreatmentBox p span:nth-of-type(1) img{
+	margin-right: 0.2rem;
+}
+.healthDataBox p span:nth-of-type(2),
+.diagnosisTreatmentBox p span:nth-of-type(2){
+	color: #727377;
+	text-align: right;
+	margin-right: 0.45rem;
+} */
+.wrapper .healthDataBox p span .upicon{
+	/*color: red;*/
+	/*font-weight: 600;*/
+}
+/*.healthDataBox .bloodsugar span:nth-of-type(2){
+	color: red;
+}*/
+/*.healthDataBox .bloodsugar span:nth-of-type(2) .rightBtn{
+	color: #727377 !important;
+}
+
+.bloodpressure span:nth-of-type(2) span{
+	margin-right: 0;
+}*/
+.nav.nav-tabs{
+	border-bottom: 1px solid #EBEBEB;
+	/*border-bottom: 1px solid transparent;*/
+}
+.nav.nav-tabs>li.active>a{
+	font-size: 14px;
+	/*background-color: #018eea;
+	border: 1px solid #018eea;
+	color: #FFFFFF;*/
+	/*border-bottom: 2px solid rgb(1, 142, 234);*/
+    background-color: transparent;
+    color: #333;
+    border-color: transparent;
+    /*color: rgb(1, 142, 234);*/
+    /*border-bottom-color: rgb(1, 142, 234);*/
+    /*border-bottom: 1px solid;*/
+}
+.nav.nav-tabs>li>a{
+	font-size: 14px;
+    /*background-color: #f6f6f6;*/
+    color: #333;
+    margin-right: 0;
+    border-radius: 0;
+    /*border-bottom: 1px solid #008FEC;*/
+    background-color: transparent;
+    /*color: #000000;*/
+}

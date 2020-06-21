@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>远程医疗系统-登录</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/login.css"/>
+	</head>
+	<body>
+		<nav>
+			<div id="banner">
+				<div id="logo">
+					<img src="../../img/login/logo1.png" alt="" />
+				</div>
+				<div id="systemName">
+					中康九悦远程医疗管理系统
+				</div>
+			</div>
+		</nav>
+		<section>
+			<div class="userLoginTxt">
+				用户登录
+			</div>
+			<div id="sections">
+				<form action="">
+					<div class="ingputsDiv">
+						<input type="text" name="userName" id="userName" value="" placeholder="用 户 名"class="inputStyle"/>
+						<div class="ImgDiv rt">
+							<img src="../../img/login/userNameImg.png" alt="" class="inputsImg"/>
+						</div>
+					</div>
+					<div class="ingputsDiv thisMarginStyle">
+						<input type="password" name="userPwd" id="userPwd" value="" placeholder="密     码"class="inputStyle"/>
+						<div class="ImgDiv rt passwordImgLineHeight">
+							<img src="../../img/login/passwordImg.png" alt="" class="inputsImg"/>
+						</div>
+					</div>
+					<div class="rememberPwdAndForgetPwd">
+						<div id="rememberPwd"class="lf">
+							<input type="checkbox" id="rememberTxt"class="lf"/>
+							<label for="rememberTxt"id="rememberLabel">记住密码</label>
+						</div>
+						<div id="forgetPwd"class="rt">
+							忘记密码
+						</div>
+					</div>
+					<div id="loginBtn">
+						登录
+					</div>
+				</form>
+			</div>
+			
+		</section>
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="login.js"></script>
+	</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>健康记录</title>
+		<link rel="shortcut icon" href="favicon.ico"> 
+		<link href="../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/init.css" />
+		<!-- 顶部内容CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/navbar.css"> -->
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont.css">
+		<!-- 本页CSS -->
+		<link type="text/css" rel="stylesheet" href="css/healthrecord.css" />
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="../../js/content.min.js?v=1.0.0"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<!-- 页面跳转方法JS -->
+		<!-- <script type="text/javascript" src="../../js/jumpPage.js"></script> -->
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/healthrecord.js"></script>
+	</head>
+	<body>
+		<!-- 2019-05-28完成 -->
+		
+		<!-- <div class="wrapper wrapper-content animated fadeIn">
+			<div class="pull-right">
+				<button type="button" id="btn">刷新</button>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel blank-panel">
+
+						<div class="panel-heading">
+							<div class="panel-options">
+
+								<ul class="nav nav-tabs">
+									<li class="active">
+										<a data-toggle="tab" href="healthrecord.html#tab-1">基本信息</a>
+									</li>
+									<li class="">
+										<a data-toggle="tab" href="healthrecord.html#tab-2">病史</a>
+									</li>
+									<li class="">
+										<a data-toggle="tab" href="healthrecord.html#tab-3">慢病病症</a>
+									</li>
+									<li class="">
+										<a data-toggle="tab" href="healthrecord.html#tab-4">生活习惯</a>
+									</li>
+									<li class="">
+										<a data-toggle="tab" href="healthrecord.html#tab-5">健康数据</a>
+									</li>
+									<li class="">
+										<a data-toggle="tab" href="healthrecord.html#tab-6">诊疗信息</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="panel-body">
+							<div class="tab-content">
+								<div id="tab-1" class="tab-pane active">
+									<iframe frameborder="no" width="100%" height="600px" src="healthrecord.html"></iframe>
+								</div>
+
+								<div id="tab-2" class="tab-pane">
+									<strong>Normalize.css</strong>
+
+									<p>为了增强跨浏览器表现的一致性，我们使用了 Normalize.css，这是由 Nicolas Gallagher 和 Jonathan Neal 维护的一个CSS 重置样式库。</p>
+								</div>
+								<div id="tab-3" class="tab-pane">
+									<strong>布局容器</strong>
+
+									<p>Bootstrap 需要为页面内容和栅格系统包裹一个 .container 容器。我们提供了两个作此用处的类。注意，由于 padding 等属性的原因，这两种 容器类不能互相嵌套。</p>
+								</div>
+								<div id="tab-4" class="tab-pane">
+									<strong>栅格系统</strong>
+
+									<p>Bootstrap 提供了一套响应式、移动设备优先的流式栅格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。它包含了易于使用的预定义类，还有强大的mixin 用于生成更具语义的布局。</p>
+								</div>
+								<div id="tab-5" class="tab-pane">
+									<strong>栅格系统</strong>
+								
+									<p>Bootstrap 提供了一套响应式、移动设备优先的流式栅格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。它包含了易于使用的预定义类，还有强大的mixin 用于生成更具语义的布局。</p>
+								</div>
+								<div id="tab-6" class="tab-pane">
+									<strong>栅格系统</strong>
+								
+									<p>Bootstrap 提供了一套响应式、移动设备优先的流式栅格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。它包含了易于使用的预定义类，还有强大的mixin 用于生成更具语义的布局。</p>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- 内容区域 -->
+		<div class="wrapper">
+			<div class="row">
+				<div class="col-sm-1">
+					<div class="headImg">
+						<img src="../../img/default.png"  alt="这是一个头像" title="这是一个头像"/>
+						<input type="file" name="" id="" value="" class="chooseImg" disabled="disabled" />
+					</div>
+				</div>
+				<div class="col-sm-6 essentialBox">
+					<div class="essential">
+						<div>
+							<span class="recordTitle">患者姓名:</span>
+							<span>
+								<input type="text" disabled="true" name="" id="" value="" class="username" />
+							</span>
+						</div>
+						<div>
+							<span class="recordTitle">性别:</span>
+							<span>
+								<!--<input type="text" disabled="true" name="" id="" value="" class="sex" />-->
+								<select name="" class="sex" disabled="true">
+									<option value="男">男</option>
+									<option value="女">女</option>
+								</select>
+							</span>
+						</div>
+						<div>
+							<span class="recordTitle">年龄(岁):</span>
+							<span>
+								<input type="text" maxlength="3" disabled="true" name="" id="" value="" class="age" />
+							</span>
+						</div>
+						<div>
+							<span class="recordTitle">身份证号:</span>
+							<span>
+								<input type="text" maxlength="18" disabled="true" name="" id="" value="" class="IDcard"/>
+							</span>
+						</div>
+						<div>
+							<span class="recordTitle">手机号:</span>
+							<span>
+								<input type="text" maxlength="11" disabled="true" name="" id="" value="" class="mobile"/>
+							</span>
+						</div>
+						<!--<div>
+							<span>ID:</span>
+							<span>
+								<input type="text" disabled="disabled" name="" id="" value="" class=""/>
+							</span>
+						</div>-->
+						<div>
+							<span class="recordTitle">住址:</span>
+							<span>
+								<input type="text" disabled="true" name="" id="" value="" class="address"/>
+							</span>
+						</div>
+					</div>
+					<button type="button" class="btn btn-info" id="editSave">编辑</button>
+				</div>				
+			</div>
+			<!--<div class="row">
+				<button type="button" class="btn btn-info" id="editSave">编辑</button>
+			</div>-->
+			<!-- 基本信息内容 -->
+			<div class="essentialBox box">
+				<!-- <div class="essentialTitle Title">
+					<img src="../../img/user.png" alt="这是一个小图片" title="这是一个小图片">
+					基本信息
+				</div> -->
+				<!-- <div class="essential Content">
+					<div>
+						<p>
+							<span>患者:</span>
+							<span>大海</span>
+						</p>
+						<p>
+							<span>性别:</span>
+							<span>女</span>
+						</p>
+						<p>
+							<span>年龄:</span>
+							<span>24</span>
+						</p>
+					</div>
+				</div> -->
+			</div>
+			<!-- 病史内容 -->
+			<!-- <div class="medicalHistoryBox box">
+				<div class="medicalHistoryTitle Title">
+					<img src="img/headicon2.png" alt="这是一个小图片" title="这是一个小图片">
+					病史
+				</div>
+				<div class="medicalHistory Content">
+					<div>
+						<p>
+							<span>现病史:</span>
+							<span>高血压</span>
+						</p>
+						<p>
+							<span>既往史:</span>
+							<span>糖尿病</span>
+						</p>
+
+					</div>
+					<div>
+						<p>
+							<span>药物过敏史:</span>
+							<span>有</span>
+						</p>
+						<p>
+							<span>家族史:</span>
+							<span>无</span>
+						</p>
+					</div>
+				</div>
+			</div> -->
+			<!-- 生活习惯内容 -->
+			<!-- <div class="habitsCustomsBox box">
+				<div class="habitsCustomsTitle Title">
+					<img src="img/headicon3.png" alt="这是一个小图片" title="这是一个小图片">
+					生活习惯
+				</div>
+				<div class="habitsCustoms Content">
+					<div>
+						<p>
+							<span>吸烟:</span>
+							<span>不吸烟</span>
+						</p>
+						<p>
+							<span>饮酒:</span>
+							<span>偶尔喝酒</span>
+						</p>
+						<p>
+							<span>失眠:</span>
+							<span>偶尔</span>
+						</p>
+					</div>
+				</div>
+			</div> -->
+			<!-- 病症管理内容 -->
+			<!-- <div class="diseaseManagementBox box">
+				<div class="dMTitle Title">
+					<img src="img/headicon6.png" alt="这是一个小图片" title="这是一个小图片">
+					慢病病症
+				</div>
+				<div class="dM Content">
+					<div>
+						<p>
+							<span>高血压:</span>
+							<span>有</span>
+						</p>
+						<p>
+							<span>糖尿病:</span>
+							<span>有</span>
+						</p>
+					</div>
+				</div>
+			</div> -->
+			<!-- 健康数据内容 -->
+			<!-- <div class="healthDataBox box box1">
+				<div class="healthDataTitle Title">
+					<img src="img/headicon4.png" alt="这是一个小图片" title="这是一个小图片">
+					健康数据
+				</div>
+				<p class="bloodpressure">
+					<span>
+						<img src="img/002.png">
+						血压
+					</span>
+					<span>
+						<i class="iconfont degree1">&#xe79d;</i>
+						<span>128</span>
+						/
+						<span>80</span>
+					</span>
+				</p>
+				<p class="bloodsugar">
+					<span>
+						<img src="img/005.png">
+						血糖
+					</span>
+					<span>
+						<i class="iconfont degree">&#xe79d;</i>
+						<span>12</span>
+					</span>
+				</p>
+				<p class="bmiContent">
+					<span>
+						<img src="img/004.png">
+						BMI
+					</span>
+					<span>
+						<i class="iconfont BMIdegree">&#xe79d;</i>
+						<span>正常</span>
+					</span>
+				</p>
+			</div> -->
+			<!-- 诊疗信息内容 -->
+			<!-- <div class="diagnosisTreatmentBox box box1">
+				<div class="dT-title Title">
+					<img src="img/headicon5.png" alt="这是一个小图片" title="这是一个小图片">
+					诊疗信息
+				</div>
+				<p class="prescriptionDrugs">
+					<span>
+						<img src="img/003.png">
+						药品处方
+					</span>
+					<span>
+						0
+						<i class="iconfont">&#xe606;</i>
+					</span>
+				</p>
+			</div>
+		</div> -->
+		<!--<div class="col-sm-1 col-sm-offset-1">
+			<button type="button" class="btn btn-info" id="editSave">编辑</button>
+		</div>-->
+	</body>
+</html>

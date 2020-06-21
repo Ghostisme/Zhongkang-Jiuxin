@@ -1,0 +1,400 @@
+#contents {
+	width: 100%;
+	overflow: hidden;
+}
+
+.disContents {
+	width: 100%;
+	overflow: hidden;
+}
+
+.rightLoadContent {
+	width: 100%;
+}
+
+.searchInfos {
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.searchInfos #searchBox {
+	width: 150px;
+	height: 24px;
+	padding: 0px auto;
+	/*margin-top:8px;*/
+	outline: none;
+}
+
+.space{
+			height: 24px;
+			margin-left:20px;
+		}
+@media screen and (max-width: 1300px) {
+				.queryContent{
+					width: 160px !important;
+				}
+				}
+/*检索按钮*/
+
+.searching {
+	/*height:26px;
+			line-height: 26px;
+			padding:0 30px;
+			background: #F5F1EE;
+			color:#000;
+			border:1px solid #CAC8C6;
+			cursor: pointer;*/
+	width: 85px;
+	height: 24px;
+	border-radius: 5px;
+	background-color: #1C79B6;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	color: #FFFFFF;
+	margin-left: 20px;
+	line-height: 24px;
+	letter-spacing: 5px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.addData {
+	width: 85px;
+	height: 24px;
+	border-radius: 5px;
+	background-color: #ff7510;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	color: #FFFFFF;
+	line-height: 24px;
+	letter-spacing: 5px;
+	cursor: pointer;
+	float: right;
+	text-align: center;
+}
+
+.resultLists,
+.resultListsContents,
+.resultListInfo {
+	width: 100%;
+	overflow: hidden;
+}
+
+
+/*表头*/
+
+.resultListsTitle {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	overflow: hidden;
+	/*border:1px solid #000;*/
+	background: #E2EFF6;
+}
+
+.resultListsItem1 {
+	width: 5%;
+	height: 40px;
+	text-align: center;
+}
+
+.resultListsItem2 {
+	width: 15%;
+	height: 40px;
+	text-align: center;
+}
+
+.resultListsItem3 {
+	width: 15%;
+	height: 40px;
+	text-align: center;
+}
+
+.resultListsItem4 {
+	width: 15%;
+	height: 40px;
+	text-align: center;
+}
+
+.resultListsItem5 {
+	width: 15%;
+	height: 40px;
+	text-align: center;
+}
+
+.resultListsItem6 {
+	width: 5%;
+	height: 40px;
+	text-align: center;
+}
+
+.resultListsItem7 {
+	width: 8%;
+	height: 40px;
+	text-align: center;
+}
+
+.resultListsItem8 {
+	width: 10%;
+	height: 40px;
+	text-align: center;
+}
+
+.resultListsItem9 {
+	width: 13%;
+	height: 40px;
+	text-align: center;
+}
+
+.resultListInfo {
+	height: 44px;
+	line-height: 44px;
+	cursor: pointer;
+	border-bottom: 1px solid #eeeeee;
+}
+
+.resultListInfo:nth-child(even) {
+	background: #fff;
+}
+
+.resultListInfo:nth-child(odd) {
+	/*background: #F6F6F6;*/
+}
+
+
+/*页码*/
+
+.pageN {
+	overflow: hidden;
+}
+
+#pageGro ul {
+	float: right;
+	margin-right: 100px;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+	margin-right: 10px;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+	background: #FE7410;
+	border-color: #FE7410;
+}
+
+.flipOver a {
+	cursor: pointer;
+}
+
+
+/*模态框*/
+
+.modal {
+	background: #000;
+	opacity: 0.5;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 888;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+
+/*新增配置信息弹框*/
+
+#newConfiguration {
+	width: 25%;
+	/*height:500px;*/
+	background: #fff;
+	position: absolute;
+	top: 30%;
+	left: 40%;
+	z-index: 8888;
+	padding-bottom: 40px;
+}
+
+.newConfigurationTitle {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background: #008EEA;
+	color: #fff;
+	padding-left: 20px;
+	font-size: 16px;
+}
+
+.closeModel,
+.newConfigCloseModel,
+.changeConfigCloseModel,
+.lookingForDetailsCloseModel {
+	margin-right: 20px;
+	font-size: 18px;
+	cursor: pointer;
+	padding: 0 6px;
+	height: 10px;
+	border-radius: 50%;
+	border: 1px solid #fff;
+}
+
+
+/*新增类型蓝色*/
+
+.currentModalMainTit {
+	color: #008EEA;
+	border-bottom: 1px solid #008EEA;
+	height: 40px;
+	margin: 0 20px;
+	line-height: 56px;
+}
+
+.boxDiv1,
+.boxDiv2 {
+	margin: 0 60px;
+	height: 100px;
+	border: 1px solid #EDEDED;
+	margin-top: 20px;
+}
+
+.addInfoBox1,
+.addInfoBox2 {
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+}
+
+
+/*按钮样式*/
+
+.sureAndCancelBtns {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.sureBtn {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	background: #008EEA;
+	color: #fff;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.cancelBtn,
+.addConfigcancelBtn,
+.changeInfoCancelBtn,
+.delInfoCancelBtn {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	background: #ECECEC;
+	color: #000;
+	margin: 0 auto;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+
+/*修改配置信息弹框*/
+
+#changeConfiguration {
+	width: 25%;
+	/*height:500px;*/
+	background: #fff;
+	position: absolute;
+	top: 30%;
+	left: 40%;
+	z-index: 8888;
+	padding-bottom: 40px;
+}
+
+.changeInfoBox1,
+.changeInfoBox2 {
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+}
+
+
+/*删除配置模态框*/
+
+#delListInfo {
+	width: 15%;
+	/*height:500px;*/
+	background: #fff;
+	position: absolute;
+	top: 30%;
+	left: 45%;
+	z-index: 8888;
+	padding-bottom: 20px;
+}
+
+.delTopImg {
+	width: 100%;
+	text-align: center;
+	margin: 20px 0px;
+}
+
+.delWarn1,
+.delWarn2 {
+	width: 100%;
+	text-align: center;
+}
+
+
+/*查看详情*/
+
+#lookingForDetails {
+	width: 60%;
+	background: #fff;
+	position: absolute;
+	top: 18%;
+	left: 22%;
+	z-index: 8888;
+	padding-bottom: 20px;
+	min-height: 500px;
+	max-height: 700px;
+}
+
+.LoadDetails {
+	width: 100%;
+	padding: 20px;
+	min-height: 500px;
+	overflow-y: auto;
+	max-height: 656px;
+}
+
+
+/*设置所有弹框和模态框均隐藏*/
+
+#newConfiguration,
+.modal,
+#changeConfiguration,
+#delListInfo,
+#lookingForDetails {
+	display: none;
+}
+
+.layui-layer-title {
+	background: #008EEA !important;
+}
+
+.rightLoadContent {
+	height: auto;
+	/*max-height: 1090px;*/
+}

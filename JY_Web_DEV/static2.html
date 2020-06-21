@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link rel="shortcut icon" href="favicon.ico">
+		<link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+		<!-- Morris -->
+		<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+
+		<!-- Gritter -->
+		<link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+		<link href="css/animate.min.css" rel="stylesheet">
+		<link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+		<base target="_blank">
+		<link rel="stylesheet" href="css/element-ui.css">
+		<link rel="stylesheet" href="css/progress.css" />
+		<link rel="stylesheet" href="css/homeStatic.css" />
+		<link rel="stylesheet" href="css/homeStatic2.css" />
+    </head>
+    <body class="gray-bg">
+		<div class="wrapper wrapper-content">
+			<div class="topTittle">
+				**省运营数据
+			</div>
+		    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+		    <div class="row lineMargin">
+		    	<div class="col-md-6">
+		    		<div class="mapContainer">
+		    			<div id="main" style="height:605px;background: #fff;"></div>
+		    		</div>
+		    		
+		    	</div>
+		    	<div class="col-md-6">
+		    		
+		    		<div class="row">
+		    			<div class="cardHeight">
+		    				<div class="cardMapTitle">—— 统计截止至今日<span class="staticTime">18：00</span> ——</div>
+		    				<div class="row cardTopLine">
+		    					<div class="col-md-4 titleRowHeight">
+		    						<span class="smallFont">合作医院共计:</span>
+		    						<span class="color49 BigFont hospitalAffiliationNum">
+		    							30
+		    						</span>
+		    						<span class="color49">
+		    							家
+		    						</span>
+		    					</div>
+		    					<div class="col-md-4 titleRowHeight">
+		    						<span class="smallFont">设备共计:</span>
+		    						<span class="color49 BigFont equipmentNum">
+		    							30
+		    						</span>
+		    						<span class="color49 smallFont">
+		    							台
+		    						</span>
+		    					</div>
+		    				</div>
+		    				<div class="row dataLineMarin">
+		    					<div class="col-md-4">
+		    						<span class="smallFont">本省本月检查量：</span>
+		    						<span class="blueTextColor BigFont MonthInspectionVolume">
+		    							30
+		    						</span>
+		    						<span class="blueTextColor">
+		    							例
+		    						</span>
+		    					</div>
+		    					<div class="col-md-4">
+		    						<span class="smallFont">本省上月检查量：</span>
+		    						<span class="blueTextColor BigFont lastMonthInspectionVolume">
+		    							30
+		    						</span>
+		    						<span class="blueTextColor ">
+		    							例
+		    						</span>
+		    					</div>
+		    					<div class="col-md-4 divLineHeight">
+		    						<span class="smallFont">环比:</span>
+		    						<span class="font14 chainRatio">
+		    							2.3% 
+		    						</span>
+		    						<i class="fa fa-arrow-up"></i>
+		    					</div>
+		    				</div>
+		    				<!--<div class="row dataLineMarin">
+		    					<div class="col-md-4">
+		    						<span class="smallFont">应收回款：</span>
+		    						<span class="color45 BigFont returnShouldFee">
+		    							8,9000
+		    						</span>
+		    						<span class="color45 smallFont">
+		    							元
+		    						</span>
+		    					</div>
+		    					<div class="col-md-4">
+		    						<span class="smallFont">实收回款：</span>
+		    						<span class="color46 BigFont returnFactFee">
+		    							8,9000
+		    						</span>
+		    						<span class="color46 smallFont">
+		    							元
+		    						</span>
+		    					</div>
+		    				</div>
+		    				<div class="row dataLineMarin">
+		    					<div class="col-md-4">
+		    						<span class="smallFont">成本：</span>
+		    						<span class="color48 BigFont cost">
+		    							8,9000
+		    						</span>
+		    						<span class="color48 smallFont">
+		    							元
+		    						</span>
+		    					</div>
+		    					<div class="col-md-4">
+		    						<span class="smallFont">毛利：</span>
+		    						<span class="color47 BigFont grossProfit">
+		    							8,9000
+		    						</span>
+		    						<span class="color47 smallFont">
+		    							元
+		    						</span>
+		    					</div>
+		    				</div>-->
+		    			</div>
+		    		</div>
+		    		<div class="row bottomMargin">
+							
+							<div class="card-body card-body1">
+								<!--<div class="card-title">本月各医院检查量、实收回款、毛利</div>-->
+								<div class="card-title">本月各医院检查量</div>
+								<div id="crurrentMonthcharts">
+									
+								</div>
+							</div>
+					</div>
+		    	</div>
+		    	
+		    </div>
+		    <div class="row"id="vueDataBox">
+		    	<div>
+					<el-table :data="tableData" border :summary-method="getSummaries" @cell-click="handleCell" show-summary style="width: 100%">
+						<el-table-column align='center' prop="hospitalName" label="医院名称">
+						</el-table-column>
+						<el-table-column align='center' prop="checkMonth" label="日期" v-if="ymVal==1">
+						</el-table-column>
+						<el-table-column align='center' prop="deviceNum" label="设备数量(台)">
+						</el-table-column>
+						<el-table-column align='center' prop="checkThisNum" label="检查量（例）">
+						</el-table-column>
+						<!--<el-table-column align='center' prop="shouldPrice" label="应收入(元)">
+						</el-table-column>
+						<el-table-column align='center' prop="factPrice" label="实收入(元)">
+						</el-table-column>
+						<el-table-column align='center' prop="returnShouldFee" label="应收回款(元)">
+						</el-table-column>
+						<el-table-column align='center' prop="returnFactFee" label="实收回款(元)">
+						</el-table-column>
+						<el-table-column align='center' prop="cost" label="成本(支出)">
+						</el-table-column>
+						<el-table-column align='center' prop="grossProfit" label="毛利">
+						</el-table-column>-->
+					</el-table>
+				</div>
+		    </div>
+    	</div>
+
+    <!-- ECharts单文件引入 -->
+    <script src="//libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//echarts.baidu.com/build/dist/echarts-all.js"></script>
+	<script src="js/vue.js"></script>
+		<!-- import JavaScript -->
+	<script src="js/element-ui.js"></script>
+	<script>
+		var myChart = echarts.init(document.getElementById('main'));
+		console.log(JSON.parse(sessionStorage.getItem("jumpOptions")));
+		var optionData=JSON.parse(sessionStorage.getItem("jumpOptions"));
+		var option = {
+tooltip: {
+//          trigger: 'item',
+
+            formatter: function(params, ticket, callback) {
+                //获取series[1]的obj
+//              var temp1 = params[5]
+//              var name = temp1.name
+//              console.log(params)
+								
+//              //鼠标当前指示的城市
+                let htmlStr = '';
+			htmlStr += '<div style="margin-right:10px;font-size:12px;text-align:left;">'+params.data.name+'</div><br/>';
+//			for(var k=0 ;k<params.data.hospital.length;k++){
+//				htmlStr+='<p style="text-align:left;margin-top:-10px;">';
+//				htmlStr+='<span style="margin-right:10px;">'+1+'</span>';
+				if(params.data.value!='-'){
+					htmlStr+='<div style="margin-right:10px;text-align:left;">本月全省检查量：'+params.data.value+'例</div><br/>';
+				}else{
+					htmlStr+='<div style="margin-right:10px;text-align:left;">本月全省检查量：0例</div><br/>';
+				}
+				console.log(params.data.checkLastNum);
+				if(params.data.checkLastNum){
+					htmlStr+='<div style="margin-right:10px;text-align:left;">上月全省检查量：'+params.data.checkLastNum+'例</div><br/>';
+				}else{
+					htmlStr+='<div style="margin-right:10px;text-align:left;">上月全省检查量：0例</div><br/>';
+				}
+				
+				htmlStr+='<div style="margin-right:10px;text-align:left;">';
+				
+				if(params.data.checkChainRatio){
+					htmlStr+='环比：'+params.data.checkChainRatio+'%';
+				}else{
+					htmlStr+='环比：0%';
+				}
+				if(params.data.checkChainRatioFlag==1){//环比符号(1：上涨，0：持平，-1：下降)
+					htmlStr+='<i class="fa fa-arrow-up"></i>';
+				}else if(params.data.checkChainRatioFlag==-1){
+					htmlStr+='<i class="fa fa-arrow-down"></i>';
+				}
+				htmlStr+='</div><br/>';
+			return htmlStr
+        },
+},
+
+		    dataRange: {
+//		        orient: 'horizontal',
+		        x: 'right',
+		        y: 'bottom',
+		        padding: 5,                    // 值域内边距，单位px，默认各方向内边距为5，
+		                         // 接受数组分别设定上右下左边距，同css
+			    itemGap: 10,               // 各个item之间的间隔，单位px，默认为10，
+			                        // 横向布局时为水平间隔，纵向布局时为纵向间隔
+			    itemWidth: 20,             // 值域图形宽度，线性渐变水平布局宽度为该值 * 10
+			    itemHeight: 14,            // 值域图形高度，线性渐变垂直布局高度为该值 * 10
+		        splitList: [
+		             {start: 500,color:'#1e4fa8'},
+		            {start: 100, end: 500,color:'#3b67b6'},
+		            {start: 50, end: 100,color:'#5686db'},
+		            {start: 10, end: 50,color:'#5d9bf9'},
+		            {start: 1, end: 10,color:'#a5cbfe'},
+		//          {start: 5, end: 5, label: '5（火灾数量）', color: 'black'},
+//		            {end: 10, color: '#d7e6fd'}
+        ],
+		    },
+		
+		    series: [optionData]
+};
+		
+		myChart.setOption(option, true);
+		myChart.on("mapSelected", function(param) {
+//			console.log(param.target);
+			ajaxGet('/sys/statistics/getHomePageStatisticsReport',{selectType:2,province:optionData.mapType,city:param.target},function(data){
+				console.log(data);
+				app.getList(data.resultMap.cityHospitalDataResult);
+				getCurrentMonthData();
+			});
+		});
+	</script>
+	<script src="js/echarts.js"></script>
+	<script src="js/china.js"></script>
+    
+	<script type="text/javascript" src="js/config.js"></script>
+	<!--<script type="text/javascript" src="js/commonStyle.js"></script>-->
+	<script type="text/javascript" src="js/common.js"></script>
+    <!--<script src="main.js" type="text/javascript" charset="utf-8"></script>-->    
+    <!--<script src="data.js" type="text/javascript" charset="utf-8"></script>-->
+	
+	<script>
+		var myMonthChart = echarts.init(document.getElementById('crurrentMonthcharts'));
+		var myMonthOption = {
+				color: ['#2EACFB'],//['#2EACFB', '#245f03', '#16d04f']
+			    legend: {y: 'bottom'},
+			    tooltip: {},
+			    dataset: {
+			    	dimensions: ['product', '检查量'],//['product', '检查量', '实收回款', '毛利']
+			        source: [
+			            ['朝阳医院', 43.3, 85.8, 93.7],
+			            ['开封医院', 83.1, 73.4, 55.1],
+			            ['北京中医院', 86.4, 65.2, 82.5],
+			            ['天津中医院', 72.4, 53.9, 39.1],
+			            ['朝阳医院1', 43.3, 85.8, 93.7],
+			            ['开封医院1', 83.1, 73.4, 55.1],
+			            ['北京中医院1', 86.4, 65.2, 82.5],
+			            ['天津中医院1', 72.4, 53.9, 39.1],
+			            ['朝阳医院2', 43.3, 85.8, 93.7],
+			            ['开封医院2', 83.1, 73.4, 55.1],
+			            ['北京中医院2', 86.4, 65.2, 82.5],
+			            ['天津中医院2', 72.4, 53.9, 39.1],
+			            ['朝阳医院3', 43.3, 85.8, 93.7],
+			            ['开封医院3', 83.1, 73.4, 55.1],
+			            ['北京中医院3', 86.4, 65.2, 82.5],
+			            ['天津中医院3', 72.4, 53.9, 39.1],
+			            ['朝阳医院4', 43.3, 85.8, 93.7],
+			            ['开封医院4', 83.1, 73.4, 55.1],
+			            ['北京中医院4', 86.4, 65.2, 82.5],
+			            ['天津中医院4', 72.4, 53.9, 39.1],
+			            ['朝阳医院5', 43.3, 85.8, 93.7],
+			            ['开封医院5', 83.1, 73.4, 55.1],
+			            ['北京中医院5', 86.4, 65.2, 82.5],
+			            ['天津中医院5', 72.4, 53.9, 39.1],
+			        ]
+			    },
+			    dataZoom: {
+                         start: 0, //默认为0
+                         end: 100 - 1500 / 31, //end默认为100,改成70,距离柱子变大
+                         type: 'slider',
+                         show: true,
+                         xAxisIndex: [0],
+                         handleSize: 0, //滑动条的 左右2个滑动条的大小
+                         height: 8, //组件高度
+                         left: 10, //左边的距离
+                         right: 20, //右边的距离
+                         bottom: 30, //右边的距离
+                         handleColor: '#CBBCDB', //h滑动图标的颜色
+                         handleStyle: {
+                             borderColor: "#CBBCDB",
+                             borderWidth: "1",
+                             shadowBlur: 2,
+                             background: "#CBBCDB",
+                             shadowColor: "#CBBCDB",
+                         },
+                         fillerColor: new echarts.graphic.LinearGradient(1, 0, 0, 0, [{
+                             //给颜色设置渐变色 前面4个参数，给第一个设置1，第四个设置0 ，就是水平渐变
+                             //给第一个设置0，第四个设置1，就是垂直渐变
+                             offset: 0,
+                            color: '#CBBCDB'
+                         }, {
+                             offset: 1,
+                             color: '#CBBCDB'
+                         }]),
+                         backgroundColor: 'rgba(37, 46, 100, 0.45)', //两边未选中的滑动条区域的颜色
+                         showDataShadow: false, //是否显示数据阴影 默认auto
+                         showDetail: false, //即拖拽时候是否显示详细数值信息 默认true
+                         handleIcon: 'M-292,322.2c-3.2,0-6.4-0.6-9.3-1.9c-2.9-1.2-5.4-2.9-7.6-5.1s-3.9-4.8-5.1-7.6c-1.3-3-1.9-6.1-1.9-9.3c0-3.2,0.6-6.4,1.9-9.3c1.2-2.9,2.9-5.4,5.1-7.6s4.8-3.9,7.6-5.1c3-1.3,6.1-1.9,9.3-1.9c3.2,0,6.4,0.6,9.3,1.9c2.9,1.2,5.4,2.9,7.6,5.1s3.9,4.8,5.1,7.6c1.3,3,1.9,6.1,1.9,9.3c0,3.2-0.6,6.4-1.9,9.3c-1.2,2.9-2.9,5.4-5.1,7.6s-4.8,3.9-7.6,5.1C-285.6,321.5-288.8,322.2-292,322.2z',
+                          filterMode: 'filter',
+                     },
+			    grid: {  
+					left: '10%',  
+					bottom:'35%',
+					top:'3%'
+				}, 
+			    xAxis: {
+			    	type: 'category',
+				    axisLabel: {
+					   interval:0,  
+					   rotate:40,
+					   fontSize:10,
+					}
+				},
+			    yAxis: {},
+			    // Declare several bar series, each will be mapped
+			    // to a column of dataset.source by default.
+			    series: [
+			        {
+			        	type: 'bar',
+			        	barGap:'10%',
+			        	barWidth : 10,//柱图宽度
+			        },
+//			        {
+//			        	type: 'bar',
+//			        	barGap:'10%',
+//			        	barWidth : 10,//柱图宽度
+//			        },
+//			        {
+//			        	type: 'bar',
+//			        	barGap:'10%',
+//			        	barWidth : 10,//柱图宽度
+//			        }
+			    ]
+			};
+			myMonthChart.setOption(myMonthOption,true);
+			if(optionData.mapType=='北京'||optionData.mapType=='天津'||optionData.mapType=='上海'||optionData.mapType=='重庆'){
+				$(".topTittle").text(optionData.mapType+'市运营数据');
+			}else{
+				$(".topTittle").text(optionData.mapType+'省运营数据');
+			}
+			
+//读取后台数据
+getCurrentMonthData();
+function getCurrentMonthData(){
+	ajaxGet('/sys/statistics/getHomePageStatisticsReport',{selectType:1,province:optionData.mapType},function(data){
+		console.log("下级市区数据",data);
+		$(".staticTime").text(data.resultMap.currentTime);//当前时间
+		$(".hospitalAffiliationNum").text(data.resultMap.hospitalNum);//合作医院数量
+		$(".equipmentNum").text(data.resultMap.equipmentNum);//设备台数
+		$(".MonthInspectionVolume").text(data.resultMap.thisMonthNum);//本月检查量
+		$(".lastMonthInspectionVolume").text(data.resultMap.lastMonthNum);//上月检查量
+		if(data.resultMap.checkChainRatio){
+			$(".chainRatio").text(data.resultMap.checkChainRatio+'%');//本月检查量环比量
+			if(data.resultMap.checkRationFlag==1){//本月检查量环比符号(1：上涨，0：持平，-1：下降)
+				$(".chainRatio").next('i').addClass('fa-arrow-up').removeClass('fa-arrow-down');
+			}else if(data.resultMap.checkRationFlag==-1){
+				$(".chainRatio").next('i').addClass('fa-arrow-down').removeClass('fa-arrow-up');
+			}
+		}else{
+			$(".chainRatio").text('0%');//本月检查量环比量
+			$(".chainRatio").next('i').removeClass('fa-arrow-up').removeClass('fa-arrow-down');
+		}
+		
+		
+		$(".returnShouldFee").text(data.resultMap.returnShouldFee);//应收回款
+		$(".returnFactFee").text(data.resultMap.returnFactFee);//实收回款
+		$(".cost").text(data.resultMap.cost);//成本
+		$(".grossProfit").text(data.resultMap.grossProfit);//毛利润
+		//本月各医院开单量、实收汇款、毛利（结果集）
+				if(data.resultMap.hospitalDataResult){
+					var optionDataSet=[];
+					$.each(data.resultMap.hospitalDataResult, function(i,item) {
+						optionDataSet.push([
+							item.hospitalName,//医院名称
+							item.checkThisNum,//本月检查量
+							item.returnFactFee,//实收回款
+							item.grossProfit//毛利
+						]);
+					});
+	//				console.log(optionDataSet);
+					myMonthOption.dataset.source=optionDataSet;
+					myMonthChart.setOption(myMonthOption,true);
+				}
+				
+//				获取下地图数据
+			var selectDatas=data.resultMap.mapDataResult;
+			var obj=[]
+			for (var i=0;i<selectDatas.length;i++) {   
+			    //评分数据
+			    var name = selectDatas[i].city
+			    obj.push({
+			    	name:selectDatas[i].city,
+			    	value:selectDatas[i].checkThisNum,
+			    	checkLastNum:selectDatas[i].checkLastNum,//上月检查量
+			        checkChainRatio:selectDatas[i].checkChainRatio,//环比量
+			        checkChainRatioFlag:selectDatas[i].checkChainRatioFlag//环比符号(1：上涨，0：持平，-1：下降)
+			    })
+			
+			    //缓存
+			    $("#mapdata").data(name,data[i]);
+			    optionData.data=obj;
+			    myChart.setOption(option, true);
+			}
+	});
+}
+
+//  vue数据
+			var app = new Vue({
+				el: '#vueDataBox',
+				data() {
+					return {
+						tableData: [],
+						ymVal: 0, //默认(按年0),按月1
+						dateVal: "", //搜索时间
+						checkBeginDate: "", //搜索起始时间
+						checkEndDate: "", //搜索结束时间
+						option: '',
+						priceOption: '',
+						thisList:[]
+					}
+				},
+				methods: {
+
+					//点击列表单元格
+					handleCell(row, column, cell, event) {
+						console.log("------------------")
+						console.log(row.hospitalId)
+						console.log(column)
+						console.log(cell)
+						console.log(event)
+						console.log("------------------");
+						let years=new Date().getFullYear();
+						let month=new Date().getMonth()<10?'0'+(new Date().getMonth()+ 1):new Date().getMonth() + 1;
+						let beginTime=years+'-'+month;
+						let endTime=beginTime;
+						let beginToEnd=beginTime+' ~ '+endTime;
+						console.log(beginToEnd);
+						let sendObj = {
+							hosipitalName:row.hospitalName,
+							selectType: 1,//按月
+							ymVal:1,//按月
+							beginTime: beginTime,
+							endTime: endTime,
+							dateArr:beginToEnd
+						}
+						console.log(sendObj)
+						if(column.label == "检查量（例）") {
+							sessionStorage.setItem(row.hospitalId, JSON.stringify(sendObj))
+							RefreshManyIframe("page/operationDataAdmin/monthSumNew/monthSummaryTarget.html?id=" + row.hospitalId, "monthSummaryTarget")
+						} else if(column.label == "设备数量(台)" || column.label == "日期") {
+							sessionStorage.setItem(row.hospitalId, JSON.stringify(sendObj))
+							RefreshManyIframe("page/operationDataAdmin/monthSumNew/monthSummaryDevice.html?id=" + row.hospitalId, "monthSummaryDevice")
+						} else if(column.label == "医院名称" || column.label == "成本(支出)") {
+							if(this.ymVal == 0) { //按年点击医院名称跳转，按月不跳
+								this.ymVal = 1 //点击医院跳转按月查询，传入医院id
+								$("#ymSelect").val(this.ymVal)
+								this.timeOut()
+								var clickHospitalId = row.hospitalId; //医院ID
+								this.getList(clickHospitalId)
+							}
+						}
+					},
+					//总计
+					getSummaries(param) {
+						const {
+							columns,
+							data
+						} = param;
+						const sums = [];
+						columns.forEach((column, index) => {
+							if(index === 0) {
+								sums[index] = '总价';
+								return;
+							}
+
+							const values = data.map(item => Number(item[column.property]));
+							if(!values.every(value => isNaN(value))) {
+								sums[index] = values.reduce((prev, curr) => {
+									const value = Number(curr);
+									if(!isNaN(value)) {
+										return prev + curr;
+									} else {
+										
+										return prev;
+									}
+								}, 0);
+								if(this.ymVal == 1) {
+									switch(index) { //按月总计单位
+										case 1:
+											sums[index] += '';
+											break;
+										case 2:
+											sums[index] += ' 台';
+											break;
+										case 3:
+											sums[index] += ' 例';
+											break;
+										default:
+											sums[index] = sums[index].toFixed(2)
+											console.log(sums[index])
+											sums[index] += ' 元';
+									}
+								} else { //按年总计单位
+									switch(index) {
+										case 1:
+											sums[index] += ' 台';
+											break;
+										case 2:
+											sums[index] += ' 例';
+											break;
+										default:
+										sums[index] = sums[index].toFixed(2)
+											console.log(sums[index])
+											sums[index] += ' 元';
+									}
+								}
+							} else {
+								sums[index] = '';
+							}
+						});
+						console.log(sums);
+						return sums;
+					},
+					getList(dataList) {
+						let _this = this;
+						$(".resultListsContents form").html('');
+						_this.tableData=[];
+						_this.thisList=[];
+						for(var i=0;i<dataList.length;i++){
+							if(dataList[i].hospitalName!='总计'){
+								_this.thisList.push(dataList[i]);
+							}
+						}
+						_this.tableData = _this.thisList;
+						console.log(_this.tableData);
+							
+						
+					},
+				},
+				created() {
+//					this.getList()
+				}
+			})
+	</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+label{
+	text-align: right;
+}
+.form-group{
+	/*overflow: hidden;*/
+	/*height: 30px;*/
+}
+.note-editor .note-editable{
+	height: 220px;
+}
+.gohome{
+	display: none;
+}
+.onoffswitch-inner:before{
+	text-align: left;
+}
+.modal-backdrop {
+	position: inherit;
+}
+.btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover{
+	background: #1a7bb9;
+	border: #1a7bb9;
+}
+.fade.in{
+	background-color:rgba(0,0,0,.5)
+}
+#files-error{
+	position: absolute;
+	bottom: -8px;
+}
+.btnGroup{
+	margin-top: 25px;
+}
+.SureBtn,.SureBannerBtn{
+	border: 0px;
+}
+@media screen and (max-width: 1400px){
+body {
+    min-height: 0px!important;
+    min-width: 650px!important;
+}	
+}
+.ibox-content,.wrapper-content{
+	padding-top: 0px;
+}
+.col-sm-3,.col-sm-8{
+	float: left;
+}
+.col-sm-3{
+	width: 25%;
+}
+.col-sm-8{
+	width: 65%;
+}
+#ccomment{
+	height: 60px !important;
+}

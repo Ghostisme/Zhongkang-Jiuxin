@@ -1,0 +1,271 @@
+body{
+	font-size: 12px;
+}
+.wrapper-content{
+	padding-top:0px;
+}
+.ibox-content{
+	padding-top: 0px;
+}
+/*公共样式*/
+.infosNav{
+	width: 100%;
+    height: 36px;
+    line-height: 36px;
+    background-color: #EAEDF3;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    padding-left: 25px;
+    border-bottom: 0.5px solid #d5d6d8;
+    margin-bottom: 25px;
+}
+.hosInfos{
+	overflow: hidden;
+	border: 0.5px solid #d5d6d8;
+	margin-bottom: 40px;
+	padding-right: 1px;
+}
+.addInfoBtns{
+	color: #51659B;
+	margin-right: 25px;
+	cursor: pointer;
+}
+.labelsPosition{
+	display: inline-block;
+	height: 36px;
+	line-height: 36px;
+	text-align: left;
+}
+.labelsDetailPosition{
+	display: inline-block;
+	height: 36px;
+	line-height: 36px;
+	text-align: left;
+	padding: 0px;
+}
+.addRows{
+	margin-top: 20px;
+	overflow: hidden;
+	margin-bottom: 0px;
+	padding-left: 15px;
+}
+.addRows:last-child{
+	margin-bottom: 20px;
+}
+.personInChargeRows{
+	/*overflow: hidden;*/
+	margin-bottom: 0px;
+	padding-left: 15px;
+}
+.addDeptBoxWidth{
+	margin-bottom: 30px;
+}
+.addRows input#specialDept{
+	height: 36px;
+	width: 90%;
+    border: 0px!important;
+}
+.allLineInputPadding{
+	/*padding-left: 21px;*/
+	/*padding-right: 30px;*/
+}
+textarea.allTextAreaHeight{
+	height: 100px !important;
+}
+.col-sm-4,.col-sm-12{
+	padding-left: 0px;
+}
+/*地图样式*/
+#allmap {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin: 0 auto;
+    font-family: "微软雅黑";
+}
+#map{
+	top: 20px;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    /* width: 65px; */
+    height: 30px;
+    background: #E6E9F6;
+    border: 1px solid #4977E8;
+}
+/*院长增加按钮*/
+.addPresident{
+	/*position: absolute;*/
+	/*right: 15px;*/
+	color: #51659B;
+	height: 36px;
+	line-height: 36px;
+	cursor: pointer;
+}
+.personInChargeRows .col-sm-111 {
+	position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    float: left;
+    /*width: 22.13333333% !important;*/
+}
+.personInChargeRows .col-sm-112{
+	position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    float: left;
+    width: 11.33333333% !important;
+}
+.personInChargeRows .col-sm-10{
+	width: 88.33333333% !important;
+	padding: 0px;
+}
+.labelsDetailPosition.col-sm-112{
+	position: relative;
+    min-height: 1px;
+    float: left;
+    width: 9.33333333% !important;
+}
+.deptList.col-sm-11{
+	width: 98.66666667% !important;
+}
+.allLineInputPadding.col-sm-11{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.allLineInputPadding.col-sm-5{
+	padding-left: 0px;
+}
+.addRows .col-sm-6,.addRows .col-sm-7{
+	padding: 0px;
+}
+.addRows .col-sm-11{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.addRows .col-sm-10{
+	width: 87.33333333%;
+}
+/*开户行电话*/
+.openBankTel{
+	/*margin-bottom: 30px;*/
+}
+/*删除按钮样式*/
+.delIcon{
+	position: absolute;
+    right: 10px;
+    top: -6px;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    background: #000;
+    opacity: 0.5;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+}
+.deptList input,.deptList select,.deptList textarea{
+	width: 100%;
+}
+/*角色checkbox按钮设置*/
+.roleList{
+	position: relative;
+	/*margin-right: 30px;*/
+	cursor: pointer;
+}
+.deptList .deptInput,.personInChargeRows .deptInput{
+	width: 12px;
+	height: 12px;
+	margin:0px !important;
+	opacity: 0;
+	position: relative;
+	z-index: 2;
+	left: -15px;
+}
+.editRoleText{
+	height: 36px;
+	display: table-cell;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+/*角色上浮动的按钮*/
+.indexBox{
+	position: absolute;
+    left: 0px;
+    top: 12px;
+	width: 12px;
+	height: 12px;
+	background: #fff;
+	border: 1px solid #51659B;
+	z-index: 1;
+}
+.indexCheckedBox{
+	position: absolute;
+    left: 0px;
+    top: 12px;
+	width: 12px;
+	height: 12px;
+	background: #4E6195;
+	border: 1px solid #51659B;
+	z-index: 1;
+}
+.redStar{
+	color: #e4393c;
+	margin-right: 5px;
+}
+/*权限*/
+.limits{
+	height: 36px;
+	line-height: 36px;
+	margin-right: 20px;
+}
+.hiddenRoleId{
+	display: none;
+}
+/*#changeAdminOrganize{
+	display: none;
+}*/
+@media screen and (max-width: 1400px){
+	body {
+	    min-height: 0px!important;
+	    min-width: 900px!important;
+	}
+}
+.adddDeptRow{
+	width: 90%;
+	padding: 0px ;
+}
+.adddDeptRow .labelsPosition{
+	width: 11.8%;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.adddDeptRow .deptSelectBox{
+	width: 54.8%;
+	/*padding-left: 7px;*/
+	padding: 0px;
+}
+.choseDeptPlate{
+	overflow: scroll;
+    clear: both;
+    width: 48%;
+    /* margin-left: 12%; */
+    height: 300px;
+    border: 1px solid #ddd;
+    display: none;
+    position: fixed;
+    z-index: 999;
+    background: #fff;
+}
+#specialDept{
+	background: #fff !important;
+}
+.hiddenPermissionId{
+	display: none;
+}

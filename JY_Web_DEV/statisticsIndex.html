@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>中康九悦远程医疗管理系统-主页</title>
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+		<!-- Morris -->
+		<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+
+		<!-- Gritter -->
+		<link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+		<link href="css/animate.min.css" rel="stylesheet">
+		<link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+		<base target="_blank">
+		<!--<link rel="stylesheet" href="css/home.css" />-->
+		<style>
+			.homeBgs img {
+				width: 100%;
+				display: block;
+			}
+			
+			.wrapper-content {
+				padding: 20px 30px;
+			}
+			
+			#mainContents {
+				width: 100%;
+				height: 100%;
+				/*background: url(../img/home/homeImg.png) no-repeat;*/
+				/*background-size:100% 100%;*/
+			}
+		</style>
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content">
+			<div class="row">
+				<div id="mainContents">
+					<!--<div class="homeBgs">
+		      		<img src="img/home/untitled2.png" alt="" />
+		      	</div>
+		      	<div class="homeBgs">
+		      		<img src="img/home/untitled3.png" alt="" />
+		      	</div>
+		      	<div class="homeBgs">
+		      		<img src="img/home/untitled4.png" alt="" />
+		      	</div>
+		      	<div class="homeBgs">
+		      		<img src="img/home/untitled1.png" alt="" />
+		      	</div>-->
+					<!--<img src="img/home/homeImg.jpg" alt="" />-->
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js?v=2.1.4"></script>
+		<script src="js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="js/echarts.js"></script>
+		<script src="js/china.js"></script>
+		<script type="text/javascript" src="js/config.js"></script>
+		<script type="text/javascript" src="js/commonStyle.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script>
+			// $(document).ready(function(){WinMove();setTimeout(function(){$.gritter.add({title:"您有2条未读信息",text:'请前往<a href="mailbox.html" class="text-warning">收件箱</a>查看今日任务',time:10000})},2000);$(".chart").easyPieChart({barColor:"#f8ac59",scaleLength:5,lineWidth:4,size:80});$(".chart2").easyPieChart({barColor:"#1c84c6",scaleLength:5,lineWidth:4,size:80});var data1=[[0,4],[1,8],[2,5],[3,10],[4,4],[5,16],[6,5],[7,11],[8,6],[9,11],[10,30],[11,10],[12,13],[13,4],[14,3],[15,3],[16,6]];var data2=[[0,1],[1,0],[2,2],[3,0],[4,1],[5,3],[6,1],[7,5],[8,2],[9,3],[10,2],[11,1],[12,0],[13,2],[14,8],[15,0],[16,0]];$("#flot-dashboard-chart").length&&$.plot($("#flot-dashboard-chart"),[data1,data2],{series:{lines:{show:false,fill:true},splines:{show:true,tension:0.4,lineWidth:1,fill:0.4},points:{radius:0,show:true},shadowSize:2},grid:{hoverable:true,clickable:true,tickColor:"#d5d5d5",borderWidth:1,color:"#d5d5d5"},colors:["#1ab394","#464f88"],xaxis:{},yaxis:{ticks:4},tooltip:false})});
+			$("#mainContents").css("height", document.body.scrollHeight);
+			var myChart = echarts.init(document.getElementById('mainContents'));
+			option = {
+				backgroundColor: '#0c1c30', // 图形容器背景色
+				tooltip: { // 鼠标移到涟漪点上的浮动提示框
+					borderWidth: 1,
+					borderColor: "#6E98FC",
+					// formatter详细配置： https://echarts.baidu.com/option.html#tooltip.formatter
+					formatter(params, ticket, callback) { // https://echarts.baidu.com/option.html#tooltip.formatter
+						// params.data 就是series配置项中的data数据
+//						 console.log(params)
+						let lossPercent,
+							delay
+						if(params.data) {
+//							lossPercent = params.data.lossPercent
+//							delay = params.data.delay
+						} else {
+//							lossPercent = 0
+//							delay = 0
+						}
+//						let htmlStr = `
+//          <div style='font-size:16px;'> ${params.name}</div><br/>
+//          <p style='text-align:left;margin-top:-10px;'>
+//          丢包率：${params.hospital.deviceName}%<br/>
+//          延时：${delay}ms<br/>
+//          </p>`
+						let htmlStr = '';
+						htmlStr += '<div style="font-size:16px;">' +params.data.name+'</div><br/>';
+						for(var k=0 ;k<params.data.hospital.length;k++){
+							htmlStr+='<p style="text-align:left;margin-top:-10px;">';
+							htmlStr+='<span style="margin-right:10px;">'+params.data.hospital[k].deviceName+'</span>';
+							htmlStr+='<span style="margin-right:10px;">上月量：'+params.data.hospital[k].lastMonth+'例</span>';
+							htmlStr+='<span style="margin-right:10px;">当月量：'+params.data.hospital[k].thisMonth+'例</span>';
+							htmlStr+='</p></br>';
+						}
+						
+						return htmlStr
+					}
+				},
+				// grid: { // 网格配置
+				//     show: true,
+				//      backgroundColor: '#ddd'
+				// },
+				// 左下角指示颜色
+				legend: {
+					type: "plain",
+					show: true,
+					orient: 'vertical',
+					//   top: 'bottom',
+					bottom: '20',
+					left: '3%',
+					data: [
+//					{
+//							name: "非常好",
+//							icon: "circle",
+//							textStyle: {
+//								color: "#6ad86e"
+//							}
+//						},
+//						{
+//							name: "正常",
+//							icon: "circle",
+//							textStyle: {
+//								color: "#9adcfa"
+//							}
+//						},
+//						{
+//							name: "一般",
+//							icon: "circle",
+//							textStyle: {
+//								color: "#F7F709"
+//							}
+//						},
+//						{
+//							name: "差",
+//							icon: "circle",
+//							textStyle: {
+//								color: "#FF9900"
+//							}
+//						},
+						{
+							name: "统计",
+							icon: "circle",
+							textStyle: {
+								color: "#F73809"
+							}
+						}
+					]
+				},
+				// geo配置详解： https://echarts.baidu.com/option.html#geo
+				geo: { // 地理坐标系组件用于地图的绘制
+					map: 'china', // 表示中国地图
+					// roam: true, // 是否开启鼠标缩放和平移漫游
+					zoom: 1.2, // 当前视角的缩放比例（地图的放大比例）
+					// top:20,
+					label: {
+						show: true,
+						color: '#f2f2f2' // 文字颜色
+					},
+					itemStyle: { // 地图区域的多边形 图形样式。
+						areaColor: '#0c1c30', // 地区默认颜色
+						// borderColor: '#678dd6', //片区边框颜色
+						borderWidth: 1, // 边框描绘
+						borderColor: '#90c5ed', //片区边框颜色
+						emphasis: { // 高亮状态下的多边形和标签样式
+							areaColor: '#24cbff', // 高亮区域背景颜色
+							shadowBlur: 20,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				},
+				series: [
+//				{
+//						name: '非常好',
+//						type: 'effectScatter', // 涟漪点
+//						coordinateSystem: 'geo',
+//						zlevel: 2,
+//						rippleEffect: {
+//							brushType: 'stroke'
+//						},
+//						label: {
+//							emphasis: {
+//								show: true,
+//								position: 'right',
+//								formatter: '{b}'
+//							}
+//						},
+//						symbolSize: 10,
+//						showEffectOn: 'render',
+//						itemStyle: {
+//							normal: {
+//								color: '#6ad86e'
+//							}
+//						},
+//						data: [{
+//								delay: 63,
+//								lossPercent: 2,
+//								name: '北京',
+//								value: [116.4551, 40.2539]
+//							}, {
+//								delay: 63,
+//								lossPercent: 2,
+//								name: '广州',
+//								value: [113.5107, 23.2196]
+//							},
+//							{
+//								delay: 63,
+//								lossPercent: 5,
+//								name: '武汉',
+//								value: [114.31, 30.52],
+//							}
+//						]
+//					},
+//					{
+//						name: '正常',
+//						type: 'effectScatter',
+//						coordinateSystem: 'geo',
+//						zlevel: 2,
+//						rippleEffect: {
+//							brushType: 'stroke'
+//						},
+//						label: {
+//							emphasis: {
+//								show: true,
+//								position: 'right',
+//								formatter: '{b}'
+//							}
+//						},
+//						symbolSize: 10,
+//						showEffectOn: 'render',
+//						itemStyle: {
+//							normal: {
+//								color: '#9adcfa'
+//							}
+//						},
+//						data: [{
+//							name: '昆明',
+//							delay: 63,
+//							lossPercent: 2,
+//							value: [102.9199, 25.4663]
+//						}, {
+//							name: '江门',
+//							delay: 63,
+//							lossPercent: 2,
+//							value: [112.6318, 22.1484]
+//						}]
+//					},
+//					{
+//						name: '一般',
+//						type: 'effectScatter',
+//						coordinateSystem: 'geo',
+//						zlevel: 2,
+//						rippleEffect: {
+//							brushType: 'stroke'
+//						},
+//						label: {
+//							emphasis: {
+//								show: true,
+//								position: 'right',
+//								formatter: '{b}'
+//							}
+//						},
+//						symbolSize: 10,
+//						showEffectOn: 'render',
+//						itemStyle: {
+//							normal: {
+//								color: '#F7F709'
+//							}
+//						},
+//						data: [{
+//							name: '贵阳',
+//							delay: 63,
+//							lossPercent: 2,
+//							value: [106.62304, 26.67856]
+//						}, {
+//							name: '遵义',
+//							delay: 63,
+//							lossPercent: 2,
+//							value: [106.937263, 27.706627]
+//						}]
+//					},
+//					{
+//						name: '差',
+//						type: 'effectScatter',
+//						coordinateSystem: 'geo',
+//						zlevel: 2,
+//						rippleEffect: {
+//							brushType: 'stroke'
+//						},
+//						label: {
+//							emphasis: {
+//								show: true,
+//								position: 'right',
+//								formatter: '{b}'
+//							}
+//						},
+//						symbolSize: 10,
+//						showEffectOn: 'render',
+//						itemStyle: {
+//							normal: {
+//								color: '#FF9900'
+//							}
+//						},
+//						data: [{
+//							name: '深圳',
+//							delay: 63,
+//							lossPercent: 2,
+//							value: [114.5435, 22.5439]
+//						}, {
+//							name: '郑州',
+//							delay: 63,
+//							lossPercent: 2,
+//							value: [113.4668, 34.6234]
+//						}]
+//					},
+					{
+						name: '统计',
+						type: 'effectScatter',
+						coordinateSystem: 'geo',
+						zlevel: 2,
+						rippleEffect: {
+							brushType: 'stroke'
+						},
+						label: {
+							emphasis: {
+								show: true,
+								position: 'right',
+								formatter: '{b}'
+							}
+						},
+						symbolSize: 10,
+						showEffectOn: 'render',
+						itemStyle: {
+							normal: {
+								color: '#F73809'
+							}
+						},
+						data: [{
+							name: '吐鲁番医院',
+							hospital:[{deviceName:'无敌牌设备',lastMonthNum:3000,currentMonthNum:5000},{deviceName:'嗖嗖无敌牌设备',lastMonthNum:3000,currentMonthNum:5000}],
+							value: [89.18596, 42.94244]
+						}, {
+							name: '汉中',
+							delay: 63,
+							lossPercent: 2,
+							value: [107.03194, 33.06784]
+						}]
+					}
+				]
+			}
+//			myChart.setOption(option);
+			ajaxGet('/statistics/hospitalInfo/hospitalList',{},function(data){
+	            	console.log(data);
+	            	option.series[0].data=data.resultMap.list;
+	            	var arr=[];
+	            	for(var i=0;i<data.resultMap.list.length;i++){
+	            		var obj={
+	            			name: data.resultMap.list[i].hospitalName,
+							hospital:data.resultMap.list[i].checkInfoList,
+							value: [data.resultMap.list[i].longitude, data.resultMap.list[i].latitude]
+	            		};
+	            		arr.push(obj);
+	            	}
+	            	option.series[0].data=arr;
+	            	myChart.setOption(option);
+	            	console.log(option.series[0].data);
+	            });
+//			$.ajax({
+//	            type:"get",
+//	            url:config+"/statistics/hospitalInfo/hospitalList",
+//	            async:true,
+//	            dataType:"JSON",
+//	//          jsonp:"jsoncallback",
+//	            data:{},
+//	            success:
+//	          })
+		</script>
+		<script type="text/javascript" src="js/stats.js" charset="utf-8"></script>
+	</body>
+
+</html>

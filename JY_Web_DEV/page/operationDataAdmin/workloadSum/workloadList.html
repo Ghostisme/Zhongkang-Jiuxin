@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>工作量汇总</title>
+		<link rel="stylesheet" href="../../../css/element-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<link rel="stylesheet" href="../../../css/bootstrap-multiselect.css" />
+		<link rel="stylesheet" href="../../../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../js/plugins/layer/skin/layer.css" />
+		<link rel="stylesheet" href="../../../css/bootstrap-select.min.css" />
+		<style type="text/css">
+			.layer-date {
+				width: 160px !important;
+			}
+			
+			.searchDev {
+				display: flex;
+				align-items: center;
+				background: #EAEDF3;
+				padding: 0 10px 10px 20px;
+			}
+			
+			.echartsBox {
+				width: 473px;
+				height: 300px;
+				margin-top: 30px;
+				background: #fff !important;
+				padding-top: 10px;
+				margin-right: 20px;
+			}
+			
+			#boxAll .newin {
+				width: 160px!important;
+				border: #ccc !IMPORTANT;
+			}
+			.commonTop .querySelect button{
+				border: 1px solid #ccc !IMPORTANT;
+				margin-top: -2px;
+			}
+			.center {
+				display: flex;
+				justify-content: center;
+			}
+			
+			.f_div {
+				margin-right: 1%;
+				margin-top: 10px;
+			}
+			
+			.echarsBox {
+				display: flex;
+			}
+			
+			.queryBtn {
+				cursor: pointer;
+			}
+			
+			.multiselect-container {
+				width: 150px;
+			}
+			
+			.hospitalDiv .multiselect-container {
+				/*下拉框的样式*/
+				height: 350px;
+				overflow-y: scroll;
+			}
+			
+			.multiselect-container>li>a>label {
+				line-height: 28px;
+				font-size: 12px;
+				display: flex;
+				align-items: flex-end;
+			}
+			
+			.multiselect-container>li>a>label>input[type='checkbox'] {
+				margin-top: 7px;
+			}
+			
+			.multiselect-item.multiselect-all.active {
+				border-bottom: 1px solid #ccc !important;
+			}
+			
+			.multiselect {
+				border-radius: 0px;
+			}
+			
+			.multiselect.dropdown-toggle.btn.btn-default:link,
+			.multiselect.dropdown-toggle.btn.btn-default:visited,
+			.multiselect.dropdown-toggle.btn.btn-default:focus,
+			.multiselect.dropdown-toggle.btn.btn-default:hover,
+			.multiselect.dropdown-toggle.btn.btn-default:active,
+			.btn-default.active,
+			.btn-default:active,
+			.open>.dropdown-toggle.btn-default {
+				background: #fff;
+				outline: none;
+				border: 1px solid #ccc;
+				box-shadow: none;
+			}
+			
+			.dropdown-menu>.active>a,
+			.dropdown-menu>.active>a:focus,
+			.dropdown-menu>.active>a:hover {
+				background: #474752;
+			}
+			
+			.multiselect-selected-text {
+				font-size: 13px;
+				font-family: '微软雅黑', '宋体';
+				width: 100%;
+				float: left;
+				text-align: left;
+			}
+			
+			.btn.btn-default {
+				padding-right: 15px;
+			}
+			/*下拉搜索字体*/
+			.bootstrap-select button .filter-option{ 
+				color: #454545;
+			}
+			/*隐藏多选搜索logo*/
+			.input-group-addon{
+				display: none; 
+			}
+			@media screen and (max-width: 1650px) {
+			#boxAll .newin {
+				width: 127px!important;
+				border-color: #ccc !IMPORTANT;
+				}
+				.echartsBox {
+				width: 473px !IMPORTANT;
+				height: 250px !IMPORTANT;
+				margin-top: 20px !IMPORTANT;
+				
+			}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="boxAll">
+			<!--医院患者检查数量-->
+			<div>
+				<div class="searchDev">
+					<div class="f_div" style="border: 1px solid #ccc;">
+						<input class=" layer-date form-control required queryContent" name="monthTime1" id="monthTime1" readonly="readonly" style="background: #fff;" placeholder="按月查找（默认本月）" />
+					</div>
+					<!--<div class="f_div hospitalDiv">
+						<select class="newin" id="InHos" name="InHos" multiple="multiple">
+						</select>
+					</div>-->
+					<div class="f_div commonTop">
+						<select title="全部医院" class="querySelect selectpicker" id="applyHos1" name="hospitalId" data-live-search="true" >
+						</select>
+					</div>
+					<div class="f_div">
+						<select class="newin" id="equipmentType2" name="deviceId"></select>
+					</div>
+					<div class="f_div">
+						<select class="newin" id="equipmentType" name="deviceId" multiple="multiple"></select>
+					</div>
+					<div class="f_div">
+						<select class="newin" id="applyDoctor2" name="applyDoctor2" multiple="multiple"></select>
+					</div>
+					<div class="f_div">
+						<select class="newin" id="operationDoctor3" name="operationDoctor3" multiple="multiple"></select>
+					</div>
+					<div class="f_div">
+						<select class="newin" id="diagnoseDoctor4" name="diagnoseDoctor4" multiple="multiple"></select>
+					</div>
+					<div class="f_div">
+						<div class="lf searching topBtn queryBtn" id="search1">
+							查询
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="echarsBox">
+				<div class="echartsBox" id="staticChart" ></div>
+				<div class="echartsBox" id="staticChart1"></div>
+				<div class="echartsBox" id="staticChart2" ></div>
+
+			</div>
+			<div class="echarsBox">
+				<div class="echartsBox" id="staticChart3" ></div>
+				<div class="echartsBox" id="staticChart4" ></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../../js/plugins/layer/layer.min.js"></script>
+		<script src="../../../js/plugins/layer/laydate/laydate5.0.js"></script>
+		<script src="../../../js/demo/layer-demo.min.js"></script>
+		<script type="text/javascript" src="../../../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../../js/bootstrap-multiselect.js"></script>
+		<script src="../../../js/plugins/layer/layer.min.js"></script>
+		<script src="../../../js/plugins/layer/laydate/laydate5.0.js"></script>
+		<script src="../../../js/demo/layer-demo.min.js"></script>
+		<script src="../../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<!--<script src="../../../js/plugins/echarts/echarts-all.js"></script>-->
+		<script type="text/javascript" src="../../../js/echarts.js" ></script>
+		<script src="../../../js/vue.js"></script>
+		<script type="text/javascript" src="../../../js/element-ui.js"></script>
+		<script type="text/javascript" src="../../../js/config.js"></script>
+		<script type="text/javascript" src="../../../js/commonStyle.js"></script>
+		<script type="text/javascript" src="../../../js/bootstrap-select.min.js" ></script>
+		<script type="text/javascript" src="../../../js/common.js"></script>
+		<script type="text/javascript">
+			var myChart = echarts.init(document.getElementById('staticChart'));
+			var myChart1 = echarts.init(document.getElementById('staticChart1'));
+			var myChart2 = echarts.init(document.getElementById('staticChart2'));
+			var myChart3 = echarts.init(document.getElementById('staticChart3'));
+			var myChart4 = echarts.init(document.getElementById('staticChart4'));
+			$(document).ready(function() {
+				//日期加载
+				var date = new Date();
+				var month = date.getMonth() + 1;
+				var yearVal = date.getFullYear(); //获取本年
+				if(month > 9) {
+					var monthVal = month;
+				} else {
+					var monthVal = '0' + month;
+				}
+				var ins21 = laydate.render({
+					elem: '#monthTime1',
+					type: 'month',
+					value: yearVal + '-' + monthVal,
+				});
+				$('.selectpicker').selectpicker({
+		 		 });
+				var monthTime1 = $("#monthTime1").val();
+				var hospitalId1;
+				applyreadHospitalBooking(); //第一个医院接口
+//				LoadreadHospitalBooking(); //医院接口
+				echarsHosipital(monthTime1) //医院患者检查数量
+				echarsInspect(monthTime1) //部位检查数量
+				echarsAppyDoctor(monthTime1) //申请医生工作量
+				echarsOperationDoctor(monthTime1) //操作医生工作量
+				echarsDiagnoseDoctor(monthTime1) //诊断医生工作量
+//				$('#equipmentType').multiselect({
+//						buttonWidth: 155,
+//						nonSelectedText: '全部部位',
+//					});
+//					$('#applyDoctor2').multiselect({
+//						buttonWidth: 155,
+//						nonSelectedText: '全部申请医生',
+//					});
+//					$('#operationDoctor3').multiselect({
+//						buttonWidth: 155,
+//						nonSelectedText: '全部操作技师',
+//					}).multiselect('refresh');
+//					$('#diagnoseDoctor4').multiselect({
+//						buttonWidth: 155,
+//						nonSelectedText: '全部诊断医生',
+//					});
+				checkeQuipmentType(); //设备
+				checkpointInit();
+					applyDoctorType(); //申请医生
+					operationDoctorType(); //操作医生
+					diagnoseDoctorType(); //诊断医生
+					
+				$("#equipmentType2").change(function() {
+					checkpointInit($("#equipmentType2").find("option:selected").val(), hospitalId1);
+				})
+				$("#applyHos1").change(function() {
+					hospitalId1 = $(this).val();
+					checkeQuipmentType($(this).val()); //设备
+					applyDoctorType($(this).val()); //申请医生
+					operationDoctorType($(this).val()); //操作医生
+					diagnoseDoctorType($(this).val()); //诊断医生
+					checkpointInit($("#equipmentType2").find("option:selected").val(), hospitalId1); //部位
+				});
+			});
+
+			//			查询
+			$(document).on("click", "#search1", function() {
+				var monthTime1 = $("#monthTime1").val();
+				var applyHos1 = $("#applyHos1").val();
+				var equipmentType2 = $("#equipmentType2").val();
+				var equipmentType = JSON.stringify($("#equipmentType").val());
+				var InHos=[];
+				var InHos1 = $("#applyHos1").val();
+				InHos.push(InHos1)
+				var applyDoctor2 = JSON.stringify($("#applyDoctor2").val());
+				var operationDoctor3 = JSON.stringify($("#operationDoctor3").val());
+				var diagnoseDoctor4 = JSON.stringify($("#diagnoseDoctor4").val());
+				echarsHosipital(monthTime1, InHos) //医院患者检查数量
+				echarsInspect(monthTime1, applyHos1, equipmentType2, equipmentType) //部位检查数量
+				echarsAppyDoctor(monthTime1, applyDoctor2, applyHos1) //申请医生工作量
+				echarsOperationDoctor(monthTime1, operationDoctor3, applyHos1) //操作医生工作量
+				echarsDiagnoseDoctor(monthTime1, diagnoseDoctor4, applyHos1) //诊断医生工作量
+			})
+
+			//医院患者检查数量
+			function echarsHosipital(month, hospitalId) {
+			var hospitalId = JSON.stringify(hospitalId);
+				ajaxGet('/sys/statistics/getWorkLoadStatisticsReport', {
+					statisticsType: "医院",
+					checkMonth: month,
+					hospitalIdJson: hospitalId
+				}, function(data) {
+					var tableData = data.resultMap.workLoadResultList;
+					var option = {
+						olor: '#e4393c',
+						tooltip: {
+							trigger: 'axis'
+						},
+						legend: {
+							data: ['医院患者检查数量']
+						},
+						grid: {
+							left: '5%',
+							right: '4%',
+							bottom: '8%',
+							x: 45,
+							x2: 30,
+							y2: 80,
+							containLabel: true
+						},
+						toolbox: {
+							show : false,
+							feature: {
+								saveAsImage: {}
+							}
+						},
+						dataZoom: 
+						{
+							start: 0, //默认为0
+							end: 100 - 2000 / 31, //默认为100
+							type: 'slider',
+							show: true,
+							xAxisIndex: [0],
+							handleSize: 0, //滑动条的 左右2个滑动条的大小
+							height: 8, //组件高度
+							left: 20, //左边的距离
+							right: 20, //右边的距离
+							bottom: 8, //右边的距离
+							fillerColor: new echarts.graphic.LinearGradient(1,0,0,0,[{
+                             offset: 0,
+                            color: '#3c5086'
+                         }, {
+                             offset: 1,
+                             color: '#3c5086'
+                         }]),
+//							 fillerColor:"#3c5086",//选中范围的填充颜色
+							handleColor: '#3c5086', //h滑动图标的颜色
+							handleStyle: {
+								borderColor: "#3c5086",
+								borderWidth: "1",
+								shadowBlur: 2,
+								background: "#3c5086",
+								shadowColor: "#3c5086",
+							},
+//							backgroundColor: 'rgb(124, 144, 197)', //两边未选中的滑动条区域的颜色
+							showDataShadow: false, //是否显示数据阴影 默认auto
+							showDetail: false, //即拖拽时候是否显示详细数值信息 默认true
+							handleIcon: 'M-292,322.2c-3.2,0-6.4-0.6-9.3-1.9c-2.9-1.2-5.4-2.9-7.6-5.1s-3.9-4.8-5.1-7.6c-1.3-3-1.9-6.1-1.9-9.3c0-3.2,0.6-6.4,1.9-9.3c1.2-2.9,2.9-5.4,5.1-7.6s4.8-3.9,7.6-5.1c3-1.3,6.1-1.9,9.3-1.9c3.2,0,6.4,0.6,9.3,1.9c2.9,1.2,5.4,2.9,7.6,5.1s3.9,4.8,5.1,7.6c1.3,3,1.9,6.1,1.9,9.3c0,3.2-0.6,6.4-1.9,9.3c-1.2,2.9-2.9,5.4-5.1,7.6s-4.8,3.9-7.6,5.1C-285.6,321.5-288.8,322.2-292,322.2z',
+							filterMode: 'filter',
+						},
+						xAxis: {
+							type: 'category',
+							boundaryGap: true,
+							axisLabel: {
+								interval: 0,
+								rotate: 20,
+							},
+							data: []
+						},
+						yAxis: {
+							type: 'value'
+						},
+
+						series: [{
+							name: '医院患者检查数量',
+							type: 'bar',
+							stack: '总量',
+							itemStyle: {
+								normal: {
+									color: '#e4393c'
+								}
+							},
+							barWidth: 15,
+							data: []
+						}, ]
+					};
+					if(tableData.length == 0) {
+						option.xAxis.data[0] = "暂无数据";
+						option.series[0].data[0] = 0; //检查量
+					}else{
+						for(var i in tableData) {
+						var hosDev = tableData[i].hospitalName;
+						option.xAxis.data[i] = hosDev;
+						option.series[0].data[i] = tableData[i].checkNum; //检查量
+						}
+					}	
+					myChart.setOption(option, true);
+
+				})
+			}
+			//部位检查数量
+			function echarsInspect(month, hospitalId, equipmentType2, equipmentType) {
+				ajaxGet('/sys/statistics/getWorkLoadStatisticsReport', {
+					statisticsType: "部位",
+					checkMonth: month,
+					hospitalId: hospitalId,
+					equipmentType: equipmentType2,
+					inspectNameJson: equipmentType
+				}, function(data) {
+					var tableData = data.resultMap.workLoadResultList;
+						var option1 = {
+							color: '#4FE6A0',
+							tooltip: {
+								trigger: 'axis'
+							},
+							legend: {
+								data: ['部位检查数量']
+							},
+							grid: {
+								left: '1%',
+								right: '1%',
+								bottom: '8%',
+								x: 45,
+								x2: 30,
+								y2: 80,
+								containLabel: true
+							},
+							toolbox: {
+								show : false,
+								feature: {
+									saveAsImage: {}
+								}
+							},
+							dataZoom: 
+						{
+							start: 0, //默认为0
+							end: 100 - 2000 / 31, //默认为100
+							type: 'slider',
+							show: true,
+							xAxisIndex: [0],
+							handleSize: 0, //滑动条的 左右2个滑动条的大小
+							height: 8, //组件高度
+							left: 20, //左边的距离
+							right: 20, //右边的距离
+							bottom: 8, //右边的距离
+							fillerColor: new echarts.graphic.LinearGradient(1,0,0,0,[{
+                             offset: 0,
+                            color: '#3c5086'
+                         }, {
+                             offset: 1,
+                             color: '#3c5086'
+                         }]),
+//							 fillerColor:"#3c5086",//选中范围的填充颜色
+							handleColor: '#3c5086', //h滑动图标的颜色
+							handleStyle: {
+								borderColor: "#3c5086",
+								borderWidth: "1",
+								shadowBlur: 2,
+								background: "#3c5086",
+								shadowColor: "#3c5086",
+							},
+//							backgroundColor: 'rgb(124, 144, 197)', //两边未选中的滑动条区域的颜色
+							showDataShadow: false, //是否显示数据阴影 默认auto
+							showDetail: false, //即拖拽时候是否显示详细数值信息 默认true
+							handleIcon: 'M-292,322.2c-3.2,0-6.4-0.6-9.3-1.9c-2.9-1.2-5.4-2.9-7.6-5.1s-3.9-4.8-5.1-7.6c-1.3-3-1.9-6.1-1.9-9.3c0-3.2,0.6-6.4,1.9-9.3c1.2-2.9,2.9-5.4,5.1-7.6s4.8-3.9,7.6-5.1c3-1.3,6.1-1.9,9.3-1.9c3.2,0,6.4,0.6,9.3,1.9c2.9,1.2,5.4,2.9,7.6,5.1s3.9,4.8,5.1,7.6c1.3,3,1.9,6.1,1.9,9.3c0,3.2-0.6,6.4-1.9,9.3c-1.2,2.9-2.9,5.4-5.1,7.6s-4.8,3.9-7.6,5.1C-285.6,321.5-288.8,322.2-292,322.2z',
+							filterMode: 'filter',
+						},
+							xAxis: {
+								type: 'category',
+								boundaryGap: true,
+
+								axisLabel: {
+									interval: 0,
+									rotate: 30,
+								},
+								data: []
+							},
+							yAxis: {
+								type: 'value'
+							},
+
+							series: [{
+								name: '部位检查数量',
+								type: 'bar',
+								stack: '总量',
+								itemStyle: {
+									normal: {
+										color: '#4FE6A0'
+									}
+								},
+								barWidth: 15,
+								data: []
+							}, ]
+						};
+					if(tableData.length == 0) {
+						option1.xAxis.data[0] = "暂无数据";
+						option1.series[0].data[0] = 0; //检查量
+					}else{
+						for(var i in tableData) {
+
+							var hosDev = tableData[i].inspectName;
+							option1.xAxis.data[i] = hosDev;
+							option1.series[0].data[i] = tableData[i].checkNum; //检查量
+						}
+					}
+						
+						myChart1.setOption(option1, true);
+					
+
+				})
+			}
+			//申请医生工作量
+			function echarsAppyDoctor(month, applyDoctor2, hospitalId) {
+				ajaxGet('/sys/statistics/getWorkLoadStatisticsReport', {
+					statisticsType: "申请医生",
+					checkMonth: month,
+					hospitalId: hospitalId,
+					doctorIdJson: applyDoctor2,
+				}, function(data) {
+					var tableData = data.resultMap.workLoadResultList;
+					var option2 = {
+						color: '#f8ac59',
+						tooltip: {
+							trigger: 'axis'
+						},
+						legend: {
+							data: ['申请医生工作量']
+						},
+						grid: {
+							left: '5%',
+							right: '4%',
+							bottom: '8%',
+							x: 45,
+							x2: 30,
+							y2: 80,
+							containLabel: true
+						},
+						toolbox: {
+							show : false,
+							feature: {
+								saveAsImage: {}
+							}
+						},
+						dataZoom: 
+						{
+							start: 0, //默认为0
+							end: 100 - 2000 / 31, //默认为100
+							type: 'slider',
+							show: true,
+							xAxisIndex: [0],
+							handleSize: 0, //滑动条的 左右2个滑动条的大小
+							height: 8, //组件高度
+							left: 20, //左边的距离
+							right: 20, //右边的距离
+							bottom: 8, //右边的距离
+							fillerColor: new echarts.graphic.LinearGradient(1,0,0,0,[{
+                             offset: 0,
+                            color: '#3c5086'
+                         }, {
+                             offset: 1,
+                             color: '#3c5086'
+                         }]),
+//							 fillerColor:"#3c5086",//选中范围的填充颜色
+							handleColor: '#3c5086', //h滑动图标的颜色
+							handleStyle: {
+								borderColor: "#3c5086",
+								borderWidth: "1",
+								shadowBlur: 2,
+								background: "#3c5086",
+								shadowColor: "#3c5086",
+							},
+							showDataShadow: false, //是否显示数据阴影 默认auto
+							showDetail: false, //即拖拽时候是否显示详细数值信息 默认true
+							handleIcon: 'M-292,322.2c-3.2,0-6.4-0.6-9.3-1.9c-2.9-1.2-5.4-2.9-7.6-5.1s-3.9-4.8-5.1-7.6c-1.3-3-1.9-6.1-1.9-9.3c0-3.2,0.6-6.4,1.9-9.3c1.2-2.9,2.9-5.4,5.1-7.6s4.8-3.9,7.6-5.1c3-1.3,6.1-1.9,9.3-1.9c3.2,0,6.4,0.6,9.3,1.9c2.9,1.2,5.4,2.9,7.6,5.1s3.9,4.8,5.1,7.6c1.3,3,1.9,6.1,1.9,9.3c0,3.2-0.6,6.4-1.9,9.3c-1.2,2.9-2.9,5.4-5.1,7.6s-4.8,3.9-7.6,5.1C-285.6,321.5-288.8,322.2-292,322.2z',
+							filterMode: 'filter',
+						},
+						xAxis: {
+							type: 'category',
+							boundaryGap: true,
+
+							axisLabel: {
+								interval: 0,
+								rotate: 30,
+							},
+							data: []
+						},
+						yAxis: {
+							type: 'value'
+						},
+
+						series: [{
+							name: '申请医生工作量',
+							type: 'bar',
+							stack: '总量',
+							itemStyle: {
+								normal: {
+									color: '#f8ac59'
+								}
+							},
+							barWidth: 15,
+							data: []
+						}, ]
+					};
+					if(tableData.length == 0) {
+						option2.xAxis.data[0] = "暂无数据";
+						option2.series[0].data[0] = 0; //检查量
+					} else {
+						for(var i in tableData) {
+							var hosDev = tableData[i].doctorName;
+							option2.xAxis.data[i] = hosDev;
+							option2.series[0].data[i] = tableData[i].checkNum; //检查量
+						}
+					}
+
+					myChart2.setOption(option2, true);
+
+				})
+			}
+			//操作医生工作量
+			function echarsOperationDoctor(month, operationDoctor3, hospitalId) {
+				ajaxGet('/sys/statistics/getWorkLoadStatisticsReport', {
+					statisticsType: "操作技师",
+					checkMonth: month,
+					hospitalId: hospitalId,
+					doctorIdJson: operationDoctor3,
+				}, function(data) {
+					var tableData = data.resultMap.workLoadResultList;
+					var option3 = {
+						color: '#8a6d3b',
+						tooltip: {
+							trigger: 'axis'
+						},
+						legend: {
+							data: ['操作技师工作量']
+						},
+						grid: {
+							left: '5%',
+							right: '4%',
+							bottom: '8%',
+							x: 45,
+							x2: 30,
+							y2: 80,
+							containLabel: true
+						},
+						toolbox: {
+							show : false,
+							feature: {
+								saveAsImage: {}
+							}
+						},
+						dataZoom: 
+						{
+							start: 0, //默认为0
+							end: 100 - 2000 / 31, //默认为100
+							type: 'slider',
+							show: true,
+							xAxisIndex: [0],
+							handleSize: 0, //滑动条的 左右2个滑动条的大小
+							height: 8, //组件高度
+							left: 20, //左边的距离
+							right: 20, //右边的距离
+							bottom: 8, //右边的距离
+							fillerColor: new echarts.graphic.LinearGradient(1,0,0,0,[{
+                             offset: 0,
+                            color: '#3c5086'
+                         }, {
+                             offset: 1,
+                             color: '#3c5086'
+                         }]),
+//							 fillerColor:"#3c5086",//选中范围的填充颜色
+							handleColor: '#3c5086', //h滑动图标的颜色
+							handleStyle: {
+								borderColor: "#3c5086",
+								borderWidth: "1",
+								shadowBlur: 2,
+								background: "#3c5086",
+								shadowColor: "#3c5086",
+							},
+//							backgroundColor: 'rgb(124, 144, 197)', //两边未选中的滑动条区域的颜色
+							showDataShadow: false, //是否显示数据阴影 默认auto
+							showDetail: false, //即拖拽时候是否显示详细数值信息 默认true
+							handleIcon: 'M-292,322.2c-3.2,0-6.4-0.6-9.3-1.9c-2.9-1.2-5.4-2.9-7.6-5.1s-3.9-4.8-5.1-7.6c-1.3-3-1.9-6.1-1.9-9.3c0-3.2,0.6-6.4,1.9-9.3c1.2-2.9,2.9-5.4,5.1-7.6s4.8-3.9,7.6-5.1c3-1.3,6.1-1.9,9.3-1.9c3.2,0,6.4,0.6,9.3,1.9c2.9,1.2,5.4,2.9,7.6,5.1s3.9,4.8,5.1,7.6c1.3,3,1.9,6.1,1.9,9.3c0,3.2-0.6,6.4-1.9,9.3c-1.2,2.9-2.9,5.4-5.1,7.6s-4.8,3.9-7.6,5.1C-285.6,321.5-288.8,322.2-292,322.2z',
+							filterMode: 'filter',
+						},
+						xAxis: {
+							type: 'category',
+							boundaryGap: true,
+
+							axisLabel: {
+								interval: 0,
+								rotate: 30,
+							},
+							data: []
+						},
+						yAxis: {
+							type: 'value'
+						},
+
+						series: [{
+							name: '操作技师工作量',
+							type: 'bar',
+							stack: '总量',
+							itemStyle: {
+								normal: {
+									color: '#8a6d3b'
+								}
+							},
+							barWidth: 15,
+							data: []
+						}, ]
+					};
+					if(tableData.length == 0) {
+						option3.xAxis.data[0] = "暂无数据";
+						option3.series[0].data[0] = 0; //检查量
+					} else {
+						for(var i in tableData) {
+							var hosDev = tableData[i].doctorName;
+							option3.xAxis.data[i] = hosDev;
+							option3.series[0].data[i] = tableData[i].checkNum; //检查量
+						}
+					}
+
+					myChart3.setOption(option3, true);
+
+				})
+			}
+			//诊断医生工作量
+			function echarsDiagnoseDoctor(month, diagnoseDoctor4, hospitalId) {
+				ajaxGet('/sys/statistics/getWorkLoadStatisticsReport', {
+					statisticsType: "诊断医生",
+					checkMonth: month,
+					hospitalId: hospitalId,
+					doctorIdJson: diagnoseDoctor4,
+				}, function(data) {
+					var tableData = data.resultMap.workLoadResultList;
+					var option4 = {
+						color: '#2f4050',
+						tooltip: {
+							trigger: 'axis'
+						},
+						legend: {
+							data: ['诊断医生工作量']
+						},
+						grid: {
+							left: '5%',
+							right: '4%',
+							bottom: '8%',
+							x: 45,
+							x2: 30,
+							y2: 80,
+							containLabel: true
+						},
+						toolbox: {
+							show : false,
+							feature: {
+								saveAsImage: {}
+							}
+						},
+						dataZoom: 
+						{
+							start: 0, //默认为0
+							end: 100 - 2000 / 31, //默认为100
+							type: 'slider',
+							show: true,
+							xAxisIndex: [0],
+							handleSize: 0, //滑动条的 左右2个滑动条的大小
+							height: 8, //组件高度
+							left: 20, //左边的距离
+							right: 20, //右边的距离
+							bottom: 8, //右边的距离
+							fillerColor: new echarts.graphic.LinearGradient(1,0,0,0,[{
+                             offset: 0,
+                            color: '#3c5086'
+                         }, {
+                             offset: 1,
+                             color: '#3c5086'
+                         }]),
+//							 fillerColor:"#3c5086",//选中范围的填充颜色
+							handleColor: '#3c5086', //h滑动图标的颜色
+							handleStyle: {
+								borderColor: "#3c5086",
+								borderWidth: "1",
+								shadowBlur: 2,
+								background: "#3c5086",
+								shadowColor: "#3c5086",
+							},
+//							backgroundColor: 'rgb(124, 144, 197)', //两边未选中的滑动条区域的颜色
+							showDataShadow: false, //是否显示数据阴影 默认auto
+							showDetail: false, //即拖拽时候是否显示详细数值信息 默认true
+							handleIcon: 'M-292,322.2c-3.2,0-6.4-0.6-9.3-1.9c-2.9-1.2-5.4-2.9-7.6-5.1s-3.9-4.8-5.1-7.6c-1.3-3-1.9-6.1-1.9-9.3c0-3.2,0.6-6.4,1.9-9.3c1.2-2.9,2.9-5.4,5.1-7.6s4.8-3.9,7.6-5.1c3-1.3,6.1-1.9,9.3-1.9c3.2,0,6.4,0.6,9.3,1.9c2.9,1.2,5.4,2.9,7.6,5.1s3.9,4.8,5.1,7.6c1.3,3,1.9,6.1,1.9,9.3c0,3.2-0.6,6.4-1.9,9.3c-1.2,2.9-2.9,5.4-5.1,7.6s-4.8,3.9-7.6,5.1C-285.6,321.5-288.8,322.2-292,322.2z',
+							filterMode: 'filter',
+						},
+						xAxis: {
+							type: 'category',
+							boundaryGap: true,
+
+							axisLabel: {
+								interval: 0,
+								rotate: 30,
+							},
+							data: []
+						},
+						yAxis: {
+							type: 'value'
+						},
+
+						series: [{
+							name: '诊断医生工作量',
+							type: 'bar',
+							stack: '总量',
+							itemStyle: {
+								normal: {
+									color: '#2f4050'
+								}
+							},
+							barWidth: 15,
+							data: []
+						}, ]
+					};
+					if(tableData.length == 0) {
+						option4.xAxis.data[0] = "暂无数据";
+						option4.series[0].data[0] = 0; //检查量
+					}else{
+						for(var i in tableData) {
+						var hosDev = tableData[i].doctorName;
+						option4.xAxis.data[i] = hosDev;
+						option4.series[0].data[i] = tableData[i].checkNum; //检查量
+						}
+					}
+					myChart4.setOption(option4, true);
+
+				})
+			}
+
+			//			下拉
+			//指定医院下拉框 初始化
+//			function LoadreadHospitalBooking() {
+//				ajaxGet('/hospital/info/getHospitalOptionList', {}, function(data) {
+//					if(data.status == 0) {
+//						var hospitalList = data.resultMap.hospitalList;
+//						if(hospitalList != null) {
+//							for(var s = 0; s < hospitalList.length; s++) {
+//								var hospitalHtml = '';
+//								hospitalHtml += '<option value="' + hospitalList[s].id + '">' + hospitalList[s].hospitalName + '</option>';
+//								$("#InHos").append(hospitalHtml);
+//							}
+//							$('.selectpicker').selectpicker('refresh');
+//		  					$('.selectpicker').selectpicker('render');
+//						}
+//						$('#InHos').multiselect({
+//							buttonWidth: 160,
+//							maxHeight: 400,
+//							nonSelectedText: '医院患者全部医院',
+//						});
+//
+//					}
+//				})
+//			}
+
+			function applyreadHospitalBooking() {
+				$("#applyHos1").html('<option value="">请选择</option>');
+				$("#equipmentType2").html('<option value="">全部设备</option>');
+				ajaxGet("/hospital/info/getHospitalOptionList", {}, function(data) {
+					var hospitalList = data.resultMap.hospitalList;
+					if(hospitalList != null) {
+						var hospitalHtml = '<option value="">全部医院</option>';
+						for(var s = 0; s < hospitalList.length; s++) {
+
+							hospitalHtml += '<option data-name="' + hospitalList[s].hospitalName + '" value="' + hospitalList[s].id + '">' + hospitalList[s].hospitalName + '</option>';
+						}
+						$("#applyHos1").html(hospitalHtml);
+						$('.selectpicker').selectpicker('refresh');
+		  					$('.selectpicker').selectpicker('render');
+					}
+
+					if($("#applyHos1").val() == $("#applyHos1").find("option").val()) {
+						$("#applyHos1").attr("data-name", $("#applyHos1").find("option:selected").attr("data-name"));
+					}
+					
+				})
+			}
+
+			//设备下拉
+			function checkeQuipmentType(id) {
+				ajaxGet('/equipment/type/getEquipmentTypeListByStatistics', {
+					hospitalId: id,
+				}, function(resData) {
+					var rm = resData.resultMap.typeList;
+					//					console.log("设备类型",rm)
+					if(id==undefined){
+						$("#equipmentType2").html('<option value="">全部设备</option>');
+					}
+					else{
+						$("#equipmentType2").html('<option value="">请选择设备</option>');
+					}
+					if(rm != null) {
+						for(var s = 0; s < rm.length; s++) {
+							var equipmentTypeHtml = '';
+							equipmentTypeHtml += '<option data-name="' + rm[s].name + '" value="' + rm[s].id + '">' + rm[s].name + '</option>';
+							$("#equipmentType2").append(equipmentTypeHtml);
+						}
+					}
+				});
+			}
+			//add检查部位下拉
+			function checkpointInit(id, hosipitalId) {
+				$("#equipmentType").html("")
+				ajaxGet('/equipment/subsidiary/getEquipmentInfoSubsidiaryListByStatistics', {
+					equipmentType: id,
+					hospitalId: hosipitalId
+				}, function(resData) {
+					var data = resData.resultMap.list;
+					if(data != null) {
+						for(var s = 0; s < data.length; s++) {
+							var configTypeHtml = '';
+							configTypeHtml += '<option data-name="' + data[s].part + '" value="' + data[s].part + '">' + data[s].part + '</option>';
+							$("#equipmentType").append(configTypeHtml);
+						}
+
+					}
+					if(id==undefined){
+						$('#equipmentType').multiselect('destroy').multiselect({
+						buttonWidth: 155,
+						nonSelectedText: '全部部位',
+						maxHeight: 400,
+						enableFiltering:true,
+						filterPlaceholder:"搜索"
+					}).multiselect('refresh');
+					}else{
+						$('#equipmentType').multiselect('destroy').multiselect({
+						buttonWidth: 155,
+						nonSelectedText: '请选择部位',
+						maxHeight: 400,
+						enableFiltering:true,
+						filterPlaceholder:"搜索"
+					}).multiselect('refresh');
+					}
+					
+				});
+			}
+
+			//全部申请医生
+			function applyDoctorType(id) {
+				$('#applyDoctor2').html("");
+				ajaxGet('/hospital/doctor/getDoctorList', {
+					hospitalId: id,
+					type: 1
+				}, function(resData) {
+					var rm = resData.resultMap.doctorList;
+					if(rm != null) {
+						for(var s = 0; s < rm.length; s++) {
+							var equipmentTypeHtml = '';
+							equipmentTypeHtml += '<option data-name="' + rm[s].name + '" value="' + rm[s].id + '">' + rm[s].name + '</option>';
+							$("#applyDoctor2").append(equipmentTypeHtml);
+						}
+						if(id==undefined){
+							$('#applyDoctor2').multiselect('destroy').multiselect({
+							buttonWidth: 155,
+							nonSelectedText: '全部申请医生',
+							maxHeight: 400,
+							enableFiltering:true,
+							filterPlaceholder:"搜索"
+						}).multiselect('refresh');
+						}else{
+							$('#applyDoctor2').multiselect('destroy').multiselect({
+							buttonWidth: 155,
+							nonSelectedText: '请选择申请医生',
+							maxHeight: 400,
+							enableFiltering:true,
+							filterPlaceholder:"搜索"
+							}).multiselect('refresh');
+						}
+						
+					}
+				});
+			}
+			//全部操作技师
+			function operationDoctorType(id) {
+				$('#operationDoctor3').html("");
+				ajaxGet('/hospital/doctor/getDoctorList', {
+					hospitalId: id,
+					type: 5
+				}, function(resData) {
+					var rm = resData.resultMap.doctorList;
+					if(rm != null) {
+						for(var s = 0; s < rm.length; s++) {
+							var equipmentTypeHtml = '';
+							equipmentTypeHtml += '<option data-name="' + rm[s].name + '" value="' + rm[s].id + '">' + rm[s].name + '</option>';
+							$("#operationDoctor3").append(equipmentTypeHtml);
+						}
+						if(id==undefined){
+							$('#operationDoctor3').multiselect('destroy').multiselect({
+							buttonWidth: 155,
+							nonSelectedText: '全部操作技师',
+							maxHeight: 400,
+							enableFiltering:true,
+							filterPlaceholder:"搜索"
+						}).multiselect('refresh');
+						}else{
+							$('#operationDoctor3').multiselect('destroy').multiselect({
+							buttonWidth: 155,
+							nonSelectedText: '请选择操作技师',
+							maxHeight: 400,
+							enableFiltering:true,
+							filterPlaceholder:"搜索"
+						}).multiselect('refresh');
+						}
+						
+					}
+				});
+			}
+			//全部诊断医生
+			function diagnoseDoctorType(id) {
+				$('#diagnoseDoctor4').html("");
+				ajaxGet('/hospital/doctor/getDoctorList', {
+					hospitalId: id,
+					type: 4
+				}, function(resData) {
+					var rm = resData.resultMap.doctorList;
+					if(rm != null) {
+						for(var s = 0; s < rm.length; s++) {
+							var equipmentTypeHtml = '';
+							equipmentTypeHtml += '<option data-name="' + rm[s].name + '" value="' + rm[s].id + '">' + rm[s].name + '</option>';
+							$("#diagnoseDoctor4").append(equipmentTypeHtml);
+						}
+						if(id==undefined){
+							$('#diagnoseDoctor4').multiselect('destroy').multiselect({
+							buttonWidth: 155,
+							nonSelectedText: '全部诊断医生',
+							maxHeight: 400,
+							enableFiltering:true,
+							 filterPlaceholder:"搜索"
+							}).multiselect('refresh');
+						}
+						else{
+							$('#diagnoseDoctor4').multiselect('destroy').multiselect({
+							buttonWidth: 155,
+							nonSelectedText: '请选择诊断医生',
+							maxHeight: 400,
+							enableFiltering:true,
+							 filterPlaceholder:"搜索"
+							}).multiselect('refresh');
+						}
+						
+
+					}
+				});
+
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新增运营人员考核</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css" />
+		<!--组件库CSS-->
+		<!--<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">-->
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/projectPersonnel.css" />
+	</head>
+	<body>
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="ibox-content middle_content">
+					<form id="equipmentForm" onsubmit="return false;">
+						<ul class="appointment-ul2">
+							<li>
+								<div class="topText">基础信息</div>
+								<div class="contentBox1">
+									<div>
+										<div class="f_div">
+											<label class="f_lab">项目名称：</label>
+											<input type="text" class="newin" id="projectName" name="projectName" value="" placeholder="项目名称" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab" style="width: 110px;">项目运营负责人：</label>
+											<input type="text" class="newin" id="outName" name="name" value="" placeholder="负责人姓名" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab">地址：</label>
+											<input type="text" class="newin" id="address" name="address" value="" placeholder="地址" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab" style="margin-right: 50px;">联系方式：</label>
+											<input type="text" class="newin" id="outPhone" name="phone" value="" placeholder="联系方式" />
+										</div>
+									</div>
+									<!--<div>
+										<div class="f_div">
+											<label class="f_lab">地址：</label>
+											<input type="text" class="newin" id="address" name="address" value="" placeholder="地址" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab" style="margin-right: 50px;">联系方式：</label>
+											<input type="text" class="newin" id="outPhone" name="phone" value="" placeholder="联系方式" />
+										</div>
+									</div>-->
+								</div>
+							</li>
+							<li>
+								<div class="topText innerHospital" data-id="0">
+									院内
+									<div class="editBtn editBtn1">新增</div>
+								</div>
+								<div class="box innerBox">
+									<div>
+										<div class="f_div">
+											<label class="f_lab" style="margin-right: 6px;">职务：</label>
+											<input type="text" class="newin" id="resign" name="resign" value="" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab">姓名：</label>
+											<input type="text" class="newin" id="name" name="name" value="" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab">所属科室：</label>
+											<input type="text" class="newin" id="sections" name="sections" value="" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab">联系方式：</label>
+											<input type="text" class="newin" id="phone" name="phone" value="" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab">时间：</label>
+											<input class="newin layer-date" name="time" id="time" readonly="readonly" placeholder="时间" style="background-color: #FFF;" value="" />
+											<!--<input type="text" class="newin" id="time" name="time" value="" />-->
+										</div>
+									</div>
+									<div>
+										<div class="f_div">
+											<label class="f_lab">内容：</label>
+											<textarea id="content" name="content" class="newin textareaBox" rows="5" cols="5"></textarea>
+											<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+										</div>
+									</div>
+									<div>
+										<div class="f_div">
+											<label class="f_lab">成果：</label>
+											<textarea id="achievements" name="achievements" class="textareaBox newin" rows="5" cols="5"></textarea>
+											<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+										</div>
+									</div>
+									<div>
+										<div class="f_div">
+											<label class="f_lab">存在问题：</label>
+											<textarea id="existingProblems" name="existingProblems" class="textareaBox newin" rows="5" cols="5"></textarea>
+											<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+										</div>
+									</div>
+									<div>
+										<div class="f_div">
+											<label class="f_lab">解决方案：</label>
+											<textarea id="solution" name="solution" class="textareaBox newin" rows="5" cols="5"></textarea>
+											<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+										</div>
+									</div>
+									<div class="tpl boxitem boxitem1">
+										<div class="panel-group f_div" id="accordion" role="tablist" aria-multiselectable="true">
+											<div class="panel panel-default">
+		    									<div class="panel-heading" role="tab" id="headingOne">
+		    										<div>
+		    											<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+												        	所属科室
+												        </a>
+												        <div class="delBtn delBtn1">删除</div>
+		    										</div>
+												</div>
+											</div>
+											<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+		    									<div class="panel-body">
+		    										<div>
+														<!--<div class="f_div" style="width: 23.2%;margin-right: 0;">-->
+														<div class="f_div">
+															<label class="f_lab" style="margin-right: 6px;">职务：</label>
+															<input type="text" class="newin" name="resign" value="" />
+														</div>
+														<div class="f_div">
+															<label class="f_lab">姓名：</label>
+															<input type="text" class="newin" name="name" value="" />
+														</div>
+														<div class="f_div">
+															<label class="f_lab">所属科室：</label>
+															<input type="text" class="newin" name="sections" value="" />
+														</div>
+														<div class="f_div">
+															<label class="f_lab">联系方式：</label>
+															<input type="text" class="newin" name="phone" value="" />
+														</div>
+														<div class="f_div">
+															<label class="f_lab">时间：</label>
+															<input class="newin layer-date" name="time" id="time1" readonly="readonly" placeholder="时间" style="background-color: #FFF;" value="" />
+															<!--<input type="text" class="newin" id="time" name="time" value="" />-->
+														</div>
+													</div>
+													<div>
+														<div class="f_div">
+															<label class="f_lab">内容：</label>
+															<textarea name="content" class="textareaBox newin" rows="5" cols="5"></textarea>
+															<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+														</div>
+													</div>
+													<div>
+														<div class="f_div">
+															<label class="f_lab">成果：</label>
+															<textarea name="achievements" class="textareaBox newin" rows="5" cols="5"></textarea>
+															<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+														</div>
+													</div>
+													<div>
+														<div class="f_div">
+															<label class="f_lab">存在问题：</label>
+															<textarea name="existingProblems" class="textareaBox newin" rows="5" cols="5"></textarea>
+															<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+														</div>
+													</div>
+													<div>
+														<div class="f_div">
+															<label class="f_lab">解决方案：</label>
+															<textarea name="solution" class="textareaBox newin" rows="5" cols="5"></textarea>
+															<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+														</div>
+													</div>
+													<input type="hidden" name="type" value="0" />
+		    									</div>
+		    								</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="topText outHospital" data-id="1">
+									院外
+									<div class="editBtn editBtn2">新增</div>
+								</div>
+								<div class="box outBox">
+									<div>
+										<!--<div class="f_div" style="width: 24.2%;margin-right: 0;">-->
+										<div class="f_div">
+											<!--<label class="f_lab" style="margin-right: 32px;">单位：</label>-->
+											<label class="f_lab" style="margin-right: 6px;">单位：</label>
+											<input type="text" class="newin" id="resign2" name="resign" value="" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab">科室：</label>
+											<input type="text" class="newin" id="name2" name="name" value="" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab">联系人：</label>
+											<input type="text" class="newin" id="sections2" name="sections" value="" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab">联系方式：</label>
+											<input type="text" class="newin" id="phone2" name="phone" value="" />
+										</div>
+										<div class="f_div">
+											<label class="f_lab">时间：</label>
+											<input class="newin layer-date" name="time" id="time2" readonly="readonly" placeholder="时间" style="background-color: #FFF;" value="" />
+										</div>
+									</div>
+									<div>
+										<div class="f_div">
+											<label class="f_lab">内容：</label>
+											<textarea id="content2" name="content" class="textareaBox newin" rows="5" cols="5"></textarea>
+										</div>
+									</div>
+									<div>
+										<div class="f_div">
+											<label class="f_lab">成果：</label>
+											<textarea id="achievements2" name="achievements" class="textareaBox newin" rows="5" cols="5"></textarea>
+										</div>
+									</div>
+									<div>
+										<div class="f_div">
+											<label class="f_lab">存在问题：</label>
+											<textarea id="existingProblems2" name="existingProblems" class="textareaBox newin" rows="5" cols="5"></textarea>
+										</div>
+									</div>
+									<div>
+										<div class="f_div">
+											<label class="f_lab">解决方案：</label>
+											<textarea id="solution2" name="solution" class="textareaBox newin" rows="5" cols="5"></textarea>
+										</div>
+									</div>
+									<div class="tpl1 boxitem boxitem2">
+										<div class="panel-group f_div" id="accordion" role="tablist" aria-multiselectable="true">
+											<div class="panel panel-default">
+		    									<div class="panel-heading" role="tab" id="headingTwo">
+		    										<div>
+		    											<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+												        	所属科室
+												        </a>
+												        <div class="delBtn delBtn2">删除</div>
+		    										</div>
+												</div>
+											</div>
+											<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+		    									<div class="panel-body">
+		    										<div>
+														<!--<div class="f_div" style="width: 23.2%;margin-right: 0;">-->
+														<div class="f_div">
+															<label class="f_lab" style="margin-right: 6px;">单位：</label>
+															<input type="text" class="newin" name="resign" value="" />
+														</div>
+														<div class="f_div">
+															<label class="f_lab">科室：</label>
+															<input type="text" class="newin" name="name" value="" />
+														</div>
+														<div class="f_div">
+															<label class="f_lab">联系人：</label>
+															<input type="text" class="newin" name="sections" value="" />
+														</div>
+														<div class="f_div">
+															<label class="f_lab">联系方式：</label>
+															<input type="text" class="newin" name="phone" value="" />
+														</div>
+														<div class="f_div">
+															<label class="f_lab">时间：</label>
+															<input class="newin layer-date" name="time" id="time3" readonly="readonly" placeholder="时间" style="background-color: #FFF;" value="" />
+															<!--<input type="text" class="newin" id="time" name="time" value="" />-->
+														</div>
+													</div>
+													<div>
+														<div class="f_div">
+															<label class="f_lab">内容：</label>
+															<textarea name="content" class="textareaBox newin" rows="5" cols="5"></textarea>
+															<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+														</div>
+													</div>
+													<div>
+														<div class="f_div">
+															<label class="f_lab">成果：</label>
+															<textarea name="achievements" class="textareaBox newin" rows="5" cols="5"></textarea>
+															<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+														</div>
+													</div>
+													<div>
+														<div class="f_div">
+															<label class="f_lab">存在问题：</label>
+															<textarea name="existingProblems" class="textareaBox newin" rows="5" cols="5"></textarea>
+															<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+														</div>
+													</div>
+													<div>
+														<div class="f_div">
+															<label class="f_lab">解决方案：</label>
+															<textarea name="solution" class="textareaBox newin" rows="5" cols="5"></textarea>
+															<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+														</div>
+														<input type="hidden" name="type" value="1" />
+													</div>
+		    									</div>		    									
+		    								</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="btnGroup addGroup">							
+							<!--<button type="button" class="resBtn resBtn1 Btn">取消</button>-->
+							<button type="button" class="subBtn subBtn1 Btn comTempateSaveBtn">保存</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>	
+	</body>
+	<script src="../../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../../js/plugins/layer/layer.min.js"></script>
+	<script src="../../../js/plugins/layer/laydate/laydate5.0.js"></script>
+	<!--<script type="text/javascript" src="../../../js/vue.js"></script>-->
+	<!--<script type="text/javascript" src="../../../js/element-ui.js"></script>-->
+	<script src="js/addProjectPersonnel.js"></script>
+	<script type="text/javascript">
+		var ins22 = laydate.render({
+		  elem: '#time'
+		  ,trigger: 'click'
+		});
+		var ins21 = laydate.render({
+		  elem: '#time1'
+		  ,trigger: 'click'
+		});
+		var ins20 = laydate.render({
+		  elem: '#time2'
+		  ,trigger: 'click'
+		});
+	</script>
+</html>

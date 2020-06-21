@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>远程医疗管理系统-设备信息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../js/plugins/layer/skin/layer.css" />
+		<link rel="stylesheet" href="../../../css/element-ui.css">
+		<!--<script type="text/javascript" src="http://v1.vuejs.org/js/vue.min.js"></script>-->
+		<!--<script type="text/javascript" src="http://unpkg.com/iview@1.0.1/dist/iview.min.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/dailySummaryListNew.css" />
+		<link rel="stylesheet" href="../../../css/plugins/datapicker/datepicker3.css" />
+		<link rel="stylesheet" href="../../../css/bootstrap-select.min.css" />
+		<style type="text/css">
+			.fixed_top {
+				width: 97.5%;
+				position: fixed;
+				z-index:1000;
+				top: 15px;
+				background: #EAEDF3;
+				height: auto;
+				padding: 6px 0px !important;
+			}
+			
+			.bg {
+				height: 130px;
+				background: #fff;
+				position: fixed;
+				z-index: 999;
+				width: 100%;
+				top: 0px;
+			}
+			
+			.empty {
+				height: 10px !important;
+				background: #fff !important;
+				margin-top: 44px !important;
+			}
+			
+			.has-gutter th {
+				background: #51659B !important;
+				color: #fff;
+			}
+			.el-table{}
+			.el-table__header-wrapper {
+				position: fixed;
+				z-index: 999;
+			}
+			
+			.el-table__body-wrapper {
+				margin-top: 50px;
+			}
+			.el-table__body-wrapper .el-table__body tr:nth-of-type(even) {
+				background-color: #f9fafd ;
+			}
+			.el-table__footer-wrapper .has-gutter tr td{
+				background-color: #d9e0d2;
+			}
+			
+			.is-scrolling-none {
+				height: auto !important;
+			}
+			/*设备信息报表可点击样式*/
+			
+			.el-table__row td:nth-child(3),
+			.el-table__row td:nth-child(5),
+			.el-table__row td:nth-child(6),
+			.el-table__row td:nth-child(7) {
+				color: #4169e2 !important;
+				text-decoration: underline;
+				cursor: pointer;
+			}
+			
+			.el-table__row td:nth-child(3):hover,
+			.el-table__row td:nth-child(5):hover,
+			.el-table__row td:nth-child(6):hover,
+			.el-table__row td:nth-child(7):hover {
+				color: #ff7510 !important;
+				text-decoration: none;
+			}
+			
+			.space {
+				height: 24px;
+				margin-left: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="bg"></div>
+		<div class="contain">
+			<div class="rightLoadContent">
+				<!--页面数据呈现区-->
+				<div class="disContents">
+					<!--搜素区域-->
+					<div class="fixed_top">
+						<form action="">
+							<!--<span for="searchHos"class="lf"style="height: 24px;line-height:24px;margin-left:20px;">医院名称</span>-->
+							<div class="lf space commonTop" id="searchHos">
+								<select class="querySelect selectpicker" id="InHos"  name="InHos" data-live-search="true" style="height: 24px;padding:0px 5px;width:270px;">
+									<!--<option value="">医院名称</option>-->
+								</select>
+							</div>
+							<!--<span for="searchBox"class="lf"style="height: 24px;line-height:24px;margin-right: 5px;">设备信息</span>-->
+							<!--<input type="text"id="searchBox" class="lf"value=""placeholder="请输入设备名称、品牌或型号"/>-->
+							<div class="lf space" id="searchHos">
+								<input type="text" id="searchBox" class="lf queryContent " value="" placeholder="设备信息" />
+							</div>
+							<div class="subscribeListSex input-daterange" id="datepicker">
+								<div class="subscribeListSex lf space">
+									<input type="text" style="float: left;" class="newin layer-date form-control required queryContent" id="beginTime" autocomplete="off" name="beginTime" placeholder="检查起始日期">
+								</div>
+
+								<div class="subscribeListSex lf space">
+									<input type="text" style="float: left;" class="newin layer-date form-control required queryContent" id="endTime" autocomplete="off" name="endTime" placeholder="检查结束日期">
+								</div>
+							</div>
+							<div class="lf searching topBtn queryBtn">
+								查询
+							</div>
+							<!--<div class="rt addData">
+						新增
+					</div>-->
+							<div id="reportQuerySearchClearBtn" class="topBtn resetbtn" style="float: left;cursor: pointer;margin-left: 14px;">
+								清空
+							</div>
+							<div id="export" class="topBtn addBtn" style="float: left;cursor: pointer;margin-left: 14px;">
+								导出
+							</div>
+						</form>
+						<div class="empty"></div>
+						<div class="tableNav">设备信息</div>
+					</div>
+					
+					<!--列表区域-->
+					<div v-loading="loading" id="app" style="margin-top: 86px;">
+						<div class="empty"></div>
+						<el-table :data="tableData" border :summary-method="getSummaries" @cell-click="handleCell" show-summary style="width: 100%">
+							<el-table-column align='center' prop="hospitalName" label="医院名称">
+							</el-table-column>
+							<el-table-column align='center' prop="deviceType" label="设备类型">
+							</el-table-column>
+							<el-table-column align='center' prop="deviceName" label="设备名称及品牌">
+							</el-table-column>
+							<el-table-column align='center' prop="deviceModel" label="设备型号">
+							</el-table-column>
+							<!--<el-table-column
+			    	align='center'
+			      prop="checkDate"
+			      label="日期">
+			    </el-table-column>-->
+							<el-table-column align='center' prop="checkNum" label="检查量（例）">
+							</el-table-column>
+							<el-table-column align='center' prop="shouldPrice" label="应收">
+							</el-table-column>
+							<el-table-column align='center' prop="factPrice" label="实收">
+							</el-table-column>
+						</el-table>
+					</div>
+					<div class="clearfix"></div>
+					<div class="pageN"></div>
+				</div>
+				<!--模态框-->
+				<div class="modal">
+				</div>
+				<!--新增配置信息弹框-->
+				<div id="newConfiguration">
+					<div class="newConfigurationTitle">
+						新增配置信息类型
+						<div class="rt">
+							<span class="newConfigCloseModel">
+                                      ×
+                                  </span>
+						</div>
+					</div>
+					<!--标题-->
+					<div class="currentModalMainTit">
+						新增配置信息类型
+					</div>
+					<form action="">
+						<div class="boxDiv1">
+							<textarea name="addInfoBox1" class="addInfoBox1" id="addInfoNames"></textarea>
+						</div>
+						<div class="boxDiv2">
+							<textarea name="addInfoBox2" class="addInfoBox2"></textarea>
+						</div>
+						<div class="sureAndCancelBtns">
+							<div class="sureBtn addNewBtn">
+								确认新增
+							</div>
+							<div class="addConfigcancelBtn">
+								取&nbsp;&nbsp;消
+							</div>
+						</div>
+					</form>
+				</div>
+				<!--修改配置信息弹框-->
+				<div id="changeConfiguration">
+					<div class="newConfigurationTitle">
+						配置信息类型修改
+						<div class="rt">
+							<span class="changeConfigCloseModel">
+                                      ×
+                                  </span>
+						</div>
+					</div>
+					<!--标题-->
+					<div class="currentModalMainTit">
+						配置信息类型修改
+					</div>
+					<form action="">
+						<div class="boxDiv1">
+							<textarea name="changeInfoBox1" class="changeInfoBox1"></textarea>
+						</div>
+						<div class="boxDiv2">
+							<textarea name="changeInfoBox2" class="changeInfoBox2"></textarea>
+						</div>
+						<div class="sureAndCancelBtns">
+							<div class="sureBtn sureChangeInfos">
+								确认修改
+							</div>
+							<div class="changeInfoCancelBtn">
+								取消修改
+							</div>
+						</div>
+						<span class="configListchangeId" style="display:none"></span>
+					</form>
+				</div>
+				<!--删除单行配置信息提示框-->
+				<div id="delListInfo">
+					<div class="delTopImg">
+						<img src="../../img/common/untitledquestionImg.png" alt="" />
+					</div>
+					<div class="delWarn">
+						<div class="delWarn1">删除信息后不可恢复，确定要删除</div>
+						<div class="delWarn2">
+							该条信息吗？
+						</div>
+					</div>
+					<div class="sureAndCancelBtns">
+						<div class="delInfoCancelBtn">
+							取&nbsp;&nbsp;&nbsp;&nbsp;消
+						</div>
+						<div class="sureBtn sureChangeInfos">
+							确定删除
+						</div>
+					</div>
+					<span class="configListdelChangeId" style="display:none"></span>
+				</div>
+				<!--查看详情页-->
+				<div id="lookingForDetails">
+					<div class="newConfigurationTitle">
+						新增配置信息类型
+						<div class="rt">
+							<span class="lookingForDetailsCloseModel">
+                                      ×
+                                  </span>
+						</div>
+					</div>
+					<div class="LoadDetails">
+
+					</div>
+				</div>
+			</div>
+			<div id="staticChart" style="width: 100%;height:500px;margin-top:20px;"></div>
+		</div>
+
+		<script type="text/javascript" src="../../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../../js/plugins/layer/layer.min.js"></script>
+		<!--<script src="../../js/content.min.js?v=1.0.0"></script>-->
+		<script src="../../../js/demo/layer-demo.min.js"></script>
+		<script src="../../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script src="../../../js/plugins/echarts/echarts-all.js"></script>
+		<!-- import Vue before Element -->
+		<script src="../../../js/vue.js"></script>
+		<!-- import JavaScript -->
+		<script type="text/javascript" src="../../../js/element-ui.js" ></script>
+		<script type="text/javascript" src="../../../js/config.js"></script>
+		<script type="text/javascript" src="../../../js/commonStyle.js"></script>
+		<script type="text/javascript" src="../../../js/common.js"></script>
+		<script type="text/javascript" src="../../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+		<script type="text/javascript" src="../../../js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="../../../js/bootstrap-select.min.js" ></script>
+		<script type="text/javascript" src="../../../js/exportExcel.js"></script>
+
+		<script>
+			var myChart = echarts.init(document.getElementById('staticChart'));
+
+			$(document).ready(function() {
+				$("#datepicker").datepicker({
+					keyboardNavigation: !1,
+					forceParse: !1,
+					autoclose: !0
+				});
+			})
+			$("#daysStart").html('<option value="0">全月</option>');
+			$("#daysEnd").html('<option value="0">全月</option>');
+			var currentPage = 1;
+			var offsetPage = 0; //传输的页起始条数
+			var showNum = 10; //页面需要显示的条数
+			var num_pages;
+			var sessionId = sessionStorage.getItem('sessionId');
+			//点击分页页数
+			$(document).delegate(".flipOver", 'click', function() {
+				$(this).addClass('active').siblings().removeClass('active');
+				currentPage = parseInt($(this).attr("pageId"));
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+			//点击上一页
+			$(document).delegate("#prev", 'click', function() {
+				if($(".flipOver.active").prev().attr("id") == "prev") {
+					return true
+				} else {
+					var page = parseInt($(".flipOver.active").attr("pageid")) - 1;
+					$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+				}
+				currentPage = page;
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+
+			//点击下一页
+			$(document).delegate("#Next", 'click', function() {
+				if($(".flipOver.active").next().attr("id") == "Next") {
+					return true
+				} else {
+					var page = parseInt($(".flipOver.active").attr("pageid")) + 1;
+					$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+				}
+				currentPage = page;
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+			//点击分页跳转页按钮
+			$(document).delegate(".srueToJumpPageBtn", 'click', function() {
+				currentPage = parseInt($(".toPageNum").val().trim());
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+
+			//            点击搜索按钮
+			$(document).on("click", ".searching", function() {
+				//      var search=$("#searchBox").val().trim();
+				app.getList()
+			});
+			//            点击导出按钮
+			$(document).on('click', '#export', function() {
+				let tHeader = [
+					'医院名称',
+					'设备类型',
+					'设备名称及品牌',
+					'设备型号',
+					'检查量(例)',
+					'应收(元)',
+					'实收(元)'
+				]
+				console.log(app.tableData)
+				let tbody = []
+				for(var i in app.tableData) {    //表数据
+					console.log(app.tableData[i])					
+					var dataObj = {
+						hospitalName: app.tableData[i].hospitalName,
+						deviceType: app.tableData[i].deviceType,
+						deviceName: app.tableData[i].deviceName,
+						deviceModel:app.tableData[i].deviceModel,
+						checkNum: app.tableData[i].checkNum,
+						shouldPrice: app.tableData[i].shouldPrice,
+						factPrice: app.tableData[i].factPrice
+					}
+					tbody.push(dataObj)
+				}
+				var sum ={   //总价
+					hospitalName:"总价",
+					deviceType:"无",
+					deviceName:"无",
+					deviceModel:"无",
+					checkNum:app.sumData.checkNum,
+					shouldPrice:app.sumData.shouldPrice,
+					factPrice:app.sumData.factPrice
+				}
+				tbody.push(sum)
+				export2Excel(tHeader, tbody, '日汇总-设备信息')
+			});
+			//  点击清除按钮
+			$("#reportQuerySearchClearBtn").click(function() {
+				$("#InHos").val("");
+				$("#searchBox").val("");
+				$(".commonTop button").attr('title',app.searchObj.hosipitalName);//医院
+				$(".commonTop button .filter-option").text(app.searchObj.hosipitalName);//医院
+				console.log(app.searchObj.hosipitalName)
+				$("#beginTime").val("");
+				$("#endTime").val("");
+				app.getList()
+			});
+			//            点击删除里的取消按钮
+			$(".delInfoCancelBtn").click(function() {
+				$(this).parent().parent().css("display", "none");
+				$(".modal").css("display", "none");
+			});
+
+			//            点击修改标签
+			$(".resultListsContents").on("click", ".changeImg", function() {
+				var listId = $(this).parent().parent().find(".listId").text().trim(); //获取当前行的id
+				var currentTypeName = $(this).parent().parent().find(".resultListsItem2").text().trim(); //获取当前行的类名
+				var currentRemarks = $(this).parent().parent().find(".resultListsItem4").text().trim(); //获取当前行的备注
+				//      $("#changeConfiguration").css("display","block");
+				//      $(".modal").css("display","block");
+				$("#changeConfiguration .changeInfoBox1").val(currentTypeName);
+				$("#changeConfiguration .changeInfoBox2").val(currentRemarks);
+				$(".configListchangeId").text(listId);
+				localStorage.setItem("newsEditId", listId)
+				//  点击编辑按钮
+
+				//		    parent.layer.open({
+				//			    type: 2,
+				//			    title: false,
+				//			    closeBtn: true,
+				//			    shade: [0],
+				//			    area: ['340px', '215px'],
+				//			    offset: 'rb', //右下角弹出
+				//			    time: 2000, //2秒后自动关闭
+				//			    shift: 2,
+				//			    content: ['./page/Appnews/editNews.html', 'no'], //iframe的url，no代表不显示滚动条
+				//			    end: function(){ //此处用于演示
+				//			        parent.layer.open({
+				//			            type: 2,
+				//			            title: '新闻编辑',
+				//			            shadeClose: true,
+				//			            shade: false,
+				//			            maxmin: true, //开启最大化最小化按钮
+				//			            area: ['1150px', '650px'],
+				//			            content: './page/Appnews/editNews.html'
+				//			        });
+				//			    }
+				//			});
+				parent.layer.open({
+					type: 2,
+					title: '新闻编辑',
+					shadeClose: true,
+					shade: [0.5],
+					maxmin: true, //开启最大化最小化按钮
+					area: ['1150px', '650px'],
+					content: './page/Appnews/editNews.html'
+				});
+
+			});
+			//            点击删除按钮
+			$(".resultListsContents").on("click", ".delImg", function() {
+				var listId = $(this).parent().parent().find(".listId").text().trim(); //获取当前行的id
+				$("#delListInfo").css("display", "block");
+				$(".modal").css("display", "block");
+				$(".configListdelChangeId").text(listId);
+			});
+
+			//            删除列表功能
+			$("#delListInfo .sureChangeInfos").click(function() {
+				var CurrentId = $(this).parent().parent().parent().find(".configListdelChangeId").text();
+				console.log(CurrentId);
+				$.ajax({
+					method: 'get',
+					url: config + '/oa/news/remove',
+					contentType: "application/json; charset=utf-8", //传到后台的数据格式
+					async: true,
+					data: {
+						'id': CurrentId,
+						'type': '1'
+					},
+					dataType: 'JSON', //接收值的格式
+					success: function(data) {
+						console.log(data);
+						if(data.status == 1) {
+							$("#delListInfo").css("display", "none");
+							$(".modal").css("display", "none");
+							alert(data.message)
+							getorderList();
+						} else {
+							alert(data.message);
+							//            window.location.reload();
+						}
+					},
+					error: function(result) {
+						console.log(result);
+					}
+				});
+			});
+			//			点击置顶消息
+			var toTop = 0; //定义置顶参数
+			$(document).on("click", ".toTopImg", function() {
+				if($(this).attr("id") == 1) {
+					toTop = 0;
+				} else {
+					toTop = 1;
+				}
+				var listId = $(this).parent().parent().find(".listId").text().trim(); //获取当前行的id
+				$.ajax({
+					method: 'get',
+					url: config + '/oa/news/settop',
+					contentType: "application/json; charset=utf-8", //传到后台的数据格式
+					async: true,
+					data: {
+						'id': listId,
+						'isTop': toTop,
+						'type': '1'
+					},
+					dataType: 'JSON', //接收值的格式
+					success: function(data) {
+						//		        swal({title:"",text:data.message});
+						getorderList();
+					},
+					error: function(result) {
+						console.log(result);
+					}
+				})
+			})
+			var daysStart;
+			var month;
+			var daysEnd;
+			var year;
+			//年
+			$("#year").change(function() {
+				searchHospitalId = $("#subscribeListSearchHospital").val();
+				searchSectionId = $("#subscribeListSearchTechOffice").val();
+				searchUserId = $("#subscribeListSearchDoctor").val();
+				year = $("#year").val();
+				$("#monthstart").get(0).selectedIndex = 0;
+
+				daysStart = 0;
+				month = 0;
+				daysEnd = 0;
+				var d = new Date(year, month, 0);
+				var daystr = '<option value="0">全月</option>';
+				$("#daysStart").html(daystr);
+				$("#daysEnd").html(daystr);
+			});
+			//月
+			$("#monthstart").change(function() {
+				searchHospitalId = $("#subscribeListSearchHospital").val();
+				searchSectionId = $("#subscribeListSearchTechOffice").val();
+				searchUserId = $("#subscribeListSearchDoctor").val();
+				year = $("#year").val();
+				month = $("#monthstart").val();
+				console.log("month", year);
+				daysStart = 0;
+				daysEnd = 0;
+				var d = new Date(year, month, 0);
+				if(month == 0) {
+					$("#daysStart").html(" ");
+					$("#daysEnd").html(' ');
+					return;
+				}
+				var sday = d.getDate();
+				console.log("hh", sday);
+				var daystr = '<option value="0">全月</option>';
+				for(var i = 1; i <= sday; i++) {
+					daystr += '<option value="' + (i < 10 ? "0" + i : i) + '">' + i + '</option>';
+				}
+				$("#daysStart").html(daystr);
+				$("#daysEnd").html(daystr);
+			});
+
+			$("#daysStart").change(function() {
+				daysStart = $("#daysStart").val();
+			});
+			$("#daysEnd").change(function() {
+				daysEnd = $("#daysEnd").val();;
+			});
+			//	医院列表渲染
+			LoadreadHospitalBooking()
+			//指定医院下拉框 初始化
+			function LoadreadHospitalBooking() {
+				$("#InHos").html('<option value="">请选择医院</option>');
+				ajaxGet('/hospital/info/getHospitalOptionList', {}, function(data) {
+					console.log(data);
+					if(data.status == 0) {
+						var hospitalList = data.resultMap.hospitalList;
+						if(hospitalList != null) {
+							for(var s = 0; s < hospitalList.length; s++) {
+								var hospitalHtml = '';
+								hospitalHtml += '<option value="' + hospitalList[s].id + '">' + hospitalList[s].hospitalName + '</option>';
+								$("#InHos").append(hospitalHtml);
+							}
+							$('.selectpicker').selectpicker('refresh');
+		  				$('.selectpicker').selectpicker('render');
+						}
+					}
+				})
+			}
+
+			//  vue数据
+			var app = new Vue({
+				el: '#app',
+				data() {
+					return {
+						tableData: [],
+						total: 0,
+						currentPage4: 1,
+						hospitalId: "", //医院id
+						searchObj: null,
+						option: "",
+						sumData:"", //后台的总计
+						loading:true
+					}
+				},
+				methods: {
+					handleClick(row) {
+						console.log(row);
+					},
+					handleSizeChange(val) {
+						console.log(`每页 ${val} 条`);
+					},
+					handleCurrentChange(val) {
+						console.log(`当前页: ${val}`);
+					},
+					handleCell(row, column, cell, event) {
+						console.log("------------------")
+						console.log(row.deviceId)
+						console.log(column)
+						console.log(cell)
+						console.log(event)
+						console.log("------------------")
+						let sendObj = {
+							hosipitalName: row.hospitalName,
+							deviceId: row.deviceId, //设备ID
+							searchBox: $("#searchBox").val().trim(), //设备信息
+							beginTime: $("#beginTime").val(), //起始日期
+							endTime: $("#endTime").val() //结束日期
+						}
+						if(column.label == "设备名称及品牌" || column.label == "检查量（例）" || column.label == "应收" || column.label == "实收") {
+							sessionStorage.setItem(row.hospitalId, JSON.stringify(sendObj))
+							RefreshManyIframe("page/operationDataAdmin/daySumNew/dailySummaryTarget.html?id=" + row.hospitalId, "dailySummaryTarget")
+						} else if(column.label == "设备数量(台)") {
+							sessionStorage.setItem(row.hospitalId, JSON.stringify(sendObj))
+							RefreshManyIframe("page/operationDataAdmin/daySumNew/dailySummaryDevice.html?id=" + row.hospitalId, "dailySummaryDevice")
+						}
+
+					},
+					getSummaries(param) {
+						const {
+							columns,
+							data
+						} = param;
+						const sums = [];
+
+						columns.forEach((column, index) => {
+							if(index === 0) {
+								sums[index] = '总价';
+								return;
+							} else if(index === 1 || index === 2 || index === 3) {
+								sums[index] = '——';
+								return;
+							}
+							const values = data.map(item => Number(item[column.property]));
+							if(!values.every(value => isNaN(value))) {
+								sums[index] = values.reduce((prev, curr) => {
+									const value = Number(curr);
+									console.log(index)
+									if(!isNaN(value)) {
+										return prev + curr;
+									} else {
+										return prev;
+									}
+								}, 0);
+								if(index === 4) {
+									sums[index] += ' 例';
+								} else {
+									sums[index] = sums[index].toFixed(2)
+									sums[index] += ' 元';
+								}
+
+							} else {
+								sums[index] = '';
+							}
+						});
+						console.log(sums);
+						return sums;
+					},
+					getList() {
+						let searchSectionId = '';
+						let searchHospitalId = '';
+						let searchUserName = '';
+						let offsetPage = 0;
+						let showNum = 10;
+						let _this = this;
+						console.log("======================================")
+						console.log(this.searchObj)
+						if($("#InHos").val() == "") { //医院id
+							var hospitalId = _this.hospitalId;
+						} else {
+							var hospitalId = $("#InHos").val();
+						}
+						if($("#searchBox").val().trim() == "") { //设备信息
+							var searchBox = this.searchObj.searchBox;
+						} else {
+							var searchBox = $("#searchBox").val().trim();
+						}
+						if(this.searchObj.operateInfo == "") { //运营主管联系电话
+							var operateInfo = "";
+						} else {
+							var operateInfo = this.searchObj.operateInfo;
+						}
+						if($("#beginTime").val() == "") { //起始日期
+							var beginTime = this.searchObj.beginTime;
+							$("#beginTime").val(beginTime)
+						} else {
+							var beginTime = $("#beginTime").val();
+						}
+						if($("#endTime").val() == "") { //结束日期
+							var endTime = this.searchObj.endTime;
+							$("#endTime").val(endTime)
+						} else {
+							var endTime = $("#endTime").val();
+						}
+						$(".resultListsContents form").html('');
+						ajaxGet('/sys/statistics/getDateStatisticsReport', {
+							statisticsType: '设备',
+							deviceInfo: searchBox,
+							operateInfo: operateInfo,
+							checkBeginDate: beginTime,
+							checkEndDate: endTime,
+							hospitalId: hospitalId,
+							offset: offsetPage, //（页码-1）*每页显示条数
+							limit: showNum, //每页赢显示的条数
+							//              sessionId:sessionId
+						}, function(data) {
+							console.log(data);
+							_this.tableData = data.resultMap.dateListReport;
+							_this.sumData = data.resultMap.sumOperateDateStatistics;
+							//						_this.total=parseInt(data.resultMap.total);
+							if(data.status == 0) {
+								_this.loading=false;
+								if(_this.tableData.length == 0) {
+									$("#staticChart").hide();
+								} else {
+									$("#staticChart").show();
+									_this.option = {
+										title: {
+											text: '检查量 ↓'
+										},
+										olor: '#e4393c',
+										tooltip: {
+											trigger: 'axis'
+										},
+										legend: {
+											data: ['检查量']
+										},
+										grid: {
+											left: '5%',
+											right: '4%',
+											bottom: '5%',
+											containLabel: true
+										},
+										toolbox: {
+											feature: {
+												saveAsImage: {}
+											}
+										},
+										xAxis: {
+											type: 'category',
+											boundaryGap: true,
+											axisLabel: {
+												interval: 0,
+												rotate: 20,
+												formatter: function(value) {
+													//x轴的文字改为竖版显示
+													var str = value.split(" ");
+													return str.join("\n");
+												}
+											},
+											data: []
+										},
+										yAxis: {
+											type: 'value'
+										},
+
+										series: [{
+											name: '检查量',
+											type: 'bar',
+											stack: '总量',
+											itemStyle: {
+												normal: {
+													color: '#e4393c'
+												}
+											},
+											barWidth: 15,
+											data: []
+										}, ]
+									};
+									for(var i in _this.tableData) {
+										var hosDev = _this.tableData[i].hospitalName;
+										_this.option.xAxis.data[i] = hosDev;
+										_this.option.series[0].data[i] = _this.tableData[i].checkNum; //检查量
+
+									}
+									myChart.setOption(_this.option, true);
+								}
+							} else {
+								alert(data.message);
+							}
+						});
+					},
+
+				},
+				created() {
+					this.hospitalId = getUrlParam("id").split("?")[0];
+					this.searchObj = JSON.parse(sessionStorage.getItem(this.hospitalId))
+//					$('.selectpicker').selectpicker('val', 'Mustard');
+					var options = $("#InHos option:selected");
+	    			options.text(this.searchObj.hosipitalName);
+					console.log(this.hospitalId)
+					this.getList();
+					console.log("列表：：：", this.total);
+				}
+			})
+		</script>
+	</body>
+
+</html>

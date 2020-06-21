@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线医生列表</title>
+    <link href="../../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+
+    <link href="../../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../css/animate.min.css" rel="stylesheet">
+    <link href="../../../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../css/public.css">
+
+</head>
+
+<body class="gray-bg">
+<!--模态框-->
+<div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+
+            <div class="modal-body" style="padding: 0;">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="contact-box cb_add" style="padding-bottom: 50px;">
+                                <div class="yiyuan_top">
+                                    河北医科大学第二医院
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+
+                                </div>
+                                <div class="col-sm-8">
+                                    <a href="#">
+                                        <h3><strong>奔波儿灞</strong></h3>
+                                        <p>职称：副主治医生</p>
+                                        <p>科室：妇产科</p>
+                                        <p>简介：妇产科 副主治医生 主治妇科疾病</p>
+                                    </a>
+                                </div>
+                                <a href="#">
+                                    <div class="col-sm-3">
+                                        <div class="text-center">
+                                            <img alt="image" class="img-circle m-t-xs img-responsive"
+                                                 src="../../../img/a1.jpg">
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="fold_div" style="font-size: 16px">
+                                正在等待对方接受邀请...
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="ibox-title">
+                        <h5>在线问诊</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>选择医院：</label>
+                                        <select class="form-control">
+                                            <option>--请选择--</option>
+                                            <option>天</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>选择科室：</label>
+                                        <select class="form-control">
+                                            <option>--请选择--</option>
+                                            <option>天</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>医生职称：</label>
+                                        <select class="form-control">
+                                            <option>--请选择--</option>
+                                            <option>天</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>医生姓名：</label>
+                                        <input name="us_integral_cx" type="text" class="form-control">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group" style="padding-top: 23px;">
+                                        <button type="button" class="btn  btn-success">查询</button>
+                                        <button type="button" class="btn  btn-white" onclick="list_fh()">返回</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="ibox-title">
+                        <h5>在线医生列表</h5>
+                        <span class="redStar" style="float: right">如未安装视频软件，请点击<a>下载</a>并安装</span>
+                    </div>
+                    <style>
+                        .zanwu{
+                            border: 1px solid #ebebeb;height: 150px;line-height: 150px;text-align: center;
+                        }
+                        .yiyuan_top{
+                            font-style:oblique;font-size: 16px;margin-bottom: 20px;
+                        }
+                        .fold_div{
+                            height: 50px;background-color: #f2f5f7;text-align: center;line-height: 50px;
+                        }
+                        .cb_add{
+                            padding-bottom: 30px;margin: 0;
+                        }
+                    </style>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <!--无医生显示-->
+                                <div class="zanwu" style="display: none">
+                                    暂无接诊医生在线
+                                </div>
+                                <!--医生列表-->
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <div class="contact-box cb_add" >
+                                            <div class="yiyuan_top">河北医科大学第二医院</div>
+                                            <div class="col-sm-8">
+                                                <a href="#">
+                                                    <h3><strong>奔波儿灞</strong></h3>
+                                                    <p>职称：副主治医生</p>
+                                                    <p>科室：妇产科</p>
+                                                    <p>简介：妇产科 副主治医生 主治妇科疾病</p>
+                                                </a>
+                                            </div>
+                                            <a href="#">
+                                                <div class="col-sm-4">
+                                                    <div class="text-center">
+                                                        <img alt="image" class="img-circle m-t-xs img-responsive"
+                                                             src="../../../img/a1.jpg">
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="fold_div">
+                                            <button type="button" class="btn  btn-success qqlj_btn" data-toggle="modal" data-target="#myModal">请求连接</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="contact-box cb_add" >
+                                            <div class="yiyuan_top">河北医科大学第二医院</div>
+
+                                            <div class="col-sm-8">
+                                                <a href="#">
+                                                    <h3><strong>灞波儿奔</strong></h3>
+                                                    <p>职称：副主治医生</p>
+                                                    <p>科室：妇产科</p>
+                                                    <p>简介：妇产科 副主治医生 主治妇科疾病</p>
+                                                </a>
+                                            </div>
+                                            <a href="#">
+                                                <div class="col-sm-4">
+                                                    <div class="text-center">
+                                                        <img alt="image" class="img-circle m-t-xs img-responsive"
+                                                             src="../../../img/a3.jpg">
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="fold_div">
+                                            <button type="button" class="btn  btn-success qqlj_btn" data-toggle="modal" data-target="#myModal">请求连接</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="../../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../../js/bootstrap.min.js?v=3.3.5"></script>
+<script src="../../../js/content.min.js?v=1.0.0"></script>
+
+<script src="../../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/plugins/sweetalert/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        oninitTable();
+
+
+    });
+
+    function list_fh() {
+        location.href = "onlineInquiry.html";
+    }
+
+    function selectTable() {
+        var DelNumS = getCheck();//获取选中行的人的编号
+        //判断是否为空。。前面是否有多余的 逗号.(如果是全选，前面会多个，)
+        if (DelNumS.charAt(0) == ",") {
+            DelNumS = DelNumS.substring(1);
+        }
+        if (DelNumS == "") {
+            swal({
+                title: "提示",
+                text: "请选择数据"
+            });
+            return;
+        }
+        $('#closeModal').click();
+    }
+
+    //获取表格里选中的行 的编号
+    function getCheck() {
+        var data = [];//数组
+        $("#myTable").find("input[name='btSelectItem']:checkbox:checked").each(function () {
+            var index = $(this).attr("data-index");
+            var res = $("#myTable").bootstrapTable('getData')[index];
+            data.push(res.id);
+        });
+        return data.join(",");//用，连接
+    }
+
+    function oninitTable() {
+        // var url = 'http://www.fruitcoming.com/admin/user/getMemberLevelData';
+        var data = [
+            {
+                'id': 0,
+                'name': 'Item 0',
+                'idCode': '$0',
+                'phone': '$0'
+            },
+            {
+                'id': 1,
+                'name': 'Item 1',
+                'idCode': '$0',
+                'phone': '$0'
+            },
+            {
+                'id': 2,
+                'name': 'Item 2',
+                'idCode': '$0',
+                'phone': '$0'
+            },
+            {
+                'id': 3,
+                'name': 'Item 3',
+                'idCode': '$0',
+                'phone': '$0'
+            },
+            {
+                'id': 4,
+                'name': 'Item 4',
+                'idCode': '$0',
+                'phone': '$0'
+            },
+            {
+                'id': 5,
+                'name': 'Item 5',
+                'idCode': '$0',
+                'phone': '$0'
+            }
+        ];
+        $('#myTable').bootstrapTable({
+            // method: 'get',
+            toolbar: '#toolbar', //工具按钮用哪个容器
+            striped: true,      //是否显示行间隔色
+            cache: false,      //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            // dataField: "data",//数据集名称 自己随便起
+            pagination: true,     //是否显示分页（*）
+            pageNumber: 1,      //初始化加载第一页，默认第一页
+            pageSize: 10,      //每页的记录行数（*）
+            pageList: [5, 10, 20, 50],  //可供选择的每页的行数（*）
+            // url: url,//这个接口需要处理bootstrap table传递的固定参数
+            //responseHandler: responseHandler,//把后台返回的数据整改成你想要的格式
+            // queryParamsType: '', //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
+            // 设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber
+            //queryParams: queryParams,//前端调用服务时，会默认传递上边提到的参数，如果需要添加自定义参数，可以自定义一个函数返回请求参数
+            sidePagination: "client",   //分页方式：client客户端分页，server服务端分页（*）
+            // search: true,      //是否显示表格搜索，此搜索是客户端搜索，但可以传值到服务端
+            strictSearch: true,
+            minimumCountColumns: 2,    //最少允许的列数
+            clickToSelect: true,    //是否启用点击选中行
+            //smartDisplay:true,// 智能显示(www.111cn.net) pagination 和 cardview 等
+            searchOnEnterKey: true,
+            data: data,
+            columns: [
+                {
+                    field: "state",
+                    checkbox: true,
+                    align: 'center'
+                },
+                {
+                    field: 'id',
+                    title: '序号',
+                    align: 'center',
+                    sortable: true
+                }, {
+                    field: 'name',
+                    title: '姓名',
+                    align: 'center',
+                    sortable: true
+                }, {
+                    field: 'idCode',
+                    title: '身份证号',
+                    align: 'center',
+                    sortable: true
+                }, {
+                    field: 'phone',
+                    title: '联系电话',
+                    align: 'center',
+                    sortable: true
+                }]
+        });
+    }
+</script>
+</body>
+</html>

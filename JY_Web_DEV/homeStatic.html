@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>中康九悦远程医疗管理系统-主页</title>
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+		<link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+		<!-- Morris -->
+		<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+
+		<!-- Gritter -->
+		<link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+		<link href="css/animate.min.css" rel="stylesheet">
+		<link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+		<base target="_blank">
+		<link rel="stylesheet" href="css/progress.css" />
+		<link rel="stylesheet" href="css/homeStatic.css" />
+		<style>
+			.homeBgs img {
+				width: 100%;
+				display: block;
+			}
+			
+			.wrapper-content {
+				padding: 20px 30px;
+			}
+			
+			#mainContents {
+				width: 100%;
+				height: 100%;
+				/*background: url(../img/home/homeImg.png) no-repeat;*/
+				/*background-size:100% 100%;*/
+			}
+			@media (min-width: 992px){
+				.col-md-3 {
+			    	width: 23%;
+				}
+				#chinaMapBox.col-md-6 {
+				    width: 54%;
+				}
+				.col-md-9 {
+				    width: 77%;
+				}
+			}
+		</style>
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content">
+			<div class="topTittle">
+				所有省市运营数据
+			</div>
+			<div class="row lineMargin">
+				<div class="col-md-3">
+					<div class="card full-height">
+								<div class="card-body">
+									<div class="card-title">检查量情况</div>
+									<div class="row py-3">
+										<div class="col-md-6 d-flex flex-column justify-content-around">
+											<div class="numBox">
+												<h6 class="fw-bold text-uppercase text-success op-8 text-Title-size text-bg">今日检查量</h6>
+												<h3 class="fw-bold dataFromTop"><span class="bigFont blueTextColor InspectionVolumeToday">89</span><span class="smallFont text-position-top blueTextColor">例</span></h3>
+												<span class="addNum addNumDisplay text-position-top InspectionVolumeTodayIsUp">+1</span>
+											</div>
+											<div class="numBox">
+												<h6 class="fw-bold text-uppercase text-success op-8 text-Title-size text-bg">本月检查量</h6>
+												<h3 class="fw-bold dataFromTop"><span class="bigFont blueTextColor InspectionVolumeMonth">89</span><span class="smallFont text-position-top blueTextColor">例</span></h3>
+												<span class="addNum text-position-top InspectionVolumeMonthIsUp">+1</span>
+												<p class="dataCompare">环比: <span class="InspectionVolumeMonthNUm">23%</span> <i class="fa fa-arrow-up"></i></p>
+											</div>
+											
+										</div>
+										<div class="col-md-6">
+											<div class="numBox">
+												<h6 class="fw-bold text-uppercase text-success op-8 text-Title-size text-bg">昨日检查量</h6>
+												<h3 class="fw-bold dataFromTop"><span class="bigFont blueTextColor InspectionVolumeYestoday">89</span><span class="smallFont text-position-top blueTextColor">例</span></h3>
+												<span class="addNum text-position-top InspectionVolumeYestodayIsUp">+1</span>
+											</div>
+											<!--<div class="numBox">
+												<h6 class="fw-bold text-uppercase text-success op-8 text-Title-size text-bg">本月毛利情况</h6>
+												<h3 class="fw-bold dataFromTop"><span class="bigFont color47 InspectionVolumeGrossProfit">89</span><span class="smallFont text-position-top color47">元</span></h3>
+												<span class="addNum text-position-top InspectionVolumeGrossProfitIsUp">+1</span>
+												<p class="dataCompare">环比: <span class="GrossProfitComPareNum">23%</span> <i class="fa fa-arrow-down"></i></p>
+												<p class="dataCompare">毛利率: <span class="GrossProfitNum">23%</span> 
+											</div>-->
+										</div>
+									</div>
+								</div>
+							</div>
+				</div>
+				<div class="col-md-6"id="chinaMapBox">
+					<div class="card-body">
+						<div class="cardMapTitle">—— 统计截止至今日<span class="staticTime">18：00</span> ——</div>
+						<div id="mapMain">
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 examBox">
+					<div class="card-body">
+						<div class="card-title">本月各医院检查量排名 <i class="fa fa-arrow-up" style="color: #528BFB;"></i></div>
+						 <section class="InspectionQuantityRanking">
+						 	<div class="examNum">
+						 		<span class="examNumHos">朝阳医院</span>
+							 	<div class="progress">
+							      <span class="blue" style="width: 100%;"><span></span></span>
+							    </div>
+							    <span class="examNumText"><span class="numBigFont">112</span> <span class="numSmallFont">例</span></span>
+						 	</div>
+						    
+						    <div class="examNum">
+						 		<span class="examNumHos">朝阳医院</span>
+							 	<div class="progress">
+							      <span class="blue" style="width: 70%;"><span></span></span>
+							    </div>
+							    <span class="examNumText"><span class="numBigFont">112</span> <span class="numSmallFont">例</span></span>
+						 	</div>
+						    <div class="examNum">
+						 		<span class="examNumHos">朝阳医院</span>
+							 	<div class="progress">
+							      <span class="blue" style="width: 90%;"><span></span></span>
+							    </div>
+							    <span class="examNumText"><span class="numBigFont">112</span> <span class="numSmallFont">例</span></span>
+						 	</div>
+						    <div class="examNum">
+						 		<span class="examNumHos">朝阳医院</span>
+							 	<div class="progress">
+							      <span class="blue" style="width: 70%;"><span></span></span>
+							    </div>
+							    <span class="examNumText"><span class="numBigFont">112</span> <span class="numSmallFont">例</span></span>
+						 	</div>
+						    <div class="examNum">
+						 		<span class="examNumHos">朝阳医院</span>
+							 	<div class="progress">
+							      <span class="blue" style="width: 40%;"><span></span></span>
+							    </div>
+							    <span class="examNumText"><span class="numBigFont">112</span> <span class="numSmallFont">例</span></span>
+						 	</div>
+						    <div class="examNum">
+						 		<span class="examNumHos">朝阳医院</span>
+							 	<div class="progress">
+							      <span class="blue" style="width: 100%;"><span></span></span>
+							    </div>
+							    <span class="examNumText"><span class="numBigFont">112</span> <span class="numSmallFont">例</span></span>
+						 	</div>
+						  </section>
+					</div>
+					
+				</div>
+				<!--<div id="mainContents">-->
+					<!--<div class="homeBgs">
+		      		<img src="img/home/untitled2.png" alt="" />
+		      	</div>
+		      	<div class="homeBgs">
+		      		<img src="img/home/untitled3.png" alt="" />
+		      	</div>
+		      	<div class="homeBgs">
+		      		<img src="img/home/untitled4.png" alt="" />
+		      	</div>
+		      	<div class="homeBgs">
+		      		<img src="img/home/untitled1.png" alt="" />
+		      	</div>-->
+					<!--<img src="img/home/homeImg.jpg" alt="" />-->
+				<!--</div>-->
+			</div>
+			<!--下方数据-->
+			<div class="row lineMargin">
+				<div class="col-md-9 examBox">
+					
+					<div class="card-body card-body1">
+						<!--<div class="card-title">本月各医院检查量、实收回款、毛利</div>-->
+						<div class="card-title">本月各医院检查量</div>
+						<div id="crurrentMonthcharts">
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 examBox">
+					<div class="card-body card-body1">
+						<div class="card-title" style="margin-bottom: 0px;">本月设备检查统计</div>
+						<div id="crurrentPatcharts">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js?v=2.1.4"></script>
+		<script src="js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="//echarts.baidu.com/build/dist/echarts-all.js"></script>
+	    <script type="text/javascript" src="js/config.js"></script>
+	    <script src="js/homeStatic/main.js" type="text/javascript" charset="utf-8"></script>    
+	    <script src="js/homeStatic/data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/echarts.js"></script>
+		<script src="js/china.js"></script>
+	    
+		
+		<!--<script type="text/javascript" src="js/commonStyle.js"></script>-->
+		<script type="text/javascript" src="js/common.js"></script>
+		<script>
+			// $(document).ready(function(){WinMove();setTimeout(function(){$.gritter.add({title:"您有2条未读信息",text:'请前往<a href="mailbox.html" class="text-warning">收件箱</a>查看今日任务',time:10000})},2000);$(".chart").easyPieChart({barColor:"#f8ac59",scaleLength:5,lineWidth:4,size:80});$(".chart2").easyPieChart({barColor:"#1c84c6",scaleLength:5,lineWidth:4,size:80});var data1=[[0,4],[1,8],[2,5],[3,10],[4,4],[5,16],[6,5],[7,11],[8,6],[9,11],[10,30],[11,10],[12,13],[13,4],[14,3],[15,3],[16,6]];var data2=[[0,1],[1,0],[2,2],[3,0],[4,1],[5,3],[6,1],[7,5],[8,2],[9,3],[10,2],[11,1],[12,0],[13,2],[14,8],[15,0],[16,0]];$("#flot-dashboard-chart").length&&$.plot($("#flot-dashboard-chart"),[data1,data2],{series:{lines:{show:false,fill:true},splines:{show:true,tension:0.4,lineWidth:1,fill:0.4},points:{radius:0,show:true},shadowSize:2},grid:{hoverable:true,clickable:true,tickColor:"#d5d5d5",borderWidth:1,color:"#d5d5d5"},colors:["#1ab394","#464f88"],xaxis:{},yaxis:{ticks:4},tooltip:false})});
+			$("#mainContents").css("height", document.body.scrollHeight);
+			var myChart = echarts.init(document.getElementById('crurrentMonthcharts'));
+			var PatChart = echarts.init(document.getElementById('crurrentPatcharts'));
+			option = {
+				color: ['#2EACFB'],//['#2EACFB', '#245f03','#16d04f' ]
+			    legend: {y: 'bottom'},
+			    tooltip: {},
+			    dataset: {
+			    	dimensions: ['product', '检查量'],//['product', '检查量', '实收回款', '毛利']
+			        source: [
+			            ['朝阳医院', 43.3, 85.8, 93.7],
+			            ['开封医院', 83.1, 73.4, 55.1],
+			            ['北京中医院', 86.4, 65.2, 82.5],
+			            ['天津中医院', 72.4, 53.9, 39.1],
+			            ['朝阳医院1', 43.3, 85.8, 93.7],
+			            ['开封医院1', 83.1, 73.4, 55.1],
+			            ['北京中医院1', 86.4, 65.2, 82.5],
+			            ['天津中医院1', 72.4, 53.9, 39.1],
+			            ['朝阳医院2', 43.3, 85.8, 93.7],
+			            ['开封医院2', 83.1, 73.4, 55.1],
+			            ['北京中医院2', 86.4, 65.2, 82.5],
+			            ['天津中医院2', 72.4, 53.9, 39.1],
+			            ['朝阳医院3', 43.3, 85.8, 93.7],
+			            ['开封医院3', 83.1, 73.4, 55.1],
+			            ['北京中医院3', 86.4, 65.2, 82.5],
+			            ['天津中医院3', 72.4, 53.9, 39.1],
+			            ['朝阳医院4', 43.3, 85.8, 93.7],
+			            ['开封医院4', 83.1, 73.4, 55.1],
+			            ['北京中医院4', 86.4, 65.2, 82.5],
+			            ['天津中医院4', 72.4, 53.9, 39.1],
+			            ['朝阳医院5', 43.3, 85.8, 93.7],
+			            ['开封医院5', 83.1, 73.4, 55.1],
+			            ['北京中医院5', 86.4, 65.2, 82.5],
+			            ['天津中医院5', 72.4, 53.9, 39.1],
+			        ]
+			    },
+			    dataZoom: {
+                         start: 0, //默认为0
+                         end: 100 - 1500 / 31, //默认为100
+                         type: 'slider',
+                         show: true,
+                         xAxisIndex: [0],
+                         handleSize: 0, //滑动条的 左右2个滑动条的大小
+                         height: 8, //组件高度
+                         left: 20, //左边的距离
+                         right: 20, //右边的距离
+                         bottom: 30, //右边的距离
+                         handleColor: '#CBBCDB', //h滑动图标的颜色
+                         handleStyle: {
+                             borderColor: "#CBBCDB",
+                             borderWidth: "1",
+                             shadowBlur: 2,
+                             background: "#CBBCDB",
+                             shadowColor: "#CBBCDB",
+                         },
+                         fillerColor: new echarts.graphic.LinearGradient(1, 0, 0, 0, [{
+                             //给颜色设置渐变色 前面4个参数，给第一个设置1，第四个设置0 ，就是水平渐变
+                             //给第一个设置0，第四个设置1，就是垂直渐变
+                             offset: 0,
+                            color: '#CBBCDB'
+                         }, {
+                             offset: 1,
+                             color: '#CBBCDB'
+                         }]),
+                         backgroundColor: 'rgba(37, 46, 100, 0.45)', //两边未选中的滑动条区域的颜色
+                         showDataShadow: false, //是否显示数据阴影 默认auto
+                         showDetail: false, //即拖拽时候是否显示详细数值信息 默认true
+                         handleIcon: 'M-292,322.2c-3.2,0-6.4-0.6-9.3-1.9c-2.9-1.2-5.4-2.9-7.6-5.1s-3.9-4.8-5.1-7.6c-1.3-3-1.9-6.1-1.9-9.3c0-3.2,0.6-6.4,1.9-9.3c1.2-2.9,2.9-5.4,5.1-7.6s4.8-3.9,7.6-5.1c3-1.3,6.1-1.9,9.3-1.9c3.2,0,6.4,0.6,9.3,1.9c2.9,1.2,5.4,2.9,7.6,5.1s3.9,4.8,5.1,7.6c1.3,3,1.9,6.1,1.9,9.3c0,3.2-0.6,6.4-1.9,9.3c-1.2,2.9-2.9,5.4-5.1,7.6s-4.8,3.9-7.6,5.1C-285.6,321.5-288.8,322.2-292,322.2z',
+                          filterMode: 'filter',
+                     },
+			    grid: {  
+					left: '10%',  
+					bottom:'35%',
+					top:'3%'
+				}, 
+			    xAxis: {
+			    	type: 'category',
+				    axisLabel: {
+					   interval:0,  
+					   rotate:40,
+					   fontSize:10,
+					}
+				},
+			    yAxis: {},
+			    // Declare several bar series, each will be mapped
+			    // to a column of dataset.source by default.
+			    series: [
+			        {
+			        	type: 'bar',
+			        	barGap:'0',
+			        	barWidth : 10,//柱图宽度
+			        },
+//			        {
+//			        	type: 'bar',
+//			        	barGap:'0',
+//			        	barWidth : 10,//柱图宽度
+//			        },
+//			        {
+//			        	type: 'bar',
+//			        	barGap:'0',
+//			        	barWidth : 10,//柱图宽度
+//			        }
+			    ]
+			};
+			option1 = {
+
+			   tooltip: {
+		            trigger: 'item',
+		            formatter: " {b}：{c} "
+		        },
+		        color:['#36C4C7','#BBA9E2','#61A2F6','#FC745E','#98C319','#F6AF29','#6B81C3','#FABA83'],   //颜色
+			    legend: {
+//			        orient: 'vertical',
+//			        left: 'left',
+			        bottom: 0,
+			        data: ['核磁共振', '核磁共振2', '核磁共振3']
+			    },
+		
+			    series: [
+			        {
+			            name: '访问来源',
+			            type: 'pie',
+			            radius: '55%',
+			            center: ['50%', '35%'],
+			            label: {
+		                    normal: {
+//		                        formatter: '{c|{c}}  \n  {b|{b}}',       //图形外文字上下显示
+								formatter: '\n\n{b|{b}} {c|{c}}',       //图形外文字一行显示
+		                        borderWidth: 20,
+		                        borderRadius: 4,
+		                        padding: [0, -50],          //文字和图的边距
+		                        rich: {
+		                            a: {
+		                                color: '#333',
+		                                fontSize: 8,
+		                                lineHeight: 30
+		                            },
+		                            b: {                        //name 文字样式
+		                                fontSize: 12,
+		                                lineHeight: 20,
+		                                color: '#666',
+		                            },
+		                            c: {                   //value 文字样式
+		                                fontSize: 12,
+		                                lineHeight: 20,
+		                                color: '#63BF6A',
+		                                align:"center"
+		                            }
+		                        }
+		                    }
+						},
+		   				labelLine:{
+			                normal:{  
+			
+			                    length: -15,
+			                    length2: 60 
+			
+			                }  
+		            	},
+			            data: [
+			                {value: 335, name: '核磁共振'},
+			                {value: 310, name: '核磁共振2'},
+			                {value: 234, name: '核磁共振3'},
+			               
+			            ],
+			            emphasis: {
+			                itemStyle: {
+			                    shadowBlur: 10,
+			                    shadowOffsetX: 0,
+			                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+			                }
+			            }
+			        }
+			    ]
+			};
+//			myChart.setOption(option);
+//			PatChart.setOption(option1);
+
+//		获取数据
+		ajaxGet('/sys/statistics/getHomePageStatisticsReport',{selectType:0},function(data){
+			console.log(data);
+			$(".staticTime").text(data.resultMap.currentTime);
+			$(".InspectionVolumeToday").text(data.resultMap.todayNum);//今日检查量
+			$(".InspectionVolumeTodayIsUp").text(data.resultMap.growth);//今日检查量增长量
+			$(".InspectionVolumeYestoday").text(data.resultMap.yesterdayNum);//昨日检查量
+			$(".InspectionVolumeMonth").text(data.resultMap.thisMonthNum);//本月检查量
+			$(".InspectionVolumeGrossProfit").text(data.resultMap.thisMonthGrossProfit);//本月毛利
+			if(data.resultMap.checkChainRatio){
+				$(".InspectionVolumeMonthNUm").text(data.resultMap.checkChainRatio+"%");//本月检查量环比量
+			}else{
+				$(".InspectionVolumeMonthNUm").text("--");//上期环比为0时用--显示
+			}
+			
+			$(".GrossProfitComPareNum").text(data.resultMap.grossProfitChainRatio+"%");//本月毛利润环比量
+			if(data.resultMap.grossProfitMargin){
+				$(".GrossProfitNum").text(data.resultMap.grossProfitMargin+"%");//毛利率
+			}else{
+				$(".GrossProfitNum").text("0%");//毛利率
+			}
+			
+			if(data.resultMap.checkRationFlag==1){//本月检查量环比符号(1：上涨，0：持平，-1：下降)
+				$(".InspectionVolumeMonthNUm").next('i').addClass('fa-arrow-up').removeClass("fa-arrow-down");
+			}else if(data.resultMap.checkRationFlag==-1){
+				$(".InspectionVolumeMonthNUm").next('i').addClass('fa-arrow-down').removeClass("fa-arrow-up");
+			}else{
+				$(".InspectionVolumeMonthNUm").text('0%').next('i').removeClass("fa-arrow-up").removeClass("fa-arrow-down");
+			}
+			if(data.resultMap.checkRationFlag==1){//本月毛利润环比符号(1：上涨，0：持平，-1：下降)
+				$(".GrossProfitComPareNum").next('i').addClass('fa-arrow-up').removeClass("fa-arrow-down");
+			}else if(data.resultMap.checkRationFlag==-1){
+				$(".GrossProfitComPareNum").next('i').addClass('fa-arrow-down').removeClass("fa-arrow-up");
+			}
+			//本月各医院检查量、实收汇款、毛利（结果集）
+			if(data.resultMap.hospitalDataResult){
+				var optionDataSet=[];
+				$.each(data.resultMap.hospitalDataResult, function(i,item) {
+					optionDataSet.push([
+						item.hospitalName,//医院名称
+						item.checkThisNum,//本月检查量
+						item.returnFactFee,//实收回款
+						item.grossProfit//毛利
+					]);
+				});
+//				console.log(optionDataSet);
+				option.dataset.source=optionDataSet;
+				myChart.setOption(option,true);
+			}
+			//本月各医院检查量排名（结果集）
+			if(data.resultMap.hospitalRankingResult){
+				$(".InspectionQuantityRanking").html('');
+				$.each(data.resultMap.hospitalRankingResult, function(i,item) {
+					if(i<6){
+						$(".InspectionQuantityRanking").append(`<div class="examNum">
+						 		<span class="examNumHos">`+item.hospitalName+`</span>
+							 	<div class="progress">
+							      <span class="blue" style="width:`+item.checkChainRatio+`%;"><span></span></span>
+							    </div>
+							    <span class="examNumText"><span class="numBigFont">`+item.checkThisNum+`</span> <span class="numSmallFont">例</span></span>
+						 	</div>`);
+					}
+				});
+			}
+			//本月设备类型检查量统计（结果集）
+			if(data.resultMap.equipmentTypeDataResult){
+				var equipmentType=[];
+				var equipmentData=[];
+				var colors=[];
+				$.each(data.resultMap.equipmentTypeDataResult, function(i,item) {
+					if(i<8){
+						equipmentType.push(item.equipmentType);//设备类型
+						equipmentData.push({
+							value: item.checkThisNum,
+							name: item.equipmentType
+						});	
+					}
+					
+//					var color="#"+("00000"+((Math.random()*16777215+0.5)>>0).toString(16)).slice(-6);
+//					colors.push(color);
+				});
+				option1.legend.data=equipmentType;
+//				option1.color=colors;
+				option1.series[0].data=equipmentData;
+				PatChart.setOption(option1,true);
+			}
+		});
+		</script>
+		<script type="text/javascript" src="js/stats.js" charset="utf-8"></script>
+	</body>
+
+</html>

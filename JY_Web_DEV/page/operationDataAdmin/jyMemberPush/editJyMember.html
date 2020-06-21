@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>中康九悦远程医疗管理系统 - 远程会诊申请单</title>
+
+		<meta name="keywords" content="中康九悦远程医疗管理系统">
+		<meta name="description" content="中康九悦远程医疗管理系统">
+
+		<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../css/font-awesome.min.css" rel="stylesheet">
+		<link href="../../../css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="../../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+		<link href="../../../css/animate.min.css" rel="stylesheet">
+		<link href="../../../css/plugins/summernote/summernote.css" rel="stylesheet">
+    	<link href="../../../css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+		
+		<link href="../../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<link href="../../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../../css/plugins/webuploader/webuploader.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/demo/webuploader-demo.min.css">
+		<link rel="stylesheet" href="../../../css/common.css" />
+		<link href="../../../css/style.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="addjyMember.css" />
+		<link rel="stylesheet" href="../../../css/element-ui.css" />
+		<link rel="stylesheet" href="../../../css/editNews.css" />
+		<style type="text/css">
+	.el-icon-date:before {
+		content: "" !important;
+	}
+</style>
+	</head>
+
+	<body>
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="ibox-content">
+					<form id="form" class="wizard-big">
+						<ul class="appointment-ul2">
+							<li>
+								<div class="topText">设备信息</div>
+								<div class="contentBox1">
+									<div>
+										<div class="f_div box_relative">
+											<label class="f_lab"><span style="color: red;">*</span>医院名称：</label>
+											<div>
+												<select class="newin" id="applyHos" name="hospitalId" style="width: 380px;">
+													<option value="">医院名称</option>
+												</select>
+												<div style="color: #cc5965;margin-left: 5px;right: 273px; display: none;" class="error_max" id="applyHosError"><i class="fa fa-times-circle"></i>必选</div>
+											</div>
+										</div>
+										<div class="f_div">
+											<label class="f_lab"><span style="color: red;">*</span>设备类型：</label>
+											<select class="newin" id="equipmentType2" name="deviceId" style="width: 380px;"></select>
+											<!--<input type="text" class="newin" id="equipmentBrand" name="deviceId" value=""/>-->
+										</div>
+
+									</div>
+									<div>
+										<div class="f_div">
+											<label class="f_lab"><span style="color: red;">*</span>设备信息：</label>
+											<select class="newin" id="equipmentType" name="deviceId" style="width: 920px;"></select>
+
+										</div>
+									</div>
+								</div>
+							</li>
+							<li >
+								<div class="topText">数据信息</div>
+								<div class="contentBox1" style="height: 215px;">
+									<div>
+										
+										<div id="app">
+											<span style="color: red;">*</span>
+											<span class="star-time">核算起始日期</span>
+											<el-date-picker style="width:680px;border: none;" @change="changeDate" v-model="value1" type="daterange" range-separator="核算结束日期" start-placeholder="开始日期" end-placeholder="结束日期">
+
+											</el-date-picker>
+										</div>
+
+										<div class="f_div returnTime" >
+											<label class="f_lab"><span style="color: red;">*</span>回款日期：</label>
+											<input class="newin layer-date form-control required" name="returnTime" id="returnTime" readonly="readonly" style="background: #fff;" placeholder="回款日期" />
+										</div>
+
+									</div>
+									<div>
+										<div class="f_div should-price box_relative">
+											<label class="f_lab"><span style="color: red;">*</span>应收回款：</label>
+											<input type="text" class="newin" style="margin-left: 31px; width: 202px;"  id="shouldPrice" maxlength="250" name="shouldPrice" value="" /><span class="yuan">元</span>
+										<div style="color: #cc5965;margin-left: 5px;left: 95px;display: none;" class="error_max" id="shouldPriceError"><i class="fa fa-times-circle"></i>必填</div>
+										</div>
+										<div class="f_div box_relative" style="margin-left:28px;">
+											<label class="f_lab"><span style="color: red;">*</span>实收回款：</label>
+											<input type="text" class="newin" id="factPrice" style="margin-left: 19px; width: 202px;" maxlength="250" name="factPrice" value="" /><span class="yuan">元</span>
+										<div style="color: #cc5965;margin-left: 5px;left: 85px;display: none;" class="error_max" id="factPriceError"><i class="fa fa-times-circle"></i>必填</div>
+										</div>
+										<div class="f_div box_relative" style="margin-left:21px">
+											<label class="f_lab"><span style="color: red;">*</span>成本：</label>
+											<input type="text" class="newin" id="cost"  maxlength="250" name="cost" value="" /><span class="yuan">元</span>
+										<div style="color: #cc5965;margin-left: 5px;left: 66px;display: none;" class="error_max" id="costError"><i class="fa fa-times-circle"></i>必填</div>
+										</div>
+									</div>
+									<div>
+										<div class="f_div should-price" style="width: auto;">
+											<label class="f_lab"><span style="color: red;">*</span>毛利：</label>
+											<select class="newin" id="grossProfit_val" name="hospitalId" style="margin-left: 31px; width: 202px;">
+													<option value="">请选择</option>
+													<option value="1">应收回款-成本=毛利</option>
+													<option value="2">应收回款=毛利</option>
+											</select>
+										</div>
+										<div class="f_div " style="margin-left: 26px;">
+											<label class="f_lab">毛利：</label>
+											<div class="newin grossPrice" id="grossProfit_num" style="margin-left: 20px;"></div><span class="yuan">元</span>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="topText">备注</div>
+								<div class="contentBox1" style="padding: 0;">
+								<div class="f_div memoBox" style="padding: 0;">
+									<textarea class="newin" id="memo" name="memo" style="resize: none;     border: none !important;"></textarea>
+								</div>
+								</div>
+							</li>
+						</ul>
+						<div class="form-group">
+							<div style="text-align: center;margin-top: 30px;">
+								<button type="button" class="comTempateSaveBtn" id="sumbitBtn">保存</button>
+								<!--<button type="submit" class="btn btn-w-m btn-success SureBtn" id="sumbitBtn">确认</button>-->
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<div id="myModal" class="modal fade" name="tip-modal" data-backdrop="static" data-keyboard="false"style="text-align: center;">
+			<img src="../../../img/loading-upload.gif" alt="" style="width:40px;height:40px;margin:0 auto; margin-top:200px;"/>
+		            	提交中......
+		</div>
+		<script src="../../../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="../../../js/plugins/staps/jquery.steps.min.js"></script>
+		<script src="../../../js/plugins/layer/layer.min.js"></script>
+			<script src="../../../js/plugins/layer/laydate/laydate5.0.js"></script>
+		<script src="../../../js/plugins/validate/jquery.validate.min.js"></script>
+		<script src="../../../js/plugins/validate/messages_zh.min.js"></script>
+		<!--<script src="../../js/demo/form-validate-demo.min.js"></script>-->
+		<script src="../../../js/plugins/summernote/summernote.min.js"></script>
+    	<script src="../../../js/plugins/summernote/summernote-zh-CN.js"></script>
+		<script src="../../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script src="../../../js/content.min.js?v=1.0.0"></script>
+		<script type="text/javascript">
+			var BASE_URL = '../../../js/plugins/webuploader';
+		</script>
+		<!--<script src="../../js/plugins/webuploader/webuploader.min.js"></script>-->
+		<!--<script src="../../js/demo/webuploader-demo.min.js"></script>-->
+		<script src="../../../js/plugins/jquery.jqprint-0.3.js"></script>
+		<script src="../../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../../js/vue.js" ></script>
+			<!-- 引入组件库 -->
+			<!--<script src="https://unpkg.com/element-ui/lib/index.js"></script>-->
+			<script type="text/javascript" src="../../../js/element-ui.js" ></script>
+			
+		<!--<script src="../../js/demo/form-advanced-demo.min.js"></script>-->
+		<script>
+			var newsEditId=localStorage.getItem("newsEditId");
+			$("#form").validate();
+			$(document).ready(function(){$(".summernote").summernote({lang:"zh-CN"})});var edit=function(){$("#eg").addClass("no-padding");$(".click2edit").summernote({lang:"zh-CN",focus:true})};var save=function(){$("#eg").removeClass("no-padding");var aHTML=$(".click2edit").code();$(".click2edit").destroy()};
+
+		</script>
+		<script type="text/javascript">
+				//add医院下拉
+			var hospital;
+			var getDataList;
+			//医生信息ID
+			var billingDoctor;
+			var operationDoctor;
+			var diagnosticDoctor;
+			getData();	
+			
+			$(document).ready(function(){
+				var ins23 = laydate.render({
+						elem: '#returnTime'
+						,format: 'yyyy-MM-dd'
+						 ,showBottom: false
+				});
+		        $("#applyHos").change(function(){
+		        	if($("#applyHos").val() == "" || $("#applyHos").val() == null) {
+							$("#applyHosError").css("display", "block")
+					} else {
+						$("#applyHosError").css("display", "none")
+					}
+//		        	console.log(this)
+		        	console.log($(this).val());
+		        	checkeQuipmentType($(this).val());
+//		        	checkeQuipmentType1("", "");
+//		        	equipmentType("", "");
+		        	hospital = $(this).val();
+		        	applyBillingDoctorBooking(hospital);
+		        	applyOperationDoctorBooking(hospital);
+		        	applyDiagnosticDoctorBooking(hospital);
+		        });
+			})
+			var user = JSON.parse(sessionStorage.getItem("user"));
+			var userId=sessionStorage.getItem('userId');
+			var sessionId = sessionStorage.getItem('sessionId');
+			$("#applyHos").html('<option value="">请选择</option>');
+			$("#equipmentType2").html("<option value=''>请选择</option>");
+			$("#equipmentType").html("<option value=''>请选择</option>");
+			function applyreadHospitalBooking() {				
+			    $("#applyHos").html('<option value="">请选择</option>');
+			    ajaxGet("/hospital/relation/getHospitalRelationList", {userId: userId}, function(data){
+			    	var hospitalList=data.resultMap.list;
+	                if(hospitalList!=null){
+	                    var hospitalHtml='';
+	                    console.log(hospitalList)
+	                    for(var s=0;s<hospitalList.length;s++){
+//	                    	hospitalHtml+='<option value="">请选择</option>';
+	                        hospitalHtml+='<option data-name="'+hospitalList[s].hospitalName+'" value="'+hospitalList[s].hospitalId+'">'+hospitalList[s].hospitalName+'</option>';
+	                    }
+	                    $("#applyHos").append(hospitalHtml);	
+	                }
+	                console.log(getDataList)
+	                console.log($("#applyHos").find("option"))
+	                var hospitalOption = $("#applyHos").find("option");
+                	var hospitalId = getDataList.hospitalId + "";
+                	hospital = hospitalId;
+                	for(var i = 0; i < hospitalOption.length; i++){
+                		if ($(hospitalOption[i]).val() == hospitalId) {
+                			$("#applyHos").val(hospitalId);
+                			$(hospitalOption[i]).attr("selected","selected");
+                			$("#applyHos").attr("data-name", $("#applyHos").find("option:selected").attr("data-name"));
+                			checkeQuipmentType(hospitalId);
+                		}
+                	}
+			   })			   
+			}
+			//add设备下拉
+			//设备名称及品牌下拉
+			function checkeQuipmentType(id){
+				$("#equipmentType2").html("<option value=''>请选择</option>");
+				ajaxGet('/equipment/type/getEquipmentTypeList', {hospitalId:id}, function (resData) {			
+					var rm = resData.resultMap.list;
+					
+//					console.log("设备类型(医院ID)",rm)
+		            if(rm != null){
+		                for(var s = 0; s < rm.length; s++){
+		                    var equipmentTypeHtml = '';
+		                    equipmentTypeHtml += '<option data-name="' + rm[s].name + '" value="' + rm[s].id + '">' + rm[s].name + '</option>';
+		                    $("#equipmentType2").append(equipmentTypeHtml);
+		                }
+		            }
+		            $("#equipmentType2").change(function(){
+		            	$("#deviceId").val($(this).val());
+		            	$("#deviceModel").val($(this).find("option:selected").attr("data-name"));
+		            	equipmentType($("#equipmentType2").find("option:selected").val(), hospital);
+		            })
+		            if (hospital == getDataList.hospitalId) {
+		            	var deviceOption = $("#equipmentType2").find("option");
+	                	var deviceId = getDataList.deviceType + "";
+	                	$("#deviceId").val(deviceId);
+	                	for(var i = 0; i < deviceOption.length; i++){
+	                		if ($(deviceOption[i]).val() == deviceId) {
+	                			$("#equipmentType2").val(deviceId);
+	                			$(deviceOption[i]).attr("selected","selected");
+	                			$("#equipmentType2").attr("data-name", $("#equipmentType2").find("option:selected").attr("data-name"));
+	                			equipmentType(getDataList.deviceType, getDataList.hospitalId);
+	                		}
+	                	}
+		            }
+//		            equipmentType("", getDataList.hospitalId);
+		        });
+			}
+
+			//设备类型下拉
+			function equipmentType(name, id){
+//				console.log(id,"chuan")
+				$("#equipmentType").html("<option value=''>请选择</option>");
+				ajaxGet('/equipment/equipmentInfo/searchEquipmentInfoList', {type:name,hospitalId:id}, function (resData) {			
+					var rm = resData.resultMap.list;
+//					console.log("设备类型(两个参)",rm)
+					if (rm.length == 0) {
+						$("#equipmentType").html("<option value=''>请选择</option>");
+						return;
+					}
+					
+		            if(rm != null){
+		                for(var s = 0; s < rm.length; s++){
+		                    var equipmentTypeHtml = '';
+		                    equipmentTypeHtml += '<option data-name="' + rm[s].equipmentBrankName + '" value="' + rm[s].id + '">' + rm[s].equipmentBrankName + '</option>';
+		                    $("#equipmentType").append(equipmentTypeHtml);
+		                }
+		            }
+		            $("#equipmentType").change(function(){
+		            	$("#deviceType").val($(this).val());
+		            	$("#deviceName").val($(this).find("option:selected").attr("data-name"));
+		            })
+		            var deviceId1 = $("#deviceId").val();
+//		            if (deviceId1 == getDataList.deviceType && hospital == getDataList.hospitalId) {
+		            	var equipmentOption = $("#equipmentType").find("option");
+	                	var equipmentId = getDataList.deviceId + "";
+	                	$("#deviceType").val(equipmentId);
+	                	for(var i = 0; i < equipmentOption.length; i++){
+	                		if ($(equipmentOption[i]).val() == equipmentId) {
+	                			$("#equipmentType").val(equipmentId);
+	                			$(equipmentOption[i]).attr("selected","selected");
+	                			$("#equipmentType").attr("data-name", $("#equipmentType").find("option:selected").attr("data-name"));
+	       
+	                		}
+	                	}
+//		            }
+		        });
+			}
+//文本框校验
+				$("#shouldPrice").blur(function() {
+					if($("#shouldPrice").val() == "" || $("#shouldPrice").val() == null) {	
+						$("#shouldPriceError").css("display","block")
+					}
+					else{
+						$("#shouldPriceError").css("display","none")
+					}
+				})
+				$("#factPrice").blur(function() {
+					if($("#factPrice").val() == "" || $("#factPrice").val() == null) {	
+						$("#factPriceError").css("display","block")
+					}
+					else{
+						$("#factPriceError").css("display","none")
+					}
+				})
+				$("#cost").blur(function() {
+					if($("#cost").val() == "" || $("#cost").val() == null) {	
+						$("#costError").css("display","block")
+					}
+					else{
+						$("#costError").css("display","none")
+					}
+				})
+			//毛利润应收回款计算方法
+				$("#shouldPrice").change(function(e){
+					console.log(e)
+					if($("#grossProfit_val").val()==1){
+						var grossProfit = $("#shouldPrice").val()-$("#cost").val();
+						var grossProfit = grossProfit.toFixed(2)
+						$('#grossProfit_num').text(grossProfit)
+					}else if($("#grossProfit_val").val()==2){
+						var grossProfit = $("#shouldPrice").val()
+						$('#grossProfit_num').text(grossProfit)
+					}
+				})
+				//毛利润成本计算方法
+				$("#cost").change(function(e){
+					console.log(e)
+					if($("#grossProfit_val").val()==1){
+						var grossProfit = $("#shouldPrice").val()-$("#cost").val();
+						var grossProfit = grossProfit.toFixed(2)
+						$('#grossProfit_num').text(grossProfit)
+					}else if($("#grossProfit_val").val()==2){
+						var grossProfit = $("#shouldPrice").val()
+						$('#grossProfit_num').text(grossProfit)
+					}
+				})
+				//毛利润计算方法
+				$("#grossProfit_val").change(function(e) {
+					console.log(e.target.value)
+					if(e.target.value=="1"){
+						var grossProfit = $("#shouldPrice").val()-$("#cost").val();
+							var grossProfit = grossProfit.toFixed(2)
+						$('#grossProfit_num').text(grossProfit)
+						console.log(grossProfit)
+					}else if((e.target.value=="2")){
+						var grossProfit = $("#shouldPrice").val()
+						$('#grossProfit_num').text(grossProfit)
+					}else{
+						$('#grossProfit_num').text(0)
+					}
+				});
+			//获取数据
+			function getData(){
+				ajaxGet('/operate/jiuyueInfo/getOperateJiuyueInfo', {'id':newsEditId}, function (data) {
+		            	console.log(data,"数据");
+		                var dataList = data.resultMap.operateJiuyueInfo;
+		                if(data.status == '0'){
+		                	 applyreadHospitalBooking();
+		        			getDataList = dataList;
+		        			console.log($("#equipmentType option:selected").text())
+//	    					$("#equipmentType").text(dataList.equipmentTypeName); //设备类型
+//	    					$("#equipmentType2 option:selected").text(dataList.equipmentBrankName); //设备信息
+		        			$(".el-range-input").eq(0).val(dataList.returnBeginDate) //核算起始日期
+		        			$(".el-range-input").eq(1).val(dataList.returnEndDate)//核算结束日期
+			                $("#shouldPrice").val(dataList.returnShouldFee);//应收金额
+                			$("#factPrice").val(dataList.returnFactFee);//实收金额
+                			$("#returnTime").val(dataList.returnTime);//回款时间
+                			$("#cost").val(dataList.cost);//成本
+                			$("#grossProfit_val").val(dataList.num);//毛利计算方式
+                			$("#grossProfit_num").text(dataList.grossProfit);//毛利
+                			$("#memo").val(dataList.memo);//备注
+		                } 
+				})
+				
+			}
+		</script>
+	
+		<script type="text/javascript" src="editJyMember.js"></script>
+		<script>
+			
+				//				VUE时间控件
+				var app = new Vue({
+					el: '#app',
+					data: function() {
+						return {
+							value1:  window.dateArr,
+						}
+					},
+					methods: {
+						changeDate(e) {
+							console.log(e)
+							window.startTime = e[0].getFullYear() + '-' + this.p((e[0].getMonth() + 1)) + '-' + this.p(e[0].getDate());
+
+							window.endTime = e[1].getFullYear() + '-' + this.p((e[1].getMonth() + 1)) + '-' + this.p(e[1].getDate());
+						
+						},
+						p(s) {
+							return s < 10 ? '0' + s : s
+						},
+					}
+				})
+			</script>
+		<script type="text/javascript" src="../../../js/stats.js"charset="utf-8"></script>		
+		
+	</body>
+
+</html>

@@ -1,0 +1,229 @@
+.tab-content{
+	margin-top: 30px;
+}
+.row{
+	margin:0px;
+}
+.wizard > .content{
+	background: transparent;
+}
+.contact-box{
+	border: 0px;
+}
+.gohome{
+	display: none;
+}
+.wizard > .content > .body {
+    float: left;
+    position: initial;
+}
+.equipmentImg{
+	width: 100%;
+	max-height: 120px;
+}
+.contact-box{
+	background: transparent;
+}
+.contact-box{
+	padding: 0;
+}
+.equipmentImages{
+	padding-left: 0px;
+}
+.equipmentPrices{
+	margin-top: 10px;	
+}
+/*向导条*/
+.tabsBar ul{
+	overflow: hidden;
+	padding: 0;
+}
+.tabsBar ul li{
+	list-style: none;
+	float: left;
+	width: 25%;
+	background: #ddd;
+	color: #323232;
+	border-radius: 5px;
+	margin-right: 1%;
+}
+/*.tabsBar ul li:first-child{
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.tabsBar ul li:nth-child(3){
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}*/
+.tabsBar ul li a{
+	display: block;
+    width: auto;
+    margin: 0.5em 0.5em;
+    padding: 8px;
+    text-decoration: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #323232;
+}
+/*当前步骤*/
+.tabsBar ul li.activeTabs{
+	background: #51659B;
+	color: #fff;
+}
+.tabsBar ul li.activeTabs a{
+	color: #fff;
+}
+/*隐藏当前f2和f3内容*/
+/*.finishedPrint,.f3{
+	display: none;
+}*/
+/*.f1{
+	display: none;
+}*/
+/*表格线*/
+.clients-list table tr td{
+	border: 1px dashed darkgrey;
+}
+.warns{
+	color: #FF423F;
+}
+.chosePosition.form-control[disabled], .chosePosition.form-control[readonly], fieldset[disabled] .chosePosition.form-control{
+	background: #fff;
+	cursor: pointer;
+	width: 40%;
+}
+.lf{
+	float: left;
+}
+.rt{
+	float: right;
+}
+.requestOrder{
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+}
+#buttonschose{
+	width: 80px;
+	height: 34px;
+	background: #fff;
+	color: #51659B;
+	border: 0px;
+}
+.fullTd{
+	width: 100%;
+	background: #fff;
+}
+.makeSubmitBtn{
+	overflow: hidden;
+	padding: 0px 20px;
+	/*background: #F5F5F5;*/
+	height: 60px;
+	line-height: 60px;
+	display: none;
+	text-align: center;
+}
+.totlePrices{
+	color: #e4393c;
+}
+.sumPrices{
+	color: #e4393c;
+	font-size: 1.25em;
+	font-weight: bold;
+}
+#buttonschoseImg{
+	width: 100px;
+	height: 100px;
+	border:1px dashed #51659B;
+	color: #51659B;
+	text-align: center;
+	line-height: 100px;
+	position: absolute;
+}
+input.choseImgPosition{
+	width: 100px;
+	height: 100px;
+	opacity: 0!important;
+	position: relative;
+    z-index: 22;
+}
+.wizard > .actions{
+	display: none;
+}
+
+.SureBtn{
+	background: #51659B;
+	color: #fff;
+	height: 30px;
+	text-align: center;
+}
+.sumBtn{
+	background: #51659B;
+	color: #fff;
+	height: 30px;
+	text-align: center;
+	margin-top:15px;
+}
+.printBtn{
+	background: #51659B;
+	color: #fff;
+	height: 30px;
+	text-align: center;
+	margin-top:15px;
+}
+.closeBtn{
+	border:1px solid #51659B;
+	background: #fff;
+	color: #51659B;
+	height: 30px;
+	text-align: center;
+	margin-top:15px;
+}
+.makeSureBtn{
+	text-align: center;
+}
+/*第三部分用章*/
+.chapter{
+	text-align: center;
+	height: 150px;
+	line-height: 150px;
+	color: darkgrey;
+}
+.monyChapter{
+	margin-right: 150px;
+}
+.erCodeDiv{
+	width: 100%;
+	height: 150px;
+	border: 1px dashed darkgrey;
+}
+.erCode{
+	width: 120px;
+	height: 120px;
+	margin: 0 auto;
+	background: #f5f5f5;
+	margin-top: 15px;
+}
+.erCode img{
+	width: 100%;
+}
+.printBtns{
+	text-align: center;
+}
+.tablesecondContent{
+	width: 40%;
+}
+#uploader .placeholder {
+    min-height: 170px;
+    padding-top: 40px;
+}
+#uploader .statusBar .btns .uploadBtn{
+	display: none;
+}
+.applyConStatus{
+	color: #e4393c;
+}
+.refusedText{
+	color: #F04A08;
+}

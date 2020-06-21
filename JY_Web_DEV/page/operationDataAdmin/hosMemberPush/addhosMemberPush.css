@@ -1,0 +1,146 @@
+.wrapper-content{
+	padding: 0 20px;
+}
+.ibox-content{
+	padding: 0;
+}
+.appointment-ul2{
+	text-align: right;
+	margin-top: 0px;
+	padding-left: 0px;
+}
+ul li{
+	list-style: none;
+	margin: 10px 0;
+}
+
+.topText{
+	text-align: left;
+    height: 36px;
+    line-height: 36px;
+    padding-left: 15px;
+    background-color: #EAEDF3;
+    border: 0.5px solid #d5d6d8;
+    font-size: 12px;
+    font-weight: bold;
+}
+.contentBox{
+	display: flex;
+    border-left: 0.5px solid #d5d6d8;
+    border-right: 0.5px solid #d5d6d8;
+    border-bottom: 0.5px solid #d5d6d8;   
+    /*height: 88px;*/
+    /*line-height: 88px;*/
+    padding-left: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;	
+}
+.contentBox1{
+	border-left: 0.5px solid #d5d6d8;
+    border-right: 0.5px solid #d5d6d8;
+    border-bottom: 0.5px solid #d5d6d8;
+    padding-left: 15px;
+    margin-bottom: 30px;
+}
+.contentBox1>div{
+	display: flex;
+	width: 100%;
+	/*margin-bottom: 10px;*/
+    /*height: 88px;*/
+    /*line-height: 88px;*/
+}
+.contentBox1>div:nth-of-type(1){
+	padding-top: 26px;
+}
+.contentBox1>div:nth-of-type(2){
+	padding: 26px 0px;
+}
+.contentBox1>div>div>.f_div{
+	display: flex;
+	width: 100%;
+	/*padding: 10px 0;*/
+	align-items: center;
+}
+.contentBox>div>.f_div{
+	display: flex;
+    width: 100%;
+}
+.f_div{
+	align-items: center;
+}
+.f_lab{
+	text-align: left;
+    white-space: nowrap;
+    margin-bottom: 0;
+    width: 70px;
+}
+.newin{
+	width: 200px !important;
+	/*width: 20%;*/
+}
+.memoBox{
+	text-align: left;
+	width: 100%;
+	display: flex;
+	align-items: flex-start;
+}
+.memoBox .f_lab{
+	padding-top: 10px;
+}
+.memoBox textarea{
+	resize: none;
+	width: 99%;
+	height: 100px !important;
+}
+#sumbitBtn{
+	border: 0;
+}
+.layui-layer-title{
+	padding: 0 80px 0 40px !important;
+}
+textarea:focus{
+	outline: none;
+}
+#form textarea{
+	height: 86px !important;
+	border: 0px !important;
+	line-height: normal;
+}
+.formDisabledBtn{
+	color: #666666;
+}
+.alert{
+	/*height: 30px;*/
+    /*line-height: 30px;*/
+    padding: 0px 15px;
+    text-indent: 26px;
+    text-align: left;
+    background-color: transparent;
+    border-color: transparent;
+    margin-bottom: 0;
+    width: 80%;
+}
+.glyphicon{
+	/*line-height: 30px;*/
+	margin-right: 5px;
+	top: 3px;
+}
+
+/*.contentBox>.hosDivBox{
+	width: 27%;
+}*/
+.hosDivBox{
+	width: 27%;
+	margin-right: 20px;
+}
+select{
+	appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: url(../../../img/select.png) no-repeat scroll right center transparent;
+    background-origin: content-box;
+    background-size: 6px 8px;
+    background-origin: content-box;
+    padding-right: 11px;
+}

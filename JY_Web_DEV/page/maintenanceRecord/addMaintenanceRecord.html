@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>设备维护</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+
+	<link href="../../css/font/fontawesome.min.css" rel="stylesheet">
+	<link href="../../css/font/brands.css" rel="stylesheet">
+	<link href="../../css/font/solid.css" rel="stylesheet">
+	<link href="../../css/animate.min.css" rel="stylesheet">
+	<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+	<!--<link rel="stylesheet" type="text/css" href="../../css/common.css"/>-->
+	<link href="../../css/addMaintenanceRecord.css" rel="stylesheet" />
+	
+	<!--<link rel="stylesheet" type="text/css" href="../../css/appointment.css"/>-->
+
+	<style>
+		
+	</style>
+
+	<body>
+
+		<div class="box">
+			<form id="equipmentForm" onsubmit="return false;">
+
+				<ul class="appointment-ul2 ">
+					<li>
+						<div class="topText">申请信息</div>
+						<div class="contentBox1">
+							<div>
+								<div class="applyDivBox">
+									<div class="f_div">
+										<label class="f_lab"><span style="color: red;">*</span>申请人：</label>
+										<input type="text" class="newin" id="applyUser" name="applyUser" value="" placeholder="申请人" />
+									</div>
+									<div class="alert alert-danger" id="applyUserTip" role="alert" style="display: none;">
+										<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+										必填
+									</div>
+								</div>
+								<div class="applyDivBox">
+									<div class="f_div">
+										<label class="f_lab"><span style="color: red;">*</span>申请时间：</label>
+										<!--<input type="text" class="newin" id="applyTime" name="applyTime" value="" placeholder="申请时间" />-->
+										<input class="newin layer-date form-control required" name="applyTime" id="applyTime" readonly="readonly" placeholder="申请时间" style="background-color: #FFF;" value="" />
+									</div>
+									<div class="alert alert-danger" id="applyTimeTip" role="alert" style="display: none;">
+										<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+										必填
+									</div>
+									<script type="text/javascript">
+//										$("#applyTime").done(function(){
+//											console.log(123)
+//										})
+									</script>
+								</div>
+								<div class="applyDivBox">
+									<div class="f_div">
+										<label class="f_lab"><span style="color: red;">*</span>报修时间：</label>
+										<input class="newin layer-date form-control required" name="applyUpdateTime" id="applyUpdateTime" readonly="readonly" placeholder="报修时间" style="background-color: #FFF;" value="" />
+									</div>
+									<div class="alert alert-danger" id="applyUpdateTimeTip" role="alert" style="display: none;">
+										<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+										必填
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="repairMemo">
+									<div class="f_div">
+										<label class="f_lab"><span style="color: red;">*</span>报修说明：</label>
+										<!--<input type="number" class="newin" id="equipmentPrice" name="projectPrice" value="" />-->
+										<textarea id="repairMemo" name="repairMemo" rows="" cols="" class="textareaBox"  maxlength="250" placeholder="报修说明信息不超过250字"></textarea>
+									</div>
+									<div class="alert alert-danger" id="repairMemoTip" role="alert" style="display: none;">
+										<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+										必填
+									</div>
+								</div>
+								<!--<div class="f_div">
+									<label class="f_lab"><span style="color: red;">*</span>报修说明：</label>
+									<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />
+								</div>-->
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="topText">医院信息</div>
+						<div class="contentBox">
+							<div class="hosDivBox">
+								<div class="f_div">
+									<label class="f_lab"><span style="color: red;">*</span>医院：</label>
+									<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+									<select title="医院" class="form-control required" id="applyHos" style="width:200px;border-color: #999;" data-dropup-auto="false" data-live-search="true" name="hospitalId"></select>
+									<!--<select id="applyHos" name="hospitalId" class="form-control required" style="width:200px;border-color: #999;">
+									</select>-->
+								</div>
+								<div class="alert alert-danger" id="applyHosTip" role="alert" style="display: none;">
+									<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+									必填
+								</div>
+							</div>
+							<div style="width: 25%;">
+								<div class="f_div">
+									<label class="f_lab"><span style="color: red;">*</span>科室：</label>
+									<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+									<!--<select id="applyDepartment" name="sectionId" class="form-control required" style="width:200px;border-color: #999;">
+									</select>-->
+									<select title="科室" class="form-control required" id="applyDepartment" style="width:200px;border-color: #999;" data-dropup-auto="false" data-live-search="true" name="sectionId"></select>
+								</div>
+								<div class="alert alert-danger" id="applyDepartmentTip" role="alert" style="display: none;">
+									<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+									必填
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="topText">设备信息</div>
+						<div class="contentBox">
+							<div class="hosDivBox">
+								<!--<div class="f_div" style="width: 33%;">-->
+								<div class="f_div">
+									<label class="f_lab"><span style="color: red;">*</span>设备类型：</label>
+									<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+									<!--<select id="equipmentType" name="equipmentType" class="form-control required" style="width:200px;border-color: #999;">
+									</select>-->
+									<select title="设备类型" class="form-control required" id="equipmentType" style="width:200px;border-color: #999;" data-dropup-auto="false" data-live-search="true" name="equipmentType"></select>
+								</div>
+								<div class="alert alert-danger" id="equipmentTypeTip" role="alert" style="display: none;">
+									<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+									必填
+								</div>
+							</div>
+							<div>
+								<div class="f_div">
+									<label class="f_lab"><span style="color: red;">*</span>设备品牌：</label>
+									<!--<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />-->
+									<!--<select id="equipmentBrand" name="" class="form-control required" style="width:490px;border-color: #999;">
+									</select>-->
+									<select title="设备品牌" class="form-control required" id="equipmentBrand" style="width:490px;border-color: #999;" data-dropup-auto="false" data-live-search="true" name=""></select>
+								</div>
+								<div class="alert alert-danger" id="equipmentBrandTip" role="alert" style="display: none;">
+									<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+									必填
+								</div>
+							</div>
+							<!--<div class="f_div">
+								<label class="f_lab"><span style="color: red;">*</span>设备名称：</label>
+								<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />
+								<select id="equipmentName" name="name" class="form-control required" style="width:200px;border-color: #999;">
+								</select>
+							</div>
+							<div class="f_div">
+								<label class="f_lab"><span style="color: red;">*</span>设备型号：</label>
+								<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />
+								<select id="equipmentModel" name="model" class="form-control required" style="width:200px;border-color: #999;">
+								</select>
+							</div>-->
+						</div>
+					</li>
+					<li>
+						<div class="topText">维修信息</div>
+						<div class="contentBox1">
+							<div>
+								<div class="applyDivBox">
+									<div class="f_div">
+										<label class="f_lab"><span style="color: red;">*</span>维修时间：</label>
+										<input class="newin layer-date form-control required" name="time" id="checkTime" readonly="readonly" placeholder="维修时间" style="background-color: #FFF;" value="" />
+										<!--<select id="applyHos" name="applyHos" class="form-control required" style="width:200px;border-color: #999;">
+										</select>-->
+									</div>
+									<div class="alert alert-danger" id="checkTimeTip" role="alert" style="display: none;">
+										<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+										必填
+									</div>
+								</div>
+								<div>
+									<div class="f_div">
+										<label class="f_lab"><span style="color: red;">*</span>维修费用：</label>
+										<input style="margin-right: 5px;" type="text" class="newin" id="equipmentPrice"  placeholder="维修费用" name="price" value="" />元									
+									</div>
+									<div class="alert alert-danger" id="equipmentPriceTip" role="alert" style="display: none;">
+										<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+										必填
+									</div>
+								</div>
+								<div>
+									<div class="f_div" style="padding-left: 20px;">
+										<label class="f_lab"><span style="color: red;">*</span>维护人员：</label>
+										<input type="text" class="newin" id="maintenanceUser"  placeholder="维护人员" name="maintenanceUser" value="" />
+										<!--<select id="applyHos" name="applyHos" class="form-control required" style="width:200px;border-color: #999;">
+										</select>-->
+									</div>
+									<div class="alert alert-danger" id="maintenanceUserTip" role="alert" style="display: none;">
+										<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+										必填
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="repairMemo">
+									<div class="f_div">
+										<label class="f_lab"><span style="color: red;">*</span>维修事项：</label>
+										<!--<input type="number" class="newin" id="equipmentPrice" name="projectPrice" value="" />-->
+										<textarea id="items" name="items" rows="" cols="" class="textareaBox"  maxlength="250" placeholder="维修事项信息不超过250字"></textarea>
+									</div>
+									<div class="alert alert-danger" id="itemsTip" role="alert" style="display: none;">
+										<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+										必填
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="f_div">
+									<label class="f_lab"><span style="color: red;">*</span>是否解决：</label>
+									<div class="radioGroup">
+										<div class="radioItem" data-index="1">
+											<div class="chooseForm radioForm"></div>
+											<div>是</div>
+										</div>
+										<div class="radioItem" data-index="0">
+											<div class="chooseForm chooseRadioForm"></div>
+											<div>否</div>
+										</div>
+									</div>
+									<!--<select id="applyHos" name="applyHos" class="form-control required" style="width:258px;border-color: #999;">
+									</select>-->
+									<!--<input type="number" class="newin" id="equipmentPrice" name="projectPrice" value="" />-->
+								</div>
+							</div>
+						</div>
+					</li>
+					<!--<li>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>是否解决：</label>
+							<div class="radioGroup">
+								<div class="radioItem" data-index="1">
+									<div class="chooseForm radioForm"></div>
+									<div>是</div>
+								</div>
+								<div class="radioItem" data-index="0">
+									<div class="chooseForm chooseRadioForm"></div>
+									<div>否</div>
+								</div>
+							</div>
+						</div>
+					</li>-->
+					<li>
+						<div class="topText">备注</div>
+						<div class="contentBox">
+							<div class="f_div" style="margin-left: 0px;">
+								<textarea id="memo" name="remarks" rows=""  maxlength="250" cols="" class="textareaBox"  placeholder="备注信息不超过250字"></textarea>
+							</div>
+						</div>
+					</li>
+					<!--<li>
+						<div class="f_div" style="width: 73.5%;">
+							<label class="f_lab"><span style="color: red;">*</span>备注：</label>
+							<textarea id="memo" name="remarks" rows="" cols="" class="textareaBox"></textarea>
+						</div>
+					</li>-->
+					<!--<li>						
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>设备类型：</label>
+							<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />
+							<select id="applyHos" name="applyHos" class="form-control required" style="width:200px;border-color: #999;">
+							</select>
+						</div>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>设备品牌：</label>
+							<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />
+							<select id="applyHos" name="applyHos" class="form-control required" style="width:200px;border-color: #999;">
+							</select>
+						</div>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>设备名称：</label>
+							<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />
+							<select id="applyHos" name="applyHos" class="form-control required" style="width:200px;border-color: #999;">
+							</select>
+						</div>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>设备型号：</label>
+							<input type="text" class="newin" id="equipmentType" name="inspectProject" value="" />
+							<select id="applyHos" name="applyHos" class="form-control required" style="width:200px;border-color: #999;">
+							</select>
+						</div>
+					</li>
+					<li>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>维修时间：</label>
+							<input type="number" class="newin" id="equipmentPrice" name="projectPrice" value="" />
+							<select id="applyHos" name="applyHos" class="form-control required" style="width:200px;border-color: #999;">
+							</select>
+						</div>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>维修费用：</label>
+							<input type="number" class="newin" id="equipmentPrice" name="projectPrice" value="" />
+						</div>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>维护人员：</label>
+							<select id="applyHos" name="applyHos" class="form-control required" style="width:200px;border-color: #999;">
+							</select>
+						</div>
+					</li>
+					<li>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>维修事项：</label>
+							<input type="number" class="newin" id="equipmentPrice" name="projectPrice" value="" />
+							<textarea name="" rows="" cols="" class="textareaBox"></textarea>
+						</div>
+					</li>-->
+					<!--<li>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>维修费用：</label>
+							<input type="number" class="newin" id="equipmentPrice" name="projectPrice" value="" />
+						</div>
+					</li>-->
+					<!--<li>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>是否解决：</label>
+							<div class="radioGroup">
+								<div>
+									<div class="chooseForm radioForm"></div>
+									<div>是</div>
+								</div>
+								<div>
+									<div class="chooseForm chooseRadioForm"></div>
+									<div>否</div>
+								</div>
+							</div>
+							<select id="applyHos" name="applyHos" class="form-control required" style="width:258px;border-color: #999;">
+							</select>
+							<input type="number" class="newin" id="equipmentPrice" name="projectPrice" value="" />
+						</div>
+					</li>
+					<li>
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>备注：</label>
+							<input type="number" class="newin" id="equipmentPrice" name="projectPrice" value="" />
+							<textarea name="" rows="" cols="" class="textareaBox"></textarea>
+						</div>
+					</li>-->
+					<li style="display: none;">
+						<div class="f_div">
+							<label class="f_lab"><span style="color: red;">*</span>检查部位：</label>
+							<!-- <input type="checkbox" class="" id="equipmentBrand1" name="checkpoint" value=""/>
+					<span>胳膊</span>
+					<label class="f_lab">胳膊</label>
+			        <input type="checkbox" class="" id="equipmentBrand2" name="checkpoint" value=""/>
+					<span>腿</span> -->
+							<div class="check_out_box oWrapper">
+								<div class="tpl checkBox">
+									<!-- <input type="checkbox" style="margin-top: 10px;" class="checkpoint" id="" name="equipmentPerDO" value=""/> -->
+									<!--<input type="checkbox" style="margin-top: 10px;" class="checkpoint" id="" name="projectPos" value=""/>-->
+									<label class="f_lab" style="width: 1%;margin-left: 5px;"></label>
+									<!--<input type="hidden" class="configInfoString" value="" />-->
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<!--<div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>医院：</label>
+                    <span class="hospital"></span>
+                    <input type="hidden" id="hospitalId" class="" value=""  />
+                </div>-->
+						
+					</li>
+					<input type="hidden" id="createName" class="" value="" />
+					<input type="hidden" id="id" class="" value="" />
+				</ul>
+				<!-- <div id="ulist_div" class="ulist_div">
+           <div class="m5 ld"><input type="checkbox"> <label>15669851456 王桂兰</label></div>
+            <div class=" ld"><input type="checkbox"> <label>15669851456 王桂兰</label></div>
+            <div class=" ld"><input type="checkbox"> <label>15669851456 王桂兰</label></div>
+        </div> -->
+				<!-- <input type="hidden" id="equipmentUserId" name="equipmentUserId" value=""/> -->
+
+				<div style="text-align: center;margin-top: 30px;" id="query">
+					<!--<button class="towbtn" id="saveCancle">取消</button>-->
+					<button class="onebtn comTempateSaveBtn formDisabledBtn" disabled="disabled" id="saveOk" onclick="saveEquipment()">保存</button>
+				</div>
+				<div style="text-align: center;margin-top: 30px;" id="update">
+		            <button class="towbtn displayNoneBtn" id="saveCancle">取消</button>
+		            <button class="onebtn comTempateSaveBtn" id="saveOk1" onclick="updateEquipment()">保存</button>
+		        </div>
+				<!--<div style="text-align: center;margin-top: 30px;display:none" id="closeBox">
+					<button class="towbtn" id="closeBtn">关闭</button>
+				</div>-->
+			</form>
+
+		</div>
+
+	</body>
+
+	<!--<script src="../../js/jquery.min.js?v=2.1.4"></script>-->
+	<!--<script src="../../js/bootstrap.min.js?v=3.3.5"></script>-->
+	<script src="../../js/content.min.js?v=1.0.0"></script>
+	<script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/addMaintenanceRecord.js" type="text/javascript"></script>
+	<!--<script src="addMaintenanceRecord.js" type="text/javascript"></script>-->
+	<script type="text/javascript">
+		$(document).ready(function(){
+			function currentDate(){
+				var d = new Date(),
+					month = '' + (d.getMonth() + 1),
+					day = '' + d.getDate(),
+					year = d.getFullYear();
+				var hours= d.getHours()<10?'0'+d.getHours():d.getHours();
+				var minutes=d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+				var seconds=d.getSeconds()<10?'0'+d.getSeconds():d.getSeconds();
+				if (month.length < 2) month = '0' + month;
+				if (day.length < 2) day = '0' + day;
+				return [year, month, day].join('-')+" "+hours+":"+minutes+":"+seconds;
+			}
+		    
+		    var ins22 = laydate.render({
+			  elem: '#checkTime'
+//			  ,min: currentDate()
+			  ,type: 'datetime'
+			  ,trigger: 'click'
+			  ,done: function(value, date, endDate){
+			  	console.log(value); //得到日期生成的值，如：2017-08-18
+			    console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+			    console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+			  	if(value == ''){
+			  		$("#checkTimeTip").show();
+//					$("#saveOk").attr("disabled","disabled").addClass("formDisabledBtn");
+//					$("#saveOk1").attr("disabled","disabled").addClass("formDisabledBtn");
+					formCheck("#saveOk");
+			  		formCheck("#saveOk1");
+			  	}else{
+//			  		$("#saveOk").removeAttr("disabled").removeClass("formDisabledBtn");
+//			  		$("#saveOk1").removeAttr("disabled").removeClass("formDisabledBtn");
+					$("#checkTimeTip").hide();
+					formCheck("#saveOk");
+			  		formCheck("#saveOk1");
+			  	}
+			  	
+			  }
+//			  ,max: '2080-10-14'
+//			  ,range: true
+//				,istime: true
+//				,istoday: false
+//			  ,ready: function(){
+//			    //ins22.hint('日期可选值设定在 <br> '+formatDate()+'到 2080-10-14');
+//			    var e=new Date();
+//			    var hours= e.getHours()<10?'0'+e.getHours():e.getHours();
+//				var minutes=e.getMinutes()<10?'0'+e.getMinutes():e.getMinutes();
+//				var seconds=e.getSeconds()<10?'0'+e.getSeconds():e.getSeconds();
+//			    minTimes=hours+":"+minutes+":"+seconds;
+//			  }
+			});
+//			inputCheck("#applyTime", "#applyTimeTip", "#saveOk");
+			var ins21 = laydate.render({
+			  elem: '#applyUpdateTime'
+//			  ,min: currentDate()
+			  ,type: 'datetime'
+			  ,trigger: 'click'
+			  ,done: function(value, date, endDate){
+			  	console.log(value); //得到日期生成的值，如：2017-08-18
+			    console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+			    console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+			  	if(value == ''){
+			  		$("#applyUpdateTimeTip").show();
+//					$("#saveOk").attr("disabled","disabled").addClass("formDisabledBtn");
+//					$("#saveOk1").attr("disabled","disabled").addClass("formDisabledBtn");
+					formCheck("#saveOk");
+			  		formCheck("#saveOk1");
+			  	}else{
+//			  		$("#saveOk").removeAttr("disabled").removeClass("formDisabledBtn");
+//			  		$("#saveOk1").removeAttr("disabled").removeClass("formDisabledBtn");
+					$("#applyUpdateTimeTip").hide();
+					formCheck("#saveOk");
+			  		formCheck("#saveOk1");
+			  	}
+			  	
+			  }
+//			  ,max: '2080-10-14'
+//			  ,range: true
+//				,istime: true
+//				,istoday: false
+//			  ,ready: function(){
+//			    //ins22.hint('日期可选值设定在 <br> '+formatDate()+'到 2080-10-14');
+//			    var e=new Date();
+//			    var hours= e.getHours()<10?'0'+e.getHours():e.getHours();
+//				var minutes=e.getMinutes()<10?'0'+e.getMinutes():e.getMinutes();
+//				var seconds=e.getSeconds()<10?'0'+e.getSeconds():e.getSeconds();
+//			    minTimes=hours+":"+minutes+":"+seconds;
+//			  }
+			});
+			var ins20 = laydate.render({
+			  elem: '#applyTime'
+//			  ,min: currentDate()
+			  ,type: 'datetime'
+			  ,trigger: 'click'
+			  ,done: function(value, date, endDate){
+			  	console.log(value); //得到日期生成的值，如：2017-08-18
+			    console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+			    console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+			  	if(value == ''){
+			  		$("#applyTimeTip").show();
+//					$("#saveOk").attr("disabled","disabled").addClass("formDisabledBtn");
+//					$("#saveOk1").attr("disabled","disabled").addClass("formDisabledBtn");
+					formCheck("#saveOk");
+			  		formCheck("#saveOk1");
+			  	}else{
+//			  		$("#saveOk").removeAttr("disabled").removeClass("formDisabledBtn");
+//			  		$("#saveOk1").removeAttr("disabled").removeClass("formDisabledBtn");
+					$("#applyTimeTip").hide();
+					formCheck("#saveOk");
+			  		formCheck("#saveOk1");
+			  	}
+			  	
+			  }
+//			  ,max: '2080-10-14'
+//			  ,range: true
+//				,istime: true
+//				,istoday: false
+//			  ,ready: function(){
+//			    //ins22.hint('日期可选值设定在 <br> '+formatDate()+'到 2080-10-14');
+//			    var e=new Date();
+//			    var hours= e.getHours()<10?'0'+e.getHours():e.getHours();
+//				var minutes=e.getMinutes()<10?'0'+e.getMinutes():e.getMinutes();
+//				var seconds=e.getSeconds()<10?'0'+e.getSeconds():e.getSeconds();
+//			    minTimes=hours+":"+minutes+":"+seconds;
+//			  }
+			});
+		})
+	</script>
+
+</html>

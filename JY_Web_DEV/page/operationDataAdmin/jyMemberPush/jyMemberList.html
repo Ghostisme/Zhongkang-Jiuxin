@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>远程医疗管理系统-九悦运营信息维护</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../../../css/plugins/datapicker/datepicker3.css" />
+		<link rel="stylesheet" href="../../../css/bootstrap-select.min.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../../../js/plugins/layer/skin/layer.css" />-->
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css" />
+		<link rel="stylesheet" href="../../../css/alert.css" />
+		
+		<!--<link rel="stylesheet" type="text/css" href="../../css/listPage.css"/>-->
+		<style>
+			#contents {
+				width: 100%;
+				overflow: hidden;
+			}
+			
+			.disContents {
+				width: 100%;
+				/*overflow: hidden;*/
+			}
+			
+			.rightLoadContent {
+				width: 100%;
+			}
+			
+			.searchInfos {
+				overflow: hidden;
+				margin-bottom: 10px;
+			}
+			
+			.searchInfos #searchBox {
+				width: 15%;
+				height: 24px;
+				padding: 0px auto;
+				/*margin-top:8px;*/
+				outline: none;
+			}
+			/*检索按钮*/
+			
+			.searching {
+				/*height:26px;
+			line-height: 26px;
+			padding:0 30px;
+			background: #F5F1EE;
+			color:#000;
+			border:1px solid #CAC8C6;
+			cursor: pointer;*/
+				width: 85px;
+				height: 24px;
+				border-radius: 5px;
+				background-color: #1C79B6;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #FFFFFF;
+				margin-left: 20px;
+				line-height: 24px;
+				letter-spacing: 5px;
+				cursor: pointer;
+				text-align: center;
+			}
+			
+			.addData {
+				width: 85px;
+				height: 24px;
+				border-radius: 5px;
+				background-color: #ff7510;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #FFFFFF;
+				line-height: 24px;
+				letter-spacing: 5px;
+				cursor: pointer;
+				float: right;
+				text-align: center;
+			}
+			
+			.resultLists,
+			.resultListsContents,
+			.resultListInfo {
+				width: 100%;
+				overflow: hidden;
+			}
+			/*表头*/
+			
+			.resultListsTitle {
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				overflow: hidden;
+				/*border:1px solid #000;*/
+				background: #E2EFF6;
+			}
+			
+			.resultListsItem1 {
+				width: 3%;
+				height: 40px;
+				text-align: center;
+			}
+			
+			.resultListsItem2 {
+				width: 15%;
+				height: 40px;
+				text-align: center;
+			}
+			
+			.resultListsItem3 {
+				width: 15%;
+				height: 40px;
+				text-align: center;
+			}
+			
+			.resultListsItem4 {
+				width: 15%;
+				height: 40px;
+				text-align: center;
+			}
+			
+			.resultListsItem5 {
+				width: 15%;
+				height: 40px;
+				text-align: center;
+			}
+			
+			.resultListsItem6 {
+				width: 5%;
+				height: 40px;
+				text-align: center;
+			}
+			
+			.resultListsItem7 {
+				width: 8%;
+				height: 40px;
+				text-align: center;
+			}
+			
+			.resultListsItem8 {
+				width: 10%;
+				height: 40px;
+				text-align: center;
+			}
+			
+			.resultListsItem9 {
+				width: 13%;
+				height: 40px;
+				text-align: center;
+			}
+			
+			.resultListInfo {
+				height: 44px;
+				line-height: 44px;
+				cursor: pointer;
+				border-bottom: 1px solid #eeeeee;
+			}
+			
+			.resultListInfo:nth-child(even) {
+				background: #fff;
+			}
+			
+			.resultListInfo:nth-child(odd) {
+				/*background: #F6F6F6;*/
+			}
+			/*页码*/
+			
+			.pageN {
+				overflow: hidden;
+			}
+			
+			#pageGro ul {
+				float: right;
+				margin-right: 100px;
+			}
+			
+			.pagination>li>a,
+			.pagination>li>span {
+				margin-right: 10px;
+			}
+			
+			.pagination>.active>a,
+			.pagination>.active>a:focus,
+			.pagination>.active>a:hover,
+			.pagination>.active>span,
+			.pagination>.active>span:focus,
+			.pagination>.active>span:hover {
+				background: #FE7410;
+				border-color: #FE7410;
+			}
+			
+			.flipOver a {
+				cursor: pointer;
+			}
+			/*新增配置信息弹框*/
+			
+			#newConfiguration {
+				width: 25%;
+				/*height:500px;*/
+				background: #fff;
+				position: absolute;
+				top: 30%;
+				left: 40%;
+				z-index: 8888;
+				padding-bottom: 40px;
+			}
+			
+			.newConfigurationTitle {
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				background: #51659B;
+				color: #fff;
+				padding-left: 20px;
+				font-size: 16px;
+			}
+			
+			.closeModel,
+			.newConfigCloseModel,
+			.changeConfigCloseModel,
+			.lookingForDetailsCloseModel {
+				margin-right: 20px;
+				font-size: 18px;
+				cursor: pointer;
+				padding: 0 6px;
+				height: 10px;
+				border-radius: 50%;
+				border: 1px solid #fff;
+			}
+			/*新增类型蓝色*/
+			
+			.currentModalMainTit {
+				color: #008EEA;
+				border-bottom: 1px solid #51659B;
+				height: 40px;
+				margin: 0 20px;
+				line-height: 56px;
+			}
+			
+			.boxDiv1,
+			.boxDiv2 {
+				margin: 0 60px;
+				height: 100px;
+				border: 1px solid #EDEDED;
+				margin-top: 20px;
+			}
+			
+			.addInfoBox1,
+			.addInfoBox2 {
+				width: 100%;
+				height: 100%;
+				border: none;
+				outline: none;
+			}
+			/*按钮样式*/
+			
+			.sureAndCancelBtns {
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				margin-top: 20px;
+			}
+			
+			.sureBtn {
+				width: 100px;
+				height: 40px;
+				line-height: 40px;
+				display: inline-block;
+				background: #008EEA;
+				color: #fff;
+				margin: 0 auto;
+				cursor: pointer;
+			}
+			
+			.cancelBtn,
+			.addConfigcancelBtn,
+			.changeInfoCancelBtn,
+			.delInfoCancelBtn {
+				width: 100px;
+				height: 40px;
+				line-height: 40px;
+				display: inline-block;
+				background: #ECECEC;
+				color: #000;
+				margin: 0 auto;
+				margin-left: 20px;
+				cursor: pointer;
+			}
+			/*修改配置信息弹框*/
+			
+			#changeConfiguration {
+				width: 25%;
+				/*height:500px;*/
+				background: #fff;
+				position: absolute;
+				top: 30%;
+				left: 40%;
+				z-index: 8888;
+				padding-bottom: 40px;
+			}
+			
+			.changeInfoBox1,
+			.changeInfoBox2 {
+				width: 100%;
+				height: 100%;
+				border: none;
+				outline: none;
+			}
+			/*删除配置模态框*/
+			
+			#delListInfo {
+				width: 15%;
+				/*height:500px;*/
+				background: #fff;
+				position: absolute;
+				top: 30%;
+				left: 45%;
+				z-index: 8888;
+				padding-bottom: 20px;
+			}
+			
+			.delTopImg {
+				width: 100%;
+				text-align: center;
+				margin: 20px 0px;
+			}
+			
+			.delWarn1,
+			.delWarn2 {
+				width: 100%;
+				text-align: center;
+			}
+			/*查看详情*/
+			
+			#lookingForDetails {
+				width: 60%;
+				background: #fff;
+				position: absolute;
+				top: 18%;
+				left: 22%;
+				z-index: 8888;
+				padding-bottom: 20px;
+				min-height: 500px;
+				max-height: 700px;
+			}
+			
+			.LoadDetails {
+				width: 100%;
+				padding: 20px;
+				min-height: 500px;
+				overflow-y: auto;
+				max-height: 656px;
+			}
+			/*设置所有弹框和模态框均隐藏*/
+			
+			#newConfiguration,
+			.modal,
+			#changeConfiguration,
+			#delListInfo,
+			#lookingForDetails {
+				display: none;
+			}
+			
+			.layui-layer-title {
+				background: #51659B!important;
+			}
+			
+			.subscribeListInfoBox {
+				width: 100%;
+				height: 800px;
+				min-width: 1200px;
+				padding: 20px;
+				box-sizing: border-box;
+			}
+			
+			.subscribeListInfoHead {
+				width: 100%;
+				height: 55px !important;
+				padding: 10px 0px;
+				box-sizing: border-box;
+			}
+			
+			.subscribeListNanme {
+				float: left;
+			}
+			
+			.subscribeListSex {
+				float: left;
+			}
+			
+			.subscribeListID {
+				float: left;
+			}
+			
+			.subscribeListTel {
+				float: left;
+			}
+			
+			.subscribeListNanmeLeft,
+			.subscribeListSexLeft,
+			.subscribeListIDLeft,
+			.subscribeListTelLeft {
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #1b1b1b;
+				margin-left: 10px;
+			}
+			
+			.subscribeListNanmeLeft {
+				margin-left: 0;
+			}
+			
+			.subscribeListAllInfoList-ul {
+				overflow: hidden;
+				border: 1px solid #eee;
+				border-top: 0px;
+			}
+			
+			.subscribeListNanmeRight,
+			.subscribeListelRight {
+				width: 120px;
+				height: 24px;
+				border-radius: 3px;
+				padding-left: 4px;
+				box-sizing: border-box;
+				margin-right: 10px;
+			}
+			
+			.subscribeListSexRight {
+				width: 270px;
+				height: 24px;
+				border-radius: 3px;
+				box-sizing: border-box;
+			}
+			
+			#beginTime,
+			#endTime,
+			#devType {
+				height: 24px;
+			}
+			
+			.subscribeListNanmeRight:focus,
+			.subscribeListIDright:focus,
+			.subscribeListelRight:focus {
+				border: 1px solid #1C79B6;
+			}
+			
+			.subscribeListIDright {
+				width: 160px;
+				height: 24px;
+				border-radius: 3px;
+				padding: 4px;
+				box-sizing: border-box;
+			}
+			
+			.subscribeListBtnCheck {
+				width: 85px;
+				height: 24px;
+				border-radius: 5px;
+				background-color: #1C79B6;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #FFFFFF;
+				margin-left: 20px;
+				line-height: 24px;
+				letter-spacing: 5px;
+				cursor: pointer;
+			}
+			
+			.subscribeListBtnClear {
+				width: 85px;
+				height: 24px;
+				border-radius: 5px;
+				background-color: #ececec;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #5c5c5c;
+				margin-left: 20px;
+				line-height: 24px;
+				letter-spacing: 5px;
+				cursor: pointer;
+			}
+			
+			.subscribeListBtnAdd {
+				width: 85px;
+				height: 32px;
+				border-radius: 5px;
+				background-color: #ff7510;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #FFFFFF;
+				line-height: 32px;
+				letter-spacing: 5px;
+				cursor: pointer;
+				float: right;
+			}
+			
+			#ulAppointmentList {
+				width: 100%;
+				min-height: 250px;
+			}
+			
+			#ulAppointmentList .subscribeListInfoList-ul li,
+			#subscribeListAllInfo .subscribeListAllInfoList-ul li {
+				float: left;
+				height: 36px;
+				line-height: 36px;
+				text-align: center;
+			}
+			
+			.subscribeListInfoList-ul {
+				width: 100%;
+				height: 36px;
+				background-color: #e2eff7;
+			}
+			
+			.subscribeListInfoList-all,
+			.subscribeListInfoList-code,
+			.subscribeListInfoList-sex,
+			.subscribeListInfoList-circ,
+			.subscribeListInfoList-check,
+			.subscribeListInfoList-change,
+			.subscribeListInfoList-del {
+				width: 8%;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				text-align: center;
+			}
+			
+			.subscribeListInfoList-hos,
+			.subscribeListInfoList-techOffice,
+			.subscribeListInfoList-doctorName,
+			.subscribeListInfoList-patientId,
+			.subscribeListInfoList-status,
+			.subscribeListInfoList-proposer,
+			.subscribeListInfoList-proposeTime {
+				width: 8%;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				text-align: center;
+			}
+			
+			.subscribeListInfoList-delTitle,
+			.subscribeListInfoList-exchangeTitle,
+			.subscribeListInfoList-searchTitle,
+			.subscribeListInfoList-changeTitle {
+				width: 5%;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				text-align: center;
+			}
+			
+			.subscribeListInfoList-name {
+				width: 12%;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+			}
+			
+			.subscribeListInfoList-id,
+			.subscribeListInfoList-tel,
+			.subscribeListInfoList-allergic {
+				width: 10%;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+			}
+			
+			.doctorInfoList-des {
+				width: 28%;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+			}
+			
+			.subscribeListInfoDetail-ul {
+				width: 100%;
+				height: 52px;
+				border-bottom: 1px solid #eeeeee;
+				line-height: 52px;
+				text-align: center;
+				vertical-align: middle;
+			}
+			
+			.subscribeListInfoDetail-ul li {
+				float: left;
+				height: 52px;
+				line-height: 52px;
+				text-align: center;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				vertical-align: middle;
+			}
+			
+			.subscribeListInfoDetail-radio,
+			.subscribeListInfoDetail-code,
+			.subscribeListInfoDetail-sex,
+			.subscribeListInfoDetail-circ,
+			.subscribeListInfoDetail-check,
+			.subscribeListInfoDetail-change,
+			.subscribeListInfoDetail-del {
+				width: 5%;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				text-align: center;
+			}
+			
+			.subscribeListInfoDetail-name {
+				width: 12%;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				text-align: center;
+			}
+			
+			.subscribeListInfoDetail-id,
+			.subscribeListInfoDetail-tel,
+			.subscribeListInfoDetail-allergic {
+				width: 10%;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				text-align: center;
+			}
+			
+			.doctorDescript {
+				width: 28%;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				text-align: center;
+			}
+			
+			.subscribeListInfoDetail-radio .radio {
+				position: relative;
+				display: inline-block;
+				font-weight: 400;
+				color: #0c4757;
+				cursor: pointer;
+			}
+			
+			.subscribeListInfoDetail-radio .radio input {
+				position: absolute;
+				left: -9999px;
+			}
+			
+			.subscribeListInfoDetail-radio .radio i {
+				display: block;
+				text-align: center;
+				/*position: absolute;*/
+				/*top: 0px;*/
+				/*left: 0;*/
+				width: 10px;
+				height: 10px;
+				outline: 0;
+				border: 1px solid #d0d0d2;
+				/*background: #ff9122;*/
+				border-radius: 50%;
+				transition: border-color .3s -webkit-transition: border-color .3s;
+			}
+			
+			.subscribeListInfoDetail-radio .radio input:checked+i {
+				border-color: #ff9122;
+			}
+			
+			.subscribeListInfoDetail-radio .radio input+i:after {
+				position: absolute;
+				content: '';
+				top: 3px;
+				left: 3px;
+				width: 5px;
+				height: 5px;
+				border-radius: 50%;
+				opacity: 0;
+				transition: opacity .1s;
+				-webkit-transition: opacity .1s;
+				background-color: #ff9123;
+			}
+			
+			.subscribeListInfoDetail-radio .radio input:checked+i:after {
+				opacity: 1;
+			}
+			
+			.subscribeListInfoDetail-ul li span img {
+				cursor: pointer;
+			}
+			
+			#topSearchBtns {
+				width: 85px;
+				height: 24px;
+				border-radius: 5px;
+				background-color: #1C79B6;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #FFFFFF;
+				margin-left: 20px;
+				line-height: 24px;
+				letter-spacing: 5px;
+				cursor: pointer;
+				text-align: center;
+				float: left;
+			}
+			#datepicker .subscribeListSex .newin{
+				font-size: 12px;
+   				 text-align: left;
+			}
+		
+		</style>
+	</head>
+
+	<body>
+		<div class="contain">
+			<div class="rightLoadContent">
+				<!--页面数据呈现区-->
+				<div class="disContents">
+					<!--搜素区域-->
+					<div class="searchInfos"style="overflow: initial !important;">
+						<form action="">
+							<!--第一行信息-->
+							<div class="subscribeListInfoHead topBox" style="overflow: initial !important;">
+								<div class="subscribeListSex">
+									<!--<span class="subscribeListSexLeft">医院名称</span>-->
+									<select name="" title="医院名称" class="subscribeListSexRight querySelect queryContent selectpicker" id="applyHos" data-live-search="true" data-size="7">
+										<option value="">医院名称</option>
+									</select>
+								</div>
+
+								<div class="subscribeListSex">
+									<input id="devType" class="queryContent" name="devType" maxlength="250" type="text" placeholder="设备信息" style="width: 260px;">
+								</div>
+								<div class="subscribeListSex input-daterange" id="datepicker">
+									<div class="subscribeListSex">
+										<input type="text" class="newin layer-date form-control required queryContent" id="beginTime" autocomplete="off" name="beginTime" placeholder="核算起始日期">
+									</div>
+
+									<div class="subscribeListSex">
+										<input type="text" class="newin layer-date form-control required queryContent" style="margin-left: 24px;" id="endTime" autocomplete="off" name="endTime" placeholder="核算结束日期">
+									</div>
+								</div>
+								<div id="topSearchBtns" class="topBtn queryBtn">
+									查询
+								</div>
+								<div id="reportQuerySearchClearBtn" class="topBtn resetbtn" style="float: left;cursor: pointer;margin-left: 24px;">
+									清空
+								</div>
+								<div class="rt addData topBtn addBtn">
+									新增
+								</div>
+
+							</div>
+
+						</form>
+					</div>
+					<div class="tableNav">九悦运营信息维护</div>
+					<!--列表区域-->
+					<div class="resultLists outBoxBorder">
+						
+						<!--列表表头-->
+						<div class="resultListsTitle titleList">
+							<div class="resultListsItem1 lf LiTextAlign boxRightBorder">
+								序号
+							</div>
+							<div class="resultListsItem2 lf LiTextAlign boxRightBorder">
+								医院名称
+							</div>
+							<div class="resultListsItem9 lf LiTextAlign boxRightBorder" style="width:10%">
+								设备详情
+							</div>
+							<div class="resultListsItem7 lf LiTextAlign boxRightBorder">
+								核算起始日期
+							</div>
+							<div class="resultListsItem7 lf LiTextAlign boxRightBorder">
+								核算结束日期
+							</div>
+
+							<div class="resultListsItem7 lf LiTextAlign boxRightBorder">
+								回款日期
+							</div>
+
+							<div class="resultListsItem7 lf LiTextAlign boxRightBorder">
+								应收回款
+							</div>
+							<div class="resultListsItem7 lf LiTextAlign boxRightBorder">
+								实收回款
+							</div>
+							<div class="resultListsItem7 lf LiTextAlign boxRightBorder">
+								成本
+							</div>
+							<div class="resultListsItem7 lf LiTextAlign boxRightBorder">
+								毛利
+							</div>
+							<div class="resultListsItem7 lf LiTextAlign boxRightBorder">
+								备注
+							</div>
+							<div class="resultListsItem6 lf LiTextAlign">
+								操作
+							</div>
+							<!--<div class="resultListsItem6 lf LiTextAlign">
+						删除
+					</div>
+					<div class="resultListsItem6 lf LiTextAlign">
+						置顶/取消置顶
+					</div>-->
+						</div>
+						<div class="resultListsContents">
+							<form action="">
+								<!--第一条数据-->
+								<!--<div class="resultListInfo">
+
+                                <div class="resultListsItem1 lf items">
+                                    <input type="checkbox" name="orderNum" class="orderNum" />
+                                    <span>1</span>
+                                </div>
+                                <div class="resultListsItem2 lf items">
+                                    售后业务类型
+                                </div>
+                                <div class="resultListsItem3 lf items">
+                                    录入、确认、驳回、小家申请、销假确认、销假驳回
+                                </div>
+                                <div class="resultListsItem4 lf items">
+
+                                </div>
+                                <div class="resultListsItem5 lf items">
+                                    修改
+                                </div>
+                                <div class="resultListsItem5 lf items">
+                                    删除
+                                </div>
+                                <div class="resultListsItem6 lf items">
+                                    详细
+                                </div>
+                        </div>-->
+
+							</form>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="pageN"></div>
+				</div>
+				<!--模态框-->
+				<div class="modal">
+				</div>
+				<!--新增配置信息弹框-->
+				<div id="newConfiguration">
+					<div class="newConfigurationTitle">
+						新增配置信息类型
+						<div class="rt">
+							<span class="newConfigCloseModel">
+                                      ×
+                                  </span>
+						</div>
+					</div>
+					<!--标题-->
+					<div class="currentModalMainTit">
+						新增配置信息类型
+					</div>
+					<form action="">
+						<div class="boxDiv1">
+							<textarea name="addInfoBox1" class="addInfoBox1" id="addInfoNames"></textarea>
+						</div>
+						<div class="boxDiv2">
+							<textarea name="addInfoBox2" class="addInfoBox2"></textarea>
+						</div>
+						<div class="sureAndCancelBtns">
+							<div class="sureBtn addNewBtn">
+								确认新增
+							</div>
+							<div class="addConfigcancelBtn">
+								取&nbsp;&nbsp;消
+							</div>
+						</div>
+					</form>
+				</div>
+				<!--修改配置信息弹框-->
+				<div id="changeConfiguration">
+					<div class="newConfigurationTitle">
+						配置信息类型修改
+						<div class="rt">
+							<span class="changeConfigCloseModel">
+                                      ×
+                                  </span>
+						</div>
+					</div>
+					<!--标题-->
+					<div class="currentModalMainTit">
+						配置信息类型修改
+					</div>
+					<form action="">
+						<div class="boxDiv1">
+							<textarea name="changeInfoBox1" class="changeInfoBox1"></textarea>
+						</div>
+						<div class="boxDiv2">
+							<textarea name="changeInfoBox2" class="changeInfoBox2"></textarea>
+						</div>
+						<div class="sureAndCancelBtns">
+							<div class="sureBtn sureChangeInfos">
+								确认修改
+							</div>
+							<div class="changeInfoCancelBtn">
+								取消修改
+							</div>
+						</div>
+						<span class="configListchangeId" style="display:none"></span>
+					</form>
+				</div>
+				<!--删除单行配置信息提示框-->
+				<!--<div id="delListInfo">
+					<div class="delTopImg">
+						<img src="../../img/common/untitledquestionImg.png" alt="" />
+					</div>
+					<div class="delWarn">
+						<div class="delWarn1">删除信息后不可恢复，您确定要删除</div>
+						<div class="delWarn2">
+							该条信息吗？
+						</div>
+					</div>
+					<div class="sureAndCancelBtns">
+						<div class="delInfoCancelBtn">
+							取&nbsp;&nbsp;&nbsp;&nbsp;消
+						</div>
+						<div class="sureBtn sureChangeInfos">
+							确定删除
+						</div>
+					</div>
+					<span class="configListdelChangeId" style="display:none"></span>
+				</div>-->
+				<!--删除单行配置信息提示框-->
+				<div id="reportQueryFade" class="black_overlay" style="display: none;z-index: 999;">
+					<div class="mask_content_box">
+						<div class="content_header">
+							<div class="header_title">删除</div>
+							<div class="close" id="cancel">×
+								<!--<span>×</span>-->
+							</div>
+						</div>
+						<div class="content_middle">
+							<div class="chooseDel" style="">
+								<div>
+									<img src="../../../img/warn.png" width="55" height="48"> 删除信息
+								</div>
+								<div>确定要删除此项吗</div>
+							</div>
+							<div class="btnGroup delGroup" style="">
+								<button type="button" class="subBtn subBtn3 Btn comTempateSaveBtn sureChangeInfos" style="border: none;">确认</button>
+								<!--<button type="button" class="resBtn resBtn3 Btn">取消</button>-->
+							</div>
+						</div>
+					</div>
+					<span class="configListdelChangeId" style="display:none"></span>
+				</div>
+				<!--查看详情页-->
+				<div id="lookingForDetails">
+					<div class="newConfigurationTitle">
+						新增配置信息类型
+						<div class="rt">
+							<span class="lookingForDetailsCloseModel">
+                                      ×
+                                  </span>
+						</div>
+					</div>
+					<div class="LoadDetails">
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../../js/plugins/layer/layer.min.js"></script>
+		<script src="../../../js/plugins/layer/laydate/laydate5.0.js"></script>
+		<!--<script src="../../js/content.min.js?v=1.0.0"></script>-->
+		<script src="../../../js/demo/layer-demo.min.js"></script>
+		<script src="../../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script type="text/javascript" src="../../../js/config.js"></script>
+		<script type="text/javascript" src="../../../js/commonStyle.js"></script>
+		<script type="text/javascript" src="../../../js/common.js"></script>
+		<script type="text/javascript" src="../../../js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="../../../js/bootstrap-select.min.js" ></script>
+		<script type="text/javascript" src="../../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+		<script>
+			var currentPage = 1;
+			var offsetPage = 0; //传输的页起始条数
+			var showNum = 10; //页面需要显示的条数
+			var num_pages;
+			var searchHospitalId = $("#subscribeListSearchHospital").val();
+			var sessionId = sessionStorage.getItem('sessionId');
+			$(document).ready(function() {
+				var createDateBegin = {
+					elem: '#beginTime',
+					max: '2080-10-14',
+					istime: true,
+					istoday: false,
+					done: function(value, date) {
+						if(value !== '') {
+							endDate.config.min.year = date.year;
+							endDate.config.min.month = date.month - 1;
+							endDate.config.min.date = date.date;
+							endDate.config.min.hours = date.hours;
+							endDate.config.min.minutes = date.minutes;
+
+						} else {
+							endDate.config.min.year = '';
+							endDate.config.min.month = '';
+							endDate.config.min.date = '';
+							endDate.config.min.hours = '';
+							endDate.config.min.minutes = '';
+						}
+					}
+				};
+				var createDateEnd = {
+					elem: '#endTime',
+					max: '2080-10-14',
+					istime: true,
+					istoday: false,
+					done: function(value, date) {
+						if(value !== '') {
+							startDate.config.max.year = date.year;
+							startDate.config.max.month = date.month - 1;
+							startDate.config.max.date = date.date;
+							startDate.config.max.hours = date.date;
+							startDate.config.max.minutes = date.date;
+						} else {
+							startDate.config.max.year = '';
+							startDate.config.max.month = '';
+							startDate.config.max.date = '';
+							startDate.config.max.hours = '';
+							startDate.config.max.minutes = '';
+						}
+					}
+				};
+				var startDate = laydate.render(createDateBegin);
+				var endDate = laydate.render(createDateEnd);
+				$('.selectpicker').selectpicker({
+		  });
+			})
+			//点击分页页数
+			$(document).delegate(".flipOver", 'click', function() {
+				$(this).addClass('active').siblings().removeClass('active');
+				currentPage = parseInt($(this).attr("pageId"));
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+			//点击上一页
+			$(document).delegate("#prev", 'click', function() {
+				if($(".flipOver.active").prev().attr("id") == "prev") {
+					return true
+				} else {
+					var page = parseInt($(".flipOver.active").attr("pageid")) - 1;
+					$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+				}
+				currentPage = page;
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+			//点击分页跳转页按钮
+			$(document).delegate(".srueToJumpPageBtn", 'click', function() {
+				currentPage = parseInt($(".toPageNum").val().trim());
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+			//点击下一页
+			$(document).delegate("#Next", 'click', function() {
+				if($(".flipOver.active").next().attr("id") == "Next") {
+					return true
+				} else {
+					var page = parseInt($(".flipOver.active").attr("pageid")) + 1;
+					$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+				}
+				currentPage = page;
+				console.log(currentPage)
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getorderList();
+				window.scrollTo(0, 0);
+			});
+			getorderList();
+			applyreadHospitalBooking()
+			//指定医院下拉框 初始化
+			function applyreadHospitalBooking() {
+				$("#applyHos").html('<option value="">请选择医院</option>');
+				let id= sessionStorage.getItem("userId")
+			ajaxGet('/hospital/relation/getHospitalRelationList',{userId:id},function(data){
+						
+						var hospitalList = data.resultMap.list;
+						if(hospitalList != null) {
+							var hospitalHtml = '';
+							for(var s = 0; s < hospitalList.length; s++) {
+								hospitalHtml += '<option data-name="' + hospitalList[s].hospitalName + '" value="' + hospitalList[s].id + '">' + hospitalList[s].hospitalName + '</option>';
+							}
+							$("#applyHos").append(hospitalHtml);
+							$('.selectpicker').selectpicker('refresh');
+		  				$('.selectpicker').selectpicker('render');
+						}
+						if($("#applyHos").val() == $("#applyHos").find("option").val()) {
+							$("#applyHos").attr("data-name", $("#applyHos").find("option:selected").attr("data-name"));
+						}
+					
+				})
+			}
+			
+			//    获取订单列表
+			function getorderList(e) {
+				
+				let oid= sessionStorage.getItem("userId")
+				$(".resultListsContents form").html('');
+				console.log(e)
+
+				if(e == undefined) {
+					var returnBeginDate = "";
+					var returnEndTime = "";
+					var devType = "";
+					var hospitalName = "";
+				} else {
+					var returnBeginDate = e.returnBeginDate;
+					var returnEndTime = e.returnEndTime;
+					var devType = e.devType;
+					var hospitalName = e.hospitalName;
+
+				}
+				ajaxGet('/operate/jiuyueInfo/getOperateJiuyueInfoList', {
+					userId:oid,
+					offset: offsetPage, //（页码-1）*每页显示条数
+						limit: showNum, //每页赢显示的条数
+						returnBeginDate: returnBeginDate,
+						returnEndDate: returnEndTime,
+						vague: devType,
+						hospitalName: hospitalName,
+				}, function(data) {
+						var configList = data.resultMap.list;
+						var listTotal = data.resultMap.total; //总条数
+						//                            var index = data.viewIndex;
+						num_pages = Math.ceil(parseInt(listTotal) / 10); //总条数除以每页十条数据为总页码
+						if(configList) {
+							
+							if(configList.length>0){
+								$(".pageN").show();
+							}else{
+								$(".pageN").hide();
+							}
+							
+							for(var i = 0, k = 0; i < configList.length; i++) {
+								console.log(configList.length);
+								var confightml = '';
+								k++;
+								confightml += '<div class="resultListInfo dataList">';
+								confightml += '<div class="listId LiTextAlign boxRightBorder"style="display:none">' + configList[i].id + '</div>';
+								confightml += '<div class="resultListsItem1 lf items LiTextAlign boxRightBorder">';
+								confightml += '<span>' + k + '</span>';
+								confightml += '</div>';
+								confightml += '<div class="resultListsItem3 lf items LiTextAlign boxRightBorder">' + configList[i].hospitalName + '</div>'; //医院名字
+								if(configList[i].equipmentBrankName) {
+									confightml += '<div class="resultListsItem9 lf items LiTextAlign boxRightBorder" style="width:10%">' + configList[i].equipmentBrankName + '</div>'; //设备详情
+								} else {
+									confightml += '<div class="resultListsItem9 lf items LiTextAlign boxRightBorder" style="width:10%"></div>'; //设备详情
+								}
+								if(configList[i].returnBeginDate) {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder">' + configList[i].returnBeginDate + '</div>'; //核算日期
+								} else {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder"></div>'; //核算日期
+								}
+								if(configList[i].returnEndDate) {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder">' + configList[i].returnEndDate + '</div>'; //回款日期
+								} else {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder"></div>'; //回款日期
+								}
+								if(configList[i].returnTime) {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder">' + configList[i].returnTime + '</div>'; //回款日期
+								} else {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder"></div>'; //回款日期
+								}
+								if(configList[i].returnShouldFee!=null) {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder">' + configList[i].returnShouldFee + '</div>'; //应收价格判断，默认为0
+								} else {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder"></div>'; //应收价格
+								}
+								if(configList[i].returnFactFee!=null) {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder">' + configList[i].returnFactFee + '</div>'; //实收价格
+								} else {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder"></div>'; //实收价格
+								}
+								if(configList[i].cost!=null) {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder">' + configList[i].cost + '</div>'; //实收价格
+								} else {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder"></div>'; //实收价格
+								}
+								if(configList[i].grossProfit!=null) {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder">' + configList[i].grossProfit + '</div>'; //毛利
+								} else {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder"></div>'; //实收价格
+								}
+								if(configList[i].memo) {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder">' + configList[i].memo + '</div>'; //备注
+								} else {
+									confightml += '<div class="resultListsItem7 lf items LiTextAlign boxRightBorder"></div>'; //备注
+								}
+								confightml += '<div class="resultListsItem1 lf items LiTextAlign btnTextColor">';
+								confightml += '<span class="changeImg">修改</span>'; //修改
+								//                  confightml+='<img src="../../img/common/untitledChangeBtn.png"class="changeImg">';//修改
+								confightml += '</div>';
+								confightml += '<div class="resultListsItem1 lf items LiTextAlign btnTextColor">';
+								confightml += '<span class="delImg">删除</span>'; //删除
+								//                  confightml+='<img src="../../img/common/untitledDelBtn.png"class="delImg">';//删除
+								confightml += '</div>';
+								$(".resultListsContents form").append(confightml);
+								var pageHtml = page(parseInt(currentPage), num_pages);
+								$(".pageN").html(pageHtml);
+							}
+						}
+						if(data.status == 1) {
+
+						}
+					
+				})
+
+			}
+ //点击清空
+			$("#reportQuerySearchClearBtn").click(function() {
+				$("#applyHos").val("");
+				$("#devType").val("");
+				$("#beginTime").val("");
+				$("#endTime").val("");
+				$(".subscribeListSex button").attr('title','请选择医院');//医院
+		$(".subscribeListSex button .filter-option").text('请选择医院');//医院
+				currentPage=1;
+				offsetPage=0;
+				getorderList()
+			})
+			//			查询
+			$('#topSearchBtns').click(function() {
+				console.log("查询中")
+				var obj = {
+
+				}
+				obj.hospitalName = $("#applyHos").find("option:selected").attr("data-name"); //医院名称
+				obj.returnBeginDate = $("#beginTime").val(); //核算周期
+				obj.returnEndTime = $("#endTime").val(); //回款周期
+				obj.devType = $("#devType").val(); //设备名称
+				offsetPage=0;
+				currentPage = 1;
+    			showNum = 10;
+				getorderList(obj)
+
+			})
+			//            点击搜索按钮
+			$(document).on("click", ".searching", function() {
+				var search = $("#searchBox").val().trim();
+			});
+			//点击搜索里的医院
+			$("#subscribeListSearchHospital").change(function() {
+				$("#subscribeListSearchDoctor").html("");
+				techOfficeBooking($("#subscribeListSearchHospital").val(), "subscribeListSearchTechOffice");
+				searchHospitalId = $("#subscribeListSearchHospital").val();
+
+			})
+			//            点击新增按钮
+			$(document).on('click', '.addData', function() {
+				parent.layer.open({
+					type: 2,
+					title: '新增',
+					shadeClose: true,
+					shade: [0.5],
+					maxmin: true, //开启最大化最小化按钮
+					area: ['1150px', '650px'],
+					content: './page/operationDataAdmin/jyMemberPush/addjyMember.html'
+				});
+			});
+
+			//            点击删除里的取消按钮
+			$("#cancel").click(function() {
+				$("#reportQueryFade").css("display", "none");
+			});
+
+			//            点击修改标签
+			$(".resultListsContents").on("click", ".changeImg", function() {
+				console.log("------------")
+				var listId = $(this).parent().parent().find(".listId").text().trim(); //获取当前行的id
+				var currentTypeName = $(this).parent().parent().find(".resultListsItem2").text().trim(); //获取当前行的类名
+				var currentRemarks = $(this).parent().parent().find(".resultListsItem4").text().trim(); //获取当前行的备注
+				$("#changeConfiguration .changeInfoBox1").val(currentTypeName);
+				$("#changeConfiguration .changeInfoBox2").val(currentRemarks);
+				$(".configListchangeId").text(listId);
+				localStorage.setItem("newsEditId", listId)
+				parent.layer.open({
+					type: 2,
+					title: '修改',
+					shadeClose: true,
+					shade: [0.5],
+					maxmin: true, //开启最大化最小化按钮
+					area: ['1150px', '650px'],
+					content: './page/operationDataAdmin/jyMemberPush/editJyMember.html'
+				});
+
+			});
+			//            点击删除按钮
+			$(".resultListsContents").on("click", ".delImg", function() {
+				var listId = $(this).parent().parent().find(".listId").text().trim(); //获取当前行的id
+				$("#reportQueryFade").css("display", "block");
+				$(".configListdelChangeId").text(listId);
+			});
+
+			//            删除列表功能
+			$("#reportQueryFade .sureChangeInfos").click(function() {
+				console.log($(this))
+				var CurrentId = $(this).parent().parent().parent().parent().find(".configListdelChangeId").text();
+				console.log(CurrentId);
+				ajaxGet('/operate/jiuyueInfo/remove',{'id': CurrentId},function(data){		
+						console.log(data);
+						if(data.status == 0) {
+							$("#reportQueryFade").css("display", "none");
+							alert(data.message)
+							getorderList();
+						} else {
+							alert(data.message);
+						}
+					
+				})
+			});	
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,9 @@
+.form-control[disabled], fieldset[disabled] .form-control {
+    cursor: default;
+    /* background-color: #ecedef; */
+    background-color: #FFF;
+    border: 0px !important;
+}
+.sweet-alert{
+	border-radius: 0px;
+}

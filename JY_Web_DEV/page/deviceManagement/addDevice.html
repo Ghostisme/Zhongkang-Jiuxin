@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>设备管理</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<link href="../../css/font/fontawesome.min.css" rel="stylesheet">
+<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../../css/font/brands.css" rel="stylesheet">
+<link href="../../css/font/solid.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
+<!--<link href="../../../css/plugins/steps/jquery.steps.css" rel="stylesheet">-->
+<link href="../../css/animate.min.css" rel="stylesheet">
+<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"/>
+<!--<link rel="stylesheet" href="../../css/bootstrap-select.min.css" />-->
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link href="../../css/addDevice.css" rel="stylesheet">
+
+
+<!--<link rel="stylesheet" type="text/css" href="../../css/appointment.css"/>-->
+
+<body>
+
+
+<div class="box">
+    <form id="equipmentForm" onsubmit="return false;">
+		
+        <ul class="appointment-ul2">
+			<li>
+				<div class="topText">医院信息</div>
+				<div class="contentBox">
+					<div style="width: 25%;">
+						<div class="f_div">					
+						    <label class="f_lab"><span style="color: red;">*</span>医院名称：</label>
+						    <select title="医院名称" class="newin" id="applyHos" data-live-search="true" data-dropup-auto="false" name="hospitalId"></select>
+						    <!--<select class="newin" id="applyHos" name="hospitalId">
+					        	<option value="0">医院</option>
+					      </select>					       -->
+						</div>
+						<div class="alert alert-danger" id="applyHosTip" role="alert" style="display: none;">
+							<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+							必填
+						</div>
+					</div>
+					<div style="width: 25%;">
+						<div class="f_div">
+						    <label class="f_lab"><span style="color: red;">*</span>科室名称：</label>
+						    <select title="科室名称" class="newin" id="applyDepartment" data-live-search="true" data-dropup-auto="false" name="sectionId"></select>
+						    <!--<select class="newin" id="applyDepartment" name="sectionId">
+					        	<option value="0">科室</option>
+					       </select>-->
+						</div>
+						<div class="alert alert-danger" id="applyDepartmentTip" role="alert" style="display: none;">
+							<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+							必填
+						</div>
+					</div>
+					<div style="width: 50%;">
+						<div class="f_div">
+		                    <label class="f_lab">检查地点：</label>
+		                    <input type="text" class="newin" id="inspectAddress" name="examinationPlace" placeholder="检查地点" value="" maxlength="20"/>
+		                </div>
+		                <div class="alert alert-danger" role="alert" style="display: none;">
+							<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+							必填
+						</div>
+					</div>
+	                <!--<div class="f_div" style="width: 25%;">					
+					    <label class="f_lab"></label>
+					    <div>
+					        
+					    </div>
+					</div>-->
+				</div>
+			</li>
+            <li>
+            	<div class="topText">设备中心</div>
+            	<div class="contentBox1">
+            		<div>
+            			<div style="width: 25%;">
+            				<div class="f_div">
+			                    <label class="f_lab"><span style="color: red;">*</span>设备类型：</label>
+			                    <!--<select class="newin" id="equipmentType" name="type"></select>-->
+			                    <select title="设备类型" class="newin" id="equipmentType" data-dropup-auto="false" data-live-search="true" name="type"></select>
+			                </div>
+			                <div class="alert alert-danger" id="equipmentTypeTip" role="alert" style="display: none;">
+								<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+								必填
+							</div>
+            			</div>
+            			<div style="width: 25%;">
+            				<div class="f_div" style="overflow: initial !important;">
+			                    <label class="f_lab"><span style="color: red;">*</span>设备品牌：</label>
+			                    <!--<input type="text" class="newin" id="equipmentBrand" name="brank" value="" placeholder="设备品牌" maxlength="20"/>-->
+			                    <select title="设备品牌" class="newin" id="equipmentBrand" data-live-search="true" data-dropup-auto="false" name="brankId"></select>
+			                    <!--<select class="newin" id="equipmentBrand" name="brank"></select>-->
+			                </div>
+			                <div class="alert alert-danger" id="equipmentBrandTip" role="alert" style="display: none;">
+								<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+								必填
+							</div>
+            			</div>
+            			<div style="width: 25%;">
+            				<div class="f_div">
+							    <label class="f_lab"><span style="color: red;">*</span>设备名称：</label>
+							    <!--<input type="text" class="newin" id="equipmentName" name="name" value="" placeholder="设备名称" maxlength="20"/>-->
+							    <select title="设备名称" class="newin" id="equipmentName" data-live-search="true" data-dropup-auto="false" name="nameId"></select>
+							    <!--<select class="newin" id="equipmentName" name="name"></select>-->
+							</div>
+							<div class="alert alert-danger" id="equipmentNameTip" role="alert" style="display: none;">
+								<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+								必填
+							</div>
+            			</div>
+            			<div style="width: 25%;">
+            				<div class="f_div">
+			                    <label class="f_lab"><span style="color: red;">*</span>设备型号：</label>
+			                    <!--<input type="text" class="newin" id="equipmentModel" name="model" value="" placeholder="设备型号" maxlength="20"/>-->
+			                    <select title="设备型号" class="newin" id="equipmentModel" data-live-search="true" data-dropup-auto="false" name="modelId"></select>
+			                    <!--<select class="newin" id="equipmentModel" name="model"></select>-->
+			                </div>
+			                <div class="alert alert-danger" id="equipmentModelTip" role="alert" style="display: none;">
+								<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+								必填
+							</div>
+            			</div>
+            		</div>
+            		<div>
+            			<div class="f_div">
+		                    <label class="f_lab" style="margin-right: 6px;">购买时间：</label>
+		                    <!--<select class="newin" id="buyTime" name="type"></select>-->
+		                    <input class="newin layer-date form-control required" name="buyTime" id="checkTime" readonly="readonly" placeholder="购买时间" style="background-color: #FFF;" value="" />
+		                </div>
+            		</div>
+            	</div>
+            	<!--<div class="contentBox">
+            		<div class="f_div">
+	                    <label class="f_lab"><span style="color: red;">*</span>设备类型：</label>
+	                    <select class="newin" id="equipmentType" name="type"></select>
+	                </div>
+	                <div class="f_div">
+	                    <label class="f_lab"><span style="color: red;">*</span>设备品牌：</label>
+	                    <input type="text" class="newin" id="equipmentBrand" name="brank" value=""/>
+	                </div>
+            		<div class="f_div">
+					    <label class="f_lab"><span style="color: red;">*</span>设备名称：</label>
+					    <input type="text" class="newin" id="equipmentName" name="name" value=""/>
+					</div>
+					<div class="f_div">
+	                    <label class="f_lab"><span style="color: red;">*</span>设备型号：</label>
+	                    <input type="text" class="newin" id="equipmentModel" name="model" value=""/>
+	                </div>  
+            	</div>-->
+            </li>
+            <!-- <li>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备序列号：</label>
+                    <input type="text" class="newin" id="equipmentNumber" name="equipmentNumber" value=""/>
+                </div>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备通道号：</label>
+                    <input type="text" class="newin" id="equipmentChannel" name="equipmentChannel" value=""/>
+                </div>
+            </li> -->
+
+
+            <li>
+                <div class="topText addPrice">
+                	检查项目及价格
+                	<span class="rightAddBtn" id="rightAddBtn">新增</span>
+                </div>
+                <div class="contentBox oWrapper">
+                	<div class="boxTpl dataBox">
+                		<div>
+                			<div class="f_div">
+			                    <label class="f_lab"><span style="color: red;">*</span>检查项目：</label>
+			                    <!--<input type="text" class="newin part" name="part" value="" placeholder="检查项目"  maxlength="20"/>-->
+			                    <!--<select title="检查项目" class="newin part" data-live-search="true" name="partId"></select>-->
+			                    <select class="newin part" name="partId"></select>
+			                </div>
+			                <div class="alert alert-danger" role="alert" style="display: none;">
+								<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+								必填
+							</div>
+                		</div>
+                		<div>
+                			<div class="f_div">
+			                    <label class="f_lab" style="margin-right: 25px;"><span style="color: red;">*</span>价格：</label>
+			                    <input type="text" class="newin price" name="price" value="" placeholder="价格"  maxlength="20"/>
+			                </div>
+			                <div class="alert alert-danger" role="alert" style="display: none;">
+								<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+								必填
+							</div>
+                		</div>
+						<div class="delBtn">删除</div>
+                	</div>
+                	<div class="dataBox">
+                		<div>
+                			<div class="f_div">
+			                    <label class="f_lab"><span style="color: red;">*</span>检查项目：</label>
+			                    <!--<input type="text" class="newin part" name="part" value="" placeholder="检查项目"  maxlength="20"/>-->
+			                    <!--<select title="检查项目" class="newin part" data-live-search="true" name="partId"></select>-->
+			                    <select class="newin part" name="partId"></select>
+			                </div>
+			                <div class="alert alert-danger" role="alert" style="display: none;">
+								<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+								必填
+							</div>
+                		</div>
+                		<div>
+                			<div class="f_div">
+			                    <label class="f_lab" style="margin-right: 25px;"><span style="color: red;">*</span>价格：</label>
+			                    <input type="text" class="newin price" name="price" value="" placeholder="价格"  maxlength="20"/>
+			                </div>
+			                <div class="alert alert-danger" role="alert" style="display: none;">
+								<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+								必填
+							</div>
+                		</div>             
+                	</div>
+                </div>
+            </li>
+            <li>
+                
+                
+            </li>
+            <!--<li>
+            	<div class="f_div changeBox">
+			        <label class="f_lab"><span style="color: red;">*</span>检查项目：</label>			
+					<div class="idtmBox oWrapper changeForm">
+						<div class="tpl checkBox" style="margin-right: 10px;vertical-align: -3px;" id="ulist_div">
+							<input type="checkbox" style="margin-top: 0px;" class="checkpoint" id="" name="inspectProject" value=""/>
+							<label class="f_lab" style="width: 1%;"></label>
+							<input type="hidden" id="configInfoString" class="configInfoString" value="" />
+						</div>
+					</div>
+				</div>
+            </li>-->
+			<!--<li>
+			    <div class="f_div" style="width: 100%;">
+			        <label class="f_lab"><span style="color: red;">*</span>检查项目：</label>
+					 <input type="checkbox" class="" id="equipmentBrand1" name="checkpoint" value=""/>
+					<span>胳膊</span>
+					<label class="f_lab">胳膊</label>
+			        <input type="checkbox" class="" id="equipmentBrand2" name="checkpoint" value=""/>
+					<span>腿</span> 					
+					<div class="idtmBox oWrapper">
+						<div class="tpl checkBox" style="margin-right: 10px;vertical-align: -3px;" id="ulist_div">
+
+							<input type="checkbox" style="margin-top: 10px;" class="checkpoint" id="" name="inspectProject" value=""/>
+							<label class="f_lab" style="width: 1%;"></label>
+							<input type="hidden" id="configInfoString" class="configInfoString" value="" />
+						</div>
+					</div>
+				</div>
+			</li>-->
+			<!--<div style="color: #F9A12D;width: 230px;">
+				*请先在设备管理中维护此项
+			</div>-->
+			<!--<li>
+			    <div class="f_div">
+			        <label class="f_lab"><span style="color: red;">*</span>基础价格：</label>
+			         <input type="number" class="newin" id="equipmentPrice" name="price" value=""/> 
+			    </div>
+			</li>-->
+			<li>
+			    <div class="f_div" id="imageBox">
+			        <label class="f_lab"><span style="color: red;">*</span>设备图片：</label>			        
+					<div class="fileBox">
+						<!--<i class="fas fa-plus"></i>-->
+						<span class="addIcon">+</span>
+						<input type="file" class="newin chooseImg" accept="image/*" id="equipmentFile" placeholder="" name="file" value="" onchange="uploadImg();"/>
+						<div>
+							<span class="delIcon">
+								<i class="iconfont">&#xeb1b;</i>
+							</span>
+							<img src="" alt="这是一个图片" width="100" height="100"/>
+						</div>
+					</div>
+			    </div>
+			    <div class="alert alert-danger" id="equipmentFileTip" role="alert" style="display: none;">
+					<i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i>
+					请上传图片
+				</div>
+			</li>
+
+        </ul>
+		<input type="hidden" id="equipmentId" value="" />
+        <div style="text-align: center;margin-top: 30px;" id="query">
+            <button class="towbtn displayNoneBtn" id="saveCancle">取消</button>
+            <button class="onebtn comTempateSaveBtn formDisabledBtn" id="saveOk" onclick="saveEquipment()" disabled="disabled">保存</button>
+        </div>
+        <div style="text-align: center;margin-top: 30px;" id="update">
+            <button class="towbtn displayNoneBtn" id="saveCancle1">取消</button>
+            <button class="onebtn comTempateSaveBtn" id="saveOk1" onclick="updateEquipment()">保存</button>
+            <!--<button class="onebtn comTempateSaveBtn formDisabledBtn" id="saveOk1" onclick="updateEquipment()" disabled="disabled">保存</button>-->
+        </div>
+		<!--<div style="text-align: center;margin-top: 30px;display:none" id="closeBox">
+		    <button class="onebtn comTempateSaveBtn" id="closeBtn">确定</button>
+		</div>-->
+    </form>
+
+</div>
+
+</body>
+
+<!--<script src="../../js/jquery.min.js?v=2.1.4"></script>-->
+<!--<script src="../../js/bootstrap.min.js?v=3.3.5"></script>-->
+<!--<script src="../../js/bootstrap-select.min.js"></script>-->
+<script src="../../js/content.min.js?v=1.0.0"></script>
+<script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="../../js/addDevice.js" type="text/javascript"></script>-->
+<!--<script type="text/javascript" src="addDevice.js"></script>-->
+<script src="newAddDevice.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		function currentDate(){
+			var d = new Date(),
+				month = '' + (d.getMonth() + 1),
+				day = '' + d.getDate(),
+				year = d.getFullYear();
+			var hours= d.getHours()<10?'0'+d.getHours():d.getHours();
+			var minutes=d.getMinutes()<10?'0'+d.getMinutes():d.getMinutes();
+			var seconds=d.getSeconds()<10?'0'+d.getSeconds():d.getSeconds();
+			if (month.length < 2) month = '0' + month;
+			if (day.length < 2) day = '0' + day;
+			return [year, month, day].join('-')+" "+hours+":"+minutes+":"+seconds;
+		}
+	    
+	    var ins22 = laydate.render({
+		  elem: '#checkTime'
+//		  ,min: currentDate()
+//		  ,type: 'datetime'
+		  ,trigger: 'click'
+//		  ,max: '2080-10-14'
+//			,istime: true
+//			,istoday: false
+//		  ,ready: function(){
+//		    //ins22.hint('日期可选值设定在 <br> '+formatDate()+'到 2080-10-14');
+//		    var e=new Date();
+//		    var hours= e.getHours()<10?'0'+e.getHours():e.getHours();
+//			var minutes=e.getMinutes()<10?'0'+e.getMinutes():e.getMinutes();
+//			var seconds=e.getSeconds()<10?'0'+e.getSeconds():e.getSeconds();
+//		    minTimes=hours+":"+minutes+":"+seconds;
+//		  }
+		});
+	})
+</script>
+</html>
