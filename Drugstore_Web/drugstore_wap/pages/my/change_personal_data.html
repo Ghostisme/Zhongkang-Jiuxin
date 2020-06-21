@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/css/change_personal_data.css">
+		<link rel="stylesheet" href="../../styles/common_css/common_dialog.css">
+		<title></title>
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt" class="mui-text-center">账户管理</span>
+			<span id="saveBtn" class="mui-pull-right">保存</span>
+		</header>
+		<!--内容-->
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					
+					<form id="person_change" enctype="multipart/form-data" method="post" target="id_iframe">
+						<input type="hidden" id="filename" name="filename" value="">
+						<input type="file" name="fileupload" style="display: none;">
+					<ul id="ul_1" class="mui-table-view mui-table-view-chevron">
+						<li id="head_li" class="mui-table-view-cell">
+							<a href="#account" class="mui-navigate-right">
+								<span>头像</span>
+								<img id="user_img" src="" class="mui-pull-right"/>
+							</a>
+						</li>
+						<li>
+							<input id="userid" name="id" value="" style="display: none;"/>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-navigate-right item">
+								<div class="item_title">
+									<span >用户名</span>
+								</div>
+								<div>
+									<input id="user_name" name="username2" class="mui-pull-right" type="text" placeholder="用户名" />
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-navigate-right item">
+								<div class="item_title">
+									<span>手机号</span>
+								</div>
+								<div>
+									<input id="user_tel" name="cellphone2" class="mui-pull-right" type="text" placeholder="手机号" />
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-navigate-right item">
+								<div class="item_title">
+									<span >地址</span>
+								</div>
+								<div>
+									<input id="user_addr" name="address2" class="mui-pull-right" type="text"  placeholder="地址" />
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-navigate-right item">
+								<div class="item_title">
+									<span id="qq">QQ号</span>
+								</div>
+								<div>
+									<input id="user_qq" name="qq2" class="mui-pull-right" type="text"  placeholder="QQ号" />
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-navigate-right item">
+								<div class="item_title">
+									<span >固话</span>
+								</div>
+								<div>
+									<input id="user_fixed_tel" name="tel2" class="mui-pull-right" type="text"  placeholder="固话" />
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-navigate-right item">
+								<div class="item_title">
+									<span >邮箱</span>
+								</div>
+								<div>
+									<input id="user_fixed_email" name="email2" class="mui-pull-right" type="text"  placeholder="邮箱" />
+								</div>
+							</div>
+						</li>
+					</ul>
+					</form>
+					<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe> 
+					<div id="changePwd" class="mui-text-center">
+						<span>
+							修改密码
+						</span>
+					</div>
+				</div>
+				<div id="bg" class="mui-backdrop" style="display: none;"></div>
+			</div>
+			<div id="wait_dialog" class="mui-text-center mui-popup mui-popup-in">
+			<span class="mui-spinner"></span>
+			<span id="wait_dialog_font">正在保存，请稍等...</span>
+		</div>
+		</div>
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script src="../../common/common.js"></script>
+		<script src="change_personal_data.js"></script>
+	</body>
+
+</html>

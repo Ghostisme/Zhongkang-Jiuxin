@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../styles/common_css/dibu.css">
+		<link rel="stylesheet" href="../../styles/css/my_index.css">
+		<title></title>
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<span style="width:auto;">账户管理 </span>
+			<span id="setBtn"style="float:right;width:auto;">设置</span>
+		</header>
+		<!--内容-->
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--用户头像-->
+					<div id="title_head">
+						<a id="changePersonData" >
+							<div id="head_img_div" class="mui-text-center">
+								<img id="user_img" src="../../styles/img/my_img/userImg.jpg" />
+							</div>
+							<div id="head_lable_div">
+								<label id="user_name">用户名</label>
+							</div>
+						</a>
+
+					</div>
+					<!--我的订单-->
+					<div id="order">
+						<div id="order_title_img" class="mui-pull-left">
+							<img src="../../styles/img/my_img/my_order.png" />
+						</div>
+						<div id="order_title_span" class="mui-pull-left">
+							<span>我的订单</span>
+						</div>
+						<span id="all_order" class="mui-pull-right">查看全部订单</span>
+					</div>
+					<!--订单状态-->
+					<div id="order_state">
+						<div id="order_no_confirm" class="div_item mui-text-center">
+							<div class="order_state_div">
+								<div style="position: relative;">
+									<img src="../../styles/img/my_img/seller_img/sellerY01.png" class="order_img" />
+									<span class="mui-badge"id="nosure">
+								<span id="order_wait_sure">
+								0
+							</span>
+									</span>
+								</div>
+								<div>
+									<span class="order_state_font">未确认</span>
+								</div>
+							</div>
+						</div>
+						<div id="order_no_pay" class="div_item mui-text-center">
+							<div class="order_state_div">
+								<div style="position: relative;">
+									<img src="../../styles/img/my_img/seller_img/sellerY02.png" class="order_img" />
+									<span class="mui-badge"id="nopay">
+							<span id="order_wait_pay">
+								0
+							</span>
+									</span>
+								</div>
+								<div>
+									<span class="order_state_font">未付款</span>
+								</div>
+							</div>
+
+						</div>
+						<div id="order_on_send" class="div_item mui-text-center">
+							<div class="order_state_div">
+								<div style="position: relative;">
+									<img src="../../styles/img/my_img/seller_img/sellerY03.png" class="order_img" />
+									<span class="mui-badge mui-text-center"id="nopass">
+								<span id="order_wait_goods">
+								0
+							</span>
+									</span>
+								</div>
+								<div>
+									<span class="order_state_font">未发货</span>
+								</div>
+							</div>
+
+						</div>
+						<div id="order_wait" class="div_item mui-text-center">
+							<div class="order_state_div">
+								<div style="position: relative;">
+									<img src="../../styles/img/my_img/seller_img/sellerY04.png" class="order_img" />
+									<span class="mui-badge"id="norecieve">
+								<span id="order_wait_access">
+								0
+							</span>
+									</span>
+								</div>
+								<div>
+									<span class="order_state_font">待收货</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--我的钱包-->
+					<div id="order">
+						<div id="purse_title_img" class="mui-pull-left">
+							<img src="../../styles/img/my_img/purse.png" />
+						</div>
+						<div id="resource_title_span" class="mui-pull-left">
+							<span>我的钱包</span>
+						</div>
+					</div>
+					<!--优惠券和电子钱包-->
+					<div id="mydiscount" class="mui-text-center">
+						<div id="mydiscountCopon" class="down_resource">
+							<div style="position: relative;">
+								<img src="../../styles/img/my_img/money.png" class="order_img" />
+								<!--<span class="mui-badge"id="discountCouponNum">
+									<span id="discontCoupon">0</span>
+								</span>-->
+							</div>
+							<div>
+								<span class="order_state_font">优惠券</span>
+							</div>
+						</div>
+						<div id="money" class="eCash">
+							<div>
+								<img src="../../styles/img/my_img/discountCoupon.png" class="order_img"id="moneysImg" />
+							</div>
+							<div>
+								<span class="order_state_font">电子现金</span>
+							</div>
+						</div>
+					</div>
+					
+					<!--我的资源单-->
+					<!--<div id="order">
+						<div id="resource_title_img" class="mui-pull-left">
+							<img src="../../styles/img/my_img/my_resource_list.png" />
+						</div>
+						<div id="resource_title_span" class="mui-pull-left">
+							<span>我的资源单</span>
+						</div>
+					</div>-->
+					<!--上传 下载资源单-->
+					<!--<div id="go_down_resource" class="mui-text-center">
+						<div id="already_up" class="down_resource">
+							<div style="position: relative;">
+								<img src="../../styles/img/my_img/already_load.png" class="order_img" />
+								<span class="mui-badge"id="alredyUploadNum">
+							<span id="resource_go_up">0</span>
+								</span>
+							</div>
+							<div>
+								<span class="order_state_font">已上传</span>
+							</div>
+						</div>
+						<div id="go_up" class="down_resource">
+							<div>
+								<img src="../../styles/img/my_img/go_load.png" class="order_img" />
+							</div>
+							<div>
+								<span class="order_state_font">去上传</span>
+							</div>
+						</div>
+					</div>-->
+					<!--邀请码-->
+					<div id="InviteCode">
+						<div id="inviteCodeImg" class="mui-pull-left">
+							<img src="../../styles/img/my_img/code.png" />
+						</div>
+						<div id="inviteCodetext" class="mui-pull-left">
+							邀请码
+						</div>
+						<!--<input id="oof"value="12345678"style="border:0px;color:transparent;outline: none;position: absolute;top:0px"class="mui-pull-left">
+						<input id="inviteCodeNum"value="12345678"style="border:0px;"class="mui-pull-left"readonly="readonly">-->
+						<div id="oof" style="cursor:pointer;display: inline-block;">123456</div>
+						<div id="shareBtn" class="mui-pull-right btn"data-clipboard-target="#oof">
+							复制
+						</div>
+					</div>
+					<!--exit-->
+					<div id="exit" class="mui-text-center">
+						<span>安全退出</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--底部footer导航-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="footer footer-mui-active" href="../home/index.html">
+				<img src="../../styles/img/home_img/footerHome.png" />
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="footer" href="../shop/shop_index_versionTwo.html">
+				<img src="../../styles/img/home_img/footershopping.png" />
+				<span class="mui-tab-label">商城</span>
+			</a>
+			<!--<a class="footer" href="../resourceList/resource_list.html">
+				<img src="../../styles/img/home_img/footerResource.png" />
+				<span class="mui-tab-label">资源单</span>
+			</a>-->
+			<a class="footer" href="../selected/selected.html">
+				<img src="../../styles/img/home_img/footerSelected.png" />
+				<span class="mui-tab-label">行业臻选</span>
+			</a>
+			<a id="go_shopcart" class="footer">
+				<img src="../../styles/img/home_img/footerShopcart.png" />
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a class="footer">
+				<img src="../../styles/img/home_img/footerMineY.png" />
+				<span class="mui-tab-label" style="color: #ffcc00;">我的</span>
+			</a>
+		</nav>
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script src="../../mui/js/clipboard.min.js"></script>
+		<script src="../../common/common.js"></script>
+		<script src="my_index.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/common_css/dibu.css">
+		<link rel="stylesheet" href="../../styles/css/nav.css">
+		<link rel="stylesheet" href="../../styles/common_css/refresh.css">
+		<link rel="stylesheet" href="../../styles/common_css/list_item.css">
+		<link href="../../mui/css/mui.picker.css" rel="stylesheet" />
+		<link href="../../mui/css/mui.poppicker.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../styles/css/shop_screen.css">
+		<link rel="stylesheet" href="../../styles/css/shop_index_versionTwo.css">
+		
+		<link rel="stylesheet" href="../../styles/css/searchnull.css" />
+	</head>
+
+	<body>
+		<!--顶部搜索栏-->
+		<header class="headerBG mui-bar mui-bar-nav mui-bar-self">
+			<div id="search_box" class="">
+				<!--<div id="product" onclick="searchType(this)">
+					<div id="product_zyd" class="mui-text-center mui-input-row">
+						<span id="search_name">商品</span>
+					</div>
+					<img src="../../styles/img/home_img/arrow_down.png" />
+				</div>-->
+				<input id="shuru" type="text" name="sousuo" value="" placeholder="请输入搜索关键字" />
+				<div id="sousuo_div" class="mui-text-center">
+					<img src="../../styles/img/home_img/topSearch.png" />
+				</div>
+			</div>
+			<div id="shop_menu">
+				<div class="mui-input-row mune-item">
+					<label>商品</label>
+				</div>
+				<div class="mui-input-row mune-item">
+					<label>资源单</label>
+				</div>
+				<!--<div class="mui-input-row mune-item">
+					<label>供应商</label>
+				</div>-->
+			</div>
+		</header>
+		 <!--侧滑-->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			<!--筛选部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-right"style="width: 80%;background: #fff;">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+					<!--品牌-->	
+					<div class="separateContents">
+						<div class="separateTitle">
+							<span class="BigTitle lf"id="brandTitle">品牌</span>
+							<i class="mui-icon mui-icon-arrowdown arrowDown rt"></i>
+							<span id="brandChose"class="rt thischose">全部</span>
+						</div>
+						<!--品牌-->
+						<div class="allbrands">
+							<div class="lf thisbrand everyChose">
+								奇才
+							</div>
+							<div class="lf thisbrand everyChose">
+								运杰
+							</div>
+							<div class="lf thisbrand everyChose">
+								汇昌
+							</div>
+							<div class="lf thisbrand everyChose">
+								金源
+							</div>
+							<div class="lf thisbrand everyChose">
+								金隆
+							</div>
+							<div class="lf thisbrand everyChose">
+								正源
+							</div>
+							<div class="lf thisbrand everyChose">
+								奇才
+							</div>
+							<div class="lf thisbrand everyChose">
+								运杰
+							</div>
+							<div class="lf thisbrand everyChose">
+								汇昌
+							</div>
+						</div>
+					</div>
+					<!--类别-->	
+					<div class="separateContents">
+						<div class="separateTitle">
+							<span class="BigTitle lf"id="classificationTitle">类别</span>
+							<i class="mui-icon mui-icon-arrowdown arrowDown rt"></i>
+							<span id="classificationChose"class="rt thischose">全部</span>
+						</div>
+						<!--类别-->
+						<div class="allclassifycations">
+							<div class="lf thisclassifycation everyChose">
+								防水卷材
+							</div>
+							<div class="lf thisclassifycation everyChose">
+								防水涂料
+							</div>
+							<div class="lf thisclassifycation everyChose">
+								堵漏材料
+							</div>
+							<div class="lf thisclassifycation everyChose">
+								保温材料
+							</div>
+							<div class="lf thisclassifycation everyChose">
+								其他
+							</div>
+							<div class="lf thisclassifycation everyChose">
+								砂浆
+							</div>
+							<div class="lf thisclassifycation everyChose">
+								瓦类防水材料
+							</div>
+						</div>
+					</div>
+					<!--材质用途-->	
+					<div class="separateContents">
+						<div class="separateTitle">
+							<span class="BigTitle lf"id="MaterialUseTitle">材质用途</span>
+							<i class="mui-icon mui-icon-arrowdown arrowDown rt"></i>
+							<span id="MaterialUseChose"class="rt thischose">全部</span>
+						</div>
+						<!--材质用途-->
+						<div class="allMaterialUse">
+							<div class="lf thisMaterialUse everyChose">
+								抗根种植
+							</div>
+							<div class="lf thisMaterialUse everyChose">
+								高铁专用
+							</div>
+							<div class="lf thisMaterialUse everyChose">
+								耐盐碱
+							</div>
+							<div class="lf thisMaterialUse everyChose">
+								耐低温
+							</div>
+							<div class="lf thisMaterialUse everyChose">
+								其他
+							</div>
+							
+						</div>
+					</div>
+					<!--施工部位-->	
+					<div class="separateContents">
+						<div class="separateTitle">
+							<span class="BigTitle lf"id="ConstructionSiteTitle">施工部位</span>
+							<i class="mui-icon mui-icon-arrowdown arrowDown rt"></i>
+							<span id="ConstructionSiteChose"class="rt thischose">全部</span>
+						</div>
+						<!--施工部位-->
+						<div class="allConstructionSite">
+							<div class="lf thisConstructionSite everyChose">
+								立面
+							</div>
+							<div class="lf thisConstructionSite everyChose">
+								屋面
+							</div>
+							<div class="lf thisConstructionSite everyChose">
+								卫生间
+							</div>
+							<div class="lf thisConstructionSite everyChose">
+								地面防潮
+							</div>
+							<div class="lf thisConstructionSite everyChose">
+								其他
+							</div>
+							
+						</div>
+					</div>
+					<!--高级筛选-->
+					<div class="advancedFilterTitle">高级筛选</div>
+					<!--品种-->	
+					<div class="separateContents">
+						<div class="separateTitle">
+							<span class="BigTitle lf"id="VarietyTitle">品种</span>
+							<i class="mui-icon mui-icon-arrowdown arrowDown rt"></i>
+							<span id="VarietyChose"class="rt thischose">全部</span>
+						</div>
+						<!--品种-->
+						<div class="allVariety">
+							<div class="lf thisVariety everyChose">
+								全部
+							</div>
+						</div>
+					</div>
+					<!--施工方法-->	
+					<div class="separateContents">
+						<div class="separateTitle">
+							<span class="BigTitle lf"id="jobPracticeTitle">施工方法</span>
+							<i class="mui-icon mui-icon-arrowdown arrowDown rt"></i>
+							<span id="jobPracticeChose"class="rt thischose">全部</span>
+						</div>
+						<!--施工方法-->
+						<div class="allJobPractice">
+							<div class="lf thisJobPractice everyChose">
+								全部
+							</div>
+						</div>
+					</div>
+					</div>
+					<div id="bg"></div>
+				</div>
+				<!--底部按钮-->
+				<div id="bottom-btn">
+					<div id="bottom-div" class="mui-text-center">
+						<img id="bottom-img" src="../../styles/img/shop_img/reset.png" />
+						<span id="bottom-reset">重置</span>
+					</div>
+					<span id="bottom-finish" class="mui-pull-right">完成</span>
+				</div>
+			</aside>
+			<!--顶部搜索条件-->
+			<!--<div class="nav" id="main_nav">
+				<ul class="nav_ul">
+					<li class="nav_ul_li">
+						<h1 id="gongjiang">
+							<span>类别</span>
+							<img src="../../styles/img/home_img/arrow_down.png"/> 
+						</h1>
+						<ul id="gj_ul_classify" class="nav_child">
+							<li id="0">
+								<a href="#">全部</a>
+							</li>
+							<li id="1">
+								<a href="#">防水卷材</a>
+							</li>
+							<li id="2">
+								<a href="#">防水涂料</a>
+							</li>
+							<li id="3">
+								<a href="#">刚性防水</a>
+							</li>
+							<li id="4">
+								<a href="#">瓦类防水</a>
+							</li>
+							<li id="5">
+								<a href="#">建筑气密</a>
+							</li>
+							<li id="6">
+								<a href="#">堵漏材料</a>
+							</li>
+							<li id="7">
+								<a href="#">其他</a>
+							</li>
+						</ul>
+					</li>
+					<li class="nav_ul_li">
+						<h1 id="near"><span>品种</span><img src="../../styles/img/home_img/arrow_down.png" /></h1>
+
+					</li>
+					<li class="nav_ul_li">
+						<h1 id="select_store"><span>仓库</span><img src="../../styles/img/home_img/arrow_down.png" /></h1>
+
+					</li>
+					<li class="nav_ul_li">
+						<h1 id="screen">
+							<a id="offCanvasShow">
+								<span>筛选</span>
+								<img src="../../styles/img/shop_img/shaixuan.png" />
+							</a>
+						</h1>
+					</li>
+				</ul>
+			</div>-->
+			<!--商城首页筛选条件-->
+			<div class="nav"id="Q_content_rightSide">
+				<ul class="nav_ul"id="Q_contentNav">
+					<li class="nav_ul_li">
+						<h1 class="colligate productScreening">
+							综合
+						</h1>
+					</li>
+					<li class="nav_ul_li">
+						<h1 class="salesVolume productScreening">
+							销量
+							<!--<i></i>-->
+						</h1>
+					</li>
+					<li class="nav_ul_li">
+						<h1 class="productPrice productScreening"title="点击后按价格升序">
+							<span style="float: left;width:70%;text-align: right;">价格</span>
+							<div class="priceArrow">
+								<img src="../../styles/img/shop_img/upArrowGray.png" alt="" class="upArrow"/>
+								<img src="../../styles/img/shop_img/downArrowGray.png" alt="" class="downArrow"/>									
+							</div>	
+						</h1>
+					</li>
+					<li class="nav_ul_li">
+						<h1 id="screen">
+							<a id="offCanvasShow">
+								<span>筛选</span>
+								<img src="../../styles/img/shop_img/shaixuan.png" />
+							</a>
+						</h1>
+					</li>
+				</ul>
+				<div class="nav_ul"id="quickSearchKeys">
+					<div id="keyweordsAll">
+						<div class="everyKeys">
+							SBS卷材
+						</div>
+						<div class="everyKeys">
+							抗根卷材
+						</div>
+						<div class="everyKeys">
+							自粘防水卷材
+						</div>
+						<div class="everyKeys">
+							高分子卷材
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--条件部分-->
+			<div id="pinzhong" class=" mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--数据列表-->
+					<ul id="type_ul">
+						<li>
+							<a>全部</a>
+						</li>
+						<ul id="type_list">
+
+						</ul>
+					</ul>
+				</div>
+			</div>
+			<!--中间商品展示部分-->
+			<div class="mui-inner-wrap">
+				<div id="shop_item_show" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<!--这里放置真实显示的DOM内容-->
+						<ul id="shop_table" class="mui-table-view ">
+							<!--<li class="mui-table-view-cell mui-media">
+							<a href="shop_detail.html" class="to_detail">
+								<div class="mid_div">
+									<p class="title_p">弹性体改体沥青不知道怎么防水卷材</p>
+									<span>规格:</span>
+									<span>3mm</span>
+									<span>厂家:</span>
+									<span>奇才科技股份有限公司</span>
+									<p class="cangku">仓库:天津市-南开区-花苑</p>
+									<span class="money">¥188.0</span>
+								</div>
+							</a>
+							<div class="shop_div_img mui-text-center">
+								<div class="mui-pull-right mui-text-center shop-cart">
+									<img src="../../styles/img/shop_img/shop_cart.png" />
+								</div>
+								<div class="storeid" style="display: none;"></div>
+								<div class="productid" style="display: none;"></div>
+							</div>
+						</li>-->
+						</ul>
+						<div id="no_search" class="" style="display: none;">
+							<div class="imgc">
+								<img src="../../styles/img/home_img/searchnull.png" alt="" />
+								<h4>没有找到您需要的商品</h4>
+								<h4>请用正确的方式打开</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="menu_bg"></div>
+			<div id="search_bg"></div>
+		</div>
+
+		<!--底部footer导航-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="footer footer-mui-active" href="../home/index.html">
+				<img src="../../styles/img/home_img/footerHome.png" />
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="footer" href="../shop/shop_index_versionTwo.html">
+				<img src="../../styles/img/home_img/footershopingY.png" />
+				<span class="mui-tab-label" style="color: #ffcc00;">分类</span>
+			</a>
+			<a id="go_shopcart" class="footer">
+				<img src="../../styles/img/home_img/footerShopcart.png" />
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a id="go_person_center" class="footer">
+				<img src="../../styles/img/home_img/footerMine.png" />
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script type="text/javascript" src="../../mui/js/mui.pullToRefresh.js"></script>
+		<script type="text/javascript" src="../../mui/js/mui.pullToRefresh.material.js"></script>
+		<!--<script type="text/javascript" src="shop_screen.js"></script>-->
+		<script src="../../mui/js/mui.picker.js"></script>
+		<script src="../../mui/js/mui.poppicker.js"></script>
+		<script src="../../mui/js/mui.picker.min.js"></script>
+		<script src="../../mui/js/city.data.js"></script>
+		<script src="../../mui/js/city.data-3.js"></script>
+		<script src="../../common/common.js"></script>
+		<script type="text/javascript" src="shop_index_versionTwo.js"></script>
+		
+	</body>
+
+</html>

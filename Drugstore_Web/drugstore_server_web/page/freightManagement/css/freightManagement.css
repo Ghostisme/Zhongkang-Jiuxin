@@ -1,0 +1,190 @@
+/* 整体样式 */
+body{
+    margin: 0;
+    background: #fff;
+    padding: 20px;
+    min-height: 600px;
+    min-width: 1024px;
+}
+.contentBox{
+    width: 100%;
+}
+.el-form-item__label{
+    text-align: left;
+}
+/* 默认区域样式 */
+.initBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.el-textarea__inner{
+    resize: none;
+}
+.initForm{
+    width: 20%;
+}
+/* 分页 */
+.pageN{
+	text-align: right;
+}
+/* 其他地区 */
+.specialAreasBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.listHeader ul{
+    align-items: center;
+}
+.listHeader ul,
+.listContent ul{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    height: 36px;
+    line-height: 36px;
+    
+}
+.listHeader ul li,
+.listContent ul li{
+    list-style-type: none;
+    text-align: center;
+    /* padding: 5px 0px; */
+}
+.listContent ul li{
+    line-height: 28px;
+}
+/* .listHeader ul li:not(:nth-last-of-type(1)),
+.listContent ul li:not(:nth-last-of-type(1)){
+    border-right: 1px solid #A9A9A9;
+} */
+.listHeader{
+    /* border: 1px solid #A9A9A9; */
+    background-color: #e2eff7;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.listContent{
+    /* border-top: 0px;
+    border-bottom: 1px solid #A9A9A9;
+    border-left: 1px solid #A9A9A9;
+    border-right: 1px solid #A9A9A9; */
+    margin-bottom: 10px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+}
+.listContent ul{
+    border-bottom: 1px solid #eeeeee;
+}
+.btnText:not(:nth-last-of-type(1)){
+    margin-right: 5px;
+}
+/* 弹窗 */
+.add-drawer{
+    /* height: 58% !important;
+    top: calc(50% - 29%) !important;
+    right: calc(50% - 15%) !important; */
+    height: auto !important;
+    top: 50% !important;
+    right: 50% !important;
+    bottom: auto !important;
+    transform: translate(50%, -50%);
+}
+.add-drawer__content{
+    padding: 0 20px;
+    margin-bottom: 10px;
+}
+.add-drawer__footer{
+    width: 50%;
+    margin: 0 auto;
+}
+.add-drawer__footer .el-button{
+    width: 100%;
+    padding: 6px 30px;
+    margin-bottom: 20px;
+}
+.tipContent{
+    width: 65%;
+    margin: 0 auto;
+}
+.showActive{
+    display: flex;
+}
+.hideActive{
+    display: none;
+}
+.showActive label{
+    width: 17%;
+}
+.showActive .el-form-item__content{
+    display: flex;
+    width: 50%;
+}
+.showActive .el-form-item__content .el-input{
+    margin-right: 5px;
+}
+.el-drawer__body{
+    height: auto;
+}
+.del-drawer{
+    height: 30% !important;
+    top: calc(50% - 15%) !important;
+    right: calc(50% - 15%) !important;
+}
+.del-drawer__content{
+    padding: 0 20px;
+    margin-bottom: 10px;
+}
+.delContentBox{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+.delContentBox i{
+    font-size: 40px;
+    color: #e6a23c;
+    margin-bottom: 10px;
+}
+.del-drawer__footer{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+.del-drawer__footer .el-button{
+    padding: 6px 30px;
+}
+.el-radio__input.is-disabled.is-checked .el-radio__inner{
+    border-color: #409EFF;
+    background: #409EFF;
+}
+.el-radio__input.is-disabled .el-radio__inner{
+    cursor: default;
+    border-color: #DCDFE6;
+    background: #FFF;
+}
+.el-radio__input.is-disabled.is-checked .el-radio__inner::after{
+    background-color: #FFF;
+}
+.el-radio__input.is-disabled .el-radio__inner::after{
+    cursor: default;
+}
+.el-radio__input.is-disabled .el-radio__inner{
+    cursor: default;
+}
+.el-radio__input.is-disabled+span.el-radio__label{
+    color: #606266;
+    cursor: default;
+}
+.el-radio__input.is-checked+.el-radio__label{
+    color: #409EFF !important;
+}
+
+:focus{
+    outline: none;
+}

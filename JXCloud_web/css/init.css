@@ -1,0 +1,66 @@
+:root{
+	height: 100%;
+}
+html{
+	font-size: 40px;
+}
+body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: "MicrosoftYaHei";
+	/* font-family: "arial narrow"; */
+	/*overflow-y: hidden;*/
+}
+*{
+	font-size: 16px;
+	box-sizing: border-box;
+	font-family: "MicrosoftYaHei";
+	/* font-family: "arial narrow"; */
+	text-align: center;
+}
+.header{
+	display: none !important;
+}
+::-webkit-input-placeholder { 
+	/* WebKit browsers */
+	color: rgba(144,144,144,1) !important;
+}
+:-moz-placeholder { 
+	/* Mozilla Firefox 4 to 18 */
+	color: rgba(144,144,144,1) !important;
+}
+::-moz-placeholder { 
+	/* Mozilla Firefox 19+ */
+	color: rgba(144,144,144,1) !important;
+}
+:-ms-input-placeholder { 
+	/* Internet Explorer 10+ */
+	color: rgba(144,144,144,1) !important;
+}
+textarea{
+	resize: none;
+	overflow-x: hidden;
+}
+textarea:focus{
+	outline: none;
+}
+ul li{
+	list-style: none;
+}
+button:focus{
+	outline: none !important;
+}
+.tpl{
+	display: none;
+}
+i{
+	font-style: normal;
+}
+.buttonBox{
+	display: none;
+}
+/* a{
+	color: rgba(37,146,254,1);
+	text-decoration: none;
+} */

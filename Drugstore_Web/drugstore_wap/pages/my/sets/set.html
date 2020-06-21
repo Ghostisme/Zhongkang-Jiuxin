@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" type="text/css" href="set.css"/>
+		<title></title>
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">设置</span>
+		</header>
+		<div class="mui-content ">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--修改密码-->
+					<div class="setItems"id="changePwdBtn">
+						<div class="InfoTitle lf">
+							修改密码
+						</div>
+						<div class="rt mui-table-view-cell"id="goodsParametersGo">
+							<a class="mui-navigate-right"></a>
+						</div>
+					</div>
+					<!--版本更新-->
+					<!--<div class="setItems"id="versionUpdate">
+						<div class="InfoTitle lf">
+							版本更新
+						</div>
+						<div class="rt mui-table-view-cell"id="goodsParametersGo">
+							<a class="mui-navigate-right"></a>
+						</div>
+					</div>-->
+					<!--关于我们-->
+					<div class="setItems"id="aboutUs">
+						<div class="InfoTitle lf">
+							关于我们
+						</div>
+						<div class="rt mui-table-view-cell"id="goodsParametersGo">
+							<a class="mui-navigate-right"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../../mui/js/mui.min.js"></script>
+		<script src="../../../common/jquery-1.12.1.js"></script>
+		<script src="../../../common/common.js"></script>
+		<script src="set.js"></script>
+	</body>
+
+</html>

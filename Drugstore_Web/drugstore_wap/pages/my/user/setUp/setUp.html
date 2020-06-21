@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../../styles/common_css/dibu.css">
+		<link rel="stylesheet" href="../../../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" type="text/css" href="setUp.css" />
+	</head>
+	<body>
+		<!--顶部导航栏-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back  mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">用户注册</span>
+		</header>
+		<div class="wrapper mui-content">
+		<!--<div class="wrapper">-->
+			<div class="contentBox">
+				<div class="itemBox">
+					关于我们
+				</div>
+				<div class="itemBox">
+					密码修改
+				</div>
+				<div class="itemBox quitBtn">
+					退出
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../../../mui/js/mui.min.js"></script>
+	<script src="../../../../common/jquery-1.12.1.js"></script>
+	<script src="../../../../common/common.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".quitBtn").click(function(){
+				localStorage.clear();
+				sessionStorage.clear();
+				mui.toast("退出成功",{ duration:'long', type:'div' });
+				setTimeout(function(){
+					window.location.href = "../../../login/login.html";	
+				},2000);
+			});
+		});
+	</script>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta content="telephone=no" name="format-detection">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>录入血压</title>
+		<!-- 引入组件CSS库 -->
+		<link rel="stylesheet" type="text/css" href="../css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/layui.mobile.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/default/layer.css"/>
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/init.css">
+		<!-- 顶部内容CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/navbar.css"> -->
+		<!-- 本页面CSS -->
+		<link rel="stylesheet" type="text/css" href="css/bPmanualInput.css"/>
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../font/iconfont.css">
+		<!-- 搜索框CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/search.css"> -->
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../js/config.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../js/layer.js"></script>
+		<!-- 页面跳转方法JS -->
+		<!-- <script type="text/javascript" src="../../js/jumpPage.js"></script> -->
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/bPmanualInput.js"></script>
+	</head>
+	<body>
+		<!-- 2019-05-20 -->
+		<!-- 顶部内容 -->
+		<!-- <div class="header">
+			<div class="navbar">
+				<div class="navbackbtn">
+					<i class="iconfont gobackBtn">&#xe624;</i>
+				</div>
+				<div class="navtitle">
+					<span class="title">手动输入</span>
+				</div>
+				<div class="right-close-btn">
+					<button type="button" class="closebtn">保存</button>
+				</div>
+			</div>
+		</div> -->
+		<!-- 内容区域 -->
+		<div class="wrapper">
+			<div class="content">
+				<p>
+					<span><i class="bt">*</i>收缩压(mmHg)</span>
+					<span>
+						<!-- <input type="number" name="" id="diastolic" maxlength="3"  value="" placeholder="请输入收缩压值" class="diastolic" oninput = "value=value.replace(/[^\d]/g,'')" oninput="if(value.length>4)value=value.slice(0,4)"/> -->
+						<input type="number" name="" id="diastolic" maxlength="3" pattern="[0-9]*" value="" placeholder="请输入收缩压值" class="diastolic" oninput="if(value.length>4)value=value.slice(0,4)"/>
+					</span>
+				</p>
+				<p>
+					<span><i class="bt">*</i>舒张压(mmHg)</span>
+					<span>
+						<input type="number" name="" id="" value="" maxlength="3" pattern="[0-9]*" placeholder="请输入舒张压值" class="shrink" oninput="if(value.length>4)value=value.slice(0,4)"/>
+					</span>
+				</p>
+				<p>
+					<span><i class="bt">*</i>心率(bpm)</span>
+					<span>
+						<input type="number" name="" id="" value="" maxlength="3" pattern="[0-9]*" placeholder="请输入心率值" class="heartrate" oninput="if(value.length>4)value=value.slice(0,4)"/>
+					</span>
+				</p>
+				<!--<p>
+					<span>程度</span>
+					<span>
+						高
+						 <input type="text" name="" id="" value="" placeholder="请输入检测数值"/> 
+					</span>
+				</p>-->
+				<div class="remarkstitle">
+					备注
+					<span>(<span id="memoNum" class="memoNum">140</span>字)</span>
+				</div>
+				<div class="remarksBox">
+					<textarea placeholder="请输入备注信息..." id="memo" maxlength="140" oninput="inputBind('memo','memoNum');"></textarea>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">		
+			var eleId = sessionStorage.getItem("id");
+			var diagnosisId = sessionStorage.getItem("disid");
+			console.log(diagnosisId);
+			console.log(eleId);
+			function editSave(clickNum, sesId){
+				var sesid = sesId;
+				if (clickNum == 1) {
+					// $('#diastolic').removeAttr("disabled");
+					// $('.shrink').removeAttr("disabled");
+					// $('.heartrate').removeAttr("disabled");
+					// $('.remarksBox').find("textarea").removeAttr("disabled");
+				} else{
+					// $('#diastolic').attr("disabled",true);
+					// $('.shrink').attr("disabled",true);
+					// $('.heartrate').attr("disabled",true);
+					// $('.remarksBox').find("textarea").attr("disabled",true);
+					if ($(".diastolic").val() == "") {
+						layer.msg("收缩压值不能为空,请重新输入!");
+						return false;
+					}
+					if ($(".shrink").val() == "") {
+						layer.msg("舒张压值不能为空,请重新输入!");
+						return false;
+					}
+					if ($(".heartrate").val() == "") {
+						layer.msg("心率值不能为空,请重新输入!");
+						return false;
+					}
+					$.ajax({
+						type:"get",
+						url: config + "/oa/patinfoBloodPressure/save",
+						async:true,
+						data: {
+							"sessionId": sesid,
+							"fkPatinfoId": eleId,
+							"fkDisId": diagnosisId,
+							"maxPressure": $(".diastolic").val(),
+							"minPressure": $(".shrink").val(),
+							"heartRate": $(".heartrate").val(),
+							"memo": $(".remarksBox").find("textarea").val()
+						},
+						success: function(data){
+							console.log(data);
+							if(data.status == 1){
+								layer.msg(data.message);
+								// $(location).prop('href', "../bloodPressure/bloodPressure.html");
+								setTimeout(function(){
+									backAction();
+									// GoBack();
+									// function GoBack(){
+									// 	android.GoBack();
+									// }
+								},2000);
+								android.GoBack(data.message);
+								// GoBack();
+								// function GoBack(){
+								// 	android.GoBack(data.message);
+								// }
+							}else{
+								layer.msg(data.message);
+							}					
+						},
+						error: function(data){
+							console.log(data);
+							if(data.status == 2){
+								layer.msg(data.message);
+							}
+						}
+					});
+				}
+			}
+		</script>
+	</body>
+</html>

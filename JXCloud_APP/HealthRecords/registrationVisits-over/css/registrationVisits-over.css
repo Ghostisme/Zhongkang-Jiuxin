@@ -1,0 +1,152 @@
+/* 顶部关闭按钮 */
+.navbar{
+	position: relative;
+}
+.right-close-btn{
+	position: absolute;
+	right: 0.425rem;
+}
+.right-close-btn .closebtn{
+	background-color: transparent;
+	border: 0;
+	font-weight: 600;
+	font-size: 0.45rem;
+}
+.right-close-btn .closebtn:focus{
+	outline: none;
+}
+
+/* 内容样式 */
+.wrapper{
+	background-color: #f5f5f5;
+}
+.wrapper>div{
+	background-color: #FFFFFF;
+}
+form{
+	margin-top: 1rem;
+}
+.essential{
+	/* text-align: left; */
+	text-align: center;
+	/* margin-top: 0.15rem; */
+	margin-top: 0.35rem;
+	border-bottom: 0.425rem solid #f5f5f5;
+}
+.essential img{
+	/* width: 2.9rem;
+	height: 2.775rem; */
+	width: 1.9rem;
+	height: 1.775rem;
+	/* margin-left: 0.45rem; */
+	border-radius: 6px;
+}
+/* 基本信息内容盒子 */
+.essential p{
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 0.35rem;
+	margin-left: 0.45rem;
+	margin-top: 0.35rem;
+    margin-bottom: 0;
+}
+.essential p:not(:last-of-type){
+	border-bottom: 1px solid #EDEDED;
+}
+.essential p:first-of-type span:nth-of-type(2) i{
+	font-size: 0.45rem;
+	color: #C3C3C3;
+}
+/* .essential p:last-of-type{
+	margin-bottom: 0.3rem;
+} */
+.essential p span{
+	display: block;
+}
+.essential p span:nth-of-type(odd){
+	text-align: left;
+	/* font-size: 0.45rem; */
+	font-size: 0.4rem;
+	/*text-shadow: 0 0 0.0125rem rgba(0,0,0,1);*/
+}
+.essential p span:nth-of-type(even){
+	color: #727377;
+	text-align: right;
+	margin-right: 0.45rem;
+	/* font-size: 0.45rem; */
+	font-size: 0.4rem;
+}
+/* 内容底部样式及确定按钮 */
+.content-footer .contentFooterBox{
+	padding: 0.3rem 0.45rem 1.325rem;
+}
+.content-footer .contentFooterBox p{
+	text-align: left;
+	margin: 0;
+}
+.content-footer .contentFooterBox p span{
+	/* font-size: 0.35rem; */
+	color: #707072;
+	/* font-size: 0.45rem; */
+	font-size: 0.4rem;
+	line-height: 1rem;
+}
+.content-footer .contentFooterBtn{
+	/* margin: 0 0.45rem 0.15rem 0.45rem; */
+	margin: 0 0.75rem 0.15rem 0.75rem;
+	/* position: fixed; */
+	/* bottom: 0.65rem;	 */
+}
+.content-footer .contentFooterBtn .submitbtn{
+	background-color: #2292FE;
+	white-space: nowrap;
+	width: 100%;
+	/* padding: 0.425rem 4.3rem; */
+	/* padding: 0.15rem 0; */
+	border: 0;
+	color: #FFFFFF;
+	/* border-radius: 0.075rem; */
+	/* width: 90%; */
+	/* padding: 0.25rem 0; */
+	font-size: 0.425rem;
+	height: 50px;
+	border-radius: 0.2rem;
+}
+/* .contentFooterBtn{
+	margin: 0 0.45rem;
+	position: fixed;
+	bottom: 0.65rem;	
+}
+.contentFooterBtn .sumbitbtn{
+	background-color: #2292FE;
+	white-space: nowrap;
+	padding: 0.425rem 4.3rem;
+	border: 0;
+	color: #FFFFFF;
+	border-radius: 0.075rem;
+} */
+
+/*input输入样式*/
+.essential p span input{
+	border: 0;
+	text-align: right;
+	/* font-size: 0.45rem; */
+	font-size: 0.4rem;
+}
+.essential p span input:focus{
+	outline: none;
+}
+.essential p span .active{
+	color: #2292FE;
+}
+.essential p:nth-of-type(3) span:nth-of-type(2){
+	color: #000000;
+}
+/*.essential p span i{
+	padding-right: 0.15rem;
+}*/
+.essential p:nth-of-type(3) span:nth-of-type(2) span{
+	/*color: #000000;*/
+	display: inline-block;
+	margin-right: 0;
+}

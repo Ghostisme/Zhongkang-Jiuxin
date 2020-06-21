@@ -1,0 +1,144 @@
+/*返回按钮大小调整*/
+.mui-icon-back:before, .mui-icon-left-nav:before {
+    font-size: 24px;
+}
+.mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+	width: 100%;
+}
+.mui-scroll-wrapper{
+	margin-top: 30px;
+	bottom: 50px;
+}
+.page_font{
+	font-size: 12px;
+}
+/*公司图片及名称*/
+#companyDetail{
+	width:100%;
+	height:130px;
+	padding-top:20px;
+	text-align: center;
+	background-color: #fff;
+}
+#companyImg{
+	width:80px;
+	height:80px;
+	margin:0 auto;
+	border:1px solid #ddd;
+	border-radius: 40px;
+}
+#companyImg img{
+	width:80px;
+	height:80px;
+	border:1px solid #ddd;
+	border-radius: 40px;
+}
+#Orders{
+	width:100%;
+	min-height:100px;
+	background-color:#fff;
+}
+/*我的订单，卖家订单标题*/
+#myAndseller{
+	width:100%;
+	height:40px;
+	line-height: 40px;
+	/*border:1px solid #ddd;*/
+	overflow: hidden;
+	
+}
+.myOrder,.sellerOrder{
+	float:left;
+	text-align: center;
+	width:49.5%;
+}
+.myOrder span,.sellerOrder span{
+	padding:10px;
+}
+#myAndseller b{
+	float:left;
+	height:20px;
+	width:1%;
+	margin-top:10px;
+	border-left:1px solid #ddd;
+}
+.borderBottom{
+	border-bottom:10px solid #3699DC;
+}
+/*我的订单及卖家订单下方订单选项*/
+.orderOption{
+	list-style: none;
+	width:100%;
+	overflow: hidden;
+	padding:0;
+	margin-bottom:0;
+}
+.orderOption li{
+	float:left;
+	width:20%;
+	text-align: center;
+	margin-top:20px;
+	/*border:1px solid #ddd;*/
+}
+.orderOption li div span.txt{
+	width:80%;
+}
+.orderOption li div span.sure{
+	width:10%;
+}
+.unsure,.sellunsure,.unpay,.sellunpay,.unsend,.sellunsend,.unrecieve,.sellunrecieve,.AllOrder,.sellAllOrder{
+	font-size:10px;
+}
+.orderOption img{
+	width:40%;
+	height:30px;
+}
+.optionTxt{
+	width:100%;
+	text-align: center;
+}
+.sell{
+	display:none;
+}
+/*商品管理*/
+.goodsTxt,.myresource{
+	width:100%;
+	height:40px;
+	/*border:1px solid #000;*/
+	line-height: 40px;
+	padding-left:10px;
+}
+.goodsManage,.resourceManage{
+	width:100%;
+	height:100px;
+	background-color:#fff;
+	overflow: hidden;
+}
+.alredyUp,.alredyUpload{
+	border-right:1px solid #E0E0E0;
+}
+.alredyUp,.examining,.alredyUpload,.goupload{
+	float:left;
+	width:50%;
+	height:100px;
+	text-align:center;
+}
+.alredyUp img,.examining img,.alredyUpload img,.goupload img{
+	width:30px;
+	height:30px;
+	margin-top:20px;
+}
+.upNum,.examiningNum,.uploadNum,.goNum{
+	margin-left: 5px;
+	text-align: center;
+}
+/*退出按钮*/
+.quitBtn{
+	height:40px;
+	padding:0;
+	margin-bottom:0;
+	margin-top:20px;
+	background-color: #FFCC00;
+	color:#323232;
+	border:1px solid #ffcc00;
+}

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>部门维护</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../css/post.css"/>
+	<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    	
+    	label{
+    		cursor: pointer;
+    	}
+    	
+    </style>
+	<body>
+		<div class="box2">
+				<h5 id="userInfo">新增岗位</h5>
+				<div class="userName2">
+					<div id="positionName">
+						<span id="positionNameLeft">
+							<span id="star">*</span>
+							<span id="star-right">岗位名称</span>
+							
+						</span>
+						<span id="positionNameRight">
+							<input type="text" id="add_name"/>
+						</span>
+					</div>
+					<div id="positionDes">
+						<span id="positionDesleft">
+							岗位描述
+						</span>
+						<span id="positionDesright">
+							<textarea name="postDescribe" rows="" cols=""id="add_memo"maxlength="500"></textarea>
+						</span>
+					</div>
+				</div>
+				<!--tab选项卡-->
+				<div class="tab">
+					<ul id="postListTab"style="overflow: hidden;">
+						<!--<li class="cur change">维护系统</li>
+						<li class="change">个人空间</li>
+						<li class="change">人力资源</li>
+						<li class="change">信息管理</li>-->
+					</ul>
+					<div class="allInfoPostList">
+						<div class="aaa">
+							aaa
+						</div>
+						<div class="aaa">
+							<div class="personalInfo">
+								个人信息
+							</div>
+							
+							<div class="way">
+								<div class="wayLeft">
+									<span id="wayLeftTiitle">
+										会诊方式：
+									</span>
+									<select name="">
+										<option value="1">无</option>
+										<option value="2">1</option>
+										<option value="3">2</option>
+									</select>
+									
+									
+								</div>
+								<div class="wayRight">
+									<label for="check"><input type="checkbox" name="" id="check" value="" />查看信息</label>
+								</div>
+								
+								
+							</div>
+							
+							<div id="workpart">
+								    工作助手
+							</div>
+							
+							<ul class="dep-workpartList">
+								<li>查看公司联系人：
+									<select>
+									  <option value="无">无</option>
+									  <option value="2">2</option>
+									  <option value="3">3</option>
+									</select>
+								</li>
+								<li>查看公司联系人：
+									<select>
+									  <option value="无">无</option>
+									  <option value="2">2</option>
+									  <option value="3">3</option>
+									</select>
+								</li>
+								<li class="redText">查看公司联系人（本部）</li>
+								<li>查看公司联系人：
+									<select>
+									  <option value="无">无</option>
+									  <option value="2">2</option>
+									  <option value="3">3</option>
+									</select>
+								</li>
+								<li class="redText">投诉/建议查询（本人）</li>
+								<li><label for="adv"><input type="checkbox" name="" id="adv" value="" />投诉/建议查询(功能)</label></li>
+								<li><label for="adv4"><input type="checkbox" name="" id="adv4" value="" />投诉/建议查询(功能)</label></li>
+								<li>查看公司联系人：
+									<select>
+									  <option value="无">无</option>	
+									  <option value="2">2</option>
+									  <option value="3">3</option>
+									</select>
+								</li>
+								<li><label for="adv2"><input type="checkbox" name="" id="adv2" value="" />投诉/建议查询(功能)</label></li>
+								<li>查看公司联系人：
+									<select>
+									  <option value="无">无</option>
+									  <option value="2">2</option>
+									  <option value="3">3</option>
+									</select>
+								</li>
+								<li><label for="adv3"><input type="checkbox" name="" id="adv3" value="" />投诉/建议查询(功能)</label></li>
+								<li>查看公司联系人：
+									<select>
+									  <option value="本人">本人</option>
+									  <option value="本部">本部</option>
+									  <option value="跨部">跨部</option>
+									</select>
+								</li>
+								<li class="choice">
+									<button class="btnChoice1">全选</button>
+									<button class="btnChoice2">反选</button>
+								</li>
+							</ul>
+							
+							<button class="change" style="cursor: pointer;">修改</button>
+							
+							
+						</div>
+						<div class="aaa">
+							ccc
+						</div>
+						<div class="aaa">
+							ddd
+						</div>
+						<div class="submitBtns"style="cursor:pointer;"id="doAdd">
+							提交
+						</div>
+					</div>
+					
+					
+				</div>
+		</div>
+	</body>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/checkform.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/foundation-datepicker.js"></script>	
+	<script type="text/javascript" src="../../js/contabs.min.js"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	window.onload=function(){
+		$("#postListTab li:first-child").addClass("cur");
+		$(".aaa:first-child").addClass("on");
+		var allperInfo=$(".personalInfo");
+		for(var q=0;q<allperInfo.length;q++){
+			if($(allperInfo[q]).next('ul').html()==""||$(allperInfo[q]).next('ul').html()==null){
+				$(allperInfo[q]).next('ul').remove();
+				$(allperInfo[q]).remove();
+			}
+		}
+		var allInfos=$(".aaa");
+		for(var s=0;s<allInfos.length;s++){
+			console.log($(allInfos[s]).find('.personalInfo').length);
+			if($(allInfos[s]).find('.personalInfo').length==0){
+				$(allInfos[s]).html('');
+			}
+		}
+        $(".tab .change").click(function(){
+        $(".tab .change").eq($(this).index()).addClass("cur").siblings().removeClass('cur');
+        $(".aaa").hide().eq($(this).index()).show();
+        });
+   
+		//  全选和反选
+	    var checkAll = $('.btnChoice1');
+	    var othercheck = $('.btnChoice2');
+	    
+	    $(document).on("click",".btnChoice1",function(){
+	    	var checkBox = $(this).parent().parent().find('input[type="checkbox"]');
+	    	console.log(checkBox.length);
+	    	for(i=0;i<checkBox.length;i++){
+	    		console.log(checkBox.length);
+	            checkBox[i].checked=true;
+	        };
+	    });
+	    $(document).on("click",".btnChoice2",function(){
+	    	var checkBox = $(this).parent().parent().find('input[type="checkbox"]');
+	    	for(i=0;i<checkBox.length;i++){
+	            if(checkBox[i].checked==true){
+	                checkBox[i].checked=false;
+		        }else{
+		            checkBox[i].checked=true
+		        }
+	        };
+	    });
+	    $("#doAdd").click(function() {
+				var name = $("#add_name").val();
+				var memo = $("#add_memo").val();
+				if(name==""||name==null){
+					alert("请输入岗位名称！");
+				}else if(memo==""||memo==null){
+					alert("请简单描述该岗位！");
+				}else{
+					var sperIds =[]; 
+					$('select[name="sperIds"]').each(function(){ 
+						var vvv=$(this).val();
+						if(vvv&&vvv!='0'){
+							sperIds.push($(this).val()); 
+						}
+					});
+					var perIds =[]; 
+					$('input[name="perIds"]:checked').each(function(){ 
+						perIds.push($(this).val()); 
+					});
+					if(sperIds.length==0&&perIds.length==0){
+						alert("请选择岗位包含的权限！");
+						return;
+					}
+					var params = {
+						'sessionId' :sessionId,
+						'role.id' : patientInfoDetailLineId,
+						'role.name' : name,
+						'role.memo' : memo,
+						'perIds' : perIds,
+						'sperIds' : sperIds
+					};
+					console.log(params);
+					$.ajax({
+						type : 'get',
+						url : config+"/sys/role/update",
+						data : params,
+						traditional: true,
+						async:false,
+						dataType:"jsonp",
+						jsonp:"jsoncallback",
+						success : function(data) {
+							var status = data.status;
+							console.log(data);
+							if (status == '1') {
+								alert('岗位修改成功！');
+								closeNavTabAndRefreshIframe("page/post/postChange.html","page/permissionList/permissionList.html");
+								
+							} else {
+								alert(data.message);
+							}
+						},
+						error : function(XMLHttpRequest, textStatus, errorThrown) {
+							alert("服务器错误，请稍后重试！");
+						}
+					});
+				}
+				
+			});
+	};
+
+    	var userId=sessionStorage.getItem('userId');
+		var sessionId=sessionStorage.getItem('sessionId');
+		var patientInfoDetailLineId=parseInt(localStorage.getItem("patientInfoDetail-lineId"));
+//      以下为调取接口的部分
+		var currentPage = 1;
+				var offsetPage=0;//传输的页起始条数
+				var showNum=10;//页面需要显示的条数
+				var num_pages;
+			//点击分页页数
+				$(document).delegate(".flipOver",'click',function(){
+					$(this).addClass('active').siblings().removeClass('active');
+					currentPage = parseInt($(this).attr("pageId"));
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getPatientList();
+					window.scrollTo(0,0);
+				});
+			//点击上一页
+				$(document).delegate("#prev",'click',function(){	
+					if($(".flipOver.active").prev().attr("id") == "prev"){
+						return true
+					}else{
+						var page = parseInt($(".flipOver.active").attr("pageid"))-1;
+						$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+					}
+					currentPage = page;
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getPatientList();
+					window.scrollTo(0,0);
+				});
+				
+				
+			//点击下一页
+				$(document).delegate("#Next",'click',function(){
+					if($(".flipOver.active").next().attr("id") == "Next"){
+						return true
+					}else{
+						var page = parseInt($(".flipOver.active").attr("pageid"))+1;
+						$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+					}
+					currentPage = page;
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getPatientList();
+					window.scrollTo(0,0);
+				});	
+				getPatientList();
+				//	获取列表
+				function getPatientList(){
+//					console.log("coming......");
+					$("#patientInfoContents").html('');
+					$.ajax({
+						type:"get",
+						url:config+"/sys/role/detail",
+						async:false,
+						dataType:"jsonp",
+						jsonp:"jsoncallback",
+						data:{
+							sessionId:sessionId,
+							id:patientInfoDetailLineId
+						},
+						success:function(data){
+							console.log("岗位修改");
+							console.log(data);
+							$("#add_name").val(data.resultMap.role.name);
+							$("#add_memo").val(data.resultMap.role.memo);
+							var patinfoList=data.resultMap.rolePerList;
+//							var listTotal=data.resultMap.total;//总条数
+//							var index = data.viewIndex;
+//							num_pages = Math.ceil(parseInt(listTotal)/10);//总条数除以每页十条数据为总页码
+							$("#postListTab").html('');
+							$(".allInfoPostList").html('<div class="submitBtns"style="cursor: pointer;"id="doAdd">提交</div>');
+							for(var i=0;i<patinfoList.length;i++){
+								var tabHtml='';
+								var aDiv='';
+								tabHtml+='<li class="change">'+patinfoList[i].name+'</li>';
+								aDiv+='<div class="aaa"id="'+patinfoList[i].code+'">';
+								if(patinfoList[i].menuList.length!=0){
+									aDiv+='<div class="choice">';
+									aDiv+='<button class="btnChoice1">全选</button>';
+									aDiv+='<button class="btnChoice2">反选</button>';
+									aDiv+='</div>';
+								}
+								
+								aDiv+='</div>';
+								$("#postListTab").append(tabHtml);
+								$('.allInfoPostList .submitBtns').before(aDiv);
+								var postMenulist=patinfoList[i].menuList;
+								for(var k=0;k<postMenulist.length;k++){
+									var menuListHtml='';
+									menuListHtml+='<div class="personalInfo"id="'+postMenulist[k].code+'">'+postMenulist[k].name+'</div>';
+									menuListHtml+='<ul class="dep-workpartList">';
+									menuListHtml+='</ul>';
+									$("#"+patinfoList[i].code).find('.choice').before(menuListHtml);
+									if($.isEmptyObject(postMenulist[k].perMap)==false){
+										var thisKey=postMenulist[k].name;
+										var perMapHtml='';
+										for(var p in postMenulist[k].perMap){
+											var currentmenus=postMenulist[k].perMap[p];
+											if(currentmenus.scope==null||currentmenus.scope==""){
+//												console.log(currentmenus);
+												perMapHtml+='<li>';
+												if(currentmenus.isSelected=="1"){
+													perMapHtml+='<input class="check_box" style="cursor: pointer;" name="perIds" type="checkbox" checked="checked"value="'+currentmenus.id+'">';
+												}else{
+													perMapHtml+='<input class="check_box" style="cursor: pointer;" name="perIds" type="checkbox" value="'+currentmenus.id+'">';
+												}
+												perMapHtml+='<span title="'+currentmenus.memo+'" class="option_cont" style="cursor: default;">'+currentmenus.name+'</span>';
+												perMapHtml+='</li>';
+											}else{
+												perMapHtml+='<li>';
+												perMapHtml+='<span title="'+currentmenus.memo+'" style="cursor: default;">'+currentmenus.name+'</span>';
+												perMapHtml+='<select id="sperIds'+currentmenus.id+'" name="sperIds">'+currentmenus.scope+'</select>';
+												perMapHtml+='</li>';
+											}
+											
+										}
+										$("#"+postMenulist[k].code).next('ul').append(perMapHtml);
+									}
+								}
+							}
+						},
+					});
+					
+			}
+	</script>
+</html>

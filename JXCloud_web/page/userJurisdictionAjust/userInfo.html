@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户信息</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    	
+    	label{
+    		cursor: pointer;
+    	}
+    	
+    </style>
+	<body>
+		<div class="box">
+			<h5 id="userInfo">用户信息</h5>
+			<div class="userName">
+				<div id="userNameLeft">
+					<span id="userNameLeftL">
+						用户姓名
+					</span>
+					<span id="userNameLeftR">
+						吴老板
+					</span>
+				</div>
+				<div id="userNameRight">
+					<span id="userNameRgihtL">
+						用户编号
+					</span>
+					<span id="userNameRgihtR">
+						80181129
+					</span>
+				</div>
+			</div>
+			<!--tab选项卡-->
+			<div class="tab">
+				<ul>
+					<li class="change">维护系统</li>
+					<li class="cur change">个人空间</li>
+					<li class="change">人力资源</li>
+					<li class="change">信息管理</li>
+				</ul>
+				<div class="aaa">
+					aaa
+				</div>
+				<div class="on aaa">
+					<div id="personalInfo">
+						个人信息
+					</div>
+					
+					<div class="way">
+						<div class="wayLeft">
+							<span id="wayLeftTiitle">
+								会诊方式：
+							</span>
+							<select name="">
+								<option value="1">无</option>
+								<option value="2">1</option>
+								<option value="3">2</option>
+							</select>
+							
+							
+						</div>
+						<div class="wayRight">
+							<label for="check"><input type="checkbox" name="" id="check" value="" />查看信息</label>
+						</div>
+						
+						
+					</div>
+					
+					<div id="workpart">
+						    工作助手
+					</div>
+					
+					<ul id="workpartList">
+						<li><input type="checkbox" name="" id="" value="" />投诉/建议查询(功能)</li>
+						<li class="redText">查看公司联系人（跨部）</li>
+						<li class="redText">查看公司联系人（本部）</li>
+						<li><label for="adv"><input type="checkbox" name="" id="adv" value="" />投诉/建议查询(功能)</label></li>
+						<li class="redText">投诉/建议查询（本人）</li>
+						<li><label for="adv2"><input type="checkbox" name="" id="adv2" value="" />投诉/建议查询(功能)</label></li>
+						<li><label for="adv3"><input type="checkbox" name="" id="adv3" value="" />投诉/建议查询(功能)</label></li>
+						<li><label for="adv4"><input type="checkbox" name="" id="adv4" value="" />投诉/建议查询(功能)</label></li>
+						<li><label for="adv5"><input type="checkbox" name="" id="adv5" value="" />投诉/建议查询(功能)</label></li>
+						<li><label for="adv6"><input type="checkbox" name="" id="adv6" value="" />投诉/建议查询(功能)</label></li>
+						<li><label for="adv7"><input type="checkbox" name="" id="adv7" value="" />投诉/建议查询(功能)</label></li>
+						<li><label for="adv8"><input type="checkbox" name="" id="adv8" value="" />投诉/建议查询(功能)</label></li>
+						<li><label for="adv9"><input type="checkbox" name="" id="adv9" value="" />投诉/建议查询(功能)</label></li>
+						<li><label for="adv10"><input type="checkbox" name="" id="adv10" value="" />投诉/建议查询(功能)</label></li>
+						<li class="redText">投诉/建议新增</li>
+						<li><label for="adv11"><input type="checkbox" name="" id="adv11" value="" />投诉/建议查询(功能)</label></li>
+					</ul>
+					
+					<button id="change">修改</button>
+					
+					
+				</div>
+				<div class="aaa">
+					ccc
+				</div>
+				<div class="aaa">
+					ddd
+				</div>
+				
+			</div>
+			
+			
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+	$(document).ready(function(){
+        $(".tab .change").click(function(){
+        $(".tab .change").eq($(this).index()).addClass("cur").siblings().removeClass('cur');
+        $(".aaa").hide().eq($(this).index()).show();
+        });
+    });
+		
+		
+		
+		
+	</script>
+</html>

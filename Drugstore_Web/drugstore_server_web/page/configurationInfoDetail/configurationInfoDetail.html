@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>远程医疗系统-组织架构</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/organize.css" />
+		<style>
+			.configInfo {
+				width: 100%;
+				overflow: hidden;
+				border: 1px solid #D4D4D4;
+			}
+			
+			.configInfoTitle {
+				width: 100%;
+				height: 40px;
+				background: #E2EFF7;
+				overflow: hidden;
+				line-height: 40px;
+			}
+			
+			.firstColStyle {
+				width: 6%;
+				height:40px;
+				text-align: right;
+			}
+			
+			.secondColStyle {
+				width: 10%;
+				height:40px;
+				text-align: center;
+			}
+			
+			.thredColStyle {
+				width: 10%;
+				height:40px;
+				text-align: center;
+			}
+			
+			.fourColStyle {
+				width: 10%;
+				height:40px;
+				text-align: center;
+			}
+			
+			.fiveColStyle {
+				width: 10%;
+				height:40px;
+				text-align: center;
+			}
+			
+			.sixColStyle {
+				width: 10%;
+				height:40px;
+				text-align: center;
+			}
+			
+			.sevenColStyle {
+				width: 12%;
+				height:40px;
+				text-align: center;
+			}
+			
+			.eightColStyle {
+				width: 12%;
+				height:40px;
+				text-align: center;
+			}
+			
+			.nineColStyle {
+				width: 6%;
+				height:40px;
+				text-align: center;
+			}
+			
+			.lastColStyle {
+				width: 14%;
+				height:40px;
+			}
+			
+			.showTableInfo {
+				width: 100%;
+				overflow: hidden;
+			}
+			
+			.showTableInfo .showInfoBox {
+				height: 40px;
+				line-height: 40px;
+			}
+			
+			.showInfoBox:nth-child(even) {
+				background: #ededed;
+			}
+			
+			.showInfoBox:nth-child(odd) {
+				background: #fff;
+			}
+			/*新增信息*/
+			
+			.addConfigInfo {
+				width: 100%;
+				overflow: hidden;
+			}
+			
+			.addConfigTitle {
+				width: 100%;
+				padding-left: 20px;
+				height: 40px;
+				line-height: 50px;
+				color: #40AAF0;
+				border-bottom: 1px solid #40AAEF;
+			}
+			
+			.addInfoBox {
+				border: 1px solid #D4D4D4;
+			}
+			
+			.configRows {
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				overflow: hidden;
+				text-align: center;
+				border-bottom: 1px solid #D4D4D4;
+			}
+			
+			.configRows:nth-child(odd) {
+				background: #fff;
+			}
+			
+			.configRows:nth-child(even) {
+				background: #ededed;
+			}
+			
+			.addConfigFirstStyle {
+				width: 20%;
+				height: 40px;
+				line-height: 40px;
+				overflow: hidden;
+				/*border-left: 1px solid #D4D4D4;*/
+			}
+			
+			.addConfigSecondStyle {
+				width: 29.5%;
+				height: 40px;
+				line-height: 40px;
+				overflow: hidden;
+				border-left: 1px solid #D4D4D4;
+			}
+			
+			.addConfigLongStyle {
+				width: 79.5%;
+				height: 40px;
+				line-height: 40px;
+				overflow: hidden;
+				border-left: 1px solid #D4D4D4;
+			}
+			
+			.configLstRows {
+				width: 100%;
+				height: 90px;
+				line-height: 90px;
+				overflow: hidden;
+				text-align: center;
+				border-bottom:1px solid #D4D4D4;
+			}
+			
+			.addConfigLastRowStyle {
+				width: 20%;
+				height: 90px;
+				line-height: 90px;
+				overflow: hidden;
+				/*border-left: 1px solid #D4D4D4;*/
+			}
+			
+			.addConfigLastRowLongStyle {
+				width: 79.5%;
+				height: 90px;
+				overflow: hidden;
+				border-left: 1px solid #D4D4D4;
+			}
+			
+			.addBtnAll {
+				width: 100%;
+				text-align: center;
+				cursor:pointer;
+			}
+			
+			.addBtn {
+				width: 100px;
+				height: 40px;
+				line-height: 40px;
+				display: inline-block;
+				background: #018EEA;
+				color: #fff;
+				margin-top: 25px;
+			}
+			
+			.configRowsLast {
+				height: 90px;
+				background: #fff;
+			}
+			/*新增配置信息的input设置*/
+			
+			.addInfoBox input {
+				width: 100%;
+				height: 100%;
+				padding-left: 20px;
+				outline: none;
+				border: none;
+				background: transparent;
+			}
+			/*页码*/
+			
+			.pageN {
+				overflow: hidden;
+			}
+			
+			#pageGro ul {
+				float: right;
+				margin-right: 100px;
+			}
+			
+			.pagination>li>a,
+			.pagination>li>span {
+				margin-right: 10px;
+			}
+			
+			.pagination>.active>a,
+			.pagination>.active>a:focus,
+			.pagination>.active>a:hover,
+			.pagination>.active>span,
+			.pagination>.active>span:focus,
+			.pagination>.active>span:hover {
+				background: #FE7410;
+				border-color: #FE7410;
+			}
+			
+			.flipOver a {
+				cursor: pointer;
+			}
+			/*模态框*/
+			.configInfoDetailmodal{
+				background: #000;
+				opacity: 0.5;
+				position:absolute;
+				top:0;
+				left: 0;
+				z-index: 888;
+				display: block;
+			}
+			/*修改配置信息弹框*/
+			#changeTypeConfiguration{
+				width:35%;
+				/*height:500px;*/
+				background: #fff;
+				position: absolute;
+				top:30%;
+				left:40%;
+				z-index: 8889;
+				padding-bottom:40px;
+			}
+			.changeTypeConfigurationTitle{
+				width:100%;
+				height:40px;
+				line-height:40px;
+				background: #008EEA;
+				color:#fff;
+				padding-left:20px;
+				font-size:16px;
+			}
+			.changeTypecloseModel{
+				margin-right:20px;
+				font-size:18px;
+				cursor:pointer;
+				padding:0 6px;
+				height:10px;
+				border-radius:50%;
+				border:1px solid #fff;
+			}
+			.configInfos{
+				overflow: hidden;
+				margin:20px;
+				border: 1px solid #D4D4D4;
+			}
+			.configInfos form{
+				width:100%;
+				overflow: hidden;
+			}
+			.firstColForm{
+				width:25%;
+				height:40px;
+				line-height: 40px;
+				text-align: center;
+				border-right:1px solid #D4D4D4;
+			}
+			.secondColForm{
+				width:75%;
+				height:40px;
+			}
+			.formRows{
+				width:100%;
+				overflow: hidden;
+				border-bottom: 1px solid #D4D4D4;
+			}
+			.formRows:nth-child(odd){
+				background: #fff;
+			}
+			.formRows:nth-child(even){
+				background: #ededed;
+			}
+			/*按钮样式*/
+			.sureAndCancelBtns{
+				width:100%;
+				height:40px;
+				line-height: 40px;
+				text-align: center;
+				margin-top:20px;
+			}
+			.sureBtn{
+				width:100px;
+				height:40px;
+				line-height: 40px;
+				display: inline-block;
+				background: #008EEA;
+				color:#fff;
+				margin:0 auto;
+				cursor: pointer;
+			}
+			.cancelBtn{
+				width:100px;
+				height:40px;
+				line-height: 40px;
+				display: inline-block;
+				background: #ECECEC;
+				color:#000;
+				margin:0 auto;
+				margin-left:20px;
+				cursor: pointer;
+			}
+			.configInfoDetaildelInfo{
+				width:100px;
+				height:40px;
+				line-height: 40px;
+				display: inline-block;
+				background: #ECECEC;
+				color:#000;
+				margin:0 auto;
+				margin-left:20px;
+				cursor: pointer;
+			}
+			.configInfoDetailcBtn{
+				width:100px;
+				height:40px;
+				line-height: 40px;
+				display: inline-block;
+				background: #ECECEC;
+				color:#000;
+				margin:0 auto;
+				margin-left:20px;
+				cursor: pointer;
+			}
+			.lastFormCols .firstColForm{
+				height:90px;
+				line-height: 90px;
+			}
+			.lastFormCols .firstColForm{
+				height:90px;
+				line-height: 90px;
+			}
+			/*所有表单的样式*/
+			.configInfos input{
+				width:100%;
+				height:100%;
+				outline: none;
+				border:none;
+				background: transparent;
+			}
+			.configInfos input.formRemarks{
+				width:75%;
+				height:100%;
+			}
+			/*删除配置模态框*/
+			#delListInfo{
+				width:15%;
+				/*height:500px;*/
+				background: #fff;
+				position: absolute;
+				top:30%;
+				left:45%;
+				z-index: 8889;
+				padding-bottom:20px;
+			}
+			#configInfoDetaildelInfo{
+				width:25%;
+				/*height:500px;*/
+				background: #fff;
+				position: absolute;
+				top:30%;
+				left:45%;
+				z-index: 8889;
+				padding-bottom:20px;
+			}
+			.delTopImg{
+				width:100%;
+				text-align: center;
+				margin:20px 0px;
+			}
+			.delWarn1,.delWarn2{
+				width:100%;
+				text-align: center;
+			}
+			.listChange,.listDel{
+				cursor:pointer;
+			}
+			/*设置所有弹框和模态框均隐藏*/
+			#changeTypeConfiguration,.configInfoDetailmodal,#delListInfo,#configInfoDetaildelInfo{
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="contain">
+			<!--上半部分配置信息显示区域-->
+			<div class="configInfo">
+				<!--表头-->
+				<div class="configInfoTitle">
+					<div class="choseList firstColStyle lf">
+						<input type="checkbox" id="choseAll" />
+					</div>
+					<div class="secondColStyle lf">
+						序号
+					</div>
+					<div class="thredColStyle lf">
+						名称
+					</div>
+					<div class="fourColStyle lf">
+						类型名称
+					</div>
+					<!--<div class="fiveColStyle lf">
+						折合数字
+					</div>-->
+					<div class="sixColStyle lf">
+						编码
+					</div>
+					<div class="sevenColStyle lf">
+						排序
+					</div>
+					<div class="eightColStyle lf">
+						备注
+					</div>
+					<div class="nineColStyle lf">
+						修改
+					</div>
+					<div class="lastColStyle lf">
+						删除
+					</div>
+				</div>
+				<!--显示表内容-->
+				<div class="showTableInfo">
+					<!--第一条-->
+					<div class="showInfoBox">
+						<div class="choseList firstColStyle lf">
+							<input type="checkbox" class="choseCurrentList" />
+						</div>
+						<div class="secondColStyle lf listSerialNum">
+							1
+						</div>
+						<div class="thredColStyle lf listName">
+							售后业务类型
+						</div>
+						<div class="fourColStyle lf listTypeName">
+							天津医药公司
+						</div>
+						<div class="fiveColStyle lf listConvertedFigures ">
+							111111
+						</div>
+						<div class="sixColStyle lf listNum">
+							20181123
+						</div>
+						<div class="sevenColStyle lf listSort">
+							测试
+						</div>
+						<div class="eightColStyle lf listDescribe">
+							测试
+						</div>
+						<div class="nineColStyle lf listChange">
+							<img src="../../img/common/untitledChangeBtn.png" class="deptListchangeBtn" alt="" />
+						</div>
+						<div class="lastColStyle lf listDel">
+							<img src="../../img/common/untitledDelBtn.png" class="deptListDelBtn" alt="" />
+						</div>
+					</div>
+					<!--第二条-->
+					<div class="showInfoBox">
+						<div class="choseList firstColStyle lf">
+							<input type="checkbox" class="choseCurrentList" />
+						</div>
+						<div class="secondColStyle lf listSerialNum">
+							1
+						</div>
+						<div class="thredColStyle lf listName">
+							售后业务类型
+						</div>
+						<div class="fourColStyle lf listTypeName">
+							天津医药公司
+						</div>
+						<div class="fiveColStyle lf listConvertedFigures ">
+							111111
+						</div>
+						<div class="sixColStyle lf listNum">
+							20181123
+						</div>
+						<div class="sevenColStyle lf listSort">
+							测试
+						</div>
+						<div class="eightColStyle lf listDescribe">
+							测试
+						</div>
+						<div class="nineColStyle lf listChange">
+							<img src="../../img/common/untitledChangeBtn.png" class="deptListchangeBtn" alt="" />
+						</div>
+						<div class="lastColStyle lf listDel">
+							<img src="../../img/common/untitledDelBtn.png" class="deptListDelBtn" alt="" />
+						</div>
+					</div>
+					<!--第三条-->
+					<div class="showInfoBox">
+						<div class="choseList firstColStyle lf">
+							<input type="checkbox" class="choseCurrentList" />
+						</div>
+						<div class="secondColStyle lf listSerialNum">
+							1
+						</div>
+						<div class="thredColStyle lf listName">
+							售后业务类型
+						</div>
+						<div class="fourColStyle lf listTypeName">
+							天津医药公司
+						</div>
+						<!--<div class="fiveColStyle lf listConvertedFigures ">
+							111111
+						</div>-->
+						<div class="sixColStyle lf listNum">
+							20181123
+						</div>
+						<div class="sevenColStyle lf listSort">
+							测试
+						</div>
+						<div class="eightColStyle lf listDescribe">
+							测试
+						</div>
+						<div class="nineColStyle lf listChange">
+							<img src="../../img/common/untitledChangeBtn.png" class="deptListchangeBtn" alt="" />
+						</div>
+						<div class="lastColStyle lf listDel">
+							<img src="../../img/common/untitledDelBtn.png" class="deptListDelBtn" alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--下半部分新增配置信息-->
+			<div class="addConfigInfo">
+				<!--标题-->
+				<div class="addConfigTitle">
+					新增配置信息
+				</div>
+				<!--新增内容-->
+				<div class="addInfoBox">
+					<div class="configRows">
+						<div class="addConfigFirstStyle lf">
+							配置名称
+						</div>
+						<div class="lf addConfigSecondStyle addConfigNameTxt">
+							<input type="text" />
+						</div>
+						<div class="addConfigFirstStyle lf"style="border-left:1px solid #ededed;">
+							类型名称
+						</div>
+						<input type="text" class="addConfigTypeIds"style="display: none;" />
+						<div class="lf addConfigSecondStyle addConfigTypeTxt">
+							<input type="text" />
+						</div>
+					</div>
+					<!--第二行新加配置信息-->
+					<!--<div class="configRows">
+						<div class="addConfigFirstStyle lf">
+							折合数字
+						</div>
+						<div class="lf addConfigSecondStyle addConfigNameTxt">
+							<input type="text" />
+						</div>
+						<div class="addConfigFirstStyle lf">
+							排序
+						</div>
+						<div class="lf addConfigSecondStyle addConfigTypeTxt">
+							<input type="text" />
+						</div>
+					</div>-->
+					<!--第三行-->
+					<div class="configRows">
+						<div class="addConfigFirstStyle lf">
+							编码
+						</div>
+						<div class="lf addConfigLongStyle addConfigNameTxt">
+							<input type="text" class="addEqualCode"/>
+						</div>
+					</div>
+					<!--第四行-->
+					<div class="configLstRows">
+						<div class="addConfigLastRowStyle lf">
+							备注
+						</div>
+						<div class="lf addConfigLastRowLongStyle addConfigNameTxt">
+							<input type="text" class="configMemo"/>
+						</div>
+					</div>
+					<!--添加按钮-->
+					<div class="configRowsLast">
+						<div class="addBtnAll">
+							<div class="addBtn">
+								添加
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--底部页签-->
+			<div class="clearfix"></div>
+			<div class="pageN"></div>
+			<!--模态框-->
+			<div class="configInfoDetailmodal"></div>
+			<!--修改配置信息弹框-->
+			<div id="changeTypeConfiguration">
+				<div class="changeTypeConfigurationTitle">
+					配置信息修改
+					<div class="rt">
+						<span class="changeTypecloseModel">
+							×
+						</span>
+					</div>
+				</div>
+				<span class="ListCurrentIds"style="display:none"></span>
+				<div class="configInfos">
+					<form action="">
+						<!--第一行-->
+						<div class="formRows">
+							<div class="firstColForm lf">
+								配置名称
+							</div>
+							<div class="secondColForm lf">
+								<input type="text" class="formConfigName"/>
+							</div>
+						</div>
+						<input type="text" class="configchosetypenameIds"style="display: none;">
+						<!--第二行-->
+						<div class="formRows">
+							<div class="firstColForm lf">
+								类型名称
+							</div>
+							<div class="secondColForm lf">
+								<input type="text" class="formConfigType"/>
+							</div>
+						</div>
+						<!--第三行-->
+						<!--<div class="formRows">
+							<div class="firstColForm lf">
+								折合数字
+							</div>
+							<div class="secondColForm lf">
+								<input type="text"class="formSNum"/>
+							</div>
+						</div>-->
+						<!--第四行-->
+						<div class="formRows">
+							<div class="firstColForm lf">
+								编码
+							</div>
+							<div class="secondColForm lf">
+								<input type="text"class="formNum"/>
+							</div>
+						</div>
+						<!--第五行-->
+						<div class="formRows">
+							<div class="firstColForm lf">
+								排序
+							</div>
+							<div class="secondColForm lf">
+								<input type="text"class="formSort"/>
+							</div>
+						</div>
+						<!--第六行-->
+						<div class="formRows lastFormCols">
+							<div class="firstColForm lf">
+								备注
+							</div>
+							<div class="secondColForm lf">
+								<input type="text"class="formRemarks"/>
+							</div>
+						</div>
+					</form>
+					
+				</div>
+				<div class="sureAndCancelBtns">
+		      		<div class="sureBtn sureChangeInfos">
+		      			确认修改
+		      		</div>
+		      		<div class="configInfoDetaildelInfo">
+		      			取消修改
+		      		</div>
+		      	</div>
+			</div>
+			
+			<!--删除单行配置信息提示框-->
+		     <div id="configInfoDetaildelInfo">
+		      	<div class="delTopImg">
+		      		<img src="../../img/common/untitledquestionImg.png" alt="" />
+		      	</div>
+		      	<span class="ListCurrentIds"style="display:none"></span>
+		      	<div class="delWarn">
+		      		<div class="delWarn1">删除信息后不可恢复，您确定要删除</div>
+		      		<div class="delWarn2">
+		      			该条信息吗？
+		      		</div>
+		      	</div>
+		      	<div class="sureAndCancelBtns">
+		      		<div class="configInfoDetailcBtn">
+		      			取&nbsp;&nbsp;&nbsp;&nbsp;消
+		      		</div>
+		      		<div class="sureBtn sureChangeInfos">
+		      			确定删除
+		      		</div>
+		      	</div>
+		    </div>
+		</div>
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<!--<script type="text/javascript" src="../../js/commonStyle.js"></script>-->
+		<script>
+			var currentListSessionId=sessionStorage.getItem("configListDetailsId");
+			var currentListSessionName=sessionStorage.getItem("configListDetailsNames");
+			$(".addInfoBox .addConfigTypeTxt input").val(currentListSessionName);
+			$(".addInfoBox .addConfigTypeIds").val(currentListSessionId);
+			var currentPage = 1;
+			var offsetPage = 0; //传输的页起始条数
+			var showNum = 10; //页面需要显示的条数
+			var num_pages;
+			//点击分页页数
+			$(document).delegate(".flipOver", 'click', function() {
+				$(this).addClass('active').siblings().removeClass('active');
+				currentPage = parseInt($(this).attr("pageId"));
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getConfigorderList();
+				window.scrollTo(0, 0);
+			});
+			//点击上一页
+			$(document).delegate("#prev", 'click', function() {
+				if($(".flipOver.active").prev().attr("id") == "prev") {
+					return true
+				} else {
+					var page = parseInt($(".flipOver.active").attr("pageid")) - 1;
+					$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+				}
+				currentPage = page;
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getConfigorderList();
+				window.scrollTo(0, 0);
+			});
+
+			//点击下一页
+			$(document).delegate("#Next", 'click', function() {
+				if($(".flipOver.active").next().attr("id") == "Next") {
+					return true
+				} else {
+					var page = parseInt($(".flipOver.active").attr("pageid")) + 1;
+					$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+				}
+				currentPage = page;
+				offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+				getConfigorderList();
+				window.scrollTo(0, 0);
+			});
+			getConfigorderList();
+			//	获取订单列表
+			function getConfigorderList() {
+				//					console.log("coming......");
+				$(".configInfo .showTableInfo").html('');
+				$.ajax({
+					type: "get",
+					url: config + "/sys/configInfo/list",
+					async: false,
+					dataType: "jsonp",
+					jsonp: "jsoncallback",
+					data: {
+						fkTypeId:currentListSessionId,
+						offset: offsetPage, //（页码-1）*每页显示条数
+						limit: showNum //每页赢显示的条数
+					},
+					success: function(data) {
+						console.log(data);
+						var configList = data.resultMap.configInfoList;
+						var listTotal = data.resultMap.total; //总条数
+						num_pages = Math.ceil(parseInt(listTotal) / 10); //总条数除以每页十条数据为总页码
+						for(var i=0,k=0;i<configList.length;i++){
+								console.log(configList[i].name);
+								k++;
+								var phtml='';
+								phtml+='<div class="showInfoBox">';
+								phtml+='<div class="choseListIds"style="display:none;">'+configList[i].id+'</div>';
+								phtml+='<div class="chosetypenameIds"style="display:none;">'+configList[i].fkTypeId+'</div>';
+								phtml+='<div class="choseList firstColStyle lf">';
+								phtml+='<input type="checkbox" class="choseCurrentList" />';
+								phtml+='</div>';
+								phtml+='<div class="secondColStyle lf listSerialNum">'+k+'</div>';
+								phtml+='<div class="thredColStyle lf listName">'+configList[i].name+'</div>';
+								if(configList[i].fkTypeName!=""&&configList[i].fkTypeName!=null){
+									phtml+='<div class="fourColStyle lf listTypeName">'+configList[i].fkTypeName+'</div>';
+								}else{
+									phtml+='<div class="fourColStyle lf listTypeName"></div>';
+								}
+								if(configList[i].equalCode!=""&&configList[i].equalCode!=null){
+									phtml+='<div class="sixColStyle lf listNum">'+configList[i].equalCode+'</div>';
+								}else{
+									phtml+='<div class="sixColStyle lf listNum"></div>';
+								}
+								if(configList[i].equalCode!=""&&configList[i].equalCode!=null){
+									phtml+='<div class="sevenColStyle lf listSort">'+configList[i].orderNum+'</div>';	
+								}else{
+									phtml+='<div class="sevenColStyle lf listSort"></div>';
+								}
+									
+								phtml+='<div class="eightColStyle lf listDescribe">'+configList[i].memo+'</div>';
+								phtml+='<div class="nineColStyle lf listChange">';
+								phtml+='<img src="../../img/common/untitledChangeBtn.png" class="deptListchangeBtn" alt="" />';	
+								phtml+='</div>';
+								phtml+='<div class="lastColStyle lf listDel">';
+								phtml+='<img src="../../img/common/untitledDelBtn.png" class="deptListDelBtn" alt="" />';	
+								phtml+='</div>';
+								phtml+='</div>';
+					      		$(".configInfo .showTableInfo").append(phtml);
+								var pageHtml = page(parseInt(currentPage),num_pages);
+								$("#lookingForDetails .pageN").html(pageHtml);
+								//添加上类型名
+								$(".addInfoBox .addConfigTypeTxt").val();
+						}
+					},
+				});
+			}
+//			模拟虚拟数据调接口后可以删除
+//			var listTotal = 100; //总条数
+//			num_pages = Math.ceil(parseInt(listTotal) / 10);
+//			var pageHtml = page(parseInt(currentPage), num_pages);
+//			$(".pageN").html(pageHtml);
+//			模态框
+			$(".configInfoDetailmodal").css("height",window.screen.height);
+			$(".configInfoDetailmodal").css("width",window.screen.width);
+//			点击弹框里的取消按钮
+			$(".sureAndCancelBtns").on("click",".configInfoDetailcBtn",function(){
+					$(this).parent().parent().css("display","none");
+					$(".configInfoDetailmodal").css("display","none");
+			});
+			//			点击配置信息弹框里的取消按钮
+			$(".sureAndCancelBtns").on("click",".configInfoDetaildelInfo",function(){
+					$(this).parent().parent().css("display","none");
+					$(".configInfoDetailmodal").css("display","none");
+				
+			});
+			$(document).on("click",".changeTypecloseModel",function(){
+				$(this).parent().parent().parent().css("display","none");
+				$(".configInfoDetailmodal").css("display","none");
+			});
+			//			点击修改标签
+			$(".showTableInfo").on("click",".deptListchangeBtn",function(){
+				var listId=$(this).parent().parent().find(".choseListIds").text().trim();//获取当前行的id
+				$("#changeTypeConfiguration").css("display","block");
+				$(".configInfoDetailmodal").css("display","block");
+				$("#changeTypeConfiguration .formConfigType").val($(this).parent().parent().find(".listTypeName").text().trim());
+				$("#changeTypeConfiguration .configchosetypenameIds").val($(this).parent().parent().find(".chosetypenameIds").text().trim());
+				$("#changeTypeConfiguration .formConfigType").attr("disabled","disabled");
+				$("#changeTypeConfiguration .ListCurrentIds").text(listId);
+				
+//				将页面上的数据带过来
+				$("#changeTypeConfiguration .formConfigName").val($(this).parent().parent().find(".listName").text());
+				$("#changeTypeConfiguration .formNum").val($(this).parent().parent().find(".listNum").text());
+				$("#changeTypeConfiguration .formSort").val($(this).parent().parent().find(".listSort").text());
+				$("#changeTypeConfiguration .formRemarks").val($(this).parent().parent().find(".listDescribe").text());
+			});
+//			点击删除按钮
+			$(".showTableInfo").on("click",".deptListDelBtn",function(){
+				var listId=$(this).parent().parent().find(".choseListIds").text().trim();//获取当前行的id
+				$("#configInfoDetaildelInfo").css("display","block");
+				$(".configInfoDetailmodal").css("display","block");
+				$("#configInfoDetaildelInfo .ListCurrentIds").text(listId);
+			});	
+			
+//			以下为调增删改的接口
+			
+//			点击确认修改
+			$("#changeTypeConfiguration .sureChangeInfos").click(function(){
+				var configIds=$("#changeTypeConfiguration .ListCurrentIds").text().trim();
+				var configNames=$("#changeTypeConfiguration .formConfigName").val().trim();//名称
+				var configTypeId=$("#changeTypeConfiguration .configchosetypenameIds").val().trim();//类型名称id
+				var configformNum=$("#changeTypeConfiguration .formNum").val().trim();//编码
+				var configformSort=$("#changeTypeConfiguration .formSort").val().trim();//排序
+				var configformRemarks=$("#changeTypeConfiguration .formRemarks").val().trim();//备注
+				console.log(configIds+" "+configNames+" "+configTypeId+" "+configformNum+" "+configformSort+" "+configformRemarks)
+				$.ajax({
+					method: 'get',
+					url: config+'/sys/configInfo/update',
+					contentType: "application/json; charset=utf-8",//传到后台的数据格式
+					async: true, 
+					data: {'name':configNames,'memo':configformRemarks,'id':configIds,'fkTypeId':configTypeId,'equalCode':configformNum,'orderNum':configformSort,'memo':configformRemarks},
+					dataType:'jsonp',//接收值的格式
+					jsonp: 'jsoncallback', 
+					success: function(data) {  
+							console.log(data);
+							if(data.status==1){
+								$("#changeTypeConfiguration").css("display","none");
+								$(".configInfoDetailmodal").css("display","none");
+								alert(data.message)
+								getConfigorderList();
+							}else{
+							alert(data.message);
+				//			window.location.reload();
+						}
+					},
+					error: function(result) {
+						console.log(result);
+					}
+				});
+			});
+//			点击确认删除  deptListDelBtn
+			$("#configInfoDetaildelInfo .sureChangeInfos").click(function(){
+				var configIds=$("#configInfoDetaildelInfo .ListCurrentIds").text().trim();
+				console.log(configIds);
+				$.ajax({
+					method: 'get',
+					url: config+'/sys/configType/remove',
+					contentType: "application/json; charset=utf-8",//传到后台的数据格式
+					async: true, 
+					data: {'id':configIds},
+					dataType:'jsonp',//接收值的格式
+					jsonp: 'jsoncallback', 
+					success: function(data) {  
+							console.log(data);
+							if(data.status==1){
+								$("#configInfoDetaildelInfo").css("display","none");
+								$(".configInfoDetailmodal").css("display","none");
+								alert(data.message)
+								getorderList();
+							}else{
+							alert(data.message);
+				//			window.location.reload();
+						}
+					},
+					error: function(result) {
+						console.log(result);
+					}
+				});
+			});
+//			添加配置信息
+			$("#lookingForDetails .addBtn").click(function(){
+				var addConfigNameTxt=$(".addConfigNameTxt input").val().trim();
+				var addConfigids=$(".addConfigTypeIds").val().trim();
+				var addEqualCode=$(".addEqualCode").val().trim();
+				var configMemo=$(".configMemo").val().trim();
+				console.log(addConfigNameTxt+" "+addConfigids+" "+addEqualCode+" "+configMemo);
+//				alert("aaa");
+				$.ajax({
+					method: 'get',
+					url: config+'/sys/configInfo/save',
+					contentType: "application/json; charset=utf-8",//传到后台的数据格式
+					async: true, 
+					data: {'name':addConfigNameTxt,'memo':configMemo,'fkTypeId':addConfigids,'equalCode':addEqualCode},
+					dataType:'jsonp',//接收值的格式
+					jsonp: 'jsoncallback', 
+					success: function(data) {  
+							console.log(data);
+							if(data.status==1){
+//								$("#newConfiguration").css("display","none");
+//								$(".modal").css("display","none");
+								alert(data.message)
+								getConfigorderList();
+								getorderList();
+								$(".addConfigNameTxt input").val("");
+								$(".addEqualCode").val("");
+								$(".configMemo").val("");
+							}else{
+							alert(data.message);
+				//			window.location.reload();
+						}
+					},
+					error: function(result) {
+						console.log(result);
+					}
+				});
+			});
+		</script>
+
+	</body>
+
+</html>

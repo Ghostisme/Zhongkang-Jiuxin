@@ -1,0 +1,84 @@
+.mui-content{
+	margin-top: 20px;
+}
+body{
+	padding:0 10px;
+}
+.mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before {
+    color: #e74c3b;
+}
+/*设置input样式*/
+.mui-content div input{
+	padding:0px;
+	padding-left:20px;
+	height:40px;
+	line-height: 40px;
+	border:0;
+}
+div.inputHeight{
+	overflow:hidden;
+	height:40px;
+	margin-bottom:20px;
+	background:#fff;
+	width:100%;
+	border-radius:5px;
+}
+div#codePrint{
+	width:70%;
+}
+div.inputHeight div img{
+	height:3%;
+	float:left;
+	margin:5px;
+	
+}
+.oldshow{
+	position:absolute;
+	right:20px;
+	top:65px;
+	margin:10px 5px 10px 10px;
+	height:3%;
+	cursor:pointer;
+	
+	
+	
+}
+div.inputHeight div img.show{
+	position:absolute;
+	right:20px;
+	top:130px;
+	height:3%;
+}
+div.inputHeight div img.reshow{
+	position:absolute;
+	right:20px;
+	top:185px;
+	margin:10px 5px 10px 10px;
+	height:3%;
+	cursor:pointer;
+	
+}
+
+.mui-content div.inputHeight div{
+	float:left;
+	color:#909090;
+	font-size:18px;
+}
+/*提交按钮设置*/
+.mui-btn-block{
+	padding:0;
+}
+.mui-content form .mui-btn{
+	height:40px;
+	margin-bottom:12px;
+	font-size:18px;
+}
+/*返回按钮大小调整*/
+.mui-icon-back:before, .mui-icon-left-nav:before {
+    font-size: 24px;
+}
+.submitBtn{
+	background-color: #ffcc00;
+	border:1px solid #ffcc00;
+	color:#323232;
+}

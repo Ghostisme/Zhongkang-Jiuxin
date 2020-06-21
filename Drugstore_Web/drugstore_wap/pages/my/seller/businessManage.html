@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../../styles/common_css/dibu.css">
+		<link rel="stylesheet" href="../../../styles/css/businessManage.css">
+		<title></title>
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">企业账户管理</span>
+		</header>
+		<!--企业账户管理内容区-->
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--导航条部分，公司信息，公司资质，银行账户-->
+					<ul class="manageNav">
+						<li class="bInfo">
+							<span class="manageNavImg"><img src="../../../styles/img/my_img/seller_img/positionY.png" alt="" class="show"/></span>
+							<span class="navtextColor">公司信息</span>
+						</li>
+						<li class="BVender">
+							<span class="manageNavImg"><img src="../../../styles/img/my_img/seller_img/positionY.png" alt="" class="hide"/></span>
+							<span>公司资质</span>
+						</li>
+						<li class="BAccount">
+							<span class="manageNavImg"><img src="../../../styles/img/my_img/seller_img/positionY.png" alt="" class="hide"/></span>
+							<span>银行账户</span>
+						</li>
+					</ul>
+					<!--企业信息内容区-->
+					<div class="businessInfo">
+						<ul class="businessInfoList">
+							<li class="businessInfoAll"id="companyL">
+								<span class="InfoTittle">企业LOGO</span>
+								<span class="Infocontent companyLOGO"><!--<img src="../../../../pc_aq/img/cont/01_1.png" alt="" />--></span>
+							</li>
+							<li class="businessInfoAll">
+								<span class="InfoTittle">企 业 名 称:</span>
+								<span class="Infocontent businessName"><!--德卡夫（天津）科技股份发展有限公司--></span>
+							</li>
+							<li class="businessInfoAll">
+								<span class="InfoTittle">法 人 代 表：</span>
+								<span class="Infocontent corPorate"><!--李猛--></span>
+							</li>
+							<li class="businessInfoAll">
+								<span class="InfoTittle">公 司 类 型：</span>
+								<span class="Infocontent companyclassify"><!--有限责任公司--></span>
+							</li>
+							<li class="businessInfoAll">
+								<span class="InfoTittle">所 在 地 区：</span>
+								<span class="Infocontent location"><!--天津市-天津市-武清区--></span>
+							</li>
+							<li class="businessInfoAll">
+								<span class="InfoTittle">详 细 地 址：</span>
+								<span class="Infocontent address"><!--武清区王庆坨工贸园13-603-1--></span>
+							</li>
+							<li class="businessInfoAll">
+								<span class="InfoTittle">联 系 方 式：</span>
+								<span class="Infocontent tel"><!--022-9525166--></span>
+							</li>
+							<li class="businessInfoAll">
+								<span class="InfoTittle">指定联系人：</span>
+								<span class="Infocontent contacts"><!--待定--></span>
+							</li>
+							<li class="businessInfoAll">
+								<span class="InfoTittle">指定手机号：</span>
+								<span class="Infocontent mobilephone"><!--13323343328--></span>
+							</li>
+							<li class="businessInfoAll">
+								<span class="InfoTittle">邮 箱 地 址：</span>
+								<span class="Infocontent email"><!--13323343328@126.com--></span>
+							</li>
+						</ul>
+					</div>
+					<!--公司资质内容区-->
+					<div class="businessAptitude">
+						<div class="businessLicence">
+							<img src="../../../styles/img/my_img/seller_img/businessManage04.png" alt="" />
+							<p>营业执照 </p>
+							<span class="mui-icon lfIcon mui-icon-forward"></span>
+							<span class="mui-icon rtIcon mui-icon-forward"></span>
+						</div>
+						<div class="accountPermit">
+							<img src="../../../styles/img/my_img/seller_img/businessManage02.png" alt="" />
+							<p>开户许可证 </p>
+							<span class="mui-icon AccountLfIcon mui-icon-forward"></span>
+							<span class="mui-icon AccountRtIcon mui-icon-forward"></span>
+						</div>
+						<div class="taxRegistration">
+							<img src="../../../styles/img/my_img/seller_img/businessManage05.png" alt="" />
+							<p>税务登记证 </p>
+							<span class="mui-icon taxLfIcon mui-icon-forward"></span>
+							<span class="mui-icon taxRtIcon mui-icon-forward"></span>
+						</div>
+						<div class="CorporateCertification">
+							<img src="../../../styles/img/my_img/seller_img/businessManage06.jpg" alt="" />
+							<p>企业认证授权书 </p>
+							<span class="mui-icon CorporateLfIcon mui-icon-forward"></span>
+							<span class="mui-icon CorporateRtIcon mui-icon-forward"></span>
+						</div>
+						<div class="organizationCode">
+							<img src="../../../styles/img/my_img/seller_img/businessManage07.jpg" alt="" />
+							<p>组织机构代码证 </p>
+							<span class="mui-icon codeLfIcon mui-icon-forward"></span>
+							<span class="mui-icon codeRtIcon mui-icon-forward"></span>
+						</div>
+						<div class="other">
+							<img src="../../../styles/img/my_img/seller_img/businessManage03.png" alt="" />
+							<p>其他证书 </p>
+							<span class="mui-icon otherLfIcon mui-icon-forward"></span>
+							<span class="mui-icon otherRtIcon mui-icon-forward"></span>
+						</div>
+					</div>
+					<!--银行账户内容区-->
+					<div class="Account">
+						<ul class="AccountList">
+							<li class="AccountAll">
+								<span class="AccountTittle">开户行：</span>
+								<span class="Accountcontent bankName"><!--中国建设银行--></span>
+							</li>
+							<li class="AccountAll">
+								<span class="AccountTittle">账&nbsp;&nbsp;&nbsp;&nbsp;号：</span>
+								<span class="Accountcontent accountNumber"><!--21262765856956568--></span>
+							</li>
+							<li class="AccountAll">
+								<span class="AccountTittle">税&nbsp;&nbsp;&nbsp;&nbsp;号：</span>
+								<span class="Accountcontent TaxNumber"><!--YJGTV21365105531535431454--></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../../mui/js/mui.min.js"></script>
+		<script src="../../../common/jquery-1.12.1.js"></script>
+		<script src="../../../common/common.js"></script>
+		<script src="businessManage.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,111 @@
+/* 顶部内容样式 */
+.right-close-btn{
+	position: absolute;
+	right: 0.425rem;
+	overflow: hidden;
+}
+.right-close-btn .closebtn{
+	background-color: transparent;
+	border: 0;
+	font-size: 0.45rem;
+	padding-right: 0.075rem;
+	color: #2292FE;
+}
+.right-close-btn .closebtn:focus{
+	outline: none;
+}
+/* 内容样式 */
+
+.content1{
+	text-align: left;
+	padding-top: 0.2rem;
+}
+.content1 p{
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 0.45rem;
+	margin-left: 0.45rem;
+	padding-top: 0.45rem;
+}
+.content1 p{
+	border-bottom: 1px solid #EDEDED;
+}
+/* .content p:not(:last-of-type){
+	border-bottom: 1px solid #EDEDED;
+} */
+.content1 p:first-of-type span:nth-of-type(2) i{
+	/* font-size: 0.45rem; */
+	font-size: 0.4rem;
+	color: #C3C3C3;
+}
+.content1 p span{
+	display: block;
+}
+.content1 p span:nth-of-type(odd){
+	text-align: left;
+	/*text-shadow: 0 0 0.0125rem rgba(0,0,0,1)*/
+}
+.content1 p span:nth-of-type(even){
+	color: #727377;
+	text-align: right;
+	border: 0;
+	/* font-size: 0.45rem; */
+	font-size: 0.4rem;
+	margin-right: 0.45rem;
+}
+.content1 p span:nth-of-type(even) input{
+	color: #727377;
+	text-align: right;
+	/* font-size: 0.45rem; */
+	font-size: 0.4rem;
+	border: 0;
+	/* margin-right: 0.45rem; */
+}
+.content1 p span:nth-of-type(even) input:focus{
+	outline: none;
+}
+.remarkstitle{
+	display: flex;
+	/* justify-content: space-between; */
+	justify-content: flex-start;
+	padding-bottom: 0.45rem;
+	margin-left: 0.45rem;
+	padding-top: 0.45rem;
+}
+.remarksBox{
+	display: flex;
+	justify-content: flex-start;
+	padding-bottom: 0.45rem;
+	margin-left: 0.45rem;
+	margin-right: 0.45rem;
+}
+.remarksBox textarea{
+	width: 100%;
+	border: 0;
+	/* height: 1.5rem; */
+	text-align: left;
+	font-size: 0.45rem;
+	height: 5rem;
+}
+#memoNum{
+	font-size: 0.45rem;
+	/* padding-top: 0.075rem; */
+	/* margin-right: 0.65rem; */
+	color: #666666;
+	padding-top: 0.12rem;
+}
+/* 输入内容下拉 */
+/* .content p span select{
+	font-size: 0.45rem;
+	padding: 0rem 0.5rem;
+	text-align: center;
+} */
+/* .content p span select option{
+	font-size: 0.45rem;
+} */
+/* .content p span select:focus{
+	outline: none;
+} */
+.mobileSelect .content .panel .selectLine{
+	top: 82px !important;
+}

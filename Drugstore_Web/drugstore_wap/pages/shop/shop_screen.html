@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/css/nav.css">
+		<link rel="stylesheet" href="../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../styles/css/shop_screen.css">
+		<link href="../../mui/css/mui.picker.css" rel="stylesheet" />
+		<link href="../../mui/css/mui.poppicker.css" rel="stylesheet" />
+		
+	</head>
+
+	<body>
+		<!--顶部actionBar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">商城筛选</span>
+		</header>
+		<!--内容部分-->
+		<div class="mui-content">
+			<!--类别-->
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul id="" class="mui-table-view ">
+						<li class="mui-table-view-cell mui-media">
+							<img class="title-img" src="../../styles/img/shop_img/type.png" />
+							<span class="title">类别</span>
+						</li>
+						<li class="mui-table-view-cell mui-media"id="all">
+							<span class="title-all">全部</span>
+							<img src="../../styles/img/home_img/arrow_down.png" class="mui-pull-right up-arrow" />
+						</li>
+						<!--类别全部分类-->
+							<!--<ul id="gj_ul" class="nav_child">
+							<li>
+								<a id="coiledMaterial" href="#" onclick="changeTab1(this.id)">防水卷材</a>
+							</li>
+							<li>
+								<a id="paint" href="#" onclick="changeTab1(this.id)">防水涂料</a>
+							</li>
+							<li>
+								<a id="RigidCoating" href="#" onclick="changeTab1(this.id)">刚性防水材料</a>
+							</li>
+							<li>
+								<a id="tiling" href="#" onclick="changeTab1(this.id)">瓦类防水材料</a>
+							</li>
+							<li>
+								<a id="buidingSeal" href="#" onclick="changeTab1(this.id)">建筑密封材料</a>
+							</li>
+							<li>
+								<a id="lostCirculation" href="#" onclick="changeTab1(this.id)">堵漏材料</a>
+							</li>
+						</ul>-->
+					</ul>
+					</ul>
+					<ul id="" class="mui-table-view ">
+						<li class="mui-table-view-cell mui-media">
+							<img class="title-img" src="../../styles/img/shop_img/pinzhong.png" />
+							<span class="title">品种</span>
+						</li>
+						<li class="mui-table-view-cell mui-media"id="varietyAll">
+							<span class="title-all">全部</span>
+							<img src="../../styles/img/home_img/arrow_down.png" class="mui-pull-right up-arrow" />
+						</li>
+						
+						
+					</ul>
+					<ul id="" class="mui-table-view ">
+						<li class="mui-table-view-cell mui-media">
+							<img class="title-img" src="../../styles/img/shop_img/biaozhun.png" />
+							<span class="title">标准</span>
+						</li>
+						<li class="mui-table-view-cell mui-media"id="standard">
+							<span class="title-all">国标标准</span>
+							<img src="../../styles/img/home_img/arrow_down.png" class="mui-pull-right up-arrow" />
+						</li>
+					</ul>
+					<ul id="" class="mui-table-view ">
+						<li class="mui-table-view-cell mui-media">
+							<img class="title-img" src="../../styles/img/shop_img/location.png" />
+							<span class="title">仓库位置</span>
+						</li>
+						<li id="select_city" class="mui-table-view-cell mui-media">
+							<span id="show_city" class="title-all">省-市-区</span>
+							<img src="../../styles/img/home_img/arrow_down.png" class="mui-pull-right up-arrow" />
+						</li>
+					</ul>
+					<ul id="" class="mui-table-view ">
+						<li class="mui-table-view-cell mui-media">
+							<span id="company" class="title-all">公司:</span>
+							<input id="company-input" type="text" value="" placeholder="点击输入"/>
+						</li>
+					</ul>
+
+				</div>
+				<div id="bg"></div>
+			</div>
+				<ul id="gj_ul" class="nav_child">
+					<li>
+						<a id="coiledMaterial" href="#" onclick="changeTab1(this.id)">防水卷材</a>
+					</li>
+					<li>
+						<a id="paint" href="#" onclick="changeTab1(this.id)">防水涂料</a>
+					</li>
+					<li>
+						<a id="RigidCoating" href="#" onclick="changeTab1(this.id)">刚性防水材料</a>
+					</li>
+					<li>
+						<a id="tiling" href="#" onclick="changeTab1(this.id)">瓦类防水材料</a>
+					</li>
+					<li>
+						<a id="buidingSeal" href="#" onclick="changeTab1(this.id)">建筑密封材料</a>
+					</li>
+					<li>
+						<a id="lostCirculation" href="#" onclick="changeTab1(this.id)">堵漏材料</a>
+					</li>
+				</ul>
+				<!--品种item-->
+				<div class="mui-scroll-wrapper"id="varietyDetail">
+						    <div class="mui-scroll">
+						        <ul class="mui-table-view">
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                         	聚合物改性沥青卷材
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                       		沥青卷材  
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                         	金属卷材
+						                    </a>
+						                </li>
+						               <li class="mui-table-view-cell">
+						                    <a>
+						                         	合成高分子卷材
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                         	抗根卷材
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                       		合成高分子涂料	  	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                      		聚合物改性沥青涂料   	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                      		沥青基涂料   	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                      		水泥基涂料   	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                       		聚氨酯涂料  	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                     		丙烯酸涂料    	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                      		防水混凝土   	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                      		防水砂浆   	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                      		刚性混凝土涂层防水   	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                      		混凝土渗透结晶型防水   	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                     		混凝土表面憎水剂防水    	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                      		粘土瓦   	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                     		有机瓦    	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                      		波形瓦   	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                      		金属瓦   	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                      		水泥瓦   	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                     		合成高分子密封材料    	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                     		高聚物改性沥青密封材料    	
+						                    </a>
+						                </li>
+						                <li class="mui-table-view-cell">
+						                    <a>
+						                     		 堵漏材料   	
+						                    </a>
+						                </li>
+						            </ul>
+						    </div>
+						</div>
+						
+						<!--国家标准-->
+						<ul class="mui-table-view"id="standardDetail">
+						        <li class="mui-table-view-cell">
+						            <a >
+						                	国家标准
+						            </a>
+						        </li>
+						        <li class="mui-table-view-cell">
+						            <a>
+						                 	行业标准
+						            </a>
+						        </li>
+						        <li class="mui-table-view-cell">
+						            <a>
+						                 	地方标准
+						            </a>
+						        </li>
+						        <li class="mui-table-view-cell">
+						            <a>
+						                 	公司标准
+						            </a>
+						        </li>
+						        <li class="mui-table-view-cell">
+						            <a>
+						                 	其它
+						            </a>
+						        </li>
+						    </ul>
+			<!--底部按钮-->
+			<div id="bottom-btn">
+				<div id="bottom-div" class="mui-text-center">
+					<img id="bottom-img" src="../../styles/img/shop_img/reset.png" />
+					<span id="bottom-reset">重置</span>
+				</div>
+				<span id="bottom-finish" class="mui-pull-right">完成</span>
+			</div>
+		</div>
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script type="text/javascript" src="../../mui/js/mui.pullToRefresh.js"></script>
+		<script type="text/javascript" src="../../mui/js/mui.pullToRefresh.material.js"></script>
+		<script src="shop_screen.js"></script>
+		<script src="../../mui/js/mui.picker.js"></script>
+		<script src="../../mui/js/mui.poppicker.js"></script>
+		<script src="../../mui/js/mui.picker.min.js"></script>
+		<script src="../../mui/js/city.data.js"></script>
+		<script src="../../mui/js/city.data-3.js"></script>
+		<script>
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					var cityPicker3 = new $.PopPicker({
+						layer: 3
+					});
+					cityPicker3.setData(cityData3);
+					var showCityPickerButton = doc.getElementById('select_city');
+					var cityResult3 = doc.getElementById('show_city');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker3.show(function(items) {
+							cityResult3.innerText =(items[0] || {}).text + "-" + (items[1] || {}).text + "-" + (items[2] || {}).text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				});
+			})(mui, document);
+		</script>
+		
+	</body>
+
+</html>

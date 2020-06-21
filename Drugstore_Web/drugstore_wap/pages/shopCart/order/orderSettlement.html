@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>订单提交</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../mui/css/common.css" />
+		<link rel="stylesheet" href="../../../styles/css/orderSettlement.css">
+		<link rel="stylesheet" href="../../../styles/common_css/common_dialog.css">
+		<style type="text/css">
+			.packageTitleInfo{
+				    margin-left: 10px;
+   					 color: #999;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">订单提交</span>
+		</header>
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--编辑收货信息-->
+					<div id="editor_goods_info" onclick="editorLocation()">
+						<!--<img src="../../../styles/img/shopCart_img/order/order_location.png" />-->
+						<span id="font_goods_info">请添加收货地址</span>
+						<span id="arrow_right" class="mui-icon mui-icon-forward mui-pull-right"></span>
+					</div>
+					<div id="editor_goods_hasinfo" onclick="editorLocationList()">
+						<div class="lf"style="width: 8%;">
+							<img src="../../../styles/img/shopCart_img/order/order_location.png" />
+						</div> 
+						<div class="lf"style="width: 87%;line-height: 1.2;">
+							<div id="font_goods_hasinfo"style="margin-bottom: 13px;">收货人：<span style="margin-right: 45px;"class="receiverName">小邋遢</span><span class="receiverTel">15066688888</span></div>
+							
+							<div>
+								<span class="nomal">默认</span>
+								<span class="targs">公司</span>
+								<span class="receiverAddr">天津市和平区金谷大厦(滨江道)31层</span>
+							</div>
+						</div>
+						<span id="arrow_hasright" class="mui-icon mui-icon-forward mui-pull-right"style="width: 5%;"></span>
+					</div>
+					<div class="border-Bg"></div>
+					<!--商品信息-->
+					<div id="shop_info">
+						<ul class="mui-table-view " id="res_list">
+							<!--<li class="mui-table-view-cell mui-media">
+									<div class="right_box mui-slider-handle">
+										<div class="border-bottom">
+											<div class="productImgs">
+												<img src="../../../styles/img/shop_img/productImg1.png" alt="" />
+											</div>
+											<div class="product_info">
+												<div>
+													<span class="pro_font shopofname">这是一个霸气侧漏的商品</span>
+												</div>
+												<div>
+													<span class="pro_font">规格为：</span>
+													<span class="pro_font">0.3gx10粒/盒</span>
+												</div>
+												<div class="RMB_single">
+													<span class="RMB">￥</span>
+													<span class="RMBmoney_count">126.50</span>
+													<span class="RMBmoney_unit">/板</span>
+												</div>
+												<div class="num">
+													<div class="numEdit">
+														<div class="num_calculate">
+															<div class="sup_num mui-text-center">
+																<span>-</span>
+															</div>
+															<div class="mid_num">
+																<input class="num_pro mui-text-center" type="text" value="1" />
+															</div>
+															<div class="add_num mui-text-center">
+																<span>+</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="productid" style="display: none;"></div>
+											<div class="storeid" style="display: none;"></div>
+											<div class="companyid" style="display: none;"></div>
+										</div>
+									</div>
+								</li>
+								
+								<li class="mui-table-view-cell mui-media">
+									<div class="right_box mui-slider-handle">
+										<div class="border-bottom">
+											<div class="productImgs">
+												<img src="../../../styles/img/shop_img/productImg1.png" alt="" />
+											</div>
+											<div class="product_info">
+												<div>
+													<span class="pro_font shopofname">这是一个霸气侧漏的商品</span>
+												</div>
+												<div>
+													<span class="pro_font">规格为：</span>
+													<span class="pro_font">0.3gx10粒/盒</span>
+												</div>
+												<div class="RMB_single">
+													<span class="RMB">￥</span>
+													<span class="RMBmoney_count">126.50</span>
+													<span class="RMBmoney_unit">/板</span>
+												</div>
+												<div class="num">
+													<div class="numEdit">
+														<div class="num_calculate">
+															<div class="sup_num mui-text-center">
+																<span>-</span>
+															</div>
+															<div class="mid_num">
+																<input class="num_pro mui-text-center" type="text" value="1" />
+															</div>
+															<div class="add_num mui-text-center">
+																<span>+</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="productid" style="display: none;"></div>
+											<div class="storeid" style="display: none;"></div>
+											<div class="companyid" style="display: none;"></div>
+										</div>
+									</div>
+								</li>
+								
+								<li class="mui-table-view-cell mui-media">
+									<div class="right_box mui-slider-handle">
+										<div class="border-bottom">
+											<div class="productImgs">
+												<img src="../../../styles/img/shop_img/productImg1.png" alt="" />
+											</div>
+											<div class="product_info">
+												<div>
+													<span class="pro_font shopofname">这是一个霸气侧漏的商品</span>
+												</div>
+												<div>
+													<span class="pro_font">规格为：</span>
+													<span class="pro_font">0.3gx10粒/盒</span>
+												</div>
+												<div class="RMB_single">
+													<span class="RMB">￥</span>
+													<span class="RMBmoney_count">126.50</span>
+													<span class="RMBmoney_unit">/板</span>
+												</div>
+												<div class="num">
+													<div class="numEdit">
+														<div class="num_calculate">
+															<div class="sup_num mui-text-center">
+																<span>-</span>
+															</div>
+															<div class="mid_num">
+																<input class="num_pro mui-text-center" type="text" value="1" />
+															</div>
+															<div class="add_num mui-text-center">
+																<span>+</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="productid" style="display: none;"></div>
+											<div class="storeid" style="display: none;"></div>
+											<div class="companyid" style="display: none;"></div>
+										</div>
+									</div>
+								</li>-->
+						</ul>
+						<div class="sendWayAndMessage">
+							<ul class="mui-table-view"id="sendWayAndMsgBox">
+								<li class="mui-table-view-cell">
+										<span>配送方式</span>
+										<span class="rt">快递
+											<span style="display: none;">
+												<span class="moneyRed">￥</span>
+												<span class="moneyRed expressDelivery">0.00</span>
+											</span>
+											
+										</span>
+										
+								</li>
+								<li class="mui-table-view-cell">
+										<span class="lf MsgTitle">
+											买家留言
+										</span>
+										<input type="text" placeholder="请输入您的备注留言"class="leaveMsg rt"/>
+								</li>
+							</ul>
+							<!--<div class="productStatistics">
+								<span>共</span>
+								<span class="shop_count">3</span>
+								<span>件商品，小计：￥</span>
+								<span class="RMB_total">389.50</span>
+							</div>-->
+						</div>
+					</div>
+					<!--开票信息-->
+					<div id="invoice_info_div">
+						<div id="invoice_title_div">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									支付方式
+									<span class="rt"><i class="mui-icon mui-icon-checkmarkempty payOnlineIcon"></i>在线支付</span>
+								</li>
+								<li class="mui-table-view-cell"id="jumpEditInvoice">
+									<a class="mui-navigate-right">
+										<span class="lf issueInvoiceTitle">开具发票</span>
+										<span class="rt issueInvoiceTxt">不开发票</span>
+										<!--<input type="text" class="rt issueInvoiceTxt"placeholder="不开发票"/>-->
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div id="invoice_info_content"style="display: none;">
+							<div class="invoice_row">
+								<div class="invoice_title">
+									<span>抬头:</span>
+								</div>
+								<div class="invoice_editor">
+									<input id="invoice_head" class="input_editor" type="text" placeholder="点击编辑" disabled="true"/>
+								</div>
+								<div class="invoice_arrow mui-pull-right">
+									<span class="mui-icon mui-icon-forward"></span>
+								</div>
+							</div>
+							<div class="invoice_row">
+								<div class="invoice_title">
+									<span>开户行:</span>
+								</div>
+								<div class="invoice_editor">
+									<input id="bank_name" class="input_editor" type="text" placeholder="点击编辑" disabled="true"/>
+								</div>
+								<div class="invoice_arrow mui-pull-right">
+									<span class="mui-icon mui-icon-forward"></span>
+								</div>
+							</div>
+							<div class="invoice_row">
+								<div class="invoice_title">
+									<span>账号:</span>
+								</div>
+								<div class="invoice_editor">
+									<input id="account_num" class="input_editor" type="text" placeholder="点击编辑" disabled="true"/>
+								</div>
+								<div class="invoice_arrow mui-pull-right">
+									<span class="mui-icon mui-icon-forward"></span>
+								</div>
+							</div>
+							<div class="invoice_row">
+								<div class="invoice_title">
+									<span>税号:</span>
+								</div>
+								<div class="invoice_editor">
+									<input id="invoice_num" class="input_editor" type="text" placeholder="点击编辑" disabled="true"/>
+								</div>
+								<div class="invoice_arrow mui-pull-right">
+									<span class="mui-icon mui-icon-forward"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--优惠券-->
+					<div class="productMoney">
+						<div id="productMoney_title_div">
+							<ul class="mui-table-view"id="productMoneyBox">
+								<li class="mui-table-view-cell">
+										<span>商品金额</span>
+										<span class="rt">
+											<span>￥</span>
+											<span class="productMoneyTotal">0.00</span>
+										</span>
+										
+								</li>
+								<li class="mui-table-view-cell">
+										<span>优惠</span>
+										<span class="rt">
+											<span class="moneyRed">-￥</span>
+											<span class="moneyRed freeMoney">0.00</span>
+										</span>
+								</li>
+								<li class="mui-table-view-cell">
+										<span>运费</span>
+										<span class="rt">
+											<span class="moneyRed">￥</span>
+											<span class="moneyRed expressDeliveryCell">0.00</span>
+										</span>
+										
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="orderWarns">
+				 		<b>!</b>
+				 		提醒：由于药品属性和储藏条件等特性，药品一旦售出，概不退换
+					</div>
+				</div>
+			</div>
+			<div id="couponPop">
+				<div class="couponTitle">可使用优惠券</div><span class="closeCouponChose">×</span>
+				<div style="clear: both;"></div>
+				<div id="couponList">
+					<!--<div class="Items">
+						<label class="fulltominus"for="coupon1">满50000减5000</label>
+						<input type="checkbox" class="choseCheckbox"id="coupon1"/>
+					</div>-->
+					
+				</div>
+			</div>
+			<!--提交按钮-->
+			<div id="submit_btn" class="mui-text-center"style="z-index: 999;">
+				<span class="lf totalMoney">
+					<span>共</span>
+					<span class="shop_count_all">0</span>
+					<span>件，应付金额（含运费）：￥</span>
+					<span class="RMB_total_all">0.00</span>
+				</span>
+				<span class="rt settleAccounts">结算</span>
+			</div>
+		</div>
+		<div id="bg" class="mui-backdrop" style="display: none;"></div>
+		<div id="wait_dialog" class="mui-text-center mui-popup mui-popup-in">
+			<span class="mui-spinner"></span>
+			<span id="wait_dialog_font">正在提交，请稍等...</span>
+		</div>
+		<script src="../../../mui/js/mui.min.js"></script>
+		<script src="../../../common/jquery-1.12.1.js"></script>
+		<script src="../../../common/common.js"></script>
+		<script src="orderSettlement.js"></script>
+	</body>
+
+</html>

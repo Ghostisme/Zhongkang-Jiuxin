@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>药店连锁-热卖商品维护</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"/>
+    <link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" href="../../css/raw_table.css">
+
+    <link href="../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../css/animate.min.css" rel="stylesheet">
+
+
+    <script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script src="../../js/raw_fenye.js"></script>
+    <script src="../../js/template.js"></script>
+    <script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+    <script src="../../js/hi_home.js"></script>
+    <style type="text/css">
+    	.noDrugWarn{
+    		color: #E4393C;
+    		margin-top: 5px;
+    		display: none;
+    	}
+    </style>
+</head>
+<body>
+<div class="contain">
+    <div class="rightLoadContent">
+        <!--页面数据呈现区-->
+        <div class="disContents">
+            <!--搜素区域-->
+            <div class="searchInfos">
+                <div class="rt addData"  data-toggle="modal" data-target="#myModal1" >
+                    新增
+                </div>
+            </div>
+            <!--列表区域-->
+            <div class="resultLists">
+                <!--列表表头-->
+                <div class="resultListsTitle">
+                    <div class="resultListsItem2 lf LiTextAlign">
+                        序号
+                    </div>
+                    <div class="resultListsItem2 lf LiTextAlign">
+                        药品名称
+                    </div>
+                    <div class="resultListsItem2 lf LiTextAlign">
+                        价格(元)
+                    </div>
+                    <div class="resultListsItem2 lf LiTextAlign">
+                        图片
+                    </div>
+                    <div class="resultListsItem2 lf LiTextAlign">
+                        标签
+                    </div>
+                    <div class="resultListsItem3 lf LiTextAlign">
+                        操作
+                    </div>
+                </div>
+                <div class="resultListsContents" id="table_tpl_div">
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--新增模态框-->
+<div class="modal inmodal fade" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="allot_title">热卖商品保存</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal m-t" id="sgForm" >
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">药品名称：</label>
+                        <div class="col-sm-6">
+                            <div class=" input-group">
+                                <input type="text" class="form-control" id="ryaoName" name="title" >
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                    </button>
+                                </div>
+                                <ul class="dropdown-menu dropdown-menu-right scrollHeight" role="menu">
+                                </ul>
+                            </div>
+                            <div class="noDrugWarn">药品库无此药品</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">价格：</label>
+                        <div class="col-sm-6">
+                            <input id="price" readonly name="price" maxlength="10" class="form-control" type="text">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">图片：</label>
+                        <div class="col-sm-6">
+                            <input id="img1Up" style="display: none;" onchange="img1Upload(this)" class="form-control" type="file" id="bannerImg"/>
+                            <span onclick="filebtnclick(this)" class="glyphicon glyphicon-open fileBtn" ></span>
+                            <img id="bannerUrl_img" class="simg" src="">
+                            <button id="bannerUrl_idelbtn" onclick="delImg_banner(this)" class="btn btn-warning btn-circle simg_del" type="button"><i class="fa fa-times"></i></button>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">标签：</label>
+                        <div class="col-sm-6">
+                            <input style="display: none;" onchange="img2Upload(this)" class="form-control" type="file" id="tagchangeImg"/>
+                            <span onclick="filebtnclick(this)" class="glyphicon glyphicon-open fileBtn" ></span>
+                            <img id="tagUrl_img" class="simg" src="">
+                            <button id="tagUrl_idelbtn" onclick="delImg_tag(this)" class="btn btn-warning btn-circle simg_del" type="button"><i class="fa fa-times"></i></button>
+
+                        </div>
+                    </div>
+                    <input id="up_id" name="id" type="hidden">
+                    <input type="hidden" name="accessPath" id="rec" value="293">
+                    <input type="hidden" name="bannerUrl" id="bannerUrl" value="">
+                    <input type="hidden" name="tagUrl" id="tagUrl" value="">
+
+                    <!--固定type-->
+                    <input type="hidden" name="type"  value="1">
+                    <!--无用必传值-->
+                    <input type="hidden" name="bjUrl" id="bjUrl" value="bjUrl" >
+                    <input type="hidden" name="memo" id="memo" value="memo" >
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="dosubmit()" class="btn btn-primary">保存</button>
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--table模板-->
+<script id="table_tpl" type="text/html">
+    <%for(var i=0;i< data.length;i++){%>
+    <div class="resultListInfo">
+        <div class="listId" style="display:none"><%=data[i].id%></div>
+        <!--<div class="resultListsItem2 lf items LiTextAlign"><%=data[i].bannerSort%></div>-->
+        <div class="resultListsItem2 lf items LiTextAlign"><%=i+1%></div>
+        <div class="resultListsItem2 lf items LiTextAlign"><%=data[i].title%></div>
+        <div class="resultListsItem2 lf items LiTextAlign"><%=data[i].price%></div>
+        <div class="resultListsItem2 lf items LiTextAlign"><img src="<%=data[i].bannerUrl%>" height="100%"></div>
+        <div class="resultListsItem2 lf items LiTextAlign"><img src="<%=data[i].tagUrl%>" height="100%"></div>
+
+        <div class="resultListsItem1 lf items LiTextAlign btnTextColor">
+            <span class="changeImg" data-index="<%=i%>" onclick="updateclick(this)" data-toggle="modal" data-target="#myModal1">修改</span>
+        </div>
+        <div class="resultListsItem1 lf items LiTextAlign btnTextColor">
+            <span class="delImg" data-id="<%=data[i].id%>" onclick="form_del(this)">删除</span>
+        </div>
+        <div class="resultListsItem1 lf items LiTextAlign ">
+            <span data-index="<%=i%>" onclick="r_shang(this)" class="btnTextColor  glyphicon glyphicon-arrow-up"></span>
+            <span data-index="<%=i%>" onclick="r_xia(this)" class="btnTextColor  glyphicon glyphicon-arrow-down"></span>
+        </div>
+
+    </div>
+    <%}%>
+</script>
+<!--初始化-->
+<script>
+    getDateList();
+    suggestInit();
+    var listData=[];
+    //获取数据1列表
+    function getDateList() {
+        $(".resultListsContents form").html('');
+        $.ajax({
+            type: "get",
+            url: config + "/admin/drug/bannerHot/list",
+            async: true,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            success: function (data) {
+                //模板渲染
+                listData  = data.resultMap.list;
+                var tpl_data = {
+                    data: listData
+                }
+                var tpl_html = template.render('table_tpl', tpl_data);
+                $('.resultListsContents').html(tpl_html);
+            },
+        });
+
+    }
+</script>
+<!--增删改等等操作-->
+<script>
+    function dosubmit() {
+    	if($('#up_id').val() != "") {
+					if($("#ryaoName").val() != "") {
+						
+					} else {
+						alert("请输入药品名称");
+						return;
+					}
+				} else {
+					if($("#ryaoName").val() != "") {
+						
+					} else {
+						alert("请输入药品名称");
+						return;
+					}
+				}
+        $("#sgForm").submit();
+    }
+    
+    var isHasDrug=0;
+    function searchGoods(){
+    	var nameAndTel=$("#ryaoName").val();
+    	$.ajax({
+						type:"get",
+						url:config+"/drug/info/getDrugList",
+						async:false,
+						dataType:"JSON",
+						data:{
+							stockCheck:1,
+							retailPriceStart:"", 
+							retailPriceEnd:"", 
+							typeId:'',
+							categoryId:'',
+							fullName:nameAndTel,
+							offset:0,//（页码-1）*每页显示条数
+							limit:''//每页赢显示的条数	
+						},
+						success:function(data){
+							console.log("aaaaaaaaaaaaaaaaaaa");
+							console.log(data);
+							var applyInfoList=data.resultMap.commodityInfoList;
+							var listTotal=data.resultMap.total;//总条数
+							if(listTotal>0){
+								isHasDrug=1;
+								$(".noDrugWarn").css("display","none");
+							}else{
+								isHasDrug=0;
+								$(".noDrugWarn").css("display","block");
+							}
+						},
+						error:function(data){
+							console.log(data);
+						}
+					});
+    }
+    $(document).on("blur","#ryaoName",function(){
+    	searchGoods();
+    })
+    $(function () {
+        //保存验证
+        var e = "<i class='fa fa-times-circle'></i> ";
+        var vaForm = $("#sgForm").validate({
+            submitHandler : function(form) {
+                if($('#up_id').val()!=""){
+                    form_update();
+                }else{
+                	if(isHasDrug==1){
+                		form_save();
+                	}
+                    
+                }
+            }/*,
+            rules: {
+                title: {
+                    required: !0
+                },
+                bannerUrl:{
+                    required: !0
+                },
+                tagUrl:{
+                    required: !0
+                }
+            },
+            messages: {
+                title: {
+                    required: e + "名称不能为空"
+                },
+                bannerUrl: {
+                    required: e + "请上传图片"
+                },
+                tagUrl: {
+                    required: e + "请上传图片"
+                }
+            }*/
+        });
+        //隐藏模态框时清空模态框
+        $('#myModal1').on('hide.bs.modal', function () {
+            vaForm.resetForm();
+            document.getElementById("sgForm").reset();
+            $('#up_id').val("");
+            $('.simg').hide();
+            $('.simg_del').hide();
+        });
+    });
+    function updateclick(that){
+        var index=$(that).attr('data-index');
+        var data=listData[index];
+        $('#up_id').val(data.id);
+
+        //赋值模态框
+        $('#ryaoName').val(data.title);
+        $('#rec').val(data.accessPath);
+        $('#price').val(data.price);
+        $('#bannerUrl').val(data.bannerUrl);
+        $('#tagUrl').val(data.tagUrl);
+
+        $('#bannerUrl_img').attr('src',data.bannerUrl);
+        $('#bannerUrl_img').show();
+        $('#bannerUrl_idelbtn').show();
+
+
+        $('#tagUrl_img').attr('src',data.tagUrl);
+        $('#tagUrl_img').show();
+        $('#tagUrl_idelbtn').show();
+
+    }
+    function form_update() {
+        $.ajax({
+            type: "get",
+            url: config + "/admin/drug/bannerHot/update",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data:formAjaxData('#sgForm'),
+            success: function (data) {
+                alert(data.message);
+                if(data.status!=2){
+                    $('#myModal1').modal('hide');
+                    getDateList();
+                }
+            },
+        });
+    }
+    function form_save() {
+        $.ajax({
+            type: "get",
+            url: config + "/admin/drug/bannerHot/save",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data:formAjaxData('#sgForm'),
+            success: function (data) {
+                alert(data.message);
+                if(data.status!=2){
+                    $('#myModal1').modal('hide');
+                    getDateList();
+                }
+            },
+        });
+    }
+    function form_del(that) {
+        var r = confirm("确定删除吗？")
+    if(r == true) {
+        var del_id=$(that).attr('data-id');
+        $.ajax({
+            type: "get",
+            url: config + "/admin/drug/bannerHot/remove",
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data:{id:del_id},
+            success: function (data) {
+                alert(data.message);
+                if(data.status!=2){
+                    $('#myModal1').modal('hide');
+                    getDateList();
+                }
+            },
+        });
+    }
+    }
+    function r_shang(that) {
+        var index=$(that).attr('data-index');
+        if(index==0){
+            alert('调整方向成功');
+            return;
+        }
+        var i2=parseInt(index)-1;
+
+        var s_data=listData[i2];
+        var data=listData[index];
+        sx_up5(data.id,s_data.id,function () {
+            if(data.status!=2){
+                $('#myModal1').modal('hide');
+                getDateList();
+            }
+        });
+    }
+    function r_xia(that) {
+        var index=$(that).attr('data-index');
+        if(index==listData.length-1){
+            alert('调整方向成功');
+            return;
+        }
+        var i2=parseInt(index)+1;
+
+        var x_data=listData[i2];
+        var data=listData[index];
+        sx_up5(data.id,x_data.id,function () {
+            if(data.status!=2){
+                $('#myModal1').modal('hide');
+                getDateList();
+            }
+        });
+    }
+</script>
+<!--图片上传-->
+<script>
+    function img1Upload(that) {
+    	console.log("--------------")
+        uploadImg(that,function (url) {
+            $('#bannerUrl').val(url);
+            $(that).parent().find('.simg').attr('src',url);
+            $(that).parent().find('.simg').show();
+            $(that).parent().find('.simg_del').show();
+			if(url == null){
+				$(that).parent().find('.simg_del').hide();
+			}
+        });
+    }
+    function img2Upload(that) {
+        uploadImg(that,function (url) {
+            $('#tagUrl').val(url);
+            $(that).parent().find('.simg').attr('src',url);
+            $(that).parent().find('.simg').show();
+            $(that).parent().find('.simg_del').show();
+            if(url == null){
+				$(that).parent().find('.simg_del').hide();
+			}
+        });
+    }
+
+    function delImg_tag(that) {
+        $('#tagUrl').val("");
+        $("#tagchangeImg").val("");
+        $(that).parent().find('.simg').hide();
+        $(that).hide();
+		console.log($('#tagUrl').val());
+    }
+
+    function delImg_banner(that) {
+        $('#bannerUrl').val("");
+        $("#bannerImg").val("");
+        $(that).parent().find('.simg').hide();
+        $(that).hide();
+
+    }
+
+</script>
+</body>
+</html>

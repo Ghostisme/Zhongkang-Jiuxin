@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--字体icon-->
+		<link rel="stylesheet" type="text/css" href="../../mui/font/iconfont.css" />
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="pay.css"/>
+		<!-- 头底 -->
+		<link rel="stylesheet" type="text/css" href="../../mui/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../styles/common_css/dibu.css" />
+		
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">确认支付</h1>
+		</header>
+		<div class="payMoney">
+			<div class="title">
+				应付金额：
+			</div>
+			<div class="money">
+				32.90
+			</div>
+			<span style="margin-left: 60px;">(包含<span class="freight">10.00</span>元运费)</span>
+		</div>
+		<div class="payType">
+			<!--<div class="title">
+				在线支付
+			</div>-->
+			<ul class="mui-table-view mui-table-view-radio">
+			    <li class="mui-table-view-cell mui-selected">
+			        <!--<a class="mui-navigate-right">
+						<img src="img/alipay_icon.png" class="payIcon" />
+						<span class="AlipayImg">支付宝支付</span>
+					</a>-->
+					<!--<a class="">
+						<img src="img/alipay_icon.png" class="payIcon" />
+						<span class="payTitle">支付宝支付</span>
+						<span>支付宝花呗分期支付</span>
+					</a>-->
+					<div class="payBox">
+						<div class="iconBox">
+							<img src="img/alipay_icon.png" class="payIcon" />
+						</div>
+						<div class="payTextBox">
+							<div class="payTitle">支付宝支付</div>							
+							<div class="payExplain">支付宝花呗分期支付</div>
+							<i class="iconfont icon-arrow-right-copy iconPos"></i>
+						</div>						
+					</div>
+			    </li>
+			    <li class="mui-table-view-cell">
+			        <!--<a class="mui-navigate-right">
+						<img src="img/weChat_icon.png" class="payIcon" />
+						<span class="WeChatImg">微信支付</span>
+					</a>-->
+					<!--<a class="">
+						<img src="img/weChat_icon.png" class="payIcon" />
+						<span class="payTitle">微信支付</span>
+						<span>推荐有微信账号的用户使用</span>
+					</a>-->
+					<div class="payBox">
+						<div class="iconBox">
+							<img src="img/weChat_icon.png" class="payIcon" />
+						</div>
+						<div class="payTextBox">
+							<div class="payTitle">微信支付</div>
+							<div class="payExplain">推荐有微信账号的用户使用</div>
+							<i class="iconfont icon-arrow-right-copy iconPos"></i>
+						</div>
+					</div>
+			    </li>
+			</ul>
+			<!--<div class="moreType">
+				<a href="#moreTypeContainer">更多支付方式</a>
+			</div>-->
+		</div>
+		<!--<div class="payBtnBox">
+			<button class="payBtn">付款</button>
+		</div>-->
+		<div id="moreTypeContainer" class="box mui-popover mui-popover-action mui-popover-bottom">
+			<header class="mt_header">
+			    <a href="#moreTypeContainer"><img src="img/back.png"/></a>
+			    <h1 class="mui-title">更多支付方式</h1>
+			</header>
+			<div class="title">
+				平台对公账户
+			</div>
+			<div class="mt_content">
+				<p>账户名：德卡夫（天津）科技发展股份有限公司</p>
+				<p>开户行：中国农业银行天津榕苑路支行</p>
+				<p>账户：201101040001953</p>
+				<p>税号：91120116069882769W</p>
+			</div>
+			<div class="voucher">
+				线下打款至平台对公账户并上传打款凭证
+			</div>
+			<div class="uploadVoucher">
+				<form id="voucher" enctype="multipart/form-data" method="post" target="id_iframe">
+					<div class="picBox basicCont">
+						<div class="imgBox">
+							<img class="imgs" id="pic" src="img/upload.png">
+						</div>
+						<span class="fileBtn">点击选择图片
+								<input class="picFile" id="picFile" type="file" name="fileupload" onchange="xmTanUploadImg(this)" accept="image/*">
+						</span>
+						<div class="clearfix"></div>
+					</div>
+					<div class="annotate">
+						<span class="colRed rd">注：点击图片可重新上传</span>
+					</div>
+					<button class="submitBtn" id="pz">提交</button>
+				</form>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script src="../../common/jquery-1.12.1.js"></script>
+<script src="../../mui/js/mui.min.js"></script>
+<script src="../../common/common.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="pay.js"></script>

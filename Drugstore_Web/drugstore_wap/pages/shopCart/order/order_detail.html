@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../../styles/css/order_detail.css">
+		<link rel="stylesheet" href="../../../styles/common_css/common_dialog.css">
+	</head>
+
+	<body>
+		<!--顶部 -->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">订单详情</span>
+		</header>
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper" id="textHeight">
+				<div class="mui-scroll">
+					<!--顶部交易状态部分-->
+					<div id="saleState">
+						<img src="../../../styles/img/shopCart_img/order/order_location.png">
+						<span id="stateTxt"></span>
+						<div id="currentstatus" style="display: none;"></div>
+					</div>
+					<div class="buyerInfoAndAddrInfo">
+						<div class="buyerInfo">
+							<div class="InfoIcon">
+								<img src="../../../styles/img/shopCart_img/order/order_location.png">
+							</div>
+							<div class="detailInfo">
+								<div>
+									<div class="receiver">
+										<span>收货人：</span>
+										<span class="access_goods_person"></span>
+									</div>
+									<div class="buyerTel">
+										<span>联系电话：</span>
+										<span class="tel"></span>
+									</div>
+								</div>
+								<div>
+									<span>收货公司：</span>
+									<span class="access_goods_company"></span>
+								</div>
+								<div>
+									<span>收货地址：</span>
+									<span class="access_goods_location"></span>
+								</div>
+							</div>
+						</div>
+						<!--物流信息-->
+						<div class="logistics">
+							<div class="logisticsAllTitle">物流信息<i class="mui-icon mui-icon-arrowdown"style="float: right;font-size:1.5em"></i></div>
+							<div class="logisticsInfAll">
+								<p style="overflow: hidden;"class="noInfo">
+									<span style="float: left;">货已从：</span>
+									<span class="fromaddr" style="float: left; width: 185px;">暂无数据</span><span id="passOut"></span>
+								</p>
+								<div class="inputsLogistics">
+									<div class="saveBefore">
+										<div class="closeAdds"><span class="closeBtn">×</span></div>
+										<input type="text" class="inputPlateNum left"placeholder="车牌号" />
+										<input type="text" class="WritelogisticsTel rt"placeholder="物流司机电话" />
+										<!--<i class="downsIcon mui-icon mui-icon-arrowdown"></i>-->
+										<input type="text"name="" class="productList left"value="测试商品1"disabled="disabled">
+										<input type="text" class="realModel left"placeholder="实发型号"/>
+										<input type="text" class="realpecNum left"placeholder="实发单位数量"/>
+										<div class="btnforSave clearBoth">
+											保存
+										</div>
+									</div>
+									<div class="saveAfter">
+										<div class="InfoSaveAfter">
+											<div class="SaveAftercarNumTitle left leftTitleStyle">车牌号</div>
+											<div class="SaveAftercarNumTxt rt">津UB 12345</div>
+										</div>
+										<div class="InfoSaveAfter">
+											<div class="SaveAftercarNumTitle left leftTitleStyle">物流司机电话</div>
+											<div class="SaveAftercarTel rt">12345678888</div>
+										</div>
+										<div class="InfoSaveAfter">
+											<div class="SaveAfterProductName left leftTitleStyle">
+												<div class="proNames">
+													SBS改性沥青防水卷材
+												</div>
+												<div class="modelAndSpec">
+													实发型号:3mm II-10°
+												</div>
+											</div>
+											<div class="SaveAfterProductNum rt">
+												<div class="SaveAfterNums">
+													<input type="number" value="1000"class="thischangeNum left"disabled="disabled"/>
+													<span class="rt">m²</span>	
+												</div>
+												<div class="SaveAfterChangeNum">
+													<span class="changeThisNum">修改数量</span>
+													<span class="SaveThisNum">保存</span>
+												</div>
+											</div>
+										</div>
+										<div class="InfoSaveAfter">
+											<!--<div class="SaveAftercarNumTitle left leftTitleStyle">货从:   <span class="SaveAfterformAddr">聊城仓库发出</span></div>-->
+											<div class="SaveAfterToERcode rt">生成二维码</div>
+										</div>
+										<div class="btnforAddCar clearBoth">
+											增加车辆
+										</div>
+									</div>
+									
+								</div>
+								<!--发货后物流信息-->
+								<div class="logisticsInformation">
+									<div class="logsInfo">
+										<div class="plateNumbers">津UB12345</div>
+										<div class="status1">
+											<div class="left">
+												<img src="../../../styles/img/logistics/circle2.png"alt="" />
+											</div>
+											<div class="logisticsInformation1 left">
+												<div>用户已验收，并确认收货 &nbsp;&nbsp;</div>
+												<div style="height:19px;">
+													收货人：<span class="recivePerson">15822695731</span>
+												</div>
+												<div class="receiveTime">2018-08-03 16:42:30</div>
+											</div>
+										</div>
+										<div class="status2">
+											<div class="left">
+												<img src="../../../styles/img/logistics/circle1.png" alt="" />
+											</div>
+											<div class="logisticsInformation2 left">
+												货已送达目的地，待确认收货 
+											</div>
+											<div class="receiveTime left">2018-08-03 16:42:30</div>
+										</div>
+										<div class="status3">
+											<div class="left">
+												<img src="../../../styles/img/logistics/circle1.png" alt="" />
+											</div>
+											<div class="logisticsInformation3 left">
+												<div>
+													货已从<span id="fromAdress"></span>发出 
+												</div>
+												<div >
+													物流电话：<span id="logisticsTel">12304561068</span>
+												</div>
+												<div class="receiveTime">2018-08-03 16:42:30</div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+					<!--购买商品价格及总价部分-->
+					<div id="goodsInfo">
+						<ul class="mui-table-view " id="res_list">
+							<!--<li class="mui-table-view-cell mui-media">
+								<div class="order_info_title">
+									<div class="order_info_div">
+										<img src="../../../styles/img/shopCart_img/order/order_pay.png" />
+									</div>
+									<div class="order_info_font">
+										<span class="company_name">德卡夫科技发展股份有限公司</span>
+										<span class="mui-icon mui-icon-forward"></span>
+									</div>
+								</div>
+								<div class="order_info_content">
+									<div class="order_name_div">
+										<span>QC-PRM种植抗根防水卷材组合材料套装加材料</span>
+									</div>
+									<div class="order_num_div mui-text-center">
+										<span>x</span>
+										<span>30</span>
+									</div>
+									<div class="order_price_div">
+										<div>
+											<span>¥</span>
+											<span>300</span>
+										</div>
+										<div class="discount">
+											<span>300</span>
+										</div>
+									</div>
+									<div style="display: none;"></div>
+								</div>
+							</li>-->
+						</ul>
+						<div class="fare">
+							<div class="subtotal">
+								<span>全部商品小计：</span>
+							</div>
+							<div class="allGoods">
+								<span>¥</span>
+								<span id="all_shop_money"></span>
+							</div>
+
+						</div>
+						<div class="fare">
+							<div class="subtotal">
+								<span>全部节省小计：</span>
+							</div>
+							<div class="allSave">
+								<span>¥</span>
+								<span id="all_discount_money"></span>
+							</div>
+						</div>
+						<div class="fare">
+							<div class="subtotal">
+								<span>平台优惠：</span>
+							</div>
+							<div class="allSave">
+								<span>¥</span>
+								<span id="totalcoupon"></span>
+							</div>
+						</div>
+						<div class="fare weightBorder">
+							<div class="subtotal">
+								<span>全部运费小计：</span>
+							</div>
+							<div class="allFare">
+								<span>¥</span>
+								<span id="all_freight"></span>
+							</div>
+						</div>
+						<div class="fare">
+							<div class="subtotal">
+								<span>应合计支付：</span>
+							</div>
+							<div class="allTotal">
+								<span>¥</span>
+								<span id="total_momey"></span>
+							</div>
+						</div>
+					</div>
+					<!--支付账户信息-->
+					<div id="payInfo">
+						<span class="payInfoTxt">支付账户信息</span>
+						<a href="#" class="watchInfo">点击查看</a>
+					</div>
+					<!--发票信息及订单编号部分-->
+					<!--发票信息-->
+					<div id="invoice">
+						<div class="invoiceAll">
+							<span>发票信息：</span>
+						</div>
+						<div class="invDetail">
+							<div class="invoiceInfo">
+								<span class="invoiceTittle">抬头：</span>
+								<span class="headTittle" id="taitou"></span>
+							</div>
+							<div class="invoiceInfo">
+								<span class="invoiceTittle">开户行：</span>
+								<span class="openAccount" id="bank_name"></span>
+							</div>
+							<div class="invoiceInfo">
+								<span class="invoiceTittle">账号：</span>
+								<span class="account" id="bank_num"></span>
+							</div>
+							<div class="invoiceInfo">
+								<span class="invoiceTittle">税号：</span>
+								<span class="taxNumber" id="invoice_num"></span>
+							</div>
+						</div>
+					</div>
+					<!--订单编号-->
+					<div id="orderNum">
+						<div class="orderNumDetail">
+							<div class="invoiceInfo">
+								<span class="orderNumTittle">订单编号：</span>
+								<span class="odrNum" id="order_num"></span>
+							</div>
+							<div class="invoiceInfo">
+								<span class="orderNumTittle">下单时间：</span>
+								<span class="orderTime" id="order_date"></span>
+							</div>
+							<div class="invoiceInfo">
+								<span class="orderNumTittle">买家：</span>
+								<span class="customer" id="custome_name"></span>
+							</div>
+							<div class="invoiceInfo">
+								<span class="orderNumTittle">交易员：</span>
+								<span class="dealer" id="trader"></span>
+								<a href="#" class="lookTel">查看联系方式</a>
+							</div>
+						</div>
+
+					</div>
+					<!--订单评价-->
+					<div id="evaluate" style="display: none;">
+						<div class="evaluateAll">
+							<span>订单评价：</span>
+						</div>
+						<div>
+							<textarea cols="30" rows="5" id="evaluateInput"></textarea>
+						</div>
+					</div>
+					<!--<div id="up_img" style="display: none;">
+						<form id="voucher" enctype="multipart/form-data"method="post" target="id_iframe"> 
+							<div id="show_img">
+								<img class="acc_imgin" src="" id="img0" accept="image/png,image/jpg">
+							</div>
+							<div class="acc_sc">
+								<a href="javascript:;" class="tc acc_scicon"><button>选择图片</button></a>
+								<button id="up_pz">上传凭证</button>
+								<input type="file" name="fileupload" id="file0" multiple class="ph08" />
+							</div>
+						</form>
+						<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe> 
+						<div id="explain"><p>注意:上传凭证图片为JPG/PNG，并且小于1MB。提交完后由交易员进行审核</p></div>
+					</div>-->
+				</div>
+			</div>
+			<!--footer底部-->
+			<!--<div id="footer">
+				<div id="footer_btn">
+					<a href="#"class="cancleOrder">取消订单</a>
+					<a href="#"class="payPlatform">向平台支付</a>
+					<a href="#"class="paySeller">向卖家支付</a>
+				</div>
+			</div>-->
+
+		</div>
+
+		<nav id="down_nav" class="mui-bar mui-bar-tab" style="display: none;">
+			<div id="footer_btn">
+				<button id="status" class="mui-btn cancleOrder">取消订单</button>
+				<button id="sure_pay" class="mui-btn cancleOrder">去付款</button>
+				<button id="questionForSend" class="mui-btn cancleOrder">发货遇到问题</button>
+				<button id="payForplatform" class="mui-btn payPlatform">向平台支付</button>
+				<button id="payForseller" class="mui-btn paySeller">向卖家支付</button>
+			</div>
+		</nav>
+
+		<!--蒙版遮罩层-->
+		<div id="mask">
+			<div class="mui-backdrop"></div>
+
+		</div>
+		<!--支付账户信息-->
+		<div id="payerInfo">
+			<div class="pInfo">
+				<div>支付账户信息</div>
+				<span id="classInfo">×</span>
+			</div>
+			<div class="payAllInfo">
+				<span class="accountNameTittle">对公账户名称：</span>
+				<span class="accountCompany" id="to_public_account"></span>
+			</div>
+			<div class="payAllInfo">
+				<span class="accountNameTittle">开户行：</span>
+				<span class="accountBank" id="to_bank_name"></span>
+			</div>
+			<div class="payAllInfo">
+				<span class="accountNameTittle">账户：</span>
+				<span class="accountNum" id="to_account_num"></span>
+			</div>
+			<div class="payAllInfo">
+				<span class="accountNameTittle">税号：</span>
+				<span class="taxNum" id="to_invoice_num"></span>
+			</div>
+		</div>
+		<!--交易员信息-->
+		<div id="dealerInfo">
+			<div class="dInfo">
+				<div>交易员信息</div>
+				<span id="dealcloseInfo">×</span>
+			</div>
+			<div class="dealerAllInfo">
+				<span class="dealerNameTittle">交易员：</span>
+				<span class="accountCompany" id="trader_name"></span>
+			</div>
+			<div class="dealerAllInfo">
+				<span class="dealerNameTittle">电话：</span>
+				<span class="accountBank" id="trader_tel"></span>
+			</div>
+			<div class="dealerAllInfo">
+				<span class="dealerNameTittle">QQ：</span>
+				<span class="accountNum" id="trader_qq"></span>
+			</div>
+			<div class="dealerAllInfo">
+				<span class="dealerNameTittle">邮箱：</span>
+				<span class="taxNum" id="trader_email"></span>
+			</div>
+		</div>
+		<!--遮罩层-->
+		<div id="bg" class="mui-backdrop" style="display: none;"></div>
+		<!--等待dialog-->
+		<div id="wait_dialog" class="mui-text-center mui-popup mui-popup-in">
+			<span class="mui-spinner"></span>
+			<span id="wait_dialog_font">正在提交，请稍等...</span>
+		</div>
+		<script src="../../../mui/js/mui.min.js"></script>
+		<script src="../../../common/jquery-1.12.1.js"></script>
+		<script src="../../../common/jquery.form.js"></script>
+		<script src="../../../common/common.js"></script>
+		<script src="order_detail.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			$(document).ready(function() {　　
+				$('body').height($('body')[0].clientHeight);
+			});
+		</script>
+	</body>
+
+</html>

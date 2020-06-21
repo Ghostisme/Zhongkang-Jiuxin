@@ -1,0 +1,29 @@
+label{
+	text-align: right;
+}
+.form-group{
+	overflow: hidden;
+}
+.note-editor .note-editable{
+	height: 220px;
+}
+.gohome{
+	display: none;
+}
+.onoffswitch-inner:before{
+	text-align: left;
+}
+.modal-backdrop {
+	position: inherit;
+}
+.btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover{
+	background: #1a7bb9;
+	border: #1a7bb9;
+}
+.fade.in{
+	background-color:rgba(0,0,0,.5)
+}
+#files-error{
+	position: absolute;
+	bottom: -8px;
+}

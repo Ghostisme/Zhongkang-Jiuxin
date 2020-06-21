@@ -1,0 +1,51 @@
+{
+  "posts": [{
+    "id": 1,
+    "title": "json-server",
+    "author": "typicode"
+  }],
+  "comments": [{
+    "id": 1,
+    "body": "some comment",
+    "postId": 1
+  }],
+  "profile": {
+    "name": "typicode"
+  },
+  "login": {
+    "success": true,
+    "msg": "登录成功",
+    "map": {
+      "employee": {
+        "employeeName": "admin",
+        "tel": "12345678",
+        "employeeId": 1
+      },
+      "employeePost": {
+        "deptName": "index",
+        "employeeNO": 10001,
+        "postName": "localhost"
+      },
+      "initMenuData": {
+        "second": [
+          {"name": "home"},
+          {"name": "task"},
+          {"name": "attendance"},
+          {"name": "info"},
+          {"name": "my"}
+        ]
+      },
+      "fileServerPath": "",
+      "firstLogin": "",
+      "setPower": {
+        "second": [
+          {"name": "home"},
+          {"name": "task"},
+          {"name": "attendance"},
+          {"name": "info"},
+          {"name": "my"}
+        ]
+      }
+    }
+  }
+}

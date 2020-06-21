@@ -1,0 +1,158 @@
+.mui-scroll-wrapper{
+	top: 40px;
+}
+#headerBG a span{
+	font-size: 1.5em;
+}
+/*
+ * 中间数据显示部分
+ */
+ .mui-scroll-wrapper .mui-scroll ul {
+	margin: 0px 5px 0px 5px;
+}
+ .mui-scroll-wrapper .mui-scroll ul li{
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	margin-top: 5px;
+	width: 100%;
+	height: 170px;
+	/*border: 1px solid #0000FF;*/
+	
+}
+ .mui-scroll-wrapper .mui-scroll ul li a{
+ 	display: inline;
+	float: left;
+	width: 70%;
+ }
+ .mui-table-view {
+	background-color: #EFEFF4;
+}
+ .resource_info{
+	width: 100%;
+	/*border: 1px solid #0000FF;*/
+	float: left;
+	
+}
+ .resource_info span{
+	font-size: 0.75em;
+	color: #323232;
+}
+ .product_introduce{
+ 	/*display: block;*/
+	font-size: 0.75em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #323232;
+	/*border: 1px solid #0000FF;*/
+}
+.introduce_span{
+	display: block;
+	float: left;
+}
+/*
+ * 右侧购物车css
+ */
+ 
+
+ .mui-scroll-wrapper ul li .right_shopcart{
+	width: 30%;
+	float: right;
+	/*border: 1px solid red;*/
+}
+.right_font{
+	margin: auto;
+}
+.right_font span{
+	line-height: 30px;
+	font-size: 0.75em;
+}
+
+ .mui-scroll-wrapper ul li .shop-cart{
+	width: 60px;
+	height: 60px;
+	margin: auto;
+	background-color: #F1EFF0;
+	border-radius: 50%;
+	
+	
+}
+ .mui-scroll-wrapper ul li div img{
+	width: 50%;
+	height: 50%;
+	margin-top: 20%;
+}
+
+/*每行Li之间的分割线*/
+.mui-table-view:before{
+	height: 0px;
+}
+.mui-table-view:after{
+	height: 0px;
+}
+/*删除*/
+.delete_div{
+	width: 100%;
+	height: 30px;
+	
+	/*border: 1px solid #0000FF;*/
+	clear: both;
+}
+.delete_up{
+	width: 100%;
+	height: 100px;
+	margin-bottom: 10px;
+	/*border: 1px solid #0000FF;*/
+}
+.delete_border{
+	border: 1px solid #E0E0E0;
+}
+.delete_font{
+	width: 100%;
+	margin-top: 10px;
+}
+.mui-icon-trash{
+	color: #3699DC;
+}
+.delete_font_span{
+	
+}
+/*资源单下方上传资源单*/
+#uploadResource{
+	position:absolute;
+	bottom:0px;
+	z-index: 3;
+	width:100%;
+	background-color:#fff;
+	font-size:10px;
+	color:#A4A4A4;
+	padding:5px 5px;
+	height: 50px;
+	overflow: hidden;
+	border-top: 1px solid #E0E0E0;
+}
+#uploadResource span{
+	display:inline-block;
+	width:80%;
+	float: left;
+}
+#up_btn{
+	width:20%;
+}
+#uploadreBtn{
+	position:absolute;
+	right:6px;
+	color:#323232;
+	font-size: 12px;
+	background-color: #ffcc00;
+	text-align: center;
+	border-radius: 30px;
+	padding:10px 10px;
+}
+/*列表id*/
+.listId{
+	display: none;
+}
+.mui-table-view-cell:after{
+	height: 0px;
+}

@@ -1,0 +1,222 @@
+.mui-content{
+	margin-top: 0;
+}
+body{
+	padding:0;
+	background-color: #FFF;
+}
+.mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before {
+    color: #e74c3b;
+}
+/*设置用户性质选择样式*/
+form .property{
+	display:inline-block;
+}
+form .property label{
+	cursor:pointer;
+}
+#personal,#company{
+	cursor:pointer;
+}
+#proper{
+	text-align: center;
+}
+/*设置input样式*/
+.mui-content{
+	background-color: #FFF;
+}
+.mui-content div input{
+	padding:0px;
+	height:40px;
+	line-height: 40px;
+	border:0;
+}
+div.inputHeight{
+	overflow:hidden;
+	height:40px;
+	margin-bottom:20px;
+	background:#fff;
+	width:100%;
+	border-radius:5px;
+}
+div.inputHeight div img{
+	height:30px;
+	float:left;
+	margin:5px;
+	
+}
+.mui-content div.inputHeight div{
+	float:left;
+	color:#909090;
+	font-size:18px;
+}
+/*登录注册按钮样式设置*/
+.mui-btn-block{
+	padding:0;
+}
+.mui-content form .mui-btn{
+	height:40px;
+	line-height:40px;
+	margin-bottom:12px;
+	font-size:18px;
+}
+.mui-content form .registerBtn{
+	color:#323232;
+}
+/*记住密码样式设置*/
+.mui-content form .mui-left{
+	margin-top:5px;
+}
+.mui-content form .mui-left input{
+	position:absolute;
+	left:0;
+}
+.mui-content form .mui-left label{
+	overflow:hidden;
+	font-size:18px;
+	color:#646464;
+	font-weight:600;
+	cursor:pointer;
+}
+.mui-content form .mui-left a{
+	font-size:18px;
+	position:absolute;
+	right:0;
+	top:9px;
+	color:#646464;
+	font-weight:600;
+}
+/*checkbox大小及位置设置*/
+.mui-checkbox input[type=checkbox]:before, .mui-radio input[type=radio]:before{
+	font-size:18px;
+	margin-left: 0;
+}
+.mui-checkbox.mui-left input[type=checkbox], .mui-radio.mui-left input[type=radio]{
+	position:absolute;
+	right:5px;
+	bottom:20px;
+	top:0;
+}
+.mui-checkbox.mui-left label{
+	padding-left:40px;
+}
+/*返回按钮大小调整*/
+.mui-icon-back:before, .mui-icon-left-nav:before {
+    font-size: 24px;
+}
+.loginBtn{
+	background-color: #ffcc00;
+	border:1px solid #ffcc00;
+	color:#323232;
+}
+
+
+/*新的登录注册样式*/
+#headerBG{
+	background-color: #FFF !important;
+	color: #0A0A0A !important;
+}
+.subTitle{
+	padding-top: 55px;	
+	padding-left: 32px;
+	padding-bottom: 8px;
+	width: 100%;
+	box-sizing: border-box;
+}
+.subTitle_text{
+	font-size: 25px;
+	color: #232323;
+	font-weight: bold;
+}
+.formBox{	
+	width: 100%;
+	box-sizing: border-box;
+}
+.itemBox{
+	/*width: 90%;*/
+	box-sizing: border-box;
+	padding-top: 30px;
+	margin-left: 32px;
+	border-bottom: 1px solid #E6E6E6;
+	margin-right: 35px;
+	padding-bottom: 12px;
+}
+.itemBox div{
+	font-size: 15px;
+	color: #666;
+	margin-bottom: 18px;
+}
+.itemBox input,.itemBox select{
+	/*border: 1px solid #000 !important;*/
+	height: 22px !important;
+	line-height: 22px !important;
+	font-size: 20px;
+	color: #000;
+	font-weight: 400;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.itemBox input.password{
+	width: 92%;
+}
+.itemBox input::-webkit-input-placeholder {
+	color: #BEBEBE;
+}
+.form_bottom{
+	margin-top: 68px;
+}
+.signinBox{
+	width: 100%;
+	/*margin: 0 auto;*/
+	margin: 0 auto 13px auto;
+	text-align: center;
+}
+.signin{
+	width: 315px;
+	height: 49px;
+	background: rgba(14,144,254,1);
+	border-radius: 24px;
+	color: #FFF;
+	font-size: 16px;
+}
+.pageJump{
+	width: 315px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.newPeople{
+	font-size: 13px;
+	color: #979797;
+}
+.forget{
+	float: right;
+	font-size: 13px;
+	color: #979797;
+	/*opacity: .5;*/
+}
+
+
+/*发送验证码*/
+.sendMsg{
+	white-space:nowrap;
+	color: #4489C8;
+	font-size: 12px;
+}
+.itemBox input.verification{
+	width: 77%;
+}
+/*忘记密码提示文字*/
+.tipText{
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	background-color: #FEFBEE;
+}
+.tipText span{
+	font-size: 13px;
+	color: #E16D04;
+}
+.pasTitle{
+	padding-top: 27px !important;
+}

@@ -1,0 +1,19 @@
+.wrapper .buttonBox{
+	/* padding: 0.35rem 0.45rem 0rem 0.45rem; */
+	margin: 0 0.45rem 0.15rem 0.45rem;
+	/* position: fixed;
+	bottom: 0.65rem; */
+}
+.wrapper .buttonBox button{
+	background-color: #2292FE;
+	border: 0;
+	color: #FFFFFF;
+	white-space: nowrap;
+	width: 100%;
+	padding: 0.15rem 0;
+	/* padding: 0.425rem 4.3rem; */
+	border-radius: 0.075rem;
+}
+.wrapper .buttonBox button:focus{
+	outline: none;
+}

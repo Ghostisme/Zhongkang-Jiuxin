@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>购物车</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/common_css/dibu.css">
+		<link rel="stylesheet" type="text/css" href="../../mui/css/common.css" />
+		<link rel="stylesheet" href="../../mui/css/muiLoding.css" />
+		<link rel="stylesheet" href="../../styles/css/shopcart_index.css">
+		<link rel="stylesheet" href="../../styles/common_css/common_dialog.css">
+	</head>
+
+	<body>
+		<!--顶部搜索栏-->
+		<header id="headerBG" class="mui-bar mui-bar-nav mui-bar-self">
+			<div class="mui-text-center">
+				<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+					<span class="mui-icon mui-icon-back fontSize9pt"></span>
+				</a>
+				<span class="fontSize12pt">购物车</span>
+				<span id="editor" class="mui-pull-right fontSize105pt">编辑</span>
+			</div>
+		</header>
+		<!--内容部分-->
+		<div id="sliderSegmentedControl" style="margin-top:44px;display: none;" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+			<a class="mui-control-item mui-active fontSize11pt" href="#item1mobile">
+				<span class="tabActive1">团购(0)</span>
+				<div class="tabActiveBorder"></div>
+			</a>
+			<a class="mui-control-item fontSize11pt" href="#item2mobile">
+				<span>零售</span>
+			</a>
+		</div>
+		<div class="mui-content">
+
+			<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>-->
+			<div class="mui-slider-group">
+				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+					<div id="scroll1" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<ul id="ul_pro" class="mui-table-view"style="background: transparent;">
+								<!--<li class="mui-table-view-cell mui-media">
+									<div class="mui-slider-right mui-disabled">
+										<a class="mui-btn mui-btn-red">删除</a>
+									</div>
+									<div class="right_box mui-slider-handle">
+										<div class="check_box mui-input-row property mui-checkbox mui-left">
+											<input class="check_single_btn" name="checkbox1" value="1" type="checkbox">
+										</div>
+										<div class="border-bottom">
+											<div class="productImgs">
+												<img src="../../styles/img/shop_img/productImg1.png" alt="" />
+											</div>
+											<div class="product_info">
+												<div>
+													<span class="pro_font shopofname">这是一个霸气侧漏的商品</span>
+												</div>
+												<div>
+													<span class="pro_font">规格为：</span>
+													<span class="pro_font">0.3gx10粒/盒</span>
+												</div>
+												<div class="RMB_single">
+													<span class="RMB">￥</span>
+													<span class="RMBmoney_count">126.50</span>
+													<span class="RMBmoney_unit">/板</span>
+												</div>
+												<div class="num">
+													<div class="numEdit">
+														<div class="num_calculate">
+															<div class="sup_num mui-text-center">
+																<span>-</span>
+															</div>
+															<div class="mid_num">
+																<input class="num_pro mui-text-center" type="text" value="1" />
+															</div>
+															<div class="add_num mui-text-center">
+																<span>+</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="productid" style="display: none;"></div>
+											<div class="storeid" style="display: none;"></div>
+											<div class="companyid" style="display: none;"></div>
+										</div>
+									</div>
+								</li>-->
+								<!--<li class="mui-table-view-cell mui-media">
+									<div class="mui-slider-right mui-disabled">
+										<a class="mui-btn mui-btn-red">删除</a>
+									</div>
+									<div class="right_box mui-slider-handle">
+										<div class="check_box mui-input-row property mui-checkbox mui-left">
+											<input id="" class="check_single_btn" name="checkbox1" value="1" type="checkbox">
+										</div>
+										<div class="border-bottom">
+											<div class="productImgs">
+												<img src="../../styles/img/shop_img/productImg1.png" alt="" />
+											</div>
+											<div class="product_info">
+												<div>
+													<span class="pro_font shopofname">这是一个霸气侧漏的商品</span>
+												</div>
+												<div>
+													<span class="pro_font">规格为：</span>
+													<span class="pro_font">0.3gx10粒/盒</span>
+												</div>
+												<div class="RMB_single">
+													<span class="RMB">￥</span>
+													<span class="RMBmoney_count">126</span>
+													<span class="RMBmoney_unit">/板</span>
+												</div>
+												<div class="num">
+													<div class="numEdit">
+														<div class="num_calculate">
+															<div class="sup_num mui-text-center">
+																<span>-</span>
+															</div>
+															<div class="mid_num">
+																<input class="num_pro mui-text-center" type="text" value="1" />
+															</div>
+															<div class="add_num mui-text-center">
+																<span>+</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="productid" style="display: none;"></div>
+											<div class="storeid" style="display: none;"></div>
+											<div class="companyid" style="display: none;"></div>
+										</div>
+									</div>
+								</li>-->
+							</ul>
+							<div class="bottomWarn" style="display: none;">——这就是底线了——</div>
+						</div>
+
+					</div>
+				</div>
+				<div id="item2mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll2" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div class="mui-loading">
+								<div class="mui-spinner">
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		</div>
+		<div class="mui-popup-backdrop mui-active" style="display: none;"></div>
+		<div id="bg" class="mui-backdrop" style="display: none;"></div>
+		<div id="wait_dialog" class="mui-text-center mui-popup mui-popup-in">
+			<span class="mui-spinner"></span>
+			<span id="wait_dialog_font">正在提交，请稍等...</span>
+		</div>
+		<!--底部结算-->
+		<div id="jiesuan" class="">
+			<div id="all_check" class="mui-input-row mui-checkbox mui-left dibu_width">
+				<label id="all_check_lable">全选</label>
+				<input id="all_check_btn" name="checkbox" value="Item 1" type="checkbox" onclick="allCheck(this)">
+			</div>
+			<div id="up_mid" class="dibu_width">
+				<span id="all_check_count">合计:</span>
+				<span>
+					<span id="all_check_rmb">¥</span>
+				<span id="RMB_total">0</span>
+				</span>
+			</div>
+			<div id="jiesuan_btn" class="dibu_width mui-text-center">
+				<span>结算</span>
+				<span>(</span>
+				<span id="shop_count">0</span>
+				<span>)</span>
+			</div>
+			<div id="delete_btn" class="dibu_width mui-text-center" style="display: none;">
+				<span>删除</span>
+			</div>
+		</div>
+		<!--底部footer导航-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="footer footer-mui-active" href="../../index.html">
+				<img src="../../styles/img/home_img/home_normal.png" />
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="footer" href="../home/mall.html">
+				<img src="../../styles/img/home_img/shop_normal.png" />
+				<span class="mui-tab-label">分类</span>
+			</a>
+			<a id="go_shopcart" class="footer">
+				<img src="../../styles/img/home_img/shop_cart_press.png" />
+				<span class="mui-tab-label" style="color: #0691F9;">购物车</span>
+			</a>
+			<a id="go_person_center" class="footer">
+				<img src="../../styles/img/home_img/my_normal.png" />
+				<span class="mui-tab-label">我</span>
+			</a>
+		</nav>
+		<div class="loading" style="height: 100px; line-height: 100px; text-align: center; margin: 20px;">
+			购物车加载中...
+		</div>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script type="text/javascript" src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/common.js"></script>
+		<script type="text/javascript" src="shopcart_index.js"></script>
+		<script>
+		
+			/*点击个人中心*/
+			$('.mui-bar').on('tap', '#go_person_center', function() {
+				if(window.webUser) {
+					window.location.href = '../my/user/user.html';
+				} else {
+					showDialog();
+				}
+			});
+			/*点击购物车*/
+			$('.mui-bar').on('tap', '#go_shopcart', function() {
+				if(window.webUser) {
+					window.location.href = '../shopCart/shopcart_index.html';
+				} else {
+					showDialog();
+				}
+			});
+			/*判断是否登录的dialog*/
+			function showDialog() {
+				var btnArray = ['否', '是'];
+				mui.confirm('您还没有登录，是否去登录？', '提示', btnArray, function(e) {
+					if(e.index == 1) {
+						window.location.href = '../login/login.html';
+					} else {}
+				})
+			}
+		
+			function iphoneToSet() {
+				var btnArray = ['否', '是'];
+				mui.confirm('为了您更好使用，请打开本机浏览器cookie功能，详情请见~！', '提示', btnArray, function(e) {
+					if(e.index == 1) {
+						window.location.href = '../setting/iphoneSetting.html';
+					} else {}
+				})
+			}
+			$(".mui-scroll-wrapper").css("max-height", $(".mui-content").height() + 60);
+		</script>
+	</body>
+
+</html>

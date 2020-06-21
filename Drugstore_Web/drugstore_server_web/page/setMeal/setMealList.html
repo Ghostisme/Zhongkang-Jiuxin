@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="HandheldFriendly" content="true">
+		<title>套餐管理</title>
+		<link rel="shortcut icon" type="image/x-icon" href="img/header/logoico3.png" />
+		<!-- Bootstrap -->
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css" rel="stylesheet">
+		<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/style.min.css" rel="stylesheet">
+		<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../css/plugins/webuploader/webuploader.css">
+		<link rel="stylesheet" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/demo/webuploader-demo.min.css">
+		<style type="text/css">
+			body {
+				background: #F8F8F8;
+				padding: 20px;
+				min-height: 600px;
+				min-width: 1024px;
+			}
+			
+			.lineWidth {
+				/*width: 15%;*/
+				height: 26px;
+				line-height: 26px;
+				font-size: 14px;
+			}
+			
+			.lineWidth input {
+				height: 26px;
+			}
+			
+			.lineWidth .btn {
+				padding: 0 12px;
+				height: 26px;
+				border-radius: 0px;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			ul li {
+				list-style: none;
+			}
+			
+			select,
+			option {
+				outline: 0;
+			}
+			
+			button,
+			img {
+				outline: 0;
+				border: 0;
+			}
+			
+			input {
+				outline: 0;
+			}
+			/*input placeholder样式*/
+			
+			::-webkit-input-placeholder {
+				/* WebKit browsers */
+				color: #999;
+				font-size: 10px;
+			}
+			
+			::-moz-placeholder {
+				/* Mozilla Firefox 19+ */
+				color: #999;
+				font-size: 10px;
+			}
+			
+			:-ms-input-placeholder {
+				/* Internet Explorer 10+ */
+				color: #999;
+				font-size: 10px;
+			}
+			
+			.reportQueryInfoBox {
+				width: 100%;
+				/*height: 800px;*/
+				/*min-width: 1200px;*/
+				/*padding: 20px;*/
+				box-sizing: border-box;
+			}
+			
+			.reportQueryInfoHead {
+				width: 100%;
+				height: 50px;
+				padding: 10px 0px;
+				box-sizing: border-box;
+			}
+			
+			.reportQueryNanme {
+				float: left;
+			}
+			
+			.reportQuerySex {
+				float: left;
+			}
+			
+			.reportQueryID {
+				float: left;
+			}
+			
+			.reportQueryTel {
+				float: left;
+			}
+			
+			.reportQueryNanmeLeft,
+			.reportQuerySexLeft,
+			.reportQueryIDLeft,
+			.reportQueryTelLeft {
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #1b1b1b;
+				margin-left: 10px;
+			}
+			
+			.reportQueryNanmeLeft {
+				margin-left: 0;
+			}
+			
+			.reportQueryNanmeRight {
+				padding-left: 5px;
+			}
+			
+			.reportQueryNanmeRight,
+			.reportQuerySexRight,
+			.reportQueryelRight,
+			.queryTimeContent,
+			.queryTypeContent {
+				width: 140px;
+				height: 26px;
+				/*border-radius: 3px;*/
+				margin-right: 35px;
+				box-sizing: border-box;
+			}
+			
+			.reportQuerySex .reportQuerySexRight {
+				/*width: 50px;*/
+			}
+			
+			.reportQueryNanmeRight:focus,
+			.reportQueryIDright:focus,
+			.reportQueryelRight:focus {
+				border: 1px solid #FFB987;
+			}
+			
+			.reportQueryIDright {
+				width: 160px;
+				height: 26px;
+				/*border-radius: 3px;*/
+				padding: 4px;
+				box-sizing: border-box;
+			}
+			
+			.reportQueryBtnCheck {
+				width: 85px;
+				height: 24px;
+				border-radius: 5px;
+				background-color: #1C79B6;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #FFFFFF;
+				margin-left: 20px;
+				line-height: 24px;
+				letter-spacing: 5px;
+				cursor: pointer;
+			}
+			
+			.reportQueryAddCheck {
+				width: 105px;
+				height: 24px;
+				border-radius: 5px;
+				background-color: #326586;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #FFFFFF;
+				margin-left: 20px;
+				line-height: 24px;
+				letter-spacing: 5px;
+				cursor: pointer;
+			}
+			
+			.reportQueryBtnClear {
+				width: 85px;
+				height: 24px;
+				border-radius: 5px;
+				background-color: #ececec;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #5c5c5c;
+				margin-left: 20px;
+				line-height: 24px;
+				letter-spacing: 5px;
+				cursor: pointer;
+			}
+			
+			.reportQueryBtnAdd {
+				width: 85px;
+				height: 24px;
+				border-radius: 5px;
+				background-color: #ff7510;
+				font-family: "microsoft yahei";
+				font-size: 14px;
+				color: #FFFFFF;
+				line-height: 24px;
+				letter-spacing: 5px;
+				cursor: pointer;
+				float: right;
+			}
+			
+			#app {
+				margin-top: 20px;
+				display: -moz-box;
+				/* Firefox */
+				display: -ms-flexbox;
+				/* IE10 */
+				display: -webkit-box;
+				/* Safari */
+				display: -webkit-flex;
+				/* Chrome, WebKit */
+				display: box;
+				display: flexbox;
+				display: flex;
+				flex-wrap: wrap;
+			}
+			
+			.detailBox {
+				width: 30%;
+				height: 200px;
+				background: #fff;
+				line-height: 25px;
+				border-radius: 6px;
+				font-size: 16px;
+				padding: 20px;
+				margin: 0 2% 1% 0;
+			}
+			
+			.detailBox:hover {
+				border: 1px solid #1C79B6;
+			}
+			
+			.detailBox .detailTitle {
+				font-weight: bold;
+				color: #1C1C1C;
+			}
+			
+			.detailBox .detailCommodity {
+				font-family: SimHei;
+				color: #333333;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				word-break: break-all;
+			}
+			
+			#deleteSetMeal {
+				float: right;
+				font-size: 22px;
+				color: #F95252;
+				cursor: pointer;
+			}
+			
+			.detailBox .detailInfor {
+				font-size: 14px;
+				margin-top: 10px;
+			}
+			
+			.detailBox .detailInfor .currentPrice {
+				color: #666666;
+			}
+			
+			.detailBox .detailInfor .currentPriceTxt {
+				font-weight: bold;
+				color: #EC2B2B;
+				margin-left: 40px;
+			}
+			
+			.detailBox .detailInfor .activeTimeTxt {
+				color: #1C1C1C;
+				margin-left: 15px;
+			}
+			
+			.detailBox .detailInfor .activeText {
+				font-weight: bold;
+				color: #F95252;
+				margin-top: 5px;
+			}
+			
+			.clickDetail {
+				float: right;
+				cursor: pointer;
+				color: #1999D5;
+			}
+			.drug_id{
+				float: left;
+    color: #999;
+    font-size: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="reportQueryInfoHead">
+			<div class="reportQueryNanme">
+				<span class="reportQueryNanmeLeft">套餐名称:</span>
+				<input class="reportQueryNanmeRight" type="text" id="package_name" value="" />
+			</div>
+			<div class="reportQueryNanme">
+				<span class="reportQueryNanmeLeft">商品名称:</span>
+				<input class="reportQueryNanmeRight" type="text" id="commodity_name" value="" />
+			</div>
+			<div class="reportQueryNanme">
+				<span class="reportQueryNanmeLeft">活动开始时间:</span>
+				<input type="text" class="reportQueryNanmeRight layer-daterequired" id="beginTime" autocomplete="off" name="beginTime" placeholder="活动起始日期">
+			</div>
+			<div class="reportQueryNanme">
+				<span class="reportQueryNanmeLeft">活动结束时间:</span>
+				<input type="text" class="reportQueryNanmeRight layer-daterequired" id="endTime" autocomplete="off" name="endTime" placeholder="活动结束日期">
+			</div>
+			<button class="reportQueryBtnCheck" id="reportQuerySearchBtns">查询</button>
+			<button class="reportQueryBtnClear" id="reportQuerySearchClearBtn">清空</button>
+			<button class="reportQueryAddCheck" id="reportQuerySearchAddBtn">创建套餐</button>
+		</div>
+		<div id="app" style="visibility:hidden">
+			<div class="detailBox" v-for="(item,i) in list">
+				<div id="deleteSetMeal">×</div>
+				<div class="detailTitle" v-if="item.type==0">{{item.mealName}}<span style="color: red;margin-left: 8px;font-size: 13px">(已过期)</span></div>
+				<div class="detailTitle" v-else>{{item.mealName}}</div>
+				<div class="detailCommodity" :title="item.drugMealName">{{item.drugMealName}}</div>
+				<div class="detailInfor">
+					<div class="currentPrice">现价:<span class="currentPriceTxt">￥<span>{{item.price}}</span></span>
+					</div>
+					<div>活动时间:<span class="activeTimeTxt">{{item.startTime}} - {{item.endTime}}</span></div>
+					<div class="activeText">活动持续:<span>{{item.continuedDay}}</span></div>
+				</div>
+				<div class="drug_id">{{item.id}}</div>
+				<div class="clickDetail">查看详情<span class="editId" style="display: none;">{{item.id}}</span></div>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/jquery-3.0.0.min.js"></script>
+	<script src="../../js/jquery.min.js?v=2.1.4"></script>
+	<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+	<script src="../../js/foundation-datepicker.js"></script>
+	<script src="../../js/foundation-datepicker.min.js"></script>
+	<script src="../../js/plugins/layer/laydate/laydate.js"></script>
+	<script src="../../js/plugins/staps/jquery.steps.min.js"></script>
+	<script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+	<script src="../../js/plugins/validate/messages_zh.min.js"></script>
+	<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+	<script src="../../js/content.min.js?v=1.0.0"></script>
+	<script type="text/javascript">
+		var BASE_URL = '../../js/plugins/webuploader';
+	</script>
+	<script src="../../js/plugins/webuploader/webuploader.min.js"></script>
+	<!--<script src="../../js/webuploaderDrugDetail.js"></script>-->
+	<script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+	<script src="../../js/plugins/jquery.jqprint-0.3.js"></script>
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../js/plugins/layer/laydate/laydate5.0.js"></script>
+	<script type="text/javascript" src="../../js/vue.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var createDateBegin = {
+				elem: '#beginTime',
+				max: '2080-10-14 12:30:00',
+				type: 'datetime',
+				btns: ['now', 'confirm'],
+				istime: true,
+				istoday: false,
+				done: function(value, date) {
+					if(value !== '') {
+						endDate.config.min.year = date.year;
+						endDate.config.min.month = date.month - 1;
+						endDate.config.min.date = date.date;
+						endDate.config.min.hours = date.hours;
+						endDate.config.min.minutes = date.minutes;
+
+					} else {
+						endDate.config.min.year = '';
+						endDate.config.min.month = '';
+						endDate.config.min.date = '';
+						endDate.config.min.hours = '';
+						endDate.config.min.minutes = '';
+					}
+				}
+
+			};
+			var createDateEnd = {
+				elem: '#endTime',
+				max: '2080-10-14 12:30:00',
+				type: 'datetime',
+				btns: ['now', 'confirm'],
+				istime: true,
+				istoday: false,
+				done: function(value, date) {
+					if(value !== '') {
+						startDate.config.max.year = date.year;
+						startDate.config.max.month = date.month - 1;
+						startDate.config.max.date = date.date;
+						startDate.config.max.hours = date.date;
+						startDate.config.max.minutes = date.date;
+					} else {
+						startDate.config.max.year = '';
+						startDate.config.max.month = '';
+						startDate.config.max.date = '';
+						startDate.config.max.hours = '';
+						startDate.config.max.minutes = '';
+					}
+				}
+			};
+			var startDate = laydate.render(createDateBegin);
+			var endDate = laydate.render(createDateEnd);
+		})
+		//		查询
+		$(document).delegate("#reportQuerySearchBtns", 'click', function() {
+			app.getSetMealList()
+		})
+		//		删除
+		$(document).delegate("#deleteSetMeal", 'click', function() {
+			var editId = $(this).parent().find(".editId").text();
+			swal({
+					title: "确认删除?",
+					text: "你将删除这个套餐！",
+					type: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#DD6B55",
+					confirmButtonText: "确认",
+					cancelButtonText: "取消",
+					closeOnConfirm: false,
+					closeOnCancel: true
+				},
+				function(isConfirm) {
+					if(isConfirm) {
+						$.ajax({ //获取列表接口
+							url: config + '/drug/meal/remove',
+							type: 'GET',
+							data: {
+								id: editId
+							},
+							async: false,
+							dataType: 'JSON', //接收值的格式
+							success: function(data) {
+								swal(data.message);
+								app.getSetMealList()
+							}
+						})
+
+					} else {
+						swal("已取消");
+					}
+				});
+
+		})
+		//		清空
+		$(document).delegate("#reportQuerySearchClearBtn", 'click', function() {
+			$("#package_name").val(""); //套餐名称
+			$("#commodity_name").val(""); //商品名称
+			$("#beginTime").val(""); //活动开始时间
+			$("#endTime").val(""); //活动结束时间
+			app.getSetMealList()
+		})
+		//		创建套餐
+		$(document).delegate("#reportQuerySearchAddBtn", 'click', function() {
+			RefreshIframe("page/setMeal/setMealForm.html", "setMealForm")
+		})
+		//列表查看详情
+		$(document).delegate(".clickDetail", 'click', function() {
+			console.log($(this).find(".editId").text())
+			let editingSetMeal = $(this).find(".editId").text();
+			sessionStorage.setItem("editingSetMeal", editingSetMeal)
+			RefreshIframe("page/setMeal/editSetMeal.html", "editSetMeal")
+		})
+		//  vue数据
+		var app = new Vue({
+			el: '#app',
+			data() {
+				return {
+					list: null
+				}
+			},
+			methods: {
+				getSetMealList() {
+					var that = this;
+					var mealName = $("#package_name").val(); //套餐名称
+					var drugName = $("#commodity_name").val(); //商品名称
+					var startTime = $("#beginTime").val(); //活动开始时间
+					var endTime = $("#endTime").val(); //活动结束时间
+					$.ajax({ //获取列表接口
+						url: config + '/drug/meal/getDrugMealList',
+						type: 'GET',
+						data: {
+							mealName: mealName,
+							drugName: drugName,
+							startTime: startTime,
+							endTime: endTime
+						},
+						async: false,
+						cache: false,
+						dataType: 'JSON', //接收值的格式
+						success: function(data) {
+							if(data.status == 1) {
+								$("#app").css("visibility", "visible")
+								that.list = data.resultMap.drugMealList;
+								console.log(data.resultMap.drugMealList)
+
+							} else {
+
+							}
+						}
+					})
+				}
+			},
+			created() {
+				this.getSetMealList()
+			}
+		})
+	</script>
+
+</html>

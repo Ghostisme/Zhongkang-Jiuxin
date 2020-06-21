@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link href="../../mui/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../styles/css/changePwd.css">
+	</head>
+		
+	<body>
+		<!--顶部导航栏-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">修改密码</span>
+		</header>
+		<div class="mui-content">
+		    <!--输入密码，确认密码设置-->
+		    <form>
+		    	<div class="inputHeight" >
+				        <div >
+				        	<input type="password" id="old_pwd" placeholder="请输入旧密码">
+				        	<img src="../../styles/img/login/eyesY.png" class="oldshow"state="off">
+				        </div>
+				</div>
+				<div class="inputHeight" >
+				        <div >
+				        	<input type="password" id="txtPassword" placeholder="请输入密码">
+				        	<img src="../../styles/img/login/eyesY.png" class="show"state="off">
+				        </div>
+				</div>
+				<div class="inputHeight" >
+				        <div >
+				        	<input type="password" id="retxtPassword" placeholder="请确认密码">
+				        	<img src="../../styles/img/login/eyesY.png" class="reshow"state="off">
+				        </div>
+				</div>
+				
+				<!--提交按钮-->
+				<button type="button" class="mui-btn mui-btn-blue submitBtn mui-btn-block">提交</button>
+		    </form>
+		</div>
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script src="../../common/common.js"></script>
+		<script src="changePwd.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>

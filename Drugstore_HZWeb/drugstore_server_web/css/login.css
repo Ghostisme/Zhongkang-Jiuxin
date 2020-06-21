@@ -1,0 +1,203 @@
+/*头部*/
+body{
+	margin:0;
+	padding:0;
+}
+header{
+	width:100%;
+	height:126px;
+	overflow: hidden;
+}
+.headers{
+	width:1190px;
+	height:126px;
+	margin:0 auto;
+	/*border:1px solid #eee;*/
+	overflow: hidden;
+}
+.logoImg{
+	width:106px;
+	height:102px;
+	line-height: 102px;
+	margin-right:20px;
+	padding-top:10px;
+}
+.logoImg img{
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
+}
+.logoImg i{
+	width:1px;
+	height:78px;
+	margin-left:20px;
+	display: inline-block;
+    background: -webkit-linear-gradient(#fff, #C0C0C0,#fff);/* Safari 5.1 - 6.0 */
+    background: -moz-linear-gradient(#fff, #C0C0C0,#fff);/* Opera 11.1 - 12.0 */
+    background: -o-linear-gradient(#fff, #C0C0C0,#fff);/* Firefox 3.6 - 15 */
+    background: linear-gradient(#fff, #C0C0C0,#fff); /* 标准的语法 */
+}
+.systemName{
+	padding-top:38px;
+}
+.systemChinaName{
+	font-size:1.9em;
+	color:#196997;
+	font-family: "微软雅黑";
+	font-weight:bold;
+	text-align: left;
+}
+.systemEName{
+	font-size:0.78em;
+	font-family: "微软雅黑";
+	color:#686868;
+	margin-top:2px;
+}
+.companyWeb{
+	width:300px;
+	height:126px;
+	line-height: 126px;
+	text-align: right;
+	font-size: 0.75em;
+}
+.companyWeb img{
+	margin-top:48px;
+	margin-right:5px;
+}
+.companyWebTxt{
+	font-weight: bold;
+}
+/*主体form表单部分*/
+#formContents{
+	width: 100%;
+    height: 640px;
+    margin: 0 auto;
+    background: url(../img/login/loginBgImg.jpg) no-repeat;
+    background-size: 100% 100%;
+    /*overflow: hidden;*/
+}
+.sectionForm{
+	max-width: 1190px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#loginTxts{
+	width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: #2090D0;
+    color: #fff;
+    font-family: "微软雅黑";
+    font-weight: bold;
+    text-align: left;
+    padding-left:40px;
+}
+#formStyle{
+	width: 380px;
+    background: #fff;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1em;
+    padding: 40px 40px;
+}
+#loginCompanyName{
+	width:100%;
+	font-size:3.7em;
+	color:#fff;
+	margin:20px auto;
+	margin-bottom: 100px;
+}
+.loginscreen.middle-box{
+	width:100%;
+	max-width:100%;
+}
+.middle-box{
+	padding:0;
+}
+#loginForm{
+	max-width:380px;
+	margin:0 auto;
+	overflow:hidden;
+	margin-top:130px;
+}
+.inputDivs{
+	width:302px;
+	border:1px solid #a9a9a9;
+}
+.form-control, .single-line{
+	max-width:245px;
+	height:50px;
+	outline: none;
+}
+.form-group{
+	overflow:hidden;
+}
+#loginForm #userPwd,#loginForm #userName{
+	border:0;
+	outline: none;
+}
+.btn-primary.active, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open .dropdown-toggle.btn-primary{
+	height:50px;
+	background: #076196;
+	border-color:#076196;
+}
+.btn-primary{
+	height:50px;
+	background: #076196;
+	border-color:#076196;
+}
+
+.text-muted.text-center{
+	text-align: right;
+}
+.rt{
+	float: right;
+}
+.lf{
+	float: left;
+}
+.ImgDiv{
+	width: 55px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    /* border: 1px solid #A9A9A9; */
+    border-left: 0px;
+}
+#loginBtns{
+	/*margin-top:40px;*/
+}
+footer{
+	width: 100%;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    bottom: 0;
+}
+.footerTxt{
+	width: 100%;
+    text-align: center;
+    height: 40px;
+    margin: 0 auto;
+    color: #686868;
+    font-size: 0.75em;
+}
+/*.modal{
+	background: #000;
+	display: block;
+	opacity: 0.5;
+}*/
+label.error{
+	position:absolute;
+	top:140px;
+	left:40px;
+}
+#userPwd-error{
+	position:absolute;
+	top:210px;
+	left:40px;
+}
+.modal-content{
+	width:470px;
+	margin-top:230px;
+}

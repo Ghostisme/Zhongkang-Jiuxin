@@ -1,0 +1,55 @@
+.mui-bar-nav~.mui-content {
+    padding-top: 0;
+}
+.mui-content {
+    margin-top: 40px;
+}
+#Settlement_process{
+	background-color: #fff;
+	padding:10px;
+	overflow: hidden;
+}
+#Settlement_process a{
+	float:right;
+	font-size:0.75em;
+}
+.mui-content img{
+	width:100px;
+	height: 100px;
+}
+.mui-content .companyDetail{
+	float:left;
+	width:47%;
+	background-color:#fff;
+	padding:1% 0;
+	margin-top:3%;
+	margin-left:5px;
+}
+#companys{
+	width:100%;
+	padding-left:3px;
+	padding-right:3px;
+	
+	text-align: center;
+}
+.companyName{
+	font-size:0.65em;
+	text-align: center;
+	color:#A9A9A9;
+	font-weight: 400;
+	margin-top:10px;
+	height:42px;
+	/*white-space:nowrap;
+	overflow:hidden;               
+	text-overflow:ellipsis; */
+}
+.left_list{
+	margin-right:2%;
+}
+.mui-scroll-wrapper{
+	top:80px;
+}
+/*返回按钮大小调整*/
+.mui-icon-back:before, .mui-icon-left-nav:before {
+    font-size: 24px;
+}

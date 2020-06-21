@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta content="telephone=no" name="format-detection">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>基础信息</title>
+		<!-- 引入组件CSS库 -->
+		<link rel="stylesheet" type="text/css" href="../css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/layui.mobile.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/default/layer.css"/>
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/init.css">
+		<!-- 顶部内容CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/navbar.css">
+		<!-- 本页面CSS -->
+		<link rel="stylesheet" type="text/css" href="css/basicInformation.css"/>
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../font/iconfont.css">
+		<!-- 搜索框CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/search.css">
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../js/config.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
+		<!-- <script type="text/javascript" src="../../js/layui.js"></script> -->
+		<script type="text/javascript" src="../js/layer.js"></script>
+		<!-- 页面跳转方法JS -->
+		<script type="text/javascript" src="../js/jumpPage.js"></script>
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/basicInformation.js" ></script>
+		<style>
+			#click{
+				width: 1.9rem;
+				height: 1.775rem;
+				margin-right: 0.65rem;
+				background-color: transparent;
+				border: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 2019-05-17 -->
+		<!-- 顶部内容 -->
+		<!-- <div class="header">
+			<div class="navbar">
+				<div class="navbackbtn">
+					<i class="iconfont gobackBtn">&#xe624;</i>
+				</div>
+				<div class="navtitle">
+					<span class="title">基础信息</span>
+				</div>
+				<div class="right-edit-btn">
+					<button type="button" class="editbtn btn">编辑</button>
+				</div>
+			</div>
+		</div> -->
+		<!-- 内容区域 -->
+		<input type="hidden" id="fkUserId" value="" />
+		<div class="wrapper">
+			<div class="essential">
+				<form enctype="multipart/form-data">
+					<p>
+						<span>头像</span>
+						<!-- <button type="button" id="click">
+							<img src="../img/user.png" alt="这是一个头像图片" title="这是一个头像图片" class="chooseImage">
+						</button> -->
+						<img src="../img/user.png" alt="这是一个头像图片" title="这是一个头像图片" class="chooseImage">
+						<!-- <span>
+							<input type="file" disabled="true" name="" id="" value="" class="chooseImg"/>
+						</span> -->
+					</p>
+					<p>
+						<span>姓名</span>
+						<span>
+							<input type="text" name="name" maxlength="15" disabled="disabled" id="username" value="" placeholder="请输入患者姓名" class="username" oninput="if(value.length>16)value=value.slice(0,16)"/>
+						</span>
+					</p>
+					<p>
+						<span>性别</span>
+						<span class="sexBox">
+							<input type="hidden" value="" class="sex"/>
+							<i class="iconfont active" data-num="1">&#xe677;</i>男
+							<!--<span>男</span>-->
+							<i class="iconfont" data-num="2">&#xe678;</i>女
+							<!--<span>女</span>-->
+							<!-- <input type="text" name="" id="" value="" placeholder="请输入性别"/> -->
+						</span>
+					</p>
+					<p>
+						<span>年龄(岁)</span>
+						<span>
+							<input type="number" name="" maxlength="10" pattern="[0-9]*" disabled="disabled" id="age" value="" class="age" placeholder="请输入年龄" oninput="if(value.length>3)value=value.slice(0,3)" disabled="disabled" />
+						</span>
+					</p>
+					<p>
+						<span>身份证号</span>
+						<span>
+							<!-- <input type="number" name="" id="" value="1201051976XXXXXXXX" placeholder="身份证号" maxlength="18"/> -->
+							<input type="number" name="" maxlength="18" pattern="[0-9]*" disabled="disabled" id="IDcard" value="" class="IDcard" placeholder="请输入身份证号" oninput="if(value.length>18)value=value.slice(0,18)"/>
+						</span>
+					</p>
+					<p>
+						<span>手机号</span>
+						<span>
+							<!-- <input type="number" name="" id="" value="137XXXXX360" placeholder="手机号" maxlength="11"/> -->
+							<input type="number" name="" maxlength="11" pattern="[0-9]*" disabled="disabled" id="phone" value="" class="mobile" placeholder="请输入手机号"  oninput="if(value.length>11)value=value.slice(0,11)"/>
+						</span>						
+					</p>
+					<p>
+						<span>住址</span>
+						<span>
+							<input type="text" name="" maxlength="255" disabled="disabled" id="address" value="" class="address" placeholder="请输入详细地址" oninput="if(value.length>255)value=value.slice(0,255)"/>
+						</span>
+					</p>
+				</form>				
+			</div>
+		</div>
+		<!--<button type="button" id="btn" data-click="0">编辑</button>-->
+		<script type="text/javascript">
+			// layui.use('layer', function(){
+			// 	var layer = layui.layer;
+			// })
+//			$("#btn").click(function(){
+//				$(this).text("保存");
+//				editSave(1);
+//				$(this).click(function(){
+//					editSave(2);
+//				})
+//			})
+
+			// 定义年龄,原始电话,患者ID
+			var sexValue;
+			var oldMobile;
+			var eleId = sessionStorage.getItem("id");
+			function androidMethod(){
+				$(".chooseImage").click(function(){
+					android.HeadImage(eleId);
+				});
+			};
+			// function headImg(headSrc){
+			// 	$(".essential")
+			// 		.find("p")
+			// 			.eq(0)
+			// 				.find("img")
+			// 					.attr("src", headSrce);
+			// }
+			// 获取原生传过来的图片路径并赋值
+			function uploadUserIconSuccessSendUrl(url){
+				// alert(url);
+				$(".essential")
+					.find("p")
+						.eq(0)
+							.find("img")
+								.attr("src", url);
+			}
+			//调用编辑保存
+			function editSave(clickNum){
+				var mPattern = /^1[345789]\d{9}$/;
+				var cP = /^(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}[0-9Xx]$)$/;
+				var Cnumber = /^(?:[1-9][0-9]?|1[01][0-9]|120)$/;
+				//传值
+				if (clickNum == 1) {
+					$(".essential")
+						.find("p")
+							.eq(2)
+								.find("span")
+									.find("i")
+										.click(function(){
+						var status = $(this).attr("data-num");
+						if (status == 1) {
+							$(this).html("&#xe677;").css({"color": "#2292FE"});
+	//								$(this).eq(1).html("&#xe678;").css({"color": "#000"});
+							$(".essential")
+								.find("p")
+									.eq(2)
+										.find("span")
+											.find("i")
+												.eq(1)
+													.html("&#xe678;")
+														.css({"color": "#000"});
+							$(".sex").val("男");	
+						} else{
+							$(this).html("&#xe677;").css({"color": "#2292FE"});
+	//								$(this).eq(0).html("&#xe678;").css({"color": "#000"});
+	//								$(this).eq(0).html("&#xe678;").css({"color": "#000"});
+							$(".essential")
+								.find("p")
+									.eq(2)
+										.find("span")
+											.find("i")
+												.eq(0)
+													.html("&#xe678;")
+														.css({"color": "#000"});
+							$(".sex").val("女");	
+						}
+					})
+					$('input[disabled]').removeAttr("disabled");
+					if ($(".username").val() == "") {
+						layer.msg("姓名不可为空");
+//						$(this).focus();
+						return false;
+					}					
+					// android.test(eleId);
+					// return eleId;
+					// 更改					
+					var agent = navigator.userAgent.toLowerCase();
+			        var android = agent.indexOf("android");
+			        var iphone = agent.indexOf("iphone");
+			        var ipad = agent.indexOf("ipad");
+			        if(android != -1){
+			//             equipmentType = "android";
+						// $(".chooseImage").click(function(){
+						// 	android.HeadImage(eleId);
+						// })
+						androidMethod();
+						//android.HeadImage(eleId);
+						$("#username").blur(function(){
+							if ($(this).val().length > 16) {
+//								$(this).focus();
+								layer.msg("您输入的姓名过长!");
+								return false;
+							}
+						})
+						$("#phone").blur(function(){							
+							if ($(this).val().length > 11) {
+//								$(this).focus();
+								layer.msg("您输入的手机号过长,请重新输入!");
+								return false;
+							}
+							if (!(mPattern.test($(this).val()))) {
+//								$(this).focus();
+								layer.msg("您输入的手机号错误,请重新输入!");
+								return false;
+							}
+						});
+						$("#IDcard").blur(function(){
+							if ($(this).val().length > 18) {
+//								$(this).focus();
+								layer.msg("您输入的身份证号过长,请重新输入!");
+								return false;
+							}
+							if (!(cP.test($(this).val()))) {
+//								$(this).focus();
+								layer.msg("您输入的身份证号错误,请重新输入!");
+								return false;
+							}
+						});
+						$("#age").blur(function(){
+							if ($(this).val().length > 3) {
+//								$(this).focus();
+								layer.msg("您输入的年龄过长,请重新输入!");
+								return false;
+							}
+							if (!(Cnumber.test($(this).val()))) {
+//								$(this).focus();
+								layer.msg("您输入的年龄错误,请重新输入!");
+								return false;
+							}
+						});
+			        }
+					if (iphone != -1 || ipad != -1) {
+						$("#username").blur(function(){
+							if ($(this).val().length > 16) {
+//								$(this).focus();
+								layer.msg("您输入的姓名过长!");
+								return false;
+							}
+						});
+						$("#phone").blur(function(){							
+							if ($(this).val().length > 11) {
+//								$(this).focus();
+								layer.msg("您输入的手机号过长,请重新输入!");
+								return false;
+							}
+							if (!(mPattern.test($(this).val()))) {
+//								$(this).focus();
+								layer.msg("您输入的手机号错误,请重新输入!");
+								return false;
+							}
+						});
+						$("#IDcard").blur(function(){
+							if ($(this).val().length > 18) {
+//								$(this).focus();
+								layer.msg("您输入的身份证号过长,请重新输入!");
+								return false;
+							}
+							if (!(cP.test($(this).val()))) {
+//								$(this).focus();
+								layer.msg("您输入的身份证号错误,请重新输入!");
+								return false;
+							}
+						});
+						$("#age").blur(function(){
+							if ($(this).val().length > 3) {
+//								$(this).focus();
+								layer.msg("您输入的年龄过长,请重新输入!");
+								return false;
+							}
+							if (!(Cnumber.test($(this).val()))) {
+//								$(this).focus();
+								layer.msg("您输入的年龄错误,请重新输入!");
+								return false;
+							}
+						});
+						$(".chooseImage").click(function(){
+							uploadUserIcon(eleId);
+						});
+					}
+				} else{					
+					$('input').attr("disabled", "disabled");
+					// 判断年龄空值
+					var sex = $(".sex").val();
+					if (sex == null || sex == "") {
+						sex = sexValue;
+					}
+					if ($(".username").val() == "") {
+						layer.msg("姓名不可为空");
+						return false;
+					}
+					if (!(mPattern.test($("#phone").val()))) {
+						layer.msg("您输入的手机号不正确!");
+						return false;
+					}
+					if (!(cP.test($("#IDcard").val()))) {
+						layer.msg("您输入的身份证号错误,请重新输入!");
+						return false;
+					}
+					$.ajax({
+						type:"get",
+						url: config + "/oa/patinfo/update",
+						async:true,
+						data:{
+							"id": eleId,
+							"fkUserId": $("#fkUserId").val(),
+							"name": $(".username").val(),
+							"sex": sex,
+							"age": $(".age").val(),
+							"idCode": $(".IDcard").val(),
+							"oldMobile": oldMobile,
+							"mobile": $(".mobile").val(),
+							"address": $(".address").val()
+						},
+						success: function(data){
+							console.log(data);
+							if(data.status == 1){								
+								// $(location).prop('href', "../healthrecord/healthrecord.html");
+								layer.msg(data.message);
+								setTimeout(function(){
+								 	backAction();
+								},2000)
+							}else{
+								layer.msg(data.message);
+							}
+						},
+						error: function(data){
+							console.log(data);
+							if(data.status == 2){
+								layer.msg(data.message);
+							}
+						}
+					});
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,257 @@
+/* 顶部内容样式 */
+/* .right-close-btn{
+	position: absolute;
+	right: 0.425rem;
+	overflow: hidden;
+}
+.right-close-btn .closebtn{
+	background-color: transparent;
+	border: 0;
+	font-size: 0.45rem;
+	padding-right: 0.075rem;
+	color: #2292FE;
+}
+.right-close-btn .closebtn:focus{
+	outline: none;
+} */
+/* 选项卡样式 */
+.tablist{
+	display: flex;
+	justify-content: space-between;
+}
+.tablist ul{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.tablist ul li{
+	width: 50%;
+	padding-bottom: 0.45rem;
+	margin-top: 0.325rem;
+	font-size: 0.45rem;
+	text-shadow: 0 0 0.0125rem #2B2724;
+	border-bottom: 2px solid #F1F1F1;
+}
+.tablist ul .Active{
+	border-color: #2292FE;
+	color: #2292FE;
+}
+/* 内容样式 */
+/* 老版灰背景 */
+/* .wrapper{
+	background-color: #F5F5F5;
+}
+.wrapper>div{
+	background-color: #FFFFFF;
+} */
+	/* 内容内按钮组 */
+.wrapper .tablist{
+	padding: 0.3rem 0.45rem 0.1rem;
+	/* 老版间距 */
+	/* padding: 0.725rem 0.45rem 0.65rem; */
+	/* 老版分割线 */
+	/* border-bottom: 1px solid #F1F1F1; */
+	display: flex;
+	justify-content: space-between;
+}
+.tablist button{
+	background-color: #e6e4e4;
+	border: 0;
+	color: #656565;
+	font-size: 0.325rem;
+	/* 老版字体16px字 */
+	/* font-size: 0.4rem; */
+	/* 老版间距 */
+	/* padding: 0.35rem 1.05rem; */
+	padding: 0.15rem 0.5rem;
+	/* 老版加圆角 */
+	/* border-radius: 0.1rem; */
+	border-radius: 1rem;
+	/* 老版背景色和字体色 */
+	/* background-color: #2292FE;
+	color: #FFFFFF; */
+}
+.tablist .active{
+	/* 老版选中背景色 */
+	/* background-color: #DCE7FB; */
+	background-color: #2292FE;
+	color: #FFFFFF;
+}
+	/* 内容内表格 */
+.wrapper .content{
+	/* 老版通栏的宽 */
+	/* width: 100%;	 */
+	padding: 0.475rem 0rem 0.5rem;
+	/* 间距 */
+	/* margin: 0 0.45rem; */
+	/* 多出滚动条 */
+	/* overflow: auto; */
+	/* 距离底部 */
+	/* margin-bottom: 0.425rem; */
+}
+.wrapper .content table{
+	width: 100%;
+}
+.content table thead tr th{
+	font-size: 0.3rem;
+	/* padding: 0.45rem 0rem; */
+	padding: 0.25rem 0rem;
+	/* background-color: rgb(212, 212, 212); */
+	background-color: rgba(212, 212, 212, .5);
+	text-align: left;
+	white-space: normal;
+	width: 25%;
+	color: #6d6b6b;
+	position: relative;
+	text-indent: 0.3rem;
+}
+.content table thead tr th:nth-of-type(2){
+	width: 30%;
+}
+.content table thead tr th:last-of-type{
+	display: none;
+}
+/* .content table thead tr th:not(:first-of-type){
+	border-left: 1px solid #848484;
+} */
+.content table thead tr th:not(:first-of-type) p:before{
+	content: "";
+	border-right: 1px solid #848484;
+	margin-right: 0.25rem;
+}
+.content table thead tr th p{
+	margin: 0;
+	padding: 0;
+	font-size: 0.3rem;
+	/* font-size: 0.4rem; */
+	text-align: left;
+}
+.content table thead tr th i{
+	/* font-style: normal; */
+	/* font-size: 0.1rem; */
+	/* position: absolute; */
+	/* top: 0.75rem; */
+	/* left: 0; */
+}
+.content table tbody tr td{
+	font-size: 0.375rem;
+	text-align: left;
+	padding: 0.45rem 0rem;
+	width: 25%;
+	vertical-align: bottom;
+	text-indent: 0.3rem;
+	border-bottom: 1px solid #EDEDEF;
+}
+.content table tbody tr td:not(:first-of-type){
+	padding-left: 0.25rem;
+}
+.content table tbody tr td:last-of-type{
+	display: none;
+}
+.content table tbody tr td:first-of-type{
+	border-left: 1px solid #EDEDEF;
+}
+/* .content table tbody tr td:last-of-type{
+	border-right: 1px solid #EDEDEF;
+} */
+.content table tbody tr td p{
+	margin: 0;
+	font-size: 0.375rem;
+	text-align: left;
+}
+.content table tbody tr td p:nth-of-type(2){
+	font-size: 0.3rem;
+}
+.content table tbody tr td:nth-of-type(2),
+.content table tbody tr td:nth-of-type(3){
+	font-size: 0.6rem;
+}
+.content table tbody tr td:nth-of-type(2) span{
+	font-size: 0.6rem;
+}
+.content table tbody tr td:nth-of-type(2){
+	width: 31%;
+	white-space: nowrap;
+}
+/* .wrapper .content table{
+	width: 100%;
+}
+.content table thead tr{
+	position: relative;
+} */
+/* .content table thead tr th{
+	font-size: 0.3rem;
+	padding: 0.29rem 0;
+	background-color: rgb(212, 212, 212);
+	text-align: left;
+	white-space: normal;
+	color: #6d6b6b;
+	font-weight: normal; */
+	/* old css */
+	/* text-shadow: 0 0 0.0125rem rgba(255,255,255,1); */
+	/* white-space: nowrap; */
+	/* color: #FFFFFF; */
+	/* background-color: rgba(37,146,254,1); */
+	/* padding: 0.29rem 0.47rem; */	
+/* } */
+/* .content table thead tr th i{
+	font-style: normal;
+	font-size: 0.1rem;
+}
+.content table thead tr th:nth-of-type(2){
+	padding: 0;
+	white-space: normal;
+}
+.content table thead tr th:nth-of-type(3),
+.content table thead tr th:nth-of-type(4){
+	padding: 0 0.3rem;
+	white-space: normal;
+}
+.content table thead tr th:nth-of-type(2) i,
+.content table thead tr th:nth-of-type(3) i{
+	font-style: normal;
+	font-size: 0.1rem;
+}
+.content table thead tr th:not(:last-of-type):after{
+	content: "";
+	position: absolute;
+	right: 0;
+	border-right: 1px solid #FFFFFF;
+} */
+/* .content table tbody tr td{
+	font-size: 0.375rem;
+	text-align: left;
+	white-space: nowrap;	
+	padding: 0;
+	height: 1.025rem;
+	line-height: 1.025rem;	
+	border-bottom: 1px solid #EDEDEF; */
+	/* padding: 0rem 0.45rem; */
+	/* text-shadow: 0 0 0.0125rem rgba(0,0,0,1); */
+/* } */
+.content table tbody tr td:nth-of-type(1){
+	/* white-space: normal; */
+}
+/* .content table tbody tr td:nth-of-type(2),
+.content table tbody tr td:nth-of-type(3){
+	font-size: 0.6rem;
+}
+.content table tbody tr td:nth-of-type(2),
+.content table tbody tr td:nth-of-type(3),
+.content table tbody tr td:nth-of-type(4){
+	padding: 0 0.3rem;
+}
+.content table tbody tr td i{
+	color: red;
+}
+.content table tbody tr td:last-of-type{
+	width: 5rem;
+	max-width: 5rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+} */
+
+

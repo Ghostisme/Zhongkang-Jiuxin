@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta content="telephone=no" name="format-detection">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>查看处方</title>
+		<!-- 引入组件CSS库 -->
+		<link rel="stylesheet" type="text/css" href="../css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/layui.mobile.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/default/layer.css"/>
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/init.css">
+		<!-- 顶部内容CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/navbar.css"> -->
+		<!-- 本页面CSS -->
+		<link rel="stylesheet" type="text/css" href="css/addrecipel-del.css"/>
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../font/iconfont.css">
+		<!-- 搜索框CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/search.css"> -->
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../js/config.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../js/layer.js"></script>
+		<!-- 页面跳转方法JS -->
+		<!-- <script type="text/javascript" src="../../js/jumpPage.js"></script> -->
+		<!-- 本页JS -->
+		<!-- <script type="text/javascript" src="js/addrecipel-del.js" ></script> -->
+	</head>
+	<body>
+		<!-- 2019-05-20 -->
+		<!-- 顶部内容 -->
+		<!-- <div class="header">
+			<div class="navbar">
+				<div class="navbackbtn">
+					<i class="iconfont">&#xe624;</i>
+				</div>
+				<div class="navtitle">
+					<span class="title">添加处方</span>
+				</div>
+				<div class="right-close-btn">
+					<button type="button" class="closebtn">编辑/保存</button>
+				</div>
+			</div>
+		</div> -->
+		<!-- 内容区域 -->
+		<div class="wrapper">
+			<div class="content">
+				<p>
+					<span>商品名称</span>
+					<span class="drugName">
+						<!--苏打片-->
+						 <!-- <input type="text" name="" id="" value="" placeholder="请输入商品名称" class="drugName" /> -->
+					</span>
+				</p>
+				<p>
+					<span>化学名</span>
+					<span class="chemistryName">
+						<!--碳酸氢钠片-->
+						 <!-- <input type="text" name="" id="" value="" placeholder="请输入化学名" class="chemistryName" /> -->
+					</span>
+				</p>
+				<p>
+					<span>厂商全名</span>
+					<span class="firmName">
+						<!--XX-->
+						 <!-- <input type="text" name="" id="" value="" placeholder="请输入厂商全名" class="firmName" /> -->
+					</span>
+				</p>
+				<p>
+					<span>用法用量</span>
+					<span class="dosage">
+						<!--每日3次，每次2-3片-->
+						 <!-- <input type="text" name="" id="" value="" placeholder="请输入用法用量" class="dosage" /> -->
+					</span>
+				</p>
+				<div class="remarkstitle">备注</div>
+				<div class="remarksBox">
+					<textarea placeholder="请输入备注信息..." class="memo" disabled="disabled" ></textarea>
+				</div>
+				<input type="hidden" name="" id="errmsg" value="" />
+			</div>
+		</div>
+		
+		<!-- <button type="button" class="click">click</button> -->
+		<script type="text/javascript">
+			// 获取患者ID
+			var eleId = sessionStorage.getItem("id");
+			// 获取就诊ID
+			var eleDisid = sessionStorage.getItem("disid");
+			// 获取药品处方当前项数据ID
+			var dataId = sessionStorage.getItem("dataId");
+			console.log(eleDisid);
+			console.log(dataId);
+			console.log(eleId);
+			// var eleDisid = sessionStorage.getItem("diagnosisid");
+			// 回显数据
+			// 定义删除状态
+			var isDel;
+			// 数据请求
+			$.ajax({
+				type:"get",
+				url: config + "/oa/patinfoPrescribe/get",
+				async: false,
+				data: {
+					"id": dataId,
+					"fkDisId": eleDisid
+				},
+				success: function(data){
+					console.log(data);
+					// list赋给变量
+					var dataList = data.resultMap.patinfoPrescribe;
+					// 赋值
+					$(".drugName").text(dataList.drugName);
+					$(".chemistryName").text(dataList.chemistryName);
+					$(".firmName").text(dataList.firmName);
+					$(".dosage").text(dataList.dosage);
+					// 判断空值
+					if (dataList.memo == "") {
+						$(".remarksBox").find("textarea").val("暂无");
+					}else{
+						$(".remarksBox").find("textarea").val(dataList.memo);
+					}
+					// 删除状态
+					isDel = dataList.isDeleted;
+				},
+				error: function(data){
+					console.log(data);
+				}
+			});
+			// var errmsg;
+			// 保存
+			// function editSave(clickNum, sesId){
+			// 	var sesid = sesId;
+			// 	if (clickNum == 1) {
+			// 		// $("input[disabled]").removeAttr("disabled");
+			// 		// $("textarea[disabled]").removeAttr("disabled");
+			// 	} else{					
+			// 		// $("input").attr("disabled", "disabled");
+			// 		// $("textarea").attr("disabled", "disabled");
+			// 		// if ($(".drugName").val() == "" || $(".chemistryName").val() || $(".firmName").val() || $(".dosage").val()) {
+			// 		// 	
+			// 		// } else{
+			// 		// 	
+			// 		// }
+			// 		$.ajax({
+			// 			type:"get",
+			// 			url: config + "/oa/patinfoPrescribe/save",
+			// 			async:false,
+			// 			data: {
+			// 				"sessionId": sesid,
+			// 				"fkPatinfoId": eleId,
+			// 				"fkDisId": eleDisid,
+			// 				"drugName": $(".drugName").val(),
+			// 				"chemistryName": $(".chemistryName").val(),
+			// 				"firmName": $(".firmName").val(),
+			// 				"dosage": $(".dosage").val(),
+			// 				"memo": $(".memo").val()
+			// 			},
+			// 			success: function(data){
+			// 				console.log(data);
+			// 				if(data.status == 1){
+			// 					layer.msg(data.message);								
+			// 				}else{
+			// 					layer.msg(data.message);
+			// 					// errmsg = data.message;
+			// 					// $("#errmsg").val(data.message);
+			// 					// console.log(errmsg);
+			// 				}
+			// 			},
+			// 			error: function(data){
+			// 				console.log(data);
+			// 				if(data.status == 2){
+			// 					layer.msg(data.message);
+			// 				}
+			// 			}
+			// 		});
+			// 		// console.log($("#errmsg").val())
+			// 		// return $("#errmsg").val();
+			// 		// console.log(errmsg);
+			// 		$(location).prop('href', "../prescriptionDrugs/prescriptionDrugs.html");
+			// 	}
+			// }
+			// 删除
+			function delData(clickNum){
+				if (clickNum == 3) {
+					$.ajax({
+						type:"get",
+						url: config + "/oa/patinfoPrescribe/remove",
+						async: false,
+						data: {
+							"id": dataId,
+							"fkPatinfoId": eleId,
+							"fkDisId": eleDisid
+						},
+						success: function(data){
+							console.log(data);
+							if(data.status == 1){
+								layer.msg(data.message);
+								setTimeout(function(){
+									// $(location).prop('href', "../prescriptionDrugs/prescriptionDrugs.html");
+									backAction();
+								},2000);
+								android.GoBack(data.message);
+							}else{
+								layer.msg(data.message);
+							}
+							
+						},
+						error: function(data){
+							console.log(data);
+							if(data.status == 2){
+								layer.msg(data.message);
+							}
+						}
+					});
+					
+				}
+			}
+			// 传删除状态
+			function sendStr(){
+				console.log(isDel);
+				return isDel;
+			}
+		</script>
+	</body>
+</html>

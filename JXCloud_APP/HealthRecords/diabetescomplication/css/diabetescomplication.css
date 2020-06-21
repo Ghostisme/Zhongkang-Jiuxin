@@ -1,0 +1,69 @@
+/* 顶部内容样式 */
+.right-close-btn{
+	position: absolute;
+	right: 0.425rem;
+}
+.right-close-btn .closebtn{
+	background-color: transparent;
+	border: 0;
+	font-size: 0.45rem;
+}
+.right-close-btn .closebtn:focus{
+	outline: none;
+}
+/* 按钮通用样式 */
+.btn{
+	background-color: #FFF;
+	border: 0;
+	color: rgba(34,146,254,1);
+}
+.btn:focus{
+	outline: none;
+}
+/* 内容样式 */
+.wrapper{
+	/* padding: 0.35rem 0rem 0rem 0.45rem; */
+}
+.wrapper .title{
+	text-align: left;
+	font-weight: bold;
+	font-size: 0.45rem;
+	padding: 0.35rem 0.45rem 0rem;
+}
+.wrapper .listBox{
+	padding: 0.35rem 0rem 0rem 0.45rem;
+}
+.wrapper .listBox ul{
+	margin-top: 0;
+	padding: 0;
+}
+.wrapper .listBox ul li{
+	text-align: left;
+	padding: 0.425rem 0rem 0.325rem;
+	border-bottom: 1px solid #EDEDED;
+}
+.wrapper .listBox ul li i{
+	font-size: 0.75rem;
+	vertical-align: -0.1rem;
+	color: #cbcbcb;
+}
+.wrapper .listBox ul li span{
+	/*text-shadow: 0 0 0.0125rem rgba(0,0,0,1);*/
+	font-size: 0.45rem;
+}
+/* .wrapper .buttonBox{
+	padding: 0.35rem 0.45rem 0rem 0.45rem;
+	position: fixed;
+	bottom: 0.65rem;
+}
+.wrapper .buttonBox button{
+	background-color: #2292FE;
+	border: 0;
+	color: #FFFFFF;
+	white-space: nowrap;
+	padding: 0.425rem 4.3rem;
+	border-radius: 0.075rem;
+}
+.wrapper .buttonBox button:focus{
+	outline: none;
+} */

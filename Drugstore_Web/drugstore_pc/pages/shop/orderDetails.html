@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>金诃药店</title>
+	<link rel="stylesheet" href="../../common/bootstrap.css" />
+	<link rel="stylesheet" href="../../common/reset.css" />
+	<link rel="stylesheet" href="../../common/style.css" />
+	<link rel="stylesheet" href="../../common/common.css" />
+	<link rel="stylesheet" href="../../css/headerTop.css" />
+	<link rel="stylesheet" href="../../css/mainTop.css" />
+	<link rel="stylesheet" href="../../css/footer.css" />
+	<link rel="stylesheet" href="../../css/shoppingCart.css" />
+	<link rel="stylesheet" href="../../css/shop_index.css" />
+	<link rel="stylesheet" href="../../css/layui/css/layui.css" />
+	<link rel="stylesheet" href="../../css/order_index.css" />
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="../../css/layui/layui.all.js"></script>
+	<style>
+		.footerMiddle{
+			font-size: 12px;
+		}
+		.cbox,
+		.cTbox {
+			float: left;
+			width: 16px;
+			height: 15px;
+			line-height: 15px;
+			/*border:1px solid #ccc;*/
+			background: url("../../images/shopCart/carNoCheck.png");
+			background-repeat: no-repeat;
+			vertical-align: middle;
+			text-align: center;
+			margin-top: 13px;
+			margin-right: 4px;
+			background-size: 100% 100%;
+		}
+
+		.cbox.checked,
+		.cTbox.checked {
+			width: 18px;
+			height: 17px;
+			line-height: 17px;
+			color: #f00;
+			background: url("../../images/shopCart/checkBoxImg.png");
+			vertical-align: middle;
+			text-align: center;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			margin-top: 11px;
+		}
+
+		.cbox.checked:after,
+		.cTbox.checked:after {
+			width: 18px;
+			height: 17px;
+			line-height: 17px;
+			/*content:"√";*/
+			background: url("../../images/shopCart/checkBoxImg.png");
+			font-size: 13px;
+			font-weight: bold;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+
+		.csbox {
+			float: left;
+			width: 16px;
+			height: 15px;
+			line-height: 15px;
+			/*border:1px solid #ccc;*/
+			background: url("../../images/shopCart/carNoCheck.png");
+			vertical-align: middle;
+			text-align: center;
+			margin-top: 28px;
+			margin-right: 4px;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+
+		.csbox.checked {
+			width: 18px;
+			height: 17px;
+			line-height: 17px;
+			color: #f00;
+			background: url("../../images/shopCart/checkBoxImg.png");
+			vertical-align: middle;
+			text-align: center;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			margin-top: 27px;
+		}
+
+		.csbox.checked:after {
+			width: 18px;
+			height: 17px;
+			line-height: 17px;
+			/*content:"√";*/
+			background: url("../../images/shopCart/checkBoxImg.png");
+			font-size: 13px;
+			font-weight: bold;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+		[v-cloak]{
+        display:none
+    	}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div class="loadTop"></div>
+		<div class="loadHeader"></div>
+	</header>
+	<div id="app" style="background-color: #f8f8f8;padding-bottom:40px;" v-cloak>
+		<div id="section">
+			<!-- <ul class="breadcrumb">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">藏药系列</a></li>
+				<li class="active">头痛</li>
+			</ul> -->
+			<!--购物车列表-->
+			<div class="shopCartContent">
+				<div class="orderdetail">
+					订单状态：
+					<span v-if="orderList.orderType == 1" class="red">待付款</span>
+					<span v-if="orderList.orderType == 2" class="red">待发货</span>
+					<span v-if="orderList.orderType == 3" class="red">待收货</span>
+					<span v-if="orderList.orderType == 4" class="red">已完成</span>
+					<span v-if="orderList.orderType == 5" class="red">取消订单</span>
+				</div>
+				<div class="progress aboutsize">
+					<div v-bind:class="[progress_bar,{'bgcolor':payFrom}]" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+						aria-valuemax="100" style="width: 25%;">
+						<span>提交订单</span>
+					</div>
+					<div v-bind:class="[progress_bar,{'bgcolor':dFromGood}]" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+						aria-valuemax="100" style="width: 25%;">
+						<span>付款成功</span>
+					</div>
+					<div v-bind:class="[progress_bar,{'bgcolor':dReceivingGood}]" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+						aria-valuemax="100" style="width: 25%;">
+						<span>已发货</span>
+					</div>
+					<div v-bind:class="[progress_bar,{'bgcolor':completed}]" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+						aria-valuemax="100" style="width: 25%;">
+						<span>包裹已送达</span>
+					</div>
+					<div v-if="orderList.orderType == 1" class="timeliste" style="margin-left:90px">{{(new Date(orderList.orderTime)).Format("yyyy-MM-dd hh:mm:ss")}}</div>
+					<div v-if="orderList.orderType == 2" class="timeliste" style="margin-left:390px">{{(new Date(orderList.payTime)).Format("yyyy-MM-dd hh:mm:ss")}}</div>
+					<div v-if="orderList.orderType == 3" class="timeliste" style="margin-left:690px">{{(new Date(orderList.deliveryTime)).Format("yyyy-MM-dd hh:mm:ss")}}</div>
+					<div v-if="orderList.orderType == 4" class="timeliste" style="margin-left:990px">{{(new Date(orderList.completionTime)).Format("yyyy-MM-dd hh:mm:ss")}}</div>
+					<div v-if="orderList.orderType == 5" class="timeliste" style="margin-left:990px">{{(new Date(orderList.cancellationTime)).Format("yyyy-MM-dd hh:mm:ss")}}</div>
+				</div>
+				<div class="orderno">
+					订单号：{{orderList.orderId}}
+				</div>
+				<div class="boxflex" style="background-color: white;">
+					<div class="boxborder">
+						<div class="orderinfo">订单信息</div>
+						<div class="orderinfoper">
+							<div>收货人：{{orderList.orderUser}}</div>
+							<div>收货地址：{{orderList.address}}</div>
+							<div>手机号：{{orderList.phone}}</div>
+							<div>支付状态：{{
+									orderList.orderType == 1?"待付款":(orderList.orderType == 2?"待发货":(orderList.orderType == 3?"待收货":(orderList.orderType == 4?"已完成":(orderList.orderType == 5?"取消订单":""))))
+								}}</div>
+							<div>支付类型：{{orderList.payFrom}}</div>
+							<div>备注信息：{{orderList.orderRemarks}}</div>
+							<div>发票信息：{{invoice}}</div>
+							<div v-if="invoiceList.length != 0">
+								<div>发票类型：纸质发票</div>
+								<div>发票抬头：{{invoiceList.invoicePayable}}</div>
+								<div v-if="invoiceList.invoiceName">抬头内容：{{invoiceList.invoiceName}}</div>
+								<div v-if="invoiceList.content">抬头内容：{{invoiceList.content}}</div>
+								<div v-if="invoiceList.invoiceName">纳税人识别号：{{invoiceList.dutySign}}</div>
+								<div>发票内容：商品明细</div>
+							</div>
+						</div>
+					</div>
+					<div class="rightinfo">
+						<div class="orderinfo">订单状态</div>
+						<div v-if="orderProcess.length != 0" class="logistics">
+							<p v-for="pro in orderProcess">
+									{{pro.createTime?(new Date(pro.createTime)).Format("yyyy-MM-dd hh:mm:ss"):pro.AcceptTime}}
+									 - {{pro.orderRecord?pro.orderRecord:pro.AcceptStation}}
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="orderno">
+					商品信息
+				</div>
+				<form action="">
+					<div class="cartProductList" style="background-color: white">
+						<div class="allTittle"style="margin-top: 0px;">
+							<div class="col lf">
+								<!--<span class="spanCheckBox lf">
+									<span class="cTbox"id="checkAllTop"onclick="this.className=/checked/ig.test(this.className)?this.className.replace('checked',''):(this.className+' checked')"></span>
+								</span>							
+								<span class="checkAllTxt lf">全选</span>-->
+							</div>
+							<div class="col5 lf"style="width: 233px;">商品信息</div>
+							<div class="col3 lf"style="width: 244px;">金额</div>
+							<div class="col4 lf"style="width: 230px;">数量</div>
+							<div class="col5 lf"style="width: 257px;">小计</div>
+							<div class="col6 lf"style="width: 214px;text-align: center;">操作</div>
+						</div>
+						<div v-for="row in productList" class="simpleOrder" style="height: auto;border-top: 0px;">
+							<div v-if="row.drugOrderProductList"v-for="rows in row.drugOrderProductList" style="overflow: hidden;">
+								<div v-if="rows.mealList" style="overflow: hidden;">
+									<div style="overflow: hidden;">
+										<div style="border-bottom: 1px solid #eee;padding:10px 0px;">【套餐】{{rows.mealList.mealName}}
+											<div class="detailStyle lf delBox rt fr80" style="height: auto;line-height: normal;">
+												<button type="button" style="position: relative; bottom: 8px;"class="layui-btn layui-btn-sm layui-btn-danger"  v-on:click="onBuy(row)">还要买</button>
+											</div>
+										</div>
+										<div v-for="(item1, index1) in rows.mealList.mealList" style="overflow: hidden;">
+											<div class="productImg lf detailStyle">
+												<img v-bind:src="item1.fileUrl?item1.fileUrl:'../../images/shopCart/productImg1.png'" alt="" />
+											</div>
+											<div class="nameParent lf detailStyle">
+												<div style="line-height:1.3;" class="productName">{{item1.drugName}}</div>
+												<div style="line-height:1.3;" class="specs">产品规格: {{item1.specs}}</div>
+											</div>
+											<div class="detailStyle lf priceBox">
+												<span>¥</span>
+												<span class="price" v-if="item1.presentPrice==1">{{item1.presentPrice}}/{{item1.unit}}</span>
+												<span class="price" v-else>{{item1.presentPrice}}/{{item1.drugNum}}{{item1.unit}}</span>
+												<div style="text-decoration: line-through;color:#999;">¥{{item1.drugPrice}}/{{item1.unit}}</div>
+												<!--<div class="fullMinus">满<span class="full">600</span>减<span class="minus">200</span></div>-->
+											</div>
+											<div class="detailStyle lf changeQuantityBox w230 cn">
+												{{rows.mealNum}}
+											</div>
+											<div class="detailStyle lf subtotalBox">
+												￥
+												<span class="subtotal">{{item1.commodityCountPirce}}</span>
+											</div>
+											
+										</div>
+									</div>
+									
+								</div>
+								<div style="overflow: hidden;border-top:1px solid #eee;" v-else>
+										<div class="productImg lf detailStyle">
+											<img v-bind:src="rows.drugUrl?rows.drugUrl:'../../images/shopCart/productImg1.png'" alt="" />
+										</div>
+										<div class="nameParent lf detailStyle">
+											<div style="line-height:1.3;" class="productName">{{rows.drugName}}</div>
+											<div style="line-height:1.3;" class="specs">产品规格: {{rows.specs}}</div>
+										</div>
+										<div class="detailStyle lf priceBox">
+											<span>¥</span>
+											<span class="price">{{rows.drugPrice}}</span>
+											<!--<div class="fullMinus">满<span class="full">600</span>减<span class="minus">200</span></div>-->
+										</div>
+										<div class="detailStyle lf changeQuantityBox w230 cn">
+											{{rows.drugNum}}
+										</div>
+										<div class="detailStyle lf subtotalBox">
+											￥
+											<span class="subtotal">{{rows.drugPrice}}</span>
+										</div>
+										<div class="detailStyle lf delBox rt fr80">
+											<button type="button" class="layui-btn layui-btn-sm layui-btn-danger"  v-on:click="onBuy(row)">还要买</button>
+										</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--购物车结算操作条-->
+			<div class="settleAccountsBar"  style="background-color: white;">
+				<div id="cart-floatbar">
+					<div class="ui-ceilinglamp-1" style="width: 1400px; height: 72px;">
+						<div class="cart-toolbar">
+							<div class="toolbar-wrap">
+								<div class="selected-item-list hide" style="display: none;">
+								</div>
+								<div class="options-box">
+									<div class="toolbar-right toolbar-right-new rt">
+										<div class="normal">
+											<div class="comm-right">
+												<div class="btn-area itemHeight itemwidth flex">
+													<div style="width:120px;text-align: right">总商品总额：</div>
+													<div style="width:120px;text-align: right">￥{{orderList.price}}</div>
+												</div>
+												<div class="btn-area itemHeight itemwidth flex">
+													<div style="width:120px;text-align: right">运费：</div>
+													<div style="width:120px;text-align: right">{{orderList.deliverMoney}}</div>
+												</div>
+												<div class="btn-area itemHeight itemwidth flex">
+													<div style="width:120px;text-align: right">优惠：</div>
+													<div style="width:120px;text-align: right">{{orderList.discountMoney}}</div>
+												</div>
+												<div class="btn-area  itemmaxHeight itemwidth flex">
+													<div style="width:120px;text-align: right">合计：</div>
+													<div
+														style="width:120px;text-align: right;font-weight: bold;color:red;">
+														￥{{orderList.totalMoney}}</div>
+												</div>
+												<div class="clr"></div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+
+	</footer>
+	<script type="text/javascript" src="../../common/jquery-1.12.1.js"></script>
+	<script type="text/javascript" src="../../common/common.js"></script>
+	<script type="text/javascript" src="../../js/shop_index.js"></script>
+	<script type="text/javascript" src="../../common/config.js"></script>
+	<script>
+		if(!window.user){
+			window.location.href = window.src + "pages/login/login.html";
+		}
+		var userId = window.user.id;
+		var app = new Vue({
+			el: '#app',
+			data: {
+				orderList: [],
+				productList: [],
+				invoiceList:[],
+				inputtext: "",
+				oshow: true,
+				payFrom: true,
+				dFromGood:true,
+				dReceivingGood:true,
+				completed:true,
+				progress_bar:"progress-bar",
+				logistics:[],
+				invoice: "不开发票",
+				orderProcess:[]
+			},
+			methods: {
+				to: function(orderId){
+					window.location.href = window.src+'pages/shoppingCart/shoppingCart.html?orderId='+orderId;
+				},
+				onBuy: function (order) {
+					console.log(order)
+					if(order.type==0){//失效商品
+						alert('此订单有失效套餐，无法再次购买！')
+					}else{
+						$.ajax({
+							type: "get",
+							url: config + "/drug/cart/add",
+							async: false,
+							dataType: "jsonp",
+							jsonp: "jsoncallback",
+							data: {
+								userId: userId,
+								fromType: 2,
+								orderId: order.orderId
+							},
+							success: function (data) {
+								console.log(order)
+								var idStr = "";
+								if(order.drugOrderProductList.length>0){
+									for (var i = 0; i < order.drugOrderProductList.length; i++) {
+										if(order.drugOrderProductList[i].mealList){//套餐商品 将套餐ID拿到拼接进去
+											var mealId=order.drugOrderProductList[i].mealId;
+											idStr += mealId + ",";
+										}else{
+											var drugId=order.drugOrderProductList[i].drugId
+											idStr += drugId + ",";
+										}
+										
+									}
+								}
+								localStorage.setItem("prodcutIds", idStr.substr(0, idStr.length - 1));
+								window.location.href = window.src + "pages/shoppingCart/shoppingCart.html?page=orderpage";
+							},
+						});
+					}
+						
+					},
+				listDispaly: function (data) {
+					console.log(data);
+					this.productList = data.list;
+					if(data.list[0]){
+						this.orderList = data.list[0];
+						
+						if(this.orderList.invoice.length != 0){
+							if(this.orderList.invoice[0].vatType==1){
+								this.invoiceList = this.orderList.invoice[0];
+								this.invoice = "增值税发票"
+							}else{
+								this.invoiceList = this.orderList.invoice[0];
+								this.invoice = "普通发票"
+							}
+						}
+						
+						if(this.orderList.orderType>=1){
+							this.payFrom = false;
+						}
+						if(this.orderList.orderType>=2){
+							this.dFromGood = false;
+						}
+						if(this.orderList.orderType>=3){
+							this.dReceivingGood = false;
+						}
+						if(this.orderList.orderType>=4){
+							this.completed = false;
+						}
+						if(this.orderList.orderType>=5){
+							this.completed = false;
+						}
+					}
+					
+				},
+				getList: function (index) {
+					var thiso = this;
+					var datalist = new Object;
+					if (index != 0) {
+						datalist.orderType = index;
+					}
+					datalist.orderName = this.inputtext;
+					datalist.orderId = getUrlParam('orderId');
+					$.ajax({
+						type: "get",
+						url: config + "/drug/orderInfo/getList",
+						async: false,
+						dataType: "jsonp",
+						jsonp: "jsoncallback",
+						data: datalist,
+						success: function (data) {
+							if (data.status == 1) {
+								thiso.listDispaly(data.resultMap);
+								thiso.logisticsList();
+							} else {
+								alert(data.message);
+							}
+						},
+					});
+				},
+				orderInfo:function(){
+					var orderProcess = this.orderList.orderProcess;
+					var arr = new Array;
+					for(var i=0;i<orderProcess.length;i++){
+						var sign = orderProcess[i].sign;
+						if(sign == 3){
+							//物流信息
+							for(var j=this.logistics.length-1;j>=0;j--){
+								arr.push(this.logistics[j]);
+							}
+						}else{
+						}
+						arr.push(orderProcess[i]);
+					}
+					this.orderProcess = arr;
+					console.log(this.orderProcess)
+				},
+				logisticsList(){
+					let thiso =this;
+					$.ajax({
+						type: "post",
+						url: config + "/express/getTraces",
+						async: false,
+						data: {
+							expNo:this.orderList.courierNum,
+							expCode:this.orderList.comCode,
+							// expNo:806993611123620323,
+							// expCode:"YTO"
+						},
+						success: function (data) {
+							if (data.status == 1) {
+								thiso.logistics = data.resultMap.expressMessage.Traces;
+
+								//处理物流
+								thiso.orderInfo();
+							} else {
+//								alert(data.message);
+							}
+						},
+					});
+				}
+			},
+			created() {
+				this.getList(0);
+			},
+		})
+	</script>
+</body>
+
+</html>

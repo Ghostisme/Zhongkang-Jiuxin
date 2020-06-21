@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="HandheldFriendly" content="true">
+		<title>卖家中心-公司信息</title>
+		<link rel="shortcut icon" type="image/x-icon" href="img/header/logoico3.png" />
+		<!-- Bootstrap -->
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css" rel="stylesheet">
+		<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/style.min.css" rel="stylesheet">
+		<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../../css/plugins/webuploader/webuploader.css">
+		<link rel="stylesheet" href="../../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/demo/webuploader-demo.min.css">
+		<!--自定义样式-->
+
+		<link rel="stylesheet" type="text/css" href="../../css/changeProductDetail.css" />
+	</head>
+
+	<body>
+		<!--内容区右边区-->
+		<article>
+			<form id="form_div">
+				<!--产品图-->
+				<input type="text" class="img1" name="img1" />
+				<input type="text" class="img2" name="img2" />
+				<input type="text" class="img3" name="img3" />
+				<input type="text" class="img4" name="img4" />
+				<!--产品详情图-->
+
+				<div id="basic_info" style="overflow: hidden;">
+					<div class="big_title">商品基本信息:</div>
+					<div id="basic_info_left">
+						<div class="rows">
+							<span class="info_name">药品全称:</span>
+							<span class="goodsName"></span>
+							<!--<span class="star">*</span>-->
+						</div>
+						<div class="rows">
+							<span class="info_name">规格:</span>
+							<span id="spec"></span>
+							<!--<span class="star">*</span>-->
+						</div>
+						<div class="rows">
+							<span class="info_name">批准文号:</span>
+							<!--聚合物改性沥青卷材", "沥青卷材", "金属卷材", "合成高分子卷材", "抗根卷材");-->
+							<span id="approvalNumber">
+								
+							</span>
+							<!--<span class="star">*</span>-->
+						</div>
+						<div class="rows">
+							<span class="info_name">储藏条件:</span>
+							<span id="standard_select">
+							</span>
+							<!--<span class="star">*</span>-->
+						</div>
+						<div class="rows">
+							<span class="info_name">生产厂商:</span>
+							<span id="standerNumber" /></span>
+						</div>
+						<div class="rows">
+							<span class="info_name">价格:</span>
+							<span id="vendor" /><span>
+								<!--<span class="star">*</span>-->
+						</div>
+						<div class="rows">
+							<span class="info_name">药品剂型:</span>
+							<!--聚合物改性沥青卷材", "沥青卷材", "金属卷材", "合成高分子卷材", "抗根卷材");-->
+							<span id="brand_select">
+								</span>
+							<!--<span class="star">*</span>-->
+						</div>
+						<div class="rows">
+							<span class="info_name">药品库存:</span>
+							<!--聚合物改性沥青卷材", "沥青卷材", "金属卷材", "合成高分子卷材", "抗根卷材");-->
+							<span id="brand_Store">
+								</span>
+							<!--<span class="star">*</span>-->
+						</div>
+					</div>
+					<div id="basic_info_right">
+						<div id="big_img">
+							<img src="../../img/big_picture.png" />
+						</div>
+						<div id="small_img">
+							<div id="small_pic1" class="sl_pic">
+								<img class="acc_imgin" src="../../img/small_picture.png" id="img0" accept="image/png,image/jpg">
+								<div id="acc_sc1" class="acc_small_img">
+									<input type="file" name="img1" id="image0" multiple class="ph08" />
+									<div class="deleteImgs">×</div>
+								</div>
+								<!--<div style="text-align: center;position: absolute;width: 52px;left: 276px;">删除</div>-->
+							</div>
+
+							<div id="small_pic2" class="sl_pic">
+								<img class="acc_imgin" src="../../img/small_picture.png" id="img1" accept="image/png,image/jpg">
+								<div id="acc_sc2" class="acc_small_img">
+									<input type="file" name="img2" id="image1" multiple class="ph08" />
+									<div class="deleteImgs">×</div>
+								</div>
+							</div>
+							<div id="small_pic3" class="sl_pic">
+								<img class="acc_imgin" src="../../img/small_picture.png" id="img2" accept="image/png,image/jpg">
+								<div id="acc_sc3" class="acc_small_img">
+									<input type="file" name="img3" id="image2" multiple class="ph08" />
+									<div class="deleteImgs">×</div>
+								</div>
+							</div>
+							<div id="small_pic4" class="sl_pic">
+								<img class="acc_imgin" src="../../img/small_picture.png" id="img3" accept="image/png,image/jpg">
+								<div id="acc_sc4" class="acc_small_img">
+									<input type="file" name="img4" id="image3" multiple class="ph08" />
+									<div class="deleteImgs">×</div>
+								</div>
+							</div>
+						</div>
+						<div id="shuoming">产品图片展示在产品详情中，尺寸235*235，不超过500kb的jpg或png，最多可传4张，默认第一张为商品列表展示图</div>
+					</div>
+				</div>
+
+				<!--药品分类信息-->
+				<div>
+					<div class="big_title">药品分类信息:</div>
+					<div class="rows form-group"id="firstCategray">
+						<span class="info_name1">一级分类:</span>
+						<span id="type_select">
+							<div class="form-group">
+		                        <div class="col-sm-8">
+		                            <div class=" input-group">
+		                                <input type="text" class="form-control" id="ryaoName" name="title" >
+		                                <div class="input-group-btn">
+		                                    <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown">
+		                                        <span class="caret"></span>
+		                                    </button>
+		                                </div>
+		                                <ul class="dropdown-menu dropdown-menu-right scrollHeight" role="menu"style="height: 200px;overflow-y: scroll;">
+		                                </ul>
+		                            </div>
+		                        </div>
+		                    </div>
+						</span>
+					</div>
+					<div class="rows secondType_selectBox">
+						<span class="info_name1">二级分类:</span>
+						<span id="secondType_select">
+							
+						</span>
+					</div>
+				</div>
+				<!--商品详情信息-->
+				<div>
+					<!--<div class="big_title">说明:</div>
+					<textarea id="shop_detail" placeholder="产品相关属性或产品相关服务描述，限200字" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)"></textarea>-->
+					<div class="big_title">商品详情图:</div>
+					<!--<div id="add_img_div">
+						<div id="uploader" class="wu-example">
+							<div class="queueList">
+								<div id="dndArea" class="placeholder">
+									<div id="filePicker"></div>
+									<p>或将照片拖到这里，单次最多可选300张</p>
+								</div>
+							</div>
+							<div class="statusBar" style="display:none;">
+								<div class="progress">
+									<span class="text">0%</span>
+									<span class="percentage"></span>
+								</div>
+								<div class="info"></div>
+								<div class="btns">
+									<div id="filePicker2"></div>
+									<div class="uploadBtn" style="display:none;">开始上传</div>
+								</div>
+							</div>
+						</div>
+					</div>-->
+
+					<div id="add_img_div">
+						<div id="select_img_div1" class="img_box" style="position: relative;">
+							<img id="addimg1" class="detail_img" src="../../img/big_picture.png" />
+							<div class="acc_sc5 acc_sc">
+								<input type="file" name="showpic1" id="showpic1" class="showpics" multiple/>
+							</div>
+							<div class="delete">×</div>
+							<input type="text" class="showpic1 showPics" name="showpic1" />
+						</div>
+						<!--<div id="select_img_div2"class="img_box" class="img_box" style="position: relative;display: none;">
+								<img id="addimg2" class="detail_img" src="../../img/big_picture.png" />
+								<div class="acc_sc6">
+									<input type="file" name="showpic2" id="showpic2" multiple/>
+								</div>
+								<div class="delete">×</div>
+								<input type="text" class="showpic2 showPics"name="showpic2"/>
+							</div>
+							<div id="select_img_div3"class="img_box" class="img_box" style="position: relative;display: none;">
+								<img id="addimg3" class="detail_img" src="../../img/big_picture.png" />
+								<div class="acc_sc7">
+									<input type="file" name="showpic3" id="showpic3" multiple/>
+								</div>
+								<div class="delete">×</div>
+								<input type="text" class="showpic3 showPics"name="showpic3"/>
+							</div>
+							<div id="select_img_div4"class="img_box" class="img_box" style="position: relative;display: none;">
+								<img id="addimg4" class="detail_img" src="../../img/big_picture.png" />
+								<div class="acc_sc8">
+									<input type="file" name="showpic4" id="showpic4" multiple/>
+								</div>
+								<div class="delete">×</div>
+								<input type="text" class="showpic4 showPics"name="showpic4"/>
+							</div>
+							<div id="select_img_div5"class="img_box" class="img_box" style="position: relative;display: none;">
+								<img id="addimg5" class="detail_img" src="../../img/big_picture.png" />
+								<div class="acc_sc9">
+									<input type="file" name="showpic5" id="showpic5" multiple/>
+								</div>
+								<div class="delete">×</div>
+								<input type="text" class="showpic5 showPics"name="showpic5"/>
+							</div>-->
+					</div>
+					<div style="clear: both;"></div>
+					<div style="margin-left: 2%;color: red;margin-top: 30px;">产品详情图片展示在产品详情中，尺寸800*680 不超过500kb的jpg或png,最多可上传5张，按顺序依次展示。</div>
+				</div>
+				<div class="form-group">
+					<div class="big_title lf">上架:</div>
+					<div class="switch col-sm-1"style="padding-top: 20px;">
+						<div class="onoffswitch">
+							<input type="checkbox" class="onoffswitch-checkbox" id="example2">
+							<label class="onoffswitch-label" for="example2">
+			                    <span class="onoffswitch-inner"></span>
+			                    <span class="onoffswitch-switch"></span>
+			                </label>
+						</div>
+					</div>
+				</div>
+				<input type="hidden" name="uploadImgs" />
+			</form>
+			<div id="submit_div">
+				<button>提交</button>
+			</div>
+		</article>
+		</section>
+		<script src="../../js/jquery-3.0.0.min.js"></script>
+		<script src="../../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+		<script src="../../js/foundation-datepicker.js"></script>
+		<script src="../../js/foundation-datepicker.min.js"></script>
+		<script src="../../js/plugins/layer/laydate/laydate.js"></script>
+		<script src="../../js/plugins/staps/jquery.steps.min.js"></script>
+		<script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+		<script src="../../js/plugins/validate/messages_zh.min.js"></script>
+		<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+		<script src="../../js/content.min.js?v=1.0.0"></script>
+		<script type="text/javascript">
+			var BASE_URL = '../../js/plugins/webuploader';
+		</script>
+		<script src="../../js/plugins/webuploader/webuploader.min.js"></script>
+		<!--<script src="../../js/webuploaderDrugDetail.js"></script>-->
+		<script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+		<script src="../../js/plugins/jquery.jqprint-0.3.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/jquery.form.js"></script>
+		<script src="../../js/changeUndercarriage.js"></script>
+	</body>
+
+</html>

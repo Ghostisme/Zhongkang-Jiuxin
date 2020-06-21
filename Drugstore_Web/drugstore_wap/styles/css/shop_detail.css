@@ -1,0 +1,157 @@
+.mui-scroll-wrapper{
+	margin-top: 40px;
+}
+.mui-bar-nav~.mui-content{
+	margin-top: 0px;
+}
+/*顶部商品名称*/
+#product_div {
+	background: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	/*height:50px;*/
+	/*line-height: 50px;*/
+}
+#product_div p{
+	font-size: 0.75rem;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	color: #323232;
+}
+#product_price{
+	height:50px;
+	margin-top: 1px;
+	line-height: 50px;
+}
+#product_price label{
+	font-size: 1rem;
+	color: red;
+}
+#product_youhui{
+	font-size: 1rem;
+	color: red;
+	margin-top: 1px;
+	height: 50px;
+	line-height: 50px;
+}
+/*商品信息*/
+.mui-input-group .mui-input-row{
+	height: 50px;
+}
+.mui-input-group .mui-input-row label{
+	height: 50px;
+	font-size: 1rem;
+	line-height: 30px;
+}
+form{
+	margin-top: 10px;
+}
+/*公司介绍*/
+#company_introduce{
+	margin-top: 10px;
+}
+#company_name{
+	height: 50px;
+	font-size: 1rem;
+	padding-top: 10px;
+}
+.mui-content-padded{
+	margin-left: 15px;
+}
+#product_left{
+	float: left;
+	width: 50%;
+}
+#product_left div{
+	height: 50px;
+}
+#product_left div span{
+	font-size: 1rem;
+}
+#product_right div{
+	height: 50px;
+}
+#product_right div span{
+	font-size: 1rem;
+}
+#shop_discrip{
+	width: 100%;
+	height: 100px;
+	background-color: #FFFFFF;
+	margin-top: 10px;
+	padding: 10px;
+}
+
+/*字体*/
+.mui-input-group .mui-input-row label {
+    height: 50px;
+    font-size: 0.75em;
+    line-height: 30px;
+}
+#company_name,#product_left div span,#product_right div span{
+	font-size: 0.75em;
+}
+/*返回按钮大小调整*/
+.mui-icon-back:before, .mui-icon-left-nav:before {
+    font-size: 24px;
+}
+#pro_product_type{
+	width: 60%;
+}
+#pro_guige{
+	width: 65%;
+}
+/*加入购物车*/
+.addtoShopCart{
+	width:100%;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	color:#323232;
+	background: #ffcc00;
+	margin:0 auto;
+	margin-top:10px;
+}
+#CartImg{
+	width:24px;
+	height:24px;
+	float: right;
+	margin-top: 6px;;
+	margin-right:5px;
+}
+.m-sidebar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	background: #000;
+	z-index: 2000;
+	width: 35px;
+	height: 100%;
+	font-size: 12px;
+	color: #fff;
+}
+.m-sidebar .cart {
+	color: #fff;
+	text-align: center;
+	line-height: 20px;
+	padding: 200px 0 0 0px;
+	top:100px;
+}
+.m-sidebar .cart span {
+	display: block;
+	width: 20px;
+	margin: 0 auto;
+}
+.m-sidebar .cart i {
+	width: 35px;
+	height: 35px;
+	display: block;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1NTIxOERDMEREQTIxMUUzODE0RUUzMDk1QTM1RjhENiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1NTIxOERDMUREQTIxMUUzODE0RUUzMDk1QTM1RjhENiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU1MjE4REJFRERBMjExRTM4MTRFRTMwOTVBMzVGOEQ2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU1MjE4REJGRERBMjExRTM4MTRFRTMwOTVBMzVGOEQ2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+nUzVwwAAAShJREFUeNpi/P//P8NgAUwMgwiMOmbUMaOOGXXMUHZMNRB/BeL/UHyKkAYWGjlEBohb0MT+U8sxvCQ6Zg6UPgPETlD2Z2o4BhS8piQ45BcQs0HZ7cQ4gtSQ+Q3EP4hUyw2lnwDxOlKCkxjHmAExKxCLEGnmSiC2BeLJpCY0RiLbMzuB2JIIdd+AWBwaVSD6A7WzNjMQCwIxBxFqxaD0AlIdQkrIMBAZVRuhiV0NiG+T6hhSypktREQVqAjYR45DSHEMKKoEiChvngNxKrklJSOJDXJGKM2DRQ5k0Bd61k2weuYzFgxySBUQfwTiTiSH0yRkQFH6AErLQgtCZMAJzdrI/B+0DJm/UIwNgCzug4ZSLxD/pHWaGW1cjTpm1DGjjhl1DLUAQIABAK/XRO9Mpf8WAAAAAElFTkSuQmCC);
+}
+.u-flyer {
+	display: block;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	position: fixed;
+	z-index: 9999;
+}

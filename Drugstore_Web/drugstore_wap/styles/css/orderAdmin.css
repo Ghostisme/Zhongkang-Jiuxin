@@ -1,0 +1,202 @@
+.mui-scroll-wrapper{
+	top:38px;
+	/*border: 1px solid #0000FF;*/
+}
+#sliderSegmentedControl{
+	/*top: -60px;*/
+	z-index: 3;
+	background-color: #FFFFFF;
+}
+/*商品信息title*/
+.mui-table-view-cell{
+	padding: 0px;
+}
+#shop_info{
+	clear: both;
+}
+.order_info_title{
+	width: 100%;
+	height: 30px;
+}
+.order_info_div{
+	float: left;
+	
+}
+.order_info_div img{
+	width: 20px;
+	height: 20px;
+	margin: 10px 5px 5px 15px;
+}
+.order_info_font{
+	float: left;
+}
+.order_info_font .company_name{
+	font-size:0.9em;
+	color: #323232;
+	line-height: 40px;
+} 
+.order_info_font .mui-icon-forward{
+	color: #E5E5E5;
+}
+.wait_sure span{
+	font-size:0.9em;
+	float: right;
+	line-height: 40px;
+	margin-right: 10px;
+	color: red;
+}
+/*商品信息content*/
+.order_info_content{
+	clear: both;
+	width: 100%;
+	height: 80px;
+	border-top: 1px solid #E0E0E0;
+	padding-top: 20px;
+}
+.order_name_div{
+	float: left;
+	width: 50%;
+	margin-left: 35px;
+	font-size: 0.75em;
+	/*border: 1px solid #0000FF;*/
+}
+.order_num_div{
+	float: left;
+	width: 23%;
+	font-size: 0.75em;
+	/*border: 1px solid #0000FF;*/
+}
+.order_price_div{
+	float: right;
+	width: 15%;
+	font-size: 0.75em;
+	margin-bottom: 10px;
+	/*border: 1px solid #0000FF;*/
+	
+}
+ .discount{
+	color: #888888;
+	text-decoration: line-through;
+}
+/*价钱*/
+.shop_price_div{
+	width: 100%;
+	height: 50px;
+	border-top: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+}
+.item1{
+	float: left;
+	width: 10%;
+	height: 100%;
+}
+.item2{
+	float: left;
+	width: 30%;
+	height: 100%;
+	line-height: 50px;
+	
+}
+.item3{
+	float: left;
+	/*width: 30%;*/
+	height: 100%;
+	line-height: 50px;
+	text-align: right;
+	/*border: 1px solid #0000FF;*/
+}
+.item4{
+	float: left;
+	/*width: 30%;*/
+	height: 100%;
+	line-height: 50px;
+	margin-left: 5px;
+	/*border: 1px solid #0000FF;*/
+}
+.price_item span{
+	line-height: 50px;
+	
+}
+.price_span{
+	font-size: 1em;
+}
+/*订单状态*/
+.sure_order_div{
+	width: 100%;
+	height: 50px;
+	text-align: right;
+}
+.sure_order_div span{
+	line-height: 50px;
+	border: 1px solid #3699DC;
+	border-radius: 20px;
+	padding: 5px 10px;
+	color: #3699DC;
+}
+#shop_info ul li{
+	margin-bottom: 10px;
+	background-color: #FFFFFF;
+}
+.mui-table-view{
+	background-color: #EFEFF4;
+}
+.mui-table-view-cell:after{
+	height: 0px;
+}
+#headerBG a span{
+	font-size: 1.5em;
+}
+/*买到的货及卖出的货标题*/
+#sellAndMineTittle{
+	width:100%;
+	height:40px;
+	line-height: 40px;
+	background-color: #fff;
+	border-bottom: 3px solid #E0E0E0;
+	text-align: center;
+}
+.manageNavImg{
+	display:inline-block;
+	width:15px;
+	height:20px;
+}
+.manageNavImg img{
+	width:16px;
+	height:18px;
+	vertical-align:middle;
+	margin-bottom: 5px;
+}
+/*修改mui样式*/
+.mui-content {
+    margin-top: 0; 
+}
+.mui-bar-nav~.mui-content {
+    padding-top: 40px;
+}
+.mui-table-view{
+	margin-top:46px;
+}
+/*买到卖出div宽高设置*/
+.navtextColor{
+	color:#ffcc00;
+}
+.sell,.buy{
+	display: inline-block;
+	width:49%;
+}
+.show{
+	display:inline-block;
+}
+.hide{
+	display:none;
+}
+.mui-table-view:after{
+	height: 0px;
+}
+.mui-table-view:before{
+	height: 0px;
+}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+    color: #ffcc33;
+    border-bottom: 2px solid #ffcc33;
+}

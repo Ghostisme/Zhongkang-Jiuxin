@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link href="../../mui/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../styles/css/register.css">
+	</head>
+		
+	<body>
+		<!--顶部导航栏-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back  mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">用户注册</span>
+		</header>
+		<!--注册主页面-->
+		<div class="mui-content">
+		<form>
+			<!--用户性质选择-->
+			<div id="proper">
+			    	<div class="mui-input-row property mui-checkbox mui-left">
+			    	  <label for="personal">个人</label>
+			    	  <input id="personal"name="checkbox1"value="1" type="checkbox" >
+			    	</div>
+			    	<div class="mui-input-row property mui-checkbox mui-left">
+			    	  <label for="company">企业</label>
+			    	  <input id="company"name="checkbox1" value="2"type="checkbox" checked="checked">
+			    	</div>
+		    </div>
+		    <!--手机号，验证码，密码设置-->
+		    <div class="inputHeight">
+			        <div><img src="../../styles/img/login/telY.png"></div>
+			        <div><input type="text" id="loginname"placeholder="请输入手机号"></div>
+			</div>
+			<div class="inputHeight" id="codePrint">
+			        <div><img src="../../styles/img/login/safeY.png"></div>
+			        <div><input id="code"type="text" placeholder="请输入验证码"></div>
+			    	<input type="button"id="sendIcode"value="发送验证码"onclick=sendMessage()>
+			</div>
+			<div class="inputHeight">
+			        <div><img src="../../styles/img/login/passwordY.png"></div>
+			        <div>
+				        	<input type="password" id="txtPassword" placeholder="请输入密码">
+				        	<img src="../../styles/img/login/eyesY.png" class="show"state="off">
+				    </div>
+			</div>
+			<div class="inputHeight">
+			        <div><img src="../../styles/img/login/passwordY.png"></div>
+			        <div>
+				        	<input type="password" id="txtrePassword" placeholder="请确认密码">
+				        	<img src="../../styles/img/login/eyesY.png" class="reshow"state="off">
+				    </div>
+			</div>
+			<div class="inputHeight"id="mailMargin">
+			        <div><img src="../../styles/img/login/registerMail.png"class='mail'style="width:23px;height:20px;margin-top:10px"></div>
+			        <div>
+			        	<input type="email" id="email" placeholder="请输入邮箱">
+			        </div>
+			</div>
+			<div class="inputHeight"id="inviteCode"style="margin-bottom:20px">
+			        <div><img src="../../styles/img/login/inviteCode.png"style="width:20px;height:23px;margin-top:10px"></div>
+			        <div>
+			        	<input type="text" id="cCode" placeholder="如有邀请码请输入邀请码">
+			        	<img src="../../styles/img/login/eyesY.png" >
+			        </div>
+			</div>
+			<div class="inputHeight"id="companyName"style="margin-bottom:20px">
+			        <div><img src="../../styles/img/login/registerCompanyImg.png"style="width:23px;height:23px;"></div>
+			        <div>
+			        	<input type="text" id="cName" placeholder="请输入企业名称">
+			        	<img src="../../styles/img/login/eyesY.png" >
+			        </div>
+			</div>
+			<div id="isIdentity">
+				<div class="mui-input-row identityCoupon mui-checkbox mui-left"id="squareCheck">
+					<label for="isIdentityYesOrNo">是否申请身份认证</label>
+					<input id="isIdentityYesOrNo"type="checkbox" name="identity"/>
+				</div>
+				<div class="choseIdentity">
+					<div class="mui-input-row identityChose mui-radio mui-left">
+						<label for="suplier">供应商</label>
+						<input type="radio"name="currentIdentity"id="suplier"class="1"checked="checked"/>
+					</div>
+					<div class="mui-input-row identityChose mui-radio mui-left">
+						<label for="sharedFactory">共享工厂</label>
+						<input type="radio"name="currentIdentity"id="sharedFactory"class="2"/>
+					</div>
+					<div class="mui-input-row identityChose mui-radio mui-left">
+						<label for="opratingCenter">运营中心</label>
+						<input type="radio"name="currentIdentity"id="opratingCenter"class="3"/>
+					</div>
+					
+				</div>
+			</div>
+			<div class="mui-input-row readed mui-checkbox mui-left">
+			    	  <a href="http://aq123.net/fspt/pc_res/html/xieyi.html"style="color:#E74C3B">我已阅读并同意《阿Q之家用户协议》</a>
+			    	  <input id="readed"name="checkbox1" type="checkbox" >
+			</div>
+			<!--提交按钮-->
+			<button type="button" class="mui-btn mui-btn-blue submitBtn mui-btn-block"id="userSub">提交</button>
+		</form>
+		</div>
+		<div id="modal">
+	    </div>
+	    <div class="discountCoupon">
+	    		<div class="couponImgTop">
+	    			<div class="noModel">
+	    				<span class="closeModal">×</span>
+	    			</div>
+	    		</div>
+	    		<div class="couponBtn">
+	    			<div class="gotoSee">
+	    				登录去查看&nbsp;&nbsp;>>
+	    			</div>
+	    		</div>
+	    </div>
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script src="../../common/common.js"></script>
+		<script src="register.js"></script>
+		
+	</body>
+
+</html>

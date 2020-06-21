@@ -1,0 +1,549 @@
+/*
+ * 顶部导航栏css
+ */
+
+body {
+	/*overflow-y: scroll;*/
+}
+
+
+/*.mui-table-view{
+	background: transparent !important;
+}*/
+
+.mui-popup-button.mui-popup-button-bold {
+	font-weight: normal;
+}
+
+.mui-icon-back {
+	font-size: ;
+}
+
+.mui-backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 998;
+	background-color: rgba(0, 0, 0, .3);
+}
+
+
+/*
+ * 内容产品厂家部分
+ */
+
+.mui-scroll-wrapper {
+	position: relative;
+	z-index: 5;
+	/*border-radius: 10px;*/
+}
+
+.mui-scroll {
+	position: relative;
+	padding-bottom: 30px;
+	/*border-radius: 10px;*/
+	overflow: hidden;
+}
+
+.mui-scroll-wrapper ul {
+	/*background-color: #FFF;*/
+	/*border-radius: 10px;*/
+	padding: 10px;
+}
+
+.mui-scroll-wrapper ul li {
+	margin-top: 0px;
+	background-color: transparent;
+	/*border-radius: 10px;*/
+}
+
+.mui-scroll-wrapper ul li .mui-checkbox {
+	float: left;
+}
+
+.mui-checkbox input[type=checkbox]:before,
+.mui-radio input[type=radio]:before {
+	font-size: 20px;
+	margin-left: 8px;
+}
+
+.mui-table-view-cell {
+	padding: 0;
+}
+
+
+/*底部结算css*/
+
+#jiesuan {
+	height: 50px;
+	width: 100%;
+	bottom: 0;
+	position: fixed;
+	z-index: 223;
+	margin-bottom: 50px;
+	background-color: #F7F7F7;
+}
+
+#jiesuan input {}
+
+#jiesuan .mui-input-row {}
+
+#jiesuan label {
+	font-size: 0.75em;
+	line-height: 30px;
+}
+
+#jiesuan .dibu_width {
+	width: 33.3%;
+	height: 50px;
+	float: left;
+}
+
+#RMB_total {
+	font-size: 1em;
+}
+
+#all_check_lable {
+	font-size: 0.75em;
+	line-height: 50px;
+}
+
+#all_check_count {
+	font-size: 0.75em;
+	line-height: 50px;
+	color: red;
+}
+
+#all_check_rmb {
+	font-size: 0.75em;
+	line-height: 50px;
+	color: red;
+}
+
+#RMB_total {
+	font-size: 0.75em;
+	line-height: 50px;
+	color: red;
+}
+
+#jiesuan_btn {
+	background-color: red;
+	color: #FFFFFF;
+	font-size: 1em;
+	line-height: 50px;
+}
+
+#delete_btn {
+	background-color: red;
+	color: #FFFFFF;
+	font-size: 1em;
+	line-height: 50px;
+}
+
+
+/*顶部厂商*/
+
+.cj_name {
+	width: 100%;
+	height: 50px;
+}
+
+.title_pro {
+	width: 100%;
+}
+
+
+/*左侧按钮颜色*/
+
+.mui-checkbox input[type=checkbox]:checked:before,
+.mui-radio input[type=radio]:checked:before {
+	color: #2F92F1;
+}
+
+#all_check_btn {
+	line-height: 50px;
+}
+
+.mui-table-view:after {
+	height: 0px;
+}
+
+.mui-table-view:before {
+	height: 0px;
+}
+
+
+/*购物车样式*/
+
+.mui-checkbox.mui-left input[type=checkbox],
+.mui-radio.mui-left input[type=radio] {
+	left: 5px;
+}
+
+.check_box input {
+	line-height: 100px;
+}
+
+.right_box {
+	width: 100%;
+	/*height: 115px;*/
+	padding: 7.5px 0px;
+	/*border: 1px solid #0000FF;*/
+}
+
+.simpleOrder {
+	height: auto;
+}
+
+.border-bottom {
+	width: 88%;
+	float: left;
+	overflow: hidden;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #E0E0E0;
+}
+
+.mui-scroll-wrapper ul li:last-child .border-bottom {
+	border-bottom: 1px solid transparent;
+}
+
+.right_box .check_box {
+	width: 12%;
+	height: 100px;
+	float: left;
+	/*border: 1px solid #0000FF;*/
+}
+
+.right_box .product_info {
+	width: 60%;
+	/*height: 100px;*/
+	float: left;
+	/*border: 1px solid #0000FF;*/
+}
+
+.shopofname {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 13px;
+	font-family: "微软雅黑";
+	font-weight: bold;
+}
+
+.right_box .num {
+	width: 45%;
+	float: left;
+	margin-top: 25px;
+}
+
+
+/*数量加减*/
+
+.num_calculate {
+	/*border: 1px solid #000000;*/
+	width: 100%;
+	/*margin-top: 20px;*/
+	overflow: hidden;
+}
+
+.num_calculate .sup_num {
+	width: 25%;
+	height: 25px;
+	float: left;
+	border: 1px solid #E0E0E0;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+.num_calculate .sup_num span {
+	line-height: 20px;
+}
+
+#dialog .change_sup_num {
+	width: 25%;
+	height: 25px;
+	float: left;
+	border: 1px solid #E0E0E0;
+}
+
+#dialog .change_sup_num span {
+	line-height: 25px;
+}
+
+.num_calculate .mid_num {
+	width: 50%;
+	height: 25px;
+	float: left;
+}
+
+.num_calculate .mid_num .num_pro,.num_calculate .mid_num .past_pro{
+	border-bottom: 1px solid #E0E0E0;
+	border-top: 1px solid #E0E0E0;
+	border-left: none;
+	border-right: none;
+	border-radius: 0px;
+	padding: 0px;
+	height: 25px;
+}
+
+.num_calculate .add_num {
+	width: 25%;
+	height: 25px;
+	float: left;
+	border: 1px solid #E0E0E0;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.num_calculate .add_num span {
+	line-height: 25px;
+}
+
+
+/*内容部分*/
+
+.shopofname.pro_font {
+	font-size: 13px;
+	color: #000;
+}
+
+.pro_font {
+	/*font-size: 0.75em;*/
+	font-size: 11px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 25px;
+	font-family: MicrosoftYaHei;
+	font-weight: 400;
+	color: rgba(123, 123, 123, 1);
+}
+
+
+/*右侧*/
+
+.RMB_single {
+	width: 53%;
+	color: #CF4843;
+	float: left;
+	font-size: 11px;
+	margin-top: 25px;
+}
+
+.RMBmoney_unit {
+	font-size: 14px;
+}
+
+
+/*起订量*/
+
+.minimumOrder {
+	/*width: 50px;*/
+	padding: 0px 2px;
+	height: 14px;
+	line-height: 14px;
+	color: red;
+	float: left;
+	font-size: 8px;
+	border: 1px solid red;
+	border-radius: 7px;
+	text-align: center;
+	margin-top: 5px;
+}
+
+.numEdit {
+	width: 100%;
+	float: right;
+	/*margin-right: 15px;*/
+}
+
+
+/*下划线*/
+
+.mui-table-view-cell:after {
+	height: 0px;
+}
+
+
+/*#dialog{
+	z-index: 4;
+}
+.mui-popup-backdrop{
+	z-index: 3;
+}*/
+
+
+/*去掉点击时的按压效果*/
+
+#ul_pro .mui-active {
+	background-color: #FFFFFF;
+}
+
+#editor {
+	margin-top: 2px;
+}
+
+.mui-control-content {
+	/*background-color: #eee;*/
+	width: 100%;
+	/*height: 100%;*/
+	/*min-height: 600px;*/
+	/*border-radius: 10px;*/
+	overflow: hidden;
+	/*bottom: -10px;*/
+}
+
+.mui-control-content .mui-loading {
+	margin-top: 50px;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+	color: #fff;
+}
+
+#sliderSegmentedControl {
+	position: fixed;
+	z-index: 22;
+	background: #2F92F1;
+	top: 0px;
+	color: #fff;
+	padding: 20px;
+	padding-top: 10px;
+	padding-bottom: 60px;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+	border-bottom: 0px;
+}
+
+.tabActiveBorder {
+	width: 30px;
+	margin: 0 auto;
+	/*padding: 2px 5px;*/
+	border-bottom: 2px solid #fff;
+}
+
+.mui-bar {
+	z-index: 225;
+}
+
+.mui-bar-nav~.mui-content {
+	padding: 2px;
+	position: fixed;
+	z-index: 222;
+	top: 44px;
+	background: transparent;
+	width: 100%;
+	height: 100%;
+	padding-bottom: 200px;
+}
+
+.mui-slider-group {
+	width: 100%;
+	height: 100%;
+}
+
+.productImgs {
+	float: left;
+	width: 40%;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+}
+
+.productImgs img {
+	width: 80%;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.bottomWarn {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 13px;
+}
+
+
+/*滑动删除按钮样式*/
+
+ul li a {
+	width: 58px!important;
+	text-align: left;
+}
+
+.mui-table-view-cell>.mui-slider-left>.mui-btn,
+.mui-table-view-cell>.mui-slider-right>.mui-btn {
+	padding: 0px 15px;
+}
+
+.mui-btn-danger,
+.mui-btn-negative,
+.mui-btn-red {
+	background: #E83E3D;
+}
+
+@media screen and (min-width:500px) {
+	.num_calculate .mid_num {
+		width: 50%;
+		height: 25px;
+		float: left;
+		margin-top: -2px;
+	}
+}
+@media screen and (min-width:500px){
+    .num_pro {
+            margin-top: 2px;
+    }
+}
+/*套餐*/
+.packageTitle .mui-checkbox input[type=checkbox]:before,.packageTitle .mui-radio input[type=radio]:before{
+	position: absolute;
+}
+.packageTitle .right_box .check_box {
+	height: 29px;
+}
+
+.product_setmeal .RMBmoney_nums{
+	color: #999;
+}
+.product_setmeal .RMB_single{
+	margin: 0px;
+}
+.product_setmeal  .RMB_original{
+	color: #999999;
+    text-decoration: line-through;
+}
+.numBottom{
+	clear: both;
+}
+.setMeal_price{
+	    float: left;
+    color: #FC3857;
+    margin: 0 20px;
+}
+.setMeal_numo{
+	font-weight: bold;
+    font-size: 18px;
+}
+.timeoutMeal{
+	float: right;
+    font-size: 11px;
+}
+.numBottom .num{
+	    float: right;
+    width: 134px;
+}
+.set-meal .border-bottom{
+	    border-bottom: 0px;
+}
+.rightBox{
+	width: 100%;
+    /* height: 115px; */
+    padding: 7.5px 0px;
+}
+

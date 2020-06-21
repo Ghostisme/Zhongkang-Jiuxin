@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>远程医疗管理系统-配置信息维护</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../js/plugins/layer/skin/layer.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+	<!--<link rel="stylesheet" type="text/css" href="../../css/listPage.css"/>-->
+	<style>
+		#contents{
+			width:100%;
+			overflow: hidden;
+		}
+
+		.disContents{
+			width:100%;
+			overflow: hidden;
+		}
+		.rightLoadContent{
+			width:100%;
+		}
+		.searchInfos{
+			overflow: hidden;
+			margin-bottom: 10px;
+		}
+		.searchInfos #searchBox{
+			width:15%;
+			height:24px;
+			padding:0px auto;
+			/*margin-top:8px;*/
+			outline: none;
+		}
+		/*检索按钮*/
+		.searching{
+			/*height:26px;
+			line-height: 26px;
+			padding:0 30px;
+			background: #F5F1EE;
+			color:#000;
+			border:1px solid #CAC8C6;
+			cursor: pointer;*/
+			width: 85px;
+		    height: 24px;
+		    border-radius: 5px;
+		    background-color: #1C79B6;
+		    font-family: "microsoft yahei";
+		    font-size: 14px;
+		    color: #FFFFFF;
+		    margin-left: 20px;
+		    line-height: 24px;
+		    letter-spacing: 5px;
+		    cursor: pointer;
+		    text-align: center;
+		}
+		.addData{
+			width: 85px;
+		    height: 24px;
+		    border-radius: 5px;
+		    background-color: #ff7510;
+		    font-family: "microsoft yahei";
+		    font-size: 14px;
+		    color: #FFFFFF;
+		    line-height: 24px;
+		    letter-spacing: 5px;
+		    cursor: pointer;
+		    float: right;
+		    text-align: center;
+		}
+		.resultLists,.resultListsContents,.resultListInfo{
+			width:100%;
+			overflow: hidden;
+		}
+		/*表头*/
+		.resultListsTitle{
+			width:100%;
+			height:40px;
+			line-height: 40px;
+			overflow: hidden;
+			/*border:1px solid #000;*/
+			background: #E2EFF6;
+		}
+		.resultListsItem1{
+			width:5%;
+			height:40px;
+			text-align: center;
+		}
+		.resultListsItem2{
+			width:15%;
+			height:40px;
+			text-align: center;
+		}
+		.resultListsItem3{
+			width:15%;
+			height:40px;
+			text-align: center;
+		}
+		.resultListsItem4{
+			width:15%;
+			height:40px;
+			text-align: center;
+		}
+		.resultListsItem5{
+			width:15%;
+			height:40px;
+			text-align: center;
+		}
+		.resultListsItem6{
+			width:5%;
+			height:40px;
+			text-align: center;
+		}
+		.resultListsItem7{
+			width:8%;
+			height:40px;
+			text-align: center;
+		}
+		.resultListInfo{
+			height:44px;
+			line-height: 44px;
+			cursor: pointer;
+			border-bottom: 1px solid #eeeeee;
+		}
+		.resultListInfo:nth-child(even){
+			background: #fff;
+		}
+		.resultListInfo:nth-child(odd){
+			/*background: #F6F6F6;*/
+		}
+		/*页码*/
+		.pageN{
+			overflow: hidden;
+		}
+		#pageGro ul{
+			float: right;
+			margin-right:100px;
+		}
+		.pagination>li>a, .pagination>li>span{
+			margin-right:10px;
+		}
+		.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+			background: #FE7410;
+			border-color: #FE7410;
+		}
+		.flipOver a{
+			cursor: pointer;
+		}
+		/*模态框*/
+		.modal{
+			background: #000;
+			opacity: 0.5;
+			position:absolute;
+			top:0;
+			left: 0;
+			z-index: 888;
+			display: block;
+			width: 100%;
+      		height: 100%;
+		}
+		/*新增配置信息弹框*/
+		#newConfiguration{
+			width:25%;
+			/*height:500px;*/
+			background: #fff;
+			position: absolute;
+			top:30%;
+			left:40%;
+			z-index: 8888;
+			padding-bottom:40px;
+		}
+		.newConfigurationTitle{
+			width:100%;
+			height:40px;
+			line-height:40px;
+			background: #008EEA;
+			color:#fff;
+			padding-left:20px;
+			font-size:16px;
+		}
+		.closeModel,.newConfigCloseModel,.changeConfigCloseModel,.lookingForDetailsCloseModel{
+			margin-right:20px;
+			font-size:18px;
+			cursor:pointer;
+			padding:0 6px;
+			height:10px;
+			border-radius:50%;
+			border:1px solid #fff;
+		}
+		/*新增类型蓝色*/
+		.currentModalMainTit{
+			color:#008EEA;
+			border-bottom:1px solid #008EEA;
+			height:40px;
+			margin:0 20px;
+			line-height:56px;
+		}
+		.boxDiv1,.boxDiv2{
+			margin:0 60px;
+			height:100px;
+			border:1px solid #EDEDED;
+			margin-top:20px;
+		}
+		.addInfoBox1,.addInfoBox2{
+			width:100%;
+			height:100%;
+			border:none;
+			outline: none;
+		}
+		/*按钮样式*/
+		.sureAndCancelBtns{
+			width:100%;
+			height:40px;
+			line-height: 40px;
+			text-align: center;
+			margin-top:20px;
+		}
+		.sureBtn{
+			width:100px;
+			height:40px;
+			line-height: 40px;
+			display: inline-block;
+			background: #008EEA;
+			color:#fff;
+			margin:0 auto;
+			cursor: pointer;
+		}
+		.cancelBtn,.addConfigcancelBtn,.changeInfoCancelBtn,.delInfoCancelBtn{
+			width:100px;
+			height:40px;
+			line-height: 40px;
+			display: inline-block;
+			background: #ECECEC;
+			color:#000;
+			margin:0 auto;
+			margin-left:20px;
+			cursor: pointer;
+		}
+		/*修改配置信息弹框*/
+		#changeConfiguration{
+			width:25%;
+			/*height:500px;*/
+			background: #fff;
+			position: absolute;
+			top:30%;
+			left:40%;
+			z-index: 8888;
+			padding-bottom:40px;
+		}
+		.changeInfoBox1,.changeInfoBox2{
+			width:100%;
+			height:100%;
+			border:none;
+			outline: none;
+		}
+		/*删除配置模态框*/
+		#delListInfo{
+			width:15%;
+			/*height:500px;*/
+			background: #fff;
+			position: absolute;
+			top:30%;
+			left:45%;
+			z-index: 8888;
+			padding-bottom:20px;
+		}
+		.delTopImg{
+			width:100%;
+			text-align: center;
+			margin:20px 0px;
+		}
+		.delWarn1,.delWarn2{
+			width:100%;
+			text-align: center;
+		}
+		/*查看详情*/
+		#lookingForDetails{
+			width:60%;
+			background: #fff;
+			position: absolute;
+			top:18%;
+			left:22%;
+			z-index: 8888;
+			padding-bottom:20px;
+			min-height:500px;
+
+			max-height:700px;
+		}
+		.LoadDetails{
+			width:100%;
+			padding:20px;
+			min-height:500px;
+			overflow-y:auto;
+			max-height:656px;
+		}
+		/*设置所有弹框和模态框均隐藏*/
+		#newConfiguration,.modal,#changeConfiguration,#delListInfo,#lookingForDetails{
+			display: none;
+		}
+		.layui-layer-title{
+			background: #008EEA !important;
+			
+		}
+	</style>
+</head>
+<body>
+<div class="contain">
+	<div class="rightLoadContent">
+		<!--页面数据呈现区-->
+		<div class="disContents">
+			<!--搜素区域-->
+			<div class="searchInfos">
+				<form action="">
+					<!--<input type="text"id="searchBox" class="lf"value=""/>
+					<div class="lf searching">
+						查询
+					</div>-->
+					<div class="rt addData">
+						新增
+					</div>
+				</form>
+			</div>
+			<!--列表区域-->
+			<div class="resultLists">
+				<!--列表表头-->
+				<div class="resultListsTitle">
+					<div class="resultListsItem1 lf LiTextAlign">
+						序号
+					</div>
+					<div class="resultListsItem2 lf LiTextAlign">
+						标题
+					</div>
+					<div class="resultListsItem4 lf LiTextAlign">
+						副标题
+					</div>
+					<div class="resultListsItem3 lf LiTextAlign">
+						描述
+					</div>
+					<div class="resultListsItem3 lf LiTextAlign">
+						创建时间
+					</div>
+					<div class="resultListsItem7 lf LiTextAlign">
+						发布状态
+					</div>
+					<div class="resultListsItem6 lf LiTextAlign">
+						操作
+					</div>
+					<!--<div class="resultListsItem6 lf LiTextAlign">
+						删除
+					</div>
+					<div class="resultListsItem6 lf LiTextAlign">
+						置顶/取消置顶
+					</div>-->
+				</div>
+				<div class="resultListsContents">
+					<form action="">
+						<!--第一条数据-->
+						<!--<div class="resultListInfo">
+
+                                <div class="resultListsItem1 lf items">
+                                    <input type="checkbox" name="orderNum" class="orderNum" />
+                                    <span>1</span>
+                                </div>
+                                <div class="resultListsItem2 lf items">
+                                    售后业务类型
+                                </div>
+                                <div class="resultListsItem3 lf items">
+                                    录入、确认、驳回、小家申请、销假确认、销假驳回
+                                </div>
+                                <div class="resultListsItem4 lf items">
+
+                                </div>
+                                <div class="resultListsItem5 lf items">
+                                    修改
+                                </div>
+                                <div class="resultListsItem5 lf items">
+                                    删除
+                                </div>
+                                <div class="resultListsItem6 lf items">
+                                    详细
+                                </div>
+                        </div>-->
+
+					</form>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="pageN"></div>
+		</div>
+		<!--模态框-->
+		<div class="modal">
+		</div>
+		<!--新增配置信息弹框-->
+		<div id="newConfiguration">
+			<div class="newConfigurationTitle">
+				新增配置信息类型
+				<div class="rt">
+                                  <span class="newConfigCloseModel">
+                                      ×
+                                  </span>
+				</div>
+			</div>
+			<!--标题-->
+			<div class="currentModalMainTit">
+				新增配置信息类型
+			</div>
+			<form action="">
+				<div class="boxDiv1">
+					<textarea name="addInfoBox1"class="addInfoBox1"id="addInfoNames"></textarea>
+				</div>
+				<div class="boxDiv2">
+					<textarea name="addInfoBox2"class="addInfoBox2"></textarea>
+				</div>
+				<div class="sureAndCancelBtns">
+					<div class="sureBtn addNewBtn">
+						确认新增
+					</div>
+					<div class="addConfigcancelBtn">
+						取&nbsp;&nbsp;消
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--修改配置信息弹框-->
+		<div id="changeConfiguration">
+			<div class="newConfigurationTitle">
+				配置信息类型修改
+				<div class="rt">
+                                  <span class="changeConfigCloseModel">
+                                      ×
+                                  </span>
+				</div>
+			</div>
+			<!--标题-->
+			<div class="currentModalMainTit">
+				配置信息类型修改
+			</div>
+			<form action="">
+				<div class="boxDiv1">
+					<textarea name="changeInfoBox1"class="changeInfoBox1"></textarea>
+				</div>
+				<div class="boxDiv2">
+					<textarea name="changeInfoBox2"class="changeInfoBox2"></textarea>
+				</div>
+				<div class="sureAndCancelBtns">
+					<div class="sureBtn sureChangeInfos">
+						确认修改
+					</div>
+					<div class="changeInfoCancelBtn">
+						取消修改
+					</div>
+				</div>
+				<span class="configListchangeId"style="display:none"></span>
+			</form>
+		</div>
+		<!--删除单行配置信息提示框-->
+		<div id="delListInfo">
+			<div class="delTopImg">
+				<img src="../../img/common/untitledquestionImg.png" alt="" />
+			</div>
+			<div class="delWarn">
+				<div class="delWarn1">删除信息后不可恢复，您确定要删除</div>
+				<div class="delWarn2">
+					该条信息吗？
+				</div>
+			</div>
+			<div class="sureAndCancelBtns">
+				<div class="delInfoCancelBtn">
+					取&nbsp;&nbsp;&nbsp;&nbsp;消
+				</div>
+				<div class="sureBtn sureChangeInfos">
+					确定删除
+				</div>
+			</div>
+			<span class="configListdelChangeId"style="display:none"></span>
+		</div>
+		<!--查看详情页-->
+		<div id="lookingForDetails">
+			<div class="newConfigurationTitle">
+				新增配置信息类型
+				<div class="rt">
+                                  <span class="lookingForDetailsCloseModel">
+                                      ×
+                                  </span>
+				</div>
+			</div>
+			<div class="LoadDetails">
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+<script src="../../js/plugins/layer/layer.min.js"></script>
+<!--<script src="../../js/content.min.js?v=1.0.0"></script>-->
+<script src="../../js/demo/layer-demo.min.js"></script>
+<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+<script type="text/javascript" src="../../js/commonStyle.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+
+
+<script>
+    var currentPage = 1;
+    var offsetPage=0;//传输的页起始条数
+    var showNum=10;//页面需要显示的条数
+    var num_pages;
+    //点击分页页数
+    $(document).delegate(".flipOver",'click',function(){
+        $(this).addClass('active').siblings().removeClass('active');
+        currentPage = parseInt($(this).attr("pageId"));
+        offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+        getorderList();
+        window.scrollTo(0,0);
+    });
+    //点击上一页
+    $(document).delegate("#prev",'click',function(){
+        if($(".flipOver.active").prev().attr("id") == "prev"){
+            return true
+        }else{
+            var page = parseInt($(".flipOver.active").attr("pageid"))-1;
+            $(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+        }
+        currentPage = page;
+        offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+        getorderList();
+        window.scrollTo(0,0);
+    });
+
+
+    //点击下一页
+    $(document).delegate("#Next",'click',function(){
+        if($(".flipOver.active").next().attr("id") == "Next"){
+            return true
+        }else{
+            var page = parseInt($(".flipOver.active").attr("pageid"))+1;
+            $(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+        }
+        currentPage = page;
+        offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+        getorderList();
+        window.scrollTo(0,0);
+    });
+    //点击分页跳转页按钮
+    $(document).delegate(".srueToJumpPageBtn",'click',function(){
+        currentPage = parseInt($(".toPageNum").val().trim());
+        offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+        getorderList();
+        window.scrollTo(0,0);
+    });
+    getorderList();
+    //    获取订单列表
+    function getorderList(){
+//                    console.log("coming......");
+        $(".resultListsContents form").html('');
+        $.ajax({
+            type:"get",
+            url:config+"/oa/news/list",
+            async:false,
+            dataType:"JSON",
+//          jsonp:"jsoncallback",
+            data:{
+            	type:'1',
+                offset:offsetPage,//（页码-1）*每页显示条数
+                limit:showNum//每页赢显示的条数
+            },
+            success:function(data){
+                console.log(data);
+                var configList=data.resultMap.newsList;
+                var listTotal=data.resultMap.total;//总条数
+//                            var index = data.viewIndex;
+                num_pages = Math.ceil(parseInt(listTotal)/10);//总条数除以每页十条数据为总页码
+                for(var i=0,k=0;i<configList.length;i++){
+                    console.log(configList.length);
+                    var confightml='';
+                    k++;
+                    confightml+='<div class="resultListInfo">';
+                    confightml+='<div class="listId LiTextAlign"style="display:none">'+configList[i].id+'</div>';
+                    confightml+='<div class="resultListsItem1 lf items LiTextAlign">';
+//                  confightml+='<input type="checkbox" name="orderNum" class="orderNum" />';
+                    confightml+='<span>'+k+'</span>';
+                    confightml+='</div>';
+                    confightml+='<div class="resultListsItem2 lf items LiTextAlign">'+configList[i].title+'</div>';//标题
+                    confightml+='<div class="resultListsItem4 lf items LiTextAlign">'+configList[i].titleSub+'</div>';//副标题
+                    if(configList[i].memo!=null&&configList[i].memo!=""){
+                        confightml+='<div class="resultListsItem3 lf item LiTextAligns">'+configList[i].memo+'</div>';//描述
+                    }else{
+                        confightml+='<div class="resultListsItem3 lf items LiTextAlign"></div>';//描述
+                    }
+                    var applyTime=new Date(configList[i].createTime);
+					var applyYear=applyTime.getFullYear();
+					var applyMonth=applyTime.getMonth()+1;
+					var applyDate=applyTime.getDate();
+					var applyHours=applyTime.getHours();       //获取当前小时数(0-23)
+					var applyMinutes=applyTime.getMinutes();     //获取当前分钟数(0-59)
+					var applySeconds=applyTime.getSeconds(); 
+                    confightml+='<div class="resultListsItem3 lf items LiTextAlign">'+applyYear+'/'+applyMonth+'/'+applyDate+'</div>';//创建时间
+                    if(configList[i].isShow==1){
+                    	confightml+='<div class="resultListsItem7 lf items LiTextAlign"style="color:#e4393c;">已发布</div>';//发布状态
+                    }else{
+                    	confightml+='<div class="resultListsItem7 lf items LiTextAlign"style="color:#18a23c;">未发布</div>';//发布状态
+                    }
+                    
+                    confightml+='<div class="resultListsItem6 lf items LiTextAlign btnTextColor">';
+                    confightml+='<span class="changeImg">修改</span>';//修改
+//                  confightml+='<img src="../../img/common/untitledChangeBtn.png"class="changeImg">';//修改
+                    confightml+='</div>';
+                    confightml+='<div class="resultListsItem6 lf items LiTextAlign btnTextColor">';
+                    confightml+='<span class="delImg">删除</span>';//删除
+//                  confightml+='<img src="../../img/common/untitledDelBtn.png"class="delImg">';//删除
+                    confightml+='</div>';
+                    confightml+='<div class="resultListsItem6 lf items LiTextAlign btnTextColor">';
+                    if(configList[i].isTop==1){
+                    	confightml+='<span class="toTopImg"id="'+configList[i].isTop+'">取消置顶</span>';//状态是置顶按钮为取消置顶
+//                  	confightml+='<img src="../../img/common/cancleToTop.png"class="toTopImg"id="'+configList[i].isTop+'">';//状态是置顶按钮为取消置顶
+                    	
+                    }else{
+                    	confightml+='<span class="toTopImg"id="'+configList[i].isTop+'">置顶</span>';//状态是未置顶按钮为置顶
+                    }
+                    confightml+='</div>';
+                    confightml+='</div>';
+                    $(".resultListsContents form").append(confightml);
+                    var pageHtml = page(parseInt(currentPage),num_pages);
+                    $(".pageN").html(pageHtml);
+                }
+                if(data.status==1){
+                }
+            },
+        });
+
+    }
+    //            模态框
+//  $(".modal").css("height",window.screen.height);
+//  $(".modal").css("width",window.screen.width);
+
+    //            点击搜索按钮
+    $(document).on("click",".searching",function(){
+        var search=$("#searchBox").val().trim();
+    });
+    //            点击新增按钮
+    $(document).on('click','.addData',function(){
+        parent.layer.open({
+			    type: 2,
+			    title: '新闻编辑',
+			    shadeClose: true,
+			    shade: [0.5],
+			    maxmin: true, //开启最大化最小化按钮
+			    area: ['1150px', '650px'],
+			    content: './page/Appnews/addNews.html'
+			});
+    });
+ 
+    //            点击删除里的取消按钮
+    $(".delInfoCancelBtn").click(function(){
+        $(this).parent().parent().css("display","none");
+        $(".modal").css("display","none");
+    });
+
+    //            点击修改标签
+    $(".resultListsContents").on("click",".changeImg",function(){
+        var listId=$(this).parent().parent().find(".listId").text().trim();//获取当前行的id
+        var currentTypeName=$(this).parent().parent().find(".resultListsItem2").text().trim();//获取当前行的类名
+        var currentRemarks=$(this).parent().parent().find(".resultListsItem4").text().trim();//获取当前行的备注
+//      $("#changeConfiguration").css("display","block");
+//      $(".modal").css("display","block");
+        $("#changeConfiguration .changeInfoBox1").val(currentTypeName);
+        $("#changeConfiguration .changeInfoBox2").val(currentRemarks);
+        $(".configListchangeId").text(listId);
+        localStorage.setItem("newsEditId",listId)
+        //  点击编辑按钮
+
+//		    parent.layer.open({
+//			    type: 2,
+//			    title: false,
+//			    closeBtn: true,
+//			    shade: [0],
+//			    area: ['340px', '215px'],
+//			    offset: 'rb', //右下角弹出
+//			    time: 2000, //2秒后自动关闭
+//			    shift: 2,
+//			    content: ['./page/Appnews/editNews.html', 'no'], //iframe的url，no代表不显示滚动条
+//			    end: function(){ //此处用于演示
+//			        parent.layer.open({
+//			            type: 2,
+//			            title: '新闻编辑',
+//			            shadeClose: true,
+//			            shade: false,
+//			            maxmin: true, //开启最大化最小化按钮
+//			            area: ['1150px', '650px'],
+//			            content: './page/Appnews/editNews.html'
+//			        });
+//			    }
+//			});
+			parent.layer.open({
+			    type: 2,
+			    title: '新闻编辑',
+			    shadeClose: true,
+			    shade: [0.5],
+			    maxmin: true, //开启最大化最小化按钮
+			    area: ['1150px', '650px'],
+			    content: './page/Appnews/editNews.html'
+			});
+        
+    });
+    //            点击删除按钮
+    $(".resultListsContents").on("click",".delImg",function(){
+        var listId=$(this).parent().parent().find(".listId").text().trim();//获取当前行的id
+        $("#delListInfo").css("display","block");
+        $(".modal").css("display","block");
+        $(".configListdelChangeId").text(listId);
+    });
+
+    //            删除列表功能
+    $("#delListInfo .sureChangeInfos").click(function(){
+        var CurrentId=$(this).parent().parent().parent().find(".configListdelChangeId").text();
+        console.log(CurrentId);
+        $.ajax({
+            method: 'get',
+            url: config+'/oa/news/remove',
+            contentType: "application/json; charset=utf-8",//传到后台的数据格式
+            async: true,
+            data: {'id':CurrentId,'type':'1'},
+            dataType:'JSON',//接收值的格式
+            success: function(data) {
+                console.log(data);
+                if(data.status==1){
+                    $("#delListInfo").css("display","none");
+                    $(".modal").css("display","none");
+                    alert(data.message)
+                    getorderList();
+                }else{
+                    alert(data.message);
+                    //            window.location.reload();
+                }
+            },
+            error: function(result) {
+                console.log(result);
+            }
+        });
+    });
+//			点击置顶消息
+	var toTop=0;//定义置顶参数
+	$(document).on("click",".toTopImg",function(){
+		if($(this).attr("id")==1){
+			toTop=0;
+		}else{
+			toTop=1;
+		}
+		var listId=$(this).parent().parent().find(".listId").text().trim();//获取当前行的id
+		$.ajax({
+		    method: 'get',
+		    url: config+'/oa/news/settop',
+		    contentType: "application/json; charset=utf-8",//传到后台的数据格式
+		   	async: true,
+		    data: {'id':listId,'isTop':toTop,'type':'1'},
+		    dataType:'JSON',//接收值的格式
+		    success: function(data) {
+//		        alert({title:"",text:data.message});
+				getorderList();
+		    },
+		    error: function(result) {
+		        console.log(result);
+		    }
+		})
+	})
+			
+</script>
+</body>
+</html>

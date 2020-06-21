@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>设备管理</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+
+<link href="../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+<link href="../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+<link href="../../css/animate.min.css" rel="stylesheet">
+<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+
+
+<!--<link rel="stylesheet" type="text/css" href="../../css/appointment.css"/>-->
+
+<style>
+    .appointment-ul2 {
+        text-align: right;
+        margin-top: 20px;
+
+    }
+
+    .appointment-ul2 li {
+        margin: 10px 0;
+        display: flex;
+        /*justify-content: center;*/
+    }
+
+    .newin {
+        height: 33px;
+        width: 200px;
+    }
+
+    .onebtn {
+        background-color: #018eea;
+        color: #FFFFFF;
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .towbtn {
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+    }
+    #ulist_div{
+        text-align: left;
+    }
+
+    .appointment-ul2>li>span{
+        width: 80px;
+    }
+    .f_div{
+        margin: 5px;
+    }
+    .f_lab{
+        width: 80px;
+    }
+    .f_div_fj1{
+        display: flex;
+    }
+    .ml5{
+        margin-left: 5px;
+    }
+    .m5{
+        margin: 5px;
+    }
+
+    .ulist_div{
+        display: flex;
+        width: 85%;
+        margin: 0 auto;
+        border: 1px solid lightgray;
+        flex-wrap: wrap;
+        padding: 5px;
+    }
+    .ld{
+        width: 24%;
+        padding: 5px;
+        display: flex;
+    }
+    .ld label{
+        margin-bottom: 0;
+    }
+    .ld input[type=checkbox],input[type=radio]{
+        margin-top: 0;
+    }
+</style>
+<body>
+
+
+<div class="box">
+    <form id="equipmentForm" onsubmit="return false;">
+
+        <ul class="appointment-ul2 ">
+            <li>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备名称：</label>
+                    <input type="text" class="newin" id="equipmentName" name="equipmentName" value=""/>
+                </div>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备类型：</label>
+                    <input type="text" class="newin" id="equipmentType" name="equipmentType" value=""/>
+                </div>
+            </li>
+            <li>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备序列号：</label>
+                    <input type="text" class="newin" id="equipmentNumber" name="equipmentNumber" value=""/>
+                </div>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备通道号：</label>
+                    <input type="text" class="newin" id="equipmentChannel" name="equipmentChannel" value=""/>
+                </div>
+            </li>
+
+
+            <li>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备品牌：</label>
+                    <input type="text" class="newin" id="equipmentBrand" name="equipmentBrand" value=""/>
+                </div>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备型号：</label>
+                    <input type="text" class="newin" id="equipmentModel" name="equipmentModel" value=""/>
+                </div>
+            </li>
+
+            <li>
+                <div class="f_div f_div_fj1" >
+                    <label class="f_lab"><span style="color: red;">*</span>关联账号：</label>
+                    <div class="input-group ml5"  >
+                        <input type="text" class="form-control newin" name="equipmentUserName"  id="equipmentUserName">
+                        <ul class="dropdown-menu " role="menu"></ul>
+                    </div>
+                </div>
+                <div class="f_div f_div_fj1">
+                    <label class="f_lab"><span style="color: red;">*</span>权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限：</label>
+                    <div class="ml5">
+                        <select class="newin" style="margin-bottom: 10px;" id="permissions" name="permissions"
+                                onchange="selectChange()">
+                            <!--<option value="00">vv</option>-->
+                        </select>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div id="ulist_div" class="ulist_div">
+           <!-- <div class="m5 ld"><input type="checkbox"> <label>15669851456 王桂兰</label></div>
+            <div class=" ld"><input type="checkbox"> <label>15669851456 王桂兰</label></div>
+            <div class=" ld"><input type="checkbox"> <label>15669851456 王桂兰</label></div>-->
+        </div>
+        <input type="hidden" id="equipmentUserId" name="equipmentUserId" value=""/>
+
+        <div style="text-align: center;margin-top: 30px;">
+            <button class="onebtn" id="saveOk" onclick="saveEquipment()">保存</button>
+            <button class="towbtn" id="saveCancle">取消</button>
+        </div>
+    </form>
+
+</div>
+
+</body>
+
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+<script src="../../js/content.min.js?v=1.0.0"></script>
+<script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+
+
+<script>
+    var ulist;
+    $(function () {
+        //搜索框自动补全
+        suggestStock();
+        //获取渲染组织下拉框
+        selectDept();
+
+
+    });
+    //编辑赋值初始化，放在下拉框初始化ajax里了
+    function editInit(index) {
+        var eqt=equipmentList[index];
+
+        //1.普通框 赋值
+        $('#equipmentName').val(eqt.equipmentName);
+        $('#equipmentType').val(eqt.equipmentType);
+        $('#equipmentNumber').val(eqt.equipmentNumber);
+        $('#equipmentChannel').val(eqt.equipmentChannel);
+
+        $('#equipmentBrand').val(eqt.equipmentBrand);
+        $('#equipmentModel').val(eqt.equipmentModel);
+        $('#equipmentUserName').val(eqt.equipmentUserName);
+        $('#equipmentUserId').val(eqt.equipmentUserId);
+        //2.下拉框 选中
+        for (var k in ulist) {
+            if(ulist[k].id==eqt.equipmentPerList[0].userId){
+                var id = ulist[k].fkDeptId == null ? ulist[k].fkHospitalId : ulist[k].fkDeptId;
+                $('#permissions').val(id);
+                selectChange();
+            }
+        }
+        //3.多选框 选中
+        var eqtList=eqt.equipmentPerList;
+        for(var k2 in eqtList){
+            $("input[name='equipmentPerDO'][value='"+eqtList[k2].userId+"']").prop("checked", "checked");
+        }
+        /*ajaxGet('/oa/equipment/get', {id:eqt_id}, function (res) {
+            var eqt=res.resultMap.equipment;
+            //1.普通框 赋值
+            $('#equipmentName').val(eqt.equipmentName);
+            $('#equipmentType').val(eqt.equipmentType);
+            $('#equipmentNumber').val(eqt.equipmentNumber);
+            $('#equipmentChannel').val(eqt.equipmentChannel);
+            
+            $('#equipmentBrand').val(eqt.equipmentBrand);
+            $('#equipmentModel').val(eqt.equipmentModel);
+            $('#equipmentUserName').val(eqt.equipmentUserName);
+            $('#equipmentUserId').val(eqt.equipmentUserId);
+            //2.下拉框 选中
+            for (var k in ulist) {
+                if(ulist[k].id==eqt.equipmentPerList[0].userId){
+                    var id = ulist[k].fkDeptId == null ? ulist[k].fkHospitalId : ulist[k].fkDeptId;
+                    $('#permissions').val(id);
+                    selectChange();
+                }
+            }
+            //3.多选框 选中
+            var eqtList=eqt.equipmentPerList;
+            for(var k2 in eqtList){
+                $("input[name='equipmentPerDO'][value='"+eqtList[k2].userId+"']").prop("checked", "checked");
+            }
+
+        });*/
+
+    }
+
+    //下拉框选中事件
+    function selectChange() {
+        //获取被选中的option标签
+        var vs = $('#permissions  option:selected').val();
+        var udivHtml="";
+        for(var k in ulist){
+            if(vs==ulist[k].fkDeptId||vs==ulist[k].fkHospitalId){
+                var new_phone=ulist[k].mobile==null?ulist[k].phone:ulist[k].mobile;
+                udivHtml+='<div class=" ld"><input name="equipmentPerDO" type="checkbox" value="'+ulist[k].id+'"  > <label>'+new_phone+' '+ulist[k].userName+'</label></div>';
+            }
+        }
+        $("#ulist_div").html(udivHtml);
+
+    }
+
+    function selectDept() {
+        //获取组织列表
+        ajaxGet('/sys/user/list', {}, function (res) {
+            ulist = res.resultMap.userList;
+
+            var newList = [];
+            for (var k in ulist) {
+                //组织名
+                var id = ulist[k].fkDeptId == null ? ulist[k].fkHospitalId : ulist[k].fkDeptId;
+                var newName = ulist[k].deptName == null ? ulist[k].hospitalName : ulist[k].deptName;
+                if (newList.indexOf(newName) < 0) {
+                    newList.push(newName);
+                    $('#permissions').append('<option value="' + id + '">' + newName + '</option>');
+                }
+            }
+            //主动调用一次选中事件
+            selectChange();
+
+            //edit所用  必须放在这，不然组织还没渲染
+            if(edit_eqt_index!=""){
+                editInit(edit_eqt_index);
+            }
+        })
+    }
+
+    //搜索框自动补全
+    function suggestStock() {
+        ajaxGet('/oa/patinfo/list', {}, function (res) {
+            console.log("金额呵呵呵呵呵：：：：",res);
+            var resdata = res.resultMap.userList;
+
+            var baiduBsSuggest = $("#equipmentUserName").bsSuggest({
+                //indexId: 0,//每组数据的第几个数据，作为输入输入框的数据id
+                //indexKey: 1,//每组数据的第几个数据，作为输入输入框的内容
+                idField: 'id',          //每组数据的哪个字段作为 data-id，优先级高于 indexId 设置（推荐）
+                keyField: 'userName',          //每组数据的哪个字段作为输入框内容，优先级高于 indexKey 设置（推荐）
+                allowNoKeyword: false,//是否允许无关键字时请求数据
+                showHeader: true, //是否显示选择列表的 header，默认有效字段大于一列时显示，否则不显示
+                showBtn: true,//是否显示下拉按钮
+                listAlign: "auto",              //提示列表对齐位置，left/right/auto
+                listStyle: {
+                    "max-width": "200px", "width": "100%"
+                },
+                effectiveFields: ["userName", "idCard"],//有效显示于列表中的字段，非有效字段都会过滤
+                effectiveFieldsAlias: {//有效字段的别名
+                    userName: "姓名",
+                    idCard: "身份证号"
+                },
+                data: {
+                    "value": resdata
+                }
+            }).on("onSetSelectValue", function (a, b) {//选择商品后触发
+                $("#equipmentUserId").val(b.id);
+            });
+        })
+    }
+    //save前 非空验证
+    function  fromIsNull(fromArray){
+        var flag = false;
+        var c=0;
+        $.each(fromArray, function (i, item) {
+            if (item['value'] == '') {
+                flag = true;
+                return false;
+            }
+            if (item['name'] == "equipmentPerDO") {
+                c++;
+            }
+        });
+        if (flag||c==0) {
+            alert('信息不可为空');
+            return true;
+        }
+        return false;
+    }
+    //保存
+    function saveEquipment() {
+        //判断表单数据是否为空
+        var fromArray = $('#equipmentForm').serializeArray();
+        //非空验证
+        if(fromIsNull(fromArray)){
+            return;
+        }
+        var fromData = {};
+        $.each(fromArray, function () {
+            if(this.name=="equipmentPerDO"){
+                var uv=fromData["equipmentPerDO"]==null?this.value:fromData["equipmentPerDO"]+","+this.value;
+                fromData["equipmentPerDO"]=uv;
+            }else{
+                fromData[this.name] = this.value;
+            }
+        });
+        //修改and新增判断
+        if(edit_eqt_index!=""){
+            url='/oa/equipment/update';
+            fromData["id"]=equipmentList[edit_eqt_index].id;
+        }else{
+            url='/oa/equipment/save';
+        }
+        ajaxGet(url, fromData, function (res) {
+            alert(res.message);
+            if (res.status == 1) {
+                location.reload();
+            }
+        })
+
+    }
+
+    //点击导入的新增信息 的取消
+    $("#saveCancle").click(function () {
+        $("#subscribeListLight1").css("display", "none");
+        $("#subscribeListFade").css("display", "none");
+    });
+</script>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>药店连锁-轮播图维护</title>
+    <meta name="viewport"content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"/>
+    <link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" href="../../css/raw_table.css">
+    <script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script src="../../js/template.js"></script>
+    <script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="../../js/hi_home.js"></script>
+
+</head>
+<body>
+<div class="contain">
+    <div class="rightLoadContent">
+        <!--页面数据呈现区-->
+        <div class="disContents">
+            <!--title-->
+            <div style="font-size: 24px;text-align: center">
+                APP
+            </div>
+            <!--搜素区域-->
+            <div class="searchInfos">
+                <div class="rt addData" onclick="window.parent.showM1()">
+                    新增
+                </div>
+            </div>
+            <!--列表区域-->
+            <div class="resultLists">
+                <!--列表表头-->
+                <div class="resultListsTitle">
+                    <div class="resultListsItem2 lf LiTextAlign">
+                        序号
+                    </div>
+                    <div class="resultListsItem2 lf LiTextAlign">
+                        图片
+                    </div>
+                    <div class="resultListsItem3 lf LiTextAlign">
+                        链接
+                    </div>
+                    <div class="resultListsItem3 lf LiTextAlign">
+                        操作
+                    </div>
+                </div>
+                <div class="resultListsContents" id="table_tpl_div">
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<!--table模板-->
+<script id="table_tpl" type="text/html">
+    <%for(var i=0;i< data.length;i++){%>
+        <div class="resultListInfo">
+            <!--<div class="resultListsItem2 lf items LiTextAlign"><%=data[i].bannerSort%></div>-->
+            <div class="resultListsItem2 lf items LiTextAlign"><%=i+1%></div>
+            <div class="resultListsItem2 lf items LiTextAlign"><img src="<%=data[i].bannerUrl%>" height="100%"></div>
+            <div class="resultListsItem3 lf items LiTextAlign"><%=data[i].accessPath%></div>
+
+            <div class="resultListsItem1 lf items LiTextAlign btnTextColor">
+                <span data-index="<%=i%>" onclick="appupdateclick(this)"  class="changeImg">修改</span>
+            </div>
+            <div class="resultListsItem1 lf items LiTextAlign btnTextColor">
+                <span class="delImg" data-id="<%=data[i].id%>" onclick="window.parent.appdel(this)">删除</span>
+            </div>
+            <div class="resultListsItem1 lf items LiTextAlign btnTextColor">
+                <span data-index="<%=i%>" onclick="window.parent.app_shang(this,appList)" class="btnTextColor glyphicon glyphicon-arrow-up"></span>
+                <span data-index="<%=i%>" onclick="window.parent.app_xia(this,appList)" class="btnTextColor glyphicon glyphicon-arrow-down"></span>
+            </div>
+        </div>
+    <%}%>
+</script>
+<!--js-->
+<script>
+    getDateList();
+    var appList=[];
+    //    获取数据1列表
+    function getDateList() {
+        $("#table_tpl_div").html('');
+        $.ajax({
+            type: "get",
+            url: config + "/admin/drug/bannerPictures/list?type=2",
+            async: true,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            success: function (data) {
+                console.log(data);
+                appList=data.resultMap.list;
+                //模板渲染
+                var tpl_data = {
+                    data: appList
+                };
+                var tpl_html = template.render('table_tpl', tpl_data);
+                $('#table_tpl_div').html(tpl_html);
+            },
+        });
+
+    }
+    function appupdateclick(that) {
+        var index=$(that).attr('data-index');
+        var data=appList[index];
+        window.parent.appupdateclick_fu(data);
+    }
+
+</script>
+</body>
+</html>

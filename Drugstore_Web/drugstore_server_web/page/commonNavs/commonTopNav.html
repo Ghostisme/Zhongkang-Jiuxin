@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>远程医疗管理系统-公共页面</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />-->
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../../css/commonStyle.css"/>-->
+		<style>
+			.rightContent{
+				width:100%;
+				/*height:1080px;*/
+				/*border:1px solid #000;*/
+			}	
+			/*右边nav*/
+			.topNavs{
+				height:53px;
+				background: #fff;
+				overflow: hidden;
+				padding:10px 20px;
+			}
+			.userImg{
+				width:53px;
+				height:53px;
+				border:1px solid #F9F2F4;
+				text-align: center;
+				line-height: 53px;
+			}
+			.userImg img{
+				width:53px;
+				height:53px;
+			}
+			.adminStyle{
+				color:#FF7410;
+				font-size: 24px;
+			}
+			.welcomeStyle{
+				color:#BCBCBC;
+				font-family: "微软雅黑";
+				font-size:0.75em;
+			}
+			.userInfo{
+				height:73px;
+				line-height: 52px;
+				margin-right:20px;
+				font-weight:bold;
+				font-family: "微软雅黑";
+			}
+			i.userImgDownArrow{
+				width:10px;
+				height:8px;
+				background: url("../../img/common/commonIcons.png") -1px -142px no-repeat;
+				margin-top:25px;
+				margin-right:40px;
+			}
+			i#navLine{
+				width:1px;
+				height:50px;
+				margin-left:25px;
+				display: inline-block;
+			    background: -webkit-linear-gradient(#fff, #C0C0C0,#fff);/* Safari 5.1 - 6.0 */
+			    background: -moz-linear-gradient(#fff, #C0C0C0,#fff);/* Opera 11.1 - 12.0 */
+			    background: -o-linear-gradient(#fff, #C0C0C0,#fff);/* Firefox 3.6 - 15 */
+			    background: linear-gradient(#fff, #C0C0C0,#fff); /* 标准的语法 */
+			    margin-right:20px;
+			}
+			i.AllInfoImg{
+				width:15px;
+				height:19px;
+				background: url("../../img/common/commonIcons.png") -1px -120px no-repeat;
+				margin-top:16px;
+				margin-right:0px;
+			}
+			b.AllInfoNum{
+				position:absolute;
+				top:20px;
+				right:306px;
+				background: #e4393c;
+				padding:0px 4px;
+				border-radius: 14px;
+				font-family: "微软雅黑";
+				font-size:0.75em;
+				color:#fff;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="rightContent rt">
+		    <div class="topNavs">
+		      	<div class="rt userImg">
+		      		<img src="../../img/home/userDefaultImg.jpeg.jpg" />
+		      	</div>
+		      	<i class="rt userImgDownArrow"></i>
+		      	<div class="rt userInfo">
+		      		<span class="adminStyle">管理员</span>
+		      		<span class="welcomeStyle">欢迎登陆</span>
+		      	</div>
+		      	<i class="rt"id="navLine"></i>
+		      	<div class="rt"id="AllInfo">
+		      	<i class="lf AllInfoImg"></i>
+		      	<b class="AllInfoNum">1</b>
+		      </div>
+		    </div>
+		</div>
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../../js/commonStyle.js"></script>
+	</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/css/shop_detail.css">
+		<link rel="stylesheet" href="../../styles/common_css/action_bar.css">
+		<title></title>
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">商品详情
+			<img src="../../styles/img/home_img/footershopcartY.png" alt="" id="CartImg"/>
+			</span>
+		</header>
+		<div class="mui-content ">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--头部商品名称-->
+					<div>
+						<div id="product_div" class="mui-text-center bgColor">
+							<!--<label>商品名称：</label>-->
+							<p id="shop_name_lable">QC-CPY弹性体改性沥青防水卷材</p>
+						</div>
+						<div id="product_price" class="mui-text-center bgColor">
+							<label></label>
+							<label id="pro_price">1234</label>
+						</div>
+						<!--<div id="product_youhui" class="mui-text-center bgColor">
+							<label id="discount">优惠活动:满5000立减50</label>
+						</div>-->
+					</div>
+					<!--产品介绍-->
+					<form class="mui-input-group">
+						<div class="mui-input-row">
+							<label>品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种:</label>
+							<label id="pro_product_type">聚合物改性沥青</label>
+						</div>
+						<div class="mui-input-row">
+							<label>规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格:</label>
+							<label id="pro_guige">4mml</label>
+
+						</div>
+						<div class="mui-input-row">
+							<label>计价单位:</label>
+							<label id="pri_dw">平方米</label>
+						</div>
+					</form>
+					<!--公司介绍-->
+					<div id="company_introduce">
+						<div id="company_name" class="bgColor">
+							<span class=" mui-content-padded">公司:</span>
+							<span id="company_name_span">潍坊市汇昌防水卷材有限公司</span>
+						</div>
+						<div id="product_left" class="bgColor">
+							<div>
+								<span class=" mui-content-padded">类别:</span>
+								<span id="type_span">防水卷材</span>
+							</div>
+							<div>
+								<span class=" mui-content-padded">生产商:</span>
+								<span id="pro_product_name">汇昌</span>
+							</div>
+							<div>
+								<span class=" mui-content-padded">标准:</span>
+								<span id="standard">GB/95235825</span>
+							</div>
+						</div>
+						<div id="product_right" class="bgColor">
+							<div>
+								<span>起订量:</span>
+								<span id="start_pay_name"></span>
+							</div>
+							<div>
+								<span>库存:</span>
+								<span id="stock">1000000</span>
+							</div>
+							<div>
+								<span>仓库位置:</span>
+								<span id="cangku_location">山东省潍坊市仓库</span>
+							</div>
+						</div>
+					</div>
+					<div class="addtoShopCart">
+						<span id="cartBtn">加入购物车</span>
+					</div>
+					<!--商品描述-->
+					<!--<div id="shop_discrip" class="mui-input-row">
+						<p id="shop_describe">商品描述：这里是商品描述</p>
+					</div>-->
+				</div>
+			</div>
+		</div>
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script src="../../mui/js/fly.js"></script>
+		<script src="../../common/common.js"></script>
+		<script src="shop_detail.js"></script>
+	</body>
+
+</html>

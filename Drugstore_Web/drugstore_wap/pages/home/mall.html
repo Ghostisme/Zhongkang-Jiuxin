@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/common_css/dibu.css">
+		<!--自定义css-->
+		<link rel="stylesheet" href="../../mui/css/common.css">
+		<style>
+			.t_l_div {
+				width: 7%;
+			}
+			
+			.t_c_div {
+				width: 86%;
+			}
+			
+			.t_r_div {
+				width: 7%;
+			}
+			
+			.pr {
+				position: relative;
+			}
+			
+			.ds_c {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.select_img {
+				position: absolute;
+				top: 17px;
+				left: 14px;
+				width: 13px !important;
+				height: 13px !important;
+			}
+			
+			.tcd_input {
+				width: 99% !important;
+				height: 33px !important;
+				border-radius: 17px !important;
+				padding-left: 34px !important;
+				font-size: 13px;
+				margin: 0 !important;
+				background: rgba(238, 239, 238, 1) !important;
+				border: 0 !important;
+			}
+			
+			.sousuo_font {
+				font-size: 15px;
+				font-family: MicrosoftYaHei;
+				font-weight: 400;
+				color: rgba(0, 0, 0, 1);
+			}
+			
+			.zld {
+				background-color: #fff;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				border-bottom: 1px solid rgba(240, 240, 240, 1);
+				font-size: 13px;
+				font-family: MicrosoftYaHei;
+				font-weight: 400;
+				color: rgba(0, 0, 0, 1);
+			}
+			
+			.zld_select {
+				background: rgba(245, 245, 245, 1);
+				color: rgba(0, 170, 255, 1);
+			}
+			
+			.ytitd {
+				font-size: 11px;
+				font-family: MicrosoftYaHei;
+				font-weight: 400;
+				color: rgba(68, 68, 68, 1);
+				padding: 10px 0;
+			}
+			
+			.y_div2 {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			
+			.sp_l_d {
+				width: 50%;
+				background-color: #fff;
+				padding: 10px;
+				font-family: MicrosoftYaHei;
+			}
+			
+			.sp_tit {
+				font-size: 10px;
+				font-weight: 400;
+				color: rgba(0, 0, 0, 1);
+				width: 89px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			
+			.sp_subtit {
+				font-size: 8px;
+				font-weight: 400;
+				color: rgba(68, 68, 68, 1);
+				width: 89px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			
+			.sp_spec {
+				font-size: 8px !important;
+				font-weight: bold;
+				color: rgba(202, 70, 64, 1);
+			}
+			
+			.qi_btn_d {
+				border: 1px solid rgba(153, 153, 153, 1);
+				border-radius: 10px;
+				font-size: 6px;
+				font-weight: 400;
+				color: rgba(153, 153, 153, 1);
+				padding: 1px 5px;
+			}
+			
+			.zld_click_div {
+				display: none;
+			}
+			
+			.fixed-content {
+				top: 45px;
+				bottom: 44px;
+				position: fixed;
+				overflow-y: scroll;
+				overflow-x: hidden;
+			}
+		</style>
+	</head>
+
+	<body style="background-color: #F4F4F4">
+		<!--顶部搜索栏-->
+		<header id="headerBG" class="mui-bar mui-bar-nav" style="background-color: #fff;">
+			<!--头部_new-->
+			<div class="ds_c" style="height: 100%;">
+				<!--左按钮-->
+				<div class="t_l_div ds_c">
+					<!--<div class="yuan_div ds_c">
+                <a class="mui-action-back mui-icon mui-icon-left-nav " style="color: white;margin: 0;padding: 0;"></a>
+            </div>-->
+				</div>
+				<!--中间框-->
+				<div class="t_c_div pr">
+					<input onclick="tzSelect()" class="tcd_input" type="text" placeholder="搜索药品">
+
+					<img class="select_img" src="../../styles/img/home_new_img/未标题-3_08.png" />
+				</div>
+				<!--右按钮-->
+				<div class="t_r_div ds_c sousuo_font">
+					<!--搜索-->
+				</div>
+			</div>
+		</header>
+		<!--中间商品展示部分-->
+
+		<div>
+			<div id="zld_div" class="fixed-content" style="width: 27%;">
+				<div class="zld">热卖</div>
+				<div class="zld">医疗器械</div>
+				<div class="zld">保健食品</div>
+				<div class="zld zld_select">普通食品</div>
+				<div class="zld">消毒产品</div>
+				<div class="zld">中成药</div>
+				<div class="zld">化学药制剂</div>
+				<div class="zld">外用药</div>
+				<div class="zld">中药饮片</div>
+				<div class="zld">藏药饮片</div>
+				<div class="zld">化妆品</div>
+				<div class="zld">藏药饮片</div>
+				<div class="zld">化妆品</div>
+				<div class="zld">化妆品</div>
+				<div class="zld">化妆品</div>
+				<div class="zld">化妆品</div>
+				<div class="zld">化妆品</div>
+				<div class="zld">化妆品</div>
+				<div class="zld">化妆品</div>
+			</div>
+
+			<div id="rlist_div" class="fixed-content" style="width: 73%;padding:10px;left: 27%;">
+
+			</div>
+		</div>
+
+		<div id="menu_bg"></div>
+		<div id="search_bg"></div>
+
+		<!--底部footer导航-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="footer footer-mui-active" href="../../index.html">
+				<img src="../../styles/img/home_img/home_normal.png" />
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="footer" href="mall.html">
+				<img src="../../styles/img/home_img/shop_press.png" />
+				<span class="mui-tab-label" style="color: #0691F9;">分类</span>
+			</a>
+			<a id="go_shopcart" class="footer">
+				<img src="../../styles/img/home_img/shop_cart_normal.png" />
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a id="go_person_center" class="footer">
+				<img src="../../styles/img/home_img/my_normal.png" />
+				<span class="mui-tab-label">我</span>
+			</a>
+		</nav>
+
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script src="../../common/common.js"></script>
+		<!--<script src="../home/index_versionTwo.js"></script>-->
+		<script src="../../mui/js/template.js"></script>
+
+		<script>
+			/*点击个人中心*/
+			$('.mui-bar').on('tap', '#go_person_center', function() {
+				if(window.webUser) {
+					window.location.href = '../my/user/user.html';
+				} else {
+					showDialog();
+				}
+			});
+			/*点击购物车*/
+			$('.mui-bar').on('tap', '#go_shopcart', function() {
+				if(window.webUser) {
+					window.location.href = '../shopCart/shopcart_index.html';
+				} else {
+					showDialog();
+				}
+			});
+			/*判断是否登录的dialog*/
+			function showDialog() {
+				var btnArray = ['否', '是'];
+				mui.confirm('您还没有登录，是否去登录？', '提示', btnArray, function(e) {
+					if(e.index == 1) {
+						window.location.href = '../../pages/login/login.html';
+					} else {}
+				})
+			}
+
+			function iphoneToSet() {
+				var btnArray = ['否', '是'];
+				mui.confirm('为了您更好使用，请打开本机浏览器cookie功能，详情请见~！', '提示', btnArray, function(e) {
+					if(e.index == 1) {
+						window.location.href = '../setting/iphoneSetting.html';
+					} else {}
+				})
+			}
+
+			function tzSelect() {
+				window.location.href = './select.html';
+
+			}
+
+			function clickInit(that) {
+				var id = $(that).attr('data-id');
+				var zldtext = $(that).html();
+				//获取右list数据
+				$.ajax({
+					type: "get",
+					url: config + "/drug/info/twoMeno",
+					dataType: "jsonp",
+					jsonp: "jsoncallback",
+					data: {
+						typeId: id
+					},
+					success: function(data) {
+						if(data.status == 1) {
+							console.log('data:::', data);
+							var data = data.resultMap.commodityCategoryTypeList;
+							if(data != null) {
+								var rhtml = '<div id="zld5" >' +
+									// '<div class="ytitd">' + zldtext + '</div>' +
+									'<div class="y_div2">';
+								for(var i = 0; i < data.length; i++) {
+								    var newImg="http://60.205.92.79:8090/image-web/upload/productImg/2018090609051866753338.jpg";
+                                    if(data[i].imgUrl!=null){
+                                        newImg=data[i].imgUrl
+									}
+									rhtml += '<div data-categoryId="' + data[i].categoryId + '" data-typeId="' + data[i].typeId + '" onclick="spClick(this)" class="sp_l_d">\n' +
+										'    <img style="width: 67px;height:67px;margin: 0 auto;" src="'+newImg+'">\n' + //+data[i].url+
+										'    <div class="sp_tit">' + data[i].name + '</div>\n' +
+										// '    <div class="sp_subtit">10粒一板</div>\n' + // + data[i].standard +
+										// '    <div class="sp_spec">￥16.9/板</div>\n' + //+ data[i].batchStdPrice +
+										// '    <span class="qi_btn_d">50板/盒起批</span>\n' +
+										'</div>';
+								}
+								rhtml += '</div></div>';
+
+								$('#rlist_div').html(rhtml);
+							}
+
+						} else {
+							alert(data.message);
+						}
+
+					},
+				});
+
+				$('.zld_select').removeClass('zld_select');
+				$(that).addClass('zld_select');
+
+			}
+
+			function spClick(that) {
+				var categoryId = $(that).attr('data-categoryId');
+				var typeId = $(that).attr('data-typeId');
+				var sname=$(that).find('.sp_tit').text();
+				location.href = '../home/selectList.html?categoryId=' + categoryId + "&parId=" + typeId;
+			}
+		</script>
+		<script>
+			offset = 1;
+			limit = 10;
+			var typeName = getQueryVariable("typeName");
+			$(function() {
+				//左分类初始化
+				$.ajax({
+					type: "get",
+                    url: config + "/drug/info/firstList",
+                    data:{
+                        'name':"",
+                        'offset':"",
+                        'limit':"",
+                    },
+					dataType: "jsonp",
+					jsonp: "jsoncallback",
+					success: function(data) {
+						if(data.status == 1) {
+							console.log('data1:::', data);
+							var data = data.resultMap.commodityTypeList;
+							var zld_html = '';
+							for(var i = 0; i < data.length; i++) {
+								zld_html += '<div id="t_zld_' + i + '" onclick="clickInit(this)" data-id="' + data[i].id + '" class="zld">' + data[i].name + '</div>';
+							}
+							$('#zld_div').html(zld_html);
+							typeClickInit();
+
+						} else {
+							alert(data.message);
+						}
+					},
+				});
+
+			});
+
+			function typeClickInit() {
+				if(typeName) {
+					$('.zld').each(function(j) {
+						if($(this).text() == typeName) {
+							var id = $(this).attr('id');
+							$('#' + id).click();
+						}
+					});
+				} else {
+					$('#t_zld_0').click();
+				}
+			}
+		</script>
+	</body>
+
+</html>

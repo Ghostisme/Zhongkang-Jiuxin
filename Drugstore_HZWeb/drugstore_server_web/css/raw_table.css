@@ -1,0 +1,168 @@
+.disContents{
+    width:100%;
+    overflow: hidden;
+}
+.rightLoadContent{
+    width:100%;
+}
+.searchInfos{
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.searchInfos #searchBox{
+    width:15%;
+    height:26px;
+    padding:0px auto;
+    /*margin-top:8px;*/
+    outline: none;
+}
+/*检索按钮*/
+.searching{
+    height:26px;
+    line-height: 26px;
+    padding:0 30px;
+    background: #F5F1EE;
+    /*margin-top:8px;*/
+    color:#000;
+    border:1px solid #CAC8C6;
+    cursor: pointer;
+}
+.addData{
+    width: 85px;
+    height: 24px;
+    border-radius: 5px;
+    background-color: #ff7510;
+    font-family: "microsoft yahei";
+    font-size: 14px;
+    color: #FFFFFF;
+    line-height: 24px;
+    letter-spacing: 5px;
+    cursor: pointer;
+    float: right;
+    text-align: center;
+}
+.resultLists,.resultListsContents,.resultListInfo{
+    width:100%;
+    overflow: hidden;
+}
+/*表头*/
+.resultListsTitle{
+    width:100%;
+    height:40px;
+    line-height: 40px;
+    overflow: hidden;
+    /*border:1px solid #000;*/
+    background: #E2EFF6;
+}
+.resultListsItem1{
+    width:5%;
+    height:40px;
+    text-align: center;
+}
+.resultListsItem2{
+    width:12%;
+    height:40px;
+    text-align: center;
+}
+.resultListsItem3{
+    width:30%;
+    height:40px;
+    text-align: center;
+}
+.resultListsItem4{
+    width:20%;
+    height:40px;
+    text-align: center;
+}
+.resultListsItem5{
+    width:3%;
+    height:40px;
+    text-align: center;
+}
+.resultListsItem6{
+    width:13%;
+    height:40px;
+}
+.resultListInfo{
+    height:44px;
+    line-height: 44px;
+    cursor: pointer;
+    border-bottom: 1px solid #eeeeee;
+}
+.resultListInfo:nth-child(even){
+    background: #fff;
+}
+
+/*页码*/
+.pageN{
+    overflow: hidden;
+}
+#pageGro ul{
+    float: right;
+    margin-right:100px;
+}
+.pagination>li>a, .pagination>li>span{
+    margin-right:10px;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+    background: #FE7410;
+    border-color: #FE7410;
+}
+.flipOver a{
+    cursor: pointer;
+}
+
+/*新增类型蓝色*/
+.currentModalMainTit{
+    color:#008EEA;
+    border-bottom:1px solid #008EEA;
+    height:40px;
+    margin:0 20px;
+    line-height:56px;
+}
+.boxDiv1,.boxDiv2{
+    margin:0 60px;
+    height:100px;
+    border:1px solid #EDEDED;
+    margin-top:20px;
+}
+.addInfoBox1,.addInfoBox2{
+    width:100%;
+    height:100%;
+    border:none;
+    outline: none;
+}
+/*按钮样式*/
+.sureAndCancelBtns{
+    width:100%;
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top:20px;
+}
+.sureBtn{
+    width:100px;
+    height:40px;
+    line-height: 40px;
+    display: inline-block;
+    background: #008EEA;
+    color:#fff;
+    margin:0 auto;
+    cursor: pointer;
+}
+
+.fileBtn{
+    font-size: 24px;cursor: pointer;
+    margin: 0 20px;
+}
+.simg{
+    display: none;
+    height: 100px;
+    max-width: 300px;
+}
+.simg_del{
+    display: none;
+}
+body.modal-open{
+    padding-right: 20px!important;
+}

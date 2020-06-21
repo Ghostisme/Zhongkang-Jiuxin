@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="mui/css/mui.min.css">
+		<link rel="stylesheet" href="styles/common_css/dibu.css">
+		<!--自定义css-->
+		<link rel="stylesheet" type="text/css" href="pages/home/index_versionTwo.css" />
+		<link rel="stylesheet" href="mui/css/common.css">
+
+		<style>
+			#headerBG {
+				height: 118px;
+				line-height: 118px;
+				padding: 0;
+				background: url("styles/img/home_new_img/未标题-3_11.png") no-repeat;
+				background-size: 100%;
+			}
+			
+			.top_div {
+				display: flex;
+			}
+			
+			.t_l_div {
+				width: 13%;
+				/*31.25em;*/
+			}
+			
+			.t_c_div {
+				width: 74%;
+				/*172.5em;*/
+				height: 118px;
+			}
+			
+			.t_r_div {
+				width: 13%;
+				/*31.25em;*/
+			}
+			
+			.tcd_input {
+				width: 99% !important;
+				height: 33px !important;
+				background: rgba(255, 255, 255, 1);
+				border-radius: 17px !important;
+				padding-left: 34px !important;
+				font-size: 13px;
+				position: absolute;
+				top: 44px;
+				left: 5px;
+			}
+			
+			.yuan_div {
+				width: 34px;
+				height: 34px;
+				background: rgba(0, 0, 0, 0.3);
+				opacity: 0.5;
+				border-radius: 50%;
+			}
+			
+			.ds_c {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.nm2 {
+				width: 20%;
+			}
+			
+			.pr {
+				position: relative;
+			}
+			
+			.select_img {
+				position: absolute;
+				top: 54px;
+				left: 14px;
+				width: 13px !important;
+				height: 13px !important;
+			}
+			
+			.tc {
+				text-align: center;
+			}
+			
+			.pre {
+				position: relative;
+			}
+			
+			.pa00 {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			.lj_title {
+				font-size: 15px;
+				font-weight: bold;
+				color: black
+			}
+			
+			.textStyle {
+				/*width:72px;*/
+				font-size: 18px;
+				font-family: MicrosoftYaHei;
+				font-weight: bold;
+				color: rgba(0, 0, 0, 1);
+				background: -webkit-linear-gradient(left, #7ABDE8, #9971F5);
+				/* Safari 5.1 - 6.0 */
+				background: -o-linear-gradient(right, #7ABDE8, #9971F5);
+				/* Opera 11.1 - 12.0 */
+				background: -moz-linear-gradient(right, #7ABDE8, #9971F5);
+				/* Firefox 3.6 - 15 */
+				/*background-image: -webkit-gradient(linear, left 0, 0 bottom, from(rgba(122,189,232,1)), to(rgba(153,113,245,1)));*/
+				background: linear-gradient(to right, #7ABDE8, #7ABDE8, #9971F5, #9971F5);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent
+			}
+			
+			.textStyle1 {
+				/*width:72px;*/
+				font-size: 18px;
+				font-family: MicrosoftYaHei;
+				font-weight: bold;
+				color: rgba(0, 0, 0, 1);
+				background: -webkit-linear-gradient(left, #6FBDA7, #89DED8);
+				/* Safari 5.1 - 6.0 */
+				background: -o-linear-gradient(right, #6FBDA7, #89DED8);
+				/* Opera 11.1 - 12.0 */
+				background: -moz-linear-gradient(right, #6FBDA7, #89DED8);
+				/* Firefox 3.6 - 15 */
+				/*background-image: -webkit-gradient(linear, left 0, 0 bottom, from(rgba(122,189,232,1)), to(rgba(153,113,245,1)));*/
+				background: linear-gradient(to right, #6FBDA7, #6FBDA7, #89DED8, #89DED8);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="headerBG" class="mui-bar mui-bar-nav">
+			<!--头部_new-->
+			<div class="top_div">
+				<!--左按钮-->
+				<div class="t_l_div ds_c">
+					<!--<div class="yuan_div ds_c">
+                <a class="mui-action-back mui-icon mui-icon-left-nav " style="color: white;margin: 0;padding: 0;"></a>
+            </div>-->
+				</div>
+				<!--中间框-->
+				<div class="t_c_div pr">
+					<input onclick="seturl('./pages/home/select.html');" class="tcd_input" type="text" placeholder="搜索药品">
+
+					<img class="select_img" src="styles/img/home_new_img/未标题-3_08.png" />
+				</div>
+				<!--右按钮-->
+				<div class="t_r_div ds_c">
+					<!--<div class="yuan_div ds_c">
+                <a style="color: white;margin: 0;padding: 0;">...</a>
+            </div>-->
+				</div>
+			</div>
+		</header>
+		<div class="mui-scroll-wrapper" style="bottom: 50px;">
+			<!--内容-->
+			<div class="mui-content  ">
+				<!--分类-->
+				<div class="column" id="fenlei_div">
+					<div class="mui-row">
+						<!--mui-col-xs-3-->
+						<div class="shop_type column-item mui-col-sm-3 nm2">
+							<div>
+								<div><img src="styles/img/home_new_img/未标题-3_17.png" /></div>
+								<div><label>中药饮片</label></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--轮播图-->
+				<div class="information">
+					<!--<img id="lunbo_img" src="styles/img/home_new_img/未标题-3_51.png" width="100%" />-->
+					<!--展示轮播图-->
+					<div id="slider" class="mui-slider">
+
+						<script id="lunbo_tpl" type="text/html">
+
+							<div class="mui-slider-group mui-slider-loop">
+								<!--额外增加的一个节点(循环轮播：第一个节点是最后一张轮播)-->
+								<div class="mui-slider-item mui-slider-item-duplicate">
+									<a href="#">
+										<img src="<%=data[data.length-1].bannerUrl%>">
+									</a>
+								</div>
+								<%for(var i=0;i< data.length;i++){%>
+								<!-- 第一张 -->
+								<div class="mui-slider-item">
+								<%if (data[i].accessPath != ""){%>
+									<%if (data[i].accessType == 2){%>
+									<%if (data[i].setMealType == 0){%>
+									<a href="#" onclick="tip()">
+										<img src="<%=data[i].bannerUrl%>">
+									</a>
+									<%}else{ %>
+									<a href="pages/shop/packageDetails.html?packageRec=<%=data[i].accessPath%>">
+										<img src="<%=data[i].bannerUrl%>">
+									</a>
+									<%}%>
+
+									<%}else{ %>
+									<a href="pages/shop/goods_detail.html?rec=<%=data[i].accessPath%>">
+										<img src="<%=data[i].bannerUrl%>">
+									</a>
+									<%}%>
+								<%}else{ %>
+									<a href="#">
+										<img src="<%=data[i].bannerUrl%>">
+									</a>
+								<%}%>	
+								</div>
+								<!--
+                        &lt;!&ndash; 第二张 &ndash;&gt;
+                        <div class="mui-slider-item">
+                            <a href="#">
+                                <img src="http://www.d-home.com.cn/images/muwu.jpg">
+                            </a>
+                        </div>
+                        &lt;!&ndash; 第三张 &ndash;&gt;
+                        <div class="mui-slider-item">
+                            <a href="#">
+                                <img src="http://www.d-home.com.cn/images/cbd.jpg">
+                            </a>
+                        </div>
+                        &lt;!&ndash; 第四张 &ndash;&gt;
+                        <div class="mui-slider-item">
+                            <a href="#">
+                                <img src="http://www.d-home.com.cn/images/yuantiao.jpg">
+                            </a>
+                        </div>-->
+								<%}%>
+								<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+								<div class="mui-slider-item mui-slider-item-duplicate">
+									<a href="#">
+										<img src="<%=data[0].bannerUrl%>">
+									</a>
+								</div>
+							</div>
+							<div class="mui-slider-indicator">
+								<%for(var i=0;i< data.length;i++){%>
+								<div class="mui-indicator"></div>
+								<%}%>
+								<!-- <div class="mui-indicator  mui-active"></div>-->
+								<!--<div class="mui-indicator"></div>
+                        <div class="mui-indicator"></div>-->
+							</div>
+
+						</script>
+
+					</div>
+				</div>
+
+				<div style="padding: 10px;background:rgba(246,246,246,1);padding-bottom: 60px;">
+					<!--热卖商品-->
+					<div class="specialOffer">
+						<!--标题图-->
+						<div class="title">
+							<!--<img id="rmsp_title" style="width: 62px;" src="styles/img/home_new_img/未标题-3_55.png"/>-->
+							<div id="rmsp_title" class="lj_title"></div>
+						</div>
+						<!--热卖商品-->
+						<!--mui-row-->
+						<div id="rmsp_list" style="height: 136px;width: 100%;overflow: scroll">
+							<!--<div class="mui-scroll-wrapper" >-->
+							<!--<div  style="display: flex;width: 125%">
+                            <div class="tc list-item mui-col-sm-3 mui-col-xs-3 pre">
+                                <img src="styles/img/home_new_img/biaoqian.jpg" height="37" width="31" class="pa00"/>
+                                <img style="width: 77px;height: 77px;"
+                                     src="http://60.205.92.79:8090/image-web/upload/productImg/2018090609051866753338.jpg">
+                                <span class="proName">六味地黄丸</span>
+                                <span class="proPrice">￥150</span>
+                            </div>
+                            <div class="tc list-item mui-col-sm-3 mui-col-xs-3">
+                                <img style="width: 77px;height: 77px;"
+                                     src="http://60.205.92.79:8090/image-web/upload/productImg/2018090609051866753338.jpg">
+                                <span class="proName">六味地黄丸</span>
+                                <span class="proPrice">￥150</span>
+                            </div>
+                            <div class="tc list-item mui-col-sm-3 mui-col-xs-3">
+                                <img style="width: 77px;height: 77px;"
+                                     src="http://60.205.92.79:8090/image-web/upload/productImg/2018090609051866753338.jpg">
+                                <span class="proName">六味地黄丸</span>
+                                <span class="proPrice">￥150</span>
+                            </div>
+                            <div class="tc list-item mui-col-sm-3 mui-col-xs-3">
+                                <img style="width: 77px;height: 77px;"
+                                     src="http://60.205.92.79:8090/image-web/upload/productImg/2018090609051866753338.jpg">
+                                <span class="proName">六味地黄丸</span>
+                                <span class="proPrice">￥150</span>
+                            </div>
+                            <div class="tc list-item mui-col-sm-3 mui-col-xs-3">
+                                <img style="width: 77px;height: 77px;"
+                                     src="http://60.205.92.79:8090/image-web/upload/productImg/2018090609051866753338.jpg">
+                                <span class="proName">六味地黄丸</span>
+                                <span class="proPrice">￥150</span>
+                            </div>
+
+                        </div>-->
+
+							<!--</div>-->
+						</div>
+					</div>
+					<div id="xl_tpl_div">
+						<script id="xl_tpl" type="text/html">
+							<%for(var p=1;p < rdata.length+1; p++){%>
+							<%
+                    var title=rdata[p-1].title;
+                    var data=rdata[p-1].drugList;
+                    var dataT=rdata[p-1].drugListT;
+                    for(var n=0;n< 7;n++){if(data[n]==null){data[n]={accessPath:"",title:"",memo:"",bannerUrl:""}}}
+                    %>
+							<!--777系列 -->
+							<%if(p%2!=0){%>
+							<div class="tit_div2">
+								<!--777标题图-->
+								<!--<img id="xl1_title" src="styles/img/home_new_img/未标题-3_59.png"  width="110"/>-->
+								<div class="textStyle">
+									<%=title%>
+								</div>
+							</div>
+							<div class="hotSale">
+								<!--777内容-->
+								<div class="h_div1">
+									<!--左-->
+									<div class="l_div2" onclick="tzDetail(this)" data-rec="<%=data[0].accessPath%>">
+										<div style="margin-top: 30px;">
+											<p class="title_p">
+												<%=data[0].title%>
+											</p>
+											<p style="width: 90%" class="subtitle_p">
+												<%=data[0].memo%>
+											</p>
+											<div class="go_div">GO</div>
+										</div>
+										<img style="width: 127px;height: 90px;" src="<%=data[0].bannerUrl%>">
+									</div>
+									<!--右-->
+									<div class="r_div2">
+										<div class="r_div_node1" onclick="tzDetail(this)" data-rec="<%=data[1].accessPath%>">
+											<div>
+												<p class="title_p">
+													<%=data[1].title%>
+												</p>
+												<p style="width: 50%" class="subtitle_p">
+													<%=data[1].memo%>
+												</p>
+											</div>
+											<img style="width: 70px;height: 43px;" src="<%=data[1].bannerUrl%>">
+										</div>
+										<div class="r_div_node2" onclick="tzDetail(this)" data-rec="<%=data[2].accessPath%>">
+											<div style="padding-top: 5px;">
+												<p class="title_p">
+													<%=data[2].title%>
+												</p>
+												<p style="width: 60%" class="subtitle_p">
+													<%=data[2].memo%>
+												</p>
+											</div>
+											<img style="width: 40px;height: 77px;" src="<%=data[2].bannerUrl%>">
+										</div>
+									</div>
+								</div>
+								<div class="h_div2">
+									<div class="c_div1" onclick="tzDetail(this)" data-rec="<%=data[3].accessPath%>">
+										<p class="tl_p2">
+											<%=data[3].title%>
+										</p>
+										<div class="c_c_div1">
+											<%=data[3].memo%>
+										</div>
+										<img style="width: 67px;height: 45px;" src="<%=data[3].bannerUrl%>">
+
+									</div>
+									<div class="c_div1" onclick="tzDetail(this)" data-rec="<%=data[4].accessPath%>">
+										<p class="tl_p2">
+											<%=data[4].title%>
+										</p>
+										<div class="c_c_div1">
+											<%=data[4].memo%>
+										</div>
+										<img style="width: 67px;height: 45px;" src="<%=data[4].bannerUrl%>">
+
+									</div>
+									<div class="c_div1" onclick="tzDetail(this)" data-rec="<%=data[5].accessPath%>">
+										<p class="tl_p2">
+											<%=data[5].title%>
+										</p>
+										<div class="c_c_div1">
+											<%=data[5].memo%>
+										</div>
+										<img style="width: 67px;height: 45px;" src="<%=data[5].bannerUrl%>">
+
+									</div>
+									<div class="c_div1" onclick="tzDetail(this)" data-rec="<%=data[6].accessPath%>">
+										<p class="tl_p2">
+											<%=data[6].title%>
+										</p>
+										<div class="c_c_div1">
+											<%=data[6].memo%>
+										</div>
+										<img style="width: 67px;height: 45px;" src="<%=data[6].bannerUrl%>">
+
+									</div>
+								</div>
+								<%for(var k=0;k< dataT.length;k++){%>
+								<div class="tit_div2 tit_div_img2" onclick="tzDetail(this)" data-rec="<%=dataT[k].accessPath%>">
+									<div>
+										<div class="div_p2">
+											<%=dataT[k].title%>
+										</div>
+										<div class="div_p3">
+											<%=dataT[k].memo%>
+										</div>
+									</div>
+									<div>
+										<!--<img src="../../styles/img/home_new_img/未标题-3_72.png"  width="110"/>-->
+										<img src="<%=dataT[k].bannerUrl%>" height="55" />
+										<!--<div  class="textStyle1"><%=title%></div>-->
+									</div>
+									<div class="youjian_div">
+										<img style="height: 14px;" src="styles/img/home_new_img/youb.png" />
+									</div>
+								</div>
+								<%}%>
+							</div>
+
+							<%}else{%>
+							<!--666系列-->
+							<div class="tit_div2">
+								<!--666标题图-->
+								<!--<img id="xl2_title" src="styles/img/home_new_img/未标题-3_72.png"  width="110"/>-->
+								<div id="xl2_title" class="textStyle1">
+									<%=title%>
+								</div>
+							</div>
+
+							<div class="hotSale">
+								<!--666内容-->
+								<div class="h_div1">
+									<!--左-->
+									<div class="z_div1" onclick="tzDetail(this)" data-rec="<%=data[0].accessPath%>">
+										<div>
+											<p class="z_div_p_t">
+												<%=data[0].title%>
+											</p>
+											<p class="z_div_p">
+												<%=data[0].memo%>
+											</p>
+										</div>
+										<img style="width: 27%;height: 45%;margin-left: 1%;" src="<%=data[0].bannerUrl%>">
+									</div>
+									<!--右-->
+									<div class="z_div1" onclick="tzDetail(this)" data-rec="<%=data[1].accessPath%>">
+										<div>
+											<p class="z_div_p_t">
+												<%=data[1].title%>
+											</p>
+											<p class="z_div_p">
+												<%=data[1].memo%>
+											</p>
+										</div>
+										<img style="width: 67px;height: 45px;" src="<%=data[1].bannerUrl%>">
+									</div>
+								</div>
+								<div class="h_div2">
+									<div class="c_div1" onclick="tzDetail(this)" data-rec="<%=data[2].accessPath%>">
+										<p class="tl_p2">
+											<%=data[2].title%>
+										</p>
+										<img style="width: 67px;height: 45px;" src="<%=data[2].bannerUrl%>">
+
+									</div>
+									<div class="c_div1" onclick="tzDetail(this)" data-rec="<%=data[3].accessPath%>">
+										<p class="tl_p2">
+											<%=data[3].title%>
+										</p>
+										<img style="width: 67px;height: 45px;" src="<%=data[3].bannerUrl%>">
+
+									</div>
+									<div class="c_div1" onclick="tzDetail(this)" data-rec="<%=data[4].accessPath%>">
+										<p class="tl_p2">
+											<%=data[4].title%>
+										</p>
+										<img style="width: 67px;height: 45px;" src="<%=data[4].bannerUrl%>">
+
+									</div>
+									<div class="c_div1" onclick="tzDetail(this)" data-rec="<%=data[5].accessPath%>">
+										<p class="tl_p2">
+											<%=data[5].title%>
+										</p>
+										<img style="width: 67px;height: 45px;" src="<%=data[5].bannerUrl%>">
+
+									</div>
+								</div>
+								<!--标题图-->
+								<%for(var k=0;k< dataT.length;k++){%>
+								<div class="tit_div2 tit_div_img2" onclick="tzDetail(this)" data-rec="<%=dataT[k].accessPath%>">
+									<div>
+										<div class="div_p2">
+											<%=dataT[k].title%>
+										</div>
+										<div class="div_p3">
+											<%=dataT[k].memo%>
+										</div>
+									</div>
+									<div>
+										<!--<img src="../../styles/img/home_new_img/未标题-3_72.png"  width="110"/>-->
+										<img src="<%=dataT[k].bannerUrl%>" height="55" />
+										<!--<div  class="textStyle1"><%=title%></div>-->
+									</div>
+									<div class="youjian_div">
+										<img style="height: 14px;" src="styles/img/home_new_img/youb.png" />
+									</div>
+								</div>
+								<%}%>
+
+							</div>
+							<%}%>
+							<%}%>
+						</script>
+
+					</div>
+
+				</div>
+				<!--遮罩层-->
+				<div class="mask"></div>
+			</div>
+		</div>
+
+		<!--底部footer导航-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="footer footer-mui-active" href="index.html">
+				<img src="styles/img/home_img/home_press.png" />
+				<span class="mui-tab-label" style="color: #0691F9;">首页</span>
+			</a>
+			<a class="footer" href="pages/home/mall.html">
+				<img src="styles/img/home_img/shop_normal.png" />
+				<span class="mui-tab-label">分类</span>
+			</a>
+			<!--<a class="footer" href="../resourceList/resource_list.html">
+        <img src="../../styles/img/home_img/footerResource.png" />
+        <span class="mui-tab-label">资源单</span>
+    </a>-->
+			<!--<a class="footer" href="../selected/selected.html">
+        <img src="../../styles/img/home_img/footerSelected.png" />
+        <span class="mui-tab-label">行业臻选</span>
+    </a>-->
+			<a id="go_shopcart" class="footer">
+				<img src="styles/img/home_img/shop_cart_normal.png" />
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a id="go_person_center" class="footer">
+				<img src="styles/img/home_img/my_normal.png" />
+				<span class="mui-tab-label">我</span>
+			</a>
+		</nav>
+
+	</body>
+
+</html>
+
+<script src="mui/js/mui.min.js"></script>
+<script src="common/jquery-1.12.1.js"></script>
+<script src="common/common.js"></script>
+<!--<script src="pages/home/index_versionTwo.js"></script>-->
+<script src="mui/js/template.js"></script>
+<script>
+	$("#jumpBtn").click(function() {
+		window.location.href = "pages/pay/pay.html"
+	});
+	mui.init({
+		swipeBack: true //启用右滑关闭功能
+	});
+
+	mui('.mui-scroll-wrapper').scroll({
+		scrollY: true, //是否竖向滚动
+		scrollX: true, //是否横向滚动
+		startX: 0, //初始化时滚动至x
+		startY: 0, //初始化时滚动至y
+		indicators: true, //是否显示滚动条
+		deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+		bounce: true //是否启用回弹
+	});
+	/*点击个人中心*/
+	$('.mui-bar').on('tap', '#go_person_center', function() {
+		if(window.webUser) {
+			window.location.href = 'pages/my/user/user.html';
+		} else {
+			showDialog();
+		}
+	});
+	/*点击购物车*/
+	$('.mui-bar').on('tap', '#go_shopcart', function() {
+		if(window.webUser) {
+			window.location.href = 'pages/shopCart/shopcart_index.html';
+		} else {
+			showDialog();
+		}
+	});
+
+	/*判断是否登录的dialog*/
+	function showDialog() {
+		var btnArray = ['否', '是'];
+		mui.confirm('您还没有登录，是否去登录？', '提示', btnArray, function(e) {
+			if(e.index == 1) {
+				window.location.href = 'pages/login/login.html';
+			} else {}
+		})
+	}
+	
+	function tip(){
+		mui.alert("套餐过期,无法查看",'  ')
+	}
+	
+	function iphoneToSet() {
+		var btnArray = ['否', '是'];
+		mui.confirm('为了您更好使用，请打开本机浏览器cookie功能，详情请见~！', '提示', btnArray, function(e) {
+			if(e.index == 1) {
+				window.location.href = '../setting/iphoneSetting.html';
+			} else {}
+		})
+	}
+</script>
+<script>
+	function tzTypeMall(that) {
+		var yname = $(that).find('.ylab').text();
+		if(yname == "药品分类") {
+			window.location.href = "pages/home/mall.html";
+		} else {
+			window.location.href = "pages/home/mall.html?typeName=" + yname;
+		}
+	}
+
+	function tzDetail(that) {
+		var rec = $(that).attr('data-rec');
+		window.location.href = "pages/shop/goods_detail.html?rec=" + rec;
+		// window.location.href=rec;
+	}
+
+	$(function() {
+		//分类初始化
+		$.ajax({
+			type: "get",
+			url: config + "/drug/info/firstList",
+			dataType: "jsonp",
+			jsonp: "jsoncallback",
+			data: {
+				'name': "",
+				'offset': 0,
+				'limit': 9,
+			},
+			success: function(data) {
+				if(data.status == 1) {
+					var resdata = data.resultMap.commodityTypeList;
+					var fl_html = '<div  class="mui-row"> ';
+					for(var i = 0; i < resdata.length; i++) {
+						if(i == 5) {
+							fl_html += '</div><div  class="mui-row"> ';
+						}
+						fl_html += '<div onclick="tzTypeMall(this)" class="shop_type column-item mui-col-sm-3 nm2">\n' +
+							'   <div><div><img src="' + resdata[i].imgUrl + '"/></div>\n' +
+							'   <div><label class="ylab">' + resdata[i].name + '</label></div></div>\n' +
+							'</div>';
+					}
+					fl_html += '<div onclick="tzTypeMall(this)" class="ruzhu column-item mui-col-sm-3 nm2">\n' +
+						'   <div><div><img src="styles/img/home_new_img/未标题-3_43.png"/></div>\n' +
+						'   <div><label class="ylab">药品分类</label></div></div>\n' +
+						'</div>' + '</div>';
+					$('#fenlei_div').html(fl_html);
+				} else {
+					alert(data.message);
+				}
+
+			},
+		});
+
+		//轮播图初始化
+		$.ajax({
+			type: "get",
+			url: config + "/drug/bannerPictures/listApp",
+			dataType: "jsonp",
+			jsonp: "jsoncallback",
+			success: function(data) {
+				console.log("data:::", data);
+
+				if(data.status == 1) {
+					var resdata = data.resultMap.list;
+					var temdata = {
+						data: resdata
+					};
+					var lunnbo_html = template.render('lunbo_tpl', temdata);
+					$("#slider").html(lunnbo_html);
+					$(".mui-slider-indicator").find(".mui-indicator").eq(0).addClass("mui-active");
+
+					// $('#lunbo_img').attr('src', resdata[0].bannerUrl);
+					muilunbo();
+				} else {
+					alert(data.message);
+				}
+			},
+		});
+
+		onInit();
+
+	});
+
+	function seturl(url) {
+		location.href = url;
+	}
+
+	//初始化
+	function onInit() {
+		$.ajax({
+			type: "get",
+			url: config + "/drug/banner/listd",
+			dataType: "jsonp",
+			jsonp: "jsoncallback",
+			success: function(data) {
+				if(data.status == 1) {
+					//热卖专区
+					var list1 = data.resultMap.listHot;
+					listInit1(list1);
+					//系列渲染
+					var list2 = data.resultMap.list;
+					listInit2(list2);
+
+				} else {
+					alert(data.message);
+				}
+			},
+		});
+	}
+
+	//热卖商品初始化
+	function listInit1(resdata) {
+		var title = "热卖商品";
+		if(resdata.length > 0) {
+			//标题
+			// title = resdata[0].advertisingName;
+		}
+		// $('#rmsp_title').attr('src',title);
+		$('#rmsp_title').html('<span style="color: red">' + title.slice(0, 2) + '</span>' + title.slice(2, 4));
+		//商品内容list  <div class="mui-scroll-wrapper">
+		//      var rmsp_html = '<div style="display: flex;width: '+25*resdata.length+'%">';
+		var rmsp_html = '<div style="white-space: nowrap;">';
+		for(var i = 0; i < resdata.length; i++) {
+			rmsp_html += '<div onclick="tzDetail(this)" data-rec="' + resdata[i].accessPath + '" style="display:inline-block;"class="tc list-item mui-col-sm-3 mui-col-xs-3">\n' +
+				'   <div>';
+			if(resdata[i].tagUrl != null && resdata[i].tagUrl != "") {
+				rmsp_html += '<img src="' + resdata[i].tagUrl + '" width="28" height="31"  class="pa00"/>';
+				/*height="37" width="31"*/
+			}
+			rmsp_html += '<img style="width: 77px;height: 77px;" src="' + resdata[i].bannerUrl + '"></div>\n' +
+				'   <div class="proName textD">' + resdata[i].title + '</div>\n' +
+				'   <div class="proPrice textD">￥' + (resdata[i].price == null ? 0 : resdata[i].price) + '</div>\n' +
+				'</div>';
+		}
+		rmsp_html += '</div>'; //</div>
+		$('#rmsp_list').html(rmsp_html);
+		//      mui('#rmsp_list').scroll({
+		//          scrollY: false, //是否竖向滚动
+		//          scrollX: true, //是否横向滚动
+		//          startX: 0, //初始化时滚动至x
+		//          startY: 0, //初始化时滚动至y
+		//          indicators: false, //是否显示滚动条
+		//          deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+		//          bounce: true //是否启用回弹
+		//      });
+	}
+
+	//系列1初始化
+	function listInit2(rdata) {
+		//商品内容list
+		var data = {
+			'rdata': rdata
+		};
+		var html = template.render('xl_tpl', data);
+		$("#xl_tpl_div").html(html);
+
+	}
+</script>
+
+<script type="text/javascript" charset="utf-8">
+	function muilunbo() {
+		var slider = mui("#slider");
+		slider.slider({
+			interval: 5000
+		});
+	}
+	
+</script>

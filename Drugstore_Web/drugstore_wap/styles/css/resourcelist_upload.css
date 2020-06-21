@@ -1,0 +1,180 @@
+
+.mui-scroll-wrapper{
+	top: 40px;
+}
+#headerBG a span{
+	font-size: 1.5em;
+}
+/*头部*/
+#title{
+	margin-top: 10px;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	background-color: #FFFFFF;
+	overflow: hidden;
+}
+.title_css{
+	width: 20%;
+	float: left;
+}
+.title_css span{
+	line-height: 50px;
+}
+input[type=button].out_border{
+	/*border: 1px solid #3297D8;*/
+	border: 1px solid #ffcc00;
+	border-radius: 20px;
+	padding: 5px 10px;
+	/*color: #3297D8;*/
+	color:#ffcc00;
+	width:100%;
+}
+input[type=button]{
+	border:none;
+	padding: 5px 10px;
+	margin-top: 10px;
+	width:100%;
+}
+/*收货信息*/
+#editor_reource{
+	width: 100%;
+	background-color: #FFFFFF;
+	margin-top: 10px;
+}
+.editor_resource_row{
+	width: 100%;
+	height: 50px;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #E0E0E0;
+}
+.editor_resource_title{
+	float: left;
+	width: 20%;
+}
+.editor_location_input{
+	float: left;
+	width: 65%;
+	height: 50px;
+}
+.editor_location_arrow{
+	float: left;
+	width: 10%;
+}
+.editor_resource_title span{
+	line-height: 50px;
+}
+.editor_location_input input{
+	height: 49px;
+	border: none;
+	text-align: right;
+}
+.editor_location_arrow span{
+	line-height: 50px;
+	color: #E0E0E0;
+}
+.editor_location_input span{
+	line-height: 50px;
+	margin-right: 18px;
+	color: #8C8C8C;
+}
+#file_location{
+	float: left;
+	width: 50%;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	/*border: 1px solid #0000FF;*/
+}
+#file_location input{
+	line-height: 40px;
+	color: #808080;
+	border:0;
+}
+#look_file{
+	width: 30%;
+	float: left;
+	position: relative;
+	/*border: 1px solid #3297D8;*/
+}
+#look_file span{
+	border: 1px solid #ffcc00;
+	border-radius: 20px;
+	background-color: #ffcc00;
+	line-height: 50px;
+	padding: 10px 10px;
+	margin-right: 5px;
+	color: #323232;
+}
+#upload_div{
+	margin-top: 10px;
+	width: 100%;
+	height: 110px;
+	background-color: #FFFFFF;
+}
+#upload_bg{
+	width: 100%;
+	padding: 10px;
+}
+#upload_img{
+	width: 60px;
+	height: 60px;
+	border: 1px solid #FFFFFF;
+	border-radius: 50%;
+	background-color: #E0E0E0;
+	margin: auto;
+	/*margin-left: 45%;*/
+}
+#upload_img img{
+	margin-top: 5px;
+}
+#upload_font{
+	margin-top: 10px;
+}
+#upload_font span{
+	color: red;
+}
+.inputstyle{
+    width: 100px;
+    height: 41px;
+    float: right;
+    cursor: pointer;
+    font-size: 1em;
+    outline: medium none;
+    position: absolute;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    opacity:0; 
+    right: 0px;
+    top: 5px;
+}
+/*上传按钮设置成submit*/
+#upload_div input{
+	background: url(../../styles/img/my_img/go_load.png) no-repeat center #E0E0E0;
+}
+input.province,input.city,input.town{
+	text-align: center;
+	float:right;
+	width:30%;
+	padding: 0;
+	/*border:1px solid #ddd;*/
+}
+.connector,.b1{
+	float:right;
+	height:50px;
+	line-height: 50px;
+	display: none;
+}
+#hide_input{
+	display: none;
+}
+#headerBG .mui-action-back{
+	width: 40px;
+	height: 40px;
+}
+.provinceid,.cityid,.townid{
+	display: none;
+}
+.typename{
+	display: none;
+}

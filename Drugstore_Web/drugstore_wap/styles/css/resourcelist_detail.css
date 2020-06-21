@@ -1,0 +1,66 @@
+.mui-scroll-wrapper{
+	width: 100%;
+	height: 100%;
+	margin-top: 40px;
+}
+ .mui-input-group .mui-input-row{
+	height: 50px;
+}
+form .mui-input-row .title_label{
+	width: 25%;
+}
+form .mui-input-row label{
+	font-size: 0.75em;
+	line-height: 25px;
+}
+form .mui-input-row .content_lable{
+	width: 75%;
+}
+#shuoming{
+	margin-bottom: 10px;
+	padding: 10px 10px;
+	width: 100%;
+	background-color: #FFFFFF;
+	height: 100px;
+}
+#shuoming_title{
+	width: 10%;
+	height: 100%;
+	float: left;
+}
+#shuoming_content{
+	width: 90%;
+}
+#shuoming_title span{
+	line-height: 35px;
+	font-size: 0.75em;
+}
+#shuoming_content p{
+	font-size: 0.75em;
+	line-height: 35px;
+}
+/*下载css*/
+#download_div{
+	width: 100%;
+	height: 120px;
+	background-color: #FFFFFF;
+	padding: 20px;
+}
+#circle_bg_div{
+	width: 60px;
+	height: 60px;
+	background-color: #F0EEEF;
+	margin:0 auto;
+	border-radius: 50%;
+}
+#circle_bg_div img{
+	margin-top: 15px;
+	width: 30px;
+}
+#download_text span{
+	font-size: 0.6em;
+	color: red;
+}
+.mui-icon-back:before, .mui-icon-left-nav:before {
+    font-size: 24px;
+}

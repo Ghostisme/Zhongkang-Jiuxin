@@ -1,0 +1,204 @@
+/*返回按钮大小调整*/
+.mui-icon-back:before, .mui-icon-left-nav:before {
+    font-size: 24px;
+}
+.mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+	width: 100%;
+}
+.mui-scroll-wrapper{
+	margin-top: 30px;
+	/*height:80%;*/
+}
+body{
+	font-size:12px;
+}
+/*企业管理内容区nav*/
+ul.manageNav{
+	list-style: none;
+	width:100%;
+	height:40px;
+	line-height:40px;
+	background-color: #fff;
+	overflow: hidden;
+	/*border:1px solid #ddd;*/
+	padding: 0;
+	margin-bottom: 0;
+	
+}
+ul.manageNav li{
+	float:left;
+	width:33.3%;
+	height:40px;
+	text-align: center;
+	/*border:1px solid #ddd;*/
+}
+.manageNavImg{
+	display:inline-block;
+	width:15px;
+	height:20px;
+}
+.manageNavImg img{
+	width:12px;
+	height:15px;
+	vertical-align: middle;
+}
+.show{
+	display:inline-block;
+}
+.hide{
+	display:none;
+}
+.navtextColor{
+	/*color:#3699DC;*/
+	color:#ffcc00;
+}
+/*公司信息内容区*/
+.businessInfo{
+	width:100%;
+	background:#fff;
+	margin-top:5px;
+	display:block;
+	/*border:1px solid #ddd;*/
+}
+ul.businessInfoList{
+	list-style: none;
+	padding:0;
+	margin:0;
+	margin-top:10px;
+	width:100%;
+}
+.companyLOGO img{
+	width:50px;
+	border-radius: 25px;
+}
+.InfoTittle{
+	display:inline-block;
+	width:25%;
+}
+li#companyL{
+	height:70px;
+}
+li#companyL .InfoTittle{
+	float:left;
+	margin-top:15px;
+}
+li.businessInfoAll{
+	padding: 8px 15px;
+	border-bottom:1px solid #F0EEEF;
+}
+.Infocontent{
+	display:inline-block;
+	width:65%;
+}
+/*公司资质内容区*/
+.businessAptitude{
+	width:100%;
+	margin-top: 10px;
+	background-color: #fff;
+	/*border:1px solid #ddd;*/
+	overflow: hidden;
+	display:none;
+}
+.businessLicence,.accountPermit,.taxRegistration,.organizationCode,.CorporateCertification,.other{
+	position:relative;
+	float:left;
+	text-align: center;
+	width:32%;
+	padding:20px 0 10px 0;
+	border-bottom: 1px solid #ddd;
+}
+.accountPermit,.organizationCode{
+	border-left:1px solid #ddd;
+	border-right:1px solid #ddd;
+}
+p{
+	width:65%;
+	margin:auto;
+	font-size:0.75em;
+	color:#000;
+	margin-top:10px;
+}
+/*右向小图标*/
+.lfIcon,.rtIcon{
+	font-size:0.75em;
+	position:absolute;
+	left: 71%;
+    bottom: 16%;
+}
+.rtIcon{
+	left:75%;
+}
+.AccountLfIcon,.AccountRtIcon{
+	font-size:0.75em;
+	position:absolute;
+	left: 77%;
+     bottom: 16%;
+}
+.AccountRtIcon{
+	left:81%;
+}
+.taxLfIcon,.taxRtIcon{
+	font-size:0.75em;
+	position:absolute;
+	left: 78%;
+    bottom: 16%;
+}
+.taxRtIcon{
+	left:82%;
+}
+.CorporateLfIcon,.CorporateRtIcon{
+	font-size:0.75em;
+	position:absolute;
+	left: 80%;
+    bottom: 16%;
+}
+.CorporateRtIcon{
+	left:84%;
+}
+.codeLfIcon,.codeRtIcon{
+	font-size:0.75em;
+	position:absolute;
+	left: 83%;
+    bottom: 16%;
+}
+.codeRtIcon{
+	left:86%;
+}
+.otherLfIcon,.otherRtIcon{
+	font-size:0.75em;
+	position:absolute;
+	left: 69%;
+   	bottom:16%;
+}
+.otherRtIcon{
+	left:73%;
+}
+.businessAptitude img{
+	width:40px;
+	height:30px;
+}
+/*账户银行内容区*/
+.Account{
+	width:100%;
+	margin-top: 10px;
+	background-color: #fff;
+	/*border:1px solid #ddd;*/
+	display: none;
+}
+ul.AccountList{
+	list-style: none;
+	width:100%;
+	background-color: #fff;
+	overflow: hidden;
+	/*border:1px solid #ddd;*/
+	padding: 0;
+	margin-bottom: 0;
+	margin-top:0 ;
+}
+ul.AccountList li{
+	width:100%;
+	height:40px;
+	padding:0 15px;
+	line-height:40px;
+	border-bottom:1px solid #F0EEEF;
+}

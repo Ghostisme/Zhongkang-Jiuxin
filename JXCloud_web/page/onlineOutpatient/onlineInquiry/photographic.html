@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高拍仪附件上传</title>
+    <link href="../../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+
+    <link href="../../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../css/animate.min.css" rel="stylesheet">
+    <link href="../../../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../css/public.css">
+
+</head>
+
+<body class="gray-bg">
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <form class="form-horizontal m-t" id="signupForm" novalidate="novalidate">
+        <style>
+            .gaopai_div{
+                padding-top: 30px;
+                font-size: 12px;
+            }
+            .gaopai_div .btn{
+                min-width: 75px;
+            }
+        </style>
+        <!--附件上传-->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="ibox-title">
+                            <h5>高拍仪附件上传</h5>
+                            <div  style="float: right">
+                                <span class="redStar">如未安装高拍仪插件，请点击<a>下载</a>并安装</span>
+                                <button id="fh_btn" type="button" class="btn btn-white">返回</button>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="form-group" style="margin-bottom:0">
+
+                                <div class="col-sm-12" >
+
+                                    <div class="form-group gaopai_div" >
+                                        <!--按钮-->
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <button type="button" class="btn  btn-success">开启高拍仪</button>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="button" class="btn  btn-success">关闭高拍仪</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <button type="button" class="btn  btn-success">拍照</button>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="button" class="btn  btn-success">参数设置</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <button type="button" class="btn  btn-success">放大</button>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="button" class="btn  btn-success">缩小</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <button type="button" class="btn  btn-success">左旋</button>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="button" class="btn  btn-success">右旋</button>
+                                            </div>
+                                        </div>
+                                        <!--下拉框-->
+                                        <div class="col-md-2-5 p_l_r">
+                                            <div class="form-group" >
+                                                <label class="col-sm-3 control-label p_l_r">设备：</label>
+                                                <div class="col-sm-7 p_l_r">
+                                                    <select class="form-control ">
+                                                        <option>Gp51654</option>
+                                                        <option>女</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" >
+                                                <label class="col-sm-3 control-label p_l_r">分辨率：</label>
+                                                <div class="col-sm-7 p_l_r">
+                                                    <select class="form-control ">
+                                                        <option>640*551</option>
+                                                        <option>女</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2-5 p_l_r">
+                                            <div class="form-group" >
+                                                <label class="col-sm-3 control-label p_l_r">保存格式：</label>
+                                                <div class="col-sm-7 p_l_r">
+                                                    <select class="form-control ">
+                                                        <option>gif</option>
+                                                        <option>女</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" >
+                                                <label class="col-sm-3 control-label p_l_r">颜色格式：</label>
+                                                <div class="col-sm-7 p_l_r">
+                                                    <select class="form-control ">
+                                                        <option>彩色</option>
+                                                        <option>女</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--显示区-->
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-6 " style="height: 400px;background-color: black;text-align: center;line-height: 400px">
+                                                    <img src="../../../img/a1.jpg" height="80%" width="80%"/>
+                                                </div>
+                                                <div class="col-md-6 ">
+                                                    <img src="../../../img/a1.jpg" height="150" width="150"/>
+                                                    <img src="../../../img/a1.jpg" height="150" width="150"/>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content" style="text-align: right;border: 0;">
+                            <button type="button" class="btn  btn-success">上传图片</button>
+                            <sapn class="redStar">每次只上传5张，可多次上传</sapn>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+
+<script src="../../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../../js/bootstrap.min.js?v=3.3.5"></script>
+<script src="../../../js/content.min.js?v=1.0.0"></script>
+
+<script src="../../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/plugins/sweetalert/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#fh_btn').click(function () {
+            location.href="onlineInquiry.html";
+        });
+    });
+</script>
+</body>
+</html>

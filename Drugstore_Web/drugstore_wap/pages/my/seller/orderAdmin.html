@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../../styles/css/searchnull.css" />
+		<link rel="stylesheet" href="../../../styles/css/orderAdmin.css">
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">订单管理</span>
+		</header>
+		<!--内容-->
+		<div class="mui-content">
+			<!--<div id="sellAndMineTittle">
+				<div class="buy">
+					<span class="manageNavImg"><img id="buy_img" src="../../../styles/img/my_img/seller_img/positionY.png" alt="" class="show"/></span>
+					<span id="buy_goods" class="navtextColor">买到的货</span>
+				</div>
+				<div class="sell">
+					<span class="manageNavImg"><img id="sell_img" src="../../../styles/img/my_img/seller_img/positionY.png" alt="" class="hide"/></span>
+					<span id="sell_goods">卖出的货</span>
+				</div>
+
+			</div>-->
+			<div id="sliderSegmentedControl" class=" mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+				<a id="wait_all" class="mui-control-item mui-active" href="#item1mobile">
+					全部
+				</a>
+				<a id="wait_sure" class="mui-control-item" href="#item2mobile">
+					待确认
+				</a>
+				<a id="wait_pay" class="mui-control-item" href="#item3mobile">
+					待付款
+				</a>
+				<a id="wait_access" class="mui-control-item" href="#item4mobile">
+					待收货
+				</a>
+				<a id="wait_pj" class="mui-control-item" href="#item5mobile">
+					待发货
+				</a>
+			</div>
+			<div class="mui-content">
+				<div id="pullrefresh" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<!--商品信息-->
+						<div id="shop_info">
+							<ul class="mui-table-view " id="res_list">
+								<!--<li class="mui-table-view-cell mui-media">
+								<div class="order_info_title">
+									<div class="order_info_div">
+										<img src="../../styles/img/shopCart_img/order/order_pay.png" />
+									</div>
+									<div class="order_info_font">
+										<span class="company_name">德卡夫科技发展股份有限公司</span>
+										<span class="mui-icon mui-icon-forward"></span>
+									</div>
+									<div class="wait_sure">
+										<span>待确认</span>
+									</div>
+								</div>
+								<div class="order_info_content">
+									<div class="order_name_div">
+										<span>QC-PRM种植抗根防水卷材组合材料套装加材料</span>
+									</div>
+									<div class="order_num_div mui-text-center">
+										<span>x</span>
+										<span>30</span>
+									</div>
+									<div class="order_price_div">
+										<div>
+											<span>¥</span>
+											<span>300</span>
+										</div>
+										<div class="discount">
+											<span>¥</span>
+											<span>300</span>
+										</div>
+									</div>
+								</div>
+								<div class="shop_price_div">
+									<div class="item1"></div>
+									<div class="item2 mui-text-center" style="visibility: hidden;">
+										<span>共630件货</span>
+									</div>
+									<div class="item3">
+										<span>合计:¥</span>
+										<span class="price_span">1234654</span>
+									</div>
+									<div class="item4 mui-text-center">
+										<span class="price_span discount">¥123456</span>
+									</div>
+								</div>
+								<div class="sure_order_div ">
+									<span>确认订单</span>
+								</div>
+							</li>-->
+
+								<!--<li class="mui-table-view-cell mui-media">
+								<div class="order_info_title">
+									<div class="order_info_div">
+										<img src="../../styles/img/shopCart_img/order/order_pay.png" />
+									</div>
+									<div class="order_info_font">
+										<span class="company_name">德卡夫科技发展股份有限公司</span>
+										<span class="mui-icon mui-icon-forward"></span>
+									</div>
+									<div class="wait_sure">
+										<span>待确认</span>
+									</div>
+								</div>
+								<div class="order_info_content">
+									<div class="order_name_div">
+										<span>QC-PRM种植抗根防水卷材组合材料套装加材料</span>
+									</div>
+									<div class="order_num_div mui-text-center">
+										<span>x</span>
+										<span>30</span>
+									</div>
+									<div class="order_price_div">
+										<div>
+											<span>¥</span>
+											<span>300</span>
+										</div>
+										<div class="discount">
+											<span>¥</span>
+											<span>300</span>
+										</div>
+									</div>
+								</div>
+								<div class="shop_price_div">
+									<div class="item1"></div>
+									<div class="item2 mui-text-center"style="visibility: hidden;">
+										<span>共630件货</span>
+									</div>
+									<div class="item3">
+										<span>合计:¥</span>
+										<span class="price_span">1234654</span>
+									</div>
+									<div class="item4 mui-text-center">
+										<span class="price_span discount">¥123456</span>
+									</div>
+								</div>
+								<div class="btnStatus" style="display: none;"></div>
+								<div class="sure_order_div ">
+									<span>确认订单</span>
+								</div>
+							</li>-->
+							</ul>
+
+						</div>
+					</div>
+				</div>
+				<div id="no_search" class="" style="display: none;">
+					<div class="imgc">
+						<img src="../../../styles/img/home_img/searchnull.png" alt="" />
+						<h4>没有找到您需要的订单</h4>
+						<h4>请用正确的方式打开</h4>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="../../../mui/js/mui.min.js"></script>
+		<script src="../../../common/jquery-1.12.1.js"></script>
+		<script src="../../../common/common.js"></script>
+		<script src="orderAdmin.js"></script>
+	</body>
+
+</html>

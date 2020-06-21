@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>处方管理</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../css/doctorInfo1.css"/>
+	<link rel="stylesheet" type="text/css" href="../../css/flatpickr.min.css"/>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    	.btnAddInput1,.btnAddInput2,.btnAddInput3,.btnAddInput4,.btnAddInput5,.btnAddInput6,.btnAddInput7,.btnAddInput8{
+    		float: left;
+               width: 20px;
+               height: 20px;
+    		
+    	}
+    
+    	
+    	.btnAddInput9,.btnAddInput10{
+    		 float: left;
+               width: 20px;
+               height: 20px;
+    	}
+    </style>
+	<body>
+		<div class="patientInfoBox">
+		<!--第一行信息-->
+			<div class="patientInfoHead">
+				<div class="patientSex">
+					<span class="patientSexLeft">医院</span>
+					<select name="" class="patientSexRight">
+						<option value="0">医院1</option>
+						<option value="1">医院2</option>
+						<option value="2">医院3</option>
+					</select>
+				</div>
+				
+				<div class="patientSex">
+					<span class="patientSexLeft">科室</span>
+					<select name="" class="patientSexRight">
+						<option value="0">科室1</option>
+						<option value="1">科室2</option>
+						<option value="2">科室3</option>
+					</select>
+				</div>
+				<div class="patientNanme">
+					<span class="patientNanmeLeft">医生</span>
+					<input class="patientNanmeRight" type="text" id="" value="" />
+				</div>
+				<div class="patientNanme">
+					<span class="patientNanmeLeft">患者姓名</span>
+					<input class="patientNanmeRight" type="text" id="" value="" />
+				</div>
+				<div class="patientSex">
+					<span class="patientSexLeft">建议状态</span>
+					<select name="" class="patientSexRight">
+						<option value="0">全部</option>
+						<option value="1">有效</option>
+						<option value="2">作废</option>
+					</select>
+				</div>
+				<div class="patientSex">
+					<span class="patientSexLeft">送药状态</span>
+					<select name="" class="patientSexRight">
+						<option value="0">待送药</option>
+						<option value="1">取消送药</option>
+						<option value="2">未开药</option>
+						<option value="3">已开药</option>
+					</select>
+				</div>
+				
+				<div class="patientNanme">
+					<span>诊断日期：</span>
+				    <input class="flatpickr-tryme" placeholder="请选择日期">
+				</div>
+				<!--<button class="patientBtnAdd">新增</button>-->
+			</div>
+		<!--信息列表-->	
+		<div class="patientInfoList">
+			<ul class="patientInfoList-ul">
+				<li class="patientInfoList-all">全选</li>
+				<li class="patientInfoList-code">序号</li>
+				<li class="patientInfoList-sex">患者姓名</li>
+				<li class="patientInfoList-sex">患者年龄</li>
+				<li class="patientInfoList-id">医院名称</li>
+				<li class="patientInfoList-sex">科室</li>
+				<li class="patientInfoList-sex">医生姓名</li>
+				<li class="diagnosticTime">诊断时间</li>
+				<li class="diagnosticTime">医生诊断</li>
+				<li class="diagnosticTime">诊断说明</li>
+				<li class="patientInfoList-code">费用</li>
+				<li class="patientInfoList-code">送药状态</li>
+				<li class="patientInfoList-check">查看处方</li>
+				<li class="patientInfoList-change">修改处方</li>
+				<li class="patientInfoList-del">作废处方</li>
+				<li class="patientInfoList-del">打印处方</li>
+			</ul>
+			
+			<ul class="patientInfoDetail-ul">
+				<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+				<li class="patientInfoDetail-code"><span>1</span></li>
+				<li class="patientInfoDetail-sex"><span>王先生</span></li>
+				<li class="patientInfoDetail-sex"><span>39</span></li>
+				<li class="patientInfoDetail-id"><span>天津医科大学总医院</span></li>
+				<li class="patientInfoDetail-sex"><span>心内科</span></li>
+				<li class="patientInfoDetail-sex"><span>王主任</span></li>
+				<li class="patientInfoDetail-id"><span>2018-11-10 上午</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="btn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+				<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/lockBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><img src="../../img/common/cancellationBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-print"><img src="../../img/common/1.jpg"/></a></li>
+			</ul>
+			
+			<ul class="patientInfoDetail-ul">
+				<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+				<li class="patientInfoDetail-code"><span>1</span></li>
+				<li class="patientInfoDetail-sex"><span>王先生</span></li>
+				<li class="patientInfoDetail-sex"><span>39</span></li>
+				<li class="patientInfoDetail-id"><span>天津医科大学总医院</span></li>
+				<li class="patientInfoDetail-sex"><span>心内科</span></li>
+				<li class="patientInfoDetail-sex"><span>王主任</span></li>
+				<li class="patientInfoDetail-id"><span>2018-11-10 上午</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="btn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+				<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><img src="../../img/common/cancellationBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-print"><img src="../../img/common/1.jpg"/></a></li>
+			</ul>
+			
+			<ul class="patientInfoDetail-ul">
+				<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+				<li class="patientInfoDetail-code"><span>1</span></li>
+				<li class="patientInfoDetail-sex"><span>王先生</span></li>
+				<li class="patientInfoDetail-sex"><span>39</span></li>
+				<li class="patientInfoDetail-id"><span>天津医科大学总医院</span></li>
+				<li class="patientInfoDetail-sex"><span>心内科</span></li>
+				<li class="patientInfoDetail-sex"><span>王主任</span></li>
+				<li class="patientInfoDetail-id"><span>2018-11-10 上午</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="btn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+				<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><img src="../../img/common/cancellationBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-print"><img src="../../img/common/1.jpg"/></a></li>
+			</ul>
+			
+			<ul class="patientInfoDetail-ul">
+				<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+				<li class="patientInfoDetail-code"><span>1</span></li>
+				<li class="patientInfoDetail-sex"><span>王先生</span></li>
+				<li class="patientInfoDetail-sex"><span>39</span></li>
+				<li class="patientInfoDetail-id"><span>天津医科大学总医院</span></li>
+				<li class="patientInfoDetail-sex"><span>心内科</span></li>
+				<li class="patientInfoDetail-sex"><span>王主任</span></li>
+				<li class="patientInfoDetail-id"><span>2018-11-10 上午</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="btn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+				<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><img src="../../img/common/cancellationBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-print"><img src="../../img/common/1.jpg"/></a></li>
+			</ul>
+			
+			<ul class="patientInfoDetail-ul">
+				<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+				<li class="patientInfoDetail-code"><span>1</span></li>
+				<li class="patientInfoDetail-sex"><span>王先生</span></li>
+				<li class="patientInfoDetail-sex"><span>39</span></li>
+				<li class="patientInfoDetail-id"><span>天津医科大学总医院</span></li>
+				<li class="patientInfoDetail-sex"><span>心内科</span></li>
+				<li class="patientInfoDetail-sex"><span>王主任</span></li>
+				<li class="patientInfoDetail-id"><span>2018-11-10 上午</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="btn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+				<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><img src="../../img/common/cancellationBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-print"><img src="../../img/common/1.jpg"/></a></li>
+			</ul>
+			
+			<ul class="patientInfoDetail-ul">
+				<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+				<li class="patientInfoDetail-code"><span>1</span></li>
+				<li class="patientInfoDetail-sex"><span>王先生</span></li>
+				<li class="patientInfoDetail-sex"><span>39</span></li>
+				<li class="patientInfoDetail-id"><span>天津医科大学总医院</span></li>
+				<li class="patientInfoDetail-sex"><span>心内科</span></li>
+				<li class="patientInfoDetail-sex"><span>王主任</span></li>
+				<li class="patientInfoDetail-id"><span>2018-11-10 上午</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="btn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+				<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><img src="../../img/common/cancellationBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-print"><img src="../../img/common/1.jpg"/></a></li>
+			</ul>
+			
+			<ul class="patientInfoDetail-ul">
+				<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+				<li class="patientInfoDetail-code"><span>1</span></li>
+				<li class="patientInfoDetail-sex"><span>王先生</span></li>
+				<li class="patientInfoDetail-sex"><span>39</span></li>
+				<li class="patientInfoDetail-id"><span>天津医科大学总医院</span></li>
+				<li class="patientInfoDetail-sex"><span>心内科</span></li>
+				<li class="patientInfoDetail-sex"><span>王主任</span></li>
+				<li class="patientInfoDetail-id"><span>2018-11-10 上午</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="btn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+				<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><img src="../../img/common/cancellationBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-print"><img src="../../img/common/1.jpg"/></a></li>
+			</ul>
+			
+			<ul class="patientInfoDetail-ul">
+				<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+				<li class="patientInfoDetail-code"><span>1</span></li>
+				<li class="patientInfoDetail-sex"><span>王先生</span></li>
+				<li class="patientInfoDetail-sex"><span>39</span></li>
+				<li class="patientInfoDetail-id"><span>天津医科大学总医院</span></li>
+				<li class="patientInfoDetail-sex"><span>心内科</span></li>
+				<li class="patientInfoDetail-sex"><span>王主任</span></li>
+				<li class="patientInfoDetail-id"><span>2018-11-10 上午</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="btn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+				<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><img src="../../img/common/cancellationBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-print"><img src="../../img/common/1.jpg"/></a></li>
+			</ul>
+			
+			<ul class="patientInfoDetail-ul">
+				<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+				<li class="patientInfoDetail-code"><span>1</span></li>
+				<li class="patientInfoDetail-sex"><span>王先生</span></li>
+				<li class="patientInfoDetail-sex"><span>39</span></li>
+				<li class="patientInfoDetail-id"><span>天津医科大学总医院</span></li>
+				<li class="patientInfoDetail-sex"><span>心内科</span></li>
+				<li class="patientInfoDetail-sex"><span>王主任</span></li>
+				<li class="patientInfoDetail-id"><span>2018-11-10 上午</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="btn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+				<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><img src="../../img/common/cancellationBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><a href = "javascript:void(0)" class="btn-print"><img src="../../img/common/1.jpg"/></a></li>
+			</ul>
+			
+			<ul class="patientInfoDetail-ul">
+				<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+				<li class="patientInfoDetail-code"><span>1</span></li>
+				<li class="patientInfoDetail-sex"><span>王先生</span></li>
+				<li class="patientInfoDetail-sex"><span>39</span></li>
+				<li class="patientInfoDetail-id"><span>天津医科大学总医院</span></li>
+				<li class="patientInfoDetail-sex"><span>心内科</span></li>
+				<li class="patientInfoDetail-sex"><span>王主任</span></li>
+				<li class="patientInfoDetail-id"><span>2018-11-10 上午</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-id"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-sex"><span>XXX</span></li>
+				<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="btn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+				<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-del"><img src="../../img/common/cancellationBtn.png"/></a></li>
+				<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="btn-print"><img src="../../img/common/1.jpg"/></a></li>
+			</ul>
+			
+		</div>
+			  <div class="clearfix"></div>
+			  <!--分页-->
+			  <div class="pageN"></div>
+			  
+			  <!--点击查看处方-->
+			  
+			  <div id="light1" class="white_content">
+			  	<div class="white_contentHead">
+			  		<span class="infoTitle">查看处方</span>
+			  		 <a id="close" href = "javascript:void(0)" onclick = "document.getElementById('light1').style.display='none';document.getElementById('fade').style.display='none'">X</a>
+			  	</div>
+                <div class="infoDetails">
+                	<div class="infoDetailsHead">处方单</div>
+                	<ul class="infoDetails-ul">
+                		<li><span class="infoDetails-title">患者姓名：</span><input type="text" name="" id="" value="张某某" /></li>
+                		<li><span class="infoDetails-title">患者性别：</span><input type="text" name="" id="" value="男" /></li>
+                		<li><span class="infoDetails-title">患者年龄：</span><input type="text" name="" id="" value="59" /></li>
+                	    <li><span class="infoDetails-title">身高(cm)：</span><input type="text" name="" id="" value="1.56" /></li>
+                	    <li><span class="infoDetails-title">体重(kg)：</span><input type="text" name="" id="" value="100" /></li>
+                		<li><span class="infoDetails-title">主治医师：</span><input type="text" name="" id="" value="王主任" /></li>
+                		<li><span class="infoDetails-title">入院日期：</span>
+                			<input class="flatpickr-tryme" placeholder="请选择日期">
+                		</li>
+                	    <li><span class="infoDetails-title">就诊科室：</span><input type="text" name="" id="" value="心内科" /></li>
+                	    <li><span class="infoDetails-title">就诊类型：</span><input type="text" name="" id="" value="门诊" /></li>
+                		<li class="liBig">
+                			<span class="infoDetails-title">诊断结果：</span>
+                			<textarea name="" style="vertical-align: top;" placeholder="冠心病，高血压，心脏病，三高，前列腺炎，胸闷气短，憋气压抑等"></textarea>
+                		</li>
+                		<li class="liBig">
+                			<span class="infoDetails-title">处&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方：</span>
+                			<textarea name="" style="vertical-align: top;" placeholder="辅酶Q10，麦芽精，灵芝袍子粉，益气胶囊剂，活酵，银荷片，CCVD心脑血管疾病产品组合，血液净化"></textarea>
+                		</li>
+                	</ul>
+                </div>
+                <a id="close2" href = "javascript:void(0)" onclick = "document.getElementById('light1').style.display='none';document.getElementById('fade').style.display='none'">关闭</a>
+			  </div>
+			  
+			  <!--作废处方-->
+			  <div id="light2" class="white_content1">
+			  	<div class="white_contentHead1">
+			  	   <img src="../../img/common/untitledquestionImg.png"/>
+			  	</div>
+                <p>作废处方信息后不可恢复，您确定要作废该信息吗？</p>
+                <a id="close3" href = "javascript:void(0)" onclick = "document.getElementById('light2').style.display='none';document.getElementById('fade').style.display='none'">取消</a>
+                <button id="del-yes">确定删除</button>
+			  </div>
+			  
+			  <!--点击按钮修改处方-->
+			  <div id="light5" class="white_content">
+			  	<div class="white_contentHead">
+			  		<span class="infoTitle">修改处方</span>
+			  		 <a id="close" href = "javascript:void(0)" onclick = "document.getElementById('light5').style.display='none';document.getElementById('fade').style.display='none'">X</a>
+			  	</div>
+                <div class="infoDetails" style="height: 850px;">
+                	<div class="infoDetailsHead">患者信息</div>
+                	<ul class="infoDetails-ul" style="height: 100px;">
+                		<li><span class="infoDetails-title">患者姓名：</span><input type="text" name="" id="" value="张某某" /></li>
+                		<li><span class="infoDetails-title">患者性别：</span><input type="text" name="" id="" value="男" /></li>
+                		<li><span class="infoDetails-title">患者年龄：</span><input type="text" name="" id="" value="59" /></li>
+                	    <li><span class="infoDetails-title">身高(cm)：</span><input type="text" name="" id="" value="1.56" /></li>
+                	    <li><span class="infoDetails-title">体重(kg)：</span><input type="text" name="" id="" value="100" /></li>
+                		
+                	</ul>
+                	<div class="infoDetailsHead">诊断信息</div>
+                	<ul class="infoDetails-ul">
+                		
+                		<li><span class="infoDetails-title">主治医师：</span><input type="text" name="" id="" value="王主任" /></li>
+                		<li>
+                			<span class="infoDetails-title">入院日期：</span>
+                			<input class="flatpickr-tryme" placeholder="请选择日期">
+                		</li>
+                	    <li><span class="infoDetails-title">就诊科室：</span><input type="text" name="" id="" value="心内科" /></li>
+                	    <li><span class="infoDetails-title">就诊类型：</span><input type="text" name="" id="" value="门诊" /></li>
+                		<li class="liBig">
+                			<span class="infoDetails-title">诊断结果：</span>
+                			<textarea name="" style="vertical-align: top;" placeholder="冠心病，高血压，心脏病，三高，前列腺炎，胸闷气短，憋气压抑等"></textarea>
+                		</li>
+                		<li class="liBig">
+                			<span class="infoDetails-title">治疗建议：</span>
+                			<textarea name="" style="vertical-align: top;" placeholder="辅酶Q10，麦芽精，灵芝袍子粉，益气胶囊剂，活酵，银荷片，CCVD心脑血管疾病产品组合，血液净化"></textarea>
+                		</li>
+                	</ul>
+                	<div class="infoDetailsHead">用药信息</div>
+                	<ul class="infoDetails-ul" id="drugInfo" style="position: relative;height: auto;">
+                		
+                		<li class="list3" style="width: 85px;text-align: center;">药品名</li>
+                		<li class="list3" style="width: 85px;text-align: center;">单价</li>
+                		<li class="list3" style="width: 85px;text-align: center;">数量</li>
+                		<li class="list3" style="width: 85px;text-align: center;">单位</li>
+                		<li class="list3" style="width: 85px;text-align: center;">频次</li>
+                		<li class="list3" style="width: 85px;text-align: center;">日份</li>
+                		<li class="list3" style="width: 85px;text-align: center;">使用方法</li>
+                		<li class="list3" style="width: 85px;text-align: center;">价格</li>
+                		<li class="list3" style="width: 85px;text-align: center;">总费用</li>
+                		<li class="list3" style="width: 85px;text-align: center;">用量</li>
+                		<li class="list3" style="width: 85px;text-align: center;">删除</li>
+                		
+                		<ul id="drugInfoUl" style="z-index: 100000;	">
+                			<li style="width: 75px;text-align: center;" id="firstLi1">
+                				<!--<input type="text" name="" id="" value="XXXX" />-->
+                			</li>
+                			 <input type="button" onclick="add1();" value="+" class="btnAddInput1"/>
+                			<li style="width: 75px;text-align: center;" id="firstLi2"></li>
+                			<input type="button" onclick="add2();" value="+" class="btnAddInput2"/>
+                			<li style="width: 75px;text-align: center;" id="firstLi3"></li>
+                			<input type="button" onclick="add3();" value="+" class="btnAddInput3"/>
+                			<li style="width: 75px;text-align: center;" id="firstLi4"></li>
+                			<input type="button" onclick="add4();" value="+" class="btnAddInput4"/>
+                			<li style="width: 75px;text-align: center;" id="firstLi5"></li>
+                			<input type="button" onclick="add5();" value="+" class="btnAddInput5"/>
+                			<li style="width: 75px;text-align: center;" id="firstLi6"></li>
+                			<input type="button" onclick="add6();" value="+" class="btnAddInput6"/>
+                			<li style="width: 75px;text-align: center;" id="firstLi7"></li>
+                			<input type="button" onclick="add7();" value="+" class="btnAddInput7"/>
+                			<li style="width: 75px;text-align: center;" id="firstLi8"></li>
+                			<input type="button" onclick="add8();" value="+" class="btnAddInput8"/>
+                			<li style="width: 75px;text-align: center;" id="firstLi9"></li>
+                			<input type="button" onclick="add9();" value="+" class="btnAddInput9"/>
+                			<!--<li style="width: 75px;text-align: center;" id="firstLi10"></li>-->
+                			<!--<input type="button" onclick="add10();" value="+" class="btnAddInput10"/>-->
+                			<li style="width: 75px;text-align: center;padding-top: 3px;box-sizing: border-box;"><a href="javascript:void(0)" class="delPre" onclick="del()"><img src="../../img/common/cancellationBtn.png"/></a></li>
+                		</ul>
+                		
+                		
+                		 <div id="delInner">
+                		 	<p>确认删除此条信息吗？</p>
+                		    <a id="delInner1" href="javascript:void(0)">确认删除</a>
+                		    <a id="delInner2" onclick="document.getElementById('delInner').style.display='none'" href="javascript:void(0)">取消删除</a>
+                		 </div>
+                	</ul>
+                	
+                </div>
+                    <div style="margin-top: 20px; width: 96%;height: 30px;margin: 0 auto;">
+                			<span class="infoDetails-title">用药建议：</span>
+                			<textarea name="" style="vertical-align: top;width: 88%;height: 40px;" placeholder="冠心病，高血压，心脏病，三高，前列腺炎，胸闷气短，憋气压抑等"></textarea>
+                	</div>
+			         <button id="okChange" class="okChange" style="cursor: pointer;">确认修改</button>
+			         <button id="cancleChange" style="cursor: pointer;" class="cancleChange" onclick = "document.getElementById('light5').style.display='none';document.getElementById('fade').style.display='none'">取消修改</button>
+			  </div>
+			  
+			   <!--打印处方-->
+			  <div id="lightPrint" class="white_content1">
+			  	<div class="white_contentHead1">
+			  	   <img src="../../img/common/untitledquestionImg.png"/>
+			  	</div>
+                <p>是否打印处方单</p>
+                <a id="printClose" href = "javascript:void(0)" onclick = "document.getElementById('lightPrint').style.display='none';document.getElementById('fade').style.display='none'">取消</a>
+                <button id="del-yes">确定打印</button>
+			  </div>
+			  
+			  
+			  <!--灰背景-->
+              <div id="fade" class="black_overlay"></div>
+		</div>
+		
+	</body>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript">
+	   function fp_ready(){
+		Flatpickr.l10n.firstDayOfWeek = 1;
+	
+		document.getElementsByClassName("flatpickr-tryme").flatpickr();
+		document.getElementsByClassName("calendar").flatpickr();
+	
+		var calendars = document.getElementsByClassName("flatpickr").flatpickr();
+	
+		var real_selection = document.getElementById("realdate");
+		document.getElementById("alt")._flatpickr.config.onChange = function(obj, str){
+			real_selection.textContent = str;
+		}
+	
+		document.getElementById("disableRange").flatpickr({
+			disable: [
+				{
+					from: "2016-08-16",
+					to: "2016-08-19"
+				},
+				"2016-08-24",
+				new Date().fp_incr(30) 
+			],
+			minDate: "today"
+		});
+	
+		document.getElementById("disableOddDays").flatpickr({
+			disable: [
+				function(date) { return date.getDate()%2; }
+			]
+		});
+		document.getElementById("enableNextSeven").flatpickr({
+			enable: [
+				{
+					from: "today",
+					to: new Date().fp_incr(7)
+				}
+			]
+		});
+		document.getElementById("enableCustom").flatpickr({
+			enable: [
+				function(dateObj){
+					return dateObj.getDay() %6 !== 0 && dateObj.getFullYear() === 2016;
+				}
+			]
+		});
+	
+		
+		var events = document.getElementById("events");
+		document.getElementById("events-api-example").flatpickr({
+			minDate: "today",
+			enableTime: true,
+			onChange: function(dateObj, dateStr, fp) {
+				console.log(fp.selectedDateObj);
+				events.innerHTML += "<b>onChange</b> (<code>" + dateObj + "</code>, <code>" + dateStr + "</code> )<br>";
+				events.scrollTop = events.offsetTop;
+			},
+			onOpen: function(dateObj, dateStr, fp){
+				events.innerHTML += "<b>onOpen</b> (<code>" + dateObj + "</code>, <code>" + dateStr + "</code> )<br>";
+				events.scrollTop = events.offsetTop;
+			},
+			onClose: function(dateObj, dateStr, fp){
+				events.innerHTML += "<b>onClose</b> (<code>" + dateObj + "</code>, <code>" + dateStr + "</code> )<br>";
+				events.scrollTop = events.offsetTop;
+			},
+			onReady: function(dateObj, dateStr, fp){
+				events.innerHTML += "<b>onReady</b> (<code>" + dateObj + "</code>, <code>" + dateStr + "</code> )<br>";
+				events.scrollTop = events.offsetTop;
+			}
+		});
+	
+		var check_in = document.getElementById("check_in_date").flatpickr({
+			altInput: true,
+			altFormat: "\\C\\h\\e\\c\\k \\i\\n\\: l, F j Y",
+			minDate: new Date()
+		});
+		var check_out = document.getElementById("check_out_date").flatpickr({
+			altInput: true,
+			altFormat: "\\C\\h\\e\\c\\k \\o\\u\\t: l, F j Y",
+			minDate: new Date()
+		});
+	
+		check_in.config.onChange = function(dateObj) {
+			check_out.set("minDate", dateObj.fp_incr(1));
+		};
+		check_out.config.onChange = function(dateObj) {
+			check_in.set("maxDate", dateObj.fp_incr(-1));
+		}
+	
+		var fiscal = document.getElementById("fiscal").flatpickr({
+			weekNumbers: true
+		});
+	
+		
+		fiscal.getWeek = function(givenDate){
+			var checkDate = new Date(givenDate.getTime());
+			checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7));
+			var time = checkDate.getTime();
+			checkDate.setMonth(7);
+			checkDate.setDate(28);
+			var week = (Math.floor(Math.round((time - checkDate) / 86400000) / 7) + 2);
+			if (week < 1) {
+				week = 52 + week;
+			}
+			return 'FW' + ("0" + week).slice(-2);
+		}
+	
+		fiscal.redraw();
+	
+	
+		var fpInstance = new Flatpickr(document.createElement("input")),
+			formatOutput = document.getElementById("dateFormatOutput"),
+			now = new Date();
+	
+		document.getElementById("dateFormatComposer").addEventListener("keyup", function(e){
+			formatOutput.textContent = fpInstance.formatDate(e.target.value, now);
+		});
+	
+		}
+        
+        
+        
+//		分页
+         var currentPage = 1;
+				var offsetPage=0;//传输的页起始条数
+				var showNum=10;//页面需要显示的条数
+				var num_pages;
+			//点击分页页数
+				$(document).delegate(".flipOver",'click',function(){
+					$(this).addClass('active').siblings().removeClass('active');
+					currentPage = parseInt($(this).attr("pageId"));
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getorderList();
+					window.scrollTo(0,0);
+				});
+			//点击上一页
+				$(document).delegate("#prev",'click',function(){	
+					if($(".flipOver.active").prev().attr("id") == "prev"){
+						return true
+					}else{
+						var page = parseInt($(".flipOver.active").attr("pageid"))-1;
+						$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+					}
+					currentPage = page;
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getorderList();
+					window.scrollTo(0,0);
+				});
+				
+				
+			//点击下一页
+				$(document).delegate("#Next",'click',function(){
+					if($(".flipOver.active").next().attr("id") == "Next"){
+						return true
+					}else{
+						var page = parseInt($(".flipOver.active").attr("pageid"))+1;
+						$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+					}
+					currentPage = page;
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getorderList();
+					window.scrollTo(0,0);
+				});	
+				
+				
+				
+//			点击搜索按钮
+				$(document).on("click",".searching",function(){
+					var search=$("#searchBox").val().trim();
+				});
+//			点击新增按钮
+			$(document).on('click','.addData',function(){
+				
+			});
+
+
+		//		点击查询按钮
+		var btnChecks = document.getElementsByClassName("btn-check");
+		for(var i=0; i<btnChecks.length;i++){
+			btnChecks[i].onclick=function(){
+//			alert(1);
+			document.getElementById('light1').style.display='block';
+			document.getElementById('fade').style.display='block';
+			
+			};
+			
+		}
+		
+		
+//		点击删除按钮
+	   var btndels = document.getElementsByClassName("btn-del");
+		for(var i=0; i<btndels.length;i++){
+			btndels[i].onclick=function(){
+//			alert(1);
+			document.getElementById('light2').style.display='block';
+			document.getElementById('fade').style.display='block';
+			
+			};
+			
+		}
+//		点击打印按钮
+	   var btnprints = document.getElementsByClassName("btn-print");
+		for(var i=0; i<btnprints.length;i++){
+			btnprints[i].onclick=function(){
+//			alert(1);
+			document.getElementById('lightPrint').style.display='block';
+			document.getElementById('fade').style.display='block';
+			
+			};
+			
+		}
+
+
+//		点击新增按钮
+
+		 var adds = document.getElementsByClassName("patientBtnAdd");
+				for(var i=0; i<adds.length;i++){
+					adds[i].onclick=function(){
+		//			alert(1);
+					document.getElementById('light4').style.display='block';
+					document.getElementById('fade').style.display='block';
+					
+					};
+					
+				}
+//		点击修改按钮		
+        var changes = document.getElementsByClassName("btn-change");
+           for(var i=0; i<changes.length; i++){
+           	 changes[i].onclick = function () {
+//         	 	 alert(1);
+                    document.getElementById('light5').style.display='block';
+					document.getElementById('fade').style.display='block';
+           	 }
+           	
+           }
+//         删除
+    var delBtns = document.getElementsByClassName(".delPre");
+    for(var i=0;i<delBtns.length;i++){
+    	delBtns[1].onclick = function () {
+    		alert(1);
+    	}
+    	
+    }
+    function del () {
+    	document.getElementById('delInner').style.display='block';
+    }
+    
+//  添加input
+  function add1(){
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('name', 'organizers[]');
+    input1.setAttribute('class', 'git');
+    
+    var btn1 = document.getElementById("firstLi1");
+    btn1.insertBefore(input1,null);
+}
+    
+     function add2(){
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('name', 'organizers[]');
+    input1.setAttribute('class', 'git');
+    
+    var btn1 = document.getElementById("firstLi2");
+    btn1.insertBefore(input1,null);
+}
+      function add3(){
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('name', 'organizers[]');
+    input1.setAttribute('class', 'git');
+    
+    var btn1 = document.getElementById("firstLi3");
+    btn1.insertBefore(input1,null);
+}
+       function add4(){
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('name', 'organizers[]');
+    input1.setAttribute('class', 'git');
+    
+    var btn1 = document.getElementById("firstLi4");
+    btn1.insertBefore(input1,null);
+}
+        function add5(){
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('name', 'organizers[]');
+    input1.setAttribute('class', 'git');
+    
+    var btn1 = document.getElementById("firstLi5");
+    btn1.insertBefore(input1,null);
+}
+         function add6(){
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('name', 'organizers[]');
+    input1.setAttribute('class', 'git');
+    
+    var btn1 = document.getElementById("firstLi6");
+    btn1.insertBefore(input1,null);
+}
+          function add7(){
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('name', 'organizers[]');
+    input1.setAttribute('class', 'git');
+    
+    var btn1 = document.getElementById("firstLi7");
+    btn1.insertBefore(input1,null);
+}
+           function add8(){
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('name', 'organizers[]');
+    input1.setAttribute('class', 'git');
+    
+    var btn1 = document.getElementById("firstLi8");
+    btn1.insertBefore(input1,null);
+}
+            function add9(){
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('name', 'organizers[]');
+    input1.setAttribute('class', 'git');
+    
+    var btn1 = document.getElementById("firstLi9");
+    btn1.insertBefore(input1,null);
+}
+            
+  function add10(){
+    var input1 = document.createElement('input');
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('name', 'organizers[]');
+    input1.setAttribute('class', 'git');
+    
+    var btn1 = document.getElementById("firstLi10");
+    btn1.insertBefore(input1,null);
+}
+    
+	</script>
+	<script src="../../js/flatpickr.min.js" onload="fp_ready()" type="text/javascript" charset="utf-8"></script>
+</html>

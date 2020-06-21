@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>订单详情</title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../mui/css/common.css" />
+		<link rel="stylesheet" href="../../../styles/css/orderdetail.css">
+		<link rel="stylesheet" href="../../../styles/common_css/common_dialog.css">
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<style type="text/css">
+			.single {
+				border-bottom: 1px solid #eee;
+			}
+			
+			.setMeal .setMeal-title {
+				color: #999;
+				padding: 10px 0 10px 17px;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app" style="display: none;">
+			<!--top bar-->
+			<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+				<a class="mui-action-back mui-btn mui-btn-link mui-pull-left" id="jumpBack">
+					<span class="mui-icon mui-icon-back"></span>
+				</a>
+				<span id="navTxt">订单详情</span>
+			</header>
+			<div v-for="row in orderList" class="mui-content">
+				<div id="pullrefresh" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<!--编辑收货信息-->
+						<div v-bind:class="{titlePy,heightpy:row.orderType == 1 || row.orderType == 2 || row.orderType == 5}">
+							<span v-show="row.orderType == 1" id="font_goods_info"><img style="width:15px;"
+								src="../../../styles/img/1_14.png" />待付款</span>
+							<span v-show="row.orderType == 2" id="font_goods_info" style="display: none;"><img
+								style="width:15px;" src="../../../styles/img/1_14.png" />待发货</span>
+							<span v-show="row.orderType == 3" id="font_goods_info" style="display: none;"><img
+								style="width:15px;" src="../../../styles/img/1_14.png" />待收货</span>
+							<span v-show="row.orderType == 4" id="font_goods_info" style="display: none;"><img
+								style="width:15px;" src="../../../styles/img/1_14.png" />已完成</span>
+							<span v-show="row.orderType == 5" id="font_goods_info" style="display: none;"><img
+								style="width:15px;" src="../../../styles/img/1_14.png" />取消订单</span>
+							<div v-if="row.orderType == 3 || row.orderType == 4" id="editor_goods_info" style="display: none;">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell" style="padding: 0px;font-size: 14px;">
+										<span><img style="width:15px;height:auto;"
+											src="../../../styles/img/1_03.png" />您的订单已完成<br>2019-05-12 12:04:12</span>
+										<span id="arrow_right" class="mui-icon mui-icon-forward mui-pull-right" style="margin-top: -30px;"></span>
+									</li>
+
+								</ul>
+							</div>
+							<div v-if="row.orderType == 1 || row.orderType == 2 || row.orderType == 5" id="editor_goods_info" style="height: 84px;">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell" style="padding: 0px;font-size: 14px;">
+										<span>
+										<img style="width:10px;height:auto;margin-right: 14px;" src="../../../styles/img/1_07.png" />
+										{{row.address}}
+										<br>
+										{{row.orderUser}}
+										{{row.phone}}
+									</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!--商品信息-->
+						<div id="shop_info">
+							<div class="sumshop">
+								共{{row.drugOrderProductList.length}}件商品
+							</div>
+							<ul class="mui-table-view " id="res_list">
+								<li v-for="item in row.drugOrderProductList" class="mui-table-view-cell mui-media single">
+									<div class="right_box mui-slider-handle" v-if="item.mealList==null">
+										<div class="border-bottom">
+											<div class="productImgs">
+												<img v-bind:src="item.drugUrl" alt=""  />
+											</div>
+											<div class="product_info">
+												<div>
+													<span class="pro_font shopofname">{{item.drugName}}</span>
+												</div>
+												<div>
+													<span class="pro_font">规格为：</span>
+													<span class="pro_font">{{item.specs}}</span>
+												</div>
+												<div class="RMB_single">
+													<span class="RMB">￥</span>
+													<span class="RMBmoney_count">{{item.drugPrice}}</span>
+												</div>
+												<div class="num">
+													<!--<div class="minimumOrder">
+														<span class="RMB">￥</span>
+														<span class="money_count">50板/盒起</span>
+													</div>-->
+													<div class="numEdit">
+														X{{item.drugNum}}
+													</div>
+												</div>
+											</div>
+											<div class="productid" style="display: none;"></div>
+											<div class="storeid" style="display: none;"></div>
+											<div class="companyid" style="display: none;"></div>
+										</div>
+									</div>
+
+									<div class="setMeal" v-else>
+										<div class="setMeal-title">{{item.mealList.mealName}}</div>
+										<ul class="mui-table-view " id="res_list">
+											<li v-for="itemMeal in item.mealList.mealList" class="mui-table-view-cell mui-media">
+												<div class="right_box mui-slider-handle">
+													<div class="border-bottom">
+														<div class="productImgs">
+															<img v-bind:src="itemMeal.fileUrl" alt="" style="height:80%;" />
+														</div>
+														<div class="product_info">
+															<div>
+																<span class="pro_font shopofname">{{itemMeal.drugName}}</span>
+															</div>
+															<div>
+																<span class="pro_font">规格为：</span>
+																<span class="pro_font">{{itemMeal.specs}}</span>
+															</div>
+															<div class="RMB_single">
+																<span class="RMB">￥</span>
+																<span class="RMBmoney_count">{{itemMeal.presentPrice}}</span>
+															</div>
+															<div class="RMB_original">
+																<span class="RMB">￥</span>
+																<span class="RMBmoney_count">{{itemMeal.drugPrice}}</span>
+															</div>
+															<div class="num">
+																<!--<div class="minimumOrder">
+														<span class="RMB">￥</span>
+														<span class="money_count">50板/盒起</span>
+													</div>-->
+																<div class="numEdit">
+																	X{{itemMeal.drugNum}}
+																</div>
+															</div>
+														</div>
+														<div class="productid" style="display: none;"></div>
+														<div class="storeid" style="display: none;"></div>
+														<div class="companyid" style="display: none;"></div>
+													</div>
+												</div>
+											</li>
+											<div class="setMeal-bottom">					
+											<div class="setMeal_price">
+												<span class="setMeal_title">套餐价</span>
+												<span class="setMeal_num num_all">￥{{item.mealList.countPrice}}</span>
+											</div>
+											<div class="setMeal-number">
+												×{{item.mealNum}}
+											</div>
+											</div>
+										</ul>
+									</div>
+								</li>
+							</ul>
+
+						</div>
+						<div id="invoice_info_div">
+							<div id="invoice_title_div">
+								<ul class="mui-table-view">
+									<li v-if="row.invoice.length != 0" v-on:tap="onInvoice(row.invoice[0])" class="mui-table-view-cell">
+										发票类型： 纸质发票（
+										<span class="invoicePayableText" v-if="row.invoice[0].vatType==0">{{row.invoice.length>0?row.invoice[0].invoicePayable:'无'}}</span>
+										<span class="invoicePayableText" v-else="row.invoice[0].vatType==1">专票</span> ）
+										<span id="arrow_right" class="mui-icon mui-icon-forward mui-pull-right"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="sendWayAndMessage">
+							<ul class="mui-table-view" id="sendWayAndMsgBox">
+								<li class="mui-table-view-cell">
+									<div>
+										<span>订单编号</span> : {{row.orderId}}
+									</div>
+									<div>
+										<span>下单时间</span> : {{(new Date(row.orderTime)).Format("yyyy-MM-dd hh:mm:ss")}}
+									</div>
+
+								</li>
+								<li class="mui-table-view-cell">
+									<div>
+										<span>支付方式</span> : 微信支付
+									</div>
+									<div>
+										<span>支付时间</span> : {{row.payTime?(new Date(row.payTime)).Format("yyyy-MM-dd hh:mm:ss"):''}}
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!--开票信息-->
+						<div id="invoice_info_div">
+							<div id="invoice_title_div">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										备注： {{row.orderRemarks}}
+									</li>
+								</ul>
+							</div>
+							<div id="invoice_info_content" style="display: none;">
+								<div class="invoice_row">
+									<div class="invoice_title">
+										<span>抬头:</span>
+									</div>
+									<div class="invoice_editor">
+										<input id="invoice_head" class="input_editor" type="text" placeholder="点击编辑" disabled="true" />
+									</div>
+									<div class="invoice_arrow mui-pull-right">
+										<span class="mui-icon mui-icon-forward"></span>
+									</div>
+								</div>
+								<div class="invoice_row">
+									<div class="invoice_title">
+										<span>开户行:</span>
+									</div>
+									<div class="invoice_editor">
+										<input id="bank_name" class="input_editor" type="text" placeholder="点击编辑" disabled="true" />
+									</div>
+									<div class="invoice_arrow mui-pull-right">
+										<span class="mui-icon mui-icon-forward"></span>
+									</div>
+								</div>
+								<div class="invoice_row">
+									<div class="invoice_title">
+										<span>账号:</span>
+									</div>
+									<div class="invoice_editor">
+										<input id="account_num" class="input_editor" type="text" placeholder="点击编辑" disabled="true" />
+									</div>
+									<div class="invoice_arrow mui-pull-right">
+										<span class="mui-icon mui-icon-forward"></span>
+									</div>
+								</div>
+								<div class="invoice_row">
+									<div class="invoice_title">
+										<span>税号:</span>
+									</div>
+									<div class="invoice_editor">
+										<input id="invoice_num" class="input_editor" type="text" placeholder="点击编辑" disabled="true" />
+									</div>
+									<div class="invoice_arrow mui-pull-right">
+										<span class="mui-icon mui-icon-forward"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--优惠券-->
+						<div class="productMoney">
+							<div id="productMoney_title_div">
+								<ul class="mui-table-view" id="productMoneyBox">
+									<li class="mui-table-view-cell">
+										<div>
+											<span>商品金额</span>
+											<span class="rt">
+											<span>￥</span>
+											<span>{{row.price}}</span>
+											</span>
+										</div>
+
+										<div>
+											<span>优惠</span>
+											<span class="rt">
+											<span class="moneyRed">-￥</span>
+											<span class="moneyRed">{{row.discountMoney}}</span>
+											</span>
+										</div>
+										<div><span>运费</span>
+											<span class="rt">
+											<span class="moneyRed">￥</span>
+											<span class="moneyRed expressDeliveryCell">{{row.deliverMoney}}</span>
+											</span>
+										</div>
+
+										<div><span class="rt">实付款：
+											<span class="moneyRed">￥</span>
+											<span class="moneyRed expressDeliveryCell">{{row.totalMoney}}</span>
+											</span>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="couponPop">
+					<div class="couponTitle">可使用优惠券</div><span class="closeCouponChose">×</span>
+					<div style="clear: both;"></div>
+					<div id="couponList">
+						<!--<div class="Items">
+						<label class="fulltominus"for="coupon1">满50000减5000</label>
+						<input type="checkbox" class="choseCheckbox"id="coupon1"/>
+					</div>-->
+
+					</div>
+				</div>
+				<!--提交按钮-->
+				<div id="submit_btn" class="mui-text-center" style="z-index: 999;">
+					<span class="rt" style="padding:5px;">
+					<button type="button" class="okbutton" v-on:click="onBuy(row)">再次购买</button>
+				</span>
+					<span class="rt" style="padding:5px;">
+					<button type="button"  v-on:tap="onLogistics(row.orderId)" class="cancelbutton">查看物流</button>
+				</span>
+				</div>
+			</div>
+			<div id="bg" class="mui-backdrop" style="display: none;"></div>
+			<div id="wait_dialog" class="mui-text-center mui-popup mui-popup-in">
+				<span class="mui-spinner"></span>
+				<span id="wait_dialog_font">正在提交，请稍等...</span>
+			</div>
+		</div>
+		<script src="../../../mui/js/mui.min.js"></script>
+		<script src="../../../common/jquery-1.12.1.js"></script>
+		<script src="../../../common/common.js"></script>
+		<!-- <script src="orderSettlement.js"></script> -->
+		<script>
+			//点击返回箭头
+			$("#jumpBack").click(function(){
+				window.location.href = "../../my/order_administration.html";
+				//	清除发票信息
+				localStorage.removeItem("titleType");
+				localStorage.removeItem("titleContent");
+				localStorage.removeItem("titleCompanyName");
+				localStorage.removeItem("titleTaxNum");
+				sessionStorage.removeItem("addressObj");
+				localStorage.removeItem("leaveMsg");
+				//	清除地址信息
+			})
+//			$("header").on("tap", "a", function(e) {
+//				e.preventDefault();
+//				
+//			})
+
+			$(document).ready(function(e) {
+				var counter = 0;
+				if(window.history && window.history.pushState) {
+					$(window).on('popstate', function() {
+						window.history.pushState('forward', null, '#');
+						window.history.forward(1); // alert("不可回退");  //如果需在弹框就有它  
+						localStorage.removeItem("titleType");
+						localStorage.removeItem("titleContent");
+						localStorage.removeItem("titleCompanyName");
+						localStorage.removeItem("titleTaxNum");
+						sessionStorage.removeItem("addressObj");
+						localStorage.removeItem("leaveMsg");
+						window.location.href = "../../my/order_administration.html";
+					});
+				}
+				window.history.pushState('forward', null, '#');
+				window.history.forward(1);
+			});
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: pulldownRefresh
+					}
+				}
+			});
+
+			function pulldownRefresh() {
+
+			}
+			if(!window.webUser) {
+				window.location.href = "../../login/login.html";
+			}
+			var userId
+			if(window.webUser) {
+				userId = window.webUser.id; //用户id
+			}
+			mui('.mui-scroll-wrapper').scroll({
+				indicators: false //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			var app = new Vue({
+				el: '#app',
+				data: {
+					orderList: [],
+					productList: [],
+					titlePy: "titlePy",
+					heightpy: "heightpy"
+				},
+				methods: {
+					onBuy: function(order) {
+					var that=this;
+						$.ajax({
+							type: "get",
+							url: config + "/drug/cart/add",
+							async: false,
+							dataType: "jsonp",
+							jsonp: "jsoncallback",
+							data: {
+								userId: userId,
+								fromType: 2,
+								orderId: order.orderId
+							},
+							success: function(data) {
+								var idStr = "";
+								for(var i = 0; i < order.drugOrderProductList.length; i++) {
+									var prodcut = order.drugOrderProductList[i];
+									console.log(prodcut)
+									if(prodcut.drugId==null){
+										idStr += prodcut.mealId + ",";
+									}else{
+										idStr += prodcut.drugId + ",";
+									}	
+								}
+								console.log(that.orderList)
+								for(var k of that.orderList){
+									console.log(k.type)
+									if(k.type==0){
+										mui.alert("套餐过期,无法再次购买",'  ')
+										return false;
+									}
+								}
+								localStorage.setItem("prodcutIds", idStr.substr(0, idStr.length - 1));
+								window.location.href = "../shopcart_index.html?page=orderpage";
+							},
+						});
+					},
+					onInvoice: function(invoice) {
+						localStorage.setItem("invoice", JSON.stringify(invoice));
+						localStorage.setItem("titleType", $(".invoicePayableText").text());
+						console.log(getUrlParam('orderId'))
+						window.location.href = 'bill.html?page=orderpage&&orderId=' + getUrlParam('orderId');
+					},
+					select: function(index) {
+						this.getList(index);
+					},
+					listDispaly: function(data) {
+						var lists = data.list;
+						this.orderList = lists;
+					},
+					onLogistics: function(order) {
+
+						sessionStorage.setItem("expNo", order.courierNum);
+						sessionStorage.setItem("expCode", order.comCode);
+						window.location.href = "../../logistics/logistics.html";
+					},
+					getList: function(index) {
+						var thiso = this;
+						var datalist = new Object;
+						if(index != 0) {
+							datalist.orderType = index;
+						}
+						datalist.userId = userId;
+						datalist.orderName = this.inputtext;
+						datalist.orderId = getUrlParam('orderId');
+						$.ajax({
+							type: "get",
+							url: config + "/drug/orderInfo/getList",
+							async: false,
+							data: datalist,
+							success: function(data) {
+								if(data.status == 1) {
+									$("#app").show();
+									console.log(data.resultMap);
+									thiso.listDispaly(data.resultMap);
+								} else {
+									alert(data.message);
+								}
+							},
+						});
+					}
+				},
+				created() {
+					this.getList(0);
+				}
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>华忠医药</title>
+    <!--<link rel="stylesheet" href="/Drugstore_Web/drugstore_pc/common/bootstrap.css" />
+    <link rel="stylesheet" href="/Drugstore_Web/drugstore_pc/common/reset.css" />
+    <link rel="stylesheet" href="/Drugstore_Web/drugstore_pc/common/style.css" />
+    <link rel="stylesheet" href="/Drugstore_Web/drugstore_pc/common/common.css" />
+    <link rel="stylesheet" href="/Drugstore_Web/drugstore_pc/css/mainTop.css" />-->
+</head>
+
+<body>
+<div class="top-main">
+    <div class="lf topMainLogo">
+        <img class="topMainLogoImg"style="width: 65px;"/>
+        <div class="logoText">
+            <h3>华忠医药</h3>
+            <h5>生命痊力·华忠医药</h5>
+        </div>
+    </div>
+    <div class="search-wrapper">
+        <div class="search-box">
+            <!--<div data-toggle="arrowdown" id="arrow8" class="search-toggle">
+                宝贝<span class="down-icon"></span>
+            </div>-->
+            <input class="search-in" style="padding-left: 30px;" type="text" placeholder="      请输入药品名称">
+            <input type="button" class="search-but" value="搜索">
+            <div data-toggle="hidden-box" id="nav-box8" class="search-toggle-box">店铺</div>
+        </div>
+        <!--<a class="a-float-left hight-search" href="#">高级<br/>搜索</a>-->
+        <!--other-search-->
+        <div class="other-search">
+            <span class="otherSearchTitle">热门搜索：</span>
+            <!--<a href="#">七十味珍珠丸</a>-->
+            <!--<a href="#">如意珍宝丸</a>-->
+            <!--<a href="#">二十五味珊瑚丸</a>-->
+            <!--<a href="#">珍龙醒脑胶囊</a>-->
+            <!--<a href="#" class="more-other">更多<i class="fa fa-angle-right"></i></a>-->
+        </div>
+    </div>
+    <!--two-code-->
+    <div class="two-code">
+        <!--<div class="logics">
+            <img src="/Drugstore_Web/drugstore_pc/images/header/logistics.png" alt=""/>
+            物流查询
+        </div>-->
+        <div onclick="ordertz()" class="myOrder">
+            <img src="" alt="" class="mainTopMyOrderImg"/>
+            我的订单
+        </div>
+    </div>
+</div>
+<div class="top_main_nav">
+    <div class="top_main_nav_content">
+        <ul class="top_main_navUl">
+            <li class="quickQuery" >
+                全部商品分类
+                <span class="glyphicon glyphicon-chevron-down"></span>
+                <ul class="ulDown">
+                    <li>感冒药</li>
+                    <li>消炎药</li>
+                    <li>健康专栏</li>
+                    <li>日化用品</li>
+                    <li>起居养生</li>
+                    <li>其他药品</li>
+                </ul>
+            </li>
+            <!--<li onclick="tzList(this)">中成药</li>
+            <li onclick="tzList(this)">西药</li>
+            <li onclick="tzList(this)">健康专栏</li>
+            <li onclick="tzList(this)">日化用品</li>
+            <li onclick="tzList(this)">起居养生</li>
+            <li onclick="tzList(this)">其他药品</li>-->
+        </ul>
+        <ul class="ulChildDown">
+            <li>七十味珍珠丸</li>
+            <li>如意珍宝丸</li>
+            <li>珍龙醒脑胶囊</li>
+            <li>二十五味珊瑚丸</li>
+            <li>八味沉香丸</li>
+            <li>仁青常觉</li>
+            <li>坐珠达西</li>
+            <li>仁青芒觉</li>
+            <li>大月晶丸</li>
+            <li>六味安消散</li>
+            <li>智托洁白丸</li>
+            <li>五味黄连丸</li>
+            <li>洁白丸</li>
+        </ul>
+    </div>
+</div>
+<!--<script type="text/javascript" src="/Drugstore_Web/drugstore_pc/common/jquery-1.12.1.js"></script>
+<script type="text/javascript" src="/Drugstore_Web/drugstore_pc/common/common.js"></script>-->
+<script>
+    //			//点击logo
+    //			$(".topMainLogo").click(function(){
+    //				top.location.href="../../index.html";
+    //			});
+    typeId="";
+    categoryId="";
+    typeText="";
+    typeText2="";
+    fullName="";
+    $(function () {
+        var fullName=getQueryVariable('fullName')?getQueryVariable('fullName'):"";
+        if(fullName!=""){
+            $('.search-in').val(fullName);
+        }
+        onInit();
+        yiType();
+        $('.search-but').click(function () {
+            var fullName=$('.search-in').val();
+            window.location.href=window.src+'pages/shop/shop_index.html?fullName='+fullName;
+        });
+    });
+    function tzList(that) {
+        typeId=$(that).attr('data-id');
+        categoryId="";
+        typeText=$(that).html();
+        typeText2="";
+        fullName="";
+        ttzList();
+
+    }
+    function tzList_name(that) {
+        typeId="";
+        categoryId="";
+        typeText="";
+        typeText2="";
+        fullName=$(that).html();
+        ttzList();
+
+    }
+
+    // 初始化
+    function onInit() {
+        //热搜
+        $.ajax({
+            type: "get",
+            url: config + "/drug/hotSearch/list",
+            dataType: "jsonp",
+            data:{
+              offset:1,
+              limit:6
+            },
+            jsonp: "jsoncallback",
+            success: function (data) {
+                var list=data.resultMap.list;
+                var searHtml='';
+                for (var i=0;i<list.length&&i<6;i++){
+                    searHtml+='<a onclick="tzList_name(this)" href="#">'+list[i].content+'</a>';
+                }
+                $('.other-search').append(searHtml);
+
+            },
+        });
+
+    }
+
+    //top一级分类初始化
+    function yiType(){
+        //类别1初始化
+        $.ajax({
+            type: "get",
+            url: config + "/drug/info/firstList",//category/list
+            data:{
+                'name':"",
+                'offset':"",
+                'limit':"",
+            },
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            success: function(data) {
+                if(data.status==1){
+                    //商品内容list
+                    var data = data.resultMap.commodityTypeList;
+                    var type_yi='';
+                    for (var i=0;i<data.length&&i<8;i++){
+
+                        type_yi+='<li data-id="'+data[i].id+'" onclick="tzList(this)">'+data[i].name+'</li>';//
+                    }
+                    $('.top_main_navUl').append(type_yi);
+                }else{
+                    alert(data.message);
+                }
+            },
+        });
+    }
+
+    //全部商品分类
+    var liIndex;
+    (function() {
+        typeInit(function() {
+            $(".quickQuery").hover(function() {
+                $(".ulDown").show();
+            }, function(e) {
+                $(".ulDown").hide();
+            });
+            $(".ulChildDown").hover(function() {
+                $(".ulDown").show();
+                $(".ulChildDown").show();
+            }, function(e) {
+                $(".ulDown").hide();
+                $(".ulChildDown").hide();
+            });
+
+            //左二级分类事件
+            $(".ulDown li").hover(function() {
+                categoryId = $(this).attr('data-id');
+                typeText2 = $(this).text();
+				
+                //根据二级分类查询商品
+                if($(this).hasClass("shopcategoryMoreBtn")){
+                	$(this).addClass("hoverStyle").siblings().removeClass("hoverStyle");
+                	liIndex = $(this).index();
+                }else{
+	                eTypeInit(categoryId, function() {
+	                    //左二商品事件
+	                    $(".ulChildDown").hover(function() {
+	                        $($(".ulDown li")[liIndex]).addClass("hoverStyle").siblings().removeClass("hoverStyle");
+	                        $(".ulDown").show();
+	                        $(".ulChildDown").show();
+	                    }, function() {
+	                        $(".ulDown").hide();
+	                        $(".ulChildDown").hide();
+	                        $(".ulDown li").removeClass("hoverStyle");
+	                    });
+	                    $(".ulChildDown li").hover(function() {
+	                        fullName = $(this).text();
+	                    });
+	
+	                });
+	
+	                $(".ulChildDown").show();
+	                $(this).addClass("hoverStyle").siblings().removeClass("hoverStyle");
+	                liIndex = $(this).index();
+                }
+                
+            }, function() {
+                $(".ulChildDown").hide();
+                $(".ulDown li").removeClass("hoverStyle");
+            });
+
+
+        });
+
+    })(jQuery);
+
+    //左er级分类初始化
+    function typeInit(cn) {
+        $.ajax({
+            type: "get",
+            url: config + "/drug/info/twoMenoInfo",
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            success: function(data) {
+                //商品内容list
+                var data = data.resultMap.commodityCategoryList;
+                var type_yi = '';
+                console.log(data.length);
+                if(data.length>=9){
+                	for(var i = 0; i < data.length; i++) {
+                		if(i==9) {
+					        break; 
+					    } 
+                    	type_yi += '<li onclick="ttzList()"  data-id="' + data[i].id + '">' + data[i].name + '</li>'; //
+                	}
+                }else{
+                	for(var i = 0; i < data.length; i++) {
+                    	type_yi += '<li onclick="ttzList()"  data-id="' + data[i].id + '">' + data[i].name + '</li>'; //
+                	}
+                }
+                $('.ulDown').html(type_yi);
+                $('.ulDown').append('<li onclick="morejumpShop()"class="shopcategoryMoreBtn">更多</li>');
+                cn();
+            },
+        });
+    }
+    //根据二级分类查询商品
+    function eTypeInit(categoryId, cn) {
+    	var user;
+		if(window.user == null){
+			user = "";
+		}else{
+			user = window.user.id;
+		}
+        $.ajax({
+            type: "get",
+            url: config + "/drug/info/getDrugList",
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data:{
+            	userId: user,
+                typeId:"",
+                categoryId:categoryId,
+                offset:1,
+                limit:50,
+                fullName:"",
+                retailPriceStart:"",
+                retailPriceEnd:"",
+                sort:"",
+                order: ""
+
+            },
+            success: function(data) {
+                //商品内容list
+                var list = data.resultMap.commodityInfoList;
+                var listHtml='';
+                for(var i = 0; i < list.length; i++) {
+                    listHtml += '<li onclick="ttzList()"  >' +list[i].fullName + '</li>'; //
+                }
+                $('.ulChildDown').html(listHtml);
+                cn();
+            },
+        });
+    }
+	function morejumpShop(){
+		window.location.href = window.src + 'pages/shop/shop_index.html';
+	}
+    function getQueryVariable(variable)
+    {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return decodeURI(pair[1]);}
+        }
+        return(false);
+    }
+</script>
+</body>
+
+</html>

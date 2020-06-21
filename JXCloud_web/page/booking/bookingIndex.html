@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>预约管理</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<link rel="stylesheet" type="text/css" href="../../css/appointment.css"/>
+<body>
+
+
+<div class="box">
+    <div class="boxHead">预约录入</div>
+    <div class="boxTitle">患者信息</div>
+    <form id="bookingForm" onsubmit="return false;">
+        <ul class="appointment-ul">
+            <li><span>身份证号：</span>
+                <input type="text" name="idCode" id="idCode" value=""/>
+            </li>
+
+            <li><span>患者姓名：</span><input type="text" name="bookingName" id="bookingName" value=""/></li>
+            <li><span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span>
+                <select name="sex" id="sex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </li>
+            <li><span>联系电话：</span><input type="text" name="phone" id="phone" value=""/></li>
+        </ul>
+
+        <div class="boxTitle">申请信息</div>
+        <ul class="appointment-ul"style="height:60px;">
+            <li>
+                <span>指定医院：</span>
+                <select id="fkHospitalId" name="fkHospitalId" >
+                </select>
+            </li>
+            <li>
+                <span>指定科室：</span>
+                <select id="fkSectionId" name="fkSectionId" >
+                </select>
+            </li>
+            <li>
+                <span>指定医生：</span>
+                <select id="fkUserId" name="fkUserId" >
+                </select>
+            </li>
+        </ul>
+
+        <div class="boxTitle">临床信息</div>
+        <ul class="appointment-ul2">
+            <li><span>主&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;诉：</span>
+                <textarea name="subjText" id="subjText" rows="" cols="" style="vertical-align:top"
+                          placeholder="冠心病、高血压、心脏病、三高、前列腺炎、胸闷气短、憋气压抑等"></textarea>
+            </li>
+            <li><span>现&nbsp;&nbsp;病&nbsp;&nbsp;史：</span>
+                <textarea name="medicalHistory" id="medicalHistory" rows="" cols="" style="vertical-align:top"
+                          placeholder="冠心病、高血压、心脏病、三高、前列腺炎、胸闷气短、憋气压抑等"></textarea>
+            </li>
+            <li><span>既&nbsp;&nbsp;往&nbsp;&nbsp;史：</span>
+                <textarea name="pastHistory" id="pastHistory" rows="" cols="" style="vertical-align:top"
+                          placeholder="冠心病、高血压、心脏病、三高、前列腺炎、胸闷气短、憋气压抑等"></textarea>
+            </li>
+            <li><span>过&nbsp;&nbsp;敏&nbsp;&nbsp;史：</span>
+                <textarea name="allergyHistory" id="allergyHistory" rows="" cols="" style="vertical-align:top"
+                          placeholder="冠心病、高血压、心脏病、三高、前列腺炎、胸闷气短、憋气压抑等"></textarea>
+            </li>
+            <li><span>家&nbsp;&nbsp;族&nbsp;&nbsp;史：</span>
+                <textarea name="familyHistory" id="familyHistory" rows="" cols="" style="vertical-align:top"
+                          placeholder="冠心病、高血压、心脏病、三高、前列腺炎、胸闷气短、憋气压抑等"></textarea>
+            </li>
+            <!--<li><span>预&nbsp;&nbsp;诊&nbsp;&nbsp;断：</span>
+                <textarea name="prepDiag" id="prepDiag" rows="" cols="" style="vertical-align:top"
+                          placeholder="冠心病、高血压、心脏病、三高、前列腺炎、胸闷气短、憋气压抑等"></textarea>
+            </li>-->
+        </ul>
+        <input type="hidden" name="applyUserId" id="applyUserId" value="1"/>
+        <input type="hidden" name="fkPatinfoId" id="fkPatinfoId" value="1"/>
+    </form>
+    <div class="clear"></div>
+    <button onclick="saveBooking()" id="saveOk">确定保存</button>
+    <button id="saveCancle">取消保存</button>
+</div>
+
+</body>
+<!--<script src="../../js/lanrenzhijia.js" type="text/javascript" charset="utf-8"></script>-->
+<script>
+    $(function () {
+
+        LoadreadHospitalBooking();
+        $('#idCode').bind('keyup', function (event) {
+            //回车执行查询  2 3
+            if (event.keyCode == "13") {
+                //身份证号
+                var idCode = $(this).val();
+                console.log(idCode);
+                ajaxGet('/oa/patinfo/checkPatinfo', {idCode: idCode}, function (resData) {
+                    var data = resData.resultMap.patinfo;
+                    console.log("llllllllllllllllllllllllllllllllllllllllllllllllllllll");
+                    console.log(data);
+                    setBookingData(data);
+                });
+            }
+
+        });
+      $('#idCode').blur(function(){
+      	var idCode = $(this).val();
+        console.log(idCode);
+        ajaxGet('/oa/patinfo/checkPatinfo', {idCode: idCode}, function (resData) {
+            var data = resData.resultMap.patinfo;
+            console.log("llllllllllllllllllllllllllllllllllllllllllllllllllllll");
+            console.log(data);
+            setBookingData(data);
+        });
+      });
+        //指定医院选择 联动 科室
+        $("#fkHospitalId").change(function(){
+            //联动查询 此医院下的科室
+            LoadtechOfficeBooking($("#fkHospitalId").val());
+        });
+        //指定医院选择 联动医生
+        $("#fkSectionId").change(function(){
+            //联动查询 此医院下的医生
+            LoadtheDoctorBooking($("#fkSectionId").val());
+
+        });
+    });
+    //指定医院下拉框 初始化
+    function LoadreadHospitalBooking() {
+        $("#fkHospitalId").html('');
+        $.ajax({
+            type: "get",
+            url: config + "/sys/hospital/list",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data: {},
+            success: function(data) {
+                console.log(data);
+                if(data.status==1){
+                    var hospitalList=data.resultMap.hospitalList;
+                    if(hospitalList!=null){
+                        for(var s=0;s<hospitalList.length;s++){
+                            var hospitalHtml='';
+                            hospitalHtml+='<option value="'+hospitalList[s].id+'">'+hospitalList[s].name+'</option>';
+                            $("#fkHospitalId").append(hospitalHtml);
+                        }
+                    }
+                }
+                LoadtechOfficeBooking($("#fkHospitalId").val());
+            },
+        });
+    }
+    //指定科室初始化
+    function LoadtechOfficeBooking(selectHosId){//参数为当前选择上的医院的id和科室的select的id
+        $("#fkSectionId").html('');
+        $.ajax({
+            type: "get",
+            url: config + "/sys/section/list",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data: {fkHospitalId:selectHosId},
+            success: function(data) {
+                console.log(data);
+                if(data.status==1){
+                    var sectionList=data.resultMap.sectionList;
+                    if(sectionList!=null) {
+
+                        for (var t = 0; t < sectionList.length; t++) {
+                            var techOfficeHtml = '';
+                            techOfficeHtml += '<option value="' + sectionList[t].id + '">' + sectionList[t].name + '</option>';
+                            $("#fkSectionId").append(techOfficeHtml);
+                        }
+                    }
+                    LoadtheDoctorBooking($("#fkSectionId").val());
+                }
+            },
+        });
+    }
+    //指定医生初始化
+    function LoadtheDoctorBooking(selectHosId){//参数为当前选择上科室的select的id
+        $("#fkUserId").html('');
+        $.ajax({
+            type: "get",
+            url: config + "/sys/user/list",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data: {
+                type:1,
+                fkSectionId:selectHosId
+            },
+            success: function(data) {
+                console.log(data);
+                if(data.status==1){
+                    var fkUserList=data.resultMap.userList;
+
+                    if(fkUserList!=null) {
+                        for (var t = 0; t < fkUserList.length; t++) {
+                            var techOfficeHtml = '';
+                            techOfficeHtml += '<option value="' + fkUserList[t].id + '">' + fkUserList[t].userName + '</option>';
+                            $("#fkUserId").append(techOfficeHtml);
+                        }
+                    }
+                }
+            },
+        });
+    }
+
+    //赋值患者信息到页面
+    function setBookingData(data) {
+        var user = JSON.parse(sessionStorage.getItem('user'));
+        console.log("-------------------------------------------------------------");
+        $('#applyUserId').val(user.id);
+        $('#fkPatinfoId').val(data.id);
+        $('#bookingName').val(data.name);
+        $('#sex').val(data.sex);
+        $('#phone').val(data.phone);
+        $('#medicalHistory').val(data.medicalHistory);
+        $('#pastHistory').val(data.pastHistory);
+        $('#allergyHistory').val(data.allergyHistory);
+        $('#familyHistory').val(data.familyHistory);
+        $('#bookingName').attr("disabled","disabled");
+        $('#sex').attr("disabled","disabled");
+        $('#phone').attr("disabled","disabled");
+        $('#medicalHistory').attr("disabled","disabled");
+        $('#pastHistory').attr("disabled","disabled");
+        $('#allergyHistory').attr("disabled","disabled");
+        $('#familyHistory').attr("disabled","disabled");
+    }
+
+    //预约申请保存
+    function saveBooking() {
+    	var idCode=$("#idCode").val().trim();//身份证号
+    	var bookingName=$("#bookingName").val().trim();//患者姓名
+    	var sex=$("#sex").val().trim();//性别
+    	var phone=$("#phone").val().trim();//联系电话
+    	var fkHospitalId=$("#fkHospitalId").val();//指定医院
+    	var fkSectionId=$("#fkSectionId").val();//指定科室
+    	var fkUserId=$("#fkUserId").val();//指定医生
+    	var subjText=$("#subjText").val().trim();//主诉
+    	if(idCode==""||idCode==null){
+    		alert("请填写身份证号！");
+    	}else if(bookingName==""||bookingName==null){
+    		alert("请填写患者姓名！");
+    	}else if(sex==""||sex==null){
+    		alert("请选择性别！");
+    	}else if(phone==""||phone==null){
+    		alert("请输入联系电话！");
+    	}else if(fkHospitalId==""||fkHospitalId==null){
+    		alert("请选择指定医院！");
+    	}else if(fkSectionId==""||fkSectionId==null){
+    		alert("请选择指定科室！");
+    	}else if(fkUserId==""||fkUserId==null){
+    		alert("请选择指定医生！");
+    	}else if(subjText==""||subjText==null){
+    		alert("请输入主诉！");
+    	}else{
+	    	var fromData = {};
+	
+	        var fromArray = $('#bookingForm').serializeArray();
+	        $.each(fromArray, function () {
+	            fromData[this.name] = this.value;
+	        });
+	        fromData.name = fromData.bookingName;
+	
+	        console.log(fromData);
+	        ajaxGet('/oa/interrogationInfo/save', fromData, function (res) {
+	            console.log(res);
+	            alert(res.message);
+	            if (res.status == 1) {
+	                location.reload();
+	            }
+	        })
+    	}
+        
+    }
+    
+    //点击导入的新增信息 的取消
+$("#saveCancle").click(function(){
+	$("#subscribeListLight1").css("display","none");
+	$("#subscribeListFade").css("display","none");
+});
+</script>
+</html>

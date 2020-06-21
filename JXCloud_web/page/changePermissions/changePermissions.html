@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>远程医疗管理系统-修改权限</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/listPage.css"/>
+    <style>
+        #ulAppointmentList {
+            list-style: none;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        #ulAppointmentList li {
+            height: 50px;
+            line-height: 50px;
+            overflow: hidden;
+            /*border: 1px solid #CAC8C6;*/
+            /*display: flex;*/
+            justify-content: space-between;
+        }
+        #ulAppointmentList li div {
+            border-right: 1px solid #CAC8C6;
+            width: 12%;
+            text-align: center;
+        }
+        #ulAppointmentList {
+            width: 100%;
+            min-height: 250px;
+        }
+
+        #ulAppointmentList .subscribeListInfoList-ul li, #subscribeListAllInfo .subscribeListAllInfoList-ul li {
+            float: left;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+        }
+        .subscribeListInfoList-ul {
+            width: 100%;
+            height: 36px;
+            background-color: #e2eff7;
+        }
+        .subscribeListInfoList-proposer{
+            width: 16%;
+            font-family: "microsoft yahei";
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /*页码*/
+        .subscribeListPageN {
+            overflow: hidden;
+        }
+
+        #pageGro ul {
+            float: right;
+            margin-right: 100px;
+        }
+
+        .pagination > li > a, .pagination > li > span {
+            margin-right: 10px;
+        }
+
+        .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+            background: #FE7410;
+            border-color: #FE7410;
+        }
+
+        .flipOver a {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<div class="contain">
+    <div class="rightLoadContent">
+        <!--页面数据呈现区-->
+        <div class="headDiv">
+            <div class="titleDiv">用户信息</div>
+            <div class="towHeadDiv">
+                <div><input class="baseInputBtn oneBtnWidth" type="button" value="用户姓名">
+                </div>
+                <div><input class="oneInputText" type="text" value=""id="permisssionCurrentName">
+                </div>
+                <div><input class="baseInputBtn oneBtnWidth" type="button" value="用户编号">
+                </div>
+                <div><input class="oneInputText" type="text" value=""id="permisssionCurrentCode">
+                </div>
+            </div>
+            <div class="titleDiv">岗位列表</div>
+            <div style="border:1px solid #eee;">
+                <ul class="ulList">
+                    <!--<li>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                    </li>
+                    <li>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                    </li>
+                    <li>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                    </li>
+                    <li>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                    </li>
+                    <li>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                    </li>
+                    <li>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                    </li>
+                    <li>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                    </li>
+                    <li>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                        <div><input type="checkbox">部门名称</div>
+                    </li>-->
+                    
+                </ul>
+                <div class="upBtnDiv"><input class="baseInputBtn oneNewInput" type="button" value="修改"id="doModify"></div>
+            </div>
+            <div id="permisssionMenuList">
+                <!--<div class="titleDiv">人力资源</div>
+                <div class="lastMenuDiv">
+                    <div class="onMenuDiv">考勤管理</div>
+                    <div>查询因公外出/调休(本部)</div>
+                    <div>查询考勤记录(本部)</div>
+                </div>
+                <div class="titleDiv">信息管理</div>
+                <div class="lastMenuDiv">
+                    <div class="onMenuDiv">公示信息</div>
+                    <div>查询因公外出/调休(本部)</div>
+                    <div>查询考勤记录(本部)</div>
+                </div>
+                <div class="titleDiv">人力资源</div>
+                <div class="lastMenuDiv">
+                    <div class="onMenuDiv">考勤管理</div>
+                    <div>查询因公外出/调休(本部)</div>
+                    <div>查询考勤记录(本部)</div>
+                </div>
+                <div class="titleDiv">信息管理</div>
+                <div class="lastMenuDiv">
+                    <div class="onMenuDiv">公示信息</div>
+                    <div>查询因公外出/调休(本部)</div>
+                    <div>查询考勤记录(本部)</div>
+                </div>-->
+            </div>
+            <div >
+                <div class="titleDiv">设备管理</div>
+                <div >
+
+                    <ul id="ulAppointmentList">
+                        <ul class="subscribeListInfoList-ul">
+                            <li class="subscribeListInfoList-proposer">设备名称</li>
+                            <li class="subscribeListInfoList-proposer">设备型号</li>
+                            <li class="subscribeListInfoList-proposer">设备品牌</li>
+                            <li class="subscribeListInfoList-proposer">设备类型</li>
+                            <li class="subscribeListInfoList-proposer">关联用户</li>
+                            <li class="subscribeListInfoList-proposer">关联用户姓名</li>
+                            <!--<li class="subscribeListInfoList-proposer">操作</li>-->
+                        </ul>
+                        <div id="subscribeListAllInfo">
+                        </div>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+        <!--模态框-->
+        <div class="modal">
+        </div>
+        <!--新增配置信息弹框-->
+        <div id="newConfiguration">
+            <div class="newConfigurationTitle">
+                新增配置信息类型
+                <div class="rt">
+                                  <span class="closeModel">
+                                      ×
+                                  </span>
+                </div>
+            </div>
+            <!--标题-->
+            <div class="currentModalMainTit">
+                新增配置信息类型
+            </div>
+            <form action="">
+                <div class="boxDiv1">
+                    <textarea name="addInfoBox1"class="addInfoBox1"id="addInfoNames"></textarea>
+                </div>
+                <div class="boxDiv2">
+                    <textarea name="addInfoBox2"class="addInfoBox2"></textarea>
+                </div>
+                <div class="sureAndCancelBtns">
+                    <div class="sureBtn addNewBtn">
+                        确认新增
+                    </div>
+                    <div class="addConfigcancelBtn">
+                        取&nbsp;&nbsp;消
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--修改配置信息弹框-->
+        <div id="changeConfiguration">
+            <div class="newConfigurationTitle">
+                配置信息类型修改
+                <div class="rt">
+                                  <span class="closeModel">
+                                      ×
+                                  </span>
+                </div>
+            </div>
+            <!--标题-->
+            <div class="currentModalMainTit">
+                配置信息类型修改
+            </div>
+            <form action="">
+                <div class="boxDiv1">
+                    <textarea name="changeInfoBox1"class="changeInfoBox1"></textarea>
+                </div>
+                <div class="boxDiv2">
+                    <textarea name="changeInfoBox2"class="changeInfoBox2"></textarea>
+                </div>
+                <div class="sureAndCancelBtns">
+                    <div class="sureBtn sureChangeInfos">
+                        确认修改
+                    </div>
+                    <div class="cancelBtn">
+                        取消修改
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--删除单行配置信息提示框-->
+        <div id="delListInfo">
+            <div class="delTopImg">
+                <img src="../../img/common/untitledquestionImg.png" alt="" />
+            </div>
+            <div class="delWarn">
+                <div class="delWarn1">删除信息后不可恢复，您确定要删除</div>
+                <div class="delWarn2">
+                    该条信息吗？
+                </div>
+            </div>
+            <div class="sureAndCancelBtns">
+                <div class="cancelBtn">
+                    取&nbsp;&nbsp;&nbsp;&nbsp;消
+                </div>
+                <div class="sureBtn sureChangeInfos">
+                    确定删除
+                </div>
+            </div>
+        </div>
+        <!--查看详情页-->
+        <div id="lookingForDetails">
+            <div class="newConfigurationTitle">
+                新增配置信息类型
+                <div class="rt">
+                                  <span class="closeModel">
+                                      ×
+                                  </span>
+                </div>
+            </div>
+            <div class="LoadDetails">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+<!--<script type="text/javascript" src="../../js/commonStyle.js"></script>-->
+<script type="text/javascript" src="../../js/config.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script>
+    $(function () {
+        appointmentReadPreOrderList();
+
+    });
+    //接口获取数据
+    function appointmentReadPreOrderList() {
+        ajaxGet('/oa/equipment/getByUserIdData', {userId:changePermissionUserId}, function (resData) {
+            var data = resData.resultMap.equipmentPerList;
+            appointmentSetDataList(data);
+        });
+    }
+    //渲染页面
+    function appointmentSetDataList(rm) {
+        if (rm != null && rm.length > 0) {
+            var rmHtml = '';
+            for (var i = 0, rmk = 0; i < rm.length; i++) {
+                $("#subscribeListAllInfo").html('');
+                rmk++;
+                rmHtml += '<ul class="subscribeListAllInfoList-ul">';
+                rmHtml += '<li class="subscribeListInfoList-proposer">' + rm[i].equipment.equipmentName + '</li>';
+                rmHtml += '<li class="subscribeListInfoList-proposer">' + rm[i].equipment.equipmentType + '</li>';
+                rmHtml += '<li class="subscribeListInfoList-proposer">' + rm[i].equipment.equipmentBrand + '</li>';
+                rmHtml += '<li class="subscribeListInfoList-proposer">' + rm[i].equipment.equipmentModel + '</li>';
+                rmHtml += '<li class="subscribeListInfoList-proposer" >' + rm[i].equipment.equipmentUserId + '</li>';
+                rmHtml += '<li class="subscribeListInfoList-proposer" >' + rm[i].equipment.equipmentUserName + '</li>';
+                // rmHtml += '<li class="subscribeListInfoList-proposer"><a href = "javascript:void(0)" data-id="'+rm[i].id+'" class="subListBtn-search"><img src="../../img/common/untitledChangeBtn.png"/></a></li>';
+                rmHtml += '</ul>';
+                $("#subscribeListAllInfo").append(rmHtml);
+            }
+        } else {
+            $("#subscribeListAllInfo").html('');
+        }
+    }
+</script>
+<script>
+//	获取用户岗位信息
+    var userId=sessionStorage.getItem('userId');
+	var sessionId=sessionStorage.getItem('sessionId');
+    var changePermissionUserId=parseInt(localStorage.getItem("changePermissionUserId"));
+	var changePermissionUserNames=localStorage.getItem("changePermissionUserNames");//用户名
+	var changePermissionUserCode=localStorage.getItem("changePermissionUserCode");//用户编号
+	$("#permisssionCurrentName").val(changePermissionUserNames);
+	$("#permisssionCurrentName").attr("readonly","readonly");
+	$("#permisssionCurrentCode").val(changePermissionUserCode);
+	$("#permisssionCurrentCode").attr("readonly","readonly");
+	console.log("userId:"+changePermissionUserId+"userName:"+changePermissionUserNames+"userCode:"+changePermissionUserCode);
+    getpermissionList();
+    function getpermissionList(){
+    	$.ajax({
+            method: 'get',
+            url: config+'/sys/permission/userRoleList',
+            contentType: "application/json; charset=utf-8",//传到后台的数据格式
+            async: true,
+            data: {
+            	'sessionId':sessionId,
+            	'userId':userId,
+            	'id':changePermissionUserId,
+            	'userName':changePermissionUserNames,
+            	'userCode':changePermissionUserCode
+            },
+            dataType:'jsonp',//接收值的格式
+            jsonp: 'jsoncallback',
+            success: function(data) {
+                console.log(data);
+                var roleList=data.resultMap.roleList;
+                var roleListLen=data.resultMap.roleList.length;
+                var menuList=data.resultMap.menuList;
+                var menuListLen=data.resultMap.menuList.length;
+                $(".ulList").html('');
+                for(var i=0;i<roleList.length;i++){
+                	var roleListHtml='';
+                		if(roleList[i].isSelected=="1"){
+                			roleListHtml+='<li style="float:left;width:25%;height:40px;line-height:40px;"><div><input class="check_box" name="roleIds" type="checkbox" value="'+roleList[i].id+'"checked="checked">'+roleList[i].name+'</div></li>';
+                		}else{
+                			roleListHtml+='<li style="float:left;width:25%;height:40px;line-height:40px;"><div><input class="check_box" name="roleIds" type="checkbox" value="'+roleList[i].id+'">'+roleList[i].name+'</div></li>';
+                		}
+                		
+                	$(".ulList").append(roleListHtml);
+                }
+                $("#permisssionMenuList").html('');
+                if(menuListLen===0){
+                	var menuListEmptyHtml='';
+                	menuListEmptyHtml+='<div style="width:100%;text-align:center;height:60px;line-height:60px;">无权限</div>';
+                	$("#permisssionMenuList").append(menuListEmptyHtml);
+                }else{
+                	for(var k in menuList){
+//              		console.log(menuList[k].name);
+						var menuListTitleHtml='';
+						menuListTitleHtml+='<div class="personalInfo titleDiv"id="menuTitle'+menuList[k].id+'">'+menuList[k].name+'</div>';
+						menuListTitleHtml+='<div class="onMenuDiv">';
+						menuListTitleHtml+='</div>';
+						$("#permisssionMenuList").append(menuListTitleHtml);
+						if($.isEmptyObject(menuList[k].menuMap)==false){
+								var currentmenusHtml='';
+								for(var p in menuList[k].menuMap){
+									var currentmenus=menuList[k].menuMap[p];
+										currentmenusHtml+='<div style="height:40px;line-height:40px;padding:0px 20px;width:100%;overflow:hidden;"class="menuTwo"id="menuTwoTitle'+currentmenus.id+'">';
+//										currentmenusHtml+='<input class="check_box" style="cursor: pointer;" name="perIds" type="checkbox" value="'+currentmenus.id+'">';
+										currentmenusHtml+='<span class="option_cont" style="cursor: default;">'+currentmenus.name+'</span>';
+										currentmenusHtml+='</div>';
+										currentmenusHtml+='<div class="perMapDiv">';
+										currentmenusHtml+='</div>';
+								}
+								$("#menuTitle"+menuList[k].id).next('div').append(currentmenusHtml);
+								for(var p in menuList[k].menuMap){
+									var perMapHtml='';
+									var currentmenus=menuList[k].menuMap[p];
+									var currentPerMap=menuList[k].menuMap[p].perList;
+									for(var q=0;q<currentPerMap.length;q++){
+//											console.log(currentPerMap.name);
+											perMapHtml+='<div style="float:left;height:40px;line-height:40px;padding:0px 20px;"id="'+currentPerMap[q].id+'">';
+	//										perMapHtml+='<input class="check_box" style="cursor: pointer;" name="perIds" type="checkbox" value="'+currentmenus.id+'">';
+											perMapHtml+='<span class="option_cont" style="cursor: default;">'+currentPerMap[q].name+'</span>';
+											perMapHtml+='</div>';
+									}
+									$("#menuTwoTitle"+currentmenus.id).next('div.perMapDiv').append(perMapHtml);
+								}
+						}
+                	}
+                }
+                clickInput();
+            },
+            error: function(result) {
+                console.log(result);
+            }
+        });
+    }
+ function clickInput(){
+    $('input[name="roleIds"]').click(function() {
+				var roleIds = [];
+				$('input[name="roleIds"]:checked').each(function() {
+					roleIds.push($(this).val());
+				});
+				if(roleIds.length==0){
+					$("#permisssionMenuList").html('<div style="width:100%;text-align:center;height:60px;line-height:60px;">无权限</div>');
+					return;
+				}
+				var params = {
+					'roleIds' : roleIds
+				};
+				console.log(params);
+				$.ajax({
+					type : 'POST',
+					url : config+'/sys/permission/listByRole',
+					data : params,
+					traditional: true,
+					async:false,
+					dataType:"jsonp",
+					jsonp:"jsoncallback",
+					success : function(data) {
+						console.log("......这里是点击岗位刷新权限列表......");
+						console.log(data);
+						if (data) {
+							$("#permisssionMenuList").html('');
+							for(var k in data){
+		//              		console.log(menuList[k].name);
+								var menuListTitleHtml='';
+								menuListTitleHtml+='<div class="personalInfo titleDiv"id="menuTitle'+data[k].id+'">'+data[k].name+'</div>';
+								menuListTitleHtml+='<div class="onMenuDiv">';
+								menuListTitleHtml+='</div>';
+								$("#permisssionMenuList").append(menuListTitleHtml);
+								if($.isEmptyObject(data[k].menuMap)==false){
+										var currentmenusHtml='';
+										for(var p in data[k].menuMap){
+											var currentmenus=data[k].menuMap[p];
+												currentmenusHtml+='<div style="height:40px;line-height:40px;padding:0px 20px;width:100%;overflow:hidden;"class="menuTwo"id="menuTwoTitle'+currentmenus.id+'">';
+		//										currentmenusHtml+='<input class="check_box" style="cursor: pointer;" name="perIds" type="checkbox" value="'+currentmenus.id+'">';
+												currentmenusHtml+='<span class="option_cont" style="cursor: default;">'+currentmenus.name+'</span>';
+												currentmenusHtml+='</div>';
+												currentmenusHtml+='<div class="perMapDiv">';
+												currentmenusHtml+='</div>';
+										}
+										$("#menuTitle"+data[k].id).next('div').append(currentmenusHtml);
+										for(var p in data[k].menuMap){
+											var perMapHtml='';
+											var currentmenus=data[k].menuMap[p];
+											var currentPerMap=data[k].menuMap[p].perList;
+											for(var q=0;q<currentPerMap.length;q++){
+		//											console.log(currentPerMap.name);
+													perMapHtml+='<div style="float:left;height:40px;line-height:40px;padding:0px 20px;"id="'+currentPerMap[q].id+'">';
+			//										perMapHtml+='<input class="check_box" style="cursor: pointer;" name="perIds" type="checkbox" value="'+currentmenus.id+'">';
+													perMapHtml+='<span class="option_cont" style="cursor: default;">'+currentPerMap[q].name+'</span>';
+													perMapHtml+='</div>';
+											}
+											$("#menuTwoTitle"+currentmenus.id).next('div.perMapDiv').append(perMapHtml);
+										}
+								}
+		                	}
+						} else {
+							alert(data.message);
+						}
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown) {
+						alert("服务器错误，请稍后重试！");
+					}
+				});
+			});
+//			修改权限
+			$('#doModify').click(function() {
+				var roleIds = [];
+				$('input[name="roleIds"]:checked').each(function() {
+					roleIds.push($(this).val());
+				});
+				
+				if(roleIds.length==0){
+					alert("请选择岗位！");
+					return;
+				}
+
+				var params = {
+					'sessionId' :sessionId,
+					'userIdM' : changePermissionUserId,
+					'roleIds' : roleIds
+				};
+
+				$.ajax({
+					type : 'POST',
+					url : config+'/sys/permission/updateUserRole',
+					data : params,
+					traditional: true,
+					async:false,
+					dataType:"jsonp",
+					jsonp:"jsoncallback",
+					success : function(data) {
+							alert(data.message);
+							closeNavTabAndRefreshIframe("page/changePermissions/changePermissions.html","page/authorizationManagement/authorizationManagement.html");
+							
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown) {
+						alert("服务器错误，请稍后重试！");
+					}
+				});
+			});
+		};
+</script>
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>设备管理</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+
+<link href="../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+<link href="../../css/font/fontawesome.min.css" rel="stylesheet">
+<link href="../../css/font/brands.css" rel="stylesheet">
+<link href="../../css/font/solid.css" rel="stylesheet">
+<link href="../../css/animate.min.css" rel="stylesheet">
+<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+
+
+<!--<link rel="stylesheet" type="text/css" href="../../css/appointment.css"/>-->
+
+<style>
+    .appointment-ul2 {
+        text-align: right;
+        margin-top: 20px;
+
+    }
+
+    .appointment-ul2 li {
+        margin: 10px 0;
+        display: flex;
+        /*justify-content: center;*/
+    }
+
+    .newin {
+        height: 33px;
+        width: 200px;
+    }
+
+    .onebtn {
+        background-color: #018eea;
+        color: #FFFFFF;
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .towbtn {
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+    }
+    #ulist_div{
+        text-align: left;
+    }
+
+    .appointment-ul2>li>span{
+        width: 80px;
+    }
+    .f_div{
+        margin: 5px;
+		width: 50%;
+		display: flex;
+    }
+    .f_lab{
+        width: 80px;
+		text-align: left;
+		white-space: nowrap;
+		line-height: 34px;
+    }
+    .f_div_fj1{
+        display: flex;
+    }
+    .ml5{
+        margin-left: 5px;
+    }
+    .m5{
+        margin: 5px;
+    }
+
+    .ulist_div{
+        display: flex;
+        width: 85%;
+        margin: 0 auto;
+        border: 1px solid lightgray;
+        flex-wrap: wrap;
+        padding: 5px;
+    }
+    .ld{
+        width: 24%;
+        padding: 5px;
+        display: flex;
+    }
+    .ld label{
+        margin-bottom: 0;
+    }
+    .ld input[type=checkbox],input[type=radio]{
+        margin-top: 0;
+    }
+	.fileBox{
+		width: 100px;
+		height: 100px;
+		border: 2px dashed #999;
+		border-radius: 6px;
+		text-align: center;
+		line-height: 116px;
+		position: relative;
+	}
+	.fileBox .fas.fa-plus:before{
+		font-size: 40px;
+	}
+	#equipmentFile{
+		position: absolute;
+		top: -1px;
+		left: 0;
+		height: 100px;
+		opacity: 0;
+	}
+	.tpl{
+		display: block;
+		
+	}
+	.checkBox{
+		display: flex;
+		margin-right: 25px;
+		vertical-align: -3px;
+	}
+	.idtmBox{
+		width: 200px;
+		max-height: 115px;
+		overflow-y: scroll;
+	    border: 1px solid #999;
+    	padding-left: 10px;
+	}
+</style>
+<body>
+
+
+<div class="box">
+    <form id="equipmentForm" onsubmit="return false;">
+
+        <ul class="appointment-ul2 ">
+			<li>
+				<div class="f_div">
+				    <label class="f_lab"><span style="color: red;">*</span>医院名称：</label>
+				    <div>
+				        <select class="newin" style="margin-bottom: 10px;" id="applyHos" name="hospitalId">
+				            <!--<option value="00">vv</option>-->
+							<!-- <option value="">请选择</option> -->
+				        </select>
+				    </div>
+				</div>
+				<div class="f_div">
+				    <label class="f_lab"><span style="color: red;">*</span>科室名称：</label>
+				    <div>
+				        <select class="newin" style="margin-bottom: 10px;" id="applyDepartment" name="kkid">
+				            <!--<option value="00">vv</option>-->
+							<!-- <option value="">请选择</option> -->
+				        </select>
+				    </div>
+				</div>
+			</li>
+            <li>                
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备类型：</label>
+                    <!--<input type="text" class="newin" id="equipmentType" name="equipmentType" value=""/>-->
+                    <select class="newin" style="margin-bottom: 10px;" id="equipmentType" name="typeId"></select>
+                </div>
+				<div class="f_div">
+				    <label class="f_lab"><span style="color: red;">*</span>设备名称：</label>
+				    <input type="text" class="newin" id="equipmentName" name="equipmentName" value=""/>
+				</div>
+            </li>
+            <!-- <li>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备序列号：</label>
+                    <input type="text" class="newin" id="equipmentNumber" name="equipmentNumber" value=""/>
+                </div>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备通道号：</label>
+                    <input type="text" class="newin" id="equipmentChannel" name="equipmentChannel" value=""/>
+                </div>
+            </li> -->
+
+
+            <li>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备品牌：</label>
+                    <input type="text" class="newin" id="equipmentBrand" name="equipmentBrand" value=""/>
+                </div>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>设备型号：</label>
+                    <input type="text" class="newin" id="equipmentModel" name="equipmentModel" value=""/>
+                </div>
+            </li>
+            <li>
+                <div class="f_div">
+                    <label class="f_lab"><span style="color: red;">*</span>检查地点：</label>
+                    <input type="text" class="newin" id="inspectAddress" name="inspectAddress" value=""/>
+                </div>
+            </li>
+			<li>
+			    <div class="f_div" style="width: 100%;">
+			        <label class="f_lab"><span style="color: red;">*</span>检查项目：</label>
+					<!-- <input type="checkbox" class="" id="equipmentBrand1" name="checkpoint" value=""/>
+					<span>胳膊</span>
+					<label class="f_lab">胳膊</label>
+			        <input type="checkbox" class="" id="equipmentBrand2" name="checkpoint" value=""/>
+					<span>腿</span> -->					
+					<div class="idtmBox oWrapper">
+						<div class="tpl checkBox" style="margin-right: 10px;vertical-align: -3px;" id="ulist_div">
+
+							<input type="checkbox" style="margin-top: 10px;" class="checkpoint" id="" name="inspectProject" value=""/>
+							<label class="f_lab" style="width: 1%;"></label>
+							<input type="hidden" id="configInfoString" class="configInfoString" value="" />
+						</div>
+					</div>
+			    </div>
+			</li>
+			<!--<li>
+			    <div class="f_div">
+			        <label class="f_lab"><span style="color: red;">*</span>基础价格：</label>
+			         <input type="number" class="newin" id="equipmentPrice" name="price" value=""/> 
+			    </div>
+			</li>-->
+			<li>
+			    <div class="f_div" id="imageBox">
+			        <label class="f_lab"><span style="color: red;">*</span>设备图片：</label>			        
+					<div class="fileBox">
+						<i class="fas fa-plus"></i>
+						<input type="file" class="newin chooseImg" id="equipmentFile" name="equipmentUrl" value="" onchange="uploadImg();"/>
+					</div>
+			    </div>
+			</li>
+
+        </ul>
+		<input type="hidden" id="equipmentId" value="" />
+        <div style="text-align: center;margin-top: 30px;" id="query">
+            <button class="towbtn" id="saveCancle">取消</button>
+            <button class="onebtn" id="saveOk" onclick="saveEquipment()">保存</button>
+        </div>
+		<div style="text-align: center;margin-top: 30px;display:none" id="closeBox">
+		    <button class="onebtn" id="closeBtn">确定</button>
+		</div>
+    </form>
+
+</div>
+
+</body>
+
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+<script src="../../js/content.min.js?v=1.0.0"></script>
+<script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script>
+	
+	var imgUrL;
+	var user = JSON.parse(sessionStorage.getItem("user"));
+	var userId=sessionStorage.getItem('userId');
+	var initHosIds="";
+	
+	//指定医院下拉框 初始化
+	function applyreadHospitalBooking() {
+		
+	    $("#applyHos").html('');
+	    $.ajax({
+	        type: "get",
+	        url: config + "/sys/hospital/list",
+	        async: false,
+	        dataType: "jsonp",
+	        jsonp: "jsoncallback",
+	        success: function(data) {
+	            console.log("医院数据：：：",data);
+                var hospitalList=data.resultMap.hospitalList;
+                if(hospitalList!=null){
+                    var hospitalHtml='';
+                    for(var s=0;s<hospitalList.length;s++){
+                        hospitalHtml+='<option data-name="'+hospitalList[s].name+'" value="'+hospitalList[s].id+'">'+hospitalList[s].name+'</option>';
+                    }
+                    $("#applyHos").html(hospitalHtml);
+
+                }
+				if($("#applyHos").val() == $("#applyHos").find("option").val()){
+					$("#applyHos").attr("data-name", $("#applyHos").find("option:selected").attr("data-name"));
+				}
+	            if(userId != 1) {
+					$("#applyHos").val(user.deptId);
+					$("#applyHos").attr("disabled", "disabled");
+					initHosIds=user.deptId;
+				}
+	            applytechOfficeBooking($("#applyHos").val());
+                if(edit_eqt_index!=""){
+                    initHosIds=equipmentList[edit_eqt_index].hospitalId;
+                }else{
+                    initHosIds=$("#applyHos").val();
+				}
+	            checkpointInit();
+	        },
+	    });
+	}
+	//指定医院选择 联动 科室
+	$("#applyHos").change(function(){
+		//联动查询 此医院下的科室
+		$("#applyHos").attr("data-name", $("#applyHos").find("option:selected").attr("data-name"));
+		applytechOfficeBooking($("#applyHos").val());
+	});
+	//指定科室初始化
+	function applytechOfficeBooking(selectHosId){//参数为当前选择上的医院的id和科室的select的id
+		$("#applyDepartment").html('');
+		$.ajax({
+			type: "get",
+			url: config + "/sys/section/list",
+			async: false,
+			dataType: "jsonp",
+			jsonp: "jsoncallback",
+			data: {fkHospitalId:selectHosId},
+			success: function(data) {
+				console.log(data);
+				if(data.status==1){
+					var sectionList=data.resultMap.sectionList;
+					if(sectionList!=null) {	
+						for (var t = 0; t < sectionList.length; t++) {
+							var techOfficeHtml = '';
+							techOfficeHtml += '<option data-name="'+sectionList[t].name+'" value="' + sectionList[t].id + '">' + sectionList[t].name + '</option>';
+							$("#applyDepartment").append(techOfficeHtml);
+						}
+					}
+					if($("#applyDepartment").val() == $("#applyDepartment").find("option").val()){
+						$("#applyDepartment").attr("data-name", $("#applyDepartment").find("option:selected").attr("data-name"));
+					}
+					// applytheDoctorBooking($("#applyDepartment").val());
+					if(userId != 1) {
+						$("#applyDepartment").val(user.fkSectionId);
+						$("#applyDepartment").attr("disabled", "disabled");
+					}
+				}
+			},
+		});
+	}
+	$("#applyDepartment").change(function(){
+		$("#applyDepartment").attr("data-name", $("#applyDepartment").find("option:selected").attr("data-name"));
+	})
+	function checkpointInit(){
+
+		ajaxGet('/inspect/project/getList', {
+			hospitalId: initHosIds
+		}, function (resData) {
+			var data = resData.resultMap.list;
+			$("#ulist_div").siblings().remove();
+			//渲染检查部位数据
+			var aahtml='';
+			data.forEach(function(ele, index){
+				//获取克隆dom
+				var lableText=ele.inspectProject + " " + ele.projectPrice + "元";
+				aahtml+='<div class="tpl checkBox" style="margin-right: 10px;vertical-align: -3px;" id="ulist_div">'
+							+'<input type="checkbox" style="margin-top: 10px;" class="checkpoint" id="" name="inspectProject" value="'+ele.inspectProject+'"/>'
+							+'<label class="f_lab" style="width: 1%;margin-left:5px">'+lableText+'</label>'
+							+'<input type="hidden" id="configInfoString" class="configInfoString" value="" />'
+						+'</div>';
+			});
+			//数据插入
+			$(".oWrapper").html(aahtml);
+
+			//edit所用  必须放在这，不然组织还没渲染
+		    if(edit_eqt_index!=""){
+		        editInit(edit_eqt_index);
+		    }
+		});
+	}
+	//设备类型下拉
+	function checkeQuipmentType(cn){
+		if (user.fkHospitalId == null) {
+			user.fkHospitalId = "";
+		} else{
+			user.fkHospitalId = user.fkHospitalId;
+		}
+		ajaxGet('/equipment/type/list', {}, function (resData) {			
+			var rm = resData.resultMap.list;
+			console.log("设备类型",rm)
+            if(rm != null){
+                for(var s = 0; s < rm.length; s++){
+                    var equipmentTypeHtml = '';
+                    equipmentTypeHtml += '<option data-name="' + rm[s].equipmentType + '" value="' + rm[s].id + '">' + rm[s].equipmentType + '</option>';
+                    $("#equipmentType").append(equipmentTypeHtml);
+                }
+            }
+            cn();
+        });
+	}
+	
+	//上传图片
+	function uploadImg(){
+		sessionId = sessionStorage.getItem("sessionId");
+		var formData = new FormData();
+		formData.append('file', document.getElementsByClassName("chooseImg")[0].files[0]);
+		formData.append("sessionId",sessionId);
+		$.ajax({
+			type:"post",
+			// url:"http://192.31.10.62:8001/oa/patinfo/uploadHeadImage",
+			url: config + "/common/uploadImage",
+			cache: false, //上传文件不需要缓存
+			async: true,
+			data: formData,
+			dataType:'JSON', //接收值的格式
+			enctype:'multipart/form-data',
+			processData: false, // 告诉jQuery不要去处理发送的数据
+			contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+			success: function(data){
+				console.log(data);
+				if(data.status == 1){
+					alert(data.message);
+                    $("#imageBox").find('img').remove();
+					$("#imageBox").append("<img src=" + data.resultMap.imageUrl + " width='100' height='100' />");
+					imgUrL = data.resultMap.imageUrl;
+					// $("#equipmentFile").attr("onchange", "");
+				}else{
+					alert(data.message);
+				}
+			},
+			error: function(data){
+				console.log(data);
+				if(data.status == 2){
+					alert(data.message);
+				}
+			}
+		});
+	}
+    var ulist;
+	
+    $(function () {
+        //设备类型数据
+        checkeQuipmentType(function () {
+            applyreadHospitalBooking();
+        });
+		if(user.fkSectionId != "null"){
+			if(user.sectionName == "" || user.sectionName == null){
+				$("#applyDepartment").html("");
+				var techOfficeHtml='';
+				techOfficeHtml+='<option data-name="" value="'+user.fkSectionId+'" selected="selected"></option>';
+				$("#applyDepartment").append(techOfficeHtml);
+			}else{
+				$("#applyDepartment").html("");
+				var techOfficeHtml='';
+				techOfficeHtml+='<option data-name="'+user.sectionName+'" value="'+user.fkSectionId+'" selected="selected">'+user.sectionName+'</option>';
+				$("#applyDepartment").append(techOfficeHtml);
+			}
+		}
+
+		 $("#applyHos").change(function(){
+            //联动查询 此医院下的科室
+            applytechOfficeBooking($("#applyHos").val());
+            initHosIds=$("#applyHos").val();
+            checkpointInit();
+        });
+        //指定医院选择 联动医生
+        $("#applyDepartment").change(function(){
+            //联动查询 此医院下的医生
+            applytheDoctorBooking($("#applyDepartment").val());
+            
+            checkpointInit();
+        });
+   });
+    //编辑赋值初始化，放在下拉框初始化ajax里了
+    function editInit(index) {
+        var eqt=equipmentList[index];
+		console.log(eqt, "asdada");
+		disOninit();
+        //1.普通框 赋值
+        $('#equipmentName').val(eqt.equipmentName);
+        $('#equipmentType').val(eqt.typeId);
+        $('#equipmentNumber').val(eqt.equipmentNumber);
+        $('#equipmentChannel').val(eqt.equipmentChannel);
+		$('#inspectAddress').val(eqt.inspectAddress);
+        $('#equipmentBrand').val(eqt.equipmentBrand);
+        $('#equipmentModel').val(eqt.equipmentModel);
+		$('#equipmentId').val(eqt.id);
+		$("#equipmentPrice").val(eqt.price);
+		$("#imageBox").html("<label class='f_lab'><span style='color: red;'>*</span>设备图片：</label><img src="  + eqt.equipmentUrl +  " width='100' height='100' />");
+        //2.下拉框 选中
+		// $("#applyHos").text(eqt.hospital);
+		// $("#applyDepartment").text(eqt.yyks);
+		// console.log($("#applyHos").text(), "qweqwe");
+		// console.log($("#applyHos").val() == eqt.hospitalId);
+		var optionArr = $("#applyHos").find("option");
+		for (var j = 0; j < optionArr.length; j++) {
+			if(eqt.hospitalId == $(optionArr[j]).val()){
+				$(optionArr[j]).attr("selected", "selected");
+				$("#applyHos").attr("data-name", $("#applyHos").find("option:selected").attr("data-name"));
+				$("#applyHos").val($(optionArr[j]).val());
+			}
+		}
+		var optionArr1 = $("#applyDepartment").find("option");
+		for (var k = 0; k < optionArr1.length; k++) {
+			if(eqt.ksid == $(optionArr1[k]).val()){
+				$(optionArr1[k]).attr("selected", "selected");
+				$("#applyDepartment").attr("data-name", $("#applyDepartment").find("option:selected").attr("data-name"));
+				$("#applyDepartment").val($(optionArr1[k]).val());
+			}
+		}
+        //3.多选框 选中
+		var eqtList;
+//		console.log(eqtList,"asdasd231231");
+		if(eqt.inspectProject.indexOf(",") != -1){
+			eqtList=eqt.inspectProject.split(",");
+			for (var i = 0; i < eqtList.length; i++) {
+				$("input[name='inspectProject'][value='"+eqtList[i]+"']").attr("checked", "checked");
+			}
+		}else{			
+			eqtList = eqt.inspectProject;
+			$("input[name='inspectProject'][value='"+eqtList+"']").attr("checked", "checked");
+		}
+    }
+
+	
+	//查看时 禁用初始化
+	function disOninit(){
+		
+		$("#applyHos").attr("disabled", "disabled");
+		$("#applyDepartment").attr("disabled", "disabled");
+		$("#equipmentType").attr("disabled", "disabled");
+		$("#equipmentName").attr("disabled", "disabled");
+		$("#equipmentBrand").attr("disabled", "disabled");
+		$("#equipmentModel").attr("disabled", "disabled");
+//		$(".checkpoint").attr("disabled", "disabled");检查部位
+		$("#equipmentPrice").attr("disabled", "disabled");
+		$("#equipmentFile").attr("disabled", "disabled");
+//		$("#inspectProject").attr("disabled", "disabled");
+//		$("#inspectAddress").attr("disabled", "disabled");地址
+		// $("#query").css({
+		// 	"display":"none"
+		// })
+		$("#query").hide();
+		$("#closeBox").show();
+	}
+
+
+    //save前 非空验证
+    function  fromIsNull(fromArray){
+        var flag = false;
+        var c=0;
+		
+		console.log(fromArray);
+        $.each(fromArray, function (i, item) {
+			
+            if (item['value'] == '') {
+                flag = true;
+                return false;
+            }
+            // if (item['name'] == "equipmentPerDO") {
+            //     c++;				
+            // }
+			if (item['name'] == "inspectProject") {
+			    c++;				
+			}
+        });
+        if (flag||c==0) {
+            alert('信息不可为空');
+            return true;
+        }
+        return false;
+    }
+    //保存
+	// var fromData = {};
+    function saveEquipment() {
+
+        //判断表单数据是否为空
+        var fromArray = $('#equipmentForm').serializeArray();
+//		console.log(fromArray,"asdasd");
+		// alert($("#applyHos").val());
+        //非空验证
+        if(fromIsNull(fromArray)){
+            return;
+        }
+        var fromData = {};
+        $.each(fromArray, function () {
+            // if(this.name=="equipmentPerDO"){
+            //     var uv=fromData["equipmentPerDO"]==null?this.value:fromData["equipmentPerDO"]+","+this.value;
+            //     fromData["equipmentPerDO"]=uv;
+            // }else{
+            //     fromData[this.name] = this.value;
+            // }
+			if(this.name=="inspectProject"){
+			    var uv=fromData["inspectProject"]==null?this.value:fromData["inspectProject"]+","+this.value;
+			    fromData["inspectProject"]=uv;
+			}else{
+			    fromData[this.name] = this.value;
+			}
+        });
+		fromData.equipmentUrl = imgUrL;
+		fromData.hospital = $("#applyHos").find("option:selected").attr("data-name");
+		fromData.yyks = $("#applyDepartment").find("option:selected").attr("data-name");
+		fromData.equipmentType = $("#equipmentType").find("option:selected").attr("data-name");
+//		fromData.detailedInfo = $("#configInfoString").val();
+		if ($("#equipmentFile").val() == "") {
+			alert('信息不可为空');
+			return false;
+		}
+		fromData.hospitalId = $("#applyHos").val();
+//		console.log(fromData);
+		url='/equipment/equipmentInfo/save';
+        ajaxGet(url, fromData, function (res) {
+            alert(res.message);
+            if (res.status == 1) {
+                location.reload();
+            }
+        })
+    }
+
+    //点击导入的新增信息 的取消
+    $("#saveCancle").click(function () {
+        $("#subscribeListLight1").css("display", "none");
+        $("#subscribeListFade").css("display", "none");
+    });
+	//点击查看的信息的关闭
+	$("#closeBtn").click(function () {
+	    $("#subscribeListLight1").css("display", "none");
+	    $("#subscribeListFade").css("display", "none");
+	    if ($("#inspectAddress").val() == "") {
+	    	alert("检查地点不能为空!");
+	    };
+	    var fromArray = $('#equipmentForm').serializeArray();
+	    var fromData = {};
+	    
+	    $.each(fromArray, function () {
+            // if(this.name=="equipmentPerDO"){
+            //     var uv=fromData["equipmentPerDO"]==null?this.value:fromData["equipmentPerDO"]+","+this.value;
+            //     fromData["equipmentPerDO"]=uv;
+            // }else{
+            //     fromData[this.name] = this.value;
+            // }
+			if(this.name=="inspectProject"){
+			    var uv=fromData["inspectProject"]==null?this.value:fromData["inspectProject"]+","+this.value;
+			    fromData["inspectProject"]=uv;
+			}else{
+			    fromData[this.name] = this.value;
+			}
+        });
+        fromData.id = $('#equipmentId').val();
+        fromData.equipmentType = $("#equipmentType").find("option:selected").attr("data-name");
+        console.log("fromData",fromData);
+        if(fromIsNull(fromArray)){
+        	$(".white_content").show();
+        	$("#subscribeListFade").show(); 
+            return;
+        }else{
+        	$.ajax({
+		    	type:"get",
+		    	url: config + "/equipment/equipmentInfo/update",
+		    	async:true,
+		    	data:fromData,
+		    	success: function(data){
+		    		console.log(data);
+		    		if (data.status == "1") {
+		    			alert(data.message);
+		    			RefreshIframe('page/deviceManagement/deviceManagement.html','SBGL_YXSB');
+		    		}else{
+		    			alert(data.message);
+		    		}
+		    	},
+		    	error: function(data){
+		    		console.log(data);		    		
+		    	}
+		    });
+        };	    
+	});
+</script>
+</html>

@@ -1,0 +1,140 @@
+/*html,body,div,span,p,input,img,h1,h2,h3,h4,h5,h6,hr,a,ul,li,select,option,button,i,textarea{
+	margin: 0;
+	padding: 0;
+}*/
+a{
+	text-decoration: none;
+}
+ul li{
+	list-style: none;
+}
+select, option,textarea{
+	outline: 0;
+}
+button,img{
+	outline: 0;
+	border: 0;
+}
+input{
+	outline: 0;
+}
+.box{
+	width: 100%;
+	/*height: 800px;*/
+	/*min-width: 1300px;*/
+	padding: 5px;
+	box-sizing: border-box;
+}
+.boxHead{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #018ee8;
+	color: #018ee8;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	padding-left: 5px;
+	box-sizing: border-box;
+}
+.boxTitle{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	padding: 1px 10px;
+	box-sizing: border-box;
+	background-color: #f2f2f2;
+	color: #1b1b1b;
+}
+.appointment-ul{
+	width: 100%;
+	height: 120px;
+	padding: 5px 10px;
+	box-sizing: border-box;
+	/*margin-bottom: 10px;*/
+}
+.appointment-ul li{
+	float: left;
+	width: 20%;
+	height: 32px;
+	margin-bottom: 5px;
+	min-width: 300px;
+}
+.appointment-ul li span,.appointment-ul2 li span{
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	color: #313131;
+}
+.appointment-ul li input{
+	height: 30px;
+	border: 1px solid #d2d2d2;
+	border-radius: 3px;
+	padding: 1px 4px;
+	box-sizing: border-box;
+}
+.appointment-ul li select{
+	height: 30px;
+	width: 174px;
+	padding: 1px 4px;
+	box-sizing: border-box;
+}
+.appointment-ul2{
+	width: 100%;
+	/*height: 300px;*/
+	padding: 5px 10px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+}
+.appointment-ul2 li{
+	width: 100%;
+	height: 100px;
+}
+.appointment-ul2 li input{
+	height: 90px;
+	width: 92%;
+	border: 1px solid #d2d2d2;
+	border-radius: 3px;
+	padding: 1px 4px;
+	box-sizing: border-box;
+}
+#saveOk{
+	width: 150px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	color: #FFFFFF;
+	background-color: #018eea;
+	letter-spacing: 2px;
+	margin-top: 20px;
+	margin-left: 39%;
+	cursor: pointer;
+}
+#saveCancle{
+	width: 150px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-family: "microsoft yahei";
+	font-size: 14px;
+	color: #5b5b5b;
+	background-color: #ececec;
+	letter-spacing: 2px;
+	margin-top: 20px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+.appointment-ul2 li textarea{
+	width: 88%;
+	height: 80px;
+	padding: 1px 5px;
+	box-sizing: border-box;
+	vertical-align:top;
+	border: 1px solid #d2d2d2;
+	border-radius: 3px;
+}
+/*form{
+	overflow: hidden;
+}*/

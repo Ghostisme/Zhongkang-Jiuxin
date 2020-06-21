@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../styles/css/bill.css">
+		<link rel="stylesheet" href="../../../styles/common_css/common_dialog.css">
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">发票信息</span>
+		</header>
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--开票信息-->
+					<div id="invoice_info_div">
+						<div id="invoice_title_div">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<span class="lf issueInvoiceTitle">发票类型</span>
+									<span class="rt issueInvoiceType valueAddtaxInvoice">专票</span>
+									<span class="rt issueInvoiceType paperInvoice">普票</span>
+									<span class="rt issueInvoiceType choseIssueInvoiceType noInvoice"style="margin-right: 5px;">不开发票</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--优惠券-->
+					<div class="productMoney">
+						<div id="productMoney_title_div">
+							<ul class="mui-table-view"id="productMoneyBox">
+								<li class="mui-table-view-cell"id="billTitleRow">
+										<span>发票抬头</span>
+										<span class="rt">
+											<span class="invoiceTitle chosedInvoiceTitle personType">个人</span>
+											<span class="invoiceTitle companyType">公司</span>
+										</span>
+										
+								</li>
+								<li class="mui-table-view-cell"id="personTitle">
+										<span class="lf issueInvoiceTitle">抬头内容</span>
+										<input type="text" class="rt issueInvoiceTxt"placeholder="请填写“个人”或姓名"/>
+								</li>
+								<li class="mui-table-view-cell"id="companyName">
+										<span class="lf issueInvoiceTitle">单位名称</span>
+										<input type="text" class="rt issueInvoiceTxt"placeholder="请填写公司全称"/>
+								</li>
+								<li class="mui-table-view-cell"id="taxpayerIdentificationNumber">
+										<span class="lf issueInvoiceTitle">纳税人识别号</span>
+										<input type="text" class="rt issueInvoiceTxt"placeholder="请填写纳税人识别号"/>
+								</li>
+								<li class="mui-table-view-cell"id="writeBillAddr">
+										<span class="lf issueInvoiceTitle">注册地址</span>
+										<input type="text" class="rt issueInvoiceTxt"placeholder="请填写注册地址"/>
+								</li>
+								<li class="mui-table-view-cell"id="writetaxtTel">
+										<span class="lf issueInvoiceTitle">注册电话</span>
+										<input type="text" class="rt issueInvoiceTxt"placeholder="请填写注册电话"/>
+								</li>
+								<li class="mui-table-view-cell"id="writeBillOpenBank">
+										<span class="lf issueInvoiceTitle">开户银行</span>
+										<input type="text" class="rt issueInvoiceTxt"placeholder="请填写开户银行"/>
+								</li>
+								<li class="mui-table-view-cell"id="writetaxBankNum">
+										<span class="lf issueInvoiceTitle">银行账户</span>
+										<input type="text" class="rt issueInvoiceTxt"placeholder="请填写银行账户"/>
+								</li>
+								<li class="mui-table-view-cell">
+										<span>发票内容</span>
+										<span class="rt">
+											商品明细
+										</span>
+										
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!--提交按钮-->
+			<div id="submit_btn" class="mui-text-center"style="z-index: 999;">
+				确定
+			</div>
+		</div>
+		<div id="bg" class="mui-backdrop" style="display: none;"></div>
+		<div id="wait_dialog" class="mui-text-center mui-popup mui-popup-in">
+			<span class="mui-spinner"></span>
+			<span id="wait_dialog_font">正在提交，请稍等...</span>
+		</div>
+		<script src="../../../mui/js/mui.min.js"></script>
+		<script src="../../../common/jquery-1.12.1.js"></script>
+		<script src="../../../common/common.js"></script>
+		<script src="bill.js"></script>
+	</body>
+
+</html>

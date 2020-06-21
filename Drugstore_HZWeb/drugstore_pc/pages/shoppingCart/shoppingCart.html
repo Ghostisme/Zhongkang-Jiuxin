@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>华忠医药</title>
+		<link rel="stylesheet" href="../../common/bootstrap.css" />
+		<link rel="stylesheet" href="../../common/reset.css" />
+		<link rel="stylesheet" href="../../common/style.css" />
+		<link rel="stylesheet" href="../../common/common.css" />
+		<link rel="stylesheet" href="../../css/headerTop.css" />
+		<link rel="stylesheet" href="../../css/mainTop.css" />
+		<link rel="stylesheet" href="../../css/footer.css" />
+		<link rel="stylesheet" href="../../css/fix_right_menu.css" />
+		<link rel="stylesheet" href="../../css/shoppingCart.css" />
+		<style>
+			.cbox,
+			.cTbox {
+				float: left;
+				width: 16px;
+				height: 15px;
+				line-height: 15px;
+				/*border:1px solid #ccc;*/
+				background: url("../../images/shopCart/carNoCheck.png");
+				background-repeat: no-repeat;
+				vertical-align: middle;
+				text-align: center;
+				margin-top: 13px;
+				margin-right: 4px;
+				background-size: 100% 100%;
+			}
+			
+			.cbox.checked,
+			.cTbox.checked {
+				width: 18px;
+				height: 17px;
+				line-height: 17px;
+				color: #f00;
+				background: url("../../images/shopCart/checkBoxImg.png");
+				vertical-align: middle;
+				text-align: center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				margin-top: 11px;
+			}
+			
+			.cbox.checked:after,
+			.cTbox.checked:after {
+				width: 18px;
+				height: 17px;
+				line-height: 17px;
+				/*content:"√";*/
+				background: url("../../images/shopCart/checkBoxImg.png");
+				font-size: 13px;
+				font-weight: bold;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			.csbox {
+				float: left;
+				width: 16px;
+				height: 15px;
+				line-height: 15px;
+				/*border:1px solid #ccc;*/
+				background: url("../../images/shopCart/carNoCheck.png");
+				vertical-align: middle;
+				text-align: center;
+				margin-top: 28px;
+				margin-right: 4px;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			.csbox.checked {
+				width: 18px;
+				height: 17px;
+				line-height: 17px;
+				color: #f00;
+				background: url("../../images/shopCart/checkBoxImg.png");
+				vertical-align: middle;
+				text-align: center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				margin-top: 27px;
+			}
+			
+			.csbox.checked:after {
+				width: 18px;
+				height: 17px;
+				line-height: 17px;
+				/*content:"√";*/
+				background: url("../../images/shopCart/checkBoxImg.png");
+				font-size: 13px;
+				font-weight: bold;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="loadTop"></div>
+			<div class="shoploadHeader">
+				<div class="lf topMainLogo">
+					<img src="../../images/header/logo.png" style="width: 65px;"//>
+					<div class="logoText">
+						<h3>华忠医药</h3>
+						<h5>生命痊力·华忠医药</h5>
+					</div>
+				</div>
+				<div class="rt topMainStatus">
+					<img src="../../images/shopCart/cartStatus1.png" />
+				</div>
+			</div>
+		</header>
+		<div id="shopcartSection">
+			<div class="shopcartTab">
+				购物车<span class="topTotal">6</span>
+			</div>
+			<div class="clearBoth">
+			</div>
+			<!--购物车列表-->
+			<div class="shopCartContent">
+				<form action="">
+					<div class="allTittle">
+						<div class="col lf">
+							<span class="spanCheckBox lf">
+								<span class="cTbox"id="checkAllTop"onclick="this.className=/checked/ig.test(this.className)?this.className.replace('checked',''):(this.className+' checked')"></span>
+							</span>
+							<!--<input type="checkbox" name="" class="allCheck allCheck2" id="allCheckBtn" value="" />-->
+							<span class="checkAllTxt lf">全选</span>
+						</div>
+						<div class="col2 lf"style="text-align: left;">商品信息</div>
+						<div class="col3 lf">金额</div>
+						<div class="col4 lf">数量</div>
+						<div class="col5 lf">小计</div>
+						<div class="col6 lf">操作</div>
+					</div>
+
+					<div class="cartProductList">
+					</div>
+					<div class="cartProductNoList">
+						您的购物车空空如也，点击
+						<span class="gotoAddProduct">去添加</span>
+					</div>
+				</form>
+			</div>
+			<!--购物车结算操作条-->
+			<div class="settleAccountsBar">
+				<div id="cart-floatbar">
+					<div class="ui-ceilinglamp-1" style="width: 990px; height: 72px;">
+						<div class="cart-toolbar">
+							<div class="toolbar-wrap">
+								<div class="selected-item-list hide" style="display: none;">
+								</div>
+								<div class="options-box">
+									<div class="select-all lf">
+										<div class="cart-checkbox">
+											<!--<input type="checkbox" id="toggle-checkboxes_down" name="toggle-checkboxes" class="jdcheckbox" clstag="clickcart|keycount|xincart|cart_allCheckDown">-->
+											<span class="spanCheckBox lf">
+												<span class="csbox checkBoxFooterAll"onclick="this.className=/checked/ig.test(this.className)?this.className.replace('checked',''):(this.className+' checked')"></span>
+											</span>
+											<span class="checkboxes lf">全选</span>
+										</div>
+									</div>
+									<div class="operation lf">
+										<a href="#none" clstag="clickcart|keycount|xincart|cart_somesku_del" class="remove-batch">删除</a>
+										<a href="#none" class="cleaner-opt J_clr_all" title="亲，点我可快速清理购物车商品哦！">清理购物车</a>
+									</div>
+									<div class="clr"></div>
+									<div class="toolbar-right toolbar-right-new rt">
+										<div class="normal">
+											<div class="comm-right">
+												<div class="btn-area rt">
+													<a href="javascript:void(0);" onclick="return false;" clstag="clickcart|keycount|xincart|cart_gotoOrder" class="submit-btn" data-bind="1">
+														去结算<b></b></a>
+												</div>
+												<div class="price-sum rt">
+													<div class="price-sum-childBox">
+														<span class="txt txt-new">合计：</span>
+														<span class="price sumPrice">
+															¥
+															<em data-bind="0.00"class="TotalPrice">0.00</em>
+														</span>
+														<b class="ml5 price-tips"></b>
+														<div class="price-tipsbox-new" style="display: none; left: 159.85px;">
+															<div class="ui-tips-main">不含运费及送装服务费</div>
+															<span class="price-tipsbox-arrow"></span>
+														</div>
+														<br>
+														<!--<div id="price-sum-extra-1" class="price-sum-extra"><span class="">促销：</span><span class="">-¥100.00</span></div>-->
+													</div>
+												</div>
+												<!--<div class="amount-sum rt">
+													已选择<em>2</em>件商品<b class="up" clstag="clickcart|keycount|xincart|cart_thumbnailOpen"></b>
+												</div>-->
+												<div class="clr"></div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--删除模板-->
+		<div class="bgDel">
+			<div class="del_dialog">
+				<div class="del-spinner">提示
+					<span class="bgDelClose rt closed">×</span>
+				</div>
+				<div class="del_dialog_font">
+					<span class="delWarnsText">您确定要删除该商品吗？</span>
+				</div>
+				<div class="delDialogBtnRow">
+					<div class="delDialogCancelBtn cancelBtns">
+						取消
+					</div>
+					<div class="delDialogBtn delDialogSureBtn">
+						确认
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--提示模板-->
+		<div class="messageBG">
+			<div class="message_dialog">
+				<div class="message-spinner">提示
+					<span class="messageClose rt closed">×</span>
+				</div>
+				<div class="message_dialog_font">
+					<span class="messageWarnsText">请选择商品</span>
+				</div>
+			</div>
+		</div>
+		<div class="loadSideBar"></div>
+		<footer>
+
+		</footer>
+		<div class="mask" style="background: rgba(6, 145, 249, .05);position: absolute;left: 0;top: 0;width: 100%;height: 100%;display: none;">
+			<div class="load_box" style="position: relative;width: 132px;height: 131px;left: 50%;top: 50%;transform: translate(-50%, -50%);font-size: 13px;color: #000;text-align: center;">
+				<img src="img/295146d873ee9a838cdaf420d8792d4fa0b0e2191667-6LMWwj_fw658.gif" width="132" height="131"/>
+				正在加载,请耐心等待...
+			</div>
+		</div>
+		<script type="text/javascript" src="../../common/jquery-1.12.1.js"></script>
+		<script type="text/javascript" src="../../common/common.js"></script>
+		<script type="text/javascript" src="../../common/config.js"></script>
+		<script type="text/javascript" src="../../js/shoppingCart.js"></script>
+	</body>
+
+</html>

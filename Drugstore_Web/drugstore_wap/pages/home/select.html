@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/common_css/dibu.css">
+		<link rel="stylesheet" href="../../mui/css/common.css">
+
+
+		<style>
+
+			.t_l_div{
+				width: 13%;/*31.25em;*/
+			}
+			.t_c_div{
+				width: 74%;/*172.5em;*/
+                height: 44px;
+			}
+			.t_r_div{
+				width: 13%;/*31.25em;*/
+			}
+			.pr{
+				position: relative;
+			}
+			.ds_c{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.select_img{
+				position: absolute;
+				top: 17px;
+				left: 14px;
+				width: 13px!important;
+				height: 13px!important;
+			}
+			.tcd_input{
+				width: 99% !important;
+				height:33px !important;
+				border-radius:17px !important;
+				padding-left: 34px !important;
+				font-size: 13px;
+				margin: 0 !important;
+				background:rgba(238,239,238,1)!important;
+				border: 0!important;
+				color: #000;
+
+                position: absolute;
+                top: 7px;
+                left: 4px;
+			}
+			.sousuo_font{
+				font-size:15px;
+				font-family:MicrosoftYaHei;
+				font-weight:400;
+				color:rgba(0,0,0,1);
+			}
+			.resousuo_font{
+				font-size:14px;
+				font-family:MicrosoftYaHei;
+				font-weight:400;
+				color:rgba(96,96,96,1);
+			}
+			.resousuo_dbtn{
+				background:rgba(255,255,255,1);
+				border:1px solid rgba(235,235,235,1);
+				border-radius:2px;
+				margin-right: 10px;
+				padding: 10px;
+				margin-bottom: 10px;
+
+				font-size:14px;
+				font-family:MicrosoftYaHei;
+				font-weight:400;
+				color:rgba(0,0,0,1);
+			}
+			.resousuo_ddiv{
+				display: flex;
+				flex-wrap: wrap;
+				margin-top: 10px;
+			}
+			.lsss_d{
+				display: flex;
+				justify-content: space-between;
+				padding-right: 15px;
+			}
+			.cleard{
+				color: #2292FE;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body style="background-color: #F4F4F4">
+		<!--顶部搜索栏-->
+		<header id="headerBG" class="mui-bar mui-bar-nav" style="background-color: #fff;">
+			<!--头部_new-->
+			<div class="ds_c" style="height: 100%;">
+				<!--左按钮-->
+				<div class="t_l_div ds_c">
+					<!--<div class="yuan_div ds_c">
+						<a class="mui-action-back mui-icon mui-icon-left-nav " style="color: white;margin: 0;padding: 0;"></a>
+					</div>-->
+				</div>
+				<!--中间框-->
+				<div class="t_c_div pr">
+					<input id="sousuoInput" autofocus="autofocus" class="tcd_input" type="text"  placeholder="搜索药品" >
+
+					<img class="select_img" src="../../styles/img/home_new_img/未标题-3_08.png" />
+				</div>
+				<!--右按钮-->
+				<div id="sousuo" class="t_r_div ds_c sousuo_font">
+					搜索
+				</div>
+			</div>
+		</header>
+
+			<!--中间商品展示部分-->
+			<div id="shop_item_show" class=" mui-scroll-wrapper " style="bottom: 50px;" >
+				<div ><!--class="mui-content"-->
+					<!--这里放置真实显示的DOM内容-->
+					<div style="padding: 15px 0 0 10px;margin-top: 50px;">
+						<div class="resousuo_font lsss_d">
+							<div>热门搜索</div>
+							<div class="cleard ds_c">
+								<div onclick="rmss_sh(this)">隐藏</div>
+								<div style="margin-left: 10px;" onclick="rmssInit();">换一批</div>
+							</div>
+						</div>
+						<div id="rmss_div" class="resousuo_ddiv">
+							<!--<div class="resousuo_dbtn">藏药系列</div>
+							<div class="resousuo_dbtn">冬虫夏草</div>
+							<div class="resousuo_dbtn">健康饮食</div>
+							<div class="resousuo_dbtn">日化用品</div>
+							<div class="resousuo_dbtn">起居养生</div>-->
+						</div>
+					</div>
+
+					<div style="padding: 15px 0 0 10px;">
+						<div class="resousuo_font lsss_d">
+							<div>历史搜索</div>
+							<div class="cleard" onclick="clear_lsss()">清除</div>
+						</div>
+						<div class="resousuo_ddiv" id="lsss_d">
+							<!--<div class="resousuo_dbtn">藏药系列</div>-->
+							<!--<div class="resousuo_dbtn">冬虫夏草</div>-->
+
+						</div>
+					</div>
+					<!--<div id="no_search" class="" >
+						<div class="imgc">
+							<img src="../../styles/img/home_img/searchnull.png" alt="" />
+							<h4>没有找到您需要的商品</h4>
+							<h4>请用正确的方式打开</h4>
+						</div>
+					</div>-->
+				</div>
+			</div>
+			<div id="menu_bg"></div>
+			<div id="search_bg"></div>
+
+		<!--底部footer导航-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="footer footer-mui-active" href="../../index.html">
+				<img src="../../styles/img/home_img/home_normal.png" />
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="footer" href="mall.html">
+				<img src="../../styles/img/home_img/shop_press.png" />
+				<span class="mui-tab-label" style="color: #0691F9;">分类</span>
+			</a>
+			<a id="go_shopcart" class="footer">
+				<img src="../../styles/img/home_img/shop_cart_normal.png" />
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a id="go_person_center" class="footer">
+				<img src="../../styles/img/home_img/my_normal.png" />
+				<span class="mui-tab-label">我</span>
+			</a>
+		</nav>
+
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script type="text/javascript" src="../../mui/js/mui.pullToRefresh.js"></script>
+		<script type="text/javascript" src="../../mui/js/mui.pullToRefresh.material.js"></script>
+		<!--<script type="text/javascript" src="shop_screen.js"></script>-->
+		<script src="../../mui/js/mui.picker.js"></script>
+		<script src="../../mui/js/mui.poppicker.js"></script>
+		<script src="../../mui/js/mui.picker.min.js"></script>
+		<script src="../../mui/js/city.data.js"></script>
+		<script src="../../mui/js/city.data-3.js"></script>
+		<script src="../../common/common.js"></script>
+		<script type="text/javascript" src="shop_index_versionTwo.js"></script>
+		<script>
+			/*点击个人中心*/
+			$('.mui-bar').on('tap', '#go_person_center', function() {
+				if(window.webUser) {
+					window.location.href = '../my/user/user.html';
+				} else {
+					showDialog();
+				}
+			});
+			/*点击购物车*/
+			$('.mui-bar').on('tap', '#go_shopcart', function() {
+				if(window.webUser) {
+					window.location.href = '../shopCart/shopcart_index.html';
+				} else {
+					showDialog();
+				}
+			});
+
+			/*判断是否登录的dialog*/
+			function showDialog() {
+				var btnArray = ['否', '是'];
+				mui.confirm('您还没有登录，是否去登录？', '提示', btnArray, function(e) {
+					if(e.index == 1) {
+						window.location.href = '../../pages/login/login.html';
+					} else {}
+				})
+			}
+
+			function iphoneToSet() {
+				var btnArray = ['否', '是'];
+				mui.confirm('为了您更好使用，请打开本机浏览器cookie功能，详情请见~！', '提示', btnArray, function(e) {
+					if(e.index == 1) {
+						window.location.href = '../setting/iphoneSetting.html';
+					} else {}
+				})
+			}
+            var offset=1;
+            var limit=5;
+
+			$(function () {
+                var fullName=getQueryVariable('fullName')?getQueryVariable('fullName'):"";
+                if(fullName!=""){
+                    $('#sousuoInput').val(fullName);
+                }
+                rmssInit();
+                $('#sousuo').click(function () {
+					var name =$('#sousuoInput').val();
+                    tzList(name);
+                });
+            });
+			function rmssInit() {
+                $.ajax({
+                    type: "get",
+                    url: config + "/drug/hotSearch/list",
+                    dataType: "jsonp",
+                    data:{
+                        offset:offset,
+                        limit:limit
+                    },
+                    jsonp: "jsoncallback",
+                    success: function(data) {
+                        console.log('data:::', data);
+                        var rmssList=data.resultMap.list;
+                        var rmssHtml='';
+                        for (var i=0;i<rmssList.length;i++) {
+                            rmssHtml+='<div onclick="rmssClick(this)" class="resousuo_dbtn">'+rmssList[i].content+'</div>';
+                        }
+                        $('#rmss_div').html(rmssHtml);
+                        offset=parseInt(data.resultMap.offset)+1;
+                    },
+                });
+            }
+			//隐藏 显示热门搜索
+			function rmss_sh(that) {
+			    var rmhtml=$(that).html();
+			    if(rmhtml=="隐藏"){
+                    $(that).html("显示")
+				}else{
+                    $(that).html("隐藏")
+                }
+                $('#rmss_div').toggle();
+            }
+			//历史搜索添加
+			function lsss_set(name) {
+                var lsss=JSON.parse(localStorage.getItem('lsss'));
+                if(lsss!=null&&lsss!=""){
+                    if(lsss.indexOf(name)==-1){
+                        lsss.push(name);
+                    }
+				}else{
+                    lsss=[];
+                    lsss[0]=name;
+				}
+                localStorage.setItem('lsss',JSON.stringify(lsss));
+                return lsss;
+            }
+            //历史搜索初始化渲染
+            function lsss_init() {
+                var lsss=JSON.parse(localStorage.getItem('lsss'));
+                console.log("lsss:::",lsss);
+                if(lsss!=null){
+                    var lsss_html='';
+                    for (var i=0; i< lsss.length; i++){
+                        lsss_html+='<div onclick="rmssClick(this)" class="resousuo_dbtn">'+lsss[i]+'</div>';
+					}
+                    $('#lsss_d').html(lsss_html);
+                }else{
+                    $('#lsss_d').html('');
+				}
+            }
+            //历史搜索清除
+            function clear_lsss(){
+                localStorage.removeItem('lsss');
+                lsss_init();
+            }
+            lsss_init();
+			function rmssClick(that) {
+			    var name=$(that).html().trim();
+                tzList(name);
+            }
+			function tzList(name) {
+                lsss_set(name);
+                window.location.href='./selectList.html?fullName='+name;
+
+            }
+
+
+		</script>
+	</body>
+
+</html>

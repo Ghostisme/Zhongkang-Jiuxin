@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>邀请门店</title>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+	    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+	    <link rel="stylesheet" href="css/InviteStores.css">
+	</head>
+	<body>
+		<div id="web">
+			<div class="contentBox">
+				<div class="itemBox">
+	                <div class="specialAreasBox">
+	                    <div class="leftspecialAreasBox">
+	                    	<div class="left">
+	                    		<div class="queryLabel">邀请门店:</div>
+	                    		<el-input v-model="inviteStores"></el-input>
+	                    	</div>
+	                    	<div class="right">
+	                    		<el-button class="queryBtn" size="small" type="primary" @click="queryBtnClick">查询</el-button>
+	                    		<el-button size="small" @click="resBtnClick">清空</el-button>
+	                    	</div>
+	                    </div>
+	                    <div class="rightspecialAreasBox">
+	                        <el-button size="small" type="warning" @click="openAddAlert">新增</el-button>
+	                    </div>
+	                </div>
+	                <div class="specialAreasListBox">
+	                    <div class="specialAreasList">
+	                        <div class="listHeader">
+	                            <ul>
+	                                <li v-for="(item, index) in titltList" :key="index" :style="item.myStyle">{{ item.name }}</li>
+	                            </ul>
+	                        </div>
+	                        <div class="listContent" v-for="(item, index) in dataList" :key="index">
+	                            <ul>
+									<li style="width: 5%;">{{ index | handleIndex }}</li>
+									<li style="width: 13%;">{{ item.name | handleValue }}</li>
+	                                <!-- <li style="width: 15%;">
+	                                    <span v-if="item.type == 0">否</span>
+	                                    <span v-else>是</span>
+	                                </li> -->
+	                                <li style="width: 12%;">
+	                                    <!-- <span class="btnTextColor btnText" @click="openCheckAlert(item.id)">查看</span> -->
+	                                    <span class="btnTextColor btnText" @click="openChangeAlert(item.id)">编辑</span>
+	                                    <span class="btnTextColor btnText" @click="openDelectAlert(item.id)">删除</span>
+	                                    <span class="btnTextColor btnText glyphicon glyphicon-arrow-up" @click="sortClick(item.id, item.number, 0)"></span>
+	                                    <span class="btnTextColor btnText glyphicon glyphicon-arrow-down" @click="sortClick(item.id, item.number, 1)"></span>
+	                                </li>
+	                            </ul>
+							</div>
+							<div class="pageN"></div>
+	                    </div> 
+	                </div>
+	            </div>
+			</div>
+			<!-- 新增 or 编辑 alertText判定 -->
+	        <el-drawer
+	            :title="alertText"
+	            :before-close="cancelForm"
+	            :visible.sync="dialog"
+	            direction="rtl"
+	            :wrapper-closable="false"
+	            custom-class="add-drawer"
+	            ref="drawer">
+	            <div class="add-drawer__content">
+	                <el-form :model="alertForm">
+	                	<el-form-item label="邀请门店">
+	                        <el-input v-model="alertForm.packagePrice"></el-input>
+	                    </el-form-item>
+	                    <!-- <el-form-item label="是否默认" :label-width="formLabelWidth">
+	                        <el-radio-group v-model="alertForm.resource" @change="handleChange">
+	                            <el-radio label="是"></el-radio>
+	                            <el-radio label="否"></el-radio>
+	                        </el-radio-group>
+	                    </el-form-item> -->
+	                </el-form>
+	            </div>
+	            <div class="add-drawer__footer">
+	                <el-button type="primary" @click="handleClose" :loading="loading">{{ loading ? '提交中 ...' : '保 存' }}</el-button>
+	            </div>
+	        </el-drawer>
+	        <!-- 查看 -->
+	        <!-- <el-drawer
+	            title="查看"
+	            :before-close="checkCancelForm"
+	            :visible.sync="checkDialog"
+	            direction="rtl"
+	            :wrapper-closable="false"
+	            custom-class="add-drawer"
+	            ref="checkDrawer">
+	            <div class="add-drawer__content">
+	                <el-form :model="checkForm">
+	                    <el-form-item label="邀请门店" :label-width="formLabelWidth">
+	                        <span>{{ checkForm.packagePrice }}</span>
+	                    </el-form-item>
+	                </el-form>
+	            </div>
+	            <div class="add-drawer__footer">
+	                <el-button type="primary" @click="checkHandleClose">确 定</el-button>
+	            </div>
+	        </el-drawer> -->
+	        <!-- 删除 -->
+	        <el-drawer
+	            title="删除"
+	            :before-close="delCancelForm"
+	            :visible.sync="delDialog"
+	            direction="rtl"
+	            custom-class="del-drawer"
+	            :wrapper-closable="false"
+	            ref="delDrawer">
+	            <div class="del-drawer__content">
+	                <div class="delContentBox">
+	                    <i class="el-icon-warning"></i>
+	                    <div>你确定要删除此项吗?</div>
+	                </div>
+	            </div>
+	            <div class="del-drawer__footer">
+	                <el-button @click="delCancelForm">取 消</el-button>
+	                <el-button type="primary" @click="delHandleClose" :loading="loading">{{ loading ? '提交中 ...' : '确 定' }}</el-button>
+	            </div>
+	        </el-drawer>
+		</div>
+	</body>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/vue.js"></script>
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<!-- <script src="js/dataRequest.js"></script> -->
+    <script src="js/InviteStores.js"></script>
+</html>

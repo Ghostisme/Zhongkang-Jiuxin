@@ -1,0 +1,38 @@
+body{background-color: #F9314E; font-size: 16px; color: #fff;}
+p{color: #fff;}
+.mui-table-view{background-color: #F9314E;}
+.mui-slider-item a img{width: 100%; height: 100%;}
+.title{text-align: center;}
+.title1{margin-top: 30px;}
+.titleFont{text-align: justify; line-height: 28px;}
+.titleFont1{overflow: hidden; margin-top: 20px; margin-right: 10px;}
+.titleFont2{overflow: hidden; line-height: 28px; margin-right: 10px;}
+.titleFont3{padding: 0 10px;}
+.titleImg{float: left; width: 28%; margin: 10px 15px 10px 10px;}
+ul{list-style-type: none; padding: 0; overflow: hidden;}
+.sample1{background-color: #fff; width: 48.2%; float: left; padding: 30px 5px 5px;}
+.sample2{background-color: #fff; width: 48.2%; float: right; padding: 30px 5px 5px;}
+.sample1 p, .sample2 p{color: #F9314E; text-align: right;}
+.sample1 p span, .sample2 p span{font-size: 14px; font-weight: bolder;}
+.proImg{text-align: center; margin-bottom: 20px;}
+.proImg img{width: 50%;}
+.goodsName{text-align: justify;}
+.goodsName .Gname{color: #252525;}
+.goodsName .price{color: #E70012;}
+.goodsName .price span{font-size: 20px;}
+.coupon{text-align: center;}
+.coupon img{width: 85%;}
+.title1 p{text-align: justify; font-size: 16px;}
+.mui-icon-arrowright{font-size: 18px; font-weight: bold; color: #FFCC00;}
+table{width: 100%;}
+table td{border: 3px solid #FFCC00; padding: 10px 5px;}
+.tdLeft{width: 32%; font-size: 16px;}
+.tdRight{width: 68%; font-size: 18px;}
+.titleYellow{font-size: 18px; font-style: italic; font-weight: bold; color: #FFF266; float: left; margin-top: 10px; text-align: justify; line-height: 26px;}
+.registerBtn{color: #FEF16A; font-size: 18px; background: #E30111; line-height: 100px; padding: 16px 80px; border-radius: 5px; box-shadow: #8A0711 0px 3px 0px;}
+.final{overflow: hidden;}
+.qrcode{ width: 50%; float: left; font-size: 14px; text-align: center;}
+.contact{width: 50%; float: left; font-size: 16px; padding: 20px 0;}
+.qrcode > img{margin: 25px 0 10px; width: 110px;}
+.qrcode > div{width: 75%; margin: auto;}
+.footer{clear: both; font-size: 14px; text-align: center; margin: 50px 0 100px;}

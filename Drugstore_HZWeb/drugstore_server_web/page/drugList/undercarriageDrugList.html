@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>远程会诊-已申请</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<!--<link rel="stylesheet" type="text/css" href="../../css/foundation.min.css"/>-->
+	<link href="../../css/foundation-datepicker.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../../css/drugList.css"/>
+	<link rel="stylesheet" type="text/css" href="../../css/calendar.css"/>
+	
+	<style>
+		.doctorAdvice img{
+			width:278px;
+			height: 278px;
+			margin-right:3.5%;
+			/*margin-bottom: 20px;*/
+			border: 1px solid #E2E3E3;	
+			cursor:pointer;
+		}
+		.doctorAdvice{
+			height: auto;
+			display: none;
+		}
+		#J_pg{
+			z-index: 88888;
+		}
+		.delImgAll span{
+			cursor: pointer;
+			font-size: 1.25em;
+			background:#1B1B1B;
+			opacity: 0.5;
+			color: #fff;
+			border-bottom-left-radius: 13px;
+		}
+		.delImgAll span:hover{
+			background:#1B1B1B;
+			opacity: 0.5;
+			color: #fff;
+		}
+		.reportQueryInfoList-oparate {
+			width: 12%;
+			font-size: 14px;
+			line-height: 39px;
+		}
+	</style>
+	<body>
+		<div class="reportQueryInfoBox">
+		<!--第一行信息-->
+			<div class="reportQueryInfoHead">
+				<div class="reportQueryNanme">
+					<span class="reportQueryNanmeLeft">药品名称:</span>
+					<input class="reportQueryNanmeRight" type="text" id="ListreportQueryName" value="" />
+				</div>
+				<div class="reportQueryNanme lineWidth">
+					<div class="form-group">
+	                        <span class="lf">一级分类：</span>
+	                        <div class="col-sm-8">
+	                            <div class="input-group">
+	                                <input type="text" class="form-control" id="ryaoName" name="title" >
+	                                <div class="input-group-btn">
+	                                    <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown">
+	                                        <span class="caret"></span>
+	                                    </button>
+	                                </div>
+	                                <ul class="dropdown-menu dropdown-menu-right scrollHeight" role="menu"style="height: 200px;overflow-y: scroll;">
+	                                </ul>
+	                            </div>
+	                        </div>
+	                    </div>	
+				</div>
+				<div class="reportQueryNanme lineWidth">
+					<div class="form-group">
+	                        <span class="lf">二级分类：</span>
+	                        <div class="col-sm-8">
+	                            <div class="input-group">
+	                                <input type="text" class="form-control" id="ryaoName2" name="title" >
+	                                <div class="input-group-btn">
+	                                    <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown">
+	                                        <span class="caret"></span>
+	                                    </button>
+	                                </div>
+	                                <ul class="dropdown-menu dropdown-menu-right" role="menu"style="height: 200px;overflow-y: scroll;">
+	                                </ul>
+	                            </div>
+	                        </div>
+	                    </div>	
+				</div>
+				<button class="reportQueryBtnCheck" id="reportQuerySearchBtns">查询</button>
+				<button class="reportQueryBtnClear"id="reportQuerySearchClearBtn">清空</button>	
+			</div>
+		<!--信息列表-->	
+		<div class="reportQueryInfoList">
+			<ul class="reportQueryInfoList-ul">
+				<li class="reportQueryInfoList-all">序号</li>
+				<li class="reportQueryInfoList-code LiTextAlign">药品全称</li>
+				<li class="reportQueryInfoList-name LiTextAlign"style="width:12%;">药品化学名称</li>
+				<li class="reportQueryInfoList-sex LiTextAlign"style="width:7%;">所属一级分类</li>
+				<!--<li class="reportQueryInfoList-sex LiTextAlign"style="width:7%;">所属二级分类</li>-->
+				<li class="reportQueryInfoList-sex LiTextAlign"style="width:7%;">规格</li>
+				<li class="reportQueryInfoList-id LiTextAlign">批准文号</li>
+				<li class="reportQueryInfoList-tel LiTextAlign"style="width:7%;">储藏条件</li>
+				<li class="reportQueryInfoList-tel LiTextAlign"style="width:12%;">生产厂商</li>
+				<li class="reportQueryInfoList-tel LiTextAlign"style="width:7%;">价格</li>
+				<li class="reportQueryInfoList-oparate LiTextAlign"style="width: 7%;">操作</li>
+			</ul>
+			<!--列表内容-->
+				<input type="text"style="display: none;" id="formUserId"/>
+				<input type="text"style="display: none;" id="formSessionId"/>
+				<input type="text"style="display: none;" />
+				<div id="reportQueryInfoContents">
+					<!--<ul class="reportQueryInfoDetail-ul">
+						<li class="reportQueryInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+						<li class="reportQueryInfoDetail-code"><span>1</span></li>
+						<li class="reportQueryInfoDetail-name"><span>某某某</span></li>
+						<li class="reportQueryInfoDetail-sex"><span>男</span></li>
+						<li class="reportQueryInfoDetail-id"><span>120105198506891157</span></li>
+						<li class="reportQueryInfoDetail-tel"><span>13612345678</span></li>
+						<li class="reportQueryInfoDetail-history"><span>糖尿病</span></li>
+						<li class="reportQueryInfoDetail-allergic"><span>无过敏史</span></li>
+						<li class="reportQueryInfoDetail-circ"><a href = "javascript:void(0)" class="btn-circ"><img src="../../img/common/1.jpg"/></a></li>
+						<li class="reportQueryInfoDetail-check"><a href = "javascript:void(0)" class="reportQueryBtn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+						<li class="reportQueryInfoDetail-change"><a href = "javascript:void(0)" class="reportQueryBtn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+						<li class="reportQueryInfoDetail-del"><a href = "javascript:void(0)" class="reportQueryBtn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>
+					</ul>-->
+				</div>
+		</div>
+			  <div class="clearfix"></div>
+			  <!--分页-->
+			  <div class="reportQuerypageN"></div>
+			  <!--灰背景-->
+              <div id="reportQueryFade" class="black_overlay"></div>
+              <div id="reportQueryFadeUpload" class="black_overlay"></div>
+  			  <div id="uploadingImg"style="display: none;text-align: center;"><img src="../../css/plugins/blueimp/img/loading.gif" alt=""style="width:40px;height:40px;" />上传中......</div>
+		</div>
+		
+	</body>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/foundation-datepicker.js"></script>
+	<script src="../../js/foundation-datepicker.min.js"></script>	
+	<script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="jquery-photo-gallery/jquery.js"></script>-->
+    <!--<script src="jquery-photo-gallery/jquery.photo.gallery.js"></script>-->
+	<script type="text/javascript">
+		
+//  获取用户id       
+		var userId=sessionStorage.getItem('userId');
+		var sessionId=sessionStorage.getItem('sessionId');
+//		$('#addreportQueryBornTime').fdatepicker({format: 'yyyy-mm-dd'});
+		$('#changeInforeportQueryBornTime').fdatepicker({format: 'yyyy-mm-dd'});
+
+		window.onload=function(){
+			$(document).on("click",".delBtn",function(){
+				var imgId=$(this).parent().find(".imgId").text();
+				var currentLineIds=$(this).parent().parent().find(".hiddenreportQueryId").text();
+//			删除单条历史医嘱
+				var mymessage=confirm("您确定要删除此医嘱吗?");
+			    if(mymessage==true){   
+			    	ajaxGet('/oa/patinfo/removeImage', {
+		            	imgId:imgId,
+			        }, function (resData) {
+			            alert("删除成功！");
+			            readHistoryAdvice(currentLineIds);
+		        });  
+			    }
+			});
+		}
+
+//		点击查询按钮
+		$("#reportQueryInfoContents").on("click",".reportQueryInfoDetail-oparate",function(){
+//			获取页面当行信息
+			var currentLineIds=$(this).parent().find(".reportQueryInfoDetail-lineId").text();
+			localStorage.setItem("editingUndercarriage",currentLineIds);
+			RefreshIframe('page/changeProductDetail/changeUndercarriage.html','editingUndercarriage');
+		});
+		
+
+        
+//时间戳转时间方法
+function formatDateTime(timeStamp) {   
+	var date = new Date(parseInt(timeStamp));
+	Y = date.getFullYear();
+	M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1);
+	D = date.getDate();
+	h = date.getHours() + ':';
+	m = date.getMinutes() + ':';
+	s = date.getSeconds();      
+	return Y + '-' + M + '-' + D;    
+};
+ var nameAndTel='';//搜索条件-姓名、手机号
+ var startTime='';//搜索条件-开始时间
+ var endTime='';//搜索条件-结束时间
+ var typeId='';
+ var categoryId='';
+//      以下为调取接口的部分
+		var currentPage = 1;
+				var offsetPage=0;//传输的页起始条数
+				var showNum=10;//页面需要显示的条数
+				var num_pages;
+			//点击分页页数
+				$(document).delegate(".flipOver",'click',function(){
+					$(this).addClass('active').siblings().removeClass('active');
+					currentPage = parseInt($(this).attr("pageId"));
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getreportQueryList();
+					window.scrollTo(0,0);
+				});
+			//点击上一页
+				$(document).delegate("#prev",'click',function(){	
+					if($(".flipOver.active").prev().attr("id") == "prev"){
+						return true
+					}else{
+						var page = parseInt($(".flipOver.active").attr("pageid"))-1;
+						$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+					}
+					currentPage = page;
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getreportQueryList();
+					window.scrollTo(0,0);
+				});
+				
+				
+			//点击下一页
+				$(document).delegate("#Next",'click',function(){
+					if($(".flipOver.active").next().attr("id") == "Next"){
+						return true
+					}else{
+						var page = parseInt($(".flipOver.active").attr("pageid"))+1;
+						$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+					}
+					currentPage = page;
+					offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+					getreportQueryList();
+					window.scrollTo(0,0);
+				});	
+				//点击分页跳转页按钮
+			    $(document).delegate(".srueToJumpPageBtn",'click',function(){
+			        currentPage = parseInt($(".toPageNum").val().trim());
+			        offsetPage = (currentPage-1)*10;//（页码-1）*每页显示条数
+			        getreportQueryList();
+			        window.scrollTo(0,0);
+			    });
+				getreportQueryList();
+				//	获取订单列表
+				function getreportQueryList(){
+					console.log("coming......");
+					$("#reportQueryInfoContents").html('');
+					console.log(nameAndTel);
+					console.log(startTime);
+					console.log(endTime);
+					$.ajax({
+						type:"get",
+						url:config+"/drug/info/invalidList",
+						async:false,
+						dataType:"JSON",
+						data:{
+							stockCheck:0,
+							retailPriceStart:"", 
+							retailPriceEnd:"", 
+							typeId:typeId,
+							categoryId:categoryId,
+							offset:currentPage,//（页码-1）*每页显示条数
+							fullName:nameAndTel,
+							limit:showNum//每页赢显示的条数	
+						},
+						success:function(data){
+							console.log("aaaaaaaaaaaaaaaaaaa");
+							console.log(data);
+							var applyInfoList=data.resultMap.commodityInfoList;
+							var listTotal=data.resultMap.total;//总条数
+//							var index = data.viewIndex;
+							num_pages = Math.ceil(parseInt(listTotal)/10);//总条数除以每页十条数据为总页码
+							if(applyInfoList.length>0){
+								for(var i=0,k=0;i<applyInfoList.length;i++){
+									var pathtml='';
+									k++;
+									pathtml+='<ul class="reportQueryInfoDetail-ul">';
+									pathtml+='<li class="reportQueryInfoDetail-lineId LiTextAlign" style="display:none">'+applyInfoList[i].rec+'</li>';
+	//								pathtml+='<li class="reportQueryInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>';	
+									pathtml+='<li class="reportQueryInfoDetail-radio "><span class="applyNumber">'+k+'</span></li>';
+									pathtml+='<li class="reportQueryInfoDetail-code LiTextAlign"><span class="applyNumber">'+applyInfoList[i].fullName+'</span></li>';
+									pathtml+='<li class="reportQueryInfoDetail-name LiTextAlign"style="width:12%;"><span>'+applyInfoList[i].chymistryName+'</span></li>';
+									if(applyInfoList[i].typeName==null||applyInfoList[i].typeName==""){
+										pathtml+='<li class="reportQueryInfoDetail-sex LiTextAlign"style="width:7%;"><span></span></li>';//一级分类
+									}else{
+										pathtml+='<li class="reportQueryInfoDetail-sex LiTextAlign"style="width:7%;"><span>'+applyInfoList[i].typeName+'</span></li>';//一级分类
+									}
+//									pathtml+='<li class="reportQueryInfoDetail-sex LiTextAlign"style="width:7%;"><span>'+applyInfoList[i].standard+'</span></li>';//二级分类
+									pathtml+='<li class="reportQueryInfoDetail-sex LiTextAlign"style="width:7%;"><span>'+applyInfoList[i].standard+'</span></li>';
+									pathtml+='<li class="reportQueryInfoDetail-id LiTextAlign"><span>'+applyInfoList[i].permitNo+'</span></li>';
+									pathtml+='<li class="reportQueryInfoDetail-tel LiTextAlign"style="width:7%;"><span>'+applyInfoList[i].storageCondition+'</span></li>';//会诊医院
+									pathtml+='<li class="reportQueryInfoDetail-tel LiTextAlign"style="width:12%;"><span>'+applyInfoList[i].manufacturer+'</span></li>';//会诊科室
+									pathtml+='<li class="reportQueryInfoDetail-tel LiTextAlign"style="width:7%;"><span>￥'+applyInfoList[i].retailPrice+'</span></li>';//会诊医生
+									pathtml+='<li class="reportQueryInfoDetail-oparate LiTextAlign"style="width:7%;"><a href = "javascript:void(0)" class="reportQueryBtn-check btnTextColor"><span>编辑</span></a></li>';	
+	//								pathtml+='<li class="reportQueryInfoDetail-change"><a href = "javascript:void(0)" class="reportQueryBtn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>';	
+	//								pathtml+='<li class="reportQueryInfoDetail-del"><a href = "javascript:void(0)" class="reportQueryBtn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>';	
+									pathtml+='</ul>';
+						      		$("#reportQueryInfoContents").append(pathtml);
+									var pageHtml = page(parseInt(currentPage),num_pages);
+									$(".reportQuerypageN").html(pageHtml);
+								}
+							}else{
+								var pageHtml = page(2,1);
+								$(".reportQuerypageN").html(pageHtml);
+							}
+							
+							
+						},
+					});
+					
+			}
+//			模态框
+//				$("#reportQueryFade").css("height",window.screen.height);
+//				$("#reportQueryFade").css("width",window.screen.width);
+
+	
+	
+//	加载日期插件
+ 
+// var start = {
+// 	elem: "#start",
+// 	format: "YYYY-MM-DD",//YYYY/MM/DD hh:mm:ss
+//// 	min: laydate.now(),
+// 	max: "2099-06-16 23:59:59",
+// 	istime: true,
+// 	istoday: false,
+// 	fixed: true, //是否固定在可视区域
+// 	choose: function(datas) {
+// 		end.min = datas;
+// 		end.start = datas
+// 		
+// 	}
+// };
+// var end = {
+// 	elem: "#end",
+// 	format: "YYYY-MM-DD",//YYYY/MM/DD hh:mm:ss
+//// 	min: laydate.now(),
+// 	max: "2099-06-16 23:59:59",
+// 	istime: true,
+// 	istoday: false,
+// 	fixed: true, //是否固定在可视区域
+// 	choose: function(datas) {
+// 		start.max = datas
+// 	}
+// };
+// laydate(start);
+// laydate(end);
+
+// 点击搜索查询按钮
+$("#reportQuerySearchBtns").click(function(){
+	nameAndTel=$("#ListreportQueryName").val();
+	if($("#ryaoName").val()==""||$("#ryaoName").val()==null){
+		typeId='';
+	}
+	if($("#ryaoName2").val()==""||$("#ryaoName2").val()==null){
+		categoryId='';
+	}
+	currentPage = 1;
+	getreportQueryList();
+	
+});
+//点击清空按钮
+$("#reportQuerySearchClearBtn").click(function(){
+	$("#ListreportQueryName").val("");
+	nameAndTel="";
+	currentPage = 1;
+	typeId='';
+	categoryId='';
+	$("#ryaoName").val("");
+	$("#ryaoName2").val("");
+	getreportQueryList();
+});
+suggestInit();
+//一级分类
+function suggestInit() {
+    ajaxGet('/drug/info/firstList', {name:"",limit:"",offset:""}, function (res) {
+        console.log("一级分类：：：：",res);
+        var resdata = res.resultMap.commodityTypeList;
+
+        var baiduBsSuggest = $("#ryaoName").bsSuggest({
+            //indexId: 0,//每组数据的第几个数据，作为输入输入框的数据id
+            //indexKey: 1,//每组数据的第几个数据，作为输入输入框的内容
+            idField: 'id',          //每组数据的哪个字段作为 data-id，优先级高于 indexId 设置（推荐）
+            keyField: 'name',          //每组数据的哪个字段作为输入框内容，优先级高于 indexKey 设置（推荐）
+            allowNoKeyword: false,//是否允许无关键字时请求数据
+            showHeader: true, //是否显示选择列表的 header，默认有效字段大于一列时显示，否则不显示
+            showBtn: true,//是否显示下拉按钮
+            listAlign: "right",              //提示列表对齐位置，left/right/auto
+            listStyle: {
+                "width": "100%"//"max-width": "200px",
+            },
+            effectiveFields: ["name"],//有效显示于列表中的字段，非有效字段都会过滤
+            effectiveFieldsAlias: {//有效字段的别名
+                name: "一级分类"
+            },
+            data: {
+                "value": resdata
+            }
+        }).on("onSetSelectValue", function (a, b) {//选择商品后触发
+            $("#rec").val(b.id);
+            typeId=b.id;
+            for (var i=0;i<resdata.length;i++){
+                if(resdata[i].rec==b.id){
+                    $('#price').val(resdata[i].id);
+                }
+            }
+        });
+        
+    })
+    ajaxGet('/drug/info/twoMenoInfo', {}, function (res) {
+        console.log("二级分类：：：：",res);
+        var resdata = res.resultMap.commodityCategoryList;
+
+        var baiduBsSuggest2 = $("#ryaoName2").bsSuggest({
+            //indexId: 0,//每组数据的第几个数据，作为输入输入框的数据id
+            //indexKey: 1,//每组数据的第几个数据，作为输入输入框的内容
+            idField: 'id',          //每组数据的哪个字段作为 data-id，优先级高于 indexId 设置（推荐）
+            keyField: 'name',          //每组数据的哪个字段作为输入框内容，优先级高于 indexKey 设置（推荐）
+            allowNoKeyword: false,//是否允许无关键字时请求数据
+            showHeader: true, //是否显示选择列表的 header，默认有效字段大于一列时显示，否则不显示
+            showBtn: true,//是否显示下拉按钮
+            listAlign: "right",              //提示列表对齐位置，left/right/auto
+            listStyle: {
+                "width": "100%"//"max-width": "200px",
+            },
+            effectiveFields: ["name"],//有效显示于列表中的字段，非有效字段都会过滤
+            effectiveFieldsAlias: {//有效字段的别名
+                name: "二级分类"
+            },
+            data: {
+                "value": resdata
+            }
+        }).on("onSetSelectValue", function (a, b) {//选择商品后触发
+            $("#rec2").val(b.id);
+            categoryId=b.id;
+        });
+        
+    })
+    
+}
+</script>
+</html>

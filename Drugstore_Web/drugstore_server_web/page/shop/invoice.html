@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="../../common/bootstrap.css" />
+	<link rel="stylesheet" href="../../common/reset.css" />
+	<link rel="stylesheet" href="../../common/style.css" />
+	<link rel="stylesheet" href="../../common/common.css" />
+	<link rel="stylesheet" href="../../css/headerTop.css" />
+	<link rel="stylesheet" href="../../css/mainTop.css" />
+	<link rel="stylesheet" href="../../css/footer.css" />
+	<link rel="stylesheet" href="../../css/shop_index.css" />
+	<link rel="stylesheet" href="../../css/layui/css/layui.css" />
+	<link rel="stylesheet" href="../../css/order_index.css" />
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="../../css/layui/layui.all.js"></script>
+	<style type="text/css">
+		[v-cloak]{
+        display:none
+    	}
+	</style>
+</head>
+
+<body>
+	<div id="section">
+		<div id="app" v-cloak>
+			<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+				<ul class="layui-tab-title">
+					<li v-on:click="select(0)" class="layui-this">未处理 <span class="red" id="untreated"></span></li>
+					<li v-on:click="select(1)" class="">已处理 <span class="red" id="processed"></span></li>
+				</ul>
+				<div class="layui-content">
+					<div class="layui-tab-item layui-show">
+						<div v-for="row in orderList" class="mb20">
+							<div class="orderTitle layui-row">
+								<div v-if="row.orderType == 1&&row.isClosed == 0" class="layui-col-md4">订单号：{{row.orderId}}（{{(new Date(row.orderTime)).Format("yyyy-MM-dd hh:mm:ss")}}）</div>
+								<div v-if="row.orderType == 2&&row.isClosed == 0" class="layui-col-md4">订单号：{{row.orderId}}（{{(new Date(row.payTime)).Format("yyyy-MM-dd hh:mm:ss")}}）</div>
+								<div v-if="row.orderType == 3&&row.isClosed == 0" class="layui-col-md4">订单号：{{row.orderId}}（{{(new Date(row.deliveryTime)).Format("yyyy-MM-dd hh:mm:ss")}}）</div>
+								<div v-if="row.orderType == 4&&row.isClosed == 0" class="layui-col-md4">订单号：{{row.orderId}}（{{(new Date(row.completionTime)).Format("yyyy-MM-dd hh:mm:ss")}}）</div>
+								<div v-if="row.orderType == 5&&row.isClosed == 0" class="layui-col-md4">订单号：{{row.orderId}}（{{(new Date(row.cancellationTime)).Format("yyyy-MM-dd hh:mm:ss")}}）</div>
+								<div v-if="row.isClosed == 1" class="layui-col-md4">订单号：{{row.orderId}}（{{(new Date(row.processingInvoicesTime)).Format("yyyy-MM-dd hh:mm:ss")}}）</div>
+								<div class="layui-col-md4">订单金额 <span class="red">￥{{row.price}}</span> {{row.payType}}
+								</div>
+								<div class="layui-col-md4 sbox tc">
+								</div>
+							</div>
+							<div class="borderall" v-if="row.drugOrderProductList"
+								v-bind:style="{ height: (150*(row.orderHeight==0?1:row.orderHeight)-(row.orderHeight>1?1:0))+70+'px' }">
+								<div class="layui-col-md6">
+									<ul style="margin-top:-1px;">
+										<ul v-for="items in row.drugOrderProductList">
+											<li class="orderlist borderlinetop" style="width: 103%;" v-if="items.mealList"
+												v-bind:style="{ height: (150*(items.mealList.mealList.length==0?1:items.mealList.mealList.length)-(items.mealList.mealList.length>1?1:0))+70+'px' }">
+												<div style="border-bottom: 1px solid #eee;">【套餐】{{items.mealList.mealName}}</div>
+												<ul v-for="(item1, index1) in items.mealList.mealList">
+													<li class="orderlist">
+														<div class="headerdiv"><img  v-bind:src="item1.fileUrl?item1.fileUrl:'../../img/productImg1.png'" class="orderimg" />
+														</div>
+														<div>{{item1.drugName}}</div>
+														<div>{{item1.specs}}</div>
+														<div>￥{{item1.presentPrice}}/{{item1.drugNum}}{{item1.unit}}</div>
+													</li>
+												</ul>
+											</li>
+											<li class="orderlist borderlinetop" style="width: 100%;" v-else>
+												<div class="headerdiv"><img  v-bind:src="items.drugUrl?items.drugUrl:'../../images/shopCart/productImg1.png'" class="orderimg" />
+												</div>
+												<div>{{items.drugName}}</div>
+												<div>{{items.specs}}</div>
+												<div>￥{{items.drugPrice}}X{{items.drugNum}}</div>
+											</li>
+											<li v-if="row.drugOrderProductList.length == 0" class="orderlist borderlinetop">
+											&nbsp;
+											</li>
+										</ul>
+										
+										
+									</ul>
+								</div>
+								<div class="layui-col-md3 borderline maxheight">
+									<div class="vercenter potsion">
+										<div>共{{row.product.length}}种{{row.itemCount}}件</div>
+										<div>合计：￥{{row.price}}</div>
+										<div>运费：{{row.deliverMoney}}</div>
+									</div>
+								</div>
+								<div class="layui-col-md3 maxheight">
+									<div class="vercenter linef">
+										<div style="cursor: pointer;color:red" v-on:click="onDetails(row.orderId,true)">发票详情
+										</div>
+										<div v-if="row.isClosed != 1" style="cursor: pointer;" v-on:click="onDetails(row.orderId,false)">填写发票信息</div>
+										<div v-if="row.isClosed == 1" style="cursor: pointer;" v-on:click="onDetails(row.orderId,false)">修改发票信息</div>
+										<!-- <div style="cursor: pointer;" class="red"
+											v-if="row.orderType != 5 && row.orderType != 4 && row.orderType != 3"
+											v-on:click="onCancel(row.orderId)">取消订单</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--5.分页-->
+			<div style="margin: 55px 0 50px 0;display: flex;justify-content: space-between">
+				<div></div>
+				<div id="fenye_div" class="dis_fl">
+					<div class="fy_btn sx_btn">上一页</div>
+					<div class="fy_btn fy_selected_btn">1</div>
+					<div class="fy_btn ">2</div>
+					<div class="fy_btn ">3</div>
+					<div class="fy_btn ">4</div>
+					<div class="fy_btn sx_btn">下一页</div>
+					<div class="fy_zi">共4页，到第<input class="fy_input">页</div>
+					<div class="fy_quebtn">确定</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../common/jquery-1.12.1.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<!-- <script type="text/javascript" src="../../js/shop_index.js"></script> -->
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script>
+//			var app;
+			//分页相关初始化
+			function pageInit(total, limit, offset) {
+				//总页数
+				console.log(app,"======");
+//				var total_size = Math.ceil(app.total / app.limit);
+				var total_size = Math.ceil(total / limit);
+				//设置名称
+				// $('#s_type_p').html($('#se_type_yi .type_sp').html());
+				// if (fullName != "") {
+				// 	$('#s_type_p').html(fullName);
+				// }
+				//设置个数
+//				$('#s_total_p').html(app.total);
+//				$('#r_total_p').html(app.total);
+				$('#s_total_p').html(total);
+				$('#r_total_p').html(total);
+				$('#r_page_size_p').html(total_size);
+
+				//显示 找到了。。。商品。。。
+				$('#s_type_div').show();
+				//分页
+				var fenlei_html = "";
+				/*var fenlei_html='<div class="fy_btn sx_btn">上一页</div>\n' +
+					'<div class="fy_btn fy_selected_btn">1</div>\n' +
+					'<div class="fy_btn ">2</div>\n' +
+					'<div class="fy_btn ">3</div>\n' +
+					'<div class="fy_btn ">4</div>\n' +
+					'<div class="fy_btn sx_btn">下一页</div>\n' +
+					'<div class="fy_zi">共4页，到第<input class="fy_input">页</div>\n' +
+					'<div class="fy_quebtn">确定</div>';*/
+//				offset = Number(app.offset);
+				offset = Number(offset);
+				if (offset > 1) {
+					fenlei_html += '<div onclick="pageClick(this)" class="fy_btn sx_btn">上一页</div>';
+				} else {
+					fenlei_html += '<div class="fy_btn sx_btn">上一页</div>';
+				}
+				for (var i = offset > 4 ? offset - 3 : 1, j = 1; i <= total_size; i++ , j++) {
+					//最后几页显示
+					if (j >= total_size - (offset > 4 ? offset - 3 : 1)) {
+						if (i == offset) {
+							fenlei_html += '<div onclick="pageClick(this)" class="fy_btn fy_selected_btn">' + i + '</div>';
+							$('#r_offset_p').html(i);
+						} else {
+							fenlei_html += '<div onclick="pageClick(this)" class="fy_btn ">' + i + '</div>';
+						}
+						continue;
+					}
+					//不是最后几页 并且大于4 不作+
+					if (j > 4) {
+						if (j == 5) {//显示...
+							fenlei_html += '<div style="height: 35px;line-height: 35px;margin: 0 5px;">......</div>';
+						}
+						fenlei_html += '';
+						continue;
+					}
+					//正常
+					if (i == offset) {
+						fenlei_html += '<div onclick="pageClick(this)" class="fy_btn fy_selected_btn">' + i + '</div>';
+						$('#r_offset_p').html(i);
+					} else {
+						fenlei_html += '<div onclick="pageClick(this)" class="fy_btn ">' + i + '</div>';
+					}
+				}
+				if (offset < total_size) {
+					fenlei_html += '<div onclick="pageClick(this)" class="fy_btn sx_btn">下一页</div>';
+				} else {
+					fenlei_html += '<div class="fy_btn sx_btn">下一页</div>';
+				}
+				fenlei_html += '<div class="fy_zi">共' + total_size + '页，到第<input onchange="pageClick(this)" class="fy_input" value="">页</div>';
+				fenlei_html += '<div class="fy_quebtn">确定</div>';
+				$('#fenye_div').html(fenlei_html);
+			}
+
+			//分页相关点击处理
+			function pageClick(that) {
+				console.log(that,"that")
+				var total_size=Math.ceil(app.total/app.limit);
+//				var pageLimit = $(".fy_btn");
+//				var domArr = [];
+//				for(var i = 0; i < pageLimit.length; i++){
+//					domArr.push(pageLimit[i]);
+//				}
+//				domArr.shift();
+//				domArr.pop();
+//				console.log(pageLimit);
+//				console.log(domArr);
+				
+				if (that.value > total_size) {
+					that.value = total_size;
+					that.value = 1;
+//					$(domArr[0]).removeClass("fy_selected_btn");
+//					$(domArr[length - 1]).addClass("fy_selected_btn");
+					return;
+				}
+				//数据处理
+				var ye=$(that).html();
+
+				if(ye=="上一页"){
+					offset=(Number(app.offset)-1)<0?0:Number(app.offset)-1;
+				}else if(ye=="下一页"){
+					offset=(Number(app.offset)+1)>total_size?total_size:Number(app.offset)+1;
+				}else{
+					if(ye==""||ye==null){
+						ye=$(that).val();
+					}else{
+						//效果处理
+						$('.fy_selected_btn').removeClass('fy_selected_btn');
+						$(that).addClass('fy_selected_btn');
+					}
+					offset=ye;
+				}
+				app.offset = offset;
+				console.log(app.selectId)
+				app.getList(app.selectId);
+			}
+
+			function RefreshIframe(currentTabIds,leftHiddenTabId){
+				var thisTabs=parent.$(window.parent.document).find(".page-tabs .J_menuTab");
+				for(var k=0;k<thisTabs.length;k++){
+					if($(thisTabs[k]).attr("data-id").indexOf(currentTabIds.split('?')[0])>=0){
+						$(thisTabs[k]).addClass("active");
+						parent.$(window.parent.document).find(thisTabs[k]).find('.fa-times-circle').click();
+					}else{
+						console.log(currentTabIds)
+						parent.$(window.parent.document).find("#"+leftHiddenTabId).attr("href",currentTabIds);
+						parent.$(window.parent.document).find("#"+leftHiddenTabId).click();
+					}
+				}				
+			}
+
+			var total_size = 0;
+			var page = 1;
+			var pageCount = 5;
+			// if (!window.user) {
+			// 	window.location.href = window.src + "pages/login/login.html";
+			// }
+			var userId = JSON.parse(sessionStorage.getItem("user")).userId;
+			var app = new Vue({
+				el: '#app',
+				data: {
+					orderList: [],
+					productList: [],
+					inputtext: "",
+					oshow: true,
+					timeList: [],
+					oshowmore: true,
+					selectId: 0,
+					begin: 0,
+					total: 0,
+					offset: 1,
+					limit:10,
+					orderHeight:0,//每个订单的总高度
+					orderStrs: "全部订单",
+					orders: ["全部订单", "3个月内订单", "历史订单"],
+					history: "",
+					sumClass:0,
+					sum:0					
+				},
+				methods: {
+					onHistory: function (type) {
+						if (type == 3) {
+							this.history = type;
+							this.orderStrs = '3个月内订单';
+						} else {
+							this.history = "";
+							this.orderStrs = '全部订单';
+						}
+						this.getList(0);
+					},
+					onShow: function (order) {
+						order.oshowmore = true;
+					},
+					onDetails: function (orderId,isbool) {
+						if(isbool){
+							RefreshIframe('page/shop/invoiceDetails.html?is=page&orderId=' + orderId,'invoiceDetail');
+						}else{
+							RefreshIframe('page/shop/invoiceDetails.html?is=null&orderId=' + orderId,'invoiceDetail');
+						}
+					},
+					onBuy: function (order) {
+						$.ajax({
+							type: "get",
+							url: config + "/drug/cart/add",
+							async: false,
+							dataType: "jsonp",
+							jsonp: "jsoncallback",
+							data: {
+								userId: userId,
+								fromType: 2,
+								orderId: order.orderId
+							},
+							success: function (data) {
+								var idStr = "";
+								for (var i = 0; i < order.product.length; i++) {
+									var prodcut = order.product[i];
+									idStr += prodcut.drugId + ",";
+								}
+								localStorage.setItem("prodcutIds", idStr.substr(0, idStr.length - 1));
+								window.location.href = window.src + "pages/shoppingCart/shoppingCart.html?page=orderpage";
+							},
+						});
+					},
+					onCancel: function (orderId) {
+						this.cancelOrder(orderId);
+					},
+					onPay: function (orderId) {
+						sessionStorage.setItem("orderId", orderId);
+						window.location.href = window.src + 'pages/pay/pay.html?orderId=' + orderId;
+					},
+					search: function () {
+						this.getList(0);
+					},
+					select: function (index) {
+						this.selectId = index;
+						clearInterval(this.begin);
+						this.limit = 10;
+						this.offset = 1;
+						this.total = 0;
+						this.getList(index);
+						
+					},
+					listDispaly: function (data) {
+						for (var key in data) {
+							//是否存在
+							if ($("#" + key)) {
+								$("#" + key).html(data[key]);
+							}
+							//数组类型
+							if (isArrayFn(data[key])) {
+								var lists = data[key];
+								this.orderList = lists;
+								for (var i = 0; i < this.orderList.length; i++) {
+									this.orderList[i].oshowmore = true;
+									this.orderHeight=0;
+									//代付款时间
+									if (this.orderList[i].orderType == 1) {
+										this.orderList[i].spaceTime = new Date(this.orderList[i].overTime - this.orderList[i].startTime);
+										this.timeList.push(this.orderList[i]);
+									}
+									//遍历所有的数据 计算每个订单的总条数 计算总高度
+									for(var k = 0; k < this.orderList[i].drugOrderProductList.length;k++){
+										
+										if(this.orderList[i].drugOrderProductList[k].mealList){
+											this.orderHeight+=this.orderList[i].drugOrderProductList[k].mealList.mealList.length;
+										}else{
+											this.orderHeight++;
+										}
+									}
+									this.orderList[i].orderHeight=this.orderHeight;
+
+								}
+								if (this.timeList.length > 0) {
+									this.overtime();
+								}
+							}
+						}
+					},
+					overtime: function () {
+						var thiso = this;
+						var time = (new Date()).getTime();
+						this.begin = self.setInterval(function () {
+
+							for (var i = 0; i < thiso.timeList.length; i++) {
+								var order = thiso.timeList[i];
+								// var overTime = order.overTime;
+								// var startTime = order.startTime;
+								// var spaceTime = overTime - startTime-1000;
+								order.remainingTime = (order.remainingTime) - 1000;
+								var date = formatSeconds(parseInt(order.remainingTime / 1000));
+								$("#" + order.orderId).html(date);
+								if (order.remainingTime <= 0) {
+									thiso.cancelOrder(order.orderId);
+								}
+							}
+						}, 1000)
+
+					},
+					cancelOrder: function (orderId) {
+						clearInterval(this.begin);
+						$.ajax({
+							type: "get",
+							url: config + "/drug/orderInfo/upType",
+							async: false,
+							dataType: "jsonp",
+							jsonp: "jsoncallback",
+							data: {
+								orderType: 5,
+								orderId: orderId,
+								userId: userId,
+								proType: 2
+							},
+							success: function (data) {
+								window.location.reload();
+							},
+						});
+					},
+					getList: function (index) {
+						var thiso = this;
+						var datalist = new Object;
+						// datalist.userId = 1;
+						// if (this.selectId != 0) {
+						// 	datalist.orderType = this.selectId;
+						// }
+						// if (this.inputtext) {
+						// 	datalist.drugName = this.inputtext;
+						// }
+						// datalist.history = this.history;
+						if(thiso.selectId == undefined){
+							thiso.selectId = 0;
+						}
+						datalist.limit= thiso.limit;
+						datalist.offset = thiso.offset;
+						datalist.isClosed = index;		
+						console.log(datalist)
+						$.ajax({
+							type: "get",
+							url: config + "/drug/orderInfo/invoiceList",
+							async: true,
+							dataType: "jsonp",
+							jsonp: "jsoncallback",
+							data: datalist,
+							success: function (data) {
+								console.log(data, "data")
+								if (data.status == "1") {
+									thiso.listDispaly(data.resultMap);
+									if(thiso.selectId == 0){
+										thiso.total = data.resultMap.untreated;
+									}else{
+										thiso.total = data.resultMap.processed;
+									}
+									pageInit(thiso.total, thiso.limit, thiso.offset);
+									
+									//
+									if(data.resultMap.list.length == 0){
+										$('#fenye_div').hide();
+									}else{
+										$('#fenye_div').show();
+									}
+								} else {
+									alert(data.message);
+								}
+							},
+						});
+					}
+				},
+				created() {
+					this.getList(0);
+				}
+			})
+		</script>
+
+</body>
+
+</html>

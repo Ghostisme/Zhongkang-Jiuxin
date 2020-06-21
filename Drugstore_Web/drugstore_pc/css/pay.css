@@ -1,0 +1,124 @@
+/*content_top*/
+.top_step_box{
+	border-bottom: 1px solid #EBEBEB;
+	width: 100%;
+}
+.step_box{
+	width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.logo_box{
+	text-align: left;
+	width: 30%;
+	height: 123px;
+	line-height: 123px;
+	/*padding: 13px 0 24px 0;*/
+	cursor: pointer;
+}
+.logo_box img{
+	vertical-align: middle;
+}
+.step{
+	width: 70%;
+	height: 123px;
+	text-align: right;
+	line-height: 123px;
+}
+.step img{
+	vertical-align: middle;
+}
+/*content_middle*/
+.content_box{
+	width: 100%;
+}
+.wrapper_content{
+	width: 992px;
+	height: 771px;
+	margin: 82px auto 116px auto;
+	border: 1px solid #E6E6E6;
+}
+.pay_title{
+	display: flex;
+	justify-content: space-between;
+}
+.pay_left_title{
+	margin: 82px 0  0 116px;
+	width: 552px;
+	height: 50px;
+	font-size: 16px;
+	line-height: 35px;
+	font-family: "微软雅黑";
+}
+.pay_price{
+	/*margin-top: 81px;*/
+	margin-top: 86px;
+	font-family: "微软雅黑";
+}
+.pay_price span:nth-of-type(1){
+	font-size: 16px;
+}
+.pay_price span:nth-of-type(2){
+	font-size: 21px;
+	color: #FF4040;
+	margin-right: 75px;
+}
+.pay_choose_title{
+	font-size: 16px;
+	color: #616161;
+	margin: 53px 0 87px 121px;
+	font-family: "微软雅黑";
+}
+.pay_content{
+	/*width: 40%;*/
+	width: 26%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.pay{
+	margin-bottom: 41px;
+	display: flex;
+	justify-content: flex-start;
+	cursor: pointer;
+}
+.choose_box{
+	height: 63px;
+	line-height: 63px;
+}
+.choose_box img{
+	vertical-align: middle;
+}
+.payMsg_box{
+	margin-left: 18px;
+	border: 1px solid #E8E8E8;
+	width: 212px;
+	height: 63px;
+	line-height: 63px;
+	font-size: 24px;
+	color: #656565;
+	font-family: "微软雅黑";
+}
+.payMsg_box img{
+	margin-left: 27px;
+	margin-right: 12px;
+	vertical-align: middle;
+}
+.pay_btn{
+	margin-top: 41px;
+	text-align: center;
+	/*text-indent: -104px;*/
+	text-indent: 16px;
+}
+.pay_btn button{
+	width: 191px;
+	height: 49px;
+	background-color: #FF5555;
+	border: 1px solid #FF5555;
+	color: #FFF;
+	font-size: 24px;
+	font-weight: bold;
+	outline: none;
+	font-family: "微软雅黑";
+}

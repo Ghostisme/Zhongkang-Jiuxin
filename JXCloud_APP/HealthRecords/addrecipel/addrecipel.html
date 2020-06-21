@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta content="telephone=no" name="format-detection">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>添加处方</title>
+		<!-- 引入组件CSS库 -->
+		<link rel="stylesheet" type="text/css" href="../css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/layui.mobile.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/default/layer.css"/>
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/init.css">
+		<!-- 顶部内容CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/navbar.css"> -->
+		<!-- 本页面CSS -->
+		<link rel="stylesheet" type="text/css" href="css/addrecipel.css"/>
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../font/iconfont.css">
+		<!-- 搜索框CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/search.css"> -->
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../js/config.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../js/layer.js"></script>
+		<!-- 页面跳转方法JS -->
+		<!-- <script type="text/javascript" src="../../js/jumpPage.js"></script> -->
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/addrecipel.js" ></script>
+	</head>
+	<body>
+		<!-- 2019-05-20 -->
+		<!-- 顶部内容 -->
+		<!-- <div class="header">
+			<div class="navbar">
+				<div class="navbackbtn">
+					<i class="iconfont">&#xe624;</i>
+				</div>
+				<div class="navtitle">
+					<span class="title">添加处方</span>
+				</div>
+				<div class="right-close-btn">
+					<button type="button" class="closebtn">编辑/保存</button>
+				</div>
+			</div>
+		</div> -->
+		<!-- 内容区域 -->
+		<div class="wrapper">
+			<div class="content">
+				<p>
+					<span><i class="bt">*</i>商品名称</span>
+					<span>
+						<!--苏打片-->
+						 <input type="text" name="" id="" maxlength="100" value="" placeholder="请输入商品名称" class="drugName" oninput="if(value.length>100)value=value.slice(0,100)" /> 
+					</span>
+				</p>
+				<p>
+					<span><i class="bt">*</i>化学名</span>
+					<span>
+						<!--碳酸氢钠片-->
+						 <input type="text" name="" id="" maxlength="100" value="" placeholder="请输入化学名" class="chemistryName" oninput="if(value.length>100)value=value.slice(0,100)" /> 
+					</span>
+				</p>
+				<p>
+					<span><i class="bt">*</i>厂商全名</span>
+					<span>
+						<!--XX-->
+						 <input type="text" name="" id="" maxlength="100" value="" placeholder="请输入厂商全名" class="firmName" oninput="if(value.length>100)value=value.slice(0,100)" /> 
+					</span>
+				</p>
+				<p>
+					<span><i class="bt">*</i>用法用量</span>
+					<span>
+						<!--每日3次，每次2-3片-->
+						 <input type="text" name="" id="" maxlength="100" value="" placeholder="请输入用法用量" class="dosage" oninput="if(value.length>100)value=value.slice(0,100)" /> 
+					</span>
+				</p>
+				<div class="remarkstitle">
+					备注					
+					<span>(<span id="memoNum" class="memoNum">140</span>字)</span>
+				</div>
+				<div class="remarksBox">
+					<textarea placeholder="请输入备注信息..." id="memo" class="memo" maxlength="140" oninput="inputBind('memo','memoNum');"></textarea>
+				</div>
+				<input type="hidden" name="" id="errmsg" value="" />
+			</div>
+		</div>
+		<!-- <button type="button" class="click">click</button> -->
+		<script type="text/javascript">
+			
+			// 患者ID
+			var eleId = sessionStorage.getItem("id");
+			// 就诊ID
+			var eleDisid = sessionStorage.getItem("disid");
+			// var errmsg;
+			// 原生右上角保存事件函数
+			function editSave(clickNum, sesId){
+				// 传sessionId
+				var sesid = sesId;
+				if (clickNum == 1) {
+					// $("input[disabled]").removeAttr("disabled");
+					// $("textarea[disabled]").removeAttr("disabled");
+				} else{						
+					// $("input").attr("disabled", "disabled");
+					// $("textarea").attr("disabled", "disabled");
+					// if ($(".drugName").val() == "" || $(".chemistryName").val() || $(".firmName").val() || $(".dosage").val()) {
+					// 	
+					// } else{
+					// 	
+					// }
+					// 传数值2的情况
+					// 判断输入框为空的情况
+					if ($(".drugName").val() == "") {
+						layer.msg("商品名称不能为空,请重新输入!");
+						return false;
+					}
+					if ($(".chemistryName").val() == "") {
+						layer.msg("化学名称不能为空,请重新输入!");
+						return false;
+					}
+					if ($(".firmName").val() == "") {
+						layer.msg("厂商全名称不能为空,请重新输入!");
+						return false;
+					}
+					if ($(".dosage").val() == "") {
+						layer.msg("用法用量不能为空,请重新输入!");
+						return false;
+					}
+					// 保存接口
+					$.ajax({
+						type:"get",
+						url: config + "/oa/patinfoPrescribe/save",
+						async: false,
+						data: {
+							"sessionId": sesid,
+							"fkPatinfoId": eleId,
+							"fkDisId": eleDisid,
+							"drugName": $(".drugName").val(),
+							"chemistryName": $(".chemistryName").val(),
+							"firmName": $(".firmName").val(),
+							"dosage": $(".dosage").val(),
+							"memo": $(".memo").val()
+						},
+						success: function(data){
+							console.log(data);
+							if(data.status == 1){
+								layer.msg(data.message);
+								setTimeout(function(){
+									// $(location).prop('href', "../prescriptionDrugs/prescriptionDrugs.html");
+									backAction();
+								},2000);
+								android.GoBack(data.message);
+							}else{
+								layer.msg(data.message);
+								// errmsg = data.message;
+								// $("#errmsg").val(data.message);
+								// console.log(errmsg);
+							}
+						},
+						error: function(data){
+							console.log(data);
+							if(data.status == 2){
+								layer.msg(data.message);
+							}
+						}
+					});
+					// return $("#errmsg").val();
+					// console.log(errmsg);
+				}
+			}
+		</script>
+	</body>
+</html>

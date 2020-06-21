@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="../../common/bootstrap.css" />
+	<link rel="stylesheet" href="../../common/reset.css" />
+	<link rel="stylesheet" href="../../common/style.css" />
+	<link rel="stylesheet" href="../../common/common.css" />
+	<link rel="stylesheet" href="../../css/headerTop.css" />
+	<link rel="stylesheet" href="../../css/mainTop.css" />
+	<link rel="stylesheet" href="../../css/footer.css" />
+	<link rel="stylesheet" href="../../css/shoppingCart.css" />
+	<link rel="stylesheet" href="../../css/shop_index.css" />
+	<link rel="stylesheet" href="../../css/layui/css/layui.css" />
+	<link rel="stylesheet" href="../../css/order_index.css" />
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="../../css/layui/layui.all.js"></script>
+	<style>
+		.cbox,
+		.cTbox {
+			float: left;
+			width: 16px;
+			height: 15px;
+			line-height: 15px;
+			/*border:1px solid #ccc;*/
+			background: url("../../images/shopCart/carNoCheck.png");
+			background-repeat: no-repeat;
+			vertical-align: middle;
+			text-align: center;
+			margin-top: 13px;
+			margin-right: 4px;
+			background-size: 100% 100%;
+		}
+		.onebtn{
+			width: 80px;
+			height: 30px;
+			border: none;
+			border-radius: 5px;
+			background-color: #009BDB;
+			color: #FFFFFF;
+		}
+		.cbox.checked,
+		.cTbox.checked {
+			width: 18px;
+			height: 17px;
+			line-height: 17px;
+			color: #f00;
+			background: url("../../images/shopCart/checkBoxImg.png");
+			vertical-align: middle;
+			text-align: center;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			margin-top: 11px;
+		}
+
+		.cbox.checked:after,
+		.cTbox.checked:after {
+			width: 18px;
+			height: 17px;
+			line-height: 17px;
+			/*content:"√";*/
+			background: url("../../images/shopCart/checkBoxImg.png");
+			font-size: 13px;
+			font-weight: bold;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+
+		.csbox {
+			float: left;
+			width: 16px;
+			height: 15px;
+			line-height: 15px;
+			/*border:1px solid #ccc;*/
+			background: url("../../images/shopCart/carNoCheck.png");
+			vertical-align: middle;
+			text-align: center;
+			margin-top: 28px;
+			margin-right: 4px;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+
+		.csbox.checked {
+			width: 18px;
+			height: 17px;
+			line-height: 17px;
+			color: #f00;
+			background: url("../../images/shopCart/checkBoxImg.png");
+			vertical-align: middle;
+			text-align: center;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			margin-top: 27px;
+		}
+
+		.csbox.checked:after {
+			width: 18px;
+			height: 17px;
+			line-height: 17px;
+			/*content:"√";*/
+			background: url("../../images/shopCart/checkBoxImg.png");
+			font-size: 13px;
+			font-weight: bold;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+		[v-cloak]{
+        display:none
+    	}
+    	.borderOrange{
+    		border: 2px solid #FCA94F;
+    	}
+    	.borderBottomOrange{
+    		border-bottom: 1px dotted #FCA94F;
+    		background: #ffeedc;
+    	}
+	</style>
+</head>
+
+<body>
+	<div id="app" v-cloak>
+		<div id="section">
+			<!--购物车列表-->
+			<div class="shopCartContent">
+				<div class="orderdetail">
+					订单详情
+				</div>
+				<div class="orderno"style="margin-top: 10px;">
+					订单编号：{{orderList.orderId}}
+					
+					<span v-if="orderList.orderType == 1" style="display: block;margin-top: 14px;font-size: 13px;">当前状态：<span style="color: #0691F9;">待付款</span></span>
+					<span v-if="orderList.orderType == 2" style="display: block;margin-top: 14px;font-size: 13px;">当前状态：<span style="color: #0691F9;">待发货</span></span>
+					<span v-if="orderList.orderType == 3" style="display: block;margin-top: 14px;font-size: 13px;">当前状态：<span style="color: #0691F9;">待收货</span></span>
+					<span v-if="orderList.orderType == 4" style="display: block;margin-top: 14px;font-size: 13px;">当前状态：<span style="color: #0691F9;">已完成</span></span>
+					<span v-if="orderList.orderType == 5" style="display: block;margin-top: 14px;font-size: 13px;">当前状态：<span style="color: #0691F9;">取消订单</span></span>
+				</div>
+				<div class="boxflex">
+					<div class="boxborder">
+						<div class="orderinfo">买家信息</div>
+						<div class="orderinfoper">
+							<div>收货人：{{orderList.orderUser}}</div>
+							<div>收货地址：{{orderList.address}}</div>
+							<div>手机号：{{orderList.phone}}</div>
+							<div>支付状态：{{
+									orderList.orderType == 1?"待付款":(orderList.orderType == 2?"待发货":(orderList.orderType == 3?"待收货":(orderList.orderType == 4?"已完成":(orderList.orderType == 5?"取消订单":""))))
+								}}</div>
+							<div>支付类型：{{orderList.payFrom}}</div>
+							<div>发票信息：{{invoice}}</div>
+							<div v-if="invoiceList.length != 0">
+								<div>发票类型：纸质发票</div>
+								<div>发票抬头：{{invoiceList.invoicePayable}}</div>
+								<div v-if="invoiceList.invoicePayable=='个人'">抬头内容：{{invoiceList.content}}</div>
+								<div v-if="invoiceList.invoiceName">纳税人识别号：{{invoiceList.dutySign}}</div>
+								<div>发票内容：商品明细</div>
+							</div>
+						</div>
+					</div>
+					<div class="memos">
+						<div class="orderinfo">备注</div>
+						<div class="orderinfoper">
+							<div>买家备注：{{orderList.orderRemarks}}</div>
+						</div>
+					</div>
+					<div class="rightinfo">
+						<div class="orderinfo">物流状态</div>
+						<div v-if="orderProcess.length != 0" class="logistics">
+								<p v-for="pro in orderProcess">
+										{{pro.createTime?(new Date(pro.createTime)).Format("yyyy-MM-dd hh:mm:ss"):pro.AcceptTime}}
+										 - {{pro.orderRecord?pro.orderRecord:pro.AcceptStation}}
+								</p>
+							</div>
+					</div>
+				</div>
+				<div class="orderno">
+					商品清单
+				</div>
+				<form action="">
+					<div class="orderTitles">
+						<div class="title1">
+							名称
+						</div>
+						<div class="title2">
+							单价
+						</div>
+						<div class="title3">
+							数量
+						</div>
+						<div class="title2">
+							优惠信息
+						</div>
+						<div class="title2">
+							实际付款
+						</div>
+						<div class="title2"style="border-right: 0px;">
+							订单状态
+						</div>
+					</div>
+					<div class="cartProductList">
+						<div class="lf leftrealOrderBox">
+							<div class="simpleOrder" v-if="drugOrderProductList"
+								v-bind:style="{ height: (150*(orderHeight==0?1:orderHeight)-(orderHeight>1?1:0))+(55*packageNum)+'px' }">
+								<div class="layui-col-md9" style="width: 78.5%;">
+									<ul style="margin-top:-1px;">
+										<ul v-for="items in drugOrderProductList">
+											<li class="borderlinetop" v-if="items.mealList"
+												v-bind:style="{ borderRight: borderRightStyle,height: (150*(items.mealList.mealList.length==0?1:items.mealList.mealList.length)-(items.mealList.mealList.length>1?1:0))+70+'px' }">
+												<!--<li class="orderlist borderlinetop" v-if="items.mealList"-->
+												<div style="border-bottom: 1px solid #eee;padding: 10px 0px;">
+													【套餐】{{items.mealList.mealName}}
+													<span style="float: right;padding-right: 122px;">{{items.mealNum}}套</span>
+												</div>
+												<ul v-for="(item1, index1) in items.mealList.mealList" style="display: flex;align-items: center;">
+													<li class="orderlist">
+														<div class="headerdiv"><img  v-bind:src="item1.fileUrl?item1.fileUrl:'../../images/shopCart/productImg1.png'" class="orderimg" />
+														</div>
+														<div>{{item1.drugName}}</div>
+														<div>{{item1.specs}}</div>
+														<!--<div>￥{{item1.presentPrice}}/{{item1.drugNum}}{{item1.unit}}</div>-->
+													</li>
+													<li>￥{{item1.presentPrice}}/{{item1.drugNum}}{{item1.unit}}</li>
+												</ul>
+											</li>
+											<li class="borderlinetop" 
+												style="overflow: hidden;width: 878px;border-right: 1px solid #DADADD;height: 152px;line-height: 152px;" 
+												v-else>
+												<div style="float: left;width: 60%;height: inherit;">
+													<div class="headerdiv"><img  v-bind:src="items.drugUrl?items.drugUrl:'../../images/shopCart/productImg1.png'" class="orderimg" />
+													</div>
+													<div>{{items.drugName}}</div>
+													<div>{{items.specs}}</div>
+												</div>
+												<div style="float: left;width: 26%;height: inherit;">
+													<div>￥{{items.drugPrice}}</div>
+												</div>
+												<div style="float: left;height: inherit;">
+													<div>{{items.drugNum}}</div>
+												</div>
+											</li>
+											<li v-if="drugOrderProductList.length == 0" class="orderlist borderlinetop">
+											&nbsp;
+											</li>
+										</ul>
+										
+										
+									</ul>
+								</div>
+							</div>
+							<!--<div v-for="row in productList" class="simpleOrder">
+								<div class="title11 lf detailStyle">
+									<div class="productImg lf detailStyle">
+										<img v-bind:src="row.drugUrl?row.drugUrl:'../../img/productImg1.png'" alt="" />
+									</div>
+									<div class="nameParent lf detailStyle">
+										<div style="line-height:1.3;" class="productName">{{row.drugName}}</div>
+										<div style="line-height:1.3;" class="specs">产品规格: {{row.specs}}</div>
+									</div>
+								</div>
+								
+								<div class="title21 detailStyle lf priceBox">
+									<span>¥</span>
+									<span class="price">{{row.drugPrice}}</span>
+									<div class="fullMinus">满<span class="full">600</span>减<span class="minus">200</span></div>
+								</div>
+								<div class="title31 detailStyle lf changeQuantityBox w230 cn">
+									{{row.drugNum}}
+								</div>
+								<div class="title21 detailStyle lf subtotalBox">
+									 ￥
+									<span class="subtotal">{{row.drugPrice}}</span> 
+								</div>
+								<div class="title2 detailStyle lf delBox fr80">
+									￥
+									<span class="subtotal">{{row.drugPrice}}</span>
+								</div>
+							</div>-->
+						</div>
+						<!--实际付款及订单状态-->
+						<div class="lf rightrealOrderBox">
+							<div class="realOrderBox1 lf" v-if="orderList.product" v-bind:style="{ height: (150*(orderHeight==0?1:orderHeight)-(orderHeight>1?1:0))+70+'px',lineHeight: (150*(orderHeight==0?1:orderHeight)-(orderHeight>1?1:0))+70+'px'}">
+								<div class="btn-area itemHeight itemwidth flex">
+									<div style="padding-left: 20px;">运费：</div>
+									<div style="text-align: center">{{orderList.deliverMoney}}</div>
+								</div>
+								<div class="btn-area  itemmaxHeight itemwidth flex">
+									<div style="padding-left: 20px;">合计：</div>
+									<div style="text-align: center;font-weight: bold;color:red;">
+										￥{{orderList.totalMoney}}</div>
+									</div>
+								</div>
+							<div class="realOrderBox2 lf"style="padding-left: 20px;"v-if="orderList.product"v-bind:style="{ height: (150*(orderHeight==0?1:orderHeight)-(orderHeight>1?1:0))+70+'px',lineHeight: (150*(orderHeight==0?1:orderHeight)-(orderHeight>1?1:0))+70+'px' }">
+								<span v-if="orderList.orderType == 1" style="display: block;font-size: 13px;"><span style="color: #FF2B31;">待付款</span></span>
+								<span v-if="orderList.orderType == 2" style="display: block;font-size: 13px;"><span style="color: #FF2B31;">待发货</span></span>
+								<span v-if="orderList.orderType == 3" style="display: block;font-size: 13px;"><span style="color: #FF2B31;">待收货</span></span>
+								<span v-if="orderList.orderType == 4" style="display: block;font-size: 13px;"><span style="color: #FF2B31;">已完成</span></span>
+								<span v-if="orderList.orderType == 5" style="display: block;font-size: 13px;"><span style="color: #FF2B31;">取消订单</span></span>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--购物车结算操作条-->
+			<!--<div class="settleAccountsBar">
+				<div id="cart-floatbar">
+					<div class="ui-ceilinglamp-1" style="width: 1400px; height: 72px;">
+						<div class="cart-toolbar">
+							<div class="toolbar-wrap">
+								<div class="selected-item-list hide" style="display: none;">
+								</div>
+								<div class="options-box">
+									<div class="toolbar-right toolbar-right-new rt">
+										<div class="normal">
+											<div class="comm-right">
+												<div class="btn-area itemHeight itemwidth flex">
+													<div style="width:120px;text-align: right">总商品总额：</div>
+													<div style="width:120px;text-align: right">￥{{orderList.price}}</div>
+												</div>
+												<div class="btn-area itemHeight itemwidth flex">
+													<div style="width:120px;text-align: right">运费：</div>
+													<div style="width:120px;text-align: right">{{orderList.deliverMoney}}</div>
+												</div>
+												<div class="btn-area itemHeight itemwidth flex">
+													<div style="width:120px;text-align: right">优惠：</div>
+													<div style="width:120px;text-align: right">{{orderList.discountMoney}}</div>
+												</div>
+												<div class="btn-area  itemmaxHeight itemwidth flex">
+													<div style="width:120px;text-align: right">合计：</div>
+													<div
+														style="width:120px;text-align: right;font-weight: bold;color:red;">
+														￥{{orderList.totalMoney}}</div>
+												</div>
+												<div class="clr"></div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>-->
+				<div>
+				<div v-show="isDis" class="boxborder borderOrange"style="margin-top: 17px;margin-bottom: 20px;padding-bottom: 20px;background: #FFFBF2;">
+						<div class="orderno orderinfo borderBottomOrange">物流信息</div>
+						<div style="margin-bottom:10px;padding-left: 20px;">
+								物流单号：<input
+								v-model="inputtext" type="text" placeholder="请输入物流号" value=""
+								class="mui-input-password inputborder pd4">   
+						</div>
+						<div style="padding-left: 20px;">
+							物流公司：<select style="padding:2px;" name="city" lay-verify="" v-on:change="indexSelect" v-model="indexId">
+								<option value="">请选择一个物流</option>
+								<option v-for="row in logistics" v-bind:value="row">{{row.comName}}</option>
+							  </select>
+						</div>
+						<div style="text-align: center;margin-top: 30px;">
+								<button class="onebtn" id="saveOk" v-on:click="btOn()">提交</button>
+							</div>
+				</div>
+				<div v-show="orderList.orderType == 3" class="boxborder borderOrange"style="margin-top: 17px;margin-bottom: 20px;padding-bottom: 20px;background: #FFFBF2;">
+					<div class="orderno orderinfo borderBottomOrange">物流信息</div>
+					<div style="margin-bottom:10px;padding-left: 20px;">
+							物流单号：<input
+							v-model="inputtext" type="text" placeholder="请输入物流号"
+							class="mui-input-password inputborder pd4">   
+					</div>
+					<div style="padding-left: 20px;">
+						物流公司：<select style="padding:2px;" name="city" lay-verify="" v-on:change="indexSelect" v-model="indexId">
+							<option selected value="">请选择一个物流</option>
+							<option v-for="row in logistics" v-bind:value="row">{{row.comName}}</option>
+						  </select>
+					</div>
+					<div style="text-align: center;margin-top: 30px;">
+							<button class="onebtn" id="saveOk" v-on:click="btOn()">提交</button>
+						</div>
+			</div>
+			<div v-show="orderList.orderType == '2' && orderList.isHandle == '0'" class="boxborder borderOrange" style="margin-top: 17px;margin-bottom: 20px;padding-bottom: 20px;background: #FFFBF2;">
+				<div class="orderno orderinfo borderBottomOrange">确认订单</div>
+				<div style="padding-left: 20px;">
+					<input type="checkbox" name="" v-model="handle" title="已处理" lay-skin="primary"> 确认订单
+				</div>
+				<div style="text-align: center;margin-top: 30px;">
+						<button class="onebtn" id="saveOk" v-on:click="btHandleOn()">提交</button>
+					</div>
+		</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../../common/jquery-1.12.1.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<!-- <script type="text/javascript" src="../../js/shop_index.js"></script> -->
+	<script type="text/javascript" src="../../js/config.js"></script>
+	<script>
+		
+		function closeNavTabAndRefreshIframe(dataid,parentnavid) {//navid为data-id
+			var thisTabs=parent.$(window.parent.document).find(".page-tabs .J_menuTab");
+			var thisIframe=parent.$(window.parent.document).find("#content-main iframe");
+			for(var k=0;k<thisTabs.length;k++){
+				if($(thisTabs[k]).attr("data-id").indexOf(dataid)!=-1){
+					$(thisTabs[k]).find('.fa-times-circle').click();
+				}
+				if($(thisTabs[k]).attr("data-id")==parentnavid){
+					$(thisTabs[k]).addClass("active");
+					parent.$(window.parent.document).find(thisTabs[k]).dblclick();
+					$(thisTabs[k]).siblings(".J_menuTab").removeClass("active");
+				}
+			}
+			for(var k=0;k<thisIframe.length;k++){
+				if($(thisIframe[k]).attr("data-id")==parentnavid){
+					$(thisIframe[k]).css("display","inline");
+					$(thisIframe[k]).siblings("iframe").css("display","none");
+				}
+			}
+		}
+		var app = new Vue({
+			el: '#app',
+			data: {
+				orderList: [],
+				productList: [],
+				invoiceList:[],
+				inputtext: "",
+				oshow: true,
+				payFrom: true,
+				dFromGood:true,
+				dReceivingGood:true,
+				completed:true,
+				progress_bar:"progress-bar",
+				logistics:[],
+				orderProcess:[],
+				invoice: "不开发票",
+				isDis:false,
+				indexId:0,
+				orderId:0,
+				logisticsinfo:[],
+				userId:'',
+				handle:0,
+				orderHeight:0,//每个订单的总高度
+				drugOrderProductList: [],
+				borderRightStyle: "1px solid #DADADD",
+				packageNum: 0
+			},
+			methods: {
+				btHandleOn:function(){
+					console.log(this.handle)
+					if(!this.handle){
+						alert("请勾选确定订单")
+					}else{
+						///drug/orderInfo/handleOrder
+						$.ajax({
+						type: "get",
+						url: config + "/drug/orderInfo/handleOrder",
+						async: false,
+						dataType: "jsonp",
+						jsonp: "jsoncallback",
+						data: {
+							orderId:this.orderId,
+							isHandle:this.handle?1:0
+						},
+						success: function (data) {
+							if (data.status == 1) {
+								closeNavTabAndRefreshIframe("page/shop/orderDetails.html","page/shop/orderList.html");
+							} else {
+								alert(data.message);
+							}
+						},
+					});
+					}
+				},
+				indexSelect(){
+					console.log(this.indexId)
+				},
+				btOn:function(order){
+					if(this.inputtext == ""){
+						alert("请输入物流号");
+						return;
+					}
+					if(this.indexId == 0){
+						alert("请选择物流公司");
+						return;
+					}
+					$.ajax({
+						type: "get",
+						url: config + "/drug/orderInfo/logisticsInfo",
+						async: false,
+						dataType: "jsonp",
+						jsonp: "jsoncallback",
+						data: {
+							orderId:this.orderId,
+							// userId:sessionStorage.getItem("userId"),
+							courierNum:this.inputtext,
+							comName:this.indexId.comName,
+							comCode:this.indexId.comCode
+						},
+						success: function (data) {
+							if (data.status == 1) {
+								closeNavTabAndRefreshIframe("page/shop/orderDetails.html","page/shop/orderList.html");
+							} else {
+								alert(data.message);
+							}
+						},
+					});
+				},
+				to: function(orderId){
+					window.location.href = window.src+'pages/shoppingCart/shoppingCart.html?orderId='+orderId;
+				},
+				listDispaly: function (data) {
+					if(data.list[0]){
+						this.userId = data.list[0].userId;
+						this.orderList = data.list[0];
+						this.productList = data.list[0].product;
+						this.drugOrderProductList = data.list[0].drugOrderProductList;
+						this.inputtext = this.orderList.courierNum;
+						if(this.orderList.invoice.length != 0){
+//							this.invoiceList = this.orderList.invoice[0];
+//							//this.orderProcess = this.orderList.orderProcess;
+//							this.invoice = "普通发票"
+							if(this.orderList.invoice.vatType==1){
+								this.invoiceList = this.orderList.invoice[0];
+								this.invoice = "增值税专业发票"
+							}else{
+								this.invoiceList = this.orderList.invoice[0];
+								this.invoice = "增值税普通发票"
+							}
+						}
+						
+						if(this.orderList.orderType>=1){
+							this.payFrom = false;
+						}
+						if(this.orderList.orderType>=2){
+							this.dFromGood = false;
+						}
+						if(this.orderList.orderType>=3){
+							this.dReceivingGood = false;
+						}
+						if(this.orderList.orderType>=4){
+							this.completed = false;
+						}
+						if(this.orderList.orderType>=5){
+							this.completed = false;
+						}
+						
+						//遍历所有的数据 计算每个订单的总条数 计算总高度
+						for(var k = 0; k < this.drugOrderProductList.length;k++){
+							
+							if(this.drugOrderProductList[k].mealList){
+								this.orderHeight+=this.drugOrderProductList[k].mealList.mealList.length;
+								this.packageNum++;
+							}else{
+								this.orderHeight++;
+							}
+						}
+						this.orderHeight=this.orderHeight;
+						this.packageNum = this.packageNum;
+					}
+					
+				},
+				getList: function (index) {
+					var thiso = this;
+					var datalist = new Object;
+					if (index != 0) {
+						datalist.orderType = index;
+					}
+					
+					datalist.orderName = this.inputtext;
+					datalist.orderId = getUrlParam('orderId');
+					this.orderId = getUrlParam('orderId');
+					$.ajax({
+						type: "get",
+						url: config + "/drug/orderInfo/getList",
+						async: false,
+						dataType: "jsonp",
+						jsonp: "jsoncallback",
+						data: datalist,
+						success: function (data) {
+							if (data.status == 1) {
+								thiso.listDispaly(data.resultMap);
+								thiso.logisticsType();
+								thiso.logisticsList();
+							} else {
+								alert(data.message);
+							}
+						},
+					});
+				},
+				orderInfo:function(){
+					var orderProcess = this.orderList.orderProcess;
+					var arr = new Array;
+					for(var i=orderProcess.length-1;i>=0;i--){
+						var sign = orderProcess[i].sign;
+						if(sign == 3){
+							//物流信息
+							if(this.logisticsinfo.length == 0){
+
+							}else{
+								for(var j=this.logisticsinfo.length-1;j>=0;j--){
+									arr.push(this.logisticsinfo[j]);
+								}
+							}
+							
+						}else{
+						}
+						arr.push(orderProcess[i]);
+					}
+					this.orderProcess = arr;
+					console.log(this.orderProcess)
+				},
+				logisticsType(){
+					var thiso = this;
+					$.ajax({
+						type: "get",
+						url: config+"/express/getCompany",
+						async: false,
+						dataType: "jsonp",
+						jsonp: "jsoncallback",
+						success: function (data) {
+							if (data.status == 1) {
+								var logistics = data.resultMap.comList;
+								for(var i=0;i<logistics.length;i++){
+									if(thiso.orderList.comCode && logistics[i].comCode == thiso.orderList.comCode){
+										thiso.indexId = logistics[i];
+									}
+								}
+								thiso.logistics = data.resultMap.comList;
+							} else {
+								alert(data.message);
+							}
+						},
+					});
+				},
+				logisticsList(){
+					let thiso =this;
+					$.ajax({
+						type: "post",
+						url: config + "/express/getTraces",
+						async: false,
+						data: {
+							expNo:this.orderList.courierNum,
+							expCode:this.orderList.comCode,
+							// expNo:806993611123620323,
+							// expCode:"YTO"
+						},
+						success: function (data) {
+							if (data.status == 1) {
+								thiso.logisticsinfo = data.resultMap.expressMessage.Traces;
+							} else {
+//								alert(data.message);
+							}
+							//处理物流
+							thiso.orderInfo();
+						},
+					});
+				}
+			},
+			created() {
+				let is = getUrlParam('is');
+				if(is != "page"){
+					this.isDis=true;
+				}
+				this.getList(0);
+			},
+		})
+		
+	</script>
+</body>
+
+</html>

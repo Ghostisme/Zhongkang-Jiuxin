@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>就诊登记</title>
+		<!--表单验证CSS-->
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+	    <!-- <link href="../../css/font-awesome.min.css" rel="stylesheet"> -->
+		<link href="../../css/font/fontawesome.min.css" rel="stylesheet">
+		<link href="../../css/font/brands.css" rel="stylesheet">
+		<link href="../../css/font/solid.css" rel="stylesheet">
+		<link href="../../css/animate.min.css" rel="stylesheet">
+		<link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+	    <!--<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">-->
+	    <!--<link href="../../css/plugins/steps/jquery.steps.css" rel="stylesheet">-->
+	    <!--<link href="../../css/animate.min.css" rel="stylesheet">-->
+	    <link href="../../css/style.min.css" rel="stylesheet">
+	    <!--<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">-->
+	    <!--<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">-->
+	    <!--<link rel="stylesheet" type="text/css" href="../../css/plugins/webuploader/webuploader.css">-->
+	    <!--<link rel="stylesheet" type="text/css" href="../../css/demo/webuploader-demo.min.css">-->
+	    <!--<link rel="stylesheet" href="../../css/public.css" />-->
+	    <!--<link rel="stylesheet" href="../../css/apply.css" />-->
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/init.css"/>
+		<!-- 顶部内容CSS -->
+		<!--<link rel="stylesheet" type="text/css" href="../../css/navbar.css">-->
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont.css">
+		<!-- 本页CSS -->
+		<link type="text/css" rel="stylesheet" href="css/registrationVisits.css"/>
+		<!-- 底部按钮CSS -->
+		<!--<link rel="stylesheet" type="text/css" href="../../css/bottomBtn.css"/>-->
+		<!--引入JQ库-->
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<!--页面跳转方法JS-->
+		<!--<script type="text/javascript" src="../../js/jumpPage.js"></script>-->
+		
+		<!--表单验证组件-->
+		<script src="../../js/jquery.min.js?v=2.1.4"></script>
+	    <script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+	    <script src="../../js/plugins/staps/jquery.steps.min.js"></script>
+	    <script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+	    <script src="../../js/plugins/validate/messages_zh.min.js"></script>
+	    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+	    <!--本页JS-->
+		<script type="text/javascript" src="js/registrationVisits.js" ></script>
+	    <!-- 其他页js -->
+		<!-- <script type="text/javascript" src="../patient/js/patient.js"></script> -->
+		<style>
+	    	.contentFooterBtn button{
+	    		padding: 6px 28px !important;
+	    	}
+	    	.contentFooterBtn .resbtn{
+	    		margin-left: 9px;
+	    	}
+	    	label.error {
+			    color: #cc5965 !important;
+			    display: inline-block !important;
+			    margin-left: 5px !important;
+			    width: auto !important;
+			    height: auto !important;
+			    border: 0 !important;
+			    text-indent: inherit !important;
+			    line-height: normal !important;
+			    font-size: 12px;
+			    position: absolute;
+			    top: 27px;
+				left: -3px;
+			}
+			label.warn {
+				color: #f8ac59 !important;
+				display: inline-block !important;
+				margin-left: 5px !important;
+				width: auto !important;
+				height: auto !important;
+				border: 0 !important;
+				text-indent: inherit !important;
+				line-height: normal !important;
+				font-size: 12px;
+				position: absolute;
+				top: 27px;
+				left: -3px;
+			}
+			/*p{
+				position: relative !important;
+			}*/
+			.errormsg{
+				position: relative !important;
+			}
+			.fa{
+			    border: 0 !important;
+    			display: inline !important;
+    			color: #cc5965 !important;
+			}
+			.fa1{
+			    border: 0 !important;
+				display: inline !important;
+				color: #f8ac59 !important;
+			}
+			/* label.warn {
+				color:  #f8ac59;
+				display: inline-block;
+				margin-left: 5px
+			} */
+	    </style>
+	</head>
+	<body>
+		<!-- 2019-05-16完成 -->
+		<!-- <div style="width: 100%;height: 40px;"></div> -->
+		<!-- 顶部内容 -->
+		<div class="header">
+			<div class="navbar">
+				<div class="navtitle">
+					<span class="title">就诊登记</span>
+				</div>
+				<div class="right-close-btn">
+					<button type="button" class="closebtn btn">关闭</button>
+				</div>
+			</div>
+		</div>
+		<!-- 内容区域 -->
+		<div class="wrapper">
+			<div class="essential">
+				<!--<img src="../../img/default.png" alt="这是一个头像图片" title="这是一个头像图片">-->
+				<form enctype="multipart/form-data" id="form">
+					<!--<p>
+						<span>患者</span>
+						<span>
+							<input type="text" name="name" id="" value="" placeholder="请输入患者姓名" class="username"/>
+						</span>
+					</p>
+					<p>
+						<span>手机号</span>
+						<span>
+							<input type="text" name="mobile" id="" value="" placeholder="请输入手机号" class="phone"/>
+						</span>
+					</p>
+					<p>
+						<span>性别</span>
+						<span>
+							<i class="iconfont active" data-num="1">&#xe677;</i>
+							<span>男</span>
+							<i class="iconfont" data-num="2">&#xe678;</i>
+							<span>女</span>
+						</span>
+					</p>
+					<p>
+						<span>年龄</span>
+						<span>
+							<input type="text" name="age" id="" value="" placeholder="请输入年龄" class="age"/>
+						</span>
+					</p>
+					<p>
+						<span>身份证号</span>
+						<span>
+							<input type="text" name="idCode" id="" value="" placeholder="请输入身份证" class="IDcard"/>
+						</span>
+					</p>-->
+					<div class="formBox">
+						<p>
+							<span><span style="color: #FF423F;">*</span>姓名</span>
+							<span class="errormsg">
+								<input type="text" maxlength="15" name="name" id="username" value="" placeholder="请输入患者姓名" class="username form-control required"/>
+							</span>
+							<span><span style="color: #FF423F;">*</span>性别</span>
+							<span class="errormsg">
+								<!--<i class="iconfont active" data-num="1">&#xe677;</i>
+								<span>男</span>
+								<i class="iconfont" data-num="2">&#xe678;</i>
+								<span>女</span>-->
+								<select name="sex" id="sex" class="form-control required">
+									<option value=""></option>
+									<option value="男">男</option>
+									<option value="女">女</option>
+								</select>
+							</span>
+							<span><span style="color: #FF423F;">*</span>手机号</span>
+							<span class="errormsg">
+								<input type="text" name="mobile" maxlength="11" id="phone" value="" placeholder="请输入手机号" class="phone form-control required"/>
+							</span>
+						</p>
+						<!--<p>
+							<span>性别</span>
+							<span>
+								<select name="sex">
+									<option value=""></option>
+									<option value="">男</option>
+									<option value="">女</option>
+								</select>
+							</span>
+						</p>
+						<p>
+							<span>手机号</span>
+							<span>
+								<input type="text" name="mobile" id="" value="" placeholder="请输入手机号" class="phone"/>
+							</span>
+						</p>-->
+					</div>
+					<div class="formBox1">
+						<!--<p>
+							<span>性别</span>
+							<span>
+								<i class="iconfont active" data-num="1">&#xe677;</i>
+								<span>男</span>
+								<i class="iconfont" data-num="2">&#xe678;</i>
+								<span>女</span>
+							</span>
+						</p>-->
+						<p>
+							<span class="agePos"><span style="color: #FF423F;">*</span>年龄</span>
+							<span class="errormsg">
+								<input type="text" name="age" maxlength="3" id="age" value="" placeholder="请输入年龄" class="age required form-control"/>
+							</span>
+							<span>身份证号</span>
+							<span class="errormsg">
+								<input type="text" name="idCode" maxlength="18" id="iDcard" value="" placeholder="请输入身份证" class="iDcard required form-control"/>
+							</span>
+						</p>
+						<!--<p class="IDcard">
+							<span>身份证号</span>
+							<span>
+								<input type="text" name="idCode" id="" value="" placeholder="请输入身份证" class="iDcard"/>
+							</span>
+						</p>-->
+					</div>
+					<!--<div class="IDcard">
+						<span>身份证号</span>
+						<span>
+							<input type="text" name="idCode" id="" value="" placeholder="请输入身份证" class="iDcard"/>
+						</span>
+					</div>-->
+				</form>
+			</div>
+			<!-- 内容底部 -->
+			<div class="content-footer">
+				<div class="contentFooterBox">
+					<p>
+						<span>机构：<span id="organ"></span></span>
+						<span>医生：<span id="people"></span></span>
+						<span>日期：<span id="time"></span></span>
+					</p>
+					<!--<p>
+						<span>机构：宜宾里社区</span>
+					</p>
+					<p>
+						<span>医生： 王医生</span>
+					</p>
+					<p>
+						<span>日期： 2019-05-10 8:00</span>
+					</p>-->
+				</div>	
+				<!--<div class="contentFooterBtn">
+					<button type="button" class="submitbtn">确定</button>
+				</div>-->
+			</div>
+		</div>
+		<div class="contentFooterBtn btngroup">
+			<button type="submit" class="sumbitbtn btn btn-sm btn-success">确定</button>
+			<button type="button" class="resbtn btn btn-sm">取消</button>
+		</div> 
+		<div class="contentFooterBtn btngroup1">
+			<button type="button" class="overBtn btn btn-sm btn-success">结束就诊</button>
+		</div>
+	</body>
+</html>

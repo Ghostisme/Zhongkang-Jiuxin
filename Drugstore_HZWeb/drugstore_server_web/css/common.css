@@ -1,0 +1,209 @@
+.lf{
+	float: left;
+}
+.rt{
+	float: right;
+}
+*{
+	margin: 0;
+	font-size:0.75em;
+}
+body{
+	background: #fff;
+	padding: 20px;
+}
+
+.leftLoadNav{
+	width:10%;
+	height:1080px;
+	/*border:1px solid #000;*/
+	background: #1C79B6;
+	/*padding:1%;*/
+	overflow: hidden;
+}
+.rightLoadContent{
+	width:100%;
+	height:1080px;
+	/*border:1px solid #000;*/
+	overflow: hidden;
+}
+.rightTopNavs{
+	height:73px;
+}
+#mainContents{
+	margin-bottom: 20px;
+	margin:1% 0% 0% 1%;
+	height:100%;
+	background: #fff;
+}
+#homeAllLoad{
+	background: #fff;
+	padding:20px;
+	height:80%;
+	overflow-y: auto;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+	border:0px!important;
+}
+@media screen and (max-width: 1400px) {
+    .white_content{
+        left: 15%!important;
+		width: 50%!important;
+		min-width: 770px!important;
+    }
+    .infoDetails{
+    	max-height: 300px!important;
+    }
+    .liBig input{
+    	width: 90%!important;
+    }
+    body{
+		min-height: 0px!important;
+		min-width:1000px!important;
+		overflow: scroll;
+	}
+	.boxDiv1, .boxDiv2{
+		height: 40px!important;
+	}
+	.rightLoadContent{
+		height: auto;
+	}
+	.rightDataShow{
+		width:73%!important;
+	}
+	.infoDetails-ul li{
+		width:47%!important;
+	}
+	.infoDetails-ul li input{
+		width: 71%!important;
+	}
+	.liBig textarea{
+		height:80px!important;	
+	}
+}
+.pagination-lg>li>a, .pagination-lg>li>span{
+	padding: 4px 10px !important;
+}
+#prev span,#Next span{
+	font-size: 14px;
+	/*cursor: pointer;*/
+}
+.pagination>li#prev>a, .pagination>li#Next>a{
+	color: #999;
+	background: #efefef;
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover{
+	color: #999;
+	background: #efefef;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+	color: #999;
+	background: #efefef!important;
+	border: 1px solid #ddd !important;
+}
+#totalPage{
+	float: left;
+	height: 35px;
+	line-height: 35px;
+	font-size: 14px;
+	color: #999;
+}
+.totalPageNum{
+	font-size: 14px;
+	margin:0px 8px;
+}
+.jumpStyle{
+	font-size: 14px;
+	margin:0px 8px;
+}
+.toPageNum{
+	display: inline-block;
+	width: 35px;
+	height: 20px;
+	border:1px solid #ddd;
+	padding-left: 5px;
+}
+
+.srueToJumpPageBtn {
+	padding:2px 5px;
+	width: 35px;
+	height: 25px;
+	font-size: 14px;
+    color: #999;
+    border: solid 1px #ddd;
+    background: #efefef;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#efefef));
+    background: -moz-linear-gradient(top,  #fff,  #efefef);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#efefef');
+    cursor: pointer;
+    margin-left: 10px;
+}
+.srueToJumpPageBtn:hover {
+    background: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#fff));
+    background: -moz-linear-gradient(top,  #efefef,  #fff);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#efefef', endColorstr='#fff');
+}
+/*左对齐和按钮颜色*/
+.LiTextAlign{
+	text-align: left !important;
+	padding-left: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 14px;
+}
+.LiTextAlignNone{
+	text-align: left !important;
+}
+.btnTextColor{
+	color: #1C79B6;
+	cursor: pointer;
+}
+.btnTextColor:hover{
+	color: #ff7510;
+	text-decoration: none;
+}
+.patientInfoDetail-name.btnWidth, .patientInfoDetail-change.btnWidth, .patientInfoDetail-del.btnWidth{
+	width: 5% !important;
+}
+.h100{
+	height: 100% !important;
+	overflow: hidden !important;
+}
+/*下拉组件限制高度*/
+.scrollHeight{
+	    height: 200px;
+    overflow: scroll;
+}
+
+
+
+
+/*2019-12-18 add*/
+.modal-header{
+	padding: 9px 15px !important;
+}
+.modal-footer{
+	text-align: center !important;
+}
+.modal-footer button:nth-of-type(1){
+	padding: 6px 50px !important;
+	background-color: rgb(28, 121, 182) !important;
+	color: #FFF !important;
+}
+.modal-footer button:nth-of-type(2){
+	display: none !important;
+}
+.close span:nth-of-type(1){
+	font-size: 40px !important;
+    font-weight: 100 !important;    
+}
+.close{
+	opacity: 1 !important;
+    color: #1c79b6 !important;
+}
+.close:hover{
+	opacity: 1 !important;
+    color: #000 !important;
+}

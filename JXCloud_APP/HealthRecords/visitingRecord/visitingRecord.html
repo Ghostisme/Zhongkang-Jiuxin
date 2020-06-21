@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta content="telephone=no" name="format-detection">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>就诊记录</title>
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/init.css"/>
+		<!-- 顶部内容CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/navbar.css">
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../font/iconfont.css">
+		<!-- 本页面CSS -->
+		<link rel="stylesheet" type="text/css" href="css/visitingRecord.css">
+		<!-- 搜索框CSS -->
+		<!--<link rel="stylesheet" type="text/css" href="../../css/search.css">-->
+		<!-- 时间选择插件CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/swiper-3.4.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
+		<!-- 引入JQ库 -->
+		<script type="text/javascript" src="../js/config.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
+		<!-- 页面跳转方法JS -->
+		<script type="text/javascript" src="../js/jumpPage.js"></script>
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/visitingRecord.js" ></script>
+		<!-- 时间插件库 -->
+		<script src="../datejs/flexible.debug.js" type="text/javascript"></script>
+		<script src="../datejs/flexible_css.debug.js" type="text/javascript"></script>
+		<script src="../datejs/mobileFix.js" type="text/javascript"></script>
+		<script src="../datejs/swiper.min.js" type="text/javascript"></script>
+		<script src="../datejs/kinerDatePicker.js" type="text/javascript"></script>	
+		<script src="js/chooseDate.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<!-- 2019-05-16完成 -->
+		<!-- <div style="width: 100%;height: 40px;"></div> -->
+		<!-- 顶部内容 -->
+		<!-- <div class="header">
+			<div class="navbar">
+				<div class="navbackbtn">
+					<i class="iconfont gobackBtn">&#xe624;</i>
+				</div>
+				<div class="navtitle">
+					<span class="title">就诊记录</span>
+				</div>			
+			</div>
+		</div> -->
+		<!-- 内容区域 -->
+		<div class="wrapper">
+			<!-- 搜索框及时间区域 -->
+			<div class="locationBox">
+				<div class="searchbox">
+					<!-- 搜索框盒子 -->
+					<div class="search">
+						<div>
+							<i class="iconfont">&#xe64d;</i>
+							<input type="text" maxlength="20" placeholder="输入姓名、身份证号、手机号" class="searchinput" oninput="if(value.length>19)value=value.slice(0,19)"/>
+							<!-- <input type="search" class="searchinput username" placeholder="输入患者姓名" /> -->
+						</div>
+						<!-- <div>
+							<i class="iconfont">&#xe64d;</i>
+							<input type="search" class="searchinput searchNum" placeholder="身份证号、手机号" />
+						</div> -->					
+					</div>
+					<!-- 日期选择 -->
+					<div class="selectdata">
+						<div class="leftdate">
+							<div class="kinerDatePickerInput" id="kinerDatePickerInput1" title="开始时间" startYear="2000" default-val="2018-1-1">
+								请选择日期
+								<!--<i class="iconfont">&#xe626;</i>-->
+							</div>
+							<!-- <input type="date" name="" id="" value="" /> -->
+							<!-- <input type="text" class="dateinput" value="2019-01-01"> -->
+							<!-- <i class="iconfont">&#xe626;</i> -->
+						</div>
+						<div class="text">
+							<span>至</span>
+						</div>
+						<div class="rightdate">
+							<div class="kinerDatePickerInput1" id="kinerDatePickerInput2" title="结束时间" startYear="2000" default-val="2018-1-1">
+								请选择日期
+								<!--<i class="iconfont">&#xe626;</i>-->
+							</div>
+							<!-- <input type="text" class="dateinput" value="2019-05-20"> -->
+							<!-- <i class="iconfont">&#xe626;</i> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 内容list部分 -->
+			<div class="content">
+				<div class="listBox tpl">
+					<div class="imgBox">
+						<img src="../img/user.png" alt="这是一个头像图片" title="这是一个头像图片">
+					</div>
+					<div class="centerContent">
+						<p>
+							<span></span>
+						</p>
+						<p>
+							<span>机构：</span>
+							<span></span>
+						</p>
+						<p>
+							<span>姓名：</span>
+							<span></span>
+						</p>
+						<p>
+							<span>性别：</span>
+							<span></span>
+						</p>
+						<p>
+							<span>服务概要：</span>
+							<span></span>
+						</p>
+						<input type="hidden" id="diagnosisid" value="" class="diagnosisid" />
+						<input type="hidden" id="fkPatinfoId" value="" class="fkPatinfoId" />
+					</div>
+					<div class="rightIcon">
+						<i class="iconfont">&#xe606;</i>
+					</div>
+				</div>
+				<!--<div class="listBox">
+					<div class="imgBox">
+						<img src="../../img/user.png" alt="这是一个头像图片" title="这是一个头像图片">
+					</div>
+					<div class="centerContent">
+						<p>
+							<span>2019-05-13 16:20</span>
+						</p>
+						<p>
+							<span>机构：</span>
+							<span>宜宾里社区</span>
+						</p>
+						<p>
+							<span>患者：</span>
+							<span>大海</span>
+						</p>
+						<p>
+							<span>性别：</span>
+							<span>女</span>
+						</p>
+						<p>
+							<span>服务概要：</span>
+							<span>常规测量、处方录入</span>
+						</p>
+					</div>
+					<div class="rightIcon">
+						<i class="iconfont">&#xe606;</i>
+					</div>
+				</div>
+				<div class="listBox">
+					<div class="imgBox">
+						<img src="../../img/user.png" alt="这是一个头像图片" title="这是一个头像图片">
+					</div>
+					<div class="centerContent">
+						<p>
+							<span>2019-05-13 16:20</span>
+						</p>
+						<p>
+							<span>机构：</span>
+							<span>宜宾里社区</span>
+						</p>
+						<p>
+							<span>患者：</span>
+							<span>大海</span>
+						</p>
+						<p>
+							<span>性别：</span>
+							<span>女</span>
+						</p>
+						<p>
+							<span>服务概要：</span>
+							<span>常规测量、处方录入</span>
+						</p>
+					</div>
+					<div class="rightIcon">
+						<i class="iconfont">&#xe606;</i>
+					</div>
+				</div>
+				<div class="listBox">
+					<div class="imgBox">
+						<img src="../../img/user.png" alt="这是一个头像图片" title="这是一个头像图片">
+					</div>
+					<div class="centerContent">
+						<p>
+							<span>2019-05-13 16:20</span>
+						</p>
+						<p>
+							<span>机构：</span>
+							<span>宜宾里社区</span>
+						</p>
+						<p>
+							<span>患者：</span>
+							<span>大海</span>
+						</p>
+						<p>
+							<span>性别：</span>
+							<span>女</span>
+						</p>
+						<p>
+							<span>服务概要：</span>
+							<span>常规测量、处方录入</span>
+						</p>
+					</div>
+					<div class="rightIcon">
+						<i class="iconfont">&#xe606;</i>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<script type="text/javascript">
+			function consultRecordPostSessionId(sesId){
+				
+				//初始化页面数据
+				dataRendering("", sesId);
+				// 滑屏交互
+				var scrollY = window.scrollY; // 初始值
+				console.log(scrollY);
+				$(window).on('scroll', function() {
+					var currentY = window.scrollY;
+					if (currentY <= scrollY) { // 向下滑动
+						// $(".locationBox").removeClass("locationScroll");
+					} else { // 向上
+						$(".locationBox").addClass("locationScroll");
+					}
+					(currentY === 0) && $(".locationBox").removeClass("locationScroll");
+					scroll = currentY;
+				})
+				//时间选择器当前时间
+				var time = new Date();
+				var nowYear = time.getFullYear();
+				var nowMonth = time.getMonth() + 1;
+				var nowDay = time.getDate();
+				var nowTime = nowYear + "-" + nowMonth + "-" + nowDay;
+				console.log(nowTime);
+				$("#kinerDatePickerInput1").attr("default-val", nowTime);
+				$("#kinerDatePickerInput2").attr("default-val", nowTime);
+				//条件查询
+				var agent = navigator.userAgent.toLowerCase();
+		        var android = agent.indexOf("android");
+		        var iphone = agent.indexOf("iphone");
+		        var ipad = agent.indexOf("ipad");
+		        if(android != -1){
+		//             equipmentType = "android";
+					$(".searchinput").keydown(function() {
+						this.placeholder = "输入姓名、身份证号、手机号";
+						searchinputVal = $(".searchinput").val();
+						dataRendering(searchinputVal, sessionId);
+					});
+					// $(".searchinput").blur(function() {
+					// 	this.placeholder = "输入姓名、身份证号、手机号";
+					// 	searchinputVal = $(".searchinput").val();
+					// 	dataRendering(searchinputVal, sessionId);
+					// });
+		        }
+		        if(iphone != -1 || ipad != -1){
+		//             equipmentType = "ios";
+					$(".searchinput").blur(function() {
+						this.placeholder = "输入姓名、身份证号、手机号";
+						searchinputVal = $(".searchinput").val();
+						dataRendering(searchinputVal, sessionId);
+					});
+		        }
+				var searchinputVal;
+				$(".searchinput").focus(function() {
+					this.placeholder = "";
+				});
+				$(".searchinput").blur(function() {
+					this.placeholder = "输入姓名、身份证号、手机号";
+					searchinputVal = $(".searchinput").val();
+					dataRendering(searchinputVal, sesId);
+				});
+				//数据请求
+				function dataRendering(val, sesid) {
+					//获取dom插入盒子
+					var oWrapper = $(".content");
+					//初始化页面
+					var str = "";
+					str += '<div class="listBox tpl">'+
+								'<div class="imgBox">'+
+									'<img src="../img/user.png" alt="这是一个头像图片" title="这是一个头像图片">'+
+								'</div>'+
+								'<div class="centerContent">'+
+									'<p>'+
+										'<span>2019-05-13 16:20</span>'+
+									'</p>'+
+									'<p>'+
+										'<span>机构：</span>'+
+										'<span>宜宾里社区</span>'+
+									'</p>'+
+									'<p>'+
+										'<span>姓名：</span>'+
+										'<span>大海</span>'+
+									'</p>'+
+									'<p>'+
+										'<span>性别：</span>'+
+										'<span>女</span>'+
+									'</p>'+
+									'<p>'+
+										'<span>服务概要：</span>'+
+										'<span>常规测量、处方录入</span>'+
+									'</p>'+
+									'<input type="hidden" value="" class="diagnosisid">'+
+									'<input type="hidden" value="" class="fkPatinfoId">'+
+								'</div>'+
+								'<div class="rightIcon">'+
+									'<i class="iconfont"></i>'+
+								'</div>'+
+							'</div>';
+					oWrapper.html(str);
+					$.ajax({
+						type: "get",
+						url: config + "/oa/patinfoDiagnosis/list",
+						async: true,
+						data: {
+							// "patinfoName": val1,
+							"sessionId": sesid,
+							"mobIdcLike": val
+						},
+						success: function(data) {
+							console.log(data);
+							var dataArr = data.resultMap.patinfoDiagnosisList;
+							
+							//获取当前时间
+							var oDate = new Date().getFullYear();
+			
+							//补零操作
+							function addZero(num) {
+								if(parseInt(num) < 10) {
+									num = '0' + num;
+								}
+								return num;
+							}
+							dataArr.forEach(function(ele, index) {
+								//获取克隆dom
+								var oCloneDom = $(".tpl").clone().removeClass("tpl");
+			
+								//获取就诊时间
+								var diagnosisDate = new Date(ele.diagnosisTime),
+									//就诊年
+									diagnosisYear = diagnosisDate.getFullYear(),
+									//就诊月
+									diagnosisMonth = diagnosisDate.getMonth() + 1,
+									//就诊日
+									diagnosisDay = diagnosisDate.getDate(),
+									//就诊小时
+									diagnosisHour = diagnosisDate.getHours(),
+									//就诊分钟
+									diagnosisMin = diagnosisDate.getMinutes(),
+									//就诊秒
+									diagnosisSen = diagnosisDate.getSeconds(),
+									//最终就诊时间 年-月-日 时：分：秒
+									//			diagnosisTime = diagnosisYear + '-' + addZero(diagnosisMonth) + '-' + addZero(diagnosisDay) + ' ' + addZero(diagnosisHour) + ':' +addZero(diagnosisMin) + ':' +addZero(diagnosisSen);
+									diagnosisTime = diagnosisYear + '-' + addZero(diagnosisMonth) + '-' + addZero(diagnosisDay) + ' ' + addZero(diagnosisHour) + ':' + addZero(diagnosisMin);
+								//数据渲染
+								//头像赋值
+								if(ele.headImage == null) {
+									ele.headImage = "../img/user.png";
+								};
+								oCloneDom
+									.find(".imgBox")
+										.find("img")
+											.attr("src", ele.headImage);
+								//最近一次就诊时间赋值
+								oCloneDom
+									.find(".centerContent")
+										.find("p")
+											.eq(0)
+												.find("span")
+													.text(diagnosisTime);
+								//机构赋值
+								if(ele.fkDeptName == null) {
+									ele.fkDeptName = "暂无";
+								};
+								oCloneDom
+									.find(".centerContent")
+										.find("p")
+											.eq(1)
+												.find("span")
+													.eq(1)
+														.text(ele.fkDeptName);
+								//患者姓名赋值
+								if(ele.patinfoName == null) {
+									ele.patinfoName = "暂无";
+								};
+								oCloneDom
+									.find(".centerContent")
+										.find("p")
+											.eq(2)
+												.find("span")
+													.eq(1)
+														.text(ele.patinfoName);
+								//性别赋值
+								oCloneDom
+									.find(".centerContent")
+										.find("p")
+											.eq(3)
+												.find("span")
+													.eq(1)
+														.text(ele.sex);
+								//服务概要赋值
+								if(ele.memo == null) {
+									ele.memo = "暂无";
+								};
+								oCloneDom
+									.find(".centerContent")
+										.find("p")
+											.eq(4)
+												.find("span")
+													.eq(1)
+														.text(ele.memo);
+								//患者就诊ID
+								oCloneDom
+									.find(".centerContent")
+										.find(".diagnosisid").val(ele.id);
+			//					console.log(ele.id)		
+								//患者ID
+								oCloneDom
+									.find(".centerContent")
+										.find(".fkPatinfoId").val(ele.fkPatinfoId);
+			//							console.log(ele.fkPatinfoId)	
+								//数据插入											
+								oWrapper.append(oCloneDom);
+								// $("#diagnosisid").val(ele.id);
+								// $("#fkPatinfoId").val(ele.fkPatinfoId);
+							})
+							// var diagnosisId = $("#diagnosisid").val();
+							// var fkPatinfoId = $("#fkPatinfoId").val();
+							// sessionStorage.setItem("diagnosisId", diagnosisId);
+							// sessionStorage.setItem("fkPatinfoId", fkPatinfoId);
+							var medicalContent = $(".content").find(".listBox");
+							$(medicalContent).click(function() {
+								//就诊ID
+								//console.log($(".diagnosisid").val());
+								var diagnosisId = $(this).find(".centerContent").find(".diagnosisid").val();
+								var fkPatinfoId = $(this).find(".centerContent").find(".fkPatinfoId").val();
+								//	var diagnosisId = $(".diagnosisid").val();
+									console.log(diagnosisId);
+									console.log(fkPatinfoId);
+								sessionStorage.setItem("diagnosisId", diagnosisId);
+								sessionStorage.setItem("fkPatinfoId", fkPatinfoId);
+								$(location).prop('href', "../pleaseVisit/pleaseVisit.html");
+							})
+						},
+						error: function(data) {
+							console.log(data);
+						}
+					});
+				}
+			}
+		</script>
+	</body>
+</html>

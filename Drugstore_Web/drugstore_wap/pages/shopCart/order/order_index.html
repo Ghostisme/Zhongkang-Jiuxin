@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../../styles/css/order_index.css">
+		<link rel="stylesheet" href="../../../styles/common_css/common_dialog.css">
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">订单提交</span>
+		</header>
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--编辑收货信息-->
+					<div id="editor_goods_info" onclick="editorLocation()">
+						<img src="../../../styles/img/shopCart_img/order/order_location.png" />
+						<span id="font_goods_info">点击编辑收货信息</span>
+						<span id="arrow_right" class="mui-icon mui-icon-forward mui-pull-right"></span>
+					</div>
+					<div id="editor_location"class="recieveAdr">
+						<div class="editor_location_row">
+							<div class="editor_location_person">
+								<span class="recieveAddrsTxt">收货地址:</span>
+							</div>
+							<span class="closeAddAddr">×</span>
+							<span class="AddAddr"style="display: block;">
+								<span class="addIcon">+</span>
+								<span class="addAddrTxt">增加地址</span></span>
+						</div>
+						<div class="editor_location_row">
+							<div class="editor_location_person">
+								<span>收货人:</span>
+							</div>
+							<div class="editor_location_input">
+								<input id="get_goods_person" type="text"class="get_goods_person" placeholder="点击编辑"/>
+							</div>
+							<div class="editor_location_arrow mui-pull-right">
+								<span class="mui-icon mui-icon-forward"></span>
+							</div>
+						</div>
+						<div class="editor_location_row">
+							<div class="editor_location_person">
+								<span>收货公司:</span>
+							</div>
+							<div class="editor_location_input">
+								<input id="get_goods_company" type="text"class="get_goods_company" placeholder="点击编辑"/>
+							</div>
+							<div class="editor_location_arrow mui-pull-right">
+								<span class="mui-icon mui-icon-forward"></span>
+							</div>
+						</div>
+						<div class="editor_location_row">
+							<div class="editor_location_person">
+								<span>地址:</span>
+							</div>
+							<div class="editor_location_input">
+								<input id="get_goods_address" type="text"class="get_goods_address" placeholder="点击编辑"/>
+							</div>
+							<div class="editor_location_arrow mui-pull-right">
+								<span class="mui-icon mui-icon-forward"></span>
+							</div>
+						</div>
+						<div class="editor_location_row">
+							<div class="editor_location_person">
+								<span>联系电话:</span>
+							</div>
+							<div class="editor_location_input">
+								<input id="tel" type="text" placeholder="点击编辑"class="tel"/>
+							</div>
+							<div class="editor_location_arrow mui-pull-right">
+								<span class="mui-icon mui-icon-forward"></span>
+							</div>
+						</div>
+						<div class="editor_location_row">
+							<div class="editor_location_person">
+								<span>备注:</span>
+							</div>
+							<div class="editor_location_input">
+								<input id="remarks" type="text" placeholder="点击编辑"class="remarks"/>
+							</div>
+							<div class="editor_location_arrow mui-pull-right">
+								<span class="mui-icon mui-icon-forward"></span>
+							</div>
+						</div>
+						<!--货物拆分-->
+								<div class="separationGoods"style="display: none;">
+									<div class="separationGoodsTitle">
+										货物拆分
+									</div>
+									<!--<div class="separationGoodsContents ">
+										<select class="separateSelect">
+											<option value="1">50mm聚苯板 氟碳实色 1㎡/块50mm聚苯板 氟碳实色 1㎡/块</option>
+											<option value="1">50mm聚苯板 氟碳实色 1㎡/块</option>
+										</select>
+										<input type="text" placeholder="数量"class="separateNum"/>
+									</div>
+									<div class="separationGoodsContents">
+										<select class="separateSelect">
+											<option value="1">50mm聚苯板 氟碳实色 1㎡/块</option>
+											<option value="1">50mm聚苯板 氟碳实色 1㎡/块</option>
+										</select>
+										<input type="text" placeholder="数量"class="separateNum"/>
+									</div>-->
+								</div>
+					</div>
+					<!--商品信息-->
+					<div id="shop_info">
+						<ul class="mui-table-view " id="res_list">
+							<!--<li class="mui-table-view-cell mui-media">
+								<div class="order_info_title">
+									<div class="order_info_div">
+										<img src="../../../styles/img/shopCart_img/order/order_pay.png" />
+									</div>
+									<div class="order_info_font">
+										<span class="company_name">德卡夫科技发展股份有限公司</span>
+										<span class="mui-icon mui-icon-forward"></span>
+									</div>
+								</div>
+								<div class="order_info_content">
+									<div class="order_name_div">
+										<span>QC-PRM种植抗根防水卷材组合材料套装加材料</span>
+									</div>
+									<div class="order_num_div mui-text-center">
+										<span>x</span>
+										<span>30</span>
+									</div>
+									<div class="order_price_div">
+										<div>
+											<span>¥</span>
+											<span>300</span>
+										</div>
+										<div class="discount">
+											<span>300</span>
+										</div>
+									</div>
+									<div style="display: none;"></div>
+								</div>
+							</li>-->
+						</ul>
+					</div>
+					<!--开票信息-->
+					<div id="invoice_info_div">
+						<div id="invoice_title_div">
+							<div id="invoice_title_img">
+								<img src="../../../styles/img/shopCart_img/order/invoice_info.png" />
+							</div>
+							<div id="invoice_title_info">
+								<span>开票信息</span>
+							</div>
+							<div id="invoice_title_input">
+								<input id="check_box" name="checkbox" type="checkbox"/>
+							</div>
+						</div>
+						<div id="invoice_info_content"style="display: none;">
+							<div class="invoice_row">
+								<div class="invoice_title">
+									<span>抬头:</span>
+								</div>
+								<div class="invoice_editor">
+									<input id="invoice_head" class="input_editor" type="text" placeholder="点击编辑" disabled="true"/>
+								</div>
+								<div class="invoice_arrow mui-pull-right">
+									<span class="mui-icon mui-icon-forward"></span>
+								</div>
+							</div>
+							<div class="invoice_row">
+								<div class="invoice_title">
+									<span>开户行:</span>
+								</div>
+								<div class="invoice_editor">
+									<input id="bank_name" class="input_editor" type="text" placeholder="点击编辑" disabled="true"/>
+								</div>
+								<div class="invoice_arrow mui-pull-right">
+									<span class="mui-icon mui-icon-forward"></span>
+								</div>
+							</div>
+							<div class="invoice_row">
+								<div class="invoice_title">
+									<span>账号:</span>
+								</div>
+								<div class="invoice_editor">
+									<input id="account_num" class="input_editor" type="text" placeholder="点击编辑" disabled="true"/>
+								</div>
+								<div class="invoice_arrow mui-pull-right">
+									<span class="mui-icon mui-icon-forward"></span>
+								</div>
+							</div>
+							<div class="invoice_row">
+								<div class="invoice_title">
+									<span>税号:</span>
+								</div>
+								<div class="invoice_editor">
+									<input id="invoice_num" class="input_editor" type="text" placeholder="点击编辑" disabled="true"/>
+								</div>
+								<div class="invoice_arrow mui-pull-right">
+									<span class="mui-icon mui-icon-forward"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--优惠券-->
+					<div class="couponBtn">
+						<div id="coupon_title_div">
+							<div id="coupon_title_img">
+								<img src="../../../styles/img/shopCart_img/order/couponWeb.png" />
+							</div>
+							<div id="coupon_title_info">
+								<span>平台优惠</span>
+							</div>
+							
+							<div class="coupon_arrow mui-pull-right">
+								<span class="mui-icon mui-icon-forward"></span>
+							</div>
+							<div id="coponChose">
+								<span class="thisChoseTxt">无优惠</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="couponPop">
+				<div class="couponTitle">可使用优惠券</div><span class="closeCouponChose">×</span>
+				<div style="clear: both;"></div>
+				<div id="couponList">
+					<!--<div class="Items">
+						<label class="fulltominus"for="coupon1">满50000减5000</label>
+						<input type="checkbox" class="choseCheckbox"id="coupon1"/>
+					</div>-->
+					
+				</div>
+			</div>
+			<!--提交按钮-->
+			<div id="submit_btn" class="mui-text-center"style="z-index: 999;">
+				<span>提交订单</span>
+			</div>
+		</div>
+		<div id="bg" class="mui-backdrop" style="display: none;"></div>
+		<div id="wait_dialog" class="mui-text-center mui-popup mui-popup-in">
+			<span class="mui-spinner"></span>
+			<span id="wait_dialog_font">正在提交，请稍等...</span>
+		</div>
+		<script src="../../../mui/js/mui.min.js"></script>
+		<script src="../../../common/jquery-1.12.1.js"></script>
+		<script src="../../../common/common.js"></script>
+		<script src="order_index.js"></script>
+	</body>
+
+</html>

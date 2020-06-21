@@ -1,0 +1,279 @@
+/*顶部*/
+header{
+	width: 100%;
+	height: 100%;
+}
+.headBox{
+	width: 929px;
+	height: 89px;	
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+}
+.logoBox{
+	display: flex;
+	justify-content: flex-start;
+	cursor: pointer;
+}
+.logo_text{
+	font-size: 13px;
+	color: #939393;
+	padding: 0 11px;
+	border-left: 1px solid #F1F1F1;
+	box-sizing: border-box;
+	height: 34px;
+	line-height: 34px;
+	margin-left: 14px;
+	margin-top: 7px;
+	font-family: "微软雅黑";
+}
+.registerBox{
+	display: flex;
+	justify-content: flex-start;
+}
+.register_text{
+	font-size: 14px;
+	color: #676767;
+	height: 32px;
+	line-height: 32px;
+	font-family: simsun;
+}
+.register_btn{
+	width: 82px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	font-size: 14px;
+	color: #0D8DFD;
+	border: 1px solid #DDDDDD;
+	cursor: pointer;
+	font-family: simsun;
+	margin-left: 8px;
+}
+/*content*/
+.wrapper{
+	width: 100%;
+	height: 551px;
+	background: url(../pages/login/img/backimg.png) no-repeat;
+	background-position: center;
+	background-origin: content-box;
+	background-size: 100% 100%;
+	display: flex;
+	align-items: center;
+}
+.content_box{
+	width: 929px;
+	margin: 0 auto;
+	/*padding-top: 6.5%;*/
+	display: flex;
+	/*padding-left: 42px;*/
+}
+.left_content_box{
+	display: flex;
+	justify-content: flex-start;
+	/*align-items: center;*/
+	align-content: center;
+	align-items: flex-end;
+}
+.phone_box{
+	width: 164px;
+	/*height: 299px;*/
+	position: relative;
+    top: 4px;
+}
+.phone_back_img{
+	width: 300px;
+	height: 156px;
+	/*width: 570px;*/
+	/*height: 343px;*/
+	/*width: 380px;
+	height: 228px;*/
+	background: url(../pages/login/img/login_img.png) no-repeat;
+	background-origin: content-box;
+	background-position: center;
+	background-size: cover;
+	text-align: center;
+}
+.phone_back_img img{
+    padding-top: 32px;
+}
+.text_box{
+	width: 280px;
+	height: 299px;
+	margin-left: 33px;
+}
+.text_top{
+	font-size: 35px;
+	color: #FFF;
+	font-weight: 400;
+}
+.text_list ul{
+	width: 280px;
+	display: flex;
+	justify-content: center;
+	margin: 15px auto 18px auto;
+}
+.text_list ul li{
+	font-size: 22px;
+	color: #FFF;
+	font-family: "";
+}
+.text_list ul li:nth-of-type(1){
+	margin-right: 10px;
+}
+.text_list ul li:nth-of-type(1) div:nth-of-type(1){
+	margin-bottom: 5px;
+}
+.text_list ul li:nth-of-type(1) div:nth-of-type(2){
+	color: #FFE400;
+}
+.text_list ul li:nth-of-type(2) div:nth-of-type(1){
+	margin-bottom: 5px;
+	color: #FFE400;
+}
+.text_img_ercode{
+	width: 280px;
+	text-align: center;
+	margin-bottom: 11px;
+}
+.text_ercode_text{
+	width: 280px;
+	font-size: 14px;
+	color: #FFF;
+	text-align: center;
+}
+.text_img{
+	padding-left: 3px;
+	padding-top: 4px;
+}
+
+
+.form_box{
+	width: 370px;
+	height: 401px;
+	margin-left: 44px;
+	background-color: #FFF;
+}
+.form_box_text{
+	height: 61px;
+	line-height: 61px;
+	border-bottom: 1px solid #EDEEF0;
+	padding-bottom: 19px;
+	font-size: 14px;
+	color: #4A4A4A;
+	text-align: center;
+	font-weight: bold;
+}
+.form{
+	padding-top: 20px;
+	text-align: center;
+}
+.username{
+	width: 302px;
+	height: 47px;
+	border: 1px solid #DDDDDD;
+	line-height: 47px;	
+	margin: 0 auto 28px auto;
+}
+.username input{
+	border: 0;
+	height: 40px;
+	width: 100%;
+	text-indent: 13px;
+	vertical-align: baseline;
+	background-color: #FFF;
+	outline: none;
+}
+.password{
+	width: 302px;
+	height: 47px;
+	border: 1px solid #DDDDDD;
+	line-height: 47px;	
+	margin: 0 auto;
+}
+.password input{
+	border: 0;
+	height: 40px;
+	width: 90%;
+	text-indent: 13px;
+	vertical-align: baseline;
+	background-color: #FFF;
+	outline: none;
+}
+.password img{
+	vertical-align: middle;
+	margin-right: 5px;
+}
+input:-internal-autofill-selected{
+	background-color: #FFF !important;
+}
+input::-webkit-input-placeholder{
+	font-family: simsun;
+}
+.forget{
+	width: 302px;
+	text-align: right;
+	margin: 8px auto 28px auto;
+	font-size: 12px;
+	color: #2390FD;
+	cursor: pointer;
+	font-family: simsun;
+}
+.btn_box{
+	width: 300px;
+	height: 45px;
+	margin: 0 auto;
+}
+.btn_box button{
+	width: 100%;
+	height: 45px;
+	text-align: center;
+	color: #FFF;
+	background-color: #0691f9;
+	font-size: 20px;
+	font-weight: bold;
+	border-radius: 3px;
+	border: 1px solid #0691f9;
+	font-family: "微软雅黑";
+}
+/*footer*/
+.footerContent{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+.footerBottom{
+	width: 1200px;
+	margin: 0 auto;
+	border-top: 1px solid #EDEDED;
+}
+
+
+.topMainLogo .logoText {
+    display: inline-block;
+    vertical-align: middle;
+}
+.logoText h3 {
+    width: 128px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 31px;
+    font-family: cursive;
+    font-weight: bold;
+    font-style: italic;
+    /*color: rgba(0,0,0,1);*/
+    color: #0691f9;
+    margin-bottom: 10px;
+}
+.logoText h5 {
+    width: 123px;
+    height: 12px;
+    font-size: 13px;
+    font-family: SimSun;
+    font-weight: 400;
+    color: rgba(157,157,157,1);
+}
+
+
+

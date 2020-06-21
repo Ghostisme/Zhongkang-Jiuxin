@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线问诊</title>
+    <link href="../../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+
+    <link href="../../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="../../../css/animate.min.css" rel="stylesheet">
+    <link href="../../../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../css/public.css">
+
+</head>
+
+<body class="gray-bg">
+<div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="new_modal_header ">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+                </button>
+                <div>患者列表</div>
+            </div>
+            <div class="modal-body" style="background: white;">
+                <div class="row">
+                    <div class="col-sm-12" style="border:1px solid #ebebeb;padding: 15px 20px;">
+                        <div class="col-sm-12" style="border:1px solid #ebebeb;padding: 10px 0;">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>患者姓名：</label>
+                                    <input name="us_integral_cx" type="text" class="form-control" placeholder="请输入患者姓名">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>电话号码：</label>
+                                    <input name="us_integral_cx" type="text" class="form-control" placeholder="请输入电话号码">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" style="padding-top: 23px;">
+                                    <button type="button" class="btn  btn-success" >查询</button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-top: 10px;padding: 0;">
+                            <div id="toolbar" class="btn-group" style="padding-bottom: 5px">
+                                <button type="button" class="btn  btn-success"  onclick="selectTable()">选择</button>
+                            </div>
+                            <table id="myTable" class="table table-striped table-bordered table-hover ">
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <form class="form-horizontal m-t" id="signupForm" novalidate="novalidate">
+        <!--患者信息-->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="ibox-title">
+                            <h5>患者信息</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="form-group" style="margin-bottom:0">
+                                <div class="col-sm-6">
+                                    <label class="col-sm-3 control-label"><span style="color: red">*</span>身份证号：</label>
+
+                                    <div class="col-sm-4" style="padding-right: 0;padding-left: 8px;">
+                                        <input name="firstname" class="form-control " type="text">
+                                    </div>
+                                    <div class="col-sm-5" style="padding-left: 0px">
+                                        <button type="button" class="btn btn btn-success"
+                                                style="margin-right: 5px;"><i class="fa fa-search"></i>
+                                        </button>
+                                        <button id="closeModal" type="button" class="btn btn-w-m btn-success" data-toggle="modal"
+                                                data-target="#myModal">选择已有患者
+                                        </button>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"><span
+                                                style="color: red">*</span>患者姓名：</label>
+                                        <div class="col-sm-8">
+                                            <input name="lastname" class="form-control" type="text" aria-required="true"
+                                                   aria-invalid="false">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"><span
+                                                style="color: red">*</span>性别：</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control">
+                                                <option>男</option>
+                                                <option>女</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"><span
+                                                style="color: red">*</span>年龄：</label>
+                                        <div class="col-sm-4">
+                                            <input name="lastname" class="form-control" type="text" aria-required="true"
+                                                   aria-invalid="false">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <select class="form-control">
+                                                <option>岁</option>
+                                                <option>天</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">联系电话：</label>
+                                        <div class="col-sm-8">
+                                            <input name="lastname" class="form-control" type="text" aria-required="true"
+                                                   aria-invalid="false">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" style="width: 12.6%">家庭住址：</label>
+                                        <div class="col-sm-9" style="width: 83%">
+                                            <input name="lastname" class="form-control" type="text" aria-required="true"
+                                                   aria-invalid="false">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!--病情信息-->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="ibox-title">
+                            <h5>病情信息</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="form-group" style="margin-bottom:0">
+                                <div class="col-sm-6">
+                                    <label class="col-sm-3 control-label">T：(°C)</label>
+                                    <div class="col-sm-8" style="padding-right: 0;padding-left: 8px;">
+                                        <input name="firstname" class="form-control " type="text">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">P：(次/分)</label>
+                                        <div class="col-sm-8">
+                                            <input name="lastname" class="form-control" type="text" aria-required="true"
+                                                   aria-invalid="false">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">R：(次/分)</label>
+                                        <div class="col-sm-8">
+                                            <input name="lastname" class="form-control" type="text" aria-required="true"
+                                                   aria-invalid="false">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Bp：(mmHg)</label>
+                                        <div class="col-sm-2" style="padding-right: 0">
+                                            <input name="lastname" class="form-control" type="text" aria-required="true"
+                                                   aria-invalid="false">
+                                        </div>
+                                        <label class="col-sm-1 control-label"
+                                               style="font-size: 26px;line-height: 20px;text-align: center;">/</label>
+                                        <div class="col-sm-2" style="padding-left: 0">
+                                            <input name="lastname" class="form-control" type="text" aria-required="true"
+                                                   aria-invalid="false">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">舌苔：</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control">
+                                                <option>--请选择--</option>
+                                                <option>天</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">脉搏：</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control">
+                                                <option>--请选择--</option>
+                                                <option>天</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" style="width: 12.6%">病情描述：</label>
+                                        <div class="col-sm-9" style="width: 83%">
+                                                <textarea class="form-control">
+
+                                                </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .gaopai_div{
+                padding-top: 30px;
+                font-size: 12px;
+            }
+            .gaopai_div .btn{
+                min-width: 75px;
+            }
+        </style>
+        <!--附件列表-->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="ibox-title">
+                            <h5>附件列表</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="form-group"
+                                 style="margin-bottom:0;border-top: 1px solid lightgray;padding-top: 20px">
+                                <div style="border: 1px solid lightgray;width: 300px;height: 90px;display: flex">
+                                    <div style="width: 50%;margin-top: 20px;padding-left: 5px;">156464874615.jpg</div>
+                                    <div style="width: 50%;margin-top: 60px">
+                                        <button class="btn btn-white btn-xs" style="width: 70px;">
+                                            <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                        </button>
+                                        <button class="btn btn-success btn-xs" style="width: 70px;">
+                                            <i class="glyphicon glyphicon-download-alt" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!--附件上传-->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="ibox-title">
+                            <h5>附件</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="form-group" style="margin-bottom:0">
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" style="width: 12.6%">选择附件：</label>
+                                        <div class="col-sm-9" style="width: 83%">
+                                            <div style="height: 150px;border: 2px solid lightgray;text-align: center;line-height: 150px">
+                                                拖动文件至此或点击上传
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="border-bottom:1px solid #e7eaec">
+                                    <div class="form-group" >
+                                        <label class="col-sm-2 control-label"  style="width: 12.6%">高拍仪附件上传</label>
+                                        <div class="col-sm-9" style="width: 83%;">
+                                            <button type="button"  class="btn btn-w-m btn-success" onclick="gpy_click()" >高拍仪附件上传</button>
+                                            <span style="color: red">如未安装高拍仪插件，请点击<a>下载</a>并安装</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content" style="text-align: center;border: 0">
+                            <button class="btn btn-white">清空</button>
+                            <button type="button" class="btn  btn-success" onclick="xyb_click()">下一步</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+
+<script src="../../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../../js/bootstrap.min.js?v=3.3.5"></script>
+<script src="../../../js/content.min.js?v=1.0.0"></script>
+
+<script src="../../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../../js/plugins/sweetalert/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        oninitTable();
+
+    });
+
+    function xyb_click() {
+        location.href="onlineInquiryList.html";
+    }
+    function gpy_click() {
+        location.href="photographic.html";
+    }
+    function selectTable() {
+        var DelNumS = getCheck();//获取选中行的人的编号
+        //判断是否为空。。前面是否有多余的 逗号.(如果是全选，前面会多个，)
+        if (DelNumS.charAt(0) == ",") { DelNumS = DelNumS.substring(1); }
+        if (DelNumS == "") {
+            swal({
+                title: "提示",
+                text: "请选择数据"
+            });
+            return;
+        }
+        $('#closeModal').click();
+    }
+    //获取表格里选中的行 的编号
+    function getCheck() {
+        var data = [];//数组
+        $("#myTable").find("input[name='btSelectItem']:checkbox:checked").each(function () {
+            var index=$(this).attr("data-index");
+            var res=$("#myTable").bootstrapTable('getData')[index];
+            data.push(res.id);
+        });
+        return data.join(",");//用，连接
+    }
+    function oninitTable() {
+        // var url = 'http://www.fruitcoming.com/admin/user/getMemberLevelData';
+        var data = [
+            {
+                'id': 0,
+                'name': 'Item 0',
+                'idCode': '$0',
+                'phone': '$0'
+            },
+            {
+                'id': 1,
+                'name': 'Item 1',
+                'idCode': '$0',
+                'phone': '$0'
+            },
+            {
+                'id': 2,
+                'name': 'Item 2',
+                'idCode': '$0',
+                'phone': '$0'
+            },
+            {
+                'id': 3,
+                'name': 'Item 3',
+                'idCode': '$0',
+                'phone': '$0'
+            },
+            {
+                'id': 4,
+                'name': 'Item 4',
+                'idCode': '$0',
+                'phone': '$0'
+            },
+            {
+                'id': 5,
+                'name': 'Item 5',
+                'idCode': '$0',
+                'phone': '$0'
+            }
+        ];
+        $('#myTable').bootstrapTable({
+            // method: 'get',
+            toolbar: '#toolbar', //工具按钮用哪个容器
+            striped: true,      //是否显示行间隔色
+            cache: false,      //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            // dataField: "data",//数据集名称 自己随便起
+            pagination: true,     //是否显示分页（*）
+            pageNumber: 1,      //初始化加载第一页，默认第一页
+            pageSize: 10,      //每页的记录行数（*）
+            pageList: [5, 10, 20, 50],  //可供选择的每页的行数（*）
+            // url: url,//这个接口需要处理bootstrap table传递的固定参数
+            //responseHandler: responseHandler,//把后台返回的数据整改成你想要的格式
+            // queryParamsType: '', //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
+            // 设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber
+            //queryParams: queryParams,//前端调用服务时，会默认传递上边提到的参数，如果需要添加自定义参数，可以自定义一个函数返回请求参数
+            sidePagination: "client",   //分页方式：client客户端分页，server服务端分页（*）
+            // search: true,      //是否显示表格搜索，此搜索是客户端搜索，但可以传值到服务端
+            strictSearch: true,
+            minimumCountColumns: 2,    //最少允许的列数
+            clickToSelect: true,    //是否启用点击选中行
+            //smartDisplay:true,// 智能显示(www.111cn.net) pagination 和 cardview 等
+            searchOnEnterKey: true,
+            data: data,
+            columns: [
+                {
+                    field:"state",
+                    checkbox:true,
+                    align : 'center'
+                },
+                {
+                    field: 'id',
+                    title: '序号',
+                    align: 'center',
+                    sortable: true
+                }, {
+                    field: 'name',
+                    title: '姓名',
+                    align: 'center',
+                    sortable: true
+                }, {
+                    field: 'idCode',
+                    title: '身份证号',
+                    align: 'center',
+                    sortable: true
+                }, {
+                    field: 'phone',
+                    title: '联系电话',
+                    align: 'center',
+                    sortable: true
+                }]
+        });
+    }
+</script>
+</body>
+</html>

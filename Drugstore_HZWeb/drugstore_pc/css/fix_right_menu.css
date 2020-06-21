@@ -1,0 +1,84 @@
+/*右侧固定菜单栏*/
+.fix_right_menu{
+	width: 52px;
+	/*height: 156px;*/
+	height: 104px;
+	background-color: #FFF;
+	position: fixed;
+	right: 37px;
+	bottom: 60px;
+}
+.fix_right_menu ul li{
+	position: relative;
+	width: 52px;
+	height: 52px;
+	box-sizing: border-box;	
+	text-align: center;
+	line-height: 52px;
+	font-size: 15px;
+	vertical-align: middle;
+	border: 1px solid #E5E5E5;
+	cursor: pointer;
+}
+.fix_right_menu ul li:hover{
+	background-color: #0691F9;
+	border: 1px solid #0691F9;
+	color: #fff;
+	font-size: 15px;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.fix_right_menu ul li:hover div{
+	width: 30px;
+	height: 29px;
+	line-height: normal;
+    text-align: center;
+    margin: 5px auto;
+}
+/*各小块隐藏层*/
+.shopCard{
+	width: 132px;
+	height: 200px;
+	background-color: #FFF;
+	border: 1px solid #E5E5E5;
+	box-sizing: border-box;
+	position: absolute;
+	left: -132px;
+    top: -44px;
+    opacity: 0;
+    transition: opacity .3s linear; 
+}
+.img_Box{
+	width: 98px;
+	height: 98px;
+	margin: 22px auto 2px auto;
+}
+.img_Box img{
+	width: 100%;
+}
+.span_btn{
+	width: 74px;
+	height: 26px;
+	background-color: #0691F9;
+	color: #FFF;
+	line-height: 26px;
+	text-align: center;
+	margin: 0 auto;
+}
+.sideShopCartNum{
+	position: absolute;
+	/*width: 17px;*/
+	/*height: 17px;*/
+	/*line-height: 17px;*/
+	width: 22px;
+	height: 22px;
+	line-height: 22px;
+	background: #EA3333;
+	color: #fff;
+	border-radius: 50%;
+	right: 4px;
+    top: 4px;
+    display: none;
+    font-size: 11px;
+}

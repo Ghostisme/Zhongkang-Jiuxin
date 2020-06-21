@@ -1,0 +1,219 @@
+/*头部样式*/
+.mui-bar-nav{
+	/*background: #ffcc33;*/
+	background-color: #FFF;
+}
+.mui-bar-nav a{
+	color: #000;
+}
+
+/*支付金额*/
+.payMoney{
+	margin-top: 54px;
+	padding: 11px 15px;
+	background: #fff;
+}
+.payMoney .title{
+	/* width: 49%; */
+	width: 25%;
+	display: inline-block;
+	text-align: left;
+	/* color: #F89946; */
+	
+}
+.payMoney .money{
+	/* width: 49%; */
+	width: 12%;
+	display: inline-block;
+	text-align: left;
+	/* color: #F89946; */
+	font-weight: bold;
+	color: red;
+	margin-left: -13px;
+}
+
+/*支付类型*/
+.payType .title{
+	margin-top: 10px;
+	padding: 7px 15px;
+	font-size: 0.8rem;
+	background: #fff;
+}
+.mui-table-view-cell:after{
+	left: 0;
+}
+.moreType{
+	padding: 11px 15px;
+	color: #666;
+	font-size: 0.8rem;
+	text-align: right;
+}
+
+/*支付按钮*/
+.payBtnBox{
+	margin-top: 10px;
+}
+.payBtn{
+	width: 100%;
+	height: 44px;
+	border-radius: 15px;
+	background: #ffcc33;
+}
+
+/*更多支付方式弹窗*/
+#moreTypeContainer{
+	width: 100%;
+	height: auto;
+	background: #fff;
+}
+#moreTypeContainer .mt_header{
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 44px;
+	border-bottom: 1px solid gainsboro;
+}
+.mt_header a{
+	position: absolute;
+	z-index: 10;
+}
+.mt_header img{
+	width: 10px;
+	margin-top: 12px;
+}
+#moreTypeContainer .title,#moreTypeContainer  .voucher {
+	padding: 11px 10px;
+	height: 44px;
+	border-bottom: 1px solid gainsboro;
+}
+.mt_content{
+	padding: 11px 10px;
+	border-bottom: 1px solid gainsboro;
+}
+.mt_content p{
+	font-size: 17px;
+}
+.uploadVoucher{
+	text-align: center;
+	padding: 11px 10px;
+	height: 200px;
+}
+.mt_btn{
+	width: 100%;
+    height: 44px;
+    border-radius: 15px;
+    background: #ffcc33;
+}
+
+
+/*上传凭证*/
+#voucher{
+	height: 200px;
+}
+
+.picBox{
+	float: left;
+    width: 200px;
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: solid 1px #eee;
+    position: relative;
+}
+.imgBox{
+	float: left;
+	width: 200px;
+    height: 120px;
+}
+.imgs{
+	width: 200px;
+	height: 120px;
+}
+.fileBtn {
+    display: block;
+    width: 200px;
+    height: 120px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 120px;
+    text-align: center;
+    color: #909090;
+    opacity: 0;
+}
+.picFile {
+    width: 200px;
+    height: 120px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    border: solid 1px #eee;
+}
+.clearfix {
+    clear: both;
+}
+.annotate {
+	float: right;
+    height: 120px;
+    line-height: 120px;
+    color: #F8B27E;
+}
+#pz{
+	margin-top: 10px;
+	width: 95%;
+	height: 44px;
+	border-radius: 15px;;
+	background: #FFCB00;
+	color: #000;
+}
+
+
+
+
+
+
+body{
+	background-color: #F4F4F4;
+}
+.mui-table-view-radio .mui-table-view-cell{
+	padding-right: 0;
+}
+.payType{
+	margin-top: 10px;
+}
+.mui-table-view:before{
+	background-color: #FFFFFF;
+}
+.mui-table-view-cell:after{
+	background-color: #FFFFFF;
+}
+.payBox{
+	display: flex;
+}
+.iconBox{
+	margin-right: 19px;
+}
+.payIcon{
+	width: 40px;
+	height: 40px;
+	vertical-align: -15px;
+}
+.payTitle{
+	font-size: 16px;
+	color: #000;
+}
+.payExplain{
+	font-size: 14px;
+	color: #868688;
+}
+.payTextBox{
+	overflow: hidden;
+	width: 100%;
+}
+.iconPos{
+	float: right;
+	margin-top: -29px;
+	margin-right: 15px;
+}

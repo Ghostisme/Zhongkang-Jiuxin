@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>远程医疗管理系统-公共页面</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />-->
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<!--<link rel="stylesheet" type="text/css" href="../../css/commonStyle.css"/>-->
+		<style>
+			#logoAndName{
+				width:100%;
+				height:53px;
+				/*padding: 20px 0px 0px 20px;*/
+			}
+			.logoImg{
+				width:90%;
+				overflow: hidden;
+				margin:20px 0px 20px 5px;
+			}
+			#logoAndName img{
+				width:100%;
+				height:2%;
+			}
+			#backBtn{
+				width:100%;
+				text-align: right;
+				/*font-size:1.2em;*/
+				color:#fff;
+				margin-top:10px;
+				overflow: hidden;
+			}
+			.navs{
+				width:100%;
+			}
+			.leftNav{
+				width:100%;
+			}
+			ul#navs{
+				padding:0px;
+				list-style: none;
+				color:#fff;
+				font-family: "黑体";
+				overflow:hidden;
+				width:100%;
+			}
+			ul#navs>li{
+				width:100%;
+				height:40px;
+				line-height: 40px;
+				overflow: hidden;
+				cursor: pointer;
+				padding-left:20px;
+			}
+			ul.navsList{
+				list-style: none;
+				display: none;
+				padding:0px;
+			}
+			ul.navsList>li{
+				cursor: pointer;
+				height:40px;
+				line-height: 40px;
+				padding-left:55px;
+			}
+			ul#navs>li:hover{
+				background: #16669B;
+			}
+			ul.navsList>li:hover{
+				background: #16669B;
+			}
+			i.systemManage{
+				width:18px;
+				height:16px;
+				background: url("../../img/common/commonIcons.png") 0px -20px no-repeat;
+				margin-top:12px;
+				margin-right:10px;
+			}
+			i.backLeftBtn{
+				width:18px;
+				height:15px;
+				background: url("../../img/common/commonIcons.png") -1px -154px no-repeat;
+				margin-top:12px;
+				margin-right:10px;
+			}
+			i.arrowdown{
+				/*width:10px;
+				height:8px;
+				/*background: url("../img/common/commonIcons.png") -1px -80px no-repeat;*/
+				/*以上是点开之后的坐标*/
+				width:8px;
+				height:10px;
+				background: url("../../img/common/commonIcons.png") -1px -64px no-repeat;
+				margin-top:15px;
+				margin-left:50px;
+			}
+			i.patientManage{
+				width:18px;
+				height:20px;
+				background: url("../../img/common/commonIcons.png") 0px -40px no-repeat;
+				margin-top:12px;
+				margin-right:10px;
+			}
+			i.personManage{
+				width:19px;
+				height:18px;
+				background: url("../../img/common/commonIcons.png") 0px -95px no-repeat;
+				margin-top:12px;
+				margin-right:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+		   <div class="row">
+		      <div class="leftNav lf">
+		      		<div id="logoAndName">
+		      			<div class="logoImg">
+		      				<img src="../../img/home/homeLogo.png" alt="" />
+		      			</div>
+		      		</div>
+		      		<div id="backBtn">
+		      			<i class="backLeftBtn rt"></i>
+		      		</div>
+		      		<div class="navs">
+		      			<ul id="navs">
+		      				<li class="firstItems">
+		      					<i class="lf systemManage" /></i>
+		      					<div class="lf">
+		      						系统管理
+		      					</div>
+		      					<i class="lf arrowdown"></i>
+		      				</li>
+		      				<ul class="navsList">
+		      					<li>子菜单1</li>
+		      					<li>子菜单2</li>
+		      				</ul>
+		      				<li class="firstItems">
+		      					<i class="lf patientManage" /></i>
+		      					<div class="lf">
+		      						病人管理
+		      					</div>
+		      					<i class="lf arrowdown"></i>
+		      				</li>
+		      				<li class="firstItems">
+		      					<i class="lf personManage" /></i>
+		      					<div class="lf">
+		      						个人信息
+		      					</div>
+		      					<i class="lf arrowdown"></i>
+		      				</li>
+		      			</ul>
+		      		</div>
+		      </div>
+		      <div class="rightContent rt">
+			    <div class="topNavs">
+			      	<div class="rt userImg">
+			      		<img src="../../img/home/userDefaultImg.jpeg.jpg" />
+			      	</div>
+			      	<i class="rt userImgDownArrow"></i>
+			      	<div class="rt userInfo">
+			      		<span class="adminStyle">管理员</span>
+			      		<span class="welcomeStyle">欢迎登陆</span>
+			      	</div>
+			      	<i class="rt"id="navLine"></i>
+			      	<div class="rt"id="AllInfo">
+			      	<i class="lf AllInfoImg"></i>
+			      	<b class="AllInfoNum">1</b>
+			      </div>
+			    </div>
+			</div>      
+		   </div>
+		   <!--<div class="row"></div>-->
+		</div>
+		
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../../js/commonStyle.js"></script>
+		<script>
+			$("#navs").on("click",".firstItems",function(){
+				$(this).next(".navsList").toggle();
+			});
+		</script>
+	</body>
+</html>

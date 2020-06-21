@@ -1,0 +1,20 @@
+.mui-content{
+	margin-top: 0;
+}
+.contentBox{
+	padding-left: 17px;
+	background-color: #FFF;
+}
+.itemBox{
+	font-size: 17px;
+	color: #2B2724;
+	font-family: "微软雅黑";
+	width: 100%;
+	height: 48px;
+	line-height: 48px;
+	border-bottom: 1px solid #EDEDED;
+}
+.contentBox div:nth-of-type(1),
+.contentBox div:nth-of-type(2){
+	color: #A8A8A8;
+}

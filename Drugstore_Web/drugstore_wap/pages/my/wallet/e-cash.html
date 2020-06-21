@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/e-cash.css" rel="stylesheet" type="text/css" />
+
+	</head>
+
+	<body>
+		<!--top-bar-->
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">电子现金</h1>
+		</header>
+		<!--内容-->
+		<div class="mui-content">
+			<div class="info">
+				<a href="#">当前账户历史记录</a>
+			</div>
+			<div class="e-cash">
+				当前可提取金额：￥<span id="money">0.00</span> <input class="drawMoney" type="button" value="提现" />
+			</div>
+			<div class="e-cashInfo">
+				<ul class="mui-table-view list">
+					<!--<li class="mui-table-view-cell">
+						<div class="rebateBox">
+							￥<span class="rebate">5,000.00</span>
+						</div>
+						<div class="source">
+							来自订单尾号0000的返利
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="rebateBox">
+							￥<span class="rebate">5,000.00</span>
+						</div>
+						<div class="source">
+							来自订单尾号0000的返利
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="rebateBox">
+							￥<span class="rebate">5,000.00</span>
+						</div>
+						<div class="source">
+							来自订单尾号0000的返利
+						</div>
+					</li>-->
+				</ul>
+			</div>
+			<!--提现信息-->
+			<div id="popover" class="mui-popover">
+				<div class="drawMoneyInfo">
+					<p class="title">提现信息</p>
+					<div class="input-row"style="margin-bottom: 10px;">
+						<label>选择银行：</label>
+						<select name="bank" id="bank" class="inputW">
+							<option value="1">请选择</option>
+							<option value="2">中国建设银行</option>
+							<option value="3">中国农业银行</option>
+							<option value="4">中国工商银行</option>
+							<option value="5">中国银行</option>
+							<option value="6">交通银行</option>
+							<option value="7">招商银行</option>
+						</select>
+					</div>
+					<div class="input-row">
+						<label>开户人姓名：</label>
+						<input class="openAmountBankName inputW" type="text">
+					</div>
+					<div class="input-row">
+						<label>银行卡号：</label>
+						<input  class="creditCarNumber" type="text">
+					</div>
+					<div class="input-row">
+						<label>提现金额：</label>
+						<input class="cashWithdrawalAmount inputW" type="number">
+						<br />
+						<span class="notice">注:提现金额为整数</span>
+					</div>
+					<div class="input-row" style="margin-top: 26px;height:30px;line-height: 30px;">
+						<label>登陆账号：</label>
+						<span class="loginName">18865424685</span>
+					</div>
+					<div class="input-row">
+						<label>验证码：</label>
+						<input class="inputW lastoption codes" type="text">
+						<input id="verBtn"class="verBtn"value="获取验证码"readonly="readonly">
+					</div>
+					<button class="submit">提交</button>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script src="../../../mui/js/mui.min.js"></script>
+<script src="../../../common/jquery-1.12.1.js"></script>
+<script src="../../../common/common.js"></script>
+<script src="js/e-cash.js"></script>
+<script type="text/javascript">
+	mui.init()
+</script>

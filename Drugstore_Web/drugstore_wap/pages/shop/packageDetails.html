@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/css/shop_detail_versionTwo.css">
+		<link rel="stylesheet" href="../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../mui/css/common.css">
+		<title></title>
+		<style>
+			.h_div {
+				width: 50px;
+				line-height: 41px;
+				font-size: 16px;
+				font-family: MicrosoftYaHei;
+				font-weight: 400;
+				color: rgba(0, 0, 0, 1);
+			}
+			
+			.s_hdivb {
+				border-bottom: 2px solid #CF4843;
+			}
+			
+			.saveMoney {
+				font-size: 10px;
+				background: #FC3857;
+				color: #fff;
+				text-align: center;
+				border-radius: 10px;
+				padding: 3px 5px;
+				margin-left: 4px;
+			}
+			
+			.totalPrice {
+				text-decoration: line-through;
+				color: #666666;
+				font-size: 15px;
+				margin-left: 10px;
+			}
+			
+			#productName {
+				font-size: 18px;
+				color: #333;
+				font-weight: bold;
+				margin-top: 5px;
+			}
+			
+			#companyName {
+				font-size: 14px;
+				color: #333;
+				line-height: 36px;
+			}
+			.sendProduct{
+				font-size: 11px;
+    color: #999;
+			}
+			.first_div {
+				padding: 10px 15px;
+				background: #fff;
+			}
+			
+			.first_dd1 {
+				height: 43px;
+				background: #fff;
+				display: flex;
+				align-items: center;
+				font-size: 15px;
+				font-family: MicrosoftYaHei;
+				font-weight: 400;
+				color: rgba(0, 0, 0, 1);
+				font-weight: bold;
+			}
+			.swiper-wrapper {
+				overflow-x: scroll;
+				display: flex;
+				background: #fff;
+				padding: 10px;
+			}
+			
+			.er_dd1_l {
+				width: 5px;
+				height: 22px;
+				background: rgba(6, 145, 249, 1);
+				margin-right: 7px;
+			}
+			
+			.goodsInfoBoxs {
+				width: 130px;
+				margin: 0 auto;
+				text-align: left;
+				margin-left: 15px;
+			}
+			
+			.slideGoodsName {
+				font-size: 12px;
+				color: #333;
+			}
+			
+			.slidePriceAndNum {
+				font-size: 8px;
+				color: #666;
+			}
+			
+			.swiper-slide img {
+				width: 80px;
+				height: 80px;
+				margin-left: 12px;
+				margin-bottom: 10px;
+			}
+			.drug-price{
+				    color: #999;
+    font-size: 10px;
+    text-decoration: line-through;
+			}
+			#addShopcar {
+				background: rgba(227,242,255,1);
+    border: 1px solid rgba(14,144,254,1);
+    opacity: 1;
+    border-radius: 40px 0px 0px 40px;
+    color: #0E90FE;
+			}
+			#addShopcar, #gotoOrder {
+    width: 101px;
+    height: 40px;
+    line-height: 40px;
+}
+			#gotoOrder{
+				background: rgba(14,144,254,1);
+    border: 1px solid rgba(14,144,254,1);
+    opacity: 1;
+    border-radius: 0px 40px 40px 0px;
+			}
+			.shop-setMeal{
+				    color: #333333;
+			}
+			.shop-price{
+				    color: #FC3857;
+    			font-weight: bold;
+			}
+			#follow .sideShopCartNum{
+				display: block;
+			    width: 17px;
+			    height: 16px;
+			    line-height: 16px;
+			    font-size: 10px;
+			    left: 42px;
+			    top: 8px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--top bar-->
+		<!--就开始大量杀掉了萨拉丁你卢卡斯拿到绿卡阿斯达克没来上课吗-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav " style="display: flex;justify-content: space-between;align-items: center; background-color: #fff;border-bottom: 1px solid #E0E0E0;">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<div style="margin-left: 40px;">
+				<a href="#h_div1">
+					<div id="hd1" style="color: #333333;">商品</div>
+				</a>
+				
+			</div>
+				<div class="follow lf" id="follow">
+					<img src="../../styles/img/home_img/footerShopcart.png" alt="" />
+					<span class="sideShopCartNum">0</span>
+				</div>
+		</header>
+		<div class="mui-content ">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll" id="drug_tpl_div">
+					<script id="drug_tpl" type="text/html">
+
+						<div id="slider" class="mui-slider" style="height: 300px;">
+							<%
+							var topimg="http://www.d-home.com.cn/images//yuantiao.jpg";
+							var fimg="http://www.d-home.com.cn/images//yuantiao.jpg";
+							if(imgList.length>0){
+							topimg=imgList[imgList.length-1].fileUrl
+							fimg=imgList[0].fileUrl
+							}
+							%>
+							<div class="mui-slider-group mui-slider-loop">
+								<!--额外增加的一个节点(循环轮播：第一个节点是最后一张轮播)-->
+								<div class="mui-slider-item mui-slider-item-duplicate">
+									<a href="#">
+										<img style="height: 300px;" src="<%=topimg%>">
+									</a>
+								</div>
+								<%for(var i=0;i< imgList.length;i++){%>
+								<div class="mui-slider-item">
+									<a href="#">
+										<img style="height: 300px;" src="<%=imgList[i].fileUrl%>">
+									</a>
+								</div>
+								<%}%>
+								<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+								<div class="mui-slider-item mui-slider-item-duplicate">
+									<a href="#">
+										<img style="height: 300px;" src="<%=fimg%>">
+									</a>
+								</div>
+							</div>
+
+							<div class="mui-slider-indicator">
+								<%for(var i=0;i< imgList.length;i++){%>
+								<%if(i==0){%>
+								<div class="mui-indicator mui-active"></div>
+								<%}else{%>
+								<div class="mui-indicator "></div>
+								<%}%>
+								<%}%>
+							</div>
+						</div>
+
+						<!--详情参数等-->
+						<section>
+							<!--产品名，型号，价格，公司-->
+							<div id="goodsbaseInfo">
+								<div id="priceAndspe" style="padding-right: 50px;">
+									<div class="lf">
+										<div id="price"><span style="font-size: 26px;">￥<%=data.totalPrice%> </span><span class="saveMoney">节省¥<%=data.discountPrice%></span><span class="totalPrice">¥<%=data.originalPrice%></span></div>
+										<!--/<%=data.unit1%>-->
+
+									</div>
+								</div>
+								<div id="productName">
+									<%=data.mealName%>
+									<!--肉苁蓉-->
+								</div>
+								<div id="companyName">
+									<%=data.mealIntroduce%>
+								</div>
+								<%if(data.isMail==1){%>
+								<div class="sendProduct">
+									
+									<span style="float: right;">
+                    		发货:天津
+                    	</span>
+								</div>
+								<%}%>
+
+							</div>
+
+							<!--套餐更优惠-->
+							<div class="first_div" style="padding: 0;">
+								<div class="first_dd1">
+									<div class="er_dd1_l" style="margin-left:15px ;"></div>
+									套餐更优惠
+								</div>
+								<div class="setMeal">
+									<div>
+										<div id="box">
+											<div class="swiper-container">
+												<div class="swiper-wrapper">
+													<%for(var k=0;k<mealList.length;k++){%>
+													<div class="swiper-slide"  onclick="javascript:window.location.href='goods_detail.html?rec=<%=mealList[k].drugId%>'">
+														<div>
+															<%var newimg='../../img/test.png';
+													            if(mealList[k].fileUrl){
+													                newimg=mealList[k].fileUrl;
+													            }%>
+															<img src="<%=newimg%>" alt="" />
+														</div>
+														<div class="goodsInfoBoxs">
+															<div class="slideGoodsName">
+																<%=mealList[k].drugName%>
+															</div>
+															<div class="slidePriceAndNum">
+																¥<%=mealList[k].presentPrice%>×<%=mealList[k].drugNum%>盒
+																
+															</div>
+															<div class="drug-price">
+																¥<%=mealList[k].drugPrice%>
+																
+															</div>
+														</div>
+													</div>
+
+													<%}%>
+												</div>
+												<!--如果你需要分页-->
+												<div class="swiper-pagination"></div>
+												<!--如果你需要前进后退按钮-->
+												<div class="swiper-button-next"></div>
+												<div class="swiper-button-prev"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="detailsImgsAndDescribe">
+								<div class="goodsDescribe">
+									<div class="first_dd1">
+										<div class="er_dd1_l"></div>
+										产品详情
+									</div>
+									<div class="describes">
+										<%for(var i=0;i< imginfoList.length;i++){%>
+										<img style="width: 100%;" src="<%=imginfoList[i].fileUrl%>">
+										<%}%>
+									</div>
+								</div>
+							</div>
+							<!--运费说明-->
+							<div id="h_div3" class="detailsImgsAndDescribe">
+								<div class="goodsDescribe">
+									<div class="first_dd1">
+										<div class="er_dd1_l"></div>
+										运费说明
+									</div>
+									<div class="describes">
+										<div class="explain">
+											<span class="explain_star">
+												*
+											</span>
+											如订单中包含包邮商品，则此订单包邮
+										</div>
+										<div class="intro">
+											所有商品满<%=drugPostage.price%>元即免邮费（特殊地区除外）
+										</div>
+										<div class="th-area">
+											特殊地区
+										</div>
+										<table class="h_tab">
+											<tr>
+												<td class="hz_td">地区</td>
+												<td class="hz_td">
+													是否包邮
+												</td>
+												<td class="hz_td">
+													运费
+												</td>
+												<td class="hz_td">
+													包邮价格
+												</td>
+											</tr>
+											<%for(var k=0;k< freightList.length;k++){%>
+											<tr>
+												<td class="hz_td"><%=freightList[k].city%></td>
+												<%if (freightList[k].type == 1){%>
+												<td class="hz_td">
+													是
+												</td>
+												<%}else{ %>
+													<td class="hz_td">
+													否
+												</td>
+												<%}%>
+												<td class="hz_td">
+													<%=freightList[k].carriage%>
+												</td>
+												<%if (freightList[k].price != null){%>
+												<td class="hz_td">
+													<%=freightList[k].price%>
+												</td>
+												<%}else{ %>
+													<td class="hz_td">
+													--
+												</td>
+												<%}%>
+											</tr>
+											<%}%>
+										</table>
+									</div>
+								</div>
+							</div>	
+						</section>
+					</script>
+				</div>
+			</div>
+
+			<!--加入购物车按钮-->
+			<div class="addShopCarAndFollow">
+				<div class="follow lf"  style="margin: 0 10px;">
+					<div >
+						<span class="shop-setMeal">套餐价格</span>
+						<span class="shop-price" id="setMeal_price">￥0.00</span>
+					</div>
+					<div style="font-size: 15px;">
+						<span class="shop-setMeal" style="color: #666;">节省</span>
+						<span class="shop-price" id="reduce_price">￥0.00</span>
+					</div>
+				</div>
+				<div style="float: right;">
+				<div class="addShopcar lf" id="addShopcar">
+					加入购物车
+				</div>
+				<div class="gotoOrder lf" id="gotoOrder">
+					结算
+				</div>
+				</div>
+			</div>
+
+			<!--模态框购物车-->
+			<style>
+				.sp_num {
+					width: 40px;
+					text-align: center
+				}
+				
+				.modal_back {
+					background: #000000;
+					width: 100%;
+					height: 100%;
+					position: fixed;
+					z-index: 8888;
+					opacity: 0.5;
+					bottom: 0;
+				}
+				
+				.modal_cart_diiv {
+					z-index: 9999;
+					background-color: #fff;
+					position: fixed;
+					bottom: 0;
+					width: 100%;
+				}
+				
+				.yaotudiv {
+					display: flex;
+					justify-content: space-between;
+					margin: 25px 13px 10px 13px;
+					line-height: 30px;
+					border-bottom: 1px solid #E3E3E3;
+				}
+				
+				.ydes1 {
+					font-size: 16px;
+					font-family: MicrosoftYaHei;
+					font-weight: bold;
+					color: rgba(0, 0, 0, 1);
+				}
+				
+				.ydes2 {
+					font-size: 16px;
+					font-family: MicrosoftYaHei;
+					font-weight: bold;
+					color: rgba(236, 73, 28, 1);
+				}
+				
+				.ydes3 {
+					font-size: 11px;
+					font-family: MicrosoftYaHei;
+					font-weight: 400;
+					color: rgba(255, 255, 255, 1);
+					background: rgba(253, 108, 27, 1);
+					border-radius: 8px;
+					padding: 2px 5px;
+					line-height: 19px;
+					margin: 5px 0;
+				}
+				
+				.ydes4 {
+					font-size: 14px;
+					font-family: MicrosoftYaHei;
+					font-weight: 400;
+					color: rgba(0, 0, 0, 1);
+				}
+				
+				.ys_div1 {
+					display: flex;
+					justify-content: space-between;
+					padding: 10px;
+					align-items: center;
+				}
+				
+				.ysd2 {
+					display: flex;
+					width: 88px;
+					height: 25px;
+					line-height: 25px;
+					border: 1px solid rgba(219, 219, 219, 1);
+					border-radius: 12px;
+				}
+				
+				.ysdd1 {
+					font-size: 16px;
+					font-family: MicrosoftYaHei;
+					font-weight: 400;
+					color: rgba(0, 0, 0, 1);
+				}
+				
+				.ysdd2 {
+					font-size: 10px;
+					font-family: MicrosoftYaHei;
+					font-weight: 400;
+					color: rgba(183, 183, 183, 1);
+				}
+				
+				.jian_r {
+					width: 24px;
+					text-align: center;
+					font-size: 25px;
+					color: #DBDBDB;
+					border-right: 1px solid #DBDBDB;
+					position: relative;
+					top: -2px;
+				}
+				
+				.jia_l {
+					width: 24px;
+					text-align: center;
+					font-size: 18px;
+					color: #DBDBDB;
+					border-left: 1px solid #DBDBDB;
+				}
+				
+				.que_btn {
+					height: 50px;
+					background: linear-gradient(89deg, rgba(252, 111, 2, 1), rgba(253, 72, 3, 1));
+					color: #fff;
+					line-height: 50px;
+					text-align: center;
+					margin-top: 50px;
+				}
+				
+				.cart_modal {
+					display: none;
+				}
+				
+				.sp_num input {
+					height: 20px;
+					line-height: 23px;
+					width: 100%;
+					margin-bottom: 0px;
+					padding: 0px;
+					-webkit-user-select: text;
+					border: 0px;
+					border-radius: none;
+					outline: 0;
+					background-color: #fff;
+					-webkit-appearance: none;
+					text-align: center;
+				}
+			</style>
+			<div class="cart_modal">
+				<div class="modal_back " onclick="cart_modal_hide()">
+					<!--背景-->
+				</div>
+				<div class="modal_cart_diiv">
+					<div class="yaotudiv">
+						<div style="display: flex">
+							<div><img id="cartImg" src="../../styles/img/home_new_img/yaotu.jpg" height="139" width="139" /></div>
+							<div style="margin-left: 10px;margin-top: 15px;">
+								<div class="ydes1">肉苁蓉</div>
+								<div class="ydes2">￥260</span>
+								</div>
+								<!--<div><span class="ydes3">10g/瓶  50g/盒</span></div>-->
+								<!--<div class="ydes4">数量：1</div>-->
+								<!--<div class="ysdd2">库存：充足</div>-->
+							</div>
+						</div>
+						<div onclick="cart_modal_hide()"><img src="../../styles/img/home_new_img/x_black.png" height="16" width="19" /></div>
+					</div>
+					<div class="ys_div1">
+						<div>
+							<div class="ysdd1">购买数量</div>
+							<!--<div class="ysdd2">库存：充足</div>-->
+						</div>
+						<div class="ysd2">
+							<div class=" jian_r">-</div>
+							<div class="sp_num"><input type="text" pattern="[0-9]*" value="1" /></div>
+							<div class=" jia_l">+</div>
+						</div>
+					</div>
+					<div>
+						<div class="que_btn">确定</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script src="../../mui/js/fly.js"></script>
+		<script src="../../common/common.js"></script>
+
+		<script src="../../mui/js/template.js"></script>
+
+		<script>
+			mui('.mui-scroll-wrapper').scroll({
+				indicators: false //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			var temdata;
+			var iscart = 0;
+
+			function cart_modal_hide() {
+				$('.cart_modal').hide();
+			}
+
+			function cart_modal_show() {
+				$('.cart_modal').show();
+			}
+			$(function() {
+				var storeLimit;
+			
+				$('.h_div').click(function() {
+					$('.h_div').removeClass('s_hdivb');
+					$(this).addClass('s_hdivb');
+				});
+				//点击+
+				$('.jia_l').click(function() {
+					var sp_num = $('.sp_num input').val() * 1;
+					(sp_num + 1) > parseFloat(storeLimit) ? (mui.toast("库存不足")) : sp_num++;
+					$('.sp_num input').val(sp_num);
+				});
+				//点击-
+				$('.jian_r').click(function() {
+					var sp_num = $('.sp_num input').val() * 1;
+					sp_num = sp_num - 1 <= 1 ? 1 : sp_num - 1;
+					$('.sp_num input').val(sp_num);
+				});
+				//编辑数量
+				$('.sp_num input').on("change", function() {
+					var sp_num = $('.sp_num input').val() * 1;
+					if(sp_num <= 1) {
+						sp_num = 1;
+					} else if(sp_num > parseFloat(storeLimit)) {
+						mui.toast("库存不足");
+						sp_num = storeLimit;
+					}
+					$('.sp_num input').val(sp_num);
+				});
+				//点击购物车 唤起模态框购物车
+				$('#addShopcar').click(function() {
+					iscart = 0;
+					cart_modal_show();
+
+				});
+				$('#gotoOrder').click(function() {
+					iscart = 1;
+
+					cart_modal_show();
+
+				});
+				console.log(getQueryVariable("packageRec"))
+				$.ajax({
+					type: "get",
+					url: config + "/drug/info/getMealDetails",
+					dataType: "jsonp",
+					jsonp: "jsoncallback",
+					data: {
+						id: getQueryVariable("packageRec"),
+					},
+					success: function(data) {
+						if(data.status == 1) {
+							var drug = data.resultMap.drugMeal;
+							drug.startTime = formatTime(drug.outFactoryDate, 'Y-M-D');
+							drug.endTime = formatTime(drug.validityPeriod, 'Y-M-D');
+							console.log(data.resultMap.drugMeal.mealList)
+							//商品内容
+							temdata = {
+								'data': drug,
+								'imgList': data.resultMap.drugMeal.mainPictures,
+								'imginfoList': data.resultMap.drugMeal.detailedPictures,
+								'mealList': data.resultMap.drugMeal.mealList //套餐
+								//                          'desImgList':data.resultMap.commodityInfoImgList.length>0?data.resultMap.commodityInfoImgList:""
+							};
+							console.log("data2333:::", data);
+//							var html = template.render('drug_tpl', temdata);
+							if(data.resultMap.drugMeal.mainPictures.length > 0) {
+								$('#cartImg').attr('src', data.resultMap.drugMeal.mainPictures[0].fileUrl);
+							}
+							$("#setMeal_price").text("￥"+drug.totalPrice); //购物车价格
+							$("#reduce_price").text("￥"+drug.discountPrice); //购物车价格
+//							$("#drug_tpl_div").html(html);
+						
+							$('.ydes1').html(drug.mealName);
+							$('.ydes2').html('￥' + drug.totalPrice);
+							console.log(drug.standard)
+							$('.ydes3').html("规格：" + drug.standard);
+							$('.ysdd2').html("库存：<span>" + drug.qty + "</span>");
+							storeLimit = drug.qty;
+							freight()
+						} else {
+							alert(data.message);
+						}
+					},
+				});
+
+				mui.init({
+					swipeBack: true //启用右滑关闭功能
+				});
+
+			});
+			//获取运费详情
+			function freight(){
+				$.ajax({
+					type: "get",
+					url: config + "/drug/postage/getDefault",
+					dataType: "jsonp",
+					jsonp: "jsoncallback",
+					data: {
+						rec: getQueryVariable("rec"),
+					},
+					success: function(data) {
+						var list = data.resultMap.list;
+						var drugPostage = data.resultMap.drugPostage;
+						temdata.freightList = list;
+						temdata.drugPostage = drugPostage;
+						console.log(temdata.mealList.length)
+						var html = template.render('drug_tpl', temdata);
+						$("#drug_tpl_div").html(html);
+						if(temdata.mealList.length == 0) { //判断套餐更优惠是否有值
+								$(".first_div").css('display', 'none');
+							} else {
+								$(".first_div").css('display', 'block');
+							}
+							var slider = mui("#slider");
+							slider.slider({
+								interval: 5000
+							});
+					}
+				})
+			}
+			// 格式化日期，如月、日、时、分、秒保证为2位数
+			function formatNumber(n) {
+				n = n.toString()
+				return n[1] ? n : '0' + n;
+			}
+			// 参数number为毫秒时间戳，format为需要转换成的日期格式
+			function formatTime(number, format) {
+				let time = new Date(number);
+				let newArr = [];
+				let formatArr = ['Y', 'M', 'D', 'h', 'm', 's'];
+				newArr.push(time.getFullYear());
+				newArr.push(formatNumber(time.getMonth() + 1));
+				newArr.push(formatNumber(time.getDate()));
+
+				newArr.push(formatNumber(time.getHours()));
+				newArr.push(formatNumber(time.getMinutes()));
+				newArr.push(formatNumber(time.getSeconds()));
+
+				for(let i in newArr) {
+					format = format.replace(formatArr[i], newArr[i])
+				}
+				return format;
+			}
+
+			function getQueryVariable(variable) {
+				var query = window.location.search.substring(1);
+				var vars = query.split("&");
+				for(var i = 0; i < vars.length; i++) {
+					var pair = vars[i].split("=");
+					if(pair[0] == variable) {
+						return pair[1];
+					}
+				}
+				console.log(query)
+				return(false);
+			}
+
+			//      加购物车
+			var productid = parseInt(getQueryVariable("packageRec"));
+			var shoppingCount;
+			$(".que_btn").click(function() {
+				if(iscart == 1) {
+					//		    var num=Number($('.sp_num').html());
+					var num;
+					$(".sp_num").text().trim() == "" ? num = $(".sp_num").find("input").val() : num = $(".sp_num").text().trim();
+					var recId = Number(getQueryVariable("packageRec"));
+					var storeNum = Number($(".ysdd2 span").text().trim());
+					if(window.webUser) {
+						window.location.href = "../shopCart/order/orderSettlement.html?packagedDetailToOrder=1&cid=" + recId + "&num=" + num + "&storeNum=" + storeNum+"&mealId="+productid;
+					} else {
+						showDialog();
+					}
+				} else {
+					//          shoppingCount=$(".sp_num").text().trim();
+					//          shoppingCount=$(".sp_num").find("input").val();
+					$(".sp_num").text().trim() == "" ? shoppingCount = $(".sp_num").find("input").val() : shoppingCount = $(".sp_num").text().trim();
+					console.log($(".sp_num").text().trim(), '$(".sp_num").text().trim()');
+					if(window.webUser) {
+						var userId = window.webUser.id;
+						select_shop(userId, productid, shoppingCount);
+					} else {
+						showDialog();
+					}
+
+				}
+
+			});
+			/*判断是否登录的dialog*/
+			function showDialog() {
+				var btnArray = ['否', '是'];
+				mui.confirm('您还没有登录，是否去登录？', '提示', btnArray, function(e) {
+					if(e.index == 1) {
+						window.location.href = '../login/login.html';
+					} else {}
+				})
+			}
+			//加入购物车
+			function select_shop(userid, productid, shoppingCount) {
+				//	alert(userid+" "+productid+" "+shoppingCount);
+				//alert(productid);
+				if(window.webUser) {
+					$.ajax({
+						type: "GET",
+						url: config + "/drug/cart/add",
+						contentType: "json; charset=utf-8",
+						async: true,
+						data: {
+							fromType: 1,
+							mealId: productid, //药品id
+							userId: userid, //用户id
+							drugNum: shoppingCount //数量
+						},
+						dataType: 'JSON',
+						//		JSONP: "callback",
+						success: function(data) {
+							console.log(data);
+							if(data.status == 1) {
+								mui.toast(data.message);
+								sideCartNum()
+								$(".cart_modal").css("display", "none");
+							} else {
+								mui.toast(data.message);
+							}
+						},
+						error: function(data) {
+							console.log(data.message);
+						}
+					});
+				} else {
+					showDialog();
+				}
+
+			}
+			//点击购物车
+			$("#follow").click(function() {
+				if(window.webUser) {
+					window.location.href = "../shopCart/shopcart_index.html";
+				} else {
+					showDialog();
+				}
+			})
+		</script>
+	</body>
+
+</html>

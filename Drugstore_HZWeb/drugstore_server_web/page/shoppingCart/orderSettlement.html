@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../common/bootstrap.css" />
+		<link rel="stylesheet" href="../../common/zcity.css" />
+		<link rel="stylesheet" href="../../common/reset.css" />
+		<link rel="stylesheet" href="../../common/style.css" />
+		<link rel="stylesheet" href="../../common/common.css" />
+		<link rel="stylesheet" href="../../css/headerTop.css" />
+		<link rel="stylesheet" href="../../css/mainTop.css" />
+		<link rel="stylesheet" href="../../css/footer.css" />
+		<link rel="stylesheet" href="../../css/orderSettlement.css" />
+		<style>
+			.cbox,
+			.cTbox {
+				float: left;
+				width: 16px;
+				height: 15px;
+				line-height: 15px;
+				/*border:1px solid #ccc;*/
+				background: url("../../images/shopCart/carNoCheck.png");
+				background-repeat: no-repeat;
+				vertical-align: middle;
+				text-align: center;
+				margin-top: 13px;
+				margin-right: 4px;
+				background-size: 100% 100%;
+			}
+			
+			.cbox.checked,
+			.cTbox.checked {
+				width: 18px;
+				height: 17px;
+				line-height: 17px;
+				color: #f00;
+				background: url("../../images/shopCart/checkBoxImg.png");
+				vertical-align: middle;
+				text-align: center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				margin-top: 11px;
+			}
+			
+			.cbox.checked:after,
+			.cTbox.checked:after {
+				width: 18px;
+				height: 17px;
+				line-height: 17px;
+				/*content:"√";*/
+				background: url("../../images/shopCart/checkBoxImg.png");
+				font-size: 13px;
+				font-weight: bold;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			.csbox {
+				float: left;
+				width: 16px;
+				height: 15px;
+				line-height: 15px;
+				/*border:1px solid #ccc;*/
+				background: url("../../images/shopCart/carNoCheck.png");
+				vertical-align: middle;
+				text-align: center;
+				margin-top: 28px;
+				margin-right: 4px;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			.csbox.checked {
+				width: 18px;
+				height: 17px;
+				line-height: 17px;
+				color: #f00;
+				background: url("../../images/shopCart/checkBoxImg.png");
+				vertical-align: middle;
+				text-align: center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				margin-top: 27px;
+			}
+			
+			.csbox.checked:after {
+				width: 18px;
+				height: 17px;
+				line-height: 17px;
+				/*content:"√";*/
+				background: url("../../images/shopCart/checkBoxImg.png");
+				font-size: 13px;
+				font-weight: bold;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="shopcartSection">
+			<div class="shopcartTab">
+				填写核对订单信息
+			</div>
+			<div class="addrBox">
+				<div class="orderPerBoxTitles">
+					收货地址
+					<span class="rt rtAddTXT">
+						<span class="rt">新增收货地址</span>
+					<b class="Add rt">+</b>
+					</span>
+				</div>
+				<div class="writeAddr">
+					<form id="NoAddrToAdd"style="display: none;">
+						<div class="thisRow">
+							<div class="leftTitleWidth lf">
+								<span class="redStar" style="color: #FF5555;">*</span> 收货人：
+							</div>
+							<div class="lf">
+								<input type="text" class="recievePerson" />
+							</div>
+							<div class="lf inputWarns">
+								<b>!</b>
+								<span class="recievePerWarnText">请填写收货人姓名</span>
+							</div>
+						</div>
+						<div class="thisRow">
+							<div class="leftTitleWidth lf">
+								<span class="redStar" style="color: #FF5555;">*</span> 收货城市：
+							</div>
+							<div class="lf ptc">
+								<!--<div data-toggle="distpicker" style="display: inline-block;float: left;" id="distpicker1">
+									<div class="form-group address lf">
+										<label class="sr-only" for="province1"></label>
+										<select class="form-control prov" id="province1" data-province="请选择省"selected></select>
+									</div>
+									<div class="form-group address lf">
+										<label class="sr-only" for="city1"></label>
+										<select class="form-control citys" id="city1" data-city="请选择市"></select>
+									</div>
+									<div class="form-group address lf">
+										<label class="sr-only" for="district1"></label>
+										<select class="form-control city" id="district1" data-district="请选择区"></select>
+									</div>
+								</div>-->
+								<div class="zcityGroup" city-range="{'level_start':1,'level_end':3}"></div>
+								<!--<input type="text" class="ptc" />-->
+							</div>
+							<div class="lf inputWarns">
+								<b>!</b>
+								<span class="PCTWarnText">请选择区县</span>
+							</div>
+						</div>
+						<div class="thisRow">
+							<div class="leftTitleWidth lf">
+								<span class="redStar" style="color: #FF5555;">*</span> 详细地址：
+							</div>
+							<div class="lf">
+								<input type="text" class="detailAddr" />
+							</div>
+							<div class="lf inputWarns">
+								<b>!</b>
+								<span class="detailAddrWarnText">请填写详细地址</span>
+							</div>
+						</div>
+						<div class="thisRow">
+							<div class="leftTitleWidth lf">
+								<span class="redStar" style="color: #FF5555;">*</span> 手机号码：
+							</div>
+							<div class="lf">
+								<input type="text" class="tel" />
+								<span class="or">或</span>固定电话：
+								<input type="text" class="landLine" />
+							</div>
+							<div class="lf inputWarns">
+								<b>!</b>
+								<span class="telWarnText">手机号码和电话至少一个不能为空</span>
+							</div>
+						</div>
+						<div class="thisRow"style="padding-left: 70px;">
+								<input type="checkbox" name="default" id="PutDefault" />
+								<label for="PutDefault">设置为默认选中地址</label>
+						</div>
+						<div class="addAddrBtnRow">
+							<div class="addAddrBtn">
+								确认
+							</div>
+						</div>
+					</form>
+					<!--地址列表-->
+					<div class="addrListBox">
+						<div class="addrRow">
+							<div class="nameAndProv lf">
+								<span class="recieveName">李越海角</span>&nbsp;&nbsp;
+								<span>北京</span>
+							</div>
+							<div class="telAndAddrBox lf">
+								<span class="recieverTel">13658976259</span>
+								<span class="recieverProvince">北京</span>
+								<span class="recieverCity">北京市朝阳区</span>
+								<span class="recieverAddrDetail">北京市朝阳区世纪都汇大厦89层</span>
+								<span class="rt editAndDelBox">
+									<span class="delAddr rt">删除</span>
+								<span class="editAddr rt">编辑</span>
+								</span>
+							</div>
+						</div>
+
+						<div class="addrRow">
+							<div class="nameAndProv lf">
+								<span class="recieveName">小邋遢</span>&nbsp;&nbsp;
+								<span>北京</span>
+							</div>
+							<div class="telAndAddrBox lf">
+								<span class="recieverTel">13658976259</span>
+								<span class="recieverProvince">北京</span>
+								<span class="recieverCity">北京市朝阳区</span>
+								<span class="recieverAddrDetail">北京市朝阳区世纪都汇大厦89层</span>
+								<span class="rt editAndDelBox">
+									<span class="delAddr rt">删除</span>
+								<span class="editAddr rt">编辑</span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--支付方式-->
+				<div class="orderPerBoxTitles payWay">
+					支付方式
+				</div>
+				<div class="payChose">
+					<span class="payOnline">在线支付</span> 支持 支付宝、微信、银联、和各大银行在线支付
+				</div>
+			</div>
+			<!--填写发票信息-->
+			<div class="writeBill">
+				<div class="billTitle">
+					<div class="orderBillBoxTitles lf">
+						发票信息
+					</div>
+					<div class="lf inputWarns">
+						<b>!</b>
+						<span class="telWarnText">手机号码和电话至少一个不能为空</span>
+					</div>
+				</div>
+				<div class="choseBill">
+					<form>
+						<div>
+							<input type="radio" name="putBill" id="putBill" checked/>
+							<label for="putBill">不开发票</label>
+						</div>
+						<div>
+							<input type="radio" name="putBill" id="putnoBill" />
+							<label for="putnoBill">普通发票</label>
+							<span class="billTxt">
+								<span>发票抬头：</span>
+								<span class="invoiceTitle">林飒</span>
+								<span class="changeBillInfo">修改</span>
+							</span>
+						</div>
+						<div class="choseBillTypeWrite">
+							<div class="choseBillTypeBox">
+								<select id="choseBillTypeSelect">
+									<option value="2">公司</option>
+									<option value="1">个人</option>
+								</select>
+								<input type="text" placeholder="请输入发票抬头" class="writeBillTitle" />
+								<input type="text" placeholder="请输入公司税号" class="writetaxtNum" />
+							</div>
+							<div class="addBillBtnRow">
+								<div class="addBillBtn">
+									保存发票
+								</div>
+							</div>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+			<!--订单明细-->
+			<div class="orderDetailTitle">
+				<div class="orderBillBoxTitles lf">
+					订单明细
+				</div>
+				<div class="rt JumpShopCart">
+					<i class="triangle"></i> 返回购物车修改商品
+				</div>
+			</div>
+			<!--购物车列表-->
+			<div class="shopCartContent">
+				<form action="">
+					<div class="allTittle">
+						<div class="col lf">
+							<!--<span class="spanCheckBox lf">
+								<span class="cTbox"id="checkAllTop"onclick="this.className=/checked/ig.test(this.className)?this.className.replace('checked',''):(this.className+' checked')"></span>
+							</span>							
+							<span class="checkAllTxt lf">全选</span>-->
+						</div>
+						<div class="col2 lf">商品信息</div>
+						<div class="col3 lf">金额</div>
+						<div class="col4 lf">数量</div>
+						<div class="col5 lf">小计</div>
+						<!--<div class="col6 lf">操作</div>-->
+					</div>
+
+					<div class="cartProductList">
+						<div class="simpleOrder">
+							<!--单选框-->
+							<div class="simpleCheckbox lf detailStyle">
+							</div>
+							<div class="productImg lf detailStyle">
+								<img src="../../img/productImg1.png" alt="" />
+							</div>
+							<div class="nameParent lf detailStyle">
+								<div style="line-height:1.6;" class="productName">安神丸 藏药分类 养心安神 治疗失眠 神经衰弱的藏药精品 每丸重0.3g</div>
+								<div style="line-height:1.3;" class="specs">产品规格: 每粒装0.3g</div>
+							</div>
+							<div class="detailStyle lf priceBox">
+								<span>¥</span>
+								<span class="price">750</span>
+							</div>
+							<div class="detailStyle lf changeQuantityBox">
+								<div class="cartNumBox">
+									<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_down" class="decrement disabled lf">-</a>
+										<input autocomplete="off" type="text" class="numItxt" value="1" class="changeQuantity" minnum="1">
+									<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_up" class="increment rt">+</a>
+								</div>
+								
+								<span class="thisNum">1</span>
+							</div>
+							<div class="detailStyle lf subtotalBox">
+								￥
+								<span class="subtotal">750.00</span>
+							</div>
+						</div>
+						<div class="simpleOrder">
+							<!--单选框-->
+							<div class="simpleCheckbox lf detailStyle">
+							</div>
+							<div class="productImg lf detailStyle">
+								<img src="../../img/productImg1.png" alt="" />
+							</div>
+							<div class="nameParent lf detailStyle">
+								<div style="line-height:1.6;" class="productName">安神丸 藏药分类 养心安神 治疗失眠 神经衰弱的藏药精品 每丸重0.3g</div>
+								<div style="line-height:1.3;" class="specs">产品规格: 每粒装0.3g</div>
+							</div>
+							<div class="detailStyle lf priceBox">
+								<span>¥</span>
+								<span class="price">750</span>
+								<!--<div class="fullMinus">满<span class="full">600</span>减<span class="minus">200</span></div>-->
+							</div>
+							<div class="detailStyle lf changeQuantityBox">
+								<!--<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_down" class="decrement disabled lf">-</a>
+								<input autocomplete="off" type="text" class="numItxt" value="1" class="changeQuantity" minnum="1">
+								<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_up" class="increment rt">+</a>-->
+								1
+							</div>
+							<div class="detailStyle lf subtotalBox">
+								￥
+								<span class="subtotal">750.00</span>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!--订单小计-->
+			<div class="orderSubTotalBox">
+				<div class="NumAndTotal">
+					<div class="price rt">
+						￥
+						<span class="productPrice">117.00</span>
+					</div>
+					<div class="rt numBox">
+						<span class="num">2</span> 件，总金额：
+					</div>
+				</div>
+
+				<div class="freightTotal">
+					<div class="price rt">
+						￥
+						<span class="freightPrice">0.00</span>
+					</div>
+					<div class="rt freight">
+						运费：
+					</div>
+				</div>
+			</div>
+			<!--订单结算操作条-->
+			<div class="settleAccountsBar">
+				<div id="cart-floatbar">
+					<div class="ui-ceilinglamp-1" style="height: 55px;">
+						<div class="cart-toolbar">
+							<div class="toolbar-wrap">
+								<div class="selected-item-list hide" style="display: none;">
+								</div>
+								<div class="options-box">
+									<div class="clr"></div>
+									<div class="toolbar-right toolbar-right-new rt">
+										<div class="normal">
+											<div class="comm-right">
+												<div class="btn-area rt">
+													<a href="javascript:void(0);" onclick="return false;" clstag="clickcart|keycount|xincart|cart_gotoOrder" class="submit-btn" data-bind="1">
+														去结算<b></b></a>
+												</div>
+												<div class="price-sum rt">
+													<div class="price-sum-childBox">
+														<span class="txt txt-new">商品总价：</span>
+														<span class="price sumPrice">
+															¥
+															<em data-bind="0.00"class="TotalPrice">0.00</em>
+														</span>
+														<b class="ml5 price-tips"></b>
+														<div class="price-tipsbox-new" style="display: none; left: 159.85px;">
+															<div class="ui-tips-main">不含运费及送装服务费</div>
+															<span class="price-tipsbox-arrow"></span>
+														</div>
+														<br>
+														<!--<div id="price-sum-extra-1" class="price-sum-extra"><span class="">促销：</span><span class="">-¥100.00</span></div>-->
+													</div>
+												</div>
+												<!--<div class="amount-sum rt">
+													已选择<em>2</em>件商品<b class="up" clstag="clickcart|keycount|xincart|cart_thumbnailOpen"></b>
+												</div>-->
+												<div class="clr"></div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--新增地址-->
+			<div class="addAddrPlatModel">
+				<div class="addAddrPlat">
+					<div class="writeAddr">
+						<div class="addAddrPlatModelTitle">
+							新增地址信息
+							<span class="addAddrPlatClose rt closed">×</span>
+						</div>
+						<form id="hasAddrToAdd">
+							<div class="thisRow">
+								<div class="leftTitleWidth lf">
+									<span class="redStar" style="color: #FF5555;">*</span> 收货人：
+								</div>
+								<div class="lf">
+									<input type="text" class="recievePerson" />
+								</div>
+								<div class="lf inputWarns">
+									<b>!</b>
+									<span class="recievePerWarnText">请填写收货人姓名</span>
+								</div>
+							</div>
+							<div class="thisRow">
+								<div class="leftTitleWidth lf">
+									<span class="redStar" style="color: #FF5555;">*</span> 收货城市：
+								</div>
+								<div class="lf ptc">
+									<!--<div data-toggle="distpicker" style="display: inline-block;float: left;" id="distpicker2">
+										<div class="form-group address lf">
+											<label class="sr-only" for="province2"></label>
+											<select class="form-control prov" id="province2" data-province="请选择省"selected></select>
+										</div>
+										<div class="form-group address lf">
+											<label class="sr-only" for="city2"></label>
+											<select class="form-control citys" id="city2" data-city="请选择市"></select>
+										</div>
+										<div class="form-group address lf">
+											<label class="sr-only" for="district2"></label>
+											<select class="form-control city" id="district2" data-district="请选择区"></select>
+										</div>
+									</div>-->
+									<div class="zcityGroup" city-range="{'level_start':1,'level_end':3}"></div>
+									<!--<input type="text" class="ptc" />-->
+								</div>
+								<div class="lf inputWarns">
+									<b>!</b>
+									<span class="PCTWarnText">请选择区县</span>
+								</div>
+							</div>
+							<div class="thisRow">
+								<div class="leftTitleWidth lf">
+									<span class="redStar" style="color: #FF5555;">*</span> 详细地址：
+								</div>
+								<div class="lf">
+									<input type="text" class="detailAddr" />
+								</div>
+								<div class="lf inputWarns">
+									<b>!</b>
+									<span class="detailAddrWarnText">请填写详细地址</span>
+								</div>
+							</div>
+							<div class="thisRow">
+								<div class="leftTitleWidth lf">
+									<span class="redStar" style="color: #FF5555;">*</span> 手机号码：
+								</div>
+								<div class="lf">
+									<input type="text" class="tel" />
+									<span class="or">或</span>固定电话：
+									<input type="text" class="landLine" />
+								</div>
+								<div class="lf inputWarns">
+									<b>!</b>
+									<span class="telWarnText">手机号码和电话至少一个不能为空</span>
+								</div>
+							</div>
+							<div class="thisRow"style="padding-left: 70px;">
+								<input type="checkbox" name="default" id="addPutDefault" />
+								<label for="addPutDefault">设置为默认选中地址</label>
+							</div>
+							<div class="addAddrBtnRow">
+								<div class="addAddrCancelBtn cancelBtns">
+									取消
+								</div>
+								<div class="addAddrBtn addAddrSureBtn">
+									确认
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!--编辑地址-->
+			<div class="editAddrPlatModel">
+				<div class="editAddrPlat">
+					<div class="writeAddr">
+						<div class="editAddrPlatModelTitle">
+							编辑地址信息
+							<span class="editAddrPlatClose rt closed">×</span>
+						</div>
+						<form id="hasAddrToEdit">
+							<div class="thisRow">
+								<div class="leftTitleWidth lf">
+									<span class="redStar" style="color: #FF5555;">*</span> 收货人：
+								</div>
+								<div class="lf">
+									<input type="text" class="recievePerson" />
+								</div>
+								<div class="lf inputWarns">
+									<b>!</b>
+									<span class="recievePerWarnText">请填写收货人姓名</span>
+								</div>
+							</div>
+							<div class="thisRow">
+								<div class="leftTitleWidth lf">
+									<span class="redStar" style="color: #FF5555;">*</span> 收货城市：
+								</div>
+								<div class="lf ptc">
+									<!--<div data-toggle="distpicker" style="display: inline-block;float: left;" id="distpicker3">
+										<div class="form-group address lf">
+											<label class="sr-only" for="province3"></label>
+											<select class="form-control prov" id="province3" data-province="请选择省"></select>
+										</div>
+										<div class="form-group address lf">
+											<label class="sr-only" for="city3"></label>
+											<select class="form-control citys" id="city3" data-city="请选择市"></select>
+										</div>
+										<div class="form-group address lf">
+											<label class="sr-only" for="district3"></label>
+											<select class="form-control city" id="district3" data-district="请选择区"></select>
+										</div>
+									</div>-->
+									<div class="zcityGroup" city-range="{'level_start':1,'level_end':3}"></div>
+									<!--<input type="text" class="ptc" />-->
+								</div>
+								<div class="lf inputWarns">
+									<b>!</b>
+									<span class="PCTWarnText">请选择区县</span>
+								</div>
+							</div>
+							<div class="thisRow">
+								<div class="leftTitleWidth lf">
+									<span class="redStar" style="color: #FF5555;">*</span> 详细地址：
+								</div>
+								<div class="lf">
+									<input type="text" class="detailAddr" />
+								</div>
+								<div class="lf inputWarns">
+									<b>!</b>
+									<span class="detailAddrWarnText">请填写详细地址</span>
+								</div>
+							</div>
+							<div class="thisRow">
+								<div class="leftTitleWidth lf">
+									<span class="redStar" style="color: #FF5555;">*</span> 手机号码：
+								</div>
+								<div class="lf">
+									<input type="text" class="tel" />
+									<span class="or">或</span>固定电话：
+									<input type="text" class="landLine" />
+								</div>
+								<div class="lf inputWarns">
+									<b>!</b>
+									<span class="telWarnText">手机号码和电话至少一个不能为空</span>
+								</div>
+							</div>
+							<div class="thisRow"style="padding-left: 70px;">
+								<input type="checkbox" name="default" id="editPutDefault" />
+								<label for="editPutDefault">设置为默认选中地址</label>
+							</div>
+							<div class="editAddrBtnRow">
+								<div class="editAddrCancelBtn cancelBtns">
+									取消
+								</div>
+								<div class="addAddrBtn editAddrSureBtn">
+									确认
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!--删除模板-->
+			<div class="bgDel">
+				<div class="del_dialog delAndMessage">
+					<div class="del-spinner">提示
+						<span class="bgDelClose rt closed">×</span>
+					</div>
+					<div class="del_dialog_font">
+						<span class="delWarnsText">您确定要删除该地址吗？</span>
+					</div>
+					<div class="delDialogBtnRow">
+						<div class="delDialogCancelBtn cancelBtns">
+							取消
+						</div>
+						<div class="delDialogBtn delDialogSureBtn">
+							确认
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--提示模板-->
+			<div class="messageBG">
+				<div class="message_dialog delAndMessage">
+					<div class="message-spinner">提示
+						<span class="messageClose rt closed">×</span>
+					</div>
+					<div class="message_dialog_font">
+						<span class="messageWarnsText"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../common/jquery-1.12.1.js"></script>
+		<!--<script type="text/javascript" src="../../common/distpicker.data.js"></script>-->
+		<script type="text/javascript" src="../../common/zcity.js"></script>
+		<script type="text/javascript" src="../../common/common.js"></script>
+		<script type="text/javascript" src="../../common/config.js"></script>
+		<script type="text/javascript" src="../../js/orderSettlement.js"></script>
+		
+		
+	</body>
+
+</html>

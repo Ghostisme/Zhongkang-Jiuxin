@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>远程医疗系统-组织架构</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/organize.css"/>
+    <style>
+        .mainContents {
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .leftTree {
+            width: 25%;
+            min-height: 500px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #EDEDED;
+        }
+
+        .treeTabs {
+            overflow: hidden;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #EDEDED;
+        }
+
+        .hospitalTab,
+        .otherTab {
+            width: 50%;
+            text-align: center;
+            background: #F6F6F6;
+            cursor: pointer;
+        }
+
+        .treeTabs .tabActive {
+            border-top: 1px solid #FF7410;
+            background: #fff;
+        }
+
+        .rightDataShow {
+            width: 74%;
+            overflow: hidden;
+            padding-right: 10px;
+        }
+
+        /*所有部门信息*/
+        #maintenanceAllInfo {
+            display: none;
+        }
+
+        #hospitalsAllInfo {
+            display: none;
+        }
+
+        #sectionAllInfo {
+            display: none;
+        }
+
+        #maintenanceAllInfo, #hospitalsAllInfo {
+            overflow: hidden;
+        }
+
+        /*右边部门信息*/
+        .maintenance, .hospitals {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            padding: 10px;
+            overflow: hidden;
+
+        }
+
+        .borderAndClass {
+            color: #018EE8;
+            padding: 10px 10px 0px 10px;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #018EE8;
+        }
+
+        .maintenanceInfo, .hospitalsInfo {
+            width: 100%;
+            overflow: hidden;
+            /*border:1px solid #ededed;*/
+        }
+
+        .maintenanceEveryrow, .hospitalsEveryrow {
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid #ededed;
+            margin-top: 10px;
+            border-bottom: 0px;
+
+        }
+
+        .maintenanceEveryrow, .hospitalsEveryrow {
+            width: 100%;
+        }
+
+        .firstCols {
+            width: 15%;
+            height: 30px;
+            line-height: 30px;
+            border-right: 1px solid #EDEDED;
+            text-align: center;
+        }
+
+        .rows {
+            overflow: hidden;
+            border-bottom: 1px solid #EDEDED;
+        }
+
+        .rows:nth-child(even) {
+            background: #F6F6F6;
+        }
+
+        .modelRow {
+            overflow: hidden;
+            border-bottom: 1px solid #EDEDED;
+        }
+
+        .twoCols {
+            width: 18%;
+            height: 30px;
+            line-height: 30px;
+            border-right: 1px solid #EDEDED;
+        }
+
+        .OperationState.twoCols, .hospitalOperationState.twoCols {
+            border: 0;
+        }
+
+        .longRow {
+            width: 84%;
+            height: 30px;
+            line-height: 30px;
+            /*border-right:1px solid #EDEDED;*/
+        }
+
+        .divideEquallyRow {
+            width: 24.9%;
+            height: 30px;
+            line-height: 30px;
+            border-right: 1px solid #EDEDED;
+            text-align: center;
+        }
+
+        .lastCols {
+            border: 0px;
+        }
+
+        .newMaintenance {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .newMaintenance .newBtn {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+            background: #008EEA;
+            color: #fff;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .newSubordinateBtn {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+            background: #ECECEC;
+            color: #000;
+            margin: 0 auto;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .model {
+            background: #000;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 888;
+        }
+
+        /*部门信息弹框*/
+        #hospitalModels, #deptModels {
+            width: 40%;
+            /*height:500px;*/
+            background: #fff;
+            position: absolute;
+            top: 20%;
+            left: 30%;
+            z-index: 8888;
+            padding-bottom: 40px;
+        }
+
+        .changeInfoTitle {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 18px;
+            background: #1B79B6;
+            color: #fff;
+        }
+
+        .closeModel {
+            margin-top: 0px;
+            margin-right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .ModelfirstCols {
+            width: 19%;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border-right: 1px solid #EDEDED;
+        }
+
+        .ModelFourCols {
+            width: 30%;
+            height: 40px;
+            line-height: 40px;
+            border-right: 1px solid #EDEDED;
+        }
+
+        .modelTitles {
+            background: #F9F2F4;
+        }
+
+        .ModelFourCols input, .ModelFourCols select {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border: 0;
+            padding-left: 10px;
+        }
+
+        .modelLongStyle {
+            width: 80%;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .modelLongStyle select {
+            width: 30%;
+            height: 80%;
+            margin-left: 20px;
+            outline: none;
+        }
+
+        .modelLongStyle input {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border: 0;
+            padding-left: 10px;
+        }
+
+        .Modelremark {
+            height: 90px;
+            line-height: 90px;
+        }
+
+        .modelRemarks, .addModelRemarks {
+            width: 100%;
+            height: 83px;
+        }
+
+        /*模态框取消和修改*/
+        .cancelAndChangeBtn {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cancelAndChangeBtn .cancelBtn {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+            background: #008EEA;
+            color: #000;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .cancelAndChangeBtn .changeBtn {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+            background: #ECECEC;
+            color: #000;
+            margin: 0 auto;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        #deptModels, #hospitalModels, .model, #changeHospitalModels, #AddHospitalModels, #changeDeptModels, #AddDeptModels {
+            display: none;
+        }
+    </style>
+    <style>
+        .input_cy{
+            background-color: #f6f6f6;
+            border: 0;
+            width: 90%;
+            height: 90%;
+            padding-left: 15px;
+        }
+        .input_cy2{
+            border: 0;
+            width: 90%;
+            height: 90%;
+            padding-left: 15px;
+        }
+        .homeDiv_hi{
+            border:1px #eeeeee solid;
+            height: 100%;
+            width: 100%;
+            padding: 10px;
+        }
+        .oneDiv_hi>div{
+            display: flex;
+            padding: 15px 0;
+            border:1px  #eeeeee solid;
+        }
+       .oneDiv_hi>div>div{
+            width: 10%;
+            text-align: center;
+            overflow:hidden;text-overflow:ellipsis; 
+        }
+        .oneDiv_hi>div>div.btnWidth{
+        	width: 5%;
+        }
+        .oneTitleDiv_hi{
+            background-color: #e2eff6;
+        }
+        .oneTdDiv_hi{
+            font-size: 14px;
+            color: #6c6c6c;
+        }
+        .oneTdDiv_hi:nth-child(odd){
+            background-color: #f6f6f6;
+        }
+        .oneTdDiv_hi:hover{
+            background-color: #f4f8fc;
+        }
+        .twoDiv_hi{
+            border-bottom: 1px #008fe8 solid;
+            color: #008fe8;
+            padding: 15px 15px 15px 30px;
+            margin: 10px 0;
+        }
+        .threeDiv_hi{
+            border:1px  #eeeeee solid;
+            color: #6c6c6c;
+            font-size: 14px;
+            width: 100%;
+        }
+        .threeDiv_hi>form>div{
+            display: flex;
+            width: 100%;
+        }
+        .menuOneDiv{
+            line-height: 30px;
+        }
+
+        .menuOneDiv>div{
+            border-right:1px solid #eeeeee;
+        }
+        .menuOneDiv>div:nth-child(odd){
+            width: 10%;
+        }
+        .menuOneDiv>div:nth-child(even){
+            width: 23%;
+        }
+        .center_hi{
+            text-align: center;
+        }
+        .red_hi{
+            color: red
+        }
+        .oneInput_hi{
+            width: 90%;
+            height: 30px;
+            border:0;
+            margin:2px 0;
+            padding-left: 15px;
+        }
+        .oneSpan{
+            width: 30%;
+        }
+        .oneSelect_hi{
+            width: 92%;
+            height: 30px;
+            margin:3px 4%;
+            border:1px  #e6e1de solid;
+        }
+        .menuTowDiv_hi{
+            background-color: #f6f6f6;
+        }
+        .menuTowDiv_hi>div{
+            border-right:#e6e1de solid 1px;
+            height: 40px;
+            line-height: 40px;
+        }
+        .menuTowDiv_hi>div:nth-child(odd){
+            width: 10%;
+        }
+        .menuTowDiv_hi>div:nth-child(even){
+            width: 23%;
+        }
+        .menuThreeDiv_hi>div:nth-child(1){
+            width: 10%;
+            border-right:#e6e1de solid 1px;
+            text-align: center;
+            height: 160px;
+            line-height: 160px;
+        }
+        .menuThreeDiv_hi>div:nth-child(2){
+            width: 90%;
+        }
+        .fourDiv_hi{
+            text-align: center;
+            padding: 20px 0;
+        }
+        .fourDiv_hi>input{
+            color: white;
+            background-color: #008eea;
+            border: 0;
+            width: 120px;
+            height: 45px;
+            font-size: 15px;
+        }
+        .textClass{
+            width: 100%;
+            height: 100%;
+
+        }
+        .textClass>textarea{
+            width: 100%;
+            height: 150px;
+            border: 0;
+        }
+    </style>
+    <!--模态框头部-->
+    <style>
+        .shadeDiv{
+            position: fixed;
+            background-color: black;
+            opacity: 0.3;
+            z-index: 9;
+        }
+        .modalDiv{
+            width: 45%;
+            min-height: 45%;
+            z-index: 10;
+            background-color: white;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%)
+
+        }
+        .modalCenter{
+            height: 100%;
+        }
+        .modalCenter>div:nth-child(1){
+            background-color: #008eea;
+            height: 10%;
+        }
+        .modalCenter>div:nth-child(2){
+            background-color: white;
+            height: 90%;
+        }
+        .modalHender{
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .delDiv{
+            width: 20px;
+            height: 20px;
+            line-height: 15px;
+            border: 1px solid white;
+            color: whitesmoke;
+            border-radius: 10px;
+            font-size: 14px;
+            text-align: center;
+            float: right;
+            margin-right: 10px;
+        }
+        .henderText{
+            color: whitesmoke;
+            font-size: 16px;
+            padding-left: 30px;
+        }
+    </style>
+    <!--模态框内容-->
+    <style>
+        .hideDiv{
+            display: none;
+        }
+        .showDiv{
+            display: block;
+        }
+        .modalLast{
+            padding: 30px;
+        }
+        .modalLast>div:nth-child(1){
+            border:1px #e6e1de solid;
+            display: flex;
+        }
+        .modalLastOne{
+            width: 20%;
+        }
+        .modallastTow{
+            width: 80%;
+        }
+        .modalLastOne>div{
+            border:1px  #e6e1de solid;
+            height: 35px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .modallastTow>div{
+            border:1px  #e6e1de solid;
+            height: 35px;
+            line-height: 30px;
+            padding-left: 20px;
+        }
+        .modalLastOne>div:nth-child(odd){
+            background-color: white;
+        }
+        .modalLastOne>div:nth-child(even){
+            background-color: whitesmoke;
+        }
+        .modallastTow>div:nth-child(odd){
+            background-color: white;
+        }
+        .modallastTow>div:nth-child(even){
+            background-color: whitesmoke;
+        }
+        .modallastTow input{
+            width: 80%;
+            height: 30px;
+            margin: 2px;
+            border: 0;
+        }
+        .modallastTow select{
+            width: 90%;
+            height: 30px;
+            margin: 2px 0;
+            border:1px  #e6e1de solid;
+        }
+        .modalLastOne>div:last-child{
+            height: 130px;
+            line-height: 130px;
+        }
+        .modallastTow>div:last-child{
+            height: 130px;
+            line-height: 130px;
+        }
+        .modallastTow>div:last-child input{
+            width: 90%;
+            height: 110px;
+            border: 0;
+            background-color: whitesmoke;
+        }
+        .btnDiv{
+            width: 100%;
+            text-align: center;
+            padding-top: 30px;
+        }
+        .btnDiv>input{
+            border: 0;
+            width: 130px;
+            height: 35px;
+        }
+        .btnDiv>input:first-child{
+            background-color: #008eea;
+            color: whitesmoke;
+        }
+        .btnDiv>input:last-child{
+            color: gray;
+        }
+        .oneBcorlorInput{
+            background-color: whitesmoke;
+        }
+		#limits{
+			display:none;
+		}
+    </style>
+</head>
+
+<body>
+<div id="modalsh" class="hideDiv">
+    <div id="shadeDiv" class="shadeDiv"></div>
+    <div id="modalDiv" class="modalDiv">
+        <form id="modalMenuForm">
+            <div class="modalCenter">
+
+                <div class="modalHender">
+                    <span class="henderText">菜单修改</span>
+                    <div class="delDiv">×</div>
+                </div>
+
+                <div class="modalLast">
+                    <!--111-->
+                    <div>
+                        <div class="modalLastOne">
+                            <div><span class="red_hi">*</span>菜单名称</div>
+                            <div><span class="red_hi">*</span>菜单编码</div>
+                            <div><span class="red_hi">*</span>链&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接</div>
+                            <div><span class="red_hi">*</span>是否公用</div>
+                            <div><span class="red_hi">*</span>等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级</div>
+                            <div><span class="red_hi">*</span>排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;序</div>
+                            <div>&nbsp;备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</div>
+                        </div>
+                        <div class="modallastTow">
+                            <div><input id="menuName" name="menuName" type="text" value="中康置换"></div>
+                            <div><input id="code" name="code" class="oneBcorlorInput" type="text"></div>
+
+                            <div><input id="url" name="url" type="text" value="http://"></div>
+                            <div>
+                                <select id="isPublic" name="isPublic">
+                                    <option value="0">是</option>
+                                    <option value="1">否</option>
+                                </select>
+                            </div>
+                            <div><input id="level" name="level" type="text" value="99"></div>
+                            <div><input id="orderNum" name="orderNum" type="text" value="99"></div>
+                            <div><input id="memo" name="memo" type="text"></input></div>
+                        </div>
+                    </div>
+                    <!--222-->
+                    <div class="btnDiv">
+                        <input onclick="upMenu()" type="button" value="确定修改">
+                        <input id="cancelBtn" type="button" value="取消修改">
+                    </div>
+                    <input id="menuId" name="id" type="hidden"></input>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="contain">
+    <div class="row">
+        <!--页面数据呈现区-->
+        <div class="mainContents">
+            <!--左边树形结构-->
+            <div class="leftTree lf">
+                <div class="MenuinnerUl lf">
+
+                </div>
+            </div>
+            <!--右边信息显示框-->
+            <div class="rightDataShow rt">
+            	<!--获取和修改菜单-->
+                <div class="homeDiv_hi"id="changeMenus">
+                    <div class="oneDiv_hi">
+                        <div class="oneTitleDiv_hi">
+                            <!--<div>第0列</div>-->
+                            <div class="LiTextAlign">序号</div>
+                            <div class="LiTextAlign">菜单名称</div>
+                            <div class="LiTextAlign">编码</div>
+                            <div class="LiTextAlign">等级</div>
+                            <div class="LiTextAlign">链接</div>
+                            <div class="LiTextAlign">公用</div>
+                            <div class="LiTextAlign">排序<span class="red_hi">↑</span></div>
+                            <div class="LiTextAlign">操作</div>
+                            <!--<div class="LiTextAlign">删除</div>-->
+                        </div>
+                    </div>
+                    <div id="rightDiv" class="oneDiv_hi">
+                    </div>
+                    <div class="twoDiv_hi">
+                        新增菜单
+                    </div>
+                    <div class="threeDiv_hi">
+                        <form id="menuFrom" >
+                            <div class="menuOneDiv">
+                                <div class="center_hi"><span class="red_hi">*</span>菜单名称</div>
+                                <div><input class="input_cy2" name="menuName" type="text" value="你好中康"></div>
+                                <div class="center_hi"><span class="red_hi">*</span>菜单编码</div>
+                                <div><input name="code" class="oneInput_hi" type="text"></div>
+                                <div class="center_hi"><span class="red_hi">*</span>是否公开</div>
+                                <div>
+                                    <select name="isPublic" class="oneSelect_hi">
+                                        <option value="0">是</option>
+                                        <option value="1">否</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="menuTowDiv_hi">
+                                <div class="center_hi"><span class="red_hi">*</span>链接</div>
+                                <div><input name="url" class="input_cy" type="text" value=""></div>
+
+                                <div class="center_hi"><span class="red_hi">*</span>等级</div>
+                                <div><input name="level" class="input_cy" type="text" value=""></div>
+
+                                <div class="center_hi"><span class="red_hi">*</span>排序</div>
+                                <div><input  name="orderNum" class="input_cy" type="text" value="9"></div>
+                            </div>
+
+                            <div class="menuThreeDiv_hi">
+                                <div>备注</div>
+                                <div class="textClass"><textarea name="memo"></textarea></div>
+                                <input id="menuPid"  name="pid" type="hidden" value="0">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="fourDiv_hi">
+                        <input id="addMenuBtn" type="button" value="添加">
+                    </div>
+                </div>
+                <!--获取和修改权限-->
+                <div class="homeDiv_hi"id="limits">
+                    <div class="oneDiv_hi">
+                        <div class="oneTitleDiv_hi">
+                            <div><!--第0列--></div>
+                            <div>序号</div>
+                            <div>菜单名称</div>
+                            <div>编码</div>
+                            <div>等级</div>
+                            <div>链接</div>
+                            <div>公用</div>
+                            <div>排序<span class="red_hi">↑</span></div>
+                            <div>修改</div>
+                            <div>删除</div>
+                        </div>
+                    </div>
+                    <div id="limitsRightDiv" class="oneDiv_hi">
+                    </div>
+                    <div class="twoDiv_hi">
+                        	新增权限
+                    </div>
+                    <div class="threeDiv_hi">
+                        <form id="limitMenuFrom" >
+                            <div class="menuOneDiv">
+                                <div class="center_hi"><span class="red_hi">*</span>权限名称</div>
+                                <div><input class="input_cy2" name="name" type="text" value=""></div>
+                                <div class="center_hi"><span class="red_hi">*</span>权限编码</div>
+                                <div><input name="code" class="oneInput_hi" type="text"></div>
+                                <div class="center_hi"><span class="red_hi"></span>是否公开</div>
+                                <div>
+                                    <select name="isPublic" class="oneSelect_hi">
+                                        <option value="0">是</option>
+                                        <option value="1">否</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="menuTowDiv_hi">
+                                <div class="center_hi"><span class="red_hi"></span>链接</div>
+                                <div><input name="url" class="input_cy" type="text" value=""></div>
+
+                                <div class="center_hi"><span class="red_hi"></span>等级</div>
+                                <div><input name="level" class="input_cy" type="text" value=""></div>
+
+                                <div class="center_hi"><span class="red_hi"></span>排序</div>
+                                <div><input  name="orderNum" class="input_cy" type="text" value="9"></div>
+                            </div>
+
+                            <div class="menuThreeDiv_hi">
+                                <div>备注</div>
+                                <div class="textClass"><textarea name="memo"></textarea></div>
+                                <input id="limitMenuPid"  name="fkMenuId" type="hidden" value="0">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="fourDiv_hi">
+                        <input id="addLimitMenuBtn" type="button" value="添加">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="../../js/proTree.js"></script>
+<script src="../../js/config.js"></script>
+
+<script>
+    //右侧菜单数据
+    var rightData={};
+    //后台传入的 标题列表  JSON格式
+    var arr = [];
+
+    $(function () {
+        //模态框初始化
+        $(window).resize(function(){
+            $("#shadeDiv").css({
+                width:$(window).width(),
+                height:$(document).height()
+            });
+        });
+        $("#shadeDiv").css({
+            width:$(document).width(),
+            height:$(document).height()
+        });
+        $('.delDiv').click(function () {
+            hideModal()
+        });
+        $('#cancelBtn').click(function () {
+            hideModal()
+        });
+
+        //数据初始化
+        //树形结构
+        ajaxGet('/sys/appMenu/left',{},function (res) {
+            var treeData = res.resultMap.firList; //接收到的tree数据
+            if (treeData.length >0||treeData!=null) {
+                treeForData(treeData);
+                //标题的图标是集成bootstrap 的图标  更改 请参考bootstrap的字体图标替换自己想要的图标
+                console.log('111:', arr);
+                $(".MenuinnerUl").ProTree({
+                    arr: arr,
+                    close: true,
+                    simIcon: "fa fa-file-o", //单个标题字体图标 不传默认glyphicon-file
+                    mouIconOpen: "fa fa-folder-open-o", //含多个标题的打开字体图标  不传默认glyphicon-folder-open
+                    mouIconClose: "fa fa-folder-o", //含多个标题的关闭的字体图标  不传默认glyphicon-folder-close
+                    callback: function (id, name,pid) {
+                    	if(pid==0){
+                    		$('#menuPid').val(id);
+                    	}else{
+                    		$('#limitMenuPid').val(id);
+                    	}
+                        setRightData(id,pid);
+                    }
+                });
+            }
+        });
+        //添加菜单
+        $('#addMenuBtn').click(function () {
+            var fromData = {};
+            var fromArray=$('#menuFrom').serializeArray();
+            $.each(fromArray, function () {
+                fromData[this.name] = this.value;
+            });
+            fromData.name = fromData.menuName;
+            ajaxGet('/sys/appMenu/save',fromData,function (res) {
+                console.log(res);
+                alert(res.message);
+                if(res.status==1){
+                    location.reload();
+                }
+            })
+        });
+		//增加菜单权限
+        $('#addLimitMenuBtn').click(function () {
+            var fromData = {};
+            var fromArray=$('#limitMenuFrom').serializeArray();
+            $.each(fromArray, function () {
+                fromData[this.name] = this.value;
+            });
+//          fromData.name = fromData.menuName;
+            ajaxGet('/sys/appPermission/save',fromData,function (res) {
+                console.log(res);
+                alert(res.message);
+                if(res.status==1){
+                    location.reload();
+                }
+            })
+        });
+    });
+
+</script>
+<script>
+    /**
+     * 赋值给模态框
+     * @param data
+     */
+    function setModalMenu(i) {
+        var data=rightData[i];
+        console.log('setModalMenu:',data);
+        $('#menuId').val(data.id);
+        $('#menuName').val(data.name);
+        $('#code').val(data.code);
+        $('#url').val(data.url);
+        $('#isPublic').val(data.isPublic);
+        $('#level').val(data.level);
+        $('#orderNum').val(data.orderNum);
+        $('#memo').val(data.memo);
+        if(data.pid!=null){
+            $('#isPublic').removeAttr("disabled");
+            $('#url').removeAttr("disabled");
+        }else{
+            $('#isPublic').attr('disabled',"true");
+            $('#url').attr('disabled',"true");
+        }
+    }
+    //点击修改菜单
+    function upMenu() {
+        var fromData = {};
+        var fromArray=$('#modalMenuForm').serializeArray();
+        $.each(fromArray, function () {
+            fromData[this.name] = this.value;
+        });
+        fromData.name = fromData.menuName;
+        ajaxGet('/sys/appMenu/update',fromData,function (res) {
+            console.log(res);
+            alert(res.message);
+            if(res.status==1){
+                location.reload();
+            }
+        })
+    }
+    //递归左侧菜单tree
+    function treeForData(treeData) {
+        if(treeData!=null){
+            //循环这个节点
+            for(var i in treeData){
+                //逻辑 赋值 操作
+                var treeObj = {
+                    id: treeData[i].id,
+                    name: treeData[i].name,
+                    pid: treeData[i].pid
+                };
+                arr.push(treeObj);
+                //判断它自己下面是否还有子节点
+                if (treeData[i].menuList!=null) {
+                    //有子节点，继续调用本身，去赋值给arr这个大数组
+                    treeForData(treeData[i].menuList);
+                };
+            }
+        }
+
+    }
+    //获取接口值，渲染右侧菜单表格
+    function setRightData(id,pid){
+        var url;
+        var data;
+        if(pid==0){
+            url='/sys/appMenu/right';
+            data={
+                pid:id
+            };
+            $("#changeMenus").css("display","block");
+            $("#limits").css("display","none");
+        }else{
+            url='/sys/appPermission/list';
+            data={
+                fkMenuId:id
+            };
+            $("#changeMenus").css("display","none");
+            $("#limits").css("display","block");
+        }
+        ajaxGet(url,data,function (res) {
+            rightData=res.resultMap.list;
+            console.log("aaaaaaaaaaaaa",rightData);
+            var rightHtml='';
+            for (var i in rightData){
+                var isPublic=rightData[i].isPublic==null?'-':rightData[i].isPublic;
+                var hosUrl=rightData[i].url==null?'-':rightData[i].url;
+                rightHtml+='<div class="oneTdDiv_hi">\n' +
+//                  '                            <div><input type="radio"></div>\n' +
+                    '                            <div class="LiTextAlign">'+rightData[i].id+'</div>\n' +
+                    '                            <div class="LiTextAlign">'+rightData[i].name+'</div>\n' +
+                    '                            <div class="LiTextAlign">'+rightData[i].code+'</div>\n' +
+                    '                            <div class="LiTextAlign">'+rightData[i].level+'</div>\n' +
+                    '                            <div class="LiTextAlign">'+hosUrl+'</div>\n' +
+                    '                            <div class="LiTextAlign">'+isPublic+'</div>\n' +
+                    '                            <div class="LiTextAlign">'+rightData[i].orderNum+'</div>\n' +
+                    '                            <div  class="LiTextAlign btnWidth btnTextColor"onclick="showModal('+i+')" ><span>修改</span></div>\n' +
+                    '                            <div  class="LiTextAlign btnWidth btnTextColor"onclick="menuDel('+rightData[i].id+')"><span>删除</span></div>\n' +
+                    '                        </div>';
+            }
+            if(pid==0){
+            	$('#rightDiv').html(rightHtml);
+            }else{
+            	$('#limitsRightDiv').html(rightHtml);
+            }            
+        })
+    }
+    //删除菜单
+    function menuDel(id){
+        ajaxGet('/sys/appMenu/remove',{id:id},function (res) {
+            console.log(res);
+            alert(res.message);
+            if(res.status==1){
+                location.reload();
+            }
+        })
+    }
+    //隐藏模态框
+    function hideModal() {
+        $('#modalsh').hide();
+    }
+    //显示模态框
+    function showModal(i) {
+        //赋值给模态框
+        setModalMenu(i);
+        $('#modalsh').show();
+    }
+</script>
+
+</body>
+
+</html>

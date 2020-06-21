@@ -1,0 +1,265 @@
+.breadcrumb{
+    background-color:#f8f8f8 !important;
+    padding-left:0px !important;
+}
+.breadcrumb > li + li:before {
+    color: #CCCCCC;
+    content: "> " !important;
+    padding: 0 5px;
+}
+.myorder{
+    font-size:14px;
+    float:left;
+}
+.searchInput{
+    width:410px!important;
+    float: right;
+    margin-top: -9px;
+    height: 32px !important;
+}
+.myordertitle{
+    padding:11px 22px;
+    background-color: #fff;
+    height:42px;
+}
+.nav{
+    border-bottom: 1px solid #ddd !important;
+}
+.layui-tab-brief>.layui-tab-title .layui-this{
+    color: #000;
+}
+.layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{
+    border-bottom: 2px solid red;
+}
+.orderTitle{
+    width:100%;
+    height:38px;
+    border:1px solid #eee;
+    background-color: #F8F8F8;
+    padding:9px 15px;
+}
+.sbox{
+    margin-top:-9px;
+}
+.tc{
+    text-align: right;
+}
+.orderimg{
+    width:80px;
+    height:80px;
+}
+.headerdiv{
+    float: left;
+    margin-right: 12px;
+}
+.orderlist{
+    padding: 35px 24px;
+    height:149px;
+    width:600px;
+}
+.borderline{
+    border-right: 1px solid #eee;
+    border-left: 1px solid #eee;
+}
+.borderlineleft{
+    border-left: 1px solid #eee;
+}
+.borderlinetop{
+    border-top: 1px solid #eee;
+}
+.borderlinebottom{
+    border-bottom: 1px solid #eee;
+}
+.borderlinetop{
+    border-top: 1px solid #eee;
+}
+.borderall{
+    border-left: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+.maxheight{
+    height: 100%;
+    position: relative;
+}
+.vercenter{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.layui-content{
+    padding-top:20px;
+}
+.potsion{
+    padding-left:110px;
+}
+.linef{
+    line-height: 23px;
+    text-align: center;
+}
+.breadcrumb{
+    background-color:#fff;
+}
+.orderdetail{
+    padding:40px 60px;
+    text-align:  center;
+    font-size: 18px;
+}
+.bgcolor{
+    background-color:#cfcfcf;
+}
+.timeliste{
+    color:#acacac;
+    position: absolute;
+    margin-top: 25px;
+}
+.aboutsize{
+    margin-bottom: 60px;
+}
+.orderno{
+    font-size: 16px;
+    margin-top:24px;
+    margin-bottom:24px;
+}
+.boxflex{
+    display: flex;
+    margin-bottom:40px;
+}
+.boxborder{
+    border:1px solid #eee;
+    width:400px;
+    height: 260px;
+}
+.orderinfo{
+    border-bottom:1px solid #eee;
+    padding:15px 20px;
+    text-align: center;
+}
+.orderinfoper{
+    padding: 15px 20px;
+    line-height: 28px;
+    overflow-y: scroll;
+    height:195px;
+    margin-top: 10px;
+}
+.rightinfo{
+    margin-left: 10px;
+    border:1px solid #eee;
+    width:790px;
+}
+.logistics{
+    padding:15px 40px;
+    color:#0691F9;
+    height: 208px;
+    overflow-y: scroll;
+}
+.progress-info{
+    background-color:#0691F9;
+}
+.settleAccountsBar{
+    height:190px;
+}
+.itemHeight{
+    height:26px;
+}
+.itemwidth{
+    width:220px;
+}
+.itemmaxHeight{
+    margin-top:30px;
+}
+.fr80{
+    margin-right:80px;
+}
+.flex{
+    display: flex;
+}
+.w230{
+    width:230px;
+}
+.cn{
+    text-align: center;
+}
+.mb20{
+    margin-bottom: 20px;
+}
+.inputborder{
+    border: 1px solid #eee;
+}
+.search_bt{
+    float: right;
+    height: 32px;
+    margin-top: -9px;
+    background-color: #fff;
+    padding: 10px;
+    line-height: 4px;
+}
+.w175{
+    width:175px;
+}
+.pd10{
+    padding:10px;
+}
+.o_orderall{
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 20px;
+    width: 147px;
+    height: 40px;
+    line-height: 28px;
+    z-index: 1;
+}
+.o_orderall_more{
+    position: absolute;
+    padding-top: 6px;
+    padding-left: 20px;
+    width: 147px;
+    height: 40px;
+    line-height: 28px;
+    z-index: 1;
+    padding-right: 1px;
+}
+.orderall_more{
+    position: absolute;
+    margin-left: 64px;
+    padding-top: 5px;
+    width: 107px;
+    text-align: center;
+    border: 1px solid #eee;
+    height: 130px;
+    z-index: 1;
+    background-color: #fff;
+    text-decoration: underline;
+}
+.orderall{
+    position: absolute;
+    padding-top: 10px;
+    width: 147px;
+    border: 1px solid #eee;
+    height: 100px;
+    z-index: 1;
+    background-color: #fff;
+}
+.alls{
+    border-bottom: 1px solid #eee;
+    padding-left: 20px;
+    width: 100%;
+    line-height: 28px;
+}
+.orlist{
+    padding-left: 20px;
+    line-height: 28px;
+}
+.alls_more{
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    line-height: 28px;
+}
+.orlist_more{
+    line-height: 28px;
+}
+.bgwhite{
+    background-color: #fff;
+}

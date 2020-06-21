@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>患者信息管理</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<!--<link rel="stylesheet" type="text/css" href="../../css/foundation.min.css"/>-->
+	<link href="../../css/foundation-datepicker.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/patientInfo.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/calendar.css" />
+
+	<style>
+		.doctorAdvice img{
+			width:278px;
+			height: 278px;
+			margin-right:3.5%;
+			/*margin-bottom: 20px;*/
+			border: 1px solid #E2E3E3;	
+			cursor:pointer;
+		}
+		.doctorAdvice{
+			height: auto;
+			display: none;
+		}
+		#J_pg{
+			z-index: 88888;
+		}
+		.delImgAll span{
+			cursor: pointer;
+			font-size: 1.25em;
+			background:#1B1B1B;
+			opacity: 0.5;
+			color: #fff;
+			border-bottom-left-radius: 13px;
+		}
+		.delImgAll span:hover{
+			background:#1B1B1B;
+			opacity: 0.5;
+			color: #fff;
+		}
+	</style>
+	<body>
+		<div class="patientInfoBox">
+			<!--第一行信息-->
+			<div class="patientInfoHead">
+				<div class="patientNanme">
+					<span class="patientNanmeLeft">患者姓名</span>
+					<input class="patientNanmeRight" type="text" id="ListpatientName" value="" />
+				</div>
+				<div class="patientSex">
+					<span class="patientSexLeft">性别</span>
+					<select name="" class="patientSexRight">
+						<option value=""></option>
+						<option value="男">男</option>
+						<option value="女">女</option>
+					</select>
+				</div>
+				<div class="patientID">
+					<span class="patientIDLeft">身份证号</span>
+					<input type="text" id="" value="" class="patientIDright" />
+				</div>
+				<div class="patientTel">
+					<span class="patientTelLeft">联系电话</span>
+					<input type="text" class="patienTelRight" name="" id="" value="" />
+				</div>
+				<button class="patientBtnCheck" id="patientSearchBtns">查询</button>
+				<button class="patientBtnClear" id="patientSearchClearBtn">清空</button>
+				<button class="patientBtnAdd">新增</button>
+			</div>
+			<!--信息列表-->
+			<div class="patientInfoList">
+				<ul class="patientInfoList-ul">
+					<!--<li class="patientInfoList-all">全选</li>-->
+					<li class="patientInfoList-code">序号</li>
+					<li class="patientInfoList-name">患者姓名</li>
+					<li class="patientInfoList-sex">性别</li>
+					<li class="patientInfoList-id">身份证号</li>
+					<li class="patientInfoList-tel">联系电话</li>
+					<li class="patientInfoList-Addr" style="width: 18%;">家庭住址</li>
+					<li class="patientInfoList-history" style="display: none;">病史</li>
+					<li class="patientInfoList-allergic" style="display: none;">过敏史</li>
+					<li class="patientInfoList-circ" style="width: 7%;">上传医嘱</li>
+					<li class="patientInfoList-check">查询</li>
+					<li class="patientInfoList-change">修改</li>
+					<li class="patientInfoList-del">删除</li>
+				</ul>
+				<!--列表内容-->
+				<input type="text" style="display: none;" id="formUserId" />
+				<input type="text" style="display: none;" id="formSessionId" />
+				<input type="text" style="display: none;" />
+				<div id="patientInfoContents">
+					<!--<ul class="patientInfoDetail-ul">
+						<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+						<li class="patientInfoDetail-code"><span>1</span></li>
+						<li class="patientInfoDetail-name"><span>某某某</span></li>
+						<li class="patientInfoDetail-sex"><span>男</span></li>
+						<li class="patientInfoDetail-id"><span>120105198506891157</span></li>
+						<li class="patientInfoDetail-tel"><span>13612345678</span></li>
+						<li class="patientInfoDetail-history"><span>糖尿病</span></li>
+						<li class="patientInfoDetail-allergic"><span>无过敏史</span></li>
+						<li class="patientInfoDetail-circ"><a href = "javascript:void(0)" class="btn-circ"><img src="../../img/common/1.jpg"/></a></li>
+						<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="patientBtn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+						<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="patientBtn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+						<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="patientBtn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>
+					</ul>-->
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<!--分页-->
+			<div class="patientpageN"></div>
+			<!--流转信息弹框弹框1-->
+			<div id="patientLight" class="white_content">
+				<div class="white_contentHead">
+					<span class="infoTitle">流转信息</span>
+					<a id="close" class="close" href="javascript:void(0)" onclick="document.getElementById('patientLight').style.display='none';document.getElementById('patientFade').style.display='none'">&times;</a>
+				</div>
+				<div class="line">
+					<div id="round1"></div>
+					<div id="round2"></div>
+					<div id="round3"></div>
+					<div id="round4"></div>
+					<span id="date">预约</span>
+					<span id="ask">问诊</span>
+					<span id="report">诊断报告</span>
+					<span id="adv">建议治疗</span>
+					<span id="other">转诊</span>
+					<span id="scenter">XX服务中心</span>
+					<span id="doctor1">XX医生</span>
+					<span id="doctor2">XX医生</span>
+					<span id="time1">2018年11月22日</span>
+					<span id="time2">2018年11月22日</span>
+					<span id="time3">2018年11月22日</span>
+					<div id="lineLeft"></div>
+					<div id="lineRight"></div>
+					<div id="lineBottom"></div>
+					<div id="littleRound1"></div>
+					<div id="littleRound2"></div>
+					<div id="sanJiao"></div>
+				</div>
+			</div>
+			<!--患者信息查询-->
+
+			<div id="patientLight1" class="white_content">
+				<div class="white_contentHead">
+					<span class="infoTitle">患者信息查询</span>
+					<a id="close" class="close" href="javascript:void(0)" onclick="document.getElementById('patientLight1').style.display='none';document.getElementById('patientFade').style.display='none'">&times;</a>
+				</div>
+				<div class="infoDetails">
+					<div class="infoDetailsHead">
+						<span class="infoDetailsHeadTab currentTabColor">患者信息查询</span>
+						<span class="infoDetailsHeadTab">历史医嘱查询</span>
+					</div>
+					<ul class="infoDetails-ul showAllInfoUls">
+						<li><span class="infoDetails-title">患者姓名：</span><input type="text" name="" id="lookForPatientName" value="张某某" /></li>
+						<li><span class="infoDetails-title">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span><input type="text" name="" id="lookForPatientSex"
+							 value="男" /></li>
+						<li><span class="infoDetails-title">联系电话：</span><input type="text" name="" id="lookForPatientTel" value="00000000000000" /></li>
+						<li><span class="infoDetails-title">家庭住址：</span><input type="text" name="" id="lookForPatientAddr" value="00000000000000" /></li>
+						<li><span class="infoDetails-title">身份证号：</span><input type="text" name="" id="lookForPatientIdCode" value="00000000000000" /></li>
+						<li><span class="infoDetails-title">出生日期：</span><input name="lable" onFocus="setday(this);" type="text" name=""
+							 id="lookForPatientBornTime" value="2018-11-01" /></li>
+						<!--<li><span class="infoDetails-title">入院日期：</span><input name="lable" onFocus="setday(this);" type="text" name="" id="" value="2018-11-01" /></li>-->
+						<!--<li><span class="infoDetails-title">就诊科室：</span><input type="text" name="" id="" value="心内科" /></li>-->
+						<!--<li><span class="infoDetails-title">就诊类型：</span><input type="text" name="" id="" value="门诊" /></li>-->
+						<!--<li><span class="infoDetails-title">身高(cm)：</span><input type="text" name="" id="" value="1.56" /></li>-->
+						<!--<li><span class="infoDetails-title">体重(kg)：</span><input type="text" name="" id="" value="196" /></li>-->
+						<li><span class="infoDetails-title">婚姻状况：</span><input type="text" name="" id="lookForPatientMarriage" value="离异" /></li>
+						<li class="liBig"><span class="infoDetails-title lf">现&nbsp;&nbsp;病&nbsp;&nbsp;史：</span><textarea name="" id="lookForPatientMh" /></textarea></li>
+						<li class="liBig"><span class="infoDetails-title lf">既&nbsp;&nbsp;往&nbsp;&nbsp;史：</span><textarea name="" id="lookForpatientpastHistory" /></textarea></li>
+						<li class="liBig"><span class="infoDetails-title lf">过&nbsp;&nbsp;敏&nbsp;&nbsp;史：</span><textarea name="" id="lookForPatientDa" /></textarea></li>
+						<li class="liBig"><span class="infoDetails-title lf">家&nbsp;&nbsp;族&nbsp;&nbsp;史：</span><textarea name="" id="lookForpatientfamilyHistory" /></textarea></li>
+						<li class="hiddenLineIds" style="display: none;"></li>
+					</ul>
+					<div class="infoDetails-ul showAllInfoUls doctorAdvice gallerys">
+						<!--<img src="../../img/a1.jpg" class="gallery-pic"alt="" onclick="$.openPhotoGallery(this)" />
+                		<img src="../../img/a3.jpg" class="gallery-pic"alt="" onclick="$.openPhotoGallery(this)"  />
+                		<img src="../../img/a5.jpg" class="gallery-pic"alt="" onclick="$.openPhotoGallery(this)" />
+                		<img src="../../img/a8.jpg" class="gallery-pic"alt="" onclick="$.openPhotoGallery(this)"  />-->
+						<div class="noHasDocDevice" style="width:100%;text-align: center;">暂无医嘱</div>
+					</div>
+
+				</div>
+				<!--<button id="infoDetails-close">关闭</button>-->
+				<a id="close2" href="javascript:void(0)" onclick="document.getElementById('patientLight1').style.display='none';document.getElementById('patientFade').style.display='none'">关闭</a>
+				<div style="position: absolute;bottom: 18px;left: 54%;">
+					<a id="uploadBtn2" style="width: 100px;height: 30px;display:inline-block;text-align:center;line-height:30px;background: #018ce9;color: #fff;text-decoration: none;">上传医嘱</a>
+					<input type="file" id="thisUploadFIle" name="file" style="width:100px;height:30px;z-index:1;display:inline-block;position:relative;left:-104px;top:-2px;opacity: 0;-moz-opacity: 0;-ms-opacity: 0;-webkit-opacity: 0;cursor: pointer;"
+					 title=" " />
+				</div>
+			</div>
+
+			<!--删除-->
+
+			<div id="patientLight2" class="white_content1">
+				<div class="white_contentHead1">
+					<img src="../../img/common/untitledquestionImg.png" />
+				</div>
+				<p>删除患者信息后不可恢复，您确定要删除该信息吗？</p>
+				<a id="close3" href="javascript:void(0)" onclick="document.getElementById('patientLight2').style.display='none';document.getElementById('patientFade').style.display='none'">取消</a>
+				<button id="del-yes">确定删除</button>
+				<div class="DelhiddenIds" style="display: none;"></div>
+			</div>
+
+			<!--患者新增-->
+			<div id="patientLight4" class="white_content">
+				<div class="white_contentHead">
+					<span class="infoTitle">新增患者信息</span>
+					<a id="close" class="close" href="javascript:void(0)" onclick="document.getElementById('patientLight4').style.display='none';document.getElementById('patientFade').style.display='none'">&times;</a>
+				</div>
+				<div class="infoDetails">
+					<div class="infoDetailsHead">新增患者信息</div>
+					<ul class="infoDetails-ul">
+						<li><span class="infoDetails-title">患者姓名：</span><input type="text" name="" id="addPatientName" value="" /></li>
+						<li><span class="infoDetails-title">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+								<select name="" style="width: 200px;height: 30px;" id="addPatientSex">
+									<option value="男">男</option>
+									<option value="女">女</option>
+								</select>
+						</li>
+						<li><span class="infoDetails-title">家庭住址：</span><input type="text" name="" id="addPatientHomeAddr" value="" /></li>
+						<li><span class="infoDetails-title">联系电话：</span><input type="text" name="" id="addPatientTel" value="" /></li>
+						<li><span class="infoDetails-title">身份证号：</span><input type="text" name="" id="addPatientIdentityCode" value="" /></li>
+						<li><span class="infoDetails-title">出生日期：</span><input name="lable" type="text" name="" id="addPatientBornTime"
+							 value="" readonly="readonly" /></li>
+						<!--<li><span class="infoDetails-title">入院日期：</span><input name="lable" onFocus="setday(this);" type="text" name="" id="addPatientToHospital" value="" /></li>-->
+						<!--<li><span class="infoDetails-title">就诊科室：</span><input type="text" name="" id="addPatientOffice" value="" /></li>-->
+						<!--<li><span class="infoDetails-title">就诊类型：</span><input type="text" name="" id="addPatientType" value="" /></li>-->
+						<!--<li><span class="infoDetails-title">身高(cm)：</span><input type="text" name="" id="addPatientTall" value="" /></li>-->
+						<!--<li><span class="infoDetails-title">体重(kg)：</span><input type="text" name="" id="addPatientWeight" value="" /></li>-->
+						<li><span class="infoDetails-title">婚姻状况：</span><select name="" id="addPatientMarriage" style="width: 200px;height: 30px;">
+								<option value=""></option>
+								<option value="已婚">已婚</option>
+								<option value="未婚">未婚</option>
+								<option value="离异">离异</option>
+								<option value="丧偶">丧偶</option>
+							</select>
+
+						</li>
+						<li class="liBig"><span class="infoDetails-title lf">现&nbsp;&nbsp;病&nbsp;&nbsp;史：</span><textarea name="" id="addPatientMedicalHistory" /></textarea></li>
+						<li class="liBig"><span class="infoDetails-title lf">既&nbsp;&nbsp;往&nbsp;&nbsp;史：</span><textarea name="" id="addPatientpastHistory" /></textarea></li>
+						<li class="liBig"><span class="infoDetails-title lf">过&nbsp;&nbsp;敏&nbsp;&nbsp;史：</span><textarea name="" id="addPatientAllergyHistory" /></textarea></li>
+						<li class="liBig"><span class="infoDetails-title lf">家&nbsp;&nbsp;族&nbsp;&nbsp;史：</span><textarea name="" id="addPatientfamilyHistory" /></textarea></li>
+					</ul>
+
+
+				</div>
+				<button id="add-ok">确定新增</button>
+
+				<a id="close4" href="javascript:void(0)" onclick="document.getElementById('patientLight4').style.display='none';document.getElementById('patientFade').style.display='none'">取消</a>
+			</div>
+
+			<!--点击按钮修改-->
+
+			<div id="patientLight5" class="white_content">
+				<div class="white_contentHead">
+					<span class="infoTitle">患者信息修改</span>
+					<a id="close" class="close" href="javascript:void(0)" onclick="document.getElementById('patientLight5').style.display='none';document.getElementById('patientFade').style.display='none'">&times;</a>
+				</div>
+				<div class="infoDetails">
+					<div class="infoDetailsHead">患者信息修改</div>
+					<ul class="infoDetails-ul">
+						<li><span class="infoDetails-title">患者姓名：</span><input type="text" name="" id="changeInfoPatientName" value="" /></li>
+						<li><span class="infoDetails-title">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+								<select name="" style="width: 200px;height: 30px;" id="changeInfoPatientSex">
+									<option value=""></option>
+									<option value="男">男</option>
+									<option value="女">女</option>
+								</select>
+						</li>
+						<li><span class="infoDetails-title">家庭住址：</span><input type="text" name="" id="changeInfoPatientAddr" value="0000000000" /></li>
+						<li><span class="infoDetails-title">联系电话：</span><input type="text" name="" id="changeInfoPatientTel" value="0000000000" /></li>
+						<li><span class="infoDetails-title">身份证号：</span><input type="text" name="" id="changeInfoPatientIdCode" value="0000000000" /></li>
+						<li style="position: relative;"><span class="infoDetails-title">出生日期：</span>
+							<input name="lable" onFocus="setday(this);" type="text" name="" id="changeInfoPatientBornTime" value="2018-11-01" />
+						</li>
+						<!--<li><span class="infoDetails-title">入院日期：</span><input name="lable" onFocus="setday(this);" type="text" name="" id="" value="2018-11-01" /></li>-->
+						<!--<li><span class="infoDetails-title">就诊科室:&nbsp;&nbsp;</span>-->
+						<!--<input type="text" name="" id="" value="心内科" />-->
+						<!--<select name="" style="width: 196px;height: 30px;">
+                				<option value=""></option>
+                				<option value="心内科">心内科</option>
+                				<option value="科室1">科室1</option>
+                				<option value="科室2">科室2</option>
+                				<option value="科室3">科室3</option>
+                			</select> -->
+						<!--</li>-->
+						<!--<li><span class="infoDetails-title">就诊类型：</span><input type="text" name="" id="" value="门诊" /></li>-->
+						<!--<li><span class="infoDetails-title">身高(cm)：</span><input type="text" name="" id="" value="1.56" /></li>-->
+						<!--<li><span class="infoDetails-title">体重(kg)：</span><input type="text" name="" id="" value="196" /></li>-->
+						<li><span class="infoDetails-title">婚姻状况：</span><select name="" id="changeInfoPatientMarriage" style="width: 200px;height: 30px;">
+								<option value=""></option>
+								<option value="已婚">已婚</option>
+								<option value="未婚">未婚</option>
+								<option value="离异">离异</option>
+								<option value="丧偶">丧偶</option>
+							</select>
+
+						</li>
+						<li class="liBig"><span class="infoDetails-title lf">现&nbsp;&nbsp;病&nbsp;&nbsp;史：</span><textarea name="" id="changeInfoPatientMH" /></textarea></li>
+						<li class="liBig"><span class="infoDetails-title lf">既&nbsp;&nbsp;往&nbsp;&nbsp;史：</span><textarea name="" id="changeInfoPatientpastHistory" /></textarea></li>
+						<li class="liBig"><span class="infoDetails-title lf">过&nbsp;&nbsp;敏&nbsp;&nbsp;史：</span><textarea name="" id="changeInfoPatientAH" /></textarea></li>
+						<li class="liBig"><span class="infoDetails-title lf">家&nbsp;&nbsp;族&nbsp;&nbsp;史：</span><textarea name="" id="changeInfoPatientfamilyHistory" /></textarea></li>
+						<li class="hiddenLineIds" style="display: none;"></li>
+					</ul>
+
+				</div>
+				<button id="change-ok">确定修改</button>
+
+				<!--<button id="change-cancle">确定修改</button>-->
+
+				<a id="change-cancle" href="javascript:void(0)" onclick="document.getElementById('patientLight5').style.display='none';document.getElementById('patientFade').style.display='none'">取消修改</a>
+			</div>
+			<!--灰背景-->
+			<div id="patientFade" class="black_overlay"></div>
+			<div id="patientFadeUpload" class="black_overlay"></div>
+			<div id="uploadingImg" style="display: none;text-align: center;"><img src="../../css/plugins/blueimp/img/loading.gif"
+				 alt="" style="width:40px;height:40px;" />上传中......</div>
+		</div>
+
+	</body>
+	<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/foundation-datepicker.js"></script>
+	<script src="../../js/locales/foundation-datepicker.zh-CN.js"></script>
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="jquery-photo-gallery/jquery.js"></script>-->
+	<script src="jquery-photo-gallery/jquery.photo.gallery.js"></script>
+	<script type="text/javascript">
+		//  获取用户id       
+		var userId = sessionStorage.getItem('userId');
+		var sessionId = sessionStorage.getItem('sessionId');
+		//		$('#addPatientBornTime').fdatepicker({format: 'yyyy-mm-dd'});
+		$('#changeInfoPatientBornTime').fdatepicker({
+			format: 'yyyy-mm-dd'
+		});
+		//		点击上传医嘱		
+		$("#patientInfoContents").on("click", ".filesClass", function() {
+			var curentUserId = $(this).parent().parent().parent().find(".patientInfoDetail-lineId").text();
+			$("#formSessionId").val(sessionId);
+			$("#formUserId").val(curentUserId);
+			addPic($(this), curentUserId, sessionId);
+		});
+		//		点击查看内的上传医嘱
+		$("#thisUploadFIle").click(function() {
+			var curentUserId = $(this).parent().parent().find(".hiddenPatientId").text();
+			addPic($("#thisUploadFIle"), curentUserId, sessionId);
+		});
+		window.onload = function() {
+			$(document).on("click", ".delBtn", function() {
+				var imgId = $(this).parent().find(".imgId").text();
+				var currentLineIds = $(this).parent().parent().find(".hiddenPatientId").text();
+				//			删除单条历史医嘱
+				var mymessage = confirm("您确定要删除此医嘱吗?");
+				if (mymessage == true) {
+					ajaxGet('/oa/patinfo/removeImage', {
+						imgId: imgId,
+					}, function(resData) {
+						alert("删除成功！");
+						readHistoryAdvice(currentLineIds);
+					});
+				}
+			});
+		}
+
+		function addPic(fileId, userId, sessionId) {
+			fileId.off('change').on('change', function() {
+				$("#patientFadeUpload").css("display", "block");
+				$("#uploadingImg").css("display", "block");
+				//				alert("ccccc");
+				var file = this.files[0];
+				var fsize = parseInt((file.size) / 1024); //计算图片大小，默认是B，转换成KB  
+				if (!/image\/\w+/.test(file.type)) {
+
+					alert("请确保文件为图像类型");
+					return false;
+				}
+				//				if(fsize >= 500) {
+				//					alert("图片过大，请重新选择图片");
+				//					return false;
+				//				}
+				if (!/\.(jpg|png|JPG|PNG)$/.test(fileId.val())) {
+					alert("图片类型必须是.jpg,png中的一种");
+					return false;
+				}
+				var reader = new FileReader();
+				reader.readAsDataURL(file);
+				reader.onload = function(e) {
+					//					imgId.attr('src', this.result);
+					//					if(imgId.attr('id') == 'img0') {
+					//						$('#big_img img').attr('src', this.result);
+					//					}
+					var fileElementId = $(fileId).attr("id");
+					var formData = new FormData();
+					formData.append("file", document.getElementById(fileElementId).files[0]);
+					formData.append("fkPatinfoId", userId);
+					formData.append("sessionId", sessionId);
+					console.info(formData.get("fkPatinfoId"));
+					//					console.info(formData.get("sessionId"));
+					//					console.log(document.getElementById(fileElementId).files[0]);
+
+					$.ajax({
+						url: config + '/oa/patinfo/uploadImage',
+						//				url:"http://192.168.18.189:8080/gcafu_commerce/rest/upload/product",
+						type: 'POST',
+						data: formData,
+						async: false,
+						cache: false,
+						dataType: 'JSON', //接收值的格式
+						enctype: 'multipart/form-data',
+						contentType: false,
+						processData: false,
+						success: function(data) {
+							//把图片替换  
+							$("#patientFadeUpload").css("display", "none");
+							$("#uploadingImg").css("display", "none");
+							alert("上传成功!");
+							$(fileId).val('');
+							if (fileElementId == "thisUploadFIle") {
+								var hiddenPatientId = $(".hiddenPatientId").text();
+								readHistoryAdvice(hiddenPatientId);
+							}
+						},
+						error: function() {
+							alert("上传失败！");
+						}
+					});
+				}
+			});
+		}
+		//		点击查看里的切换医嘱和信息标签进行切换
+		$(document).on("click", ".infoDetailsHeadTab", function() {
+			$(this).addClass("currentTabColor").siblings().removeClass("currentTabColor");
+			if ($(this).text() == "患者信息查询") {
+				$($(".showAllInfoUls")[0]).css("display", "block");
+				$($(".showAllInfoUls")[1]).css("display", "none");
+			} else if ($(this).text() == "历史医嘱查询") {
+				$($(".showAllInfoUls")[0]).css("display", "none");
+				$($(".showAllInfoUls")[1]).css("display", "block");
+			}
+		});
+		//		失去焦点
+		$("#addPatientIdentityCode").blur(function() {
+			var identifyCode = $("#addPatientIdentityCode").val().trim();
+			if (identifyCode == "" || identifyCode == null) {
+				alert("请输入身份证号！");
+			} else if (identifyCode.length != 18) {
+				alert("请输入正确的身份证号");
+			} else {
+				var yearCode = identifyCode.substring(6, 10);
+				var monthCode = identifyCode.substring(10, 12);
+				var dayCode = identifyCode.substring(12, 14);
+				//				console.log(yearCode);
+				//				console.log(monthCode);
+				//				console.log(dayCode);
+				$("#addPatientBornTime").val(yearCode + "-" + monthCode + "-" + dayCode);
+			}
+		});
+		//		点击查询按钮
+		$("#patientInfoContents").on("click", ".patientBtn-check", function() {
+			//			获取页面当行信息
+			var currentLineIds = $(this).parent().parent().find(".patientInfoDetail-lineId").text();
+			var currentLineName = $(this).parent().parent().find(".patientInfoDetail-name span").text();
+			var currentLineSex = $(this).parent().parent().find(".patientInfoDetail-sex span").text();
+			var currentLineAddr = $(this).parent().parent().find(".patientInfoDetail-Addr span").text();
+			var currentLineMarriage = $(this).parent().parent().find(".patientInfoDetail-marriage span").text();
+			var currentLineidCode = $(this).parent().parent().find(".patientInfoDetail-id span").text();
+			var currentLineTel = $(this).parent().parent().find(".patientInfoDetail-tel span").text();
+			var currentLinePh = $(this).parent().parent().find(".patientInfoDetail-history span").text();
+			var currentLineDa = $(this).parent().parent().find(".patientInfoDetail-allergic span").text();
+			var currentLineBornTime = $(this).parent().parent().find(".patientInfoDetail-birthday span").text().trim();
+			var currentLinePastHistory = $(this).parent().parent().find(".patientInfoDetail-pastHistory span").text(); //既往史
+			var currentLineFamilyHistory = $(this).parent().parent().find(".patientInfoDetail-familyHistory span").text(); //家族史
+			$("#patientLight1").fadeIn();
+			$("#patientFade").fadeIn();
+			$("#patientLight1 input").attr("disabled", "disabled");
+			$("#patientLight1 #thisUploadFIle").attr("disabled", false);
+			$("#patientLight1 .hiddenLineIds").text(currentLineIds);
+			$("#patientLight1 #lookForPatientName").val(currentLineName); //患者名
+			$("#patientLight1 #lookForPatientSex").val(currentLineSex); //患者性别
+			$("#patientLight1 #lookForPatientAddr").val(currentLineAddr); //患者地址
+			$("#patientLight1 #lookForPatientTel").val(currentLineTel); //患者联系电话
+			$("#patientLight1 #lookForPatientIdCode").val(currentLineidCode); //患者身份证号
+			$("#patientLight1 #lookForPatientBornTime").val(formatDateTime(currentLineBornTime)); //患者出生日期
+			$("#patientLight1 #lookForPatientMarriage").val(currentLineMarriage); //婚姻状况
+			$("#patientLight1 #lookForPatientMh").val(currentLinePh); //患者病史
+			$("#patientLight1 #lookForPatientDa").val(currentLineDa); //患者过敏史
+			$("#patientLight1 #lookForpatientpastHistory").val(currentLinePastHistory); //既往史
+			$("#patientLight1 #lookForpatientfamilyHistory").val(currentLineFamilyHistory); //家族史
+			readHistoryAdvice(currentLineIds);
+		});
+
+		function readHistoryAdvice(currentLineIds) {
+			//			读取患者历史医嘱
+			ajaxGet('/oa/patinfo/get', {
+				fkPatinfoId: currentLineIds,
+			}, function(resData) {
+				console.log(resData.resultMap.patinfoImageList);
+				var patinfoImageList = resData.resultMap.patinfoImageList;
+				if (patinfoImageList.length > 0) {
+					$(".doctorAdvice").html('<span class="hiddenPatientId"style="display:none;">' + currentLineIds + '</span>');
+					for (var i = 0; i < patinfoImageList.length; i++) {
+						var dHtml = '';
+						dHtml += '<div style="position:relative;float:left;"class="delImgAll">';
+						dHtml += '<img src="' + patinfoImageList[i].imgUrl +
+							'" class="gallery-pic"alt="" onclick="$.openPhotoGallery(this)" />';
+						dHtml +=
+							'<span style="position:relative;top:-278px;right:-88.5%;text-align:center;display:inline-block;width:16px;height:16px;line-height:16px;"class="delBtn">&times;</span>';
+						dHtml += '<p>上传者:' + patinfoImageList[i].imgUserName + '</p>';
+						dHtml += '<p style="margin-bottom:20px;">上传时间:' + patinfoImageList[i].imgTime + '</p>';
+						dHtml += '<span style="display:none;"class="imgId">' + patinfoImageList[i].imgId + '</span>';
+						dHtml += '</div>';
+						$(".doctorAdvice").append(dHtml);
+					}
+				} else {
+					$(".doctorAdvice").html('<div class="noHasDocDevice"style="width:100%;text-align: center;">暂无医嘱</div>');
+				}
+
+			});
+		}
+		//		点击删除按钮
+		$("#patientInfoContents").on("click", ".patientBtn-del", function() {
+			var currentLineIds = $(this).parent().parent().find(".patientInfoDetail-lineId").text();
+			$("#patientLight2").fadeIn();
+			$("#patientFade").fadeIn();
+			$("#patientLight2 .DelhiddenIds").text(currentLineIds);
+		});
+		//		点击新增按钮
+		var adds = document.getElementsByClassName("patientBtnAdd");
+		for (var i = 0; i < adds.length; i++) {
+			adds[i].onclick = function() {
+				$("#patientLight4").fadeIn();
+				$("#patientFade").fadeIn();
+			};
+		}
+		//		点击修改按钮		
+		$("#patientInfoContents").on("click", ".patientBtn-change", function() {
+			//      	获取当前行的信息
+			var currentLineIds = $(this).parent().parent().find(".patientInfoDetail-lineId").text();
+			var currentLineName = $(this).parent().parent().find(".patientInfoDetail-name span").text();
+			var currentLineSex = $(this).parent().parent().find(".patientInfoDetail-sex span").text();
+			var currentLineAddr = $(this).parent().parent().find(".patientInfoDetail-Addr span").text();
+			var currentLineMarriage = $(this).parent().parent().find(".patientInfoDetail-marriage span").text();
+			var currentLineidCode = $(this).parent().parent().find(".patientInfoDetail-id span").text();
+			var currentLineTel = $(this).parent().parent().find(".patientInfoDetail-tel span").text();
+			var currentLinePh = $(this).parent().parent().find(".patientInfoDetail-history span").text();
+			var currentLineDa = $(this).parent().parent().find(".patientInfoDetail-allergic span").text();
+			var currentLineBornTime = $(this).parent().parent().find(".patientInfoDetail-birthday span").text().trim();
+			var currentLinePastHistory = $(this).parent().parent().find(".patientInfoDetail-pastHistory span").text(); //既往史
+			var currentLineFamilyHistory = $(this).parent().parent().find(".patientInfoDetail-familyHistory span").text(); //家族史
+			$("#patientLight5").fadeIn();
+			$("#patientFade").fadeIn();
+			$("#patientLight5 .hiddenLineIds").text(currentLineIds);
+			$("#patientLight5 #changeInfoPatientName").val(currentLineName); //患者名
+			$("#patientLight5 #changeInfoPatientSex").val(currentLineSex); //患者性别
+			$("#patientLight5 #changeInfoPatientAddr").val(currentLineAddr); //患者地址
+			$("#patientLight5 #changeInfoPatientTel").val(currentLineTel); //患者联系电话
+			$("#patientLight5 #changeInfoPatientIdCode").val(currentLineidCode); //患者身份证号
+			$("#patientLight5 #changeInfoPatientBornTime").val(formatDateTime(currentLineBornTime)); //患者出生日期
+			$("#patientLight5 #changeInfoPatientMarriage").val(currentLineMarriage); //婚姻状况
+			$("#patientLight5 #changeInfoPatientMH").val(currentLinePh); //患者现病史
+			$("#patientLight5 #changeInfoPatientAH").val(currentLineDa); //患者过敏史
+			$("#patientLight5 #changeInfoPatientpastHistory").val(currentLinePastHistory); //既往史
+			$("#patientLight5 #changeInfoPatientfamilyHistory").val(currentLineFamilyHistory); //家族史
+		});
+
+		//时间戳转时间方法
+		function formatDateTime(timeStamp) {
+			var date = new Date(parseInt(timeStamp));
+			Y = date.getFullYear();
+			M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+			D = date.getDate();
+			h = date.getHours() + ':';
+			m = date.getMinutes() + ':';
+			s = date.getSeconds();
+			return Y + '-' + M + '-' + D;
+		};
+
+		//      以下为调取接口的部分
+		var currentPage = 1;
+		var offsetPage = 0; //传输的页起始条数
+		var showNum = 10; //页面需要显示的条数
+		var num_pages;
+		//点击分页页数
+		$(document).delegate(".flipOver", 'click', function() {
+			$(this).addClass('active').siblings().removeClass('active');
+			currentPage = parseInt($(this).attr("pageId"));
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getPatientList();
+			window.scrollTo(0, 0);
+		});
+		//点击上一页
+		$(document).delegate("#prev", 'click', function() {
+			if ($(".flipOver.active").prev().attr("id") == "prev") {
+				return true
+			} else {
+				var page = parseInt($(".flipOver.active").attr("pageid")) - 1;
+				$(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+			}
+			currentPage = page;
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getPatientList();
+			window.scrollTo(0, 0);
+		});
+
+
+		//点击下一页
+		$(document).delegate("#Next", 'click', function() {
+			if ($(".flipOver.active").next().attr("id") == "Next") {
+				return true
+			} else {
+				var page = parseInt($(".flipOver.active").attr("pageid")) + 1;
+				$(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+			}
+			currentPage = page;
+			offsetPage = (currentPage - 1) * 10; //（页码-1）*每页显示条数
+			getPatientList();
+			window.scrollTo(0, 0);
+		});
+		getPatientList();
+		//	获取订单列表
+		function getPatientList() {
+			//					console.log("coming......");
+			$("#patientInfoContents").html('');
+			$.ajax({
+				type: "get",
+				url: config + "/oa/patinfo/list",
+				async: false,
+				dataType: "jsonp",
+				jsonp: "jsoncallback",
+				data: {
+					nameLike: getPatientName,
+					sex: getPatientSex,
+					idCodeLike: getPatientIdCode,
+					phoneLike: getPatientPhone,
+					offset: offsetPage, //（页码-1）*每页显示条数
+					limit: showNum //每页赢显示的条数	
+				},
+				success: function(data) {
+					console.log("aaaaaaaaaaaaaaaaaaa");
+					console.log(data);
+					var patinfoList = data.resultMap.patinfoList;
+					var listTotal = data.resultMap.total; //总条数
+					//							var index = data.viewIndex;
+					num_pages = Math.ceil(parseInt(listTotal) / 10); //总条数除以每页十条数据为总页码
+					for (var i = 0, k = 0; i < patinfoList.length; i++) {
+						console.log(patinfoList[i].name);
+						var pathtml = '';
+						k++;
+						pathtml += '<ul class="patientInfoDetail-ul">';
+						pathtml += '<li class="patientInfoDetail-lineId" style="display:none">' + patinfoList[i].id + '</li>';
+						//								pathtml+='<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>';	
+						pathtml += '<li class="patientInfoDetail-code"><span>' + k + '</span></li>';
+						pathtml += '<li class="patientInfoDetail-name"><span>' + patinfoList[i].name + '</span></li>';
+						pathtml += '<li class="patientInfoDetail-sex"><span>' + patinfoList[i].sex + '</span></li>';
+						pathtml += '<li class="patientInfoDetail-id"><span>' + patinfoList[i].idCode + '</span></li>';
+						pathtml += '<li class="patientInfoDetail-tel"><span>' + patinfoList[i].phone + '</span></li>';
+						pathtml += '<li class="patientInfoDetail-Addr"style="width:18%;"><span>' + patinfoList[i].address +
+							'</span></li>';
+						pathtml += '<li class="patientInfoDetail-birthday"style="display:none;"><span>' + patinfoList[i].birthday +
+							'</span></li>';
+						pathtml += '<li class="patientInfoDetail-marriage"style="display:none;"><span>' + patinfoList[i].marriage +
+							'</span></li>';
+						pathtml += '<li class="patientInfoDetail-pastHistory"style="display:none;"><span>' + patinfoList[i].pastHistory +
+							'</span></li>';
+						pathtml += '<li class="patientInfoDetail-familyHistory"style="display:none;"><span>' + patinfoList[i].familyHistory +
+							'</span></li>';
+						if (patinfoList[i].medicalHistory != null && patinfoList[i].medicalHistory != "") {
+							pathtml += '<li class="patientInfoDetail-history"style="display:none;"><span>' + patinfoList[i].medicalHistory +
+								'</span></li>'; //病史
+						} else {
+							pathtml += '<li class="patientInfoDetail-history"style="display:none;"><span></span></li>'; //病史
+						}
+						if (patinfoList[i].allergyHistory != null && patinfoList[i].allergyHistory != "") {
+							pathtml += '<li class="patientInfoDetail-allergic"style="display:none;"><span>' + patinfoList[i].allergyHistory +
+								'</span></li>'; //有无过敏史
+						} else {
+							pathtml += '<li class="patientInfoDetail-allergic"style="display:none;"><span></span></li>'; //有无过敏史
+						}
+
+						pathtml +=
+							'<li class="patientInfoDetail-circ"style="width:7%"><div class="btn-circ"><input type="file" class="filesClass"id="file' +
+							k +
+							'"name="file" style="width:19px;height:19px;z-index:1;display:inline-block;position:relative;left:19px;top:10px;opacity: 0;-moz-opacity: 0;-ms-opacity: 0;-webkit-opacity: 0;cursor: pointer;"title=" "/><img src="../../img/uploadImg.png"style="width:19px;height:19px;position:relative;"/></div></li>';
+						pathtml +=
+							'<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="patientBtn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>';
+						pathtml +=
+							'<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="patientBtn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>';
+						pathtml +=
+							'<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="patientBtn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>';
+						pathtml += '</ul>';
+						$("#patientInfoContents").append(pathtml);
+						var pageHtml = page(parseInt(currentPage), num_pages);
+						$(".patientpageN").html(pageHtml);
+					}
+					if (data.status == 1) {}
+				},
+			});
+
+		}
+		//			模态框
+		//				$("#patientFade").css("height",window.screen.height);
+		//				$("#patientFade").css("width",window.screen.width);
+
+		//		点击新增患者信息的确认新增
+		$("#patientLight4 #add-ok").click(function() {
+			var patientName = $("#addPatientName").val().trim(); //患者名
+			var addPatientSex = $("#addPatientSex").val().trim(); //患者性别
+			var addPatientHomeAddr = $("#addPatientHomeAddr").val().trim(); //患者家庭住址
+			var addPatientTel = $("#addPatientTel").val().trim(); //患者联系电话
+			var addPatientIdentityCode = $("#addPatientIdentityCode").val().trim(); //患者身份证号
+			var addPatientBornTime = $("#addPatientBornTime").val().trim(); //患者出生日期
+			var addPatientBornDate = new Date(addPatientBornTime);
+			var addPatientToHospital = $("#addPatientToHospital").val(); //患者入院日期
+			var addPatientOffice = $("#addPatientOffice").val(); //患者就诊科室
+			var addPatientType = $("#addPatientType").val(); //患者就诊类型
+			var addPatientTall = $("#addPatientTall").val(); //患者身高
+			var addPatientWeight = $("#addPatientWeight").val(); //患者体重
+			var addPatientMarriage = $("#addPatientMarriage").val().trim(); //患者婚姻状况
+			var addPatientMedicalHistory = $("#addPatientMedicalHistory").val(); //患者现病史
+			var addPatientAllergyHistory = $("#addPatientAllergyHistory").val(); //患者过敏史
+			var addPatientPastHistory = $("#addPatientMedicalHistory").val(); //既往史
+			var addPatientfamilyHistory = $("#addPatientfamilyHistory").val(); //家族史
+			//家族史
+			console.log(patientName + " " + addPatientSex + " " + addPatientHomeAddr + " " + addPatientTel + " " +
+				addPatientIdentityCode + " " + addPatientBornTime + " " + addPatientMarriage + " " + addPatientMedicalHistory +
+				" " + addPatientAllergyHistory);
+			if (patientName == "" || patientName == null) {
+				alert("请输入姓名！");
+			} else if (addPatientSex == "" || addPatientSex == null) {
+				alert("请选择性别！");
+			} else if (addPatientHomeAddr == "" || addPatientHomeAddr == null) {
+				alert("请输入家庭住址！");
+			} else if (addPatientTel == "" || addPatientTel == null) {
+				alert("请输入联系电话！");
+			} else if (addPatientIdentityCode == "" || addPatientIdentityCode == null) {
+				alert("请输入身份证号！");
+			} else {
+				$.ajax({
+					method: 'get',
+					url: config + '/oa/patinfo/save',
+					contentType: "application/json; charset=utf-8", //传到后台的数据格式
+					async: true,
+					data: {
+						'name': patientName,
+						'sex': addPatientSex,
+						'birthday': addPatientBornDate,
+						'idCode': addPatientIdentityCode,
+						'address': addPatientHomeAddr,
+						'phone': addPatientTel,
+						'weight': addPatientWeight,
+						'stature': addPatientTall,
+						'marriage': addPatientMarriage,
+						'inputUserId': userId, //用户id
+						'medicalHistory': addPatientMedicalHistory, //现病史
+						'pastHistory': addPatientPastHistory, //既往史
+						'allergyHistory': addPatientAllergyHistory, //过敏史
+						'familyHistory': addPatientfamilyHistory //家族史
+					},
+					dataType: 'jsonp', //接收值的格式
+					jsonp: 'jsoncallback',
+					success: function(data) {
+						console.log(data);
+						if (data.status == 1) {
+							document.getElementById('patientLight4').style.display = 'none';
+							document.getElementById('patientFade').style.display = 'none';
+							alert(data.message)
+							getPatientList();
+						} else {
+							alert(data.message);
+							//		window.location.reload();
+						}
+					},
+					error: function(result) {
+						console.log(result);
+					}
+				});
+			}
+
+		});
+		//		点击单行确认修改按钮
+		$("#patientLight5 #change-ok").click(function() {
+			var currentLineIds = $("#patientLight5 .hiddenLineIds").text();
+			var changepatientName = $("#changeInfoPatientName").val().trim(); //患者名
+			var changePatientSex = $("#changeInfoPatientSex").val().trim(); //患者性别
+			var changePatientHomeAddr = $("#changeInfoPatientAddr").val().trim(); //患者家庭住址
+			var changePatientTel = $("#changeInfoPatientTel").val().trim(); //患者联系电话
+			var changePatientIdentityCode = $("#changeInfoPatientIdCode").val().trim(); //患者身份证号
+			var changePatientBornTime = $("#changeInfoPatientBornTime").val().trim(); //患者出生日期
+			//			console.log(changePatientBornTime);
+			var changePatientBornDate = new Date(changePatientBornTime);
+			var changePatientMarriage = $("#changeInfoPatientMarriage").val().trim(); //患者婚姻状况
+			var changePatientMedicalHistory = $("#changeInfoPatientMH").val(); //患者现病史
+			var changePatientAllergyHistory = $("#changeInfoPatientAH").val(); //患者过敏史
+			var changePatientPastHistory = $("#changeInfoPatientpastHistory").val(); //患者既往史
+			var changePatientFamilyHistory = $("#changeInfoPatientfamilyHistory").val(); //患者家族史
+			//			console.log(patientName+" "+addPatientSex+" "+addPatientHomeAddr+" "+addPatientTel+" "+addPatientIdentityCode+" "+changePatientBornDate+" "+addPatientMarriage+" "+addPatientMedicalHistory+" "+addPatientAllergyHistory);
+			if (changepatientName == "" || changepatientName == null) {
+				alert("请输入姓名！");
+			} else if (changePatientSex == "" || changePatientSex == null) {
+				alert("请选择性别！");
+			} else if (changePatientHomeAddr == "" || changePatientHomeAddr == null) {
+				alert("请输入家庭住址！");
+			} else if (changePatientTel == "" || changePatientTel == null) {
+				alert("请输入联系电话！");
+			} else if (changePatientIdentityCode == "" || changePatientIdentityCode == null) {
+				alert("请输入身份证号！");
+			} else {
+				$.ajax({
+					method: 'get',
+					url: config + '/oa/patinfo/update',
+					contentType: "application/json; charset=utf-8", //传到后台的数据格式
+					async: true,
+					data: {
+						'name': changepatientName,
+						'sex': changePatientSex,
+						'birthday': changePatientBornDate,
+						'idCode': changePatientIdentityCode,
+						'address': changePatientHomeAddr,
+						'phone': changePatientTel,
+						'weight': '',
+						'stature': '',
+						'marriage': changePatientMarriage,
+						'id': currentLineIds, //用户id
+						'medicalHistory': changePatientMedicalHistory,
+						'pastHistory': changePatientPastHistory,
+						'allergyHistory': changePatientAllergyHistory,
+						'familyHistory': changePatientFamilyHistory
+					},
+					dataType: 'jsonp', //接收值的格式
+					jsonp: 'jsoncallback',
+					success: function(data) {
+						console.log(data);
+						if (data.status == 1) {
+							document.getElementById('patientLight5').style.display = 'none';
+							document.getElementById('patientFade').style.display = 'none';
+							alert(data.message)
+							getPatientList();
+						} else {
+							alert(data.message);
+							//		window.location.reload();
+						}
+					},
+					error: function(result) {
+						console.log(result);
+					}
+				});
+			}
+
+		});
+		//		点击确认删除按钮
+		$("#patientLight2 #del-yes").click(function() {
+			var DelhiddenIds = $("#patientLight2 .DelhiddenIds").text(); //当行id
+			$.ajax({
+				method: 'get',
+				url: config + '/oa/patinfo/remove',
+				contentType: "application/json; charset=utf-8", //传到后台的数据格式
+				async: true,
+				data: {
+					'id': DelhiddenIds //用户id
+				},
+				dataType: 'jsonp', //接收值的格式
+				jsonp: 'jsoncallback',
+				success: function(data) {
+					console.log(data);
+					if (data.status == 1) {
+						document.getElementById('patientLight2').style.display = 'none';
+						document.getElementById('patientFade').style.display = 'none';
+						var intevarTime = setInterval(function() {
+							alert(data.message);
+							clearInterval(intevarTime);
+							getPatientList();
+							$("#patientLight4 input").val("");
+							$("#patientLight4 select").val("");
+						}, 300); //每隔3秒打印一次
+					} else {
+						alert(data.message);
+						//		window.location.reload();
+					}
+				},
+				error: function(result) {
+					console.log(result);
+				}
+			});
+		});
+		var getPatientName = '';
+		var getPatientSex = '';
+		var getPatientIdCode = '';
+		var getPatientPhone = '';
+		$("#patientSearchBtns").click(function() {
+			getPatientName = $("#ListpatientName").val();
+			getPatientSex = $(".patientSexRight").val();
+			getPatientIdCode = $(".patientIDright").val();
+			getPatientPhone = $(".patienTelRight").val();
+			getPatientList();
+		});
+		//	点击清空
+		$("#patientSearchClearBtn").click(function() {
+			$("#ListpatientName").val("");
+			$(".patientSexRight").val("");
+			$(".patientIDright").val("");
+			$(".patienTelRight").val("");
+			getPatientName = "";
+			getPatientSex = "";
+			getPatientIdCode = "";
+			getPatientPhone = "";
+			getPatientList();
+		});
+	</script>
+
+</html>

@@ -1,0 +1,78 @@
+#headerBG{
+	line-height: 44px;
+	background: #ffcc00;
+	font-family: "微软雅黑";
+	background-image:url("../../styles/img/logistics/logisticsHeaderBg.png") ;
+	background-size:100% 100%;
+}
+.mui-bar{
+	height:60px;
+}
+.lf{
+	float: left;
+}
+.rt{
+	float: right;
+}
+.mui-content{
+	margin-top:44px;
+	padding:20px 15px;
+}
+.mui-scroll{
+	margin-top:44px;
+	background: #fff;
+	padding:20px 15px;
+}
+#logisticsTitle{
+	height:40px;
+	line-height: 40px;
+	font-size:1em;
+	font-family:"微软雅黑";
+}
+.orderInfoList{
+	overflow: hidden;
+	height:40px;
+	line-height: 40px;
+	border-bottom: 1px solid #eee;
+	font-size: 0.75em;
+}
+.warnColor{
+	color:#FF6F3A;
+}
+#warns{
+	height:40px;
+	line-height: 40px;
+	font-size: 0.75em;
+}
+#sureBtn{
+	height:40px;
+	width:95%;
+	margin:0 auto;
+	margin-top: 340px;
+	line-height: 40px;
+	background: #ffcc00;
+	text-align: center;
+	border-radius: 6px;
+	font-family: "微软雅黑";
+}
+.footer{
+	width:100%;
+	/*height:100px;*/
+	margin: 0 auto;
+	position: fixed;
+	bottom: 20px;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size:0.75em;
+}
+.footer img{
+	width:100px;
+	height:100px;
+}
+#toAddr{
+	width:70%;
+	text-align: right;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap
+}

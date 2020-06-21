@@ -1,0 +1,367 @@
+body{
+	font-family: "微软雅黑";
+}
+.breadcrumb{
+    background-color:#fff !important;
+    padding-left:0px !important;
+}
+.breadcrumb > li + li:before {
+    color: #CCCCCC;
+    content: "> " !important;
+    padding: 0 5px;
+}
+.myorder{
+    font-size:14px;
+    float:left;
+}
+.searchInput{
+    width:410px!important;
+    float: right;
+    margin-top: -9px;
+    height: 32px !important;
+}
+.myordertitle{
+    padding:15px 22px;
+    background-color: #fff;
+    height:62px;
+}
+.nav{
+    border-bottom: 1px solid #ddd !important;
+}
+.layui-tab-brief>.layui-tab-title .layui-this{
+    color: #000;
+}
+.layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{
+    border-bottom: 2px solid red;
+}
+.orderTitle{
+    width:100%;
+    height:38px;
+    border:1px solid #eee;
+    background-color: #F8F8F8;
+    padding:9px 15px;
+}
+.sbox{
+    margin-top:-9px;
+}
+.tc{
+    text-align: right;
+}
+.orderimg{
+    width:80px;
+    height:80px;
+}
+.headerdiv{
+    float: left;
+    margin-right: 12px;
+}
+.orderlist{
+    padding: 35px 24px;
+    height:149px;
+    width:600px;
+}
+.borderline{
+    border-right: 1px solid #eee;
+    border-left: 1px solid #eee;
+}
+.borderlineleft{
+    border-left: 1px solid #eee;
+}
+.borderlinetop{
+    border-top: 1px solid #eee;
+}
+.borderlinebottom{
+    border-bottom: 1px solid #eee;
+}
+.borderlinetop{
+    border-top: 1px solid #eee;
+}
+.borderall{
+    border-left: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+.maxheight{
+    height: 100%;
+    position: relative;
+}
+.vercenter{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.layui-content{
+    padding-top:20px;
+}
+.potsion{
+    padding-left:110px;
+}
+.linef{
+    line-height: 23px;
+    text-align: center;
+}
+.breadcrumb{
+    background-color:#fff;
+}
+.orderdetail{
+    padding:55px 0px 16px 0px;
+    font-size: 18px;
+    border-bottom: 1px solid #DEDEDF;
+}
+.bgcolor{
+    background-color:#cfcfcf;
+}
+.timeliste{
+    color:#acacac;
+    position: absolute;
+    margin-top: 25px;
+}
+.aboutsize{
+    margin-bottom: 60px;
+}
+.orderno{
+    font-size: 13px;
+    /*margin-top:24px;*/
+    margin-bottom:24px;
+    font-family: "微软雅黑";
+    font-weight: 400;
+}
+.boxflex{
+    /*display: flex;*/
+    margin-bottom:40px;
+}
+.boxborder{
+    border:1px solid #DADADD;
+    width:100%;
+    /*height: 260px;*/
+}
+.orderinfo{
+    border-bottom:1px solid #DADADD;
+    padding:15px 20px;
+    color: #272727;
+    font-size: 15px;
+    font-family: "微软雅黑";
+    font-weight: 400;
+    background: #F1F3F9;
+}
+.orderinfoper{
+    padding: 15px 20px;
+    line-height: 28px;
+    margin-top: 10px;
+}
+.rightinfo{
+    border:1px solid #DADADD;
+    width:100%;
+    margin-top: 17px;
+}
+.memos{
+	border:1px solid #DADADD;
+    width:100%;
+    margin-top: 17px;
+}
+.logistics{
+    padding:15px 20px;
+    color:#0691F9;
+}
+.progress-info{
+    background-color:#0691F9;
+}
+.settleAccountsBar{
+    height:190px;
+}
+.itemHeight{
+    height:26px;
+}
+.itemwidth{
+    width:220px;
+}
+.itemmaxHeight{
+    /*margin-top:30px;*/
+}
+.fr80{
+    margin-right:80px;
+}
+.flex{
+    display: flex;
+}
+.w230{
+    width:230px;
+}
+.cn{
+    text-align: center;
+}
+.mb20{
+    margin-bottom: 20px;
+}
+.inputborder{
+    border: 1px solid #DADADD;
+}
+.search_bt{
+    width: 85px;
+    height: 24px;
+    border-radius: 5px;
+    background-color: #1C79B6;
+    font-family: "microsoft yahei";
+    font-size: 14px;
+    color: #FFFFFF;
+    margin-left: 20px;
+    line-height: 24px;
+    letter-spacing: 5px;
+    cursor: pointer;
+}
+.w175{
+    width:175px;
+}
+.pd10{
+    padding:10px;
+}
+.pd4{
+    padding:4px;
+}
+.o_orderall{
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 20px;
+    width: 147px;
+    height: 40px;
+    line-height: 28px;
+    z-index: 1;
+}
+.o_orderall_more{
+    position: absolute;
+    padding-top: 6px;
+    padding-left: 20px;
+    width: 147px;
+    height: 40px;
+    line-height: 28px;
+    z-index: 1;
+    padding-right: 1px;
+}
+.orderall_more{
+    position: absolute;
+    margin-left: 64px;
+    padding-top: 5px;
+    width: 107px;
+    text-align: center;
+    border: 1px solid #DADADD;
+    height: 130px;
+    z-index: 1;
+    background-color: #fff;
+    text-decoration: underline;
+}
+.orderall{
+    position: absolute;
+    padding-top: 10px;
+    width: 147px;
+    border: 1px solid #DADADD;
+    height: 100px;
+    z-index: 1;
+    background-color: #fff;
+}
+.alls{
+    border-bottom: 1px solid #DADADD;
+    padding-left: 20px;
+    width: 100%;
+    line-height: 28px;
+}
+.orlist{
+    padding-left: 20px;
+    line-height: 28px;
+}
+.alls_more{
+    border-bottom: 1px solid #DADADD;
+    width: 100%;
+    line-height: 28px;
+}
+.orlist_more{
+    line-height: 28px;
+}
+.orderTitles{
+	display: flex;
+	background: #F1F3F9;
+	height: 51px;
+	line-height: 51px;
+}
+.title1{
+	width: 30%;
+	padding-left: 1%;
+	border-right: 1px solid #DADADD;
+}
+.title2{
+	width: 15%;
+	padding-left: 1%;
+	border-right: 1px solid #DADADD;
+}
+.title3{
+	width: 10%;
+	padding-left: 1%;
+	border-right: 1px solid #DADADD;
+}
+.title11{
+	width: 42.85%;
+	padding-left: 1%;
+	border-right: 1px solid #DADADD;
+}
+.title21{
+	width: 21.45%;
+	padding-left: 1%;
+	border-right: 1px solid #DADADD;
+}
+.title31{
+	width: 14.25%;
+	padding-left: 1%;
+	border-right: 1px solid #DADADD;
+}
+.realOrderBox{
+	border-right: 1px solid #DADADD;
+}
+.leftrealOrderBox{
+	width: 70%;
+}
+.rightrealOrderBox{
+	width: 30%;
+}
+.realOrderBox1{
+	width: 50%;
+	height: 102px;
+	border-right: 1px solid #DADADD;
+}
+.realOrderBox2{
+	width: 50%;
+	height: 102px;
+}
+form{
+	border: 1px solid #DADADD;
+}
+.detailStyle.changeQuantityBox,.subtotalBox,.priceBox{
+	height: 102px;
+}
+.changeQuantityBox{
+	text-align: left;
+}
+input::-webkit-input-placeholder {
+    /* placeholder颜色  */
+    /*color: #aab2bd;*/
+    /* placeholder字体大小  */
+    font-size: 12px;
+    /* placeholder位置  */
+    /*text-align: right;*/
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    /*color:    #909;*/
+   font-size: 12px;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   /*color:    #909;*/
+  font-size: 12px;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   /*color:    #909;*/
+  font-size: 12px;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   /*color:    #909;*/
+  font-size: 12px;
+}

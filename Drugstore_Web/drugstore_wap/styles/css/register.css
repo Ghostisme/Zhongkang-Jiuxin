@@ -1,0 +1,228 @@
+.mui-content{
+	margin-top: 0;
+}
+body{
+	padding:0 10px;
+}
+.mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before {
+    color: #e74c3b;
+}
+/*设置用户性质选择样式*/
+form .property{
+	display:inline-block;
+	position:relative;
+	top:0;
+}
+form .property label{
+	cursor:pointer;
+}
+#proper{
+	text-align: center;
+}
+#personal,#company{
+	cursor:pointer;
+}
+/*设置input样式*/
+.mui-content div input{
+	padding:0px;
+	height:40px;
+	line-height: 40px;
+	border:0;
+	position:absolute;
+	width:200px;
+}
+div.inputHeight{
+	overflow:hidden;
+	height:40px;
+	margin-bottom:20px;
+	background:#fff;
+	width:100%;
+	border-radius:5px;
+}
+div#codePrint{
+	width:70%;
+}
+div.inputHeight div img{
+	height:30px;
+	float:left;
+	margin:5px;
+	
+}
+div.inputHeight div img.mail{
+	width:20px;
+	height:25px;
+}
+div.inputHeight div img.show{
+	position:absolute;
+	right:20px;
+	top:210px;
+	margin:10px 5px 10px 10px;
+	height:4%;
+}
+div.inputHeight div img.reshow{
+	position:absolute;
+	right:20px;
+	top:270px;
+	margin:10px 5px 10px 10px;
+	height:4%;
+}
+.mui-content div.inputHeight div{
+	float:left;
+	color:#909090;
+	font-size:18px;
+}
+#readed{
+	border-radius:none;
+	
+}
+.mui-content div.readed{
+	font-size:12px;
+	margin:10px 0;
+}
+.mui-content div.readed a{
+	padding-left:25px;
+}
+.mui-checkbox.mui-left.readed input[type=checkbox], .mui-radio.mui-left input[type=radio] {
+    left: 0px;
+}
+.mui-content div.readed a{
+	color:#007AFF;
+}
+/*发送验证码设置*/
+#codePrint #sendIcode{
+	position:absolute;
+	right:0;
+	font-size:14px;
+	border-radius:5px;
+	color:#fff;
+	/*background:#3699DC;*/
+	background-color: #ffcc00;
+	color:#323232;
+	width:25%;
+	height:40px;
+	margin-right:10px;
+}
+button{
+	padding:6px 6px;
+}
+/*提交按钮设置*/
+.mui-btn-block{
+	padding:0;
+}
+.mui-content form .mui-btn{
+	height:40px;
+	margin-bottom:12px;
+	font-size:18px;
+}
+/*checkbox大小及位置设置*/
+.mui-checkbox input[type=checkbox]:before, .mui-radio input[type=radio]:before{
+	font-size:18px;
+	margin-left: 0;
+}
+.mui-checkbox.mui-left input[type=checkbox], .mui-radio.mui-left input[type=radio]{
+	position:absolute;
+	right:5px;
+	bottom:20px;
+	top:-1px;
+}
+.mui-checkbox.mui-left label{
+	padding-left:40px;
+}
+#readed{
+	top:-8px;
+}
+/*返回按钮大小调整*/
+.mui-icon-back:before, .mui-icon-left-nav:before {
+    font-size: 24px;
+}
+/*用户协议距离调整*/
+/*是否申请身份认证*/
+.mui-content div.identityCoupon {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.mui-checkbox#squareCheck input[type=checkbox]:before {
+content: '\e413';
+}
+
+.mui-checkbox#squareCheck input[type=checkbox]:checked:before {
+content: '\e443';
+}
+/*选择身份*/
+.mui-content div.identityChose {
+    font-size: 12px;
+    display: inline-block;
+}
+/*是否申请身份认证checkbox移动*/
+.mui-checkbox.mui-left#squareCheck input[type=checkbox], .mui-radio.mui-left input[type=radio]{
+	left:0;
+}
+.mui-checkbox.mui-left#squareCheck label, .mui-radio.mui-left label{
+	padding-left:20px;
+}
+/*身份选择padding设置*/
+.choseIdentity{
+	padding-left:40px;
+	display: none;
+}
+
+/*注册成功弹出领券*/
+#modal{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color: #000;
+	z-index: 888;
+	opacity: 0.5;
+	display: none;
+}
+.discountCoupon{
+	width:500px;
+	height:500px;
+	position:fixed;
+	top:20%;
+	left:20%;
+	z-index: 999;
+	display: none;
+}
+.couponImgTop{
+	width:50%;
+	height:45%;
+	background-image: url(../../styles/img/login/discountCoupon2.png);
+	background-size:cover;
+}
+.couponBtn{
+	width:50%;
+	height:10%;
+	background-color:#fff;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+}
+.gotoSee{
+	width:80%;
+	margin:0 auto;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	background-color: #FD5C50;
+	color:#fff;
+	border-radius:30px;
+	cursor: pointer;
+	font-size: 12px;
+}
+.noModel{
+	text-align: right;
+	padding-right:10px;
+	font-size:24px;
+}
+.closeModal{
+	cursor:pointer;
+}
+#userSub{
+	background-color: #ffcc00;
+	border:1px solid #ffcc00;
+	color:#323232;
+}

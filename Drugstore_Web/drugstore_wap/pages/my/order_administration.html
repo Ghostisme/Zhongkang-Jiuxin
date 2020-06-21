@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../styles/css/order_administration.css">
+		<link rel="stylesheet" href="../../styles/css/searchnull.css" />
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<style type="text/css">
+			.setMeal {
+				height: 135px;
+			}
+			.overflow_X {
+				height: 101px;
+				display: flex;
+				overflow-x: scroll;
+			}
+			
+			.setMeal .order_name_div {
+				margin-bottom: 10px;
+			}
+			
+			.setMeal .setMeal-title {
+				color: #999;
+				padding: 5px 0 10px 17px;
+				font-weight: bold;
+				border-top: 1px solid #eee;
+			}
+			
+			.single {
+				border-top: 1px solid #eee;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app" style="display: none">
+			<!--top bar-->
+			<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+				<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+					<span class="mui-icon mui-icon-back"></span>
+				</a>
+				<span id="navTxt">订单</span>
+			</header>
+			<!--内容-->
+			<div id="sliderSegmentedControl" class=" mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+				<a v-on:tap="select(0)" lay-id="1" id="wait_all" class="mui-control-item mui-active" href="#item1mobile">
+					全部
+				</a>
+				<a v-on:tap="select(1)" lay-id="2" id="wait_pay" class="mui-control-item" href="#item3mobile">
+					待付款
+				</a>
+				<a v-on:tap="select(2)" lay-id="3" id="wait_access" class="mui-control-item" href="#item4mobile">
+					待发货
+				</a>
+				<a v-on:tap="select(3)" lay-id="4" id="wait_pj" class="mui-control-item" href="#item5mobile">
+					待收货
+				</a>
+				<a v-on:tap="select(4)" lay-id="5" id="wait_sure" class="mui-control-item" href="#item2mobile">
+					已完成
+				</a>
+			</div>
+			<div id="pullrefresh" class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--商品信息-->
+					<div id="shop_info">
+						<ul class="mui-table-view ">
+							<li v-for="row in orderList" class="mui-table-view-cell mui-media">
+								<div style="float:left;padding:5px;font-size:14px;">
+									订单号：{{row.orderId}}
+								</div>
+								<div class="order_info_title">
+									<div v-if="row.orderType == 1" class="order_admin_type">待付款</div>
+									<div v-else-if="row.orderType == 2" class="order_admin_type">待发货</div>
+									<div v-else-if="row.orderType == 3" class="order_admin_type">待收货</div>
+									<div v-else-if="row.orderType == 4" class="order_admin_type">已完成</div>
+									<div v-else-if="row.orderType == 5" class="order_admin_type">取消订单</div>
+								</div>
+								<div>
+									<!--单品-->
+									<div class="order_info_content single overflow_X" v-if="row.drugOrderItemList.length!=0">
+										<div class="order_name_div " v-for="imgSingle in row.drugOrderItemList">
+											<img v-bind:src="imgSingle.drugUrl" style="width:50px;height:auto" />
+										</div>
+									</div>
+									<!--套餐-->
+									<div id="" v-for="img in row.drugOrderProductList">
+										<div class="order_info_content setMeal" v-if="img.mealList">
+											<div class="setMeal-title">(套餐){{img.mealList.mealName}}</div>
+											<div class="overflow_X">
+												<div class="order_name_div" v-for="item in img.mealList.mealList">
+													<img v-bind:src="item.fileUrl" style="width:50px;height:auto" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="shop_price_div">
+									<div class="item3" style="margin-right: 10px;">
+										<span>合计:¥</span>
+										<span class="price_span">{{row.price}}</span>
+									</div>
+									<div class="item2 mui-text-center">
+										<span>共{{row.drugOrderProductList.length}}件商品</span>
+									</div>
+								</div>
+								<div v-if="row.orderType == 1">
+									<div class="sure_order_div ">
+										<span v-on:tap="onOk(row.orderId)">立即支付</span>
+									</div>
+									<div class="sure_order_div ">
+										<span v-on:tap="onView(row.orderId)">查看订单</span>
+									</div>
+									<div class="sure_order_cancel_div ">
+										<span v-on:tap="onCancel(row.orderId)">取消订单</span>
+									</div>
+								</div>
+								<div v-if="row.orderType == 2">
+									<div class="sure_order_div ">
+										<span v-on:tap="onLogistics(row.orderId)">查看物流</span>
+									</div>
+									<div class="sure_order_div ">
+										<span v-on:tap="onView(row.orderId)">查看订单</span>
+									</div>
+									<div class="sure_order_div ">
+										<span v-on:tap="onBuy(row)">再次购买</span>
+									</div>
+								</div>
+								<div v-if="row.orderType == 3">
+									<div class="sure_order_div ">
+										<span v-on:tap="onView(row.orderId)">查看订单</span>
+									</div>
+									<div class="sure_order_div ">
+										<span v-on:tap="onLogistics(row.orderId)">查看物流</span>
+									</div>
+									<div class="sure_order_div ">
+										<span v-on:tap="onBuy(row)">再次购买</span>
+									</div>
+									<div class="sure_order_cancel_div ">
+										<span v-on:tap="onReceiving(row.orderId)">确认收货</span>
+									</div>
+								</div>
+								<div v-if="row.orderType == 4">
+									<div class="sure_order_div ">
+										<span v-on:tap="onView(row.orderId)">查看订单</span>
+									</div>
+									<div class="sure_order_div ">
+										<span v-on:tap="onBuy(row)">再次购买</span>
+									</div>
+								</div>
+								<div v-if="row.orderType == 5">
+									<div class="sure_order_div ">
+										<span v-on:tap="onView(row.orderId)">查看订单</span>
+									</div>
+									<div class="sure_order_div ">
+										<span v-on:tap="onBuy(row)">再次购买</span>
+									</div>
+								</div>
+							</li>
+
+						</ul>
+
+					</div>
+				</div>
+			</div>
+			<div id="no_search" class="" style="display: none;">
+				<div class="imgc">
+					<img src="../../styles/img/home_img/noOrderList.png" alt="" />
+					<h4 style="color: #9B9A9D;font-size:14px;font-family: '微软雅黑';font-weight: 400;">您没有相关的订单</h4>
+				</div>
+			</div>
+		</div>
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script src="../../common/common.js"></script>
+		<script src="order_administration.js"></script>
+	</body>
+
+</html>

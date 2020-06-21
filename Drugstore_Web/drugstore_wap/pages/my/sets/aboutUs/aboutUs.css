@@ -1,0 +1,50 @@
+.mui-icon-back:before, .mui-icon-left-nav:before{
+	font-size: 1.5em;
+}
+.mui-navigate-right:after, .mui-push-right:after{
+	font-size: 1.5em;
+}
+.mui-scroll-wrapper{
+	margin-top:40px;
+}
+body{
+	font-family: "黑体";
+}
+.lf{
+	float: left;
+}
+.rt{
+	float: right;
+}
+.companyLOGO,.gcafu{
+	width:100%;
+	margin:0 auto;
+	text-align: center;
+	margin-top:40px;
+}
+.gcafu{
+	margin-top:10px;
+}
+.gcafu img{
+	width:80px;
+	height:20px;
+}
+.companyLOGO img{
+	width:100px;
+	height:100px;
+}
+.companyName{
+	width: 100%;
+	font-size: 0.8em;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.infos{
+	width: 100%;
+	text-align: center;
+	font-size: 0.75em;
+	padding:2px 0px;
+}
+#line{
+	margin-top:15px;
+}

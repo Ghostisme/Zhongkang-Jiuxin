@@ -1,0 +1,160 @@
+.t_l_div {
+    width: 7%;
+}
+
+.t_c_div {
+    width: 86%;
+}
+
+.t_r_div {
+    width: 7%;
+}
+
+.pr {
+    position: relative;
+}
+
+.ds_c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.select_img {
+    position: absolute;
+    top: 17px;
+    left: 14px;
+    width: 13px !important;
+    height: 13px !important;
+}
+
+.tcd_input {
+    width: 99% !important;
+    height: 33px !important;
+    border-radius: 17px !important;
+    padding-left: 34px !important;
+    font-size: 13px;
+    margin: 0 !important;
+    background: rgba(238, 239, 238, 1) !important;
+    border: 0 !important;
+    color: black;
+}
+
+.sousuo_font {
+    font-size: 15px;
+    font-family: MicrosoftYaHei;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
+}
+
+.zld {
+    background-color: #fff;
+    height: 115px;
+    border-bottom: 1px solid rgba(240, 240, 240, 1);
+    padding: 10px;
+    display: flex;
+}
+
+.zld_select {
+    background: rgba(245, 245, 245, 1);
+    color: rgba(0, 170, 255, 1);
+}
+
+
+.fixed-content {
+    top: 45px;
+    bottom: 44px;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    width: 100%;
+}
+.list_div1{
+    width: 22%;margin-right: 10px;
+}
+.list_div2{
+    width: 65%;
+    margin-right: 10px;
+}
+.list_div21{
+    font-size:15px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(0,0,0,1);
+}
+.list_div22{
+    font-size:11px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(152,152,152,1);
+}
+.list_div23{
+    font-size:11px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(152,152,152,1);
+}
+.list_div24{
+    font-size:14px;
+    font-family:MicrosoftYaHei;
+    font-weight:bold;
+    color:rgba(202,70,64,1);
+}
+.cart_div{
+    width:30px;
+    height:31px;
+    border:1px solid rgba(231,231,231,1);
+    border-radius:3px;
+}
+.wudiv{
+    margin-top: 200px;text-align: center;
+    display: none;
+}
+.wuf1{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(155,154,157,1);
+    line-height:25px;
+}
+.wuf2{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(210,209,212,1);
+}
+.sxtop{
+    height: 45px;background-color:white;border-top:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;display: flex;
+    align-items: center;
+}
+.sxtop_d{
+    width: 33%;
+    text-align: center;
+
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(0,0,0,1);
+}
+.sx_s{
+    color: #0093F3;
+}
+.st_pd{
+    display:flex;justify-content: center;
+}
+.pd_biao{
+    width: 20px;line-height:4px;padding-top: 2px;
+}
+.pr_sx{
+    margin: 3px;
+    width: 10px;
+    height: 5px;
+    display: none;
+}
+.pr_x{
+    transform: rotate(180deg);
+}
+.pr_s{
+    display: block;
+}

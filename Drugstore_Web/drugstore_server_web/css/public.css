@@ -1,0 +1,71 @@
+.searchBtn{
+	background: #3185DB;
+	color: #fff;
+	border-radius: 4px;
+}
+.ibox-title{
+    border-style: none;
+}
+.new_modal_header{
+    padding: 15px;background: #1C79B6;color: #fff;text-align: left;font-size: 16px;
+}
+.table-striped>tbody>tr:nth-of-type(odd){
+    background:#fff;
+}
+.table-striped>tbody>tr:nth-of-type(even){
+    background:#f9f9f9;
+}
+.lf{
+    float: left;
+}
+.rt{
+    float: right;
+}
+#TableTopTitle{
+    overflow: hidden;
+}
+
+/*重点星号*/
+.redStar{
+	color: red;
+	margin-right:5px ;
+	margin-top: 5px;
+}
+
+.btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover{
+	background: gray;
+}
+
+
+/*需要更新*/
+.btn{
+    min-width: 70px;
+}
+.p_l_r{
+    padding-left: 0;
+    padding-right: 0;
+}
+.col-md-2-5{
+    width: 20%;
+    float: left;
+}
+.wizard > .steps .current a, .wizard > .steps .current a:hover, .wizard > .steps .current a:active,.wizard > .actions a, .wizard > .actions a:hover, .wizard > .actions a:active{
+	background: #11B6F4;
+}
+
+/*内含输入框的表格样式*/
+.tableInput{
+	background: #F5F5F5;
+	width: 100%;
+}
+.tableInputTitle{
+	width: 10%;
+	background: #fff;
+}
+.tableInputContent{
+	width: 23.4%;
+	background: transparent;
+}
+.table-responsive{
+	overflow-x: inherit;
+}

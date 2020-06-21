@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>华忠医药</title>
+		<link rel="stylesheet" href="../../common/bootstrap.css" />
+		<link rel="stylesheet" href="../../common/reset.css" />
+		<link rel="stylesheet" href="../../common/style.css" />
+		<link rel="stylesheet" href="../../common/common.css" />
+		<link rel="stylesheet" href="../../css/footer.css" />
+		<link rel="stylesheet" href="../../css/register.css" />
+	</head>
+	<body>
+		<!--header-->
+		<header>
+			<div class="headBox">
+				<div class="logoBox">
+					<div class="logo">
+						<img src="../../images/logo.png"/>
+					</div>
+					<div class="logo_text">
+						生命痊力·华忠医药
+					</div>
+				</div>
+				<div class="registerBox">
+					<div class="register_text">
+						已有账号？
+					</div>
+					<div class="register_btn">
+						立即登录
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--content-->
+		<div class="wrapper">
+			<div class="content_box">
+				<div class="content_title">注册信息</div>
+				<div class="content_form">
+					<form action="" method="post">
+						<div class="form_box">
+							<div class="left_box">
+								<div class="left_box_item">
+									<b class="must">*</b>
+									<label for="phone">手机号码：</label>
+								</div>
+								<div class="left_box_item">
+									<b class="must">*</b>
+									<label for="code">验证码：</label>
+								</div>
+								<div class="left_box_item">
+									<b class="must">*</b>
+									<label for="msgCode">短信验证码：</label>
+								</div>
+								<div class="left_box_item">
+									<b class="must">*</b>
+									<label for="password">设置密码：</label>
+								</div>
+								<div class="left_box_item">
+									<b class="must">*</b>
+									<label for="again_password">确认密码：</label>
+								</div>
+							</div>
+							<div class="right_box">
+								<div class="right_box_item">
+									<input type="number" placeholder="请输入手机号" id="phone" />
+									<!--<span class="tsMsg"></span>-->
+								</div>
+								<div class="right_box_item">
+									<input type="text" placeholder="请输入验证码" id="code" />
+									<div class="yzCode" id="changeCode">
+										<canvas width="100" height="40" id="verifyCanvas"></canvas>
+										<img id="code_img">
+										<!--<img src="img/ercode.png" />-->
+										看不清换一张
+									</div>
+								</div>
+								<div class="right_box_item">
+									<input type="number" placeholder="请输入短信验证码" id="msgCode" />
+									<div class="sendMsg">获取短信验证码</div>
+								</div>
+								<div class="right_box_item">
+									<input type="password" placeholder="密码长度6-16字符（包含大小写特殊字符）" id="password" />
+									<img src="img/icon.png" width="19" height="14" />
+								</div>
+								<div class="right_box_item">
+									<input type="password" placeholder="请再次输入新密码" id="again_password" />
+									<img src="img/icon.png" width="19" height="14" />
+								</div>
+							</div>
+						</div>
+						<div class="btn_box">
+							<button type="button" id="submitBtn">立即注册</button>
+						</div>						
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--footer-->
+		<div class="footerContent">			
+			<div class="footerBottom">
+				<!--©Copyright 2013金诃藏药股份有限公司 版权所有 青ICP备14000397号     证书编号：(青)-非经营性-->
+				<!--©Copyright 2019天津市金诃药店连锁有限公司 津ICP备19006670号-1     证书编号：(津)-非经营性-2019-0024  |   津公网安备19006670号-1-->
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="../../common/jquery-1.12.1.js"></script>
+		<script type="text/javascript" src="../../common/common.js"></script>
+		<script type="text/javascript" src="../../common/config.js"></script>
+		<script type="text/javascript" src="register.js"></script>
+	</body>
+</html>

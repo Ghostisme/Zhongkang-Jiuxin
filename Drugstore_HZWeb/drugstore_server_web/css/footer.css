@@ -1,0 +1,81 @@
+.footerContent{
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.foooterTop{
+	width: 100%;
+	overflow: hidden;
+	padding: 50px 25px;
+	border-bottom: 1px solid #EDEDED;
+}
+.footerTopTitle{
+	font-size: 17px;
+	font-family: "微软雅黑";
+	color: #000;
+	font-weight: bold;
+	margin: 7px 0px;
+}
+.footerTopContent{
+	font-size: 16px;
+	font-family: "微软雅黑";
+	color: #A8A8A8;
+	font-weight: 400;
+	margin: 7px 0px;
+}
+.footerImg{
+	width: 53px;
+	height: 53px;
+	margin-right: 15px;
+}
+.foooterTop li{
+	width: 25%;
+}
+.footerMiddle{
+	width: 100%;
+	overflow: hidden;
+	padding: 46px 25px 55px 25px;
+	border-bottom:1px solid #EDEDED;
+	color: #4e4e4f;
+}
+.zbTitle{
+	color: #1c1c1c;
+}
+.footerMiddleContent{
+	padding: 17.5px 0px;
+}
+.footerBottom{
+	width: 100%;
+	height: 46px;
+	line-height: 46px;
+	font-size:13px;
+	font-family:SimSun;
+	text-align: center;
+}
+.footerMiddleContentBT{
+	padding-bottom: 17.5px;
+}
+.zb{
+	margin-right: 137px;
+}
+.erCode{
+	width: 135px;
+	height: 133px;
+	text-align: center;
+	line-height: 133px;
+	margin-left: 272px;
+	border: 1px solid #EDEDED;
+}
+.erCodeImg{
+	width: 125px;
+	height: 124px;
+	vertical-align: middle;
+}
+.addWechat{
+	width: 135px;
+	text-align: center;
+	height: 25px;
+	line-height: 25px;
+	border: 1px solid #EDEDED;
+	border-top:0px;
+}

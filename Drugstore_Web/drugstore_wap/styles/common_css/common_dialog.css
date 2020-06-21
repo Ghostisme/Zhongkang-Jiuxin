@@ -1,0 +1,21 @@
+#wait_dialog{
+	width: 200px;
+	height: 50px;
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	display: none;
+	
+}
+#wait_dialog .mui-spinner{
+	width: 25px;
+	height: 25px;
+	margin-top: 12px;
+	float: left;
+	margin-left: 20px;
+}
+#wait_dialog_font{
+	float: left;
+	line-height: 50px;
+	font-size: 0.8em;
+	margin-left: 10px;
+}

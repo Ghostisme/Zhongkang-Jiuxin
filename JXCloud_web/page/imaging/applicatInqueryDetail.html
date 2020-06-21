@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>中康九悦远程医疗管理系统 - 用户信息修改</title>
+
+    <meta name="keywords" content="中康九悦远程医疗管理系统">
+    <meta name="description" content="中康九悦远程医疗管理系统">
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+    <link href="../../css/animate.min.css" rel="stylesheet">
+    <link href="../../css/style.min.css" rel="stylesheet">
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/public.css" />
+	<link rel="stylesheet" href="../../css/applicatInqueryDetail.css" />
+</head>
+<body>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+			<div class="clients-list">
+	            <div class="tab-content">
+	                <div>
+	                	
+	                    <div class="full-height-scroll">
+	                        <div class="table-responsive">
+	                        	<h3 class="requestOrder">检查申请单</h3>
+	                        	<form id="form"  class="wizard-big">
+						                             
+		                            <!--<h1>确认检查申请单</h1>-->
+		                            <div class="finishedPrint">
+			                            <fieldset class="f2"id="f2">
+			                                <div class="row">
+			                                    <div class="ibox-content">
+													<h4><span>申请单号:</span><span class="orderid"></span>
+													<span style="float:right" class="reviewStatus"></span></h4>
+							                        <table class="table table-bordered tableInput">
+							                            <tbody>
+							                                <tr>
+							                                    <td class="tableInputTitle"><label>检查医院</label></td>
+							                                    <td class="tableInputContent printHosName">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>检查类型</label></td>
+							                                    <td class="printType">
+							                                    	
+							                                    </td>
+							                                </tr>
+							                                <tr>
+							                                    <td class="tableInputTitle"><label>选择检查时间</label></td>
+							                                    <td  class="tableInputContent printTime">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>检查地点</label></td>
+							                                    <td class="printAddr">
+							                                    	
+							                                    </td>
+							                                </tr>
+							                            </tbody>
+							                        </table>
+													<table class="table table-bordered tableInput">
+							                            <tbody>
+							                                <tr>
+							                                    <td class="tableInputTitle"><label>患者姓名</label></td>
+							                                    <td class="printUserName tableInputContent">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>性别</label></td>
+							                                    <td class="printSex tableInputContent">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>年龄</label></td>
+							                                    <td class="printAge">
+							                                    	
+							                                    </td>
+							                                </tr>
+							                                <tr>
+							                                    <td class="tableInputTitle"><label>患者手机号<span class="warns">(非常重要,紧急情况便于联系和查看检查结果)</span></label></td>
+							                                    <td class="printTel tableInputContent">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>身份证号</label></td>
+							                                    <td class="printIdentityCode tableInputContent">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>住院/门诊</label></td>
+							                                    <td class="printInhos">
+							                                    	门诊
+							                                    </td>
+							                                </tr>
+							                                <!--<tr>
+								                                <td class="tableInputTitle"><label>申请医院</label></td>
+								                                <td class="printApplyHos">
+								                                    
+								                                </td>
+								                                <td class="tableInputTitle"><label>申请医生</label></td>
+								                                <td class="printApplyDoctor">
+								                                    
+								                                </td>
+								                                <td class="tableInputTitle"><label>联系电话</label></td>
+								                                <td class="printContactTel">
+								                                    
+								                                </td>
+							                                </tr>-->
+							                            </tbody>
+							                        </table>
+							                        
+							                        <table class="table table-bordered tableInput">
+							                            <tbody>
+							                                <tr>
+							                                	<td class="tableInputTitle"><label>简要病史</label></td>
+								                                <td class="printBriefHistory">
+								                                    
+								                                </td>
+							                                </tr>
+							                                <tr>
+							                                	<td class="tableInputTitle"><label>查体</label></td>
+								                                <td class="printPhyExamination">
+								                                    
+								                                </td>
+							                                </tr>
+							                            </tbody>
+							                        </table>
+							                        <table class="table table-bordered tableInput">
+							                            <tbody>
+							                                <tr>
+							                                	<td class="tableInputTitle"><label>检查项目</label></td>
+								                                <td class="printChosedProj">
+								                                	已选择以下
+								                                   <span class="projectnum"></span>
+								                                   	个项目
+								                                </td>
+							                                </tr>
+							                                <tr>
+							                                	<td colspan="3">
+							                                		<div class="printProj">
+							                                			<!-- <span class="Regions chosedProjs">头部</span>
+							                                			<span class="Regions chosedProjs">颈部</span>
+																		<span class="Regions chosedProjs">胸腔</span> -->
+																		
+						                                			</div>					                                		</div>
+							                                		<!--<div class="totlePrices rt">
+							                                			￥<span>816.00</span>
+							                                		</div>-->
+							                                	</td>
+							                                </tr>
+							                            </tbody>
+							                        </table>
+							                        
+							                        <h4>
+							                        	<span>申请时间:</span><span class="inputtime"></span>
+							                        	<span class="sumPrices rt">应付金额:￥ <span class="tolMoney"></span></span>
+							                        </h4>
+							                        <!--<div class="chapter">
+							                        	<span class="monyChapter">财务章</span>
+							                        	<span>医联体转诊章</span>
+							                        </div>
+							                        <div class="row">
+							                        	<div class="erCodeDiv">
+							                        		<div class="erCode">
+							                        			<img src="../../img/qr_code.png" alt="" />
+							                        		</div>
+							                        	</div>
+							                        </div>-->
+							                        
+							                    </div>
+			                                </div>
+			                            </fieldset>
+										<div class="row printBtns">
+											<button type="button" data-id="已处理" style="display: none;" class="btn btn-w-m printgo">处理</button>
+
+											<button type="button" data-id="已完成" style="display: none;" class="btn btn-w-m printfinish">完成</button>
+											<button type="button" data-id="爽约" style="display: none;" class="btn btn-w-m printcancel">爽约</button>
+
+											<button type="button" data-id="print" style="display: none;" class="btn btn-w-m printprint">打印</button>
+											
+							                <button type="button" data-id="已撤回" style="display: none;" class="btn btn-w-m closedel">撤回</button>
+							            </div>
+		                            </div>
+		                            
+		                            <!--<h1>发送成功</h1>-->
+		                            <fieldset class="f3">
+		                                <div class="text-center" style="margin-top: 120px">
+		                                    <h2></h2>
+		                                </div>
+		                            </fieldset>
+		                        </form>
+	                        </div>
+	                    </div>
+	                </div>
+	                
+	                <div id="tab-3" class="tab-pane">
+	                    <div class="full-height-scroll">
+	                        <div class="table-responsive">
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="../../js/plugins/staps/jquery.steps.min.js"></script>
+    <script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="../../js/plugins/validate/messages_zh.min.js"></script>
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../js/content.min.js?v=1.0.0"></script>
+	<script src="../../js/plugins/jquery.jqprint-0.3.js"></script>
+	<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(document).ready(function(){
+        	$(".contact-box").each(function(){
+        		animationHover(this,"pulse")
+			})
+			var user = JSON.parse(sessionStorage.getItem('user'));console.log(user)
+			//读取详情数据
+			$.ajax({
+				type:"get",
+				url:config+"/review/detail",
+				async:false,
+				dataType:"JSON",
+				data:{
+					id:localStorage.getItem("applicatInqueryId"),
+					sessionId:sessionId,
+					userId:user.id,
+					type:user.type,
+					deptId:user.deptId,
+				},
+				success:function(data){
+					var info = data.resultMap.reviewInfo;
+					$(".orderid").text(info.reviewCode);
+					$(".printHosName").text(info.equipmentInfo.hospital);
+					$(".printType").text(info.reviewType);
+					$(".printTime").text(info.reviewTime);
+					$(".printAddr").text(info.reviewAddress);
+					
+
+					$(".printUserName").text(info.patinfoName);
+					$(".printSex").text(info.patinfoSex);
+					$(".printAge").text(info.patinfoAge);
+					$(".printTel").text(info.patinfoMobile);
+					$(".printIdentityCode").text(info.patinfoIdcode);
+					//$(".printInhos").text(info.patinfoIdcode);
+					$(".printInhos").text("门诊");
+					$(".printBriefHistory").text(info.brief);
+					$(".printPhyExamination").text(info.physical);
+					$(".reviewStatus").text(info.reviewStatus);
+
+					$(".inputtime").text(((new Date(info.inputTime)).Format("yyyy-MM-dd hh:mm:ss")));
+					$(".tolMoney").text(info.totalPrice);
+					$(".projectnum").text(info.rpList.length);
+					if(info.rpList &&info.rpList.length>0){
+						var type_html = "";
+						for(var i=0;i<info.rpList.length;i++){
+							type_html+='<span data-toggle="tooltip" data-placement="top" title="'+info.rpList[i].projectDetail+'" data-original-title="'+info.rpList[i].projectDetail+'" style="padding: 2px 15px;display: inline-block;height: 30px;line-height: 30px;text-align: center;cursor: pointer;background: #eee;margin: 0 5px;">'+info.rpList[i].project+'</span>';
+						}
+						$('.printProj').append(type_html);
+					}
+
+					if(info.reviewStatus == "爽约" ||info.reviewStatus == "已完成"){
+						$(".printprint").show();
+					}
+
+					if(info.isAction){
+						//是否可爽约/完成（0：没有按钮，1：有按钮）
+						$(".printfinish").show();
+						$(".printcancel").show();
+					}
+
+					if(info.isHandle){
+						//是否可处理（0：没有按钮，1：有按钮）
+						$(".printgo").show();
+					}
+
+					if(info.isReject){
+						//是否可撤回（0：没有按钮，1：有按钮）
+						$(".closedel").show();
+					}
+				}
+			});
+		});
+		$(".btn-w-m").click(function(event){
+				var user = JSON.parse(sessionStorage.getItem('user'));
+				if($(this).attr("data-id") != "print"){
+					$.ajax({
+						type:"get",
+						url:config+"/review/action",
+						async:false,
+						dataType:"JSON",
+						data:{
+							id:localStorage.getItem("applicatInqueryId"),
+							sessionId:sessionId,
+							userId:user.id,
+							type:user.type,
+							deptId:user.deptId,
+							reviewStatus: $(this).attr("data-id")
+						},
+						success:function(data){
+							if(data.status == 1){
+								location.reload();
+							}
+						}
+						});
+				}else{
+					window.print();
+				}
+				
+		});
+
+//		点击确定按钮
+		$("#form").validate();
+		$(".SureBtn").click(function(event){
+			var idcard_patter = /^[1-9][0-9]{5}([1][9][0-9]{2}|[2][0][0|1][0-9])([0][1-9]|[1][0|1|2])([0][1-9]|[1|2][0-9]|[3][0|1])[0-9]{3}([0-9]|[X])$/;//身份证号校验
+			if($("#form").valid()){
+		     	event.preventDefault();
+		     	console.log(idcard_patter.test($("#identityCode").val()));
+		     	//			校验填写的项目
+			    if(!(/^1[34578]\d{9}$/.test($("#userTel").val()))){
+			    	$("#userTel").siblings().remove();
+					$("#userTel").after('<label id="userTel-error" class="error" for="userTel"><i class="fa fa-times-circle"></i>  请输入正确手机号</label>')
+				}else if(idcard_patter.test($("#identityCode").val())==false){
+					$("#identityCode").siblings().remove();
+					$("#identityCode").after('<label id="identityCode-error" class="error" for="identityCode"><i class="fa fa-times-circle"></i>  请输入正确身份证号</label>')
+				}else{
+//					跳转第二步
+					$("#sureCheckForm").addClass("activeTabs");
+					$("#form input").attr("disabled","disabled");
+					$("#form select").attr("disabled","disabled");
+					$("#form textarea").attr("disabled","disabled");
+					$(".makeSubmitBtn").css("display","block");
+					$(".makeSureBtn").css("display","none");
+				}
+		 	
+		}
+	})
+//	点击第二步的提交
+	$(".sumBtn").click(function(event){
+		swal({
+		title: "您所填信息是否已检查无误？",
+		text: "提交后将无法再修改，请检查无误后提交！",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: "#DD6B55",
+		confirmButtonText: "确定",
+		closeOnConfirm: false
+	}, function() {
+		swal("提交成功！")
+		$("#sendSuccess").addClass("activeTabs");
+//		把值带到打印预览页面
+		$(".printHosName").text($(".InputCheckHos").text().trim());//检查医院
+		$(".printType").text($(".InputCheckType").text().trim());//检查类型
+		$(".printTime").text($("#checkTime").val().trim());//检查时间
+		$(".printAddr").text($("#addr").val().trim());//检查地点
+		$(".printUserName").text($("#userName").val().trim());//患者姓名
+		$(".printSex").text($("#sex").val().trim());//患者性别
+		$(".printAge").text($("#userAge").val().trim());//患者年龄
+		$(".printTel").text($("#userTel").val().trim());//患者手机号
+		$(".printIdentityCode").text($("#identityCode").val().trim());//患者身份证号
+		$(".printInhos").text($("#InHos").val().trim());//住院或门诊
+		$(".printApplyHos").text($("#applyHos").val().trim());//申请医院
+		$(".printApplyDoctor").text($("#applyDoctor").val().trim());//申请医生
+		$(".printContactTel").text($("#contactTel").val().trim());//联系电话
+		$(".printBriefHistory").text($("#briefHistory").val().trim());//简要病史
+		$(".printPhyExamination").text($("#physicalExamination").val().trim());//查体
+		$(".printChosedProj span").text("您已选择了"+$(".chosedProj span").length+"个项目");//检查项目总数
+		$(".printProj").html($(".chosedProj").html());//检查部位
+		$(".f1").css("display","none");
+		$(".finishedPrint").css("display","block");
+	})
+	})
+//	点击打印按钮
+	$(".printBtn").click(function(){
+        $("#f2").jqprint({ 
+        	debug: false,
+          	importCSS: true,
+          	printContainer: true,
+          	operaSupport: false
+        });
+//		window.print();
+	})
+	
+//	当进行到第二步时可退回到第一步
+	$("#writeCheckForm").click(function(){
+		if(!($("#sendSuccess").hasClass("activeTabs"))){
+			$(".f1").css("display","block");
+			$("#sureCheckForm").removeClass("activeTabs");
+			$("#sendSuccess").removeClass("activeTabs");
+			$("#form input").removeAttr("disabled");
+			$("#form select").removeAttr("disabled");
+			$("#form textarea").removeAttr("disabled");
+			$(".makeSubmitBtn").css("display","none");
+			$(".makeSureBtn").css("display","block");
+		}
+	})
+    </script>
+    <script type="text/javascript" src="../../js/stats.js"charset="utf-8"></script>
+</body>
+
+</html>

@@ -1,0 +1,346 @@
+/*
+ * 顶部搜索
+ */
+.headerBG{
+	height: 40px;
+	/*background-color: #3699DC;*/
+	background-color: #ffcc00;
+	width: 100%;
+}
+#search_img{
+	width: 20%;
+	height: 100%;
+	float: left;
+	/*border: 1px solid #0000FF;*/
+}
+#search_img img{
+	margin-top: 10px;
+	width: 60px;
+	height: 20px;
+	float: left;
+}
+#product{
+	float: left;
+	width: 30%;
+	height: 30px;
+	
+}
+#product_zyd{
+	width: 80%;
+	height: 30px;
+	float: left;
+}
+#product span{
+	font-size: 0.75em;
+	width: 100%;
+	float: left;
+	line-height: 30px;
+}
+#product img{
+	margin-top: 10px;
+	width: 10px;
+	height: 10px;
+}
+#search__div{
+	width: 10%;
+	height: 100%;
+	float: left;
+	margin-bottom: 5px;
+}
+header button{
+	font-size: 0.65em;
+	width: 50px;
+	height: 30px;
+	margin-left: 10px;
+	margin-top: 5px;
+	border-radius: 50px;
+	background-color: #3598DB;
+	color: #FFFFFF;
+}
+#search_box {
+	width: 80%;
+	height: 30px;
+	float: left;
+	margin-top: 5px;
+	margin-left: 10%;
+	background-color: #FFFFFF;
+	border-radius: 50px;
+	/*border: 1px solid #009999;*/
+}
+#shuru{
+	height: 25px;
+	float: left;
+	font-size: 0.75em;
+	width: 60%;
+	padding: 0px;
+	margin-top: 2px;
+	border: none;
+	/*border: 1px solid #2B542C;*/
+	/*margin-left:25px;*/
+} 
+#sousuo_div{
+	height: 30px;
+	/*border: 1px solid #0000FF;*/
+}
+#sousuo_div img{
+	margin-top: 7px;
+	margin-right: 5px;
+	/*margin-right:-30px;*/
+	width: 1em;
+	height: 1em;
+}
+
+
+#shop_menu{
+	margin-top: 40px;
+	width: 70%;
+	margin-left: 15%;
+	display: none;
+	background-color: #FFFFFF;
+	border-radius: 0px 0px 5px 5px;
+	
+}
+#shop_menu div label{
+	margin-top: 0px;
+	font-size: 0.75rem;
+}
+/*控制选项条件的css*/
+.nav .nav_ul li.nav_ul_li{
+	float: left;
+	width: 31.3%;
+	height: 30px;
+	margin: 1% 1% 1% 1%;
+	border-radius: 5px;
+	background: #fff;
+	
+}
+#resource_location{
+	float: left;
+	width: 31.3%;
+	margin: 1% 1% 1% 1%;
+	border-radius: 5px;
+	background: #fff;
+}
+#resource_srcreen{
+	float: left;
+	width: 31.3%;
+	margin: 1% 1% 1% 1%;
+	border-radius: 5px;
+	background: #fff;
+}
+/*
+ * 中间数据显示部分
+ */
+.mui-inner-wrap .mui-scroll-wrapper{
+	margin-top: 80px;
+	width: 100%;
+	background-color: #EFEFF4;
+}
+
+/*
+ * 中间数据显示部分
+ */
+.mui-inner-wrap .mui-scroll-wrapper .mui-scroll ul {
+	margin: 0px 5px 0px 5px;
+}
+.mui-inner-wrap .mui-scroll-wrapper .mui-scroll ul li{
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	margin-top: 5px;
+	width: 100%;
+	height: 100px;
+	/*border: 1px solid #0000FF;*/
+	
+}
+.mui-inner-wrap .mui-table-view {
+	background-color: #EFEFF4;
+}
+.mui-inner-wrap .resource_info{
+	width: 70%;
+	/*border: 1px solid #0000FF;*/
+	float: left;
+	
+}
+.mui-inner-wrap .resource_info span{
+	font-size: 1em;
+	color: #323232;
+}
+.mui-inner-wrap .product_introduce{
+	font-size: 1em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #323232;
+}
+/*
+ * 右侧购物车css
+ */
+
+.mui-inner-wrap .mui-scroll-wrapper ul li .resource_img_div{
+	width: 25%;
+	float: right;
+	/*border: 1px solid red;*/
+	margin-top: 5px;
+}
+.mui-inner-wrap .mui-scroll-wrapper ul li .shop-cart{
+	
+	width: 60px;
+	height: 60px;
+	background-color: #F1EFF0;
+	border-radius: 50%;
+	
+	
+}
+.mui-inner-wrap .mui-scroll-wrapper ul li div img{
+	width: 50%;
+	height: 50%;
+	margin-top: 20%;
+}
+.mui-inner-wrap .mui-badge{
+	position: absolute;
+	top: 0px;
+	width: 18px;
+	height: 18px;
+	margin-left: -15px;
+	margin-top: 23px;
+	font-size: 0.75em;
+	background-color: red;
+	color: #FFFFFF;
+	padding: 0px;
+	z-index: 888;
+}
+.mui-badge span{
+	line-height: 18px;
+}
+/*每行Li之间的分割线*/
+.mui-table-view:before{
+	height: 0px;
+}
+.mui-table-view:after{
+	height: 0px;
+}
+.mui-table-view-cell:after{
+	height: 0px;
+}
+/*遮罩层*/
+#menu_bg{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.3);
+    opacity: 0.5;
+    z-index: 6;
+    display: none;
+    
+}
+#bg{
+	position: fixed;
+    margin-top: 80px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.3);
+    opacity: 0.5;
+    z-index: 4;
+    display: none;
+}
+/*下拉菜单列表样式*/
+.nav_child{
+	top:35px;
+}
+.nav_child>li{
+	padding:0 15px;
+}
+body{
+	line-height:normal;
+}
+/*删除按钮*/
+
+/*ul#res_list li.list_height a.del{
+	display:inline-block ;
+	width:100%;
+	height:40px;
+	margin: 10px 15px 10px 0;
+	text-align: center;
+	border-top:1px solid #D4D4D4;
+}
+.del_icon{
+	margin:0 auto;
+	display:inline-block;
+	height:24px;
+	width:24px;
+	color:#007aff;
+}
+.del_icon span{
+	position:absolute;
+	top:17px;
+	margin-left:5px;
+	color:#000;
+	font-weight:none;
+	font-size:12px;;
+}
+/*列表每个li的高度*/
+/*ul#res_list li.list_height{
+	height:130px;
+}*/
+/*资源单下方上传资源单*/
+#uploadResource{
+	position:absolute;
+	bottom:50px;
+	z-index: 8;
+	width:100%;
+	background-color:#fff;
+	font-size:10px;
+	color:#A4A4A4;
+	padding:15px 15px;
+	overflow: hidden;
+	border-top: 1px solid #E0E0E0;
+}
+#uploadResource span{
+	display:inline-block;
+	width:79%;
+}
+#offCanvasWrapper #uploadResource a#uploadreBtn{
+	position:absolute;
+	right:6px;
+	top:12px;
+	color:#323232;
+	font-size: 12px;
+	background-color: #ffcc00;
+	text-align: center;
+	border-radius: 30px;
+	padding:10px 10px;
+}
+
+/*资源单产品说明*/
+span.product_introduce{
+	display:inline-block; 
+	vertical-align:bottom;
+	width:100%;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+/*设置滚动区域的高度将上传资源单盖住的显示*/
+#resourceListHeight{
+height:85%;
+}
+.listId{
+	display:none;
+}
+/*下载按钮位置*/
+.mui-table-view-cell>a:not(.mui-btn){
+	width:70%;
+	display: inline-block;
+}
+.resource_img{
+	width: 25%;
+	float: right;
+	/*border: 1px solid red;*/
+	margin-top: 5px;
+}
+/*底部*/
+.mui-bar img{
+	margin-bottom: 3px;
+}

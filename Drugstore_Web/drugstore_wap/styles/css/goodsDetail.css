@@ -1,0 +1,119 @@
+/*返回按钮大小调整*/
+.mui-icon-back:before, .mui-icon-left-nav:before {
+    font-size: 24px;
+}
+.mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+	width: 100%;
+}
+.mui-scroll-wrapper{
+	margin-top: 30px;
+	/*height:80%;*/
+}
+body{
+	font-size:12px;
+}
+/*商品名称，规格等*/
+#goodsClassify,#goodsCStore{
+	width:100%;
+	/*height:170px;*/
+	margin-top:10px;
+	background-color: #fff;
+	padding: 5px 15px;
+	color:#888;
+}
+.goodsCName,.goodsCStore,.goodsCCompany,.goodsVspec,.standard{
+	width:100%;
+	/*height:40px;*/
+	line-height: 40px;
+	/*border: 1px solid #ddd;*/
+	white-space:nowrap;
+	overflow: hidden;
+}
+.storeTxt{
+	float:left;
+}
+.cStore{
+	float:left;
+	width:45%;
+}
+.Classify{
+	float: left;
+	width:45%;
+}
+.Company{
+	float: left;
+	width:55%;
+}
+.Vertical,.standardName{
+	float: left;
+	width:45%;
+}
+.Vender,.standardNum{
+	float: left;
+	width:55%;
+}
+/*商品价格，数量等*/
+#goodsPNum{
+	width:100%;
+	/*height:200px;*/
+	margin-top:10px;
+}
+#goodsPNum input{
+	width: 60%;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    border:0;
+    font-size: 12px;
+    text-align:right;
+}
+#ul_1 li{
+	height:40px;
+}
+.input_div{
+	overflow: hidden;
+}
+.item{
+	height:40px;
+}
+/*促销折扣*/
+.discount{
+	width:100%;
+	height:40px;
+	line-height: 40px;
+	padding:0 15px;
+	color:#E01700;
+	margin-top: 10px;
+	background-color: #FFE4CF;
+}
+.discountTxt{
+	width:40%;
+}
+.discountInput{
+	width:60%;
+}
+.discountInput input{
+	width:30%;
+	height:30px;
+	margin-left:5px;
+	margin-right:5px;
+}
+/*修改并提交按钮*/
+.quitBtn{
+	height:40px;
+	padding:0;
+	font-size:14px;
+	font-weight:bold;
+	margin-bottom:0;
+	margin-top:20px;
+	background-color: #ffcc00;
+	border:1px solid #ffcc00;
+	color:#323232;
+}
+#gTel{
+	color:#999;
+}
+.productId,.maintenanceperiod,.version{
+	display:none;
+}

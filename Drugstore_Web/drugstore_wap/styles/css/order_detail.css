@@ -1,0 +1,531 @@
+/*header返回图标大小设置*/
+.mui-icon-back:before, .mui-icon-left-nav:before {
+    font-size: 24px;
+}
+/*顶部订单处理状态样式*/
+.mui-scroll-wrapper{
+	margin-top: 40px;
+	margin-bottom: 50px;
+	/*border: 1px solid #0000FF;*/
+}
+body{
+	font-size:14px;
+	font-family: "arial, helvetica, sans-serif";
+}
+#saleState{
+	width: 100%;
+	height: 50px;
+	line-height:50px;
+	background-color: #FFE4CF;
+	text-align: center;
+	font-size:14px;
+	font-weight: 800;
+	overflow: hidden;
+	white-space:nowrap;
+}
+#saleState img{
+	width: 30px;
+	height: 30px;
+	margin: 10px;
+	float:left;
+	margin-left:40px;;
+}
+#stateTxt{
+	position:absolute;
+	top:0;
+	left:80px;
+	line-height: 50px;
+	font-size: 1em;
+	color: #e74c3b;
+}
+/*买家信息*/
+.buyerInfo{
+	/*border:1px solid #ddd;*/
+	width:100%;
+	background-color: #fff;
+	padding:10px 15px;
+	vertical-align: bottom;
+	overflow: hidden;
+}
+.InfoIcon{
+	float: left;
+	position:absolute;
+	top:85px;
+	padding:15px 0;
+	/*border:1px solid #007AFF;*/
+	width:5%;
+	text-align: center;
+}
+.buyerInfo .InfoIcon img{
+	width: 20px;
+	height: 20px;
+}
+.detailInfo{
+	float:right;
+	width:90%;
+	/*border:1px solid #AB1E1E;*/
+}
+.detailInfo .receiver{
+	float:left;
+	width:40%;
+}
+.detailInfo .buyerTel{
+	float:right;
+	width:60%;
+	text-align: right;
+}
+.detailInfo span{
+	font-size:12px;
+}
+/*公司商品信息*/
+#goodsInfo{
+	margin-top:10px;
+	width:100%;
+	background-color: #FFF;
+	overflow: hidden;
+}
+/*商品信息title*/
+.mui-table-view-cell{
+	padding: 0px;
+}
+#shop_info{
+	clear: both;
+	margin-top: 10px;
+}
+.order_info_title{
+	width: 100%;
+	height: 30px;
+}
+.order_info_div{
+	float: left;
+	
+}
+.order_info_div img{
+	width: 20px;
+	height: 20px;
+	margin: 10px 5px 5px 15px;
+}
+.order_info_font .company_name{
+	font-size:0.9em;
+	color: #323232;
+	line-height: 40px;
+} 
+.order_info_font .mui-icon-forward{
+	color: #E5E5E5;
+}
+/*商品信息content*/
+.order_info_content{
+	clear: both;
+	width: 100%;
+	height: 80px;
+	border-top: 1px solid #E0E0E0;
+	padding-top: 20px;
+}
+.order_name_div{
+	float: left;
+	width: 50%;
+	margin-left: 35px;
+	font-size: 0.75em;
+	/*border: 1px solid #0000FF;*/
+}
+.order_num_div{
+	float: left;
+	width: 23%;
+	font-size: 0.75em;
+	/*border: 1px solid #0000FF;*/
+}
+.order_price_div{
+	float: right;
+	width: 15%;
+	font-size: 0.75em;
+	margin-bottom: 10px;
+	/*border: 1px solid #0000FF;*/
+	
+}
+.order_price_div .discount{
+	color: #888888;
+	text-decoration: line-through;
+}
+
+
+
+.fare{
+	border-top:1px solid #F0EEEF;
+	padding: 10px 15px;
+	overflow: hidden;
+	font-size: 12px;
+}
+.fare .subtotal{
+	float:left;
+}
+.allGoods,.allSave,.allFare,.allTotal{
+	float: right;
+}
+.allTotal{
+	color:#e4393c;
+}
+#goodsInfo .weightBorder{
+border-top:1px solid #E0E0E0;
+}
+/*支付账户信息及点击查看*/
+#payInfo{
+	margin-top:10px;
+	padding:10px 15px;
+	width:100%;
+	font-size:12px;
+	background-color:#fff;
+	overflow: hidden;
+}
+.payInfoTxt{
+	display:inline-block;
+	padding-top:5px;
+}
+#payInfo .watchInfo{
+	float:right;
+	border:1px solid #ffcc00;
+	padding:5px 10px;
+	border-radius: 5px;
+	color: #ffcc00;
+}
+/*发票信息*/
+#invoice,#orderNum,#evaluate{
+	margin-top:10px;
+	padding: 10px 15px;
+	background-color:#fff;
+	overflow: hidden;
+	font-size:12px;
+}
+.invoiceAll,.evaluateAll{
+	/*border:1px solid #001100;*/
+	float:left;
+	width:20%;
+}
+.invDetail,.orderNumDetail{
+	float:right;
+	width:80%;
+	color:#666;
+	overflow: hidden;
+}
+/*订单编号*/
+.invoiceInfo{
+	overflow: hidden;
+}
+.lookTel{
+	float:right;
+	position:relative;
+	top: 90%;
+	right:0;
+	border:1px solid #ffcc00;
+	padding:5px 10px;
+	border-radius: 5px;
+	color:#FFCC00;
+}
+#evaluateInput{
+	width:80%;
+	height:80px;
+	border: none;
+}
+div.mui-content{
+	height:100%;
+}
+/*#textHeight{
+	height:100%;
+	bottom: 52px;
+	border: 1px solid #0000FF;
+}*/
+.mui-content{
+	height:100%;
+}
+/*#footer{
+	position:absolute;
+	bottom:0;
+	border-top:1px solid #E0E0E0;
+	text-align: right;
+	width:100%;
+	height:12%;
+	z-index: 5;
+	padding-right: 5px;
+	background-color:#fff;
+}*/
+#footer_btn{
+	top:20px;
+	right:15px;
+	background-color:#fff;
+	float: right;
+	
+}
+.mui-bar-tab{
+	background-color: #fff;
+	height:50px;
+}
+a{
+	color:#000;
+}
+#footer a{
+	margin-right:10px;
+}
+.cancleOrder{
+	border:1px solid #A4A4A4;
+	padding:5px 10px;
+	border-radius: 20px;
+	float: left;
+	font-size: 0.75em;
+}
+.payPlatform,.paySeller{
+	padding:10px 10px;
+	border-radius: 20px;
+	background-color: #E01700;
+	color:#fff;
+	font-weight:bold;
+	float: left;
+}
+/*蒙版遮罩层*/
+.mui-backdrop{
+	display:none;
+	/*display: block;*/
+}
+/*支付账户信息*/
+#payerInfo,#dealerInfo{
+	position:absolute;
+	width:330px;
+	height:180px;
+	background-color: #fff;
+	top:30%;
+	left:50%;
+	font-size: 12px;
+	color:#555;
+	margin-left:-165px;
+	z-index: 8888;
+	border:1px solid #ddd;
+	border-radius: 10px;
+	padding:10px;
+	display: none;
+}
+.pInfo,.dInfo {
+	text-align: center;
+	margin:10px;
+}
+.accountNameTittle,.dealerNameTittle{
+	display: inline-block;
+	width:30%;
+}
+.accountCompany{
+	display: inline-block;
+	width:68%;
+}
+/*关闭弹出框按钮*/
+#classInfo,#dealcloseInfo{
+	position:absolute;
+	font-size: 24px;
+	right:10px;
+	top:5px;
+	cursor: pointer;
+}
+.payAllInfo,.dealerAllInfo{
+	margin-bottom: 5px;
+}
+#dealerInfo .dealerNameTittle{
+	width:20%;
+	margin-left:20px;
+}
+/*上传凭证*/
+#up_img{
+	width: 100%;
+	height: 100px;
+	margin-top: 10px;
+	background-color: #FFFFFF;
+	padding: 15px 10px;
+	
+}
+.acc_sc{
+	position: relative;
+	/*height: 65px;*/
+	width: 100px;
+	float: left;
+	margin-left: 10px;
+	/*border: 1px solid #0000FF;*/
+}
+.acc_sc .ph08{
+	opacity: 0;
+	z-index: 10;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100px;
+}
+#show_img{
+	width: 100px;
+	height: 70px;
+	float: left;
+	/*border: 1px solid #000000;*/
+}
+#show_img img{
+	width: 100px;
+	height: 70px;
+}
+#up_pz{
+	margin-top: 5px;
+}
+#status{
+	width: 70px;
+}
+/*物流信息*/
+.logistics{
+	margin:10px 0px;
+	background: #fff;
+	padding:5px 15px 3px 15px;
+	font-size: 12px;
+	overflow: hidden;
+}
+.logisticsAllTitle{
+	width:100%;
+	height:30px;
+}
+.left{
+	float: left;
+}
+.status1,.status2,.status3{
+	overflow: hidden;
+}
+.status1{
+	height:61px;
+}
+.status2{
+	height:61px;
+}
+.status3{
+	height:61px;
+}
+.noInfo{
+	font-size:12px;
+	display: none;
+}
+.logisticsInformation1,.logisticsInformation2,.logisticsInformation3{
+	margin-left:6px;
+}
+.logisticsInformation2{
+	width:80%;
+	/*height:70px;
+	line-height: 70px;*/
+}
+.status2 .receiveTime{
+	margin-left:6px;
+}
+/*#others{
+	margin-top:10px;
+}*/
+.logisticsInformation{
+	display: none;
+	border-bottom: 1px dotted #F0EEEF;
+	padding-bottom: 10px;
+}
+.logisticsInfAll{
+	display: none;
+}
+/*分车*/
+.rt{
+	float:right;
+}
+input.inputPlateNum{
+	width:30%;
+	height:20px;
+	font-size: 0.75em;
+}
+input.WritelogisticsTel{
+	width:50%;
+	height:20px;
+	font-size: 0.75em;
+	margin-right:10%;
+}
+.inputsLogistics input.productList{
+	padding:0;
+	padding-left:10px;
+	width:40%;
+	height:20px;
+	font-size: 0.75em;
+	border:1px solid #e0e0e0!important;
+}
+input.realModel,input.realpecNum{
+	width:20%;
+	height:20px;
+	font-size: 0.75em;
+	margin-left:5% ;
+	padding:0;
+	padding-left:3px;
+}
+input.realpecNum{
+	width:30%;
+}
+.downsIcon{
+	float: right;
+	font-size:1em;
+	position: relative;
+	top:40px;
+	right: 10px;
+}
+.btnforSave,.btnforAddCar{
+	width: 100px;
+	height:30px;
+	line-height: 30px;
+	margin: 0 auto;
+	background: #ffcc00;
+	text-align: center;
+}
+.clearBoth{
+	clear: both;
+}
+.saveAfter{
+	overflow: hidden;
+	width:100%;
+	display: none;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #e0e0e0;
+}
+.inputsLogistics{
+	padding-bottom: 10px;
+	border-bottom: 1px solid #e0e0e0;
+}
+.InfoSaveAfter{
+	overflow: hidden;
+	width:100%;
+	padding: 6px 0;
+}
+.SaveAfterChangeNum{
+	color:#e4393c;
+	text-align: right;
+}
+.SaveAfterToERcode{
+	border: 1px solid #ffcc00;
+	color: #ffcc00;
+	border-radius: 5px;
+	padding:0px 10px;
+}
+.closeAdds{
+	width: 100%;
+	text-align: right;
+	font-size: 1.75em;
+	display: none;
+	
+}
+/*商品数量*/
+.SaveAfterNums{
+	border: 1px solid transparent;
+	width:120px;
+	overflow: hidden;
+}
+input.thischangeNum{
+	border: 1px solid transparent;
+	width: 80%;
+	height:20px;
+	text-align: right;
+	padding: 0;
+	margin:0;
+	padding-right:3px;
+	font-size: 0.75em;
+}
+.SaveAfterNums span{
+	width: 20%;
+}
+.SaveThisNum{
+	display: none;
+}

@@ -1,0 +1,93 @@
+/* 顶部内容样式 */
+/* .right-close-btn{
+	position: absolute;
+	right: 0.425rem;
+	overflow: hidden;
+}
+.right-close-btn .closebtn{
+	background-color: transparent;
+	border: 0;
+	font-size: 0.45rem;
+	padding-right: 0.075rem;
+	color: #2292FE;
+}
+.right-close-btn .closebtn:focus{
+	outline: none;
+} */
+/* 内容样式 */
+
+.content{
+	text-align: left;
+	padding-top: 0.2rem;
+}
+.content p{
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 0.45rem;
+	margin-left: 0.45rem;
+	padding-top: 0.45rem;
+	border-bottom: 1px solid #EDEDED;
+}
+
+/* .content p:not(:last-of-type){
+	border-bottom: 1px solid #EDEDED;
+} */
+.content p:first-of-type span:nth-of-type(2) i{
+	font-size: 0.45rem;
+	color: #C3C3C3;
+}
+.content p span{
+	display: block;
+}
+.content p span:nth-of-type(odd){
+	text-align: left;
+	text-shadow: 0 0 0.0125rem rgba(0,0,0,1)
+}
+.content p span:nth-of-type(even){
+	color: #727377;
+	text-align: right;
+	border: 0;
+	font-size: 0.45rem;
+	margin-right: 0.45rem;
+}
+.content p span:nth-of-type(even) input{
+	color: #727377;
+	text-align: right;
+	font-size: 0.45rem;
+	border: 0;
+	/* margin-right: 0.45rem; */
+}
+.content p span:nth-of-type(even) input:focus{
+	outline: none;
+}
+/* 备注区域样式 */
+.remarkstitle{
+	display: flex;
+	/* justify-content: space-between; */
+	justify-content: flex-start;
+	padding-bottom: 0.45rem;
+	margin-left: 0.45rem;
+	padding-top: 0.45rem;
+}
+.remarksBox{
+	display: flex;
+	justify-content: flex-start;
+	padding-bottom: 0.45rem;
+	margin-left: 0.45rem;
+	margin-right: 0.45rem;
+}
+.remarksBox textarea{
+	width: 100%;
+	border: 0;
+	text-align: left;
+	font-size: 0.45rem;
+	height: 5rem;
+}
+#memoNum{
+	font-size: 0.45rem;
+	/* padding-top: 0.075rem; */
+	/* margin-right: 0.65rem; */
+	/* margin-left: 0.45rem; */
+	padding-top: 0.12rem;
+	color: #666666;
+}

@@ -1,0 +1,47 @@
+
+.mui-slider-item a img{
+	width: 100%;
+	height: 100px;
+}
+
+
+.mui-bar-tab a .mui-icon~.mui-tab-label{
+	font-size: 20px;
+	overflow: visible;
+}
+
+.footer-mui-active {
+    color: #f23839;
+}
+.footer {
+    display: table-cell;
+    overflow: hidden;
+    width: 1%;
+    height: 50px;
+    text-align: center;
+    vertical-align: bottom;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color:#929292;
+}
+a {
+	font-size: 0.75em;
+    text-decoration: none;
+    color: #f23839;
+}
+
+.mui-bar img{
+	width: 20px;
+	height: 20px;
+}
+.footer span {
+    display: inline-block;
+    width: 100%;
+    line-height: 90%;
+    float: left;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+.mui-tab-label {
+	color: #929292;
+}

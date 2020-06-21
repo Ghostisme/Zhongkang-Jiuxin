@@ -1,0 +1,86 @@
+
+/* 内容区域 */
+/* 通用的 */
+.wrapper{
+	border: 1px solid #ccc;
+    margin-top: 0px;
+    width: 100%;
+    height: 590px;
+}
+.wrapper *{
+	font-size: 12px !important;
+}
+.wrapper .box{
+	/* padding: 0.3rem 0.45rem 0rem; */
+	padding: 12px 0 0 18px;
+	margin: 0 7% 0 0;
+	/* border-bottom: 0.425rem solid #F5F5F5; */
+}
+.wrapper .box .Title{
+	text-align: left;
+	float: left;
+	margin-top: 3%;
+	/* font-weight: 600; */
+	/* text-shadow: 0 0 0.0125rem rgba(0,0,0,1) */
+}
+
+.wrapper .box .Content{
+	/* border-bottom: 1px solid #DEDBDB; */
+}
+.wrapper .box .Content ul{
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+.wrapper .box .Content ul li{
+	float: left;
+	background-color: #f3f1f1;
+	color: #656565;
+	border-radius: 6px;
+	padding: 6px 16px 6px;
+	font-size: 18px;
+	margin: 8px 13px 8px 0rem;
+}
+.wrapper .box .remarks{
+	margin-right: 18px;
+}
+.wrapper .box .remarks textarea{
+	margin-top: 11px;
+	margin-bottom: 11px;
+	width: 95%;
+	height: 88px;
+	text-align: left;
+	text-indent: 10px;
+	font-size: 18px;
+	cursor: pointer;
+	/* border: 0; */
+}
+/* 另外的 */
+.wrapper .box .Content ul .active{
+	/* background-color: #DCE7FB; */
+	background-color: #2292FE;
+	/* color: #2292FE; */
+	color: #FFFFFF;
+}
+
+.btnbox{
+	text-align: center;
+	margin-top: 20px;
+	/*margin-left: 40px;*/
+}
+
+#editSave{
+	padding: 2px 25px;
+    font-size: 14px;
+    letter-spacing: 5px;
+    border-radius: 5px;
+    background-color: #018eea;
+    border-color: #018eea;
+}
+.pI-title,.pH-title,.fH-title{
+	margin-right: 12px;
+}
+/* 一期暂时不用的 */
+.Content ul{
+	display: none;
+}

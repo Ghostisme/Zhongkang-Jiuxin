@@ -1,0 +1,19 @@
+.lf{
+	float: left;
+}
+.rt{
+	float: right;
+}
+.loadTop{
+	background: #F4F4F4;
+
+.topMainStatus img{
+	vertical-align: middle;
+}
+input[type="radio"], input[type="checkbox"]{
+	margin: 0px;
+}
+
+.sp_div{
+	cursor: pointer;
+}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/css/shop_detail_versionTwo.css">
+		<link rel="stylesheet" href="../../styles/common_css/action_bar.css">
+		<title></title>
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center"style="background: #fff;">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">商品详情
+			<!--<img src="../../styles/img/home_img/footershopcartY.png" alt="" id="CartImg"/>-->
+			</span>
+		</header>
+		<div class="mui-content ">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--展示轮播图-->
+					<div id="slider" class="mui-slider">
+						<div class="mui-slider-group mui-slider-loop"id="productDrawing">
+							<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+							<div class="mui-slider-item mui-slider-item-duplicate lunbo">
+								<a class="detailImg">
+									<img src="../../styles/img/shop_img/detailBigImg.jpg">
+								</a>
+							</div>
+							<!--第一张-->
+							<!--<div class="mui-slider-item mui-slider-item-duplicate lunbo">
+								<a class="detailImg1">
+									<img src="../../styles/img/home_img/promotionBanner.jpg">
+								</a>
+							</div>-->
+							<!-- 第二张 -->
+							<!--<div class="mui-slider-item lunbo">
+								<a  class="detailImg2">
+									<img src="../../styles/img/home_img/banner19.jpg">
+								</a>
+							</div>-->
+							<!-- 第三张 -->
+							<!--<div class="mui-slider-item lunbo">
+								<a  class="detailImg3">
+									<img src="../../styles/img/home_img/banner4.png">
+								</a>
+							</div>-->
+							<!-- 第四张 -->
+							<!--<div class="mui-slider-item lunbo">
+								<a  class="detailImg4">
+									<img src="../../styles/img/home_img/banner3.png">
+								</a>
+							</div>-->
+							<!--<div class="mui-slider-item mui-slider-item-duplicate lunbo">
+								<a class="detailImg4">
+									<img src="../../styles/img/home_img/promotionBanner.jpg">
+								</a>
+							</div>-->
+						</div>
+					</div>
+					<!--详情参数等-->
+					<section>
+						<!--产品名，型号，价格，公司-->
+						<div id="goodsbaseInfo">
+							<div id="productName">
+								暂无商品名称
+							</div>
+							<div id="companyName">
+								暂无公司
+							</div>
+							<div id="priceAndspe">
+								<div id="price"class="lf">
+									￥10000.00
+								</div>
+								<div id="spec"class="rt">
+									规格:<span>暂无规格</span>
+								</div>
+							</div>
+						</div>
+						<!--仓库优惠等-->
+						<div id="detailInfos">
+							<div class="infoLine">
+								<div class="InfoTitle lf">
+									发货仓库:
+								</div>
+								<div class="rt"id="storeName">
+									暂无仓库地址
+								</div>
+							</div>
+							<div class="infoLine">
+								<div class="InfoTitle lf">
+									起订量:
+								</div>
+								<div class="rt"id="moq">
+									1000
+								</div>
+							</div>
+							<div class="infoLine">
+								<div class="InfoTitle lf">
+									平台优惠:
+								</div>
+								<div class="rt"id="PlatformPreference">
+									暂无优惠
+								</div>
+							</div>
+							<div class="infoLine"id="goodsParametersItem">
+								<div class="InfoTitle lf">
+									商品参数:
+								</div>
+								<div class="rt mui-table-view-cell"id="goodsParametersGo">
+									<a class="mui-navigate-right"></a>
+								</div>
+							</div>	
+						</div>
+						<!--商品描述和商品详情图-->
+						<div id="detailsImgsAndDescribe">
+							<div class="goodsDescribe">
+								<div class="fontWeightStyle">
+									产品文字描述:
+								</div>
+								<div class="describes">
+									请在商品添加处填写一段描述产品的文字，添加完成审核通过后会展示到此处，可以尽情描述产品的性能和参数，也可描述供应商对此产品的宣传以及优惠促销等信息。
+								</div>
+							</div>
+							<div class="goodsBigImg">
+								<div class="fontWeightStyle">
+									产品详情图:
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+			<!--商品参数展开-->
+			<div id="productParameters">
+				<div class="ParametersTitle">
+					参数详情<span class="rt"id="closeParameters">×</span>
+				</div>
+				<div class="ParametersLine">
+					<div class="leftTitle lf">
+						类型
+					</div>	
+					<div class="rightContent ParametersClassify lf">
+						
+					</div>
+				</div>
+				<div class="ParametersLine">
+					<div class="leftTitle lf">
+						品种
+					</div>	
+					<div class="rightContent ParametersVariety lf">
+						
+					</div>
+				</div>
+				<div class="ParametersLine">
+					<div class="leftTitle lf">
+						规格
+					</div>	
+					<div class="rightContent ParametersPec lf">
+						
+					</div>
+				</div>	
+				<div class="ParametersLine">
+					<div class="leftTitle lf">
+						产品型号
+					</div>	
+					<div class="rightContent ParametersModel lf">
+						
+					</div>
+				</div>	
+				<div class="ParametersLine">
+					<div class="leftTitle lf">
+						标准
+					</div>	
+					<div class="rightContent ParametersLevel lf">
+						
+					</div>
+				</div>
+				<div class="ParametersLine">
+					<div class="leftTitle lf">
+						执行标准
+					</div>	
+					<div class="rightContent ParametersdoLevel lf">
+						
+					</div>
+				</div>
+				<div class="ParametersLine">
+					<div class="leftTitle lf">
+						计价单位
+					</div>	
+					<div class="rightContent ParametersPP lf">
+						
+					</div>
+				</div>
+				<div class="ParametersLine">
+					<div class="leftTitle lf">
+						生产厂商
+					</div>	
+					<div class="rightContent Parameterscompany lf">
+						
+					</div>
+				</div>
+				<div class="ParametersLine">
+					<div class="leftTitle lf">
+						品牌
+					</div>	
+					<div class="rightContent Parametersbrand lf">
+						
+					</div>
+				</div>
+				<div class="ParametersLine">
+					<div class="leftTitle lf">
+						材质属性用途
+					</div>	
+					<div class="rightContent ParametersmateriaUse lf">
+						
+					</div>
+				</div>
+			</div>
+			<div id="modals">
+				
+			</div>
+			<!--加入购物车按钮-->
+			<div class="addShopCarAndFollow">
+				<div class="follow lf"id="follow">
+					<img src="../../styles/img/shop_img/greystar.png" alt="" />
+					<div>
+						关注
+					</div>
+				</div>
+				<div class="addShopcar lf"id="addShopcar">
+					加入购物车
+				</div>
+				<div class="gotoOrder lf"id="gotoOrder">
+					立即购买
+				</div>
+			</div>
+		</div>
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script src="../../mui/js/fly.js"></script>
+		<script src="../../common/common.js"></script>
+		<script src="shop_detail_versionTwo.js"></script>
+	</body>
+
+</html>

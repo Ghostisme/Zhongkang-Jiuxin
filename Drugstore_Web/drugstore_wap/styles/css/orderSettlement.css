@@ -1,0 +1,705 @@
+/*统一样式*/
+*,input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea {
+	font-family:"微软雅黑";
+	/*font-size: .75em;*/
+}
+
+.mui-scroll-wrapper{
+	margin-top: 44px;
+	margin-bottom: 44px;
+	/*border: 1px solid #0000FF;*/
+}
+.rt{
+	float: right;
+}
+.lf{
+	float: left;
+}
+/*编辑收货信息*/
+#editor_goods_info,#editor_goods_hasinfo{
+	width: 100%;
+	height: 90px;
+	padding: 20px 15px;
+	background-color: #F4F4F4;
+	margin-top: 8px;
+}
+#editor_goods_info img,#editor_goods_hasinfo img{
+	width: 20px;
+	height: 20px;
+	margin: 10px 0px;
+	float: left;
+}
+#editor_goods_hasinfo{
+	display: none;
+}
+#font_goods_info,#font_goods_hasinfo{
+	/*width:92px;*/
+	font-size:13px;
+	font-family:MicrosoftYaHei;
+	font-weight:400;
+	color:rgba(92,92,92,1);
+	height: 10px;
+    line-height: 10px;
+    display: inline-block;
+}
+#arrow_right,#arrow_hasright{
+	line-height: 40px;
+	color: #000;
+	font-weight: normal;
+	font-size:16px;
+}
+.nomal{
+	padding: 1px 5px;
+	height:16px;
+	background:rgba(47,146,241,1);
+	border-radius:10px;
+	color: #fff;
+	font-size: 10px;
+	margin-right: 6px;
+}
+.targs{
+	padding: 0px 5px;
+	height:16px;
+	border:1px solid rgba(47,146,241,1);
+	border-radius:10px;
+	font-size: 10px;
+	margin-right: 6px;
+}
+.receiverAddr{
+	font-size: 13px;
+}
+/*商品信息title*/
+#res_list .mui-table-view-cell{
+	padding: 0px;
+	padding-right: 20px;
+}
+#shop_info{
+	clear: both;
+	margin-top: 8px;
+	padding: 8px 0px;
+	background: #fff;
+	padding-bottom: 0px;
+}
+.order_info_title{
+	width: 100%;
+	height: 30px;
+}
+.order_info_div{
+	float: left;
+	
+}
+.order_info_div img{
+	width: 20px;
+	height: 20px;
+	margin: 10px 5px 5px 15px;
+}
+.order_info_font .company_name{
+	font-size:0.9em;
+	color: #323232;
+	line-height: 40px;
+} 
+.order_info_font .mui-icon-forward{
+	color: #E5E5E5;
+}
+/*商品信息content*/
+.order_info_content{
+	clear: both;
+	width: 100%;
+	height: 80px;
+	border-top: 1px solid #E0E0E0;
+	padding-top: 20px;
+}
+.order_name_div{
+	float: left;
+	width: 50%;
+	margin-left: 35px;
+	font-size: 0.75em;
+	/*border: 1px solid #0000FF;*/
+}
+.order_num_div{
+	float: left;
+	width: 23%;
+	font-size: 0.75em;
+	/*border: 1px solid #0000FF;*/
+}
+.order_price_div{
+	float: right;
+	width: 15%;
+	font-size: 0.75em;
+	margin-bottom: 10px;
+	/*border: 1px solid #0000FF;*/
+	
+}
+.order_price_div .discount{
+	color: #888888;
+}
+/*开票信息*/
+#invoice_info_div{
+	margin-top: 8px;
+}
+#invoice_title_div,#coupon_title_div{
+	width: 100%;
+	/*height: 50px;*/
+	background-color: #FFFFFF;
+}
+#coupon_title_div{
+	margin-top:8px;
+}
+#invoice_title_img img,#coupon_title_img img{
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin: 10px;
+}
+#invoice_title_info span,#coupon_title_info span{
+	float: left;
+	font-size: 1em;
+	line-height: 50px;
+}
+#check_box {
+	float: right;
+	width: 15px;
+	height: 15px;
+	margin: 17px;
+}
+/*信息内容*/
+#invoice_info_content,#coupon_info_content{
+	width: 100%;
+	background-color: #fff;
+}
+.invoice_row,.coupon_row{
+	border-top: 1px solid #E0E0E0;
+	width: 100%;
+	height: 50px;
+}
+.invoice_title{
+	width: 25%;
+	height: 50px;
+	float: left;
+	/*border: 1px solid #0000FF;*/
+}
+.invoice_title span{
+	line-height: 50px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.invoice_editor{
+	width: 65%;
+	height: 50px;
+	float: left;
+	/*border: 1px solid #0000FF;*/
+}
+.invoice_editor input{
+	height: 49px;
+	border: none;
+	text-align: right;
+}
+.invoice_arrow,.coupon_arrow{
+	width: 10%;
+	height: 50px;
+	/*border: 1px solid #0000FF;*/
+}
+.invoice_arrow span,.coupon_arrow span{
+	color: #E0E0E0;
+	line-height: 50px;
+}
+/*收货信息*/
+#editor_location{
+	width: 100%;
+	background-color: #FFFFFF;
+	display: none;
+}
+.editor_location{
+	width: 100%;
+	background-color: #FFFFFF;
+}
+.editor_location_row{
+	width: 100%;
+	height: 50px;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #E0E0E0;
+}
+.editor_location_person{
+	float: left;
+	width: 25%;
+}
+.editor_location_input{
+	float: left;
+	width: 65%;
+	height: 50px;
+}
+.editor_location_arrow{
+	float: left;
+	width: 10%;
+}
+.editor_location_person span{
+	line-height: 50px;
+	margin-left: 10px;
+}
+.editor_location_input input{
+	height: 49px;
+	border: none;
+	text-align: right;
+}
+.editor_location_arrow span{
+	line-height: 50px;
+	color: #E0E0E0;
+}
+#submit_btn{
+	width: 100%;
+	height: 44px;
+	position: fixed;
+	bottom: 0px;
+	background-color: #fff;
+	line-height: 50px;
+	/*overflow: hidden;*/
+	padding-left: 15px;
+}
+
+#submit_btn span{
+	font-size: 0.75rem;
+	font-family:MicrosoftYaHei;
+	font-weight:bold;
+	color:rgba(97,97,97,1);
+}
+#submit_btn span.settleAccounts{
+	font-size: 16px;
+	color: #fff;
+}
+
+/*优惠券*/
+.thisChoseTxt{
+	float: right;
+    font-size: 1em;
+    line-height: 50px;
+}
+#couponPop{
+	background: #fff;
+	position:fixed;
+	width:100%;
+	bottom: 0px;
+	z-index: 8888;
+	padding:20px 15px 20px 15px;
+	display: none;
+	min-height:250px;overflow-y:auto;max-height:300px;
+}
+.couponTitle{
+	float:left;
+}
+.closeCouponChose{
+	float:right;
+	cursor: pointer;
+	font-size:28px;
+}
+#couponList{
+	overflow: hidden;
+}
+.choseCheckbox{
+	float:right;
+}
+.Items{
+	overflow: hidden;
+	padding:10px 0;
+}
+.fulltominus{
+	width:90%;
+	float: left;
+}
+.closeAddAddr{
+	float: right;
+	font-size: 30px;
+	display: none;
+	cursor: pointer;
+	margin-right:20px;
+	width: 40px;
+	height:50px;
+	line-height: 50px;
+	text-align: center;
+}
+.AddAddr{
+	float: right;
+	font-size: 1rem;
+	cursor: pointer;
+	margin-right:20px;
+	/*width: 40px;*/
+	display: none;
+	text-align: center;
+	color: #e74c3b;
+}
+.addIcon{
+	font-size: 1.7rem;
+	float: left;
+	height:50px;
+	line-height: 50px;
+}
+.addAddrTxt{
+	float: left;
+	height:50px;
+	line-height: 50px;
+}
+
+.border-Bg{
+	width: 100%;
+	height: 1px;
+	background-image: url("../img/shop_img/borderBg.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+/*商品样式*/
+#shop_info ul {
+    background-color: #FFF;
+}
+.right_box{
+	width: 100%;
+	height: 115px;
+	padding: 7.5px 0px;
+	/*border: 1px solid #0000FF;*/
+}
+.productImgs{
+	float: left;
+	width: 40%;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+}
+.productImgs img{
+	width: 80%;
+	height: 100%;
+	vertical-align: middle;
+}
+.border-bottom{
+	width: 100%;
+	float: left;
+	overflow: hidden;
+	padding-bottom: 10px;
+	/*border-bottom: 1px solid #E0E0E0;*/
+}
+.mui-scroll-wrapper ul li:last-child .border-bottom{
+	border-bottom: 1px solid transparent;
+}
+.right_box .check_box{
+	width: 12%;
+	height: 100px;
+	float: left;
+	/*border: 1px solid #0000FF;*/
+}
+.right_box .product_info{
+	width: 60%;
+	height: 100px;
+	float: left;
+	/*border: 1px solid #0000FF;*/
+}
+.shopofname{
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	font-size: 13px;
+	font-family:"微软雅黑";
+	font-weight:bold;
+}
+.right_box .num{
+	width: 45%;
+	float: left;
+}
+/*数量加减*/
+.num_calculate{
+	/*border: 1px solid #000000;*/
+	width: 100%;
+	/*margin-top: 20px;*/
+}
+.num_calculate .sup_num{
+	width: 25%;
+	height: 25px;
+	float: left;
+	border: 1px solid #E0E0E0;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+}
+.num_calculate .sup_num span{
+	line-height: 20px;
+}
+#dialog .change_sup_num{
+	width: 25%;
+	height: 25px;
+	float: left;
+	border: 1px solid #E0E0E0;
+}
+#dialog .change_sup_num span{
+	line-height: 25px;
+}
+.num_calculate .mid_num{
+	width: 50%;
+	height: 25px;
+	float: left;
+}
+.num_calculate .mid_num .num_pro{
+	border-bottom: 1px solid #E0E0E0;
+	border-top: 1px solid #E0E0E0;
+	border-left: none;
+	border-right: none;
+	border-radius: 0px;
+	padding: 0px;
+	height: 25px;
+}
+.num_calculate .add_num{
+	width: 25%;
+	height: 25px;
+	float: left;
+	border: 1px solid #E0E0E0;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.num_calculate .add_num span{
+	line-height: 25px;
+}
+/*内容部分*/
+.shopofname.pro_font{
+	font-size: 13px;
+	color: #000;
+}
+.pro_font{
+	/*font-size: 0.75em;*/
+	font-size: 11px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	line-height: 25px;
+	font-family:MicrosoftYaHei;
+	font-weight:400;
+	color:rgba(123,123,123,1);
+}
+/*右侧*/
+.RMB_single{
+	width: 55%;
+	color: #CF4843;
+	float: left;
+	font-size: 11px;
+}
+.RMBmoney_unit{
+	font-size: 14px;
+}
+/*起订量*/
+.minimumOrder{
+	/*width: 50px;*/
+	padding: 0px 2px;
+	height: 14px;
+	line-height: 14px;
+	color: red;
+	float: left;
+	font-size: 8px;
+	border: 1px solid red;
+	border-radius:7px;
+	text-align: center;
+	margin-top: 5px;
+}
+.numEdit{
+	width: 95%;
+	float: right;
+	/*margin-right: 15px;*/
+	margin-top: 25px;
+}
+/*下划线*/
+.mui-table-view-cell:after{
+	height: 0px;
+}
+/*#dialog{
+	z-index: 4;
+}
+.mui-popup-backdrop{
+	z-index: 3;
+}*/
+/*去掉点击时的按压效果*/
+#ul_pro .mui-active{
+	background-color: #FFFFFF;
+}
+.mui-table-view:before,.mui-table-view:after{
+	background: transparent;
+}
+/*配送方式和买家留言*/
+ul#sendWayAndMsgBox{
+	border-bottom: 1px solid #E2E2E2;
+	font-size:14px;
+	font-family:MicrosoftYaHei;
+	font-weight:400;
+	color:rgba(0,0,0,1);
+}
+.sendWayAndMessage .mui-table-view-cell{
+	padding: 0px 15px;
+	height: 45px;
+	line-height: 45px;
+	border-top: 1px solid #E2E2E2;
+}
+.moneyRed{
+	color: #CF4843;
+}
+/*留言*/
+.MsgTitle{
+	width: 30%;
+}
+.leaveMsg{
+	width: 70% !important;
+	margin-bottom: 0px !important;
+	height: 45px !important;
+	border: 0px !important;
+}
+/*设置input的placeholder大小*/
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: #989898;
+  font-size: 14px;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #989898;
+  font-size: 14px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #989898;
+  font-size: 14px;
+} 
+.productStatistics{
+	text-align: right;
+	font-size: 14px;
+	font-family:MicrosoftYaHei;
+	font-weight:bold;
+	color:rgba(0,0,0,1);
+	padding: 22px 10px;
+}  
+
+/*支付方式和发票*/
+#invoice_title_div ul{
+	border-bottom: 1px solid #E2E2E2;
+	font-size:14px;
+	font-family:MicrosoftYaHei;
+	font-weight:400;
+	color:rgba(0,0,0,1);
+}
+#invoice_info_div .mui-table-view-cell{
+	padding: 0px 15px;
+	height: 45px;
+	line-height: 45px;
+}
+#invoice_info_div .mui-table-view-cell:first-child{
+	border-bottom: 1px solid #E2E2E2;
+}
+.mui-table-view-cell>a:not(.mui-btn){
+	position: initial;
+	display: inline-block;
+	overflow: initial;
+	margin-top: 0px;
+}
+.payOnlineIcon{
+	background: #2F92F1;
+	border-radius: 50%;
+	color: #fff;
+	width: 19px;
+	line-height: 19px;
+	text-align: center;
+	font-size: 19px;
+	margin-right: 6px;
+	height: 19px;
+}
+.issueInvoiceTitle{
+	width: 30%;
+}
+.issueInvoiceTxt{
+	width: 60% !important;
+	margin-bottom: 0px !important;
+	height: 45px !important;
+	border: 0px !important;
+	text-align: right;
+	color: #989898;
+}
+#invoice_title_div a.mui-navigate-right{
+	padding-right: 0px;
+	width: 100%;
+}
+#invoice_title_div a.mui-navigate-right input{
+	padding: 0;
+}
+/*商品价格及运费*/
+.productMoney{
+	margin-top: 8px;
+}
+ul#productMoneyBox{
+	border-bottom: 1px solid #E2E2E2;
+	font-size:14px;
+	font-family:MicrosoftYaHei;
+	font-weight:400;
+	color:rgba(0,0,0,1);
+}
+#productMoneyBox .mui-table-view-cell{
+	padding: 0px 15px;
+	height: 45px;
+	line-height: 45px;
+}
+#productMoneyBox .mui-table-view-cell:nth-child(2){
+	border-top: 1px solid #E2E2E2;
+	border-bottom: 1px solid #E2E2E2;
+}
+/*结算*/
+.settleAccounts{
+	width: 30%;
+	height:44px;
+	background:linear-gradient(90deg,rgba(225,111,27,1),rgba(221,71,19,1));
+}
+.totalMoney{
+	width: 70%;
+	text-align: left;
+}
+/*购药须知*/
+.orderWarns{
+	width: 100%;
+	/*height: 25px;
+	line-height: 25px;*/
+	background: #fff;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	padding: 0px 15px;
+	font-size: 9px;
+	/*overflow: hidden;*/
+}
+.orderWarns b{
+	display: inline-block;
+	width: 11px;
+	height: 11px;
+	font-size: 9px;
+	line-height: 11px;
+	text-align: center;
+	border-radius: 50%;
+	border: 1px solid #9E9E9E;
+}
+.numEdit{
+	display: none;
+}
+.realNum{
+	text-align: right;
+	display: none;
+}
+/*套餐*/
+.setMeal_price{
+	float: left;
+    color: #FC3857;
+    margin: 0 20px;
+}
+.setMeal_num{
+	font-weight: bold;
+    font-size: 18px;
+}
+.setMeal_number{
+	float: right;
+	width: 169px;
+}
+.shop .setMeal_number{
+	float: right;
+	width: auto;
+}
+  .RMB_original{
+	color: #999999;
+    text-decoration: line-through;
+}
+.setMeal_number .numEdit{
+	margin-top: 0px;
+}

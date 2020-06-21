@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>串口</title>
+  <script>
+    var mscomm_scan_value = '';
+    function MSComm1_OnComm() {
+      if (MSComm1.CommEvent == 2) {
+        mscomm_scan_value += MSComm1.Input;
+        if (mscomm_scan_value.length === 13) {
+          window.parent.postMessage({ type: 'ywlsh', msg: mscomm_scan_value }, '*');
+          mscomm_scan_value = '';
+        }
+      }
+    }
+
+    //打开端口和关闭端口
+    function OperatePort() {
+      if (MSComm1.PortOpen == true) { //如果打开就关闭
+        try {
+          MSComm1.PortOpen = false;
+        } catch (ex) {
+          alert(ex.message);
+        }
+      } else { //打开串口
+        try {
+          MSComm1.PortOpen = true;
+        } catch (ex) {
+          alert(ex.message);
+        }
+      }
+    }
+  </script>
+  <script LANGUAGE=javascript FOR=MSComm1 EVENT=OnComm>
+    MSComm1_OnComm();//串口事件
+  </script>
+</head>
+
+<body onload="OperatePort()" onunload="OperatePort()">
+<OBJECT id="MSComm1" CLASSID="clsid:9BD6DD4F-3784-4C6D-A83A-4B9CA9FF4510" type="application/x-oleobject" width=0
+        height=0>
+  <PARAM NAME="CommPort" VALUE="10" />
+  <PARAM NAME="DataBits" VALUE="8" />
+  <PARAM NAME="StopBits" VALUE="1" />
+  <PARAM NAME="BaudRate" VALUE="9600" />
+  <PARAM NAME="Settings" VALUE="9600,N,8,1" />
+  <PARAM NAME="RTSEnable" VALUE="1" />
+  <PARAM NAME="DTREnable" VALUE="1" />
+  <PARAM NAME="Handshaking" VALUE="0" />
+  <PARAM NAME="NullDiscard" VALUE="0" />
+  <PARAM NAME="ParityReplace" VALUE="?" />
+  <PARAM NAME="EOFEnable" VALUE="0" />
+  <PARAM NAME="InputMode" VALUE="0" />
+  <PARAM NAME="InBufferSize" VALUE="1024" />
+  <PARAM NAME="InputLen" VALUE="0" />
+  <PARAM NAME="OutBufferSize" VALUE="512" />
+  <PARAM NAME="SThreshold" VALUE="0" />
+  <PARAM NAME="RThreshold" VALUE="1" />
+</OBJECT>
+</body>

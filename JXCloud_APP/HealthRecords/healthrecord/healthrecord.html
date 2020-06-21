@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta content="telephone=no" name="format-detection">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>健康档案</title>
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/init.css"/>
+		<!-- 顶部内容CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/navbar.css">
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../font/iconfont.css">
+		<!-- 本页CSS -->
+		<link type="text/css" rel="stylesheet" href="css/healthrecord.css"/>
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../js/config.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
+		<!-- 页面跳转方法JS -->
+		<script type="text/javascript" src="../js/jumpPage.js"></script>
+		
+	</head>
+	<body>
+		<!-- 2019-05-16完成 -->
+		<!-- <div style="width: 100%;height: 40px;"></div> -->
+		<!-- 顶部内容 -->
+		<div class="header">
+			<div class="navbar">
+				<div class="navbackbtn">
+					<i class="iconfont gobackBtn">&#xe624;</i>
+				</div>
+				<div class="navtitle">
+					<span class="title">健康记录</span>
+				</div>			
+			</div>
+		</div>
+		<!-- 内容区域 -->
+		<div class="wrapper">
+			<!-- 基本信息内容 -->
+			<div class="essentialBox box">
+				<div class="essentialTitle Title">
+					<!-- <i class="iconfont">&#xe654;</i> -->
+					<img src="img/headicon1.png" alt="这是一个小图片" title="这是一个小图片">
+					基础信息
+				</div>
+				<div class="essential Content">
+					<div>
+						<p>
+							<span>姓名:</span>
+							<span>-</span>
+						</p>
+						<!-- <p>
+							<span>ID:</span>
+							<span>YX1</span>
+						</p> -->
+						<p>
+							<span>性别:</span>
+							<span>-</span>
+						</p>
+						<p>
+							<span>年龄:</span>
+							<span>-</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- 病史内容 -->
+			<div class="medicalHistoryBox box">
+				<div class="medicalHistoryTitle Title">
+					<!-- <i class="iconfont">&#xe654;</i> -->
+					<img src="img/headicon2.png" alt="这是一个小图片" title="这是一个小图片">
+					病史
+				</div>
+				<div class="medicalHistory Content">
+					<!-- <div>
+						<p>
+							<span>现病史:</span>
+							<span>高血压</span>
+						</p>
+						<p>
+							<span>既往史:</span>
+							<span>糖尿病</span>
+						</p>
+					</div>
+					<div>
+						<p>
+							<span>药物过敏史:</span>
+							<span>有</span>
+						</p>
+						<p>
+							<span>家族史:</span>
+							<span>无</span>
+						</p>
+					</div> -->
+					<div>
+						<p>
+							<span>现病史:</span>
+							<span>-</span>
+						</p>
+					</div>
+					<div>
+						<p>
+							<span>既往史:</span>
+							<span>-</span>
+						</p>
+					</div>
+					<div>
+						<p>
+							<span>药物过敏史:</span>
+							<span>-</span>
+						</p>
+					</div>
+					<div>
+						<p>
+							<span>家族史:</span>
+							<span>-</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- 生活习惯内容 -->
+			<div class="habitsCustomsBox box">
+				<div class="habitsCustomsTitle Title">
+					<!-- <i class="iconfont">&#xe654;</i> -->
+					<img src="img/headicon3.png" alt="这是一个小图片" title="这是一个小图片">
+					生活习惯
+				</div>
+				<div class="habitsCustoms Content">
+					<div>
+						<p>
+							<span>吸烟:</span>
+							<span>-</span>
+						</p>
+						<p>
+							<span>饮酒:</span>
+							<span>-</span>
+						</p>
+						<p>
+							<span>失眠:</span>
+							<span>-</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- 病症管理内容 -->
+			<div class="diseaseManagementBox box">
+				<div class="dMTitle Title">
+					<!-- <i class="iconfont">&#xe654;</i> -->
+					<img src="img/headicon6.png" alt="这是一个小图片" title="这是一个小图片">
+					慢病病症
+				</div>
+				<div class="dM Content">
+					<div>
+						<p>
+							<span>高血压:</span> 
+							<span>-</span>
+						</p>
+						<p>
+							<span>糖尿病:</span> 
+							<span>-</span>
+						</p>
+						<!--<p>
+							 <span>失眠:</span> 
+							<span>心脏病</span>
+						</p>-->
+					</div>
+				</div>
+			</div>
+			<!-- 健康数据内容 -->
+			<div class="healthDataBox box box1">
+				<div class="healthDataTitle Title">
+					<img src="img/headicon4.png" alt="这是一个小图片" title="这是一个小图片">
+					健康数据
+				</div>
+				<p class="bloodpressure">
+					<span>
+						<img src="img/002.png" >
+						血压
+					</span>
+					<span>
+						<!-- <i class="iconfont degree1">&#xe79d;</i> -->
+						<span class="numConversion"></span>
+						<span class="numConversion"></span>
+						<!--<i class="iconfont">&#xe606;</i>-->
+					</span>
+				</p>
+				<p class="bloodsugar">
+					<span>
+						<img src="img/005.png" >
+						血糖
+					</span>
+					<span>
+						<i class="iconfont degree">&#xe79d;</i>
+						<span class="numConversion"></span>
+						<!--<i class="iconfont rightBtn">&#xe606;</i>-->
+					</span>					
+				</p>
+				<p class="bmiContent">
+					<span>
+						<img src="img/004.png" >
+						BMI
+					</span>
+					<span>
+						<i class="iconfont BMIdegree">&#xe79d;</i>						
+						<span class="numConversion"></span>
+						<!--<i class="iconfont rightBtn">&#xe606;</i>-->
+					</span>					
+				</p>
+				<!--<p>
+					<span>运动计步</span>
+					<span>
+						正常
+						<i class="iconfont">&#xe606;</i>
+					</span>					
+				</p>-->
+			</div>
+			<!-- 诊疗信息内容 -->
+			<div class="diagnosisTreatmentBox box box1">
+				<div class="dT-title Title">
+					<img src="img/headicon5.png" alt="这是一个小图片" title="这是一个小图片">
+					诊疗信息
+				</div>
+				<!--<p>
+					<span>检验检查</span>
+					<span>
+						7
+						<i class="iconfont">&#xe606;</i>
+					</span>	
+				</p>-->
+				<p class="prescriptionDrugs">
+					<span>
+						<img src="img/003.png" >
+						药品处方
+					</span>
+					<span>
+						0
+						<i class="iconfont">&#xe606;</i>
+					</span>
+				</p>
+				<!--<p>
+					<span>电子病历</span>
+					<span>
+						0
+						<i class="iconfont">&#xe606;</i>
+					</span>	
+				</p>-->
+			</div>
+		</div>
+		<input type="hidden" value="" id="id"/>
+		<input type="hidden" value="" id="disid"/>
+		<script type="text/javascript">
+			// var sesId;
+			function postSessionId(sesID, userId, token){
+				// sesId = sesID;
+				// return sesId;
+				// if (token == "!cf^1mOkUU%aCuOJCbd&V5PYm$#Nzr") {
+				// 	return true;
+				// }else{
+				// 	return false;
+				// }
+				if (token != "!cf^1mOkUU%aCuOJCbd&V5PYm$#Nzr") {
+					return false;
+				}
+				$.ajax({
+					type: "get",
+					url: config + "/oa/patinfo/get",
+					async: true,
+					dataType:'json',//接收值的格式
+					data:{
+						"sessionId": sesID,
+						"fkUserId": userId
+					},
+					success: function(data){
+						console.log(data);
+						var dataList = data.resultMap.patinfo;
+						$("#id").val(dataList.id);
+						$("#disid").val(dataList.diagnosisId);
+						var eleId = $("#id").val();
+						var eleDisid = $("#disid").val();
+						sessionStorage.setItem("id", eleId);
+						sessionStorage.setItem("disid", eleDisid);
+						//获取当前时间
+			//			var oDate = new Date().getFullYear();
+			//			var birthdayDate = new Date(dataList.birthday),
+			//				//计算生日年份
+			//				birthdayYear = birthdayDate.getFullYear(),
+			//				//计算年龄
+			//				birthdayTime = oDate - birthdayYear;
+						function dataContent(ele, divNum, pNum, con){
+							if(con == null || con == 0){
+								con = "无";
+							}else if(con == 1){
+								con = "有";
+							}else{
+								con = con;
+							}
+							$(ele)
+								.find("div")
+									.eq(divNum)
+										.find("p")
+											.eq(pNum)
+												.find("span")
+													.eq(1)
+														.text(con);
+						}
+			//			function healthData(ele, spanNum, iNum, conNum1, conNum2){
+			//				if(conNum1 == null){
+			//					conNum1 = "";
+			//				}else{
+			//					conNum1 = conNum1 + '/';
+			//				}
+			//				if(conNum2 == null){
+			//					conNum2 = "";
+			//				}
+			//				$(ele)
+			//					.find("span")
+			//						.eq(spanNum)
+			//							.find("i")
+			//								.eq(iNum)
+			//									.text(conNum1)
+			//										.next()
+			//											.text(conNum2);
+			//									
+			//			}
+						dataContent(".essential", 0, 0, dataList.name);
+						dataContent(".essential", 0, 1, dataList.sex);
+						dataContent(".essential", 0, 2, dataList.age);
+						dataContent(".medicalHistory", 0, 0, dataList.medicalHistory);
+						dataContent(".medicalHistory", 1, 0, dataList.pastHistory);
+						dataContent(".medicalHistory", 2, 0, dataList.allergyHistory);
+						dataContent(".medicalHistory", 3, 0, dataList.familyHistory);
+						dataContent(".habitsCustoms", 0, 0, dataList.isSmoke);
+						dataContent(".habitsCustoms", 0, 1, dataList.isDrink);
+						dataContent(".habitsCustoms", 0, 2, dataList.isInsomnia);
+						dataContent(".dM", 0, 0, dataList.isPressure);
+						dataContent(".dM", 0, 1, dataList.isDiabetes);
+			//			healthData(".bloodpressure", 1, 0, dataList.maxPressure, dataList.minPressure);
+			//			console.log(dataList.sugarValue);
+						//血压
+						if (dataList.maxPressure == null) {
+							dataList.maxPressure = "";
+			//				dataList.minPressure = '<i class="iconfont rightBtn">&#xe606;</i>';
+							
+						}else{
+							// dataList.maxPressure = '<i class="iconfont degree1">&#xe79d;</i>' + dataList.maxPressure + "/";
+							if (dataList.pressureLevel == "正常") {
+								dataList.maxPressure = dataList.maxPressure + " /";
+							} else{
+								dataList.maxPressure = '<i class="iconfont degree1">&#xe79d;</i>' + dataList.maxPressure + " /";
+							}
+						}
+						if (dataList.minPressure == null) {
+							dataList.minPressure = '<i class="iconfont rightBtn">&#xe606;</i>';
+						}else{
+							dataList.minPressure = dataList.minPressure + '<i class="iconfont rightBtn">&#xe606;</i>';
+						}
+						if (dataList.pressureLevel == "高") {
+							$(".bloodpressure")
+								.find("span")
+									.eq(1)
+										.css({"color": "red"})
+											.find("span")
+												.eq(0)
+													.html(dataList.maxPressure)
+														.next()
+															.css({"color": "red"})
+																.html(dataList.minPressure);
+						} else if(dataList.pressureLevel == "低"){
+							$(".bloodpressure")
+								.find("span")
+									.eq(1)
+										.css({"color": "green"})
+											.find("span")
+												.eq(0)
+													.html(dataList.maxPressure)
+														.next()
+															.css({"color": "green"})
+																.html(dataList.minPressure);
+						}else{
+							$(".bloodpressure")
+								.find("span")
+									.eq(1)
+										.css({"color": "#727377"})
+											.find("span")
+												.eq(0)
+													.html(dataList.maxPressure)
+														.next()
+															.css({"color": "#727377"})
+																.html(dataList.minPressure);
+						}			
+						//血糖
+						//				dataList.sugarValue = dataList.sugarValue;
+						console.log(dataList.sugarValue);
+						console.log(typeof dataList.sugarValue);
+						if (dataList.sugarValue == null || dataList.sugarValue == 0) {
+							dataList.sugarValue = '<i class="iconfont rightBtn">&#xe606;</i>';
+							$(".bloodsugar")
+								.find("span")
+									.eq(1)
+										.html(dataList.sugarValue);
+						}else if(dataList.sugarValue == -1){
+							dataList.sugarValue = '<i class="iconfont rightBtn">&#xe606;</i>';
+							$(".bloodsugar")
+								.find("span")
+									.eq(1)
+										.html(dataList.sugarValue);
+						}else{
+							if (dataList.sugarLevel == "高") {
+								dataList.sugarValue = dataList.sugarValue + '<i class="iconfont rightBtn">&#xe606;</i>';
+								$(".bloodsugar")
+									.find("span")
+										.eq(1)
+											.css({"color": "red"})
+												.find(".degree")
+													.html("&#xe79d;")
+														.next()
+															.html(dataList.sugarValue);
+							} else{
+								dataList.sugarValue = dataList.sugarValue + '<i class="iconfont rightBtn">&#xe606;</i>';
+								$(".bloodsugar")
+									.find("span")
+										.eq(1)
+											.css({"color": "green"})
+												.find(".degree")
+													.html("&#xe79e;")
+														.next()
+															.html(dataList.sugarValue);
+							}
+						}
+						//BMI
+						if (dataList.bmiValue == null || dataList.bmiValue == 0) {
+							dataList.bmiValue = '<i class="iconfont rightBtn">&#xe606;</i>';
+							$(".bmiContent")
+								.find("span")
+									.eq(1)
+										.html(dataList.bmiValue);
+						} else if(dataList.bmiValue == -1){
+							dataList.bmiValue = '<i class="iconfont rightBtn">&#xe606;</i>';
+							$(".bmiContent")
+								.find("span")
+									.eq(1)
+										.html(dataList.bmiValue);
+						}else{
+							if (dataList.bmiLevel == "偏瘦") {
+								dataList.bmiValue = dataList.bmiValue + '<i class="iconfont rightBtn">&#xe606;</i>';
+								$(".bmiContent")
+									.find("span")
+										.eq(1)
+											.css({"color": "rgb(207, 207, 207)"})
+												.find(".BMIdegree")
+													// .html("&#xe79e;")
+													.html(dataList.bmiLevel)
+														.next()
+															.html(dataList.bmiValue);
+							} else if(dataList.bmiLevel == "正常"){
+								dataList.bmiValue = dataList.bmiValue + '<i class="iconfont rightBtn">&#xe606;</i>';
+								$(".bmiContent")
+									.find("span")
+										.eq(1)
+											.css({"color": "rgb(98, 207, 0)"})
+												.find(".BMIdegree")
+													// .html("")
+													.html(dataList.bmiLevel)
+														.next()
+															.html(dataList.bmiValue);
+							} else if (dataList.bmiLevel == "过重") {
+								dataList.bmiValue = dataList.bmiValue + '<i class="iconfont rightBtn">&#xe606;</i>';
+								$(".bmiContent")
+									.find("span")
+										.eq(1)
+											.css({"color": "rgb(201, 202, 73)"})
+												.find(".BMIdegree")
+													// .html("&#xe79d;")
+													.html(dataList.bmiLevel)
+														.next()
+															.html(dataList.bmiValue);
+							}else{
+								dataList.bmiValue = dataList.bmiValue + '<i class="iconfont rightBtn">&#xe606;</i>';
+								$(".bmiContent")
+									.find("span")
+										.eq(1)
+											.css({"color": "rgb(254, 153, 0)"})
+												.find(".BMIdegree")
+													// .html("&#xe79d;")
+													.html(dataList.bmiLevel)
+														.next()
+															.html(dataList.bmiValue);
+							}
+						}
+						$(".prescriptionDrugs")
+							.find("span")
+								.eq(1)
+									.html(data.resultMap.prescribeCount + '<i class="iconfont rightBtn">&#xe606;</i>');
+					},		
+					error: function(data){
+						console.log(data);
+					}
+				});
+			}
+			function patientOperation(clickNum){
+				if (clickNum == 2) {
+					$(location).prop('href', "../visitingRecord/visitingRecord.html");
+				}
+			}
+			"use strict";
+			
+		</script>
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/healthrecord.js" ></script>
+	</body>
+</html>

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>排队管理</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/doctorInfo1.css">
+    <style>
+        body {
+            background: #fff;
+            padding: 20px;
+            min-width: 1024px;
+            min-height: 600px;
+        }
+
+        #queuingDel-yes {
+            width: 100px;
+            height: 40px;
+            background-color: #028eef;
+            color: #fff;
+            line-height: 40px;
+            font-size: 14px;
+            letter-spacing: 3px;
+            margin-top: 40px;
+            margin-left: 40px;
+            cursor: pointer;
+        }
+
+        #queuingInfoListLight {
+            display: none;
+            position: absolute;
+            top: 20%;
+            left: 40%;
+            width: 23%;
+            background-color: white;
+            z-index: 1002;
+            min-width: 10%;
+        }
+
+        .orderDoctorInfoBtns {
+            background: #008EEA;
+            color: #fff;
+            border-radius: 5px;
+            padding: 0 5px;
+            width: 65px;
+            height: 26px;
+            line-height: 26px;
+            margin-bottom: 13px;
+            border: 0;
+        }
+
+        .queuingeExchangeAll {
+            overflow: hidden;
+        }
+
+        .queuingeExchangeDivBorder {
+            width: 20%;
+            height: 150px;
+            border-right: 2px solid #1ba8de;
+        }
+
+        .rightQueuingeExchangeInfo {
+            padding-top: 65px;
+            margin-left: 20px;
+        }
+
+        .rightQueuingeExchangeInfo div {
+            height: 20px;
+        }
+
+        .queuingeExchangeCircle1 {
+            width: 15px;
+            height: 15px;
+            background-color: #026a8f;
+            border: 2px solid #1ba8de;
+            border-radius: 50%;
+            position: absolute;
+            left: 18.3%;
+            /*top: 200px;*/
+        }
+
+        .lf {
+            float: left;
+        }
+
+        .rt {
+            float: right;
+        }
+
+        .queuingeLines, .queuingExchangeAll {
+            overflow: hidden;
+        }
+
+        .queuingeLines {
+            max-height: 500px;
+            min-height: 200px;
+            overflow: auto;
+        }
+
+        #topSearchBtns {
+            width: 85px;
+            height: 24px;
+            border-radius: 5px;
+            background-color: #1C79B6;
+            font-family: "microsoft yahei";
+            font-size: 14px;
+            color: #FFFFFF;
+            margin-left: 20px;
+            line-height: 24px;
+            letter-spacing: 5px;
+            cursor: pointer;
+            text-align: center;
+            float: left;
+        }
+        /*查看信息下的主诉等样式*/
+       .historyAllInfoTitle{
+       		margin-bottom: 20px;
+       }
+       .historyAllInfoTitle>div{
+       	width: 8%;
+       	text-align: left;
+       	height: 70px;
+       	line-height: 70px;
+    	float: left;
+       }
+       .historyAllInfoTitle>textarea{
+       	width: 90%;
+       	height: 70px;
+       }
+    </style>
+</head>
+<body>
+<div class="patientInfoBox">
+    <!--第一行信息-->
+    <div class="patientInfoHead">
+        <!--<div class="patientSex">
+            <span class="patientSexLeft">医院</span>
+            <select name="" class="patientSexRight"id="queuingHosSelect">
+                
+            </select>
+        </div>
+
+        <div class="patientSex">
+            <span class="patientSexLeft">科室</span>
+            <select name="" class="patientSexRight"id="queuingSectionSelect">
+               
+            </select>
+        </div>
+        <div class="patientNanme">
+            <span class="patientNanmeLeft">医生</span>
+            <select name="" class="patientSexRight"id="queuingDoctorSelect">
+                
+            </select>
+        </div>-->
+        <div class="patientNanme">
+            <span class="patientNanmeLeft">患者姓名</span>
+            <input class="patientNanmeRight" type="text" id="queuingSearchPatientName" value=""/>
+        </div>
+        <div id="topSearchBtns">
+            查询
+        </div>
+        <!--<div class="patientSex">
+            <span class="patientSexLeft">预约时间</span>
+            <select name="" class="patientSexRight">
+                <option value=""></option>
+                <option value="时间1">时间1</option>
+                <option value="时间2">时间2</option>
+                <option value="时间3">时间3</option>
+            </select>
+        </div>-->
+
+    </div>
+
+    <!--信息列表-->
+    <div  class="queuingInfoList"   >
+        <ul class="queuingInfoList-ul">
+            <!--<li class="queuingInfoList-all">全选</li>-->
+            <li class="queuingInfoList-all">序号</li>
+            <li class="queuingInfoList-id">指定医院</li>
+            <li class="queuingInfoList-id">指定科室</li>
+            <li class="queuingInfoList-id">指定医生</li>
+            <li class="queuingInfoList-id">病人姓名</li>
+            <li class="queuingInfoList-id">状态</li>
+            <li class="queuingInfoList-id">申请人</li>
+            <li class="queuingInfoList-id" style="width:15%;">申请时间</li>
+            <li class="queuingInfoList-id">申请</li>
+            <li class="queuingInfoList-id">流转</li>
+            <li class="queuingInfoList-id">查询</li>
+            <li class="queuingInfoList-id">删除</li>
+        </ul>
+        <div id="queuingInfoList_div"></div>
+
+
+    </div>
+    <div class="clearfix"></div>
+    <!--分页-->
+    <div class="queuingHistoryPageN"></div>
+
+
+    <!--删除-->
+
+    <div id="queuingLight2" class="white_content1">
+        <div class="white_contentHead1">
+            <img src="../../img/common/untitledquestionImg.png"/>
+        </div>
+        <p>删除信息后不可恢复，您确定要删除该信息吗？</p>
+        <a id="close3" href="javascript:void(0)"
+           onclick="document.getElementById('queuingLight2').style.display='none';document.getElementById('queuingFade').style.display='none'">取消</a>
+        <div class="delToHiddenIdForQueuing" style="display: none;">
+
+        </div>
+        <button id="queuingDel-yes">确定删除</button>
+    </div>
+
+    <!--点击按钮查看-->
+
+    <div id="queuingLight3" class="white_content">
+        <div class="white_contentHead">
+            <span class="infoTitle">信息查看</span>
+            <a id="close" class="close" href="javascript:void(0)"
+               onclick="document.getElementById('queuingLight3').style.display='none';document.getElementById('queuingFade').style.display='none'">&times;</a>
+        </div>
+        <div class="infoDetails" style="overflow-y: scroll;">
+            <div class="infoDetailsHead">信息查看</div>
+            <ul class="infoDetails-ul">
+                <li><span class="infoDetails-title">指定医院：</span><input type="text" name="" id="queuingLookHospital"
+                                                                       value=""/></li>
+                <li><span class="infoDetails-title">指定科室：</span><input type="text" name="" id="queuingLookTechOffice"
+                                                                       value=""/></li>
+                <li><span class="infoDetails-title">指定医生： </span><input type="text" name="" id="queuingLookDoctor"
+                                                                        value=""/>
+                <li><span class="infoDetails-title">患者姓名：</span><input type="text" name="" id="queuingLookPatientId"
+                                                                       value=""/></li>
+                <li><span class="infoDetails-title">患者性别：</span>
+                	<input type="text" name="" id="patientInfoSex"value=""/>
+                </li>
+                <li><span class="infoDetails-title">出生日期：</span>
+                	<input type="text" name="" id="patientInfobornTime"value=""/>
+                </li>
+                <li><span class="infoDetails-title">身份证号：</span>
+                	<input type="text" name="" id="patientInfoIdentityCode"value=""/>
+                </li>
+                <li><span class="infoDetails-title">患者电话：</span><input type="text" name="" id="patientInfoTel"value=""/>
+                </li>
+                
+                <li><span class="infoDetails-title">状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：</span><input
+                        type="text" name="" id="queuingLookStatus" value=""/></li>
+                <li><span class="infoDetails-title">申&nbsp;&nbsp;请&nbsp;&nbsp;人：</span><input type="text" name=""
+                                                                                              id="queuingLookApplier"
+                                                                                              value=""/>
+                </li>
+                <li><span class="infoDetails-title">申请时间：</span><input type="text" name="" id="queuingLookApplyTime"
+                                                                       value=""/></li>
+                <li class="queuingHiddenChangeHosId" style="display:none;"></li>
+                <li class="queuingHiddenChangeUserId" style="display:none;"></li>
+                <li class="queuingHiddenChangeTechId" style="display:none;"></li>
+                <li class="queuingHiddenChangeDoctorId" style="display:none;"></li>
+            </ul>
+            <div class="historyAllInfo"style="width:90%;margin: 20px auto 0px auto;padding-left:40px;">
+            	<div class="historyAllInfoTitle">
+                    <div>主&nbsp;&nbsp;&nbsp;&nbsp;诉：</div>
+                    <textarea disabled name="subjText" id="subjText"></textarea>
+                </div>
+                <div class="historyAllInfoTitle">
+                    <div>现病史：</div>
+                    <textarea disabled name="medicalHistory" id="medicalHistory"></textarea>
+                </div>
+                <div class="historyAllInfoTitle">
+                    <div>既往史：</div>
+                    <textarea disabled name="pastHistory" id="pastHistory"></textarea>
+                </div>
+                <div class="historyAllInfoTitle">
+                    <div>过敏史：</div>
+                    <textarea disabled name="allergyHistory" id="allergyHistory"></textarea>
+                </div>
+                <div class="historyAllInfoTitle">
+                    <div>家族史：</div>
+                    <textarea disabled name="familyHistory" id="familyHistory"></textarea>
+                </div>
+            </div>
+             	
+        </div>
+        <button id="queuingChange-ok" href="javascript:void(0)"
+                onclick="document.getElementById('queuingLight3').style.display='none';document.getElementById('queuingFade').style.display='none'"
+                style="margin-left: 45%;">关闭
+        </button>
+    </div>
+
+    <!--流转信息弹框弹框1-->
+    <div id="queuingInfoListLight">
+        <div class="white_contentHead">
+            <span class="infoTitle">流转信息</span>
+            <a id="close" class="close" href="javascript:void(0)"
+               onclick="document.getElementById('queuingInfoListLight').style.display='none';document.getElementById('queuingFade').style.display='none'">&times;</a>
+        </div>
+        <div class="queuingeLines">
+            <!--<div class="queuingeExchangeAll">
+                <div class="queuingeExchangeDivBorder lf">
+                    <span class="queuingeExchangeCircle1"></span>
+                </div>
+                <div class="rightQueuingeExchangeInfo lf">
+                    <div>预约</div>
+                    <div>XX服务中心</div>
+                    <div>2018年11月22日</div>
+                </div>
+            </div>-->
+
+        </div>
+    </div>
+    <!--灰背景-->
+    <div id="queuingFade" class="black_overlay"></div>
+
+</div>
+
+<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+    //		分页
+    var currentPage = 1;
+    var offsetPage = 0;//传输的页起始条数
+    var showNum = 10;//页面需要显示的条数
+    var num_pages;
+    //点击分页页数
+    $(document).delegate(".flipOver", 'click', function () {
+        $(this).addClass('active').siblings().removeClass('active');
+        currentPage = parseInt($(this).attr("pageId"));
+        offsetPage = (currentPage - 1) * 10;//（页码-1）*每页显示条数
+        searchQueuingList();
+        window.scrollTo(0, 0);
+    });
+    //点击上一页
+    $(document).delegate("#prev", 'click', function () {
+        if ($(".flipOver.active").prev().attr("id") == "prev") {
+            return true
+        } else {
+            var page = parseInt($(".flipOver.active").attr("pageid")) - 1;
+            $(".flipOver.active").prev().addClass("active").siblings().removeClass("active")
+        }
+        currentPage = page;
+        offsetPage = (currentPage - 1) * 10;//（页码-1）*每页显示条数
+        searchQueuingList();
+        window.scrollTo(0, 0);
+    });
+
+
+    //点击下一页
+    $(document).delegate("#Next", 'click', function () {
+        if ($(".flipOver.active").next().attr("id") == "Next") {
+            return true
+        } else {
+            var page = parseInt($(".flipOver.active").attr("pageid")) + 1;
+            $(".flipOver.active").next().addClass("active").siblings().removeClass("active")
+        }
+        currentPage = page;
+        offsetPage = (currentPage - 1) * 10;//（页码-1）*每页显示条数
+        searchQueuingList();
+        window.scrollTo(0, 0);
+    });
+
+
+    //			点击搜索按钮
+    $(document).on("click", ".searching", function () {
+        var search = $("#searchBox").val().trim();
+    });
+
+    //		点击修改按钮
+    var changes = document.getElementsByClassName("btn-change");
+    for (var i = 0; i < changes.length; i++) {
+        changes[i].onclick = function () {
+//         	 	 alert(1);
+            $("#light5").fadeIn();
+            $("#queuingFade").fadeIn();
+            document.getElementById('light5').style.display = 'block';
+            document.getElementById('queuingFade').style.display = 'block';
+        }
+
+    }
+
+
+</script>
+
+<script>
+    var searchPatientName = '';
+    var queuinglistHTotal;
+	var adminUserId;
+    function searchQueuingList() {
+        var user = JSON.parse(sessionStorage.getItem("user"));
+        if(user.id==1){
+			adminUserId="";
+		}else{
+			adminUserId=user.id;
+		}
+        ajaxGet('/oa/interrogationInfo/list', {
+            fkUserId: adminUserId,
+            patinfoName: searchPatientName,
+            state: "1",
+            offset: offsetPage, //（页码-1）*每页显示条数
+			limit: showNum //每页赢显示的条数	
+
+        }, function (resData) {
+            var data = resData.resultMap.interrogationInfoList;
+            queuinglistHTotal = resData.resultMap.total;//总条数
+            setDivData(data);
+        });
+    };
+    searchQueuingList();
+
+    function setDivData(rm) {
+        //预约列表渲染
+        var yyhtml = '';
+        num_pages = Math.ceil(parseInt(queuinglistHTotal) / 10);//总条数除以每页十条数据为总页码
+        if (rm != null && rm.length > 0) {
+            for (var i = 0; i < rm.length; i++) {
+                $('#queuingInfoList_div').html('');
+                console.log(rm);
+                var timeDate = new Date(rm[i].applyTime);
+                var applyTime = timeDate.getFullYear() + '-' + (timeDate.getMonth() + 1) + '-' + timeDate.getDate() + ' ' + timeDate.getHours() + ':' + timeDate.getMinutes() + ':' + timeDate.getSeconds();
+                var currentQueuingStatus;
+                var currentPatientName;
+                if(rm[i].patinfo!=null&&rm[i].patinfo!=""){
+                	currentPatientName=rm[i].patinfo.name;
+                }else{
+                	currentPatientName='';
+                }
+                if (rm[i].state == "1") {
+                    currentQueuingStatus = "申请";
+                } else if (rm[i].state == "2") {
+                    currentQueuingStatus = "患者取消";
+                } else if (rm[i].state == "3") {
+                    currentQueuingStatus = "医生取消";
+                } else if (rm[i].state == "4") {
+                    currentQueuingStatus = "完成";
+                }
+                yyhtml += '<ul class="queuingInfoDetail-ul">\n' +
+                    '         <li class="queuingHiddenListIdToChange" style="display:none">' + rm[i].id + '<li> ' +
+                    //                  '                        <li class="queuingInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>\n' +
+                    '                        <li class="queuingHistoryInfoDetail-all"style="width:5%">' + (i + 1) + '</li>\n' +
+                    '                        <li class="queuingInfoDetail-id"><span class="queuingInfoList-hos"> ' + rm[i].hospitalName + '</span></li>\n' +
+                    '                        <li class="queuingInfoDetail-id"><span class="queuingInfoList-techOffice"> ' + rm[i].sectionName + '</span></li>\n' +
+                    '                        <li class="queuingInfoDetail-id"><span class="queuingInfoList-doctorName"> ' + rm[i].doctorName + '</span></li>\n' +
+                    '                        <li class="queuingInfoDetail-id"><span class="queuingInfoList-patientId"> ' + currentPatientName + '</span></li>\n' +
+                    '                        <li class="queuingInfoDetail-id"><span class="queuingInfoList-status"> ' + currentQueuingStatus + '</span></li>\n' +
+                    '                        <li class="queuingInfoDetail-id"><span class="queuingInfoList-proposer"> ' + rm[i].applyUserName + '</span></li>\n' +
+                    '                        <li class="queuingInfoDetail-tel"style="width:15%;"><span class="queuingInfoList-proposeTime"> ' + applyTime + '</span></li>\n' +
+                    '                        <li class="queuingInfoDetail-id"><span> ' +
+                    '                        <input type="button" class="orderDoctorInfoBtns" value="申请视频">' +
+                    '                        <input name="applyUserCode" type="hidden" value="' + rm[i].applyUserCode + '">' +
+                    '                        <input name="fkPatinfoId" type="hidden" value="' + rm[i].fkPatinfoId + '">' +
+                    '                        <input name="appointUserCode" type="hidden" value="' + rm[i].appointUserCode + '">' +
+                    '                        <input name="subjText" type="hidden" value="' + rm[i].subjText + '">' +
+                    '                        <input name="queuingId" type="hidden" value="' + rm[i].id + '">' +
+                    '                        <input name="patinfoSex" class="hidepatinfoSex"type="hidden" value="' + rm[i].patinfo.sex + '">' +
+                    '                        <input name="patinfoBornTime" class="hidepatinfoBornTime"type="hidden" value="' + rm[i].patinfo.birthday + '">' +
+                    '                        <input name="patinfoIdentityCode" class="hidepatinfoIdentityCode"type="hidden" value="' + rm[i].patinfo.idCode + '">' +
+                    '                        <input name="patinfophone" class="hidepatinfophone"type="hidden" value="' + rm[i].patinfo.phone + '">' +
+                    '                        <input name="patinfosubjText" class="hidepatinfosubjText"type="hidden" value="' + rm[i].subjText + '">' +
+                    '                        <input name="patinfomedicalHistory"class="hidepatinfomedicalHistory" type="hidden" value="' + rm[i].patinfo.medicalHistory + '">' +
+                    '                        <input name="patinfopastHistory" class="hidepatinfopastHistory" type="hidden" value="' + rm[i].patinfo.pastHistory + '">' +
+                    '                        <input name="patinfoallergyHistory" class="hidepatinfoallergyHistory" type="hidden" value="' + rm[i].patinfo.allergyHistory + '">' +
+                    '                        <input name="patinfoallergyHistory" class="hidepatinfoallergyHistory"type="hidden" value="' + rm[i].patinfo.familyHistory + '">' +
+                    '						 </span></li>' +
+                    '                        <li class="queuingInfoDetail-id"><a href = "javascript:void(0)" class="queuing-exchange">' +
+                    '<img src="../../img/common/1.jpg"/></a></li>\n' +
+                    '                        <li class="queuingInfoDetail-id"><a href = "javascript:void(0)" class="queuing-lookingInfo">' +
+                    '<img src="../../img/common/untitledSearBtn.png"/></a></li>\n' +
+                    // '                        <li class="queuingInfoDetail-change"><a href = "javascript:void(0)" class="btn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>\n' +
+                    '                        <li class="queuingInfoDetail-del"style="width:8%;"><a href = "javascript:void(0)" class="queuingBtn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>\n' +
+                    '</ul>';
+            }
+            $('#queuingInfoList_div').html(yyhtml);
+            var pageHtml = page(parseInt(currentPage), num_pages);
+            $(".queuingHistoryPageN").html(pageHtml);
+        } else {
+            $('#queuingInfoList_div').html('');
+        }
+    }
+
+    $(document).on("click", ".orderDoctorInfoBtns", function () {
+
+        var applyUserCode = $(this).parent().find('input[name="applyUserCode"]').val();
+        var appointUserCode = $(this).parent().find('input[name="appointUserCode"]').val();
+        var fkPatinfoId = $(this).parent().find('input[name="fkPatinfoId"]').val();
+        var subjText = $(this).parent().find('input[name="subjText"]').val();
+        var queuingId = $(this).parent().find('input[name="queuingId"]').val();
+
+        sessionStorage.setItem('applyUserCodeQueuing', applyUserCode);
+        sessionStorage.setItem('appointUserCodeQueuing', appointUserCode);
+        sessionStorage.setItem('queuingFkPatinfoId', fkPatinfoId);
+        sessionStorage.setItem('subjTextQueuing', subjText);
+        sessionStorage.setItem('queuingId', queuingId);
+
+        console.log('applyUserCode:', sessionStorage.getItem('applyUserCodeQueuing'));
+        console.log('appointUserCode:', sessionStorage.getItem('appointUserCodeQueuing'));
+        console.log('fkPatinfoId:', sessionStorage.getItem('queuingFkPatinfoId'));
+        console.log('subjText:', sessionStorage.getItem('subjTextQueuing'));
+        console.log('queuingId:', sessionStorage.getItem('queuingId'));
+        location.href = '../audience/audience.html';
+
+    });
+
+    //    点击查询按钮
+    $(document).on("click", ".queuing-lookingInfo", function () {
+        $("#queuingLight3").fadeIn();
+        $("#queuingFade").fadeIn();
+        var queuingHiddenListId = $(this).parent().parent().find(".queuingHiddenListId").text();//id
+        var queuingHiddenHosName = $(this).parent().parent().find(".queuingInfoList-hos").text();//找到当前医院的id
+        var queuingHiddenTechOfficeName = $(this).parent().parent().find(".queuingInfoList-techOffice").text();//找到当前医院的id
+        var queuingHiddenDoctorName = $(this).parent().parent().find(".queuingInfoList-doctorName").text();//找到当前医院的id
+        var queuingInfoListPatientId = $(this).parent().parent().find(".queuingInfoList-patientId").text();
+        var queuingInfoListStatus = $(this).parent().parent().find(".queuingInfoList-status").text();
+        var queuingInfoListProposer = $(this).parent().parent().find(".queuingInfoList-proposer").text();
+        var queuingInfoListproposeTime = $(this).parent().parent().find(".queuingInfoList-proposeTime").text();
+        $("#queuingLookHospital").val(queuingHiddenHosName);
+        $("#queuingLookTechOffice").val(queuingHiddenTechOfficeName);
+        $("#queuingLookDoctor").val(queuingHiddenDoctorName);
+        $("#queuingLookPatientId").val(queuingInfoListPatientId);
+        $("#queuingLookStatus").val(queuingInfoListStatus);
+        $("#queuingLookApplier").val(queuingInfoListProposer);
+        $("#queuingLookApplyTime").val(queuingInfoListproposeTime);
+        $("#queuingLookHospital").attr("disabled", true);
+        $("#queuingLookTechOffice").attr("disabled", true);
+        $("#queuingLookDoctor").attr("disabled", true);
+        $("#queuingLookPatientId").attr("disabled", true);
+        $("#queuingLookStatus").attr("disabled", true);
+        $("#queuingLookApplier").attr("disabled", true);
+        $("#queuingLookApplyTime").attr("disabled", true);
+        $("#patientInfoSex").attr("disabled", true);
+        $("#patientInfoIdentityCode").attr("disabled", true);
+        $("#patientInfoTel").attr("disabled", true);
+        $("#patientInfobornTime").attr("disabled", true);
+        
+//      下面是主诉等信息
+		$("#patientInfoSex").val($(this).parent().parent().find(".hidepatinfoSex").val());//性别
+        $("#patientInfobornTime").val($(this).parent().parent().find(".hidepatinfoBornTime").val());//出生日期
+        $("#patientInfoIdentityCode").val($(this).parent().parent().find(".hidepatinfoIdentityCode").val());//身份证号
+        $("#patientInfoTel").val($(this).parent().parent().find(".hidepatinfophone").val());//患者电话
+        $("#subjText").val($(this).parent().parent().find(".hidepatinfosubjText").val());//主诉
+        $("#medicalHistory").val($(this).parent().parent().find(".hidepatinfomedicalHistory").val());//现病史
+        $("#pastHistory").val($(this).parent().parent().find(".hidepatinfopastHistory").val());//既往史
+        $("#allergyHistory").val($(this).parent().parent().find(".hidepatinfoallergyHistory").val());//过敏史
+        $("#familyHistory").val($(this).parent().parent().find(".hidepatinfoallergyHistory").val());//家族史
+    });
+
+    // 点击流转按钮
+    $(document).on("click", ".queuing-exchange", function () {
+        var queuingHiddenListId = $(this).parent().parent().find("input[name='queuingId']").val();//id
+        $("#queuingInfoListLight").fadeIn();
+        $("#queuingFade").fadeIn();
+//      $("#subscribeListLight").html("");
+        $.ajax({
+            type: "get",
+            url: config + "/oa/interrogationLog/list",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data: {fkInterrogationInfoId: queuingHiddenListId},
+            success: function (data) {
+                console.log(data);
+                var exchangeStatusList = data.resultMap.interrogationLogList;
+//                  state,状态
+//                  userName
+//                  type=1医院 取hospitalName sectionName
+//                  	2 取deptName
+//                  actionTime,时间
+                if (exchangeStatusList != null) {
+                    $(".queuingeLines").html("");
+                    for (var s = 0; s < exchangeStatusList.length; s++) {
+                        var exchangeHtml = '';
+                        exchangeHtml += '<div class="queuingExchangeAll">';
+                        exchangeHtml += '<div class="queuingeExchangeDivBorder lf">';
+                        if (exchangeStatusList.length == 1) {
+                            exchangeHtml += '<span class="queuingeExchangeCircle1"style="top:' + (s + 1) * 75 + '%;"></span>';
+                        } else if (exchangeStatusList.length == 2) {
+                            exchangeHtml += '<span class="queuingeExchangeCircle1"style="top:' + (s + 1) * 47 + '%;"></span>';
+                        } else {
+                            exchangeHtml += '<span class="queuingeExchangeCircle1"style="top:' + (s + 1) * 30 + '%;"></span>';
+                        }
+
+                        exchangeHtml += '</div>';
+                        exchangeHtml += '<div class="rightQueuingeExchangeInfo lf">';
+                        if (exchangeStatusList[s].state == 1) {//1是申请
+                            exchangeHtml += '<div>申请</div>';
+                        } else if (exchangeStatusList[s].state == 2) {
+                            exchangeHtml += '<div>患者取消</div>';
+                        } else if (exchangeStatusList[s].state == 3) {
+                            exchangeHtml += '<div>医生取消</div>';
+                        } else {
+                            exchangeHtml += '<div>完成</div>';
+                        }
+                        exchangeHtml += '<div>' + exchangeStatusList[s].user.userName + '</div>';
+                        if (exchangeStatusList[s].user.type == 1) {//医院
+                            exchangeHtml += '<div>' + exchangeStatusList[s].user.hospitalName + exchangeStatusList[s].user.sectionName + '</div>';
+                        } else if (exchangeStatusList[s].user.type == 2) {
+                            exchangeHtml += '<div>' + exchangeStatusList[s].user.deptName + '</div>'
+                        }
+                        var exchangeDate = new Date(exchangeStatusList[s].actionTime);
+                        var applyTime = exchangeDate.getFullYear() + '-' + (exchangeDate.getMonth() + 1) + '-' + exchangeDate.getDate() + ' ' + exchangeDate.getHours() + ':' + exchangeDate.getMinutes() + ':' + exchangeDate.getSeconds();
+                        exchangeHtml += '<div>' + applyTime + '</div>';
+                        exchangeHtml += '</div>';
+                        exchangeHtml += '</div>';
+                        $(".queuingeLines").append(exchangeHtml);
+
+                    }
+                }
+
+            },
+        });
+
+    });
+
+    var queuingSearchHospitalId = "";
+    var queuingSearchSectionId = "";
+    var queuingSearchUserId = "";
+    var user = JSON.parse(sessionStorage.getItem("user"));
+    //	queuingReadHospitalBooking("queuingHosSelect");
+
+    //指定医院下拉框 初始化
+    //  function queuingReadHospitalBooking(selectHospitalId) {
+    //      $("#"+selectHospitalId).html('');
+    //      $.ajax({
+    //          type: "get",
+    //          url: config + "/sys/hospital/list",
+    //          async: false,
+    //          dataType: "jsonp",
+    //          jsonp: "jsoncallback",
+    //          data: {},
+    //          success: function(data) {
+    //              console.log(data);
+    //              if(data.status==1){
+    //                  var hospitalList=data.resultMap.hospitalList;
+    //                  if(hospitalList!=null){
+    //                      for(var s=0;s<hospitalList.length;s++){
+    //                          var hospitalHtml='';
+    //                          hospitalHtml+='<option value="'+hospitalList[s].id+'">'+hospitalList[s].name+'</option>';
+    //                          $("#"+selectHospitalId).append(hospitalHtml);
+    //                      }
+    //                  }
+    //                  $("#"+selectHospitalId).val(hospitalChosedId);
+    //              }
+    ////              techOfficeBooking($("#"+selectHospitalId).val(),techOfficeDivId,deoctorDivId);
+    //          },
+    //      });
+    //  }
+    //指定科室初始化
+    //  function queuingTechOfficeBooking(selectHosId,techOfficeDivId){//参数为当前选择上的医院的id和科室的select的id
+    //      $("#"+techOfficeDivId).html('');
+    //      $.ajax({
+    //          type: "get",
+    //          url: config + "/sys/section/list",
+    //          async: false,
+    //          dataType: "jsonp",
+    //          jsonp: "jsoncallback",
+    //          data: {fkHospitalId:selectHosId},
+    //          success: function(data) {
+    //              console.log(data);
+    //              if(data.status==1){
+    //                  var sectionList=data.resultMap.sectionList;
+    //                  if(sectionList!=null) {
+    //                      for (var t = 0; t < sectionList.length; t++) {
+    //                          var techOfficeHtml = '';
+    //                          techOfficeHtml += '<option value="' + sectionList[t].id + '">' + sectionList[t].name + '</option>';
+    //                          $("#"+techOfficeDivId).append(techOfficeHtml);
+    //                      }
+    //                  }
+    //                  $("#"+techOfficeDivId).val(techOfficeId);
+    ////                  theDoctorBooking($("#"+techOfficeDivId).val(),deoctorDivId);
+    //              }
+    //          },
+    //      });
+    //  }
+    //指定医生初始化
+    //  function queuingTheDoctorBooking(selectTechOfficeId,deoctorDivId){//参数为当前选择上科室的select的id
+    //      $("#"+deoctorDivId).html('');
+    //      $.ajax({
+    //          type: "get",
+    //          url: config + "/sys/user/list",
+    //          async: false,
+    //          dataType: "jsonp",
+    //          jsonp: "jsoncallback",
+    //          data: {
+    //              type:1,
+    //              fkSectionId:selectTechOfficeId
+    //          },
+    //          success: function(data) {
+    //              console.log(data);
+    //              if(data.status==1){
+    //                  var fkUserList=data.resultMap.userList;
+    //
+    //                  if(fkUserList!=null) {
+    //                      for (var t = 0; t < fkUserList.length; t++) {
+    //                          var techOfficeHtml = '';
+    //                          techOfficeHtml += '<option value="' + fkUserList[t].id + '">' + fkUserList[t].userName + '</option>';
+    //                          $("#"+deoctorDivId).append(techOfficeHtml);
+    //                      }
+    //                      $("#"+deoctorDivId).find('option[value="'+doctorId+'"]').attr("selected",true);
+    //                  }
+    //              }
+    //          },
+    //      });
+    //  }
+
+    var queuingSearchHospitalId = "";
+    var queuingSearchSectionId = "";
+    var queuingSearchUserId = "";
+    //点击搜索里的医院
+    //$("#queuingHosSelect").change(function(){
+    //	$("#queuingDoctorSelect").html("");
+    //	queuingTechOfficeBooking($("#queuingHosSelect").val(),"queuingSectionSelect");
+    //	queuingSearchHospitalId=$("#queuingHosSelect").val();
+    //	searchQueuingList();
+    //})
+    //$("#queuingSectionSelect").change(function(){
+    //  //联动查询 此医院下的医生
+    //  queuingSearchSectionId=$("#queuingSectionSelect").val();
+    //  theDoctorBooking(queuingSearchSectionId,"queuingDoctorSelect");
+    //  queuingSearchHospitalId=$("#queuingHosSelect").val();
+    //	queuingSearchSectionId=$("#queuingSectionSelect").val();
+    //	searchQueuingList();
+    //});
+    //$("#queuingDoctorSelect").change(function(){
+    //  //联动查询 此医院下的医生
+    //  queuingSearchHospitalId=$("#queuingHosSelect").val();
+    //	queuingSearchSectionId=$("#queuingSectionSelect").val();
+    //	queuingSearchUserId=$("#queuingDoctorSelect").val();
+    //	searchQueuingList();
+    //});
+
+    //根据患者姓名查询
+    $('#queuingSearchPatientName').bind('keyup', function (event) {
+        if (event.keyCode == "13") {
+            //回车执行查询
+            searchPatientName = $("#queuingSearchPatientName").val();
+//	alert(searchPatientName);
+            searchQueuingList();
+        }
+    });
+    //点击搜索的查询
+    $("#topSearchBtns").click(function () {
+        searchPatientName = $("#queuingSearchPatientName").val();
+//	alert(searchPatientName);
+        searchQueuingList();
+    });
+    //  点击删除按钮
+    $(document).on("click", ".queuingBtn-del", function () {
+        var subscribeListHiddenListId = $(this).parent().parent().find(".queuingHiddenListIdToChange").text().trim();//id
+        $(".subscribeListhiddenDelId").text(subscribeListHiddenListId);
+        $("#queuingLight2").fadeIn();
+        $("#queuingFade").fadeIn();
+        $(".delToHiddenIdForQueuing").text(subscribeListHiddenListId);
+    });
+    //点击确认删除
+    $("#queuingDel-yes").click(function () {
+        var ids = $(".delToHiddenIdForQueuing").text().trim();
+//  	alert(user.id);
+//  	alert("此功能维护中......");
+        $.ajax({
+            type: "get",
+            url: config + "/oa/interrogationInfo/remove",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data: {
+                inteId: ids,
+                state: "3",
+                actionUserId: user.id
+            },
+            success: function (data) {
+                console.log(data);
+                if (data.status == 1) {
+                    alert(data.message);
+                    $("#queuingLight2").css("display", "none");
+                    $("#queuingFade").css("display", "none");
+                    searchQueuingList();
+                } else {
+                    alert(data.message);
+                }
+            },
+        });
+    });
+</script>
+</body>
+</html>

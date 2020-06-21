@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>新增患者</title>
+		<!-- 引入组件CSS库 -->
+		<link rel="stylesheet" type="text/css" href="../css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/layui.mobile.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/default/layer.css"/>
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/init.css"/>
+		<!-- 顶部内容CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/navbar.css">
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../font/iconfont.css">
+		<!-- 本页CSS -->
+		<link type="text/css" rel="stylesheet" href="css/registrationVisits.css"/>
+		<!-- 底部按钮CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/bottomBtn.css"/>
+		<!--引入JQ库-->
+		<script type="text/javascript" src="../js/config.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../js/layer.js"></script>
+		<!--页面跳转方法JS-->
+		<script type="text/javascript" src="../js/jumpPage.js"></script>
+		<!--本页JS-->
+		<script type="text/javascript" src="js/registrationVisits.js" ></script>
+	</head>
+	<body>
+		<!-- 2019-05-16完成 -->
+		<!-- <div style="width: 100%;height: 40px;"></div> -->
+		<!-- 顶部内容 -->
+		<div class="header">
+			<div class="navbar">
+				<div class="navtitle">
+					<span class="title">就诊登记</span>
+				</div>
+				<div class="right-close-btn">
+					<button type="button" class="closebtn btn">关闭</button>
+				</div>
+			</div>
+		</div>
+		<!-- 内容区域 -->
+		<div class="wrapper">
+			<div class="essential">
+				<!-- <img src="../img/user.png" alt="这是一个头像图片" title="这是一个头像图片"> -->
+				<form enctype="multipart/form-data">
+					<p>
+						<span><b class="bt">*</b>手机号</span>
+						<span>
+							<!--1371111360-->
+							<input type="number" name="mobile" maxlength="30" pattern="[0-9]*" id="" value="" placeholder="请输入手机号" class="phone" oninput="if(value.length>12)value=value.slice(0,12)"/>
+						</span>
+					</p>
+					<p>
+						<span><b class="bt">*</b>身份证号</span>
+						<span class="IDcardBox">
+							<input type="text" name="idCode" maxlength="36" id="" pattern="[0-9]*" value="" placeholder="请输入身份证" class="IDcard" oninput="if(value.length>19)value=value.slice(0,19)"/>
+						</span>
+					</p>
+					<p>
+						<span><b class="bt">*</b>患者姓名</span>
+						<span>
+							<!--张三-->
+							<input type="text" name="name" maxlength="50" id="" value="" placeholder="请输入患者姓名" class="username"/>
+							<!-- <i class="iconfont">&#xe626;</i> -->
+						</span>
+					</p>
+					
+					<!-- <p>
+						<span>ID</span>
+						<span>2019年3月20日 周三 17:50</span>
+					</p> -->
+					<p>
+						<span><b class="bt">*</b>性别</span>
+						<span class="sexBox">
+							<!--女-->
+							<i class="iconfont active" data-num="1">&#xe677;</i>
+							<span>男</span>
+							<i class="iconfont" data-num="2">&#xe678;</i>
+							<span>女</span>
+						</span>
+					</p>
+					<p>
+						<span><b class="bt">*</b>年龄(岁)</span>
+						<span>
+							<!--24-->
+							<input type="number" name="age" maxlength="10" id="" pattern="[0-9]*" value="" placeholder="请输入年龄" class="age" oninput="if(value.length>4)value=value.slice(0,4)"/>
+						</span>
+					</p>
+					<!--<p>
+						<span>身份证号</span>
+						<span class="IDcardBox">
+							<input type="text" name="idCode" maxlength="36" id="" pattern="[0-9]*" value="" placeholder="请输入身份证" class="IDcard" oninput="if(value.length>19)value=value.slice(0,19)"/>
+						</span>
+					</p>-->
+				</form>
+			</div>
+			<!-- 内容底部 -->
+			<div class="content-footer">
+				<div class="contentFooterBox">
+					<p>
+						<span>机构： <span id="organ"></span></span>
+					</p>
+					<p>
+						<span>医生： <span id="people"></span></span>
+					</p>
+					<p>
+						<span>日期： <span id="time"></span></span>
+					</p>
+				</div>	
+				<div class="contentFooterBtn">
+					<button type="button" class="submitbtn">确定</button>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="contentFooterBtn">
+			<button type="button" class="sumbitbtn">确定</button>
+		</div> -->
+		
+		<script type="text/javascript">
+//			registerMsg("13100000004", 170);
+			function registerMsg(sesId, id, disid, organ, people, time){
+				var sesid = sesId;
+				var organ = organ;
+				var people = people;
+				var time = time;
+				// alert(sessionStorage.getItem("sessionId"));
+				$(".submitbtn").click(function(){
+			//		console.log($(".active").next("span").text())
+					// console.log(typeof String($(".phone").val()));
+					// var birthday = new Date("2019/05/19");
+					// var statusStr = "结束就诊";
+					// sessionStorage.setItem("status", statusStr);
+					// if ($('.username').val() == "") {
+					// 	layer.msg("姓名不能为空");
+					// 	// $('.username').css({"border": "1px dashed #cc5965"});
+					// 	$('.username').focus();
+					// }
+					var agent = navigator.userAgent.toLowerCase();
+			        var android = agent.indexOf("android");
+			        var iphone = agent.indexOf("iphone");
+			        var ipad = agent.indexOf("ipad");
+					var mPattern = /^1[345789]\d{9}$/;
+					var cP = /^(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}[0-9Xx]$)$/;
+					var Cnumber = /^[0-9]*$/;
+					if (android != -1) {
+						//包含中文正则						
+						var cnPattern = /[\u4E00-\u9FA5]/;
+						// var username = cnPattern.test($('.username').val());
+						var username = $('.username').val()
+						if (username == "") {
+							layer.msg("姓名不能为空,请重新输入");
+							return false;
+						}
+						//手机号验证
+						$(".phone").blur(function(){							
+							if ($(this).val().length > 11) {
+								layer.msg("您输入的手机号长度过长!");
+								return false;
+							}
+							if ($(this).val().length < 11) {
+								layer.msg("您输入的手机号长度不够!");
+								return false;
+							}							
+						});
+						if ($('.phone').val() == "") {
+							layer.msg("手机号不能为空,请重新输入");
+							return false;
+						}
+						if (!(mPattern.test($(".phone").val()))) {
+							layer.msg("您输入的手机号错误!");
+							return false;
+						}
+						//身份证验证
+						$(".IDcard").blur(function(){
+							if ($(this).val().length > 18) {
+								layer.msg("您输入的身份证号长度过长!");
+								return false;
+							}
+							if ($(this).val().length < 18) {
+								layer.msg("您输入的身份证号长度不够!");
+								return false;
+							}							
+						});
+						if ($('.IDcard').val() == "") {
+							layer.msg("身份证号不能为空,请重新输入");
+							return false;
+						}
+						if (!(cP.test($('.IDcard').val()))) {
+							layer.msg("您输入的身份证号错误!");
+							return false;
+						}
+						//年龄验证
+						$(".age").blur(function(){
+							if ($(this).val().length > 3) {
+								layer.msg("您输入的年龄错误!");
+								return false;
+							}							
+						});
+						if ($(".age").val() == "") {
+							layer.msg("年龄不能为空,请重新输入");
+							return false;
+						}
+						if (!(Cnumber.test($(".age").val()))) {
+							layer.msg("您输入的年龄错误!");
+							return false;
+						}
+						$.ajax({
+							type: "get",
+							url:  config + "/oa/patinfo/save",
+							async: true,
+							dataType: "JSON",
+							contentType: "application/json; charset=utf-8",//传到后台的数据格式
+							data:{
+								'sessionId': sesid,
+								'name': $('.username').val(),
+								'mobile': $('.phone').val().toString(),
+								'sex': $('.active').next('span').text(),
+								'age': $('.age').val(),
+								'idCode': $('.IDcard').val()
+							},
+							success: function(data){
+								console.log(data);
+								if(data.status == 1){
+									layer.msg(data.message);
+									android.GoBack(data.message);
+								}else{
+									layer.msg(data.message);
+								}
+							},
+							error: function(data){
+								console.log(data);
+								if(data.status == 2){
+									layer.msg(data.message);
+								}
+							}
+						});
+					}
+					if (iphone != -1 || ipad != -1) {
+						//包含中文正则
+						var cnPattern = /[\u4E00-\u9FA5]/;
+						// var username = cnPattern.test($('.username').val());
+						var username = $('.username').val()
+						if (username == "") {
+							layer.msg("姓名不能为空,请重新输入");
+							return false;
+						}
+						//身份证号（18位）正则
+						$(".IDcard").blur(function(){
+							if ($(this).val().length > 18) {
+								layer.msg("您输入的身份证号长度过长!");
+								return false;
+							}
+							if ($(this).val().length < 18) {
+								layer.msg("您输入的身份证号长度不够!");
+								return false;
+							}							
+						});
+						var IDcard = cP.test($('.IDcard').val());
+						if ($('.IDcard').val() == "") {
+							layer.msg("身份证号不能为空,请重新输入");
+							return false;
+						}
+						if (!IDcard) {
+							layer.msg("身份证号输入错误,请重新输入");
+							return false;
+						}
+						// 年龄
+						$(".age").blur(function(){
+							if ($(this).val().length > 3) {
+								layer.msg("您输入的年龄错误!");
+								return false;
+							}							
+						});
+						if ($(".age").val() == "") {
+							layer.msg("年龄不能为空,请重新输入");
+							return false;
+						}
+						//手机号正则						
+						$(".phone").blur(function(){							
+							if ($(this).val().length > 11) {
+								layer.msg("您输入的手机号长度过长!");
+								return false;
+							}
+							if ($(this).val().length < 11) {
+								layer.msg("您输入的手机号长度不够!");
+								return false;
+							}							
+						});
+						var mobile = mPattern.test($('.phone').val());
+						if ($('.phone').val() == "") {
+							layer.msg("手机号不能为空,请重新输入");
+							return false;
+						}
+						if (!mobile) {
+							layer.msg("手机号输入错误,请重新输入");
+							return false;
+						}
+						$.ajax({
+							type: "get",
+							url:  config + "/oa/patinfo/save",
+							async: true,
+							dataType: "JSON",
+							contentType: "application/json; charset=utf-8",//传到后台的数据格式
+							data:{
+								'sessionId': sesid,
+								'name': $('.username').val(),
+								'mobile': $('.phone').val().toString(),
+								'sex': $('.active').next('span').text(),
+								'age': $('.age').val(),
+								'idCode': $('.IDcard').val()
+							},
+							success: function(data){
+								console.log(data);
+								if(data.status == 1){
+									layer.msg(data.message);
+									setTimeout(function(){
+										backAction();
+									},2000);									
+								}else{
+									layer.msg(data.message);
+								}
+							},
+							error: function(data){
+								console.log(data);
+								if(data.status == 2){
+									layer.msg(data.message);
+								}
+							}
+						});
+					}
+//			        if(android != -1){
+//			//             equipmentType = "android";
+//						// $(".chooseImage").click(function(){
+//						// 	android.HeadImage(eleId);
+//						// })
+//						
+//						//android.HeadImage(eleId);
+//						$("#phone").focus(function(){							
+//							if ($(this).val().length > 11) {
+//								$(this).blur();
+//							}
+//							if ($(this).val().length < 11) {
+//								$(this).blur();
+//								layer.msg("您输入的手机号错误!");
+//							}
+//							if (mPattern.test($(this).val())) {
+//								$(this).blur();
+//								layer.msg("您输入的手机号错误!");
+//							}
+//						});
+//						$("#IDcard").focus(function(){
+//							if ($(this).val().length > 18) {
+//								$(this).blur();
+//							}
+//							if ($(this).val().length < 18) {
+//								$(this).blur();
+//								layer.msg("您输入的身份证号长度不够!");
+//							}
+//							if (cP.test($(this).val())) {
+//								$(this).blur();
+//								layer.msg("您输入的身份证号错误!");
+//							}
+//						});
+//						$("#age").focus(function(){
+//							if ($(this).val().length > 3) {
+//								$(this).blur();
+//							}
+//							if (Cnumber.test($(this).val())) {
+//								$(this).blur();
+//								layer.msg("您输入的年龄错误!");
+//							}
+//						});
+//			        }
+					//包含中文正则
+//					var cnPattern = /[\u4E00-\u9FA5]/;
+//					// var username = cnPattern.test($('.username').val());
+//					var username = $('.username').val()
+//					if (username == "") {
+//						layer.msg("姓名不能为空,请重新输入");
+//						return false;
+//					}
+//					//身份证号（18位）正则
+//					var cP = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+//					var IDcard = cP.test($('.IDcard').val());
+//					if ($('.IDcard').val() == "") {
+//						layer.msg("身份证号不能为空,请重新输入");
+//						return false;
+//					}
+//					if (!IDcard) {
+//						layer.msg("身份证号输入错误,请重新输入");
+//						return false;
+//					}
+//					// 年龄
+//					if ($(".age").val() == "") {
+//						layer.msg("年龄不能为空,请重新输入");
+//						return false;
+//					}
+//					//手机号正则
+//					var mPattern = /^1[34578]\d{9}$/; 
+//					var mobile = mPattern.test($('.phone').val());
+//					if ($('.phone').val() == "") {
+//						layer.msg("手机号不能为空,请重新输入");
+//						return false;
+//					}
+//					if (!mobile) {
+//						layer.msg("手机号输入错误,请重新输入");
+//						return false;
+//					}
+//					$.ajax({
+//						type: "get",
+//						url:  config + "/oa/patinfo/save",
+//						async: true,
+//						dataType: "JSON",
+//						contentType: "application/json; charset=utf-8",//传到后台的数据格式
+//						data:{
+//							'sessionId': sesid,
+//							'name': $('.username').val(),
+//							'mobile': $('.phone').val().toString(),
+//							'sex': $('.active').next('span').text(),
+//							'age': $('.age').val(),
+//							'idCode': $('.IDcard').val()
+//						},
+//						success: function(data){
+//							console.log(data);
+//							if(data.status == 1){
+//								layer.msg(data.message);
+//								setTimeout(function(){
+//									// $(location).prop('href', "../patient/patient.html");
+//									backAction();
+//								},2000);
+//								android.GoBack(data.message);
+//								// var isAndroid;//是否是android设备
+//								// if (/android/i.test(navigator.userAgent)){
+//								// //判断为android
+//								// 	isAndroid = true;
+//								// 	alert("---");
+//								// }else if(/ipad|iphone/i.test(navigator.userAgent)){
+//								// 	isAndroid = false;
+//								// }else{
+//								// 	isAndroid = false;
+//								// }
+//								// if(isAndroid){
+//								// 	window.android.GoBack();
+//								// }
+//// 								else{
+//// 
+//// 								<!--window.webkit.messageHandlers.方法名.postMessage('参数')-->
+//// 								window.webkit.messageHandlers.jsCallWebView.postMessage('我是参数ios');
+//// 
+//// 								}
+//							}else{
+//								layer.msg(data.message);
+//							}
+//						},
+//						error: function(data){
+//							console.log(data);
+//							if(data.status == 2){
+//								layer.msg(data.message);
+//							}
+//						}
+//					});
+				})				
+				$("#organ").text(organ);
+				$("#people").text(people);
+				$("#time").text(time);
+			}
+		</script>
+	</body>
+</html>

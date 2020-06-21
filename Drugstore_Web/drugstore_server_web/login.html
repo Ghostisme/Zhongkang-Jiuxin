@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>金诃连锁药店后台管理系统 - 登录</title>
+	<meta name="keywords" content="金诃连锁药店后台管理系统">
+	<meta name="description" content="金诃连锁药店后台管理系统">
+
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+	<link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+	<link href="css/animate.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/jigsaw.css" />
+	<link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+	<link rel="stylesheet" href="css/login.css" />
+	<base target="_blank">
+	<!--[if lt IE 8]>
+	<meta http-equiv="refresh" content="0;ie.html"/>
+	<![endif]-->
+	<!--<script>if(window.top !== window.self){ window.top.location = window.location;}</script>-->
+</head>
+
+<body>
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+	<header>
+		<div class="headers">
+			<div class="lf logoImg">
+				<img src="img/login/logo.png" alt=""/>
+				<i class="rt"></i>
+			</div>
+			<div class="lf systemName">
+				<div class="systemChinaName">金诃连锁药店</div> 
+				<div class="systemEName">JINHE CHAIN DRUGSTORE</div>
+			</div>
+			<div class="rt companyWeb">
+				<!--<div class="companyWebTxt rt">400-666-8888</div>
+				<img src="img/login/telImg.png" alt=""class="rt" />-->
+			</div>
+		</div>
+
+	</header>
+	<div id="formContents">
+		<!--<div id="loginCompanyName">中康九和远程医疗管理系统</div>-->
+		<div class="sectionForm">
+			<form id="loginForm" class="m-t rt animated fadeInDown" action="home.html" target="_self" onsubmit="return false">
+				<div id="loginTxts">
+					用户登录
+				</div>
+				<div id="formStyle">
+					<div class="form-group inputDivs">
+						<input name="userCode" type="text" class="form-control lf" placeholder="用户名" required=""id="userName">
+						<div class="ImgDiv rt"style="background: #fff;">
+							<img src="img/userNameImg.png" alt="" class="inputsImg"/>
+						</div>
+					</div>
+					<div class="form-group inputDivs">
+						<input name="pwd" type="password" class="form-control lf" placeholder="密码" required=""id="userPwd">
+						<div class="ImgDiv rt"style="background: #fff;">
+							<img src="img/passwordImg.png" alt="" class="inputsImg"/>
+						</div>
+					</div>
+					<p class="text-muted text-center">
+						<!--<a href="login.html#">
+							<small>忘记密码了？</small>
+						</a>-->
+					</p>
+					<button type="submit" class="btn btn-primary block full-width m-b"id="loginBtns"style="position: static;color: #fff;">登 录</button>
+
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+<!--滑块验证层-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<!--<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">验证</h4>
+            </div>  -->
+			<div class="modal-body">
+				<div id="captcha"style="position:relative;"></div>
+				<div id="msg"></div>
+			</div>
+			<!--<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>  -->
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="footerTxt">
+		<a href="http://www.beian.miit.gov.cn"> 津ICP备18005902号-2 </a>
+	</div>
+</footer>
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.5"></script>
+<!--<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>-->
+<script src="js/jigsaw.js"></script>
+<script src="js/config.js"></script>
+<script src="js/commonNew.js"></script>
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+
+<script>
+    $(function () {
+        var e = "<i class='fa fa-times-circle'></i> ";
+        //仓库保存验证
+        var loginForm = $("#loginForm").validate({
+            submitHandler: function (form) {
+                $('#myModal').modal('toggle');
+            },
+            rules: {
+                userCode: {//
+                    required: !0
+                },
+                pwd: {
+                    required: !0
+                }
+            },
+            messages: {
+                userCode: {
+                    required: e + "请输入账号"
+                },
+                pwd: {
+                    required: e + "请输入密码"
+                }
+            }
+        });
+    });
+
+    function onFromSubmit() {
+        var params = $('#loginForm').serializeArray();
+        var jsonData = regroupFormData(params);
+        console.log('/sys/account/checkLogin--Data:::', jsonData);
+        ajaxGet('/sys/account/checkLogin', jsonData, function (data) {
+            if (data.status == 1) {
+                console.log('/sys/account/checkLogin:::', data);
+                sessionStorage.setItem('sessionId', data.resultMap.sessionId);
+                sessionStorage.setItem('user', JSON.stringify(data.resultMap.userDO));
+                sessionStorage.setItem('userId', data.resultMap.userDO.id);
+                //获取菜单数据
+                getMenoGoto(data.resultMap.sessionId);
+
+            } else {
+                console.log('/sys/account/checkLogin-error:::',data.message);
+                alert(data.message);
+//                 location.href='login.html';
+                $('#myModal').modal('toggle');
+                $("#captcha").empty();
+                jigsaw.init(document.getElementById('captcha'),function(){
+                    onFromSubmit();
+                });
+            }
+        });
+    }
+    function getMenoGoto(sessionId) {
+        if (sessionId == null) {
+            return;
+        }
+        var jsonData = {
+            'sessionId': sessionId
+        };
+        ajaxGet('/sys/menu/main', jsonData, function (data) {
+            if (data.status == 1) {
+                // alert("coming.......");
+                var hashMap = data.resultMap.leftMenuMap;
+                sessionStorage.setItem('menoHashMap', JSON.stringify(hashMap));
+                document.getElementById('msg').innerHTML = '登录成功！'
+                location.href='home.html';
+            } else {
+                console.log('/sys/menu/main-error:::',data.message);
+                alert(data.message);
+            }
+        });
+    }
+    jigsaw.init(document.getElementById('captcha'), function () {
+        onFromSubmit();
+    })
+</script>
+</body>
+</html>

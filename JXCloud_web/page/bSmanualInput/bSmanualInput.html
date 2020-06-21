@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>血糖手动输入</title>
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../../css/init.css">
+		<!-- 顶部内容CSS -->
+		<!--<link rel="stylesheet" type="text/css" href="../../css/navbar.css">-->
+		<!-- 本页面CSS -->
+		<link rel="stylesheet" type="text/css" href="css/bSmanualInput.css"/>
+		<!--选择CSS-->
+		<!--<link rel="stylesheet" type="text/css" href="../../css/mobileSelect.css" />-->
+		<!-- 遮罩层CSS -->
+		<!--<link rel="stylesheet" type="text/css" href="../../css/mask.css"/>-->
+		<!--<link rel="stylesheet" type="text/css" href="css/maskcontent.css"/>-->
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../../fonts/iconfont.css">
+		<!-- 搜索框CSS -->
+		<!--<link rel="stylesheet" type="text/css" href="../../css/search.css">-->
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<!--引入选择插件-->
+		<!--<script type="text/javascript" src="../../js/mobileSelect.js" ></script>-->
+		<!-- 页面跳转方法JS -->
+		<!--<script type="text/javascript" src="../../js/jumpPage.js"></script>-->
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/bSmanualInput.js" ></script>
+	</head>
+	<body>
+		<!-- 2019-05-20 -->
+		<!-- 顶部内容 -->
+		<div class="header">
+			<div class="navbar">
+				<div class="navbackbtn">
+					<i class="iconfont gobackBtn">&#xe624;</i>
+				</div>
+				<div class="navtitle">
+					<span class="title">手动输入</span>
+				</div>
+				<div class="right-close-btn">
+					<button type="button" class="closebtn">保存</button>
+				</div>
+			</div>
+		</div>
+		<!-- 内容区域 -->
+		<div class="wrapper">
+			<div class="content">
+				<p>
+					<span>血糖</span>
+					<span>
+						<input type="text" name="" id="" value="" placeholder="请输入检测数值" class="sugarValue"/>
+						（mmol/L）
+					</span>
+					<span>餐前/餐后</span>
+					<span class="trigger1">
+						<select>
+							<!--<option>请选择</option>-->
+							<option>餐前</option>
+							<option>餐后</option>
+						</select>
+					</span>
+				</p>
+				<!--<p>
+					<span>餐前/餐后</span>
+					<span class="trigger1">
+						 <input type="text" name="" id="" value="" placeholder="请输入检测数值"/> 
+						 <select>
+							<option>请选择</option>
+							<option>餐前</option>
+							<option>餐后</option>
+						</select> 
+						请选择
+					</span>
+				</p>-->
+				<p class="box2 remarksBox">
+					<span class="memotitle remarkstitle">备注</span>
+					<textarea placeholder="请输入备注信息..." class="memo"></textarea>
+				</p>
+				<!--<div class="remarkstitle">备注</div>
+				<div class="remarksBox">
+					<textarea placeholder="请输入备注信息..."></textarea>
+				</div>-->
+			</div>
+		</div>
+		<!--<button type="button" class="click">click</button>-->
+		
+		<!-- 遮罩层内容 -->
+		<!--<div class="mask">
+			<div class="dateBox">
+				<div class="btngroup">
+					<span>取消</span>
+					<span>确定</span>
+				</div>
+				<div class="eatchoose">
+					<ul>
+						<li>餐前</li>
+						<li>餐后</li>
+					</ul>
+				</div>
+			</div>
+		</div>-->
+	</body>
+</html>

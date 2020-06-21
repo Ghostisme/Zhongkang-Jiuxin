@@ -1,0 +1,100 @@
+/* 顶部编辑/保存按钮 */
+.navbar{
+	position: relative;
+}
+.right-edit-btn{
+	position: absolute;
+	right: 0.45rem;
+}
+.right-edit-btn .editbtn{
+	background-color: transparent;
+	border: 0;
+	font-weight: 600;
+	font-size: 0.45rem;
+	color: #2292FE;
+}
+.right-edit-btn .editbtn:focus{
+	outline: none;
+}
+
+/* 内容区域 */
+/* 通用的 */
+.wrapper .box{
+	/* padding: 0.3rem 0.45rem 0rem; */
+	padding: 0.3rem 0rem 0rem 0.45rem;
+	border-bottom: 0.425rem solid #F5F5F5;
+}
+.wrapper .box .Title{
+	display: flex;
+	/* justify-content: space-between; */
+	justify-content: flex-start;
+	text-align: left;
+	font-size: 0.4rem;
+	/* font-weight: 600; */
+	/* text-shadow: 0 0 0.0125rem rgba(0,0,0,1) */
+}
+.wrapper .box .Content{
+	/* border-bottom: 1px solid #DEDBDB; */
+}
+.wrapper .box .Content ul{
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+.wrapper .box .Content ul li{
+	float: left;
+	background-color: #f3f1f1;
+	color: #656565;
+	border-radius: 0.15rem;
+	padding: 0.15rem 0.4rem 0.15rem;
+	font-size: 0.45rem;
+	margin: 0.2rem 0.325rem 0.2rem 0rem;
+}
+/* .wrapper .box .Content>p{
+	display: flex;
+	justify-content: space-between;
+	text-align: left;
+}
+.wrapper .box .Content p span{
+	display: block;
+	background-color: #f3f1f1;
+	color: #656565;
+	border-radius: 0.3rem;
+	padding: 0.3rem 0.5rem;
+	font-size: 0.9rem;
+} */
+.wrapper .box .remarks{
+	margin-right: 0.45rem;
+}
+.wrapper .box .remarks textarea{
+	margin-top: 0.275rem;
+	margin-bottom: 0.275rem;
+	width: 100%;
+	height: 5rem;
+	text-align: left;
+	/* text-indent: 0.25rem; */
+	font-size: 0.45rem;
+	border: 0;
+	/* font-size: 0.4rem; */
+}
+/* 另外的 */
+.wrapper .box .Content ul .active{
+	/* background-color: #DCE7FB; */
+	background-color: #2292FE;
+	/* color: #2292FE; */
+	color: #FFFFFF;
+}
+.memoNum{
+	font-size: 0.45rem;
+	/* padding-top: 0.075rem; */
+	/* margin-right: 0.65rem; */
+	color: #666666;
+	
+}
+
+
+
+/* 一期暂时不用的 */
+.Content ul{
+	display: none;
+}

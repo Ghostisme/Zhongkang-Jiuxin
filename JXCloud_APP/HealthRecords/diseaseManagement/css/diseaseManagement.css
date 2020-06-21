@@ -1,0 +1,61 @@
+.wrapper{
+	background-color: #F5F5F5;
+}
+.wrapper>div{
+	background-color: #FFFFFF;
+}
+.wrapper .box{
+	background-color: #FFFFFF;
+	padding: 0.45rem 0.45rem 0.375rem;
+	margin-bottom: 0.425rem;
+	display: flex;
+	justify-content: space-between;
+}
+.wrapper .box .Title{
+	text-align: left;
+	font-size: 0.45rem;
+	/*text-shadow: 0 0 0.0125rem rgba(0,0,0,1);*/
+	/* font-weight: 600; */
+	
+}
+.wrapper .box .Title p{
+	text-align: left;
+	font-size: 0.45rem;
+	/* margin: 0; */
+}
+.wrapper .box .Title p:last-of-type{
+	font-size: 0.325rem;
+	color: #A0A0A0;
+}
+/* 家族史通用CSS */
+/* .wrapper .box .Box{
+	display: flex;
+	justify-content: space-between;
+} */
+.familyHistoryBox{
+	margin-bottom: 0.425rem;
+}
+.familyHistoryBox .line{
+	margin-left: 0.45rem;
+	border: 0;
+	border-bottom: 1px solid #EDEDED;
+}
+.familyHistoryBox .Title p{
+	margin: 0;
+}
+.familyHistory i{
+	font-size: 0.45rem;
+	vertical-align: -0.15rem;
+	color: #C3C3C3;
+}
+
+.hypertensionBox .hypertensionTitle,
+.diabetesBox .diabetesTitle{
+	font-weight: bold;
+}
+
+
+/*初始隐藏内容*/
+div[class*="contentBox"]{
+	display: none;
+}

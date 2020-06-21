@@ -1,0 +1,306 @@
+
+/* 内容样式 */
+/*.wrapper{
+	background-color: #f5f5f5;
+}
+.wrapper>div{
+	background-color: #FFFFFF;
+}*/
+/* 基本信息内容盒子 */
+/*.basic-data-box{
+	margin-bottom: 0.425rem;
+}*/
+.basic-data-box p{
+	/*display: flex;
+	justify-content: space-between; 
+	margin: 40px 40px 20px 40px;
+	text-align: center;*/
+	/*padding-bottom: 0.35rem;
+	margin-left: 0.45rem;
+	margin-top: 0rem;
+	margin-bottom: 0.28rem;*/
+}
+/*.basic-data-box p:nth-of-type(1){
+	padding-top: 0.6rem;
+}*/
+/*.basic-data-box p:not(:last-of-type){
+	border-bottom: 1px solid #EDEDED;
+}*/
+/*.basic-data-box p span{
+	display: block;
+	width: 30%;
+}*/
+body{
+	background-color: #FFFFFF;
+}
+.basic-data-box div{
+	display: flex;
+	justify-content: space-between; 
+	margin: 20px 40px 20px 40px;
+	width: 50%;
+}
+.basic-data-box div p{
+	width: 30%;
+	text-align: left;
+	margin: 0;
+}
+/*.basic-data-box div:nth-of-type(2){
+	border-bottom: 1px solid rgb(1, 142, 234);
+	padding-bottom: 20px;
+}*/
+.basic-data-box{
+	border-bottom: 1px solid #ccc;
+}
+/*.basic-data-box p span:nth-of-type(3){
+	margin-left: 10%;
+}
+.basic-data-box p span:nth-of-type(4){
+	margin-right: 10%;
+}*/
+.basic-data-box p span:nth-of-type(odd){
+	text-align: left;
+	font-size: 14px;
+}
+.basic-data-box p span:nth-of-type(even){
+	/*color: #727377;
+	text-align: right;
+	margin-right: 0.45rem;
+	font-size: 0.45rem;*/
+	color: #727377;
+	font-size: 14px;
+}
+/* 血压血糖部分 */
+.bloodPressureBox{
+	/*margin-bottom: 0.425rem;*/
+	margin: 20px 40px 20px 20px;
+}
+.bloodPressureBox .bp-title{
+	text-align: left;
+	/*margin-left: 0.45rem;*/
+	padding: 0.4rem 0;
+	font-weight: 600;
+}
+.bloodPressureBox div p{
+	/*border-bottom: 1px solid #EDEDED;*/
+	margin-left: 0.45rem;
+	padding: 0.35rem 0;
+	display: flex;
+	/*justify-content: space-between;*/
+	justify-content: flex-start;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.bloodPressureBox div p span:nth-of-type(1){
+	text-align: left;
+	margin-right: 10px;
+}
+.bloodPressureBox div p span:nth-of-type(2){
+	color: #727377;
+	text-align: right;
+	margin-right: 0.45rem;
+}
+.bloodPressureBox .blood-pressure p{
+	/*border-bottom: 1px solid #EDEDED;*/
+	margin-left: 0.45rem;
+	padding: 0.35rem 0;
+	display: flex;
+	/*justify-content: space-between;*/
+	justify-content: flex-start;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.bloodPressureBox .blood-pressure p span,
+.bloodPressureBox .blood-sugar p span,
+.bloodPressureBox div p span{
+	display: block;
+	font-size: 14px;
+	margin-right: 10px;
+}
+.bloodPressureBox .blood-pressure p span:nth-of-type(1){
+	text-align: left;
+	margin-right: 5%;
+}
+.bloodPressureBox .blood-pressure p span:nth-of-type(2){
+	color: #727377;
+	text-align: right;
+	margin-right: 0.45rem;
+}
+.bloodPressureBox .blood-sugar p{
+	margin-left: 0.45rem;
+	padding: 0.35rem 0;
+	display: flex;
+	/*justify-content: space-between;*/
+	justify-content: flex-start;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.bloodPressureBox .blood-sugar p span{
+	display: block;
+}
+.bloodPressureBox .blood-sugar p span:nth-of-type(1){
+	text-align: left;
+	margin-right: 5%;
+}
+.bloodPressureBox .blood-sugar p span:nth-of-type(2){
+	color: #727377;
+	text-align: right;
+	margin-right: 0.45rem;
+}
+/* 药品处方 */
+.prescription-box{
+	margin-bottom: 0.425rem;
+}
+.prescription-box .prescription-title{
+	text-align: left;
+	margin-left: 0.45rem;
+	padding: 0.4rem 0;
+	font-weight: 600;
+}
+.prescription-box .prescription-img{
+	text-align: left;
+	margin: 20px 0 0 20px;
+}
+.prescription-box .prescription-img img{
+	width: 2.75rem;
+	height: 2.55rem;
+	margin-left: 0.45rem;
+}
+/* 处方的表格样式 */
+.prescription-content{
+	/* display: flex;
+	justify-content: center; */
+	/* padding-top: 0.775rem; */
+	/*width: 100%;
+	overflow: auto;
+	padding: 0rem 0.45rem 0.775rem;*/
+}
+.prescription-content table{
+	width: 90%;
+	margin-left: 38px;
+}
+.prescription-content table thead tr th{
+	/*font-size: 0.375rem;*/
+	/* background-color: rgba(37,146,254,1); */
+	/*background-color: rgb(212, 212, 212);
+	text-align: left;
+	color: #6d6b6b;*/
+	/* text-align: center; */
+	/* color: #FFFFFF; */
+	/*font-weight: normal;
+	white-space: nowrap;
+	padding: 0.29rem 0.47rem;*/
+}
+/*.prescription-content table tbody tr td{
+	border-bottom: 1px solid #EDEDEF;
+}
+.prescription-content table tbody tr td:first-of-type{
+	border-left: 1px solid #EDEDEF;
+}
+.prescription-content table tbody tr td:last-of-type{
+	border-right: 1px solid #EDEDEF;
+}*/
+/* .prescription-content table thead tr th:not(:last-of-type){
+	border-right: 1px solid #FFFFFF;
+} */
+/*.prescription-content table tbody tr td{
+	font-size: 0.375rem;
+	white-space: nowrap;
+	padding: 0rem 0.45rem;
+	height: 1.025rem;
+	line-height: 1.025rem;
+}
+.prescription-content table tbody tr td:last-of-type{
+	width: 5rem;
+	max-width: 5rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}*/
+/* .prescription-content table thead tr th:nth-of-type(1){
+	padding: 0.7rem 1rem;
+}
+.prescription-content table thead tr th:nth-of-type(3){
+	padding: 0.5rem 1rem;
+	width: 3.75rem;
+}
+.prescription-content table thead tr th:nth-of-type(2){
+	padding: 0.5rem 1rem;
+}
+.prescription-content table thead tr th:nth-of-type(4){
+	padding: 0.5rem 0rem;
+}
+.prescription-content table tbody tr td:nth-of-type(3),
+.prescription-content table tbody tr td:nth-of-type(5){
+	padding: 0.5rem;	
+	width: 3.75rem;
+	min-width: 3.75rem;
+	max-width: 3.75rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.prescription-content table tbody tr td:nth-of-type(2){
+	padding: 0.5rem 1rem;
+}
+.prescription-content table tbody tr td:nth-of-type(4){
+	padding: 0.5rem 1rem;
+	width: 4rem;
+	min-width: 4rem;
+	max-width: 4rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+} */
+.imgtpl{
+	display: none;
+}
+.tabtpl{
+	display: none;
+}
+.bp-tpl{
+	display: none;
+}
+.table>thead>tr>th{
+	padding: 0;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	border: 0;
+	background-color: #e2eff7;
+	text-align: left;
+	color: #000000;
+}
+.table>tbody>tr{
+	border-bottom: 1px solid #eee;
+	font-size: 14px;
+	height: 36px;
+	line-height: 36px;
+}
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
+	padding: 0;
+	height: 36px;
+	border: 0;
+	border-bottom: 1px solid #e7eaec;
+	vertical-align: bottom;
+	line-height: 36px;
+	font-size: 14px;
+	text-align: left;
+	padding-left: 23px;
+}
+.table>tbody>tr>td:nth-of-type(1){
+	border-left: 1px solid #e7eaec;
+}
+.table>tbody>tr>td:nth-of-type(8){
+	border-right: 1px solid #e7eaec;
+}
+.table>thead>tr>th:last-of-type{
+	width: 239px;
+}
+.table>tbody>tr>td:last-of-type{
+	width: 239px;
+	max-width: 239px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

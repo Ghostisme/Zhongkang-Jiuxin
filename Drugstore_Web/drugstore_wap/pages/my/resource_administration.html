@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../styles/common_css/refresh.css">
+		<link rel="stylesheet" href="../../styles/css/resource_administration.css">
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">资源单管理</span>
+		</header>
+		<!--内容-->
+			<div id="pullrefresh"class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view " id="res_list">
+						<!--<li class="mui-table-view-cell mui-media list_height">
+							<div class="delete_up">
+								<a href="../resourceList/resourcelist_detail.html">
+									<div class="resource_info">
+										<div class="mid_div">
+											<span>上传者:</span>
+											<span>德卡夫</span>
+										</div>
+										<div>
+											<span>类型:</span>
+											<span>卷材、涂料、服务</span>
+										</div>
+										<div>
+											<span>上传时间:</span>
+											<span>2017-3-3</span>
+										</div>
+										<div>
+											<span class="introduce_span">说明:</span>
+											<p class="product_introduce">防水材料是一种特殊的针对于防水的材料急死俺撒娇啊飒飒的</p>
+										</div>
+									</div>
+									<span class="listId">137</span>
+								</a>
+								<div class="right_shopcart">
+									<div class="resource_img_div mui-text-center">
+										<div class=" mui-text-center shop-cart">
+											<img src="../../styles/img/resource_img/resource_down.png" />
+										</div>
+										<div class="right_font">
+											<span>已下载</span><span>5</span><span>次</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="delete_div">
+								<div class="delete_border"></div>
+								<div class="delete_font mui-text-center">
+									<span class="mui-icon mui-icon-trash"></span>
+									<span class="delete_font_span">删除</span>
+								</div>
+							</div>
+
+						</li>-->
+					</ul>
+				</div>
+			</div>
+			<div id="uploadResource">
+				<span>我们仅提供免费发布渠道不对资源发布者提供任何审查。<br/>存在的风险及产生的后果由您与发布者自行承担。</span>
+				<div id="up_btn">
+					<a href="../resourceList/resourcelist_upload.html" id="uploadreBtn">上传资源单</a>
+				</div>
+				
+			</div>
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script type="text/javascript" src="../../mui/js/mui.pullToRefresh.js"></script>
+		<script type="text/javascript" src="../../mui/js/mui.pullToRefresh.material.js"></script>
+		<script src="../../common/common.js"></script>
+		<script src="resource_administration.js"></script>
+	</body>
+
+</html>

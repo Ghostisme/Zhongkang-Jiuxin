@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="patientInfoBox">
+			<!--第一行信息-->
+			<div class="patientInfoHead">
+				<div class="patientNanme">
+					<span class="patientNanmeLeft">姓名/身份证号/手机号</span>
+					<input class="patientNanmeRight" type="text" id="ListpatientName" value="" />
+				</div>
+				<div class="patientSex">
+					<span class="patientSexLeft">性别</span>
+					<select name="" class="patientSexRight">
+						<option value=""></option>
+						<option value="男">男</option>
+						<option value="女">女</option>
+					</select>
+				</div>
+				<!-- <div class="patientage">
+					<span class="patientageLeft">年龄</span>
+					<input type="number" id="" value="" class="patientageright" />
+				</div> -->
+				<div class="patientID">
+					<span class="patientIDLeft">年龄</span>
+					<input type="number" id="" value="" class="patientIDright" />
+				</div>
+				<!-- <div class="patientTel">
+					<span class="patientTelLeft">联系电话</span>
+					<input type="text" class="patienTelRight" name="" id="" value="" />
+				</div> -->
+				<button class="patientBtnCheck" id="patientSearchBtns">查询</button>
+				<button class="patientBtnClear" id="patientSearchClearBtn">清空</button>
+				<button class="patientBtnAdd">新增</button>
+			</div>
+			<!--信息列表-->
+			<div class="patientInfoList">
+				<ul class="patientInfoList-ul">
+					<!--<li class="patientInfoList-all">全选</li>-->
+					<li class="patientInfoList-code">ID</li>
+					<li class="patientInfoList-headimg">头像</li>
+					<li class="patientInfoList-name">患者姓名</li>
+					<li class="patientInfoList-sex">性别</li>
+					<li class="patientInfoList-age">年龄</li>
+					<li class="patientInfoList-id">身份证号</li>
+					<li class="patientInfoList-tel">联系电话</li>
+					<li class="patientInfoList-query">查看</li>
+					<li class="patientInfoList-Addr" style="width: 18%;display: none;">家庭住址</li>
+					<li class="patientInfoList-history" style="display: none;">病史</li>
+					<li class="patientInfoList-allergic" style="display: none;">过敏史</li>
+					<li class="patientInfoList-circ" style="width: 7%;display: none;">上传医嘱</li>
+					<li class="patientInfoList-check" style="display: none;">查询</li>
+					<li class="patientInfoList-change" style="display: none;">修改</li>
+					<li class="patientInfoList-del" style="display: none;">删除</li>
+				</ul>
+				<!--列表内容-->
+				<input type="text" style="display: none;" id="formUserId" />
+				<input type="text" style="display: none;" id="formSessionId" />
+				<input type="text" style="display: none;" />
+				<div id="patientInfoContents">
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					<!--<ul class="patientInfoDetail-ul">
+						<li class="patientInfoDetail-radio"><label class="radio"><input type="radio" name="radio" id="" value="" class="radioclass"/><i></i></label></li>
+						<li class="patientInfoDetail-code"><span>1</span></li>
+						<li class="patientInfoDetail-name"><span>某某某</span></li>
+						<li class="patientInfoDetail-sex"><span>男</span></li>
+						<li class="patientInfoDetail-id"><span>120105198506891157</span></li>
+						<li class="patientInfoDetail-tel"><span>13612345678</span></li>
+						<li class="patientInfoDetail-history"><span>糖尿病</span></li>
+						<li class="patientInfoDetail-allergic"><span>无过敏史</span></li>
+						<li class="patientInfoDetail-circ"><a href = "javascript:void(0)" class="btn-circ"><img src="../../img/common/1.jpg"/></a></li>
+						<li class="patientInfoDetail-check"><a href = "javascript:void(0)" class="patientBtn-check"><img src="../../img/common/untitledSearBtn.png"/></a></li>
+						<li class="patientInfoDetail-change"><a href = "javascript:void(0)" class="patientBtn-change"><img src="../../img/common/untitledChangeBtn.png"/></a></li>
+						<li class="patientInfoDetail-del"><a href = "javascript:void(0)" class="patientBtn-del"><img src="../../img/common/untitledDelBtn.png"/></a></li>
+					</ul>-->
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<!--分页-->
+			<div class="patientpageN"></div>
+		</div>
+	</body>
+</html>

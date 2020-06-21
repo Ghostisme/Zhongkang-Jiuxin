@@ -1,0 +1,171 @@
+body{
+	background: #6210b5;
+	background: url("../img/promotion/activityBg.jpg");
+}
+.mui-bar .mui-btn-link{
+	line-height:37px;
+}
+.mui-scroll-wrapper{
+margin-top:40px;	
+}
+#pullrefresh{
+	margin-top:40px;
+}
+.mui-slider-item a img {
+	height:260px;
+}
+.priceAll{
+	text-decoration: line-through;
+	color:gray;
+}
+.productId,.productId{
+	display: none;
+}
+/*商品内容*/
+#res_list{
+	overflow: hidden;
+	margin-left:5px;
+	margin-right:15px;
+}
+#res_list .list_height .pro_info{
+	width:100%;
+	float: left;
+}
+.productImg{
+	/*float: left;*/
+	width:80%;
+	height:110px;
+	margin-right:10px;
+	margin-top:5px;
+	margin:0 auto;
+}
+.productImg img{
+	width:100%;
+	height:110px;
+}
+.fontColors{
+	color:#6210b5;
+	font-size:1.5em;
+	/*font-weight: bold;*/
+	font-family:impact;
+}
+.buyBtn{
+	padding:2px 10px;
+	/*background:#F08115;*/
+	background: #6210b5;
+	color:#fff;
+	border-radius: 5px;
+	float:right;
+	/*margin-left:10px;*/
+}
+.list_height{
+	margin-top:10px;
+	border:0px;
+}
+.mui-table-view-cell:after,.mui-table-view-cell:before{
+	background: none;
+}
+.mui-scroll-wrapper .mui-scroll ul li {
+	width:46.5%;
+    border-radius: 5px;
+    /*background-color: #FFFFFF;*/
+    background-color: #FFE9A4;
+    margin-top: 5px;
+    margin-left: 10px;
+    /*margin-right: 5px;*/
+    float: left;
+}
+.mui-table-view:before,.mui-table-view:after,.mui-table-view {
+	background: none;
+}
+.pro-footer{
+	margin:20px 5px;
+	background: #fff;
+	margin-top:20px;
+	padding:20px;
+}
+.proT{
+	font-family: "微软雅黑";
+	font-size:20px;
+}
+#className{
+	font-size: 0.75em;
+	/*padding-left:20px;*/
+	text-align: center;
+	background: #fff;
+	margin-top:5px;
+	height:30px;
+	line-height: 30px;
+	margin: 5px 6px;
+	font-family: "微软雅黑";
+}
+.limitNum{
+	font-size:0.75em;
+}
+.lastLine{
+	width:106%;
+	overflow: hidden;
+}
+.lastMoney{
+	float:left;
+}
+/*特别说明*/
+.clickWarn{
+	width:97%;
+	margin:0 auto;
+	padding:10px;
+	position:fixed;
+	top:165px;
+	left:1%;
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#FDF9D6',endColorStr='#FFE9A6',gradientType='0');
+    background: -webkit-linear-gradient(#FDF9D6, #FFE9A6);
+    background: -moz-linear-gradient(#FDF9D6, #FFE9A6);
+    background: -o-linear-gradient(#FDF9D6, #FFE9A6);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#FDF9D6), to(#FFE9A6));
+    background: linear-gradient(#FDF9D6, #FFE9A6);
+}
+.warnTitle{
+	font-size:1.2em;
+	font-family: "微软雅黑";
+}
+.warnMain{
+	margin-top:5px;
+	font-size:0.75em;
+	height:40px;
+	line-height: 15px;
+}
+.mui-slider .mui-slider-group .mui-slider-item.lunbo{
+	height:260px;
+}
+#clickColor{
+	font-size:1.25em;
+	color:#e4393c;
+	font-weight:bold;
+}
+/*品牌*/
+ul#choseCompany{
+	overflow: hidden;
+	padding:0;
+	margin:0 5px 0 3px;
+	/*width:98%;
+	margin:0 auto;*/
+}
+#choseCompany li{
+	float:left;
+	list-style: none;
+	width:21.5%;
+	height:30px;
+	background: #fff;
+	text-align: center;
+}
+.companyLogo{
+	background: #fff;
+}
+.companyLogo img{
+	width:90%;
+	height:23px;
+	margin-top:3px
+}
+.logoBorderColor{
+	border:2px solid #e4393c;
+}

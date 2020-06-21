@@ -1,0 +1,104 @@
+ .boxBorders {
+ 	border-bottom: 2px solid lightgrey;
+ }
+ 
+ .gohome {
+ 	display: none;
+ }
+ 
+ .titleContents {
+ 	padding: 0px 10px;
+ 	background: #fff;
+ }
+ 
+ .ibox-title {
+ 	border-top-style: none;
+ }
+ 
+ .titleContents form {
+ 	margin: 5px;
+ 	overflow: hidden;
+ 	padding: 5px;
+ }
+ 
+ .useNameTitle {
+ 	padding-left: 0px;
+ }
+ 
+ .inputTitle {
+ 	overflow: hidden;
+ 	text-align: left;
+ }
+ 
+ .input-group-btn {
+ 	left: 5px;
+ }
+ 
+ .table-striped>tbody>tr:nth-of-type(odd) {
+ 	background: #fff;
+ }
+ 
+ .table-striped>tbody>tr:nth-of-type(even) {
+ 	background: #f9f9f9;
+ }
+ 
+ .lf {
+ 	float: left;
+ }
+ 
+ .rt {
+ 	float: right;
+ }
+ 
+ #TableTopTitle {
+ 	overflow: hidden;
+ 	margin-bottom: 10px;
+ }
+ 
+ .row {
+ 	margin: 0px;
+ }
+ 
+ #editable_paginate {
+ 	text-align: right;
+ }
+ 
+ .mainTitle {
+ 	text-align: center;
+ 	height: 30px;
+ 	line-height: 30px;
+ }
+.reportLeftContent{
+	width: 80%;
+	border: 1px solid #ddd;
+}
+.reportRightContent{
+	width: 20%;
+	border: 1px solid #ddd;
+}
+.inputTitle .useNameTitle{
+	padding: 0px;
+}
+.lineHeightStyle{
+	padding: 10px 0px;
+}
+/*病史*/
+#medicalHistory{
+	padding: 20px;
+}
+.ImagingKnow,.advice{
+	width: 100%;
+	min-height: 100px;
+}
+/*报告信息*/
+#reportInfo{
+	width: 10%;
+	height: 30px;
+}
+.jumpToLookImage{
+	float: right;
+	padding: 5px 10px;
+	background: #1C79B6;
+	color: #fff;
+	cursor: pointer;
+}

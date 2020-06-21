@@ -1,0 +1,195 @@
+/* 顶部内容样式 */
+.right-close-btn{
+	position: absolute;
+	right: 0.425rem;
+}
+.right-close-btn .closebtn{
+	background-color: transparent;
+	border: 0;
+	font-size: 0.45rem;
+}
+.right-close-btn .closebtn:focus{
+	outline: none;
+}
+/* 按钮通用样式 */
+.btn{
+	background-color: #FFF;
+	border: 0;
+	color: rgba(34,146,254,1);
+}
+.btn:focus{
+	outline: none;
+}
+/* 内容样式 */
+.wrapper{
+	/* padding: 0.35rem 0rem 0rem 0.45rem; */
+}
+.wrapper .title{
+	text-align: left;
+	font-weight: bold;
+	font-size: 0.45rem;
+	padding: 0.35rem 0.45rem 0rem;
+}
+.wrapper .listBox{
+	padding: 0.35rem 0rem 0rem 0.45rem;
+}
+.wrapper .listBox p{
+	display: flex;
+	justify-content: space-between;	
+	border-bottom: 1px solid #EDEDED;
+	padding: 0.45rem 0rem 0.45rem;
+}
+.wrapper .listBox p span:nth-of-type(odd){
+	font-size: 0.45rem;
+	/*text-shadow: 0 0 0.0125rem #000;*/
+}
+.wrapper .listBox p span:nth-of-type(even){
+	color: #727377;
+	font-size: 0.45rem;
+	margin-right: 0.45rem;
+}
+/* .wrapper .buttonBox{
+	padding: 0.35rem 0.45rem 0rem 0.45rem;
+	position: fixed;
+	bottom: 0.65rem;
+}
+.wrapper .buttonBox button{
+	background-color: #2292FE;
+	border: 0;
+	color: #FFFFFF;
+	white-space: nowrap;
+	padding: 0.425rem 4.3rem;
+	border-radius: 0.075rem;
+}
+.wrapper .buttonBox button:focus{
+	outline: none;
+} */
+/* .buttonBox{
+	position: fixed;
+	bottom: 0.25rem;
+	margin: 0 0.45rem 0.15rem 0.45rem;
+}
+.buttonBox button{
+	background-color: #2292FE;
+	border: 0;
+	color: #FFFFFF;
+	white-space: nowrap;
+	width: 100%;
+	padding: 0.15rem 0;
+	border-radius: 0.075rem;
+}
+.buttonBox button:focus{
+	outline: none;
+} */
+.buttonBox{
+	/* padding: 0.35rem 0.45rem 0rem 0.45rem; */
+	position: fixed;
+	bottom: -0.125rem;
+	/* margin: 0 0.45rem 0.15rem 0.35rem; */
+	width: 100%;
+}
+.buttonBox button{
+	background-color: #2292FE;
+	border: 0;
+	color: #FFFFFF;
+	white-space: nowrap;
+	width: 95%;
+	padding: 0.15rem 0;
+	/* padding: 0.15rem 4.3rem; */
+	border-radius: 0.075rem;
+}
+.buttonBox button:focus{
+	outline: none;
+}
+body{
+	overflow-y: hidden;
+}
+
+/*遮罩层*/
+.mask{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.5);
+	position: absolute;
+	left: 0;
+	top: 0;
+	box-sizing: border-box;
+	opacity: 0;
+	visibility: hidden;
+    z-index: 0;
+	transition: all 0.4s;
+}
+.maskbox{
+	position: fixed;
+	/*bottom: 0;*/
+	bottom: -7.75rem;
+	left: 0;
+	width: 100%;
+	z-index: 20;
+	transition: all 0.4s;
+}
+.mask-show {
+    opacity: 1;
+    z-index: 10;
+    visibility: visible;
+}
+.maskbox-show{
+	bottom: 0;
+}
+.maskheader{
+	padding: 0.45rem 0.45rem;
+	background-color: #FFFFFF;
+}
+.maskheader ul{
+	display: flex;
+	justify-content: space-between;
+	margin: 0;
+	padding: 0;
+}
+.maskheader ul li:nth-of-type(1),
+.maskheader ul li:nth-of-type(3){
+	font-size: 0.4rem;
+}
+.maskheader ul li:nth-of-type(2){
+	font-size: 0.45rem;
+	font-weight: bold;
+	margin-top: -5px;
+}
+.maskheader ul li:nth-of-type(3){
+	color: #2292FE;
+}
+.maskcontent{
+	background-color: #FFFFFF;
+	padding: 0.45rem 0rem;
+}
+.checklist ul{
+	margin: 0;
+	padding: 0;
+}
+.checklist ul li{
+	padding: 0.35rem 0rem;
+	width: 100%;
+	text-align: center;
+	position: relative;
+}
+.checklist ul li:not(:last-of-type){
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.checklist ul li i{
+	font-size: 0.55rem;
+	margin-left: -2.5rem;
+	color: #C3C3C3;
+}
+.checklist ul li span{
+	display: block;
+	text-align: left;
+	position: absolute;
+	top: 0.35rem;
+	left: 45%;
+}
+/*.checklist ul li div{
+	text-align: left;
+}*/
+.mobileSelect .content .panel .selectLine {
+	top: 2rem !important;
+}

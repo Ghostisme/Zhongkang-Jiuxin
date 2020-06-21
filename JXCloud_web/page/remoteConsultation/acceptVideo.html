@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>中康九和远程医疗管理系统 - 远程会诊申请单</title>
+
+    <meta name="keywords" content="中康九悦远程医疗管理系统">
+    <meta name="description" content="中康九悦远程医疗管理系统">
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../../css/plugins/steps/jquery.steps.css" rel="stylesheet">
+    <link href="../../css/animate.min.css" rel="stylesheet">
+    <link href="../../css/style.min.css" rel="stylesheet">
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" type="text/css" href="../../css/demo/webuploader-demo.min.css">
+    <link rel="stylesheet" href="../../css/public.css" />
+    <link rel="stylesheet" href="../../css/videoAndReport.css" />
+</head>
+<body>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+			<div class="clients-list">
+	            <div class="tab-content">
+	                <div>
+	                    <div class="full-height-scroll">
+	                        <div class="table-responsive">
+	                        	<!--左边即时视频-->
+	                        	<div id="leftReport"class="lf">
+	                        		<iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="../NIM_Web_Demo-master/webdemo/im/main.html" id="myiframe" scrolling="no" onload="changeFrameHeight()"frameborder="0"></iframe>
+	                        	</div>
+	                        	<!--右边报告单-->
+	                        	<div id="rightReport"class="rt">
+		                        	<h3 class="requestOrder">远程会诊申请单</h3>
+		                        	<form id="form"  class="wizard-big">
+			                            <!--<h1>确认检查申请单</h1>-->
+			                            <div class="finishedPrint">
+				                            <fieldset class="f2"id="f2">
+				                                <div class="row">
+				                                    <div class="ibox-content">
+														<h4 class="orderNumAndBtns">
+															<span>申请单号:</span><span class="applyNum">413257854255</span>
+															<!--<span class="rt">-->
+																<!--<button type="button" class="btn btn-w-m receiveBtn dueOutBtn">取草稿</button>
+								                				<button type="button" class="btn btn-w-m receiveBtn saveBtn">存草稿</button>-->
+								                				<!--<button type="button" class="btn btn-w-m receiveBtn submitBtn">提交并结束问诊</button>
+															</span>-->
+														</h4>
+								                       	<!--<div class="ConsultationOpinion">
+								                       		<form action="">
+									                       		<h4>
+									                       			<strong class="opinionTitle">会诊意见:</strong>
+									                       		</h4>
+									                       		<div class="opinionBg">
+									                       			<textarea name="opinionTextarea"maxlength="200">
+									                       				
+									                       			</textarea>
+									                       		</div>
+								                       		</form>
+								                       	</div>-->
+														<table class="table table-bordered tableInput">
+								                            <tbody>
+								                                <tr>
+								                                    <td class="tableInputTitle"><label>患者姓名</label></td>
+								                                    <td class="printUserName tableInputContent">
+								                                    	
+								                                    </td>
+								                                    <td class="tableInputTitle"><label>性别</label></td>
+								                                    <td class="printSex tableInputContent">
+								                                    	
+								                                    </td>
+								                                    <td class="tableInputTitle"><label>年龄</label></td>
+								                                    <td class="printAge">
+								                                    	
+								                                    </td>
+								                                </tr>
+								                                <tr>
+								                                    <td class="tableInputTitle"><label>患者手机号<span class="warns"></span></label></td>
+								                                    <td class="printTel tableInputContent">
+								                                    	
+								                                    </td>
+								                                    <td class="tableInputTitle"><label>身份证号</label></td>
+								                                    <td class="printIdentityCode tableInputContent"colspan="3">
+								                                </tr>
+								                            </tbody>
+								                        </table>
+								                        <table class="table table-bordered tableInput">
+								                            <tbody>
+								                                <tr>
+								                                	<td class="tableInputTitle"><label>主诉</label></td>
+									                                <td class="printMainSuit">
+									                                    
+									                                </td>
+								                                </tr>
+								                                <tr>
+								                                	<td class="tableInputTitle"><label>个人史</label></td>
+									                                <td class="printPersonalHistory">
+									                                    
+									                                </td>
+								                                </tr>
+								                                <tr>
+								                                	<td class="tableInputTitle"><label>体格检查</label></td>
+									                                <td class="printPhysicalExamination">
+									                                    
+									                                </td>
+								                                </tr>
+								                                 <tr>
+								                                	<td class="tableInputTitle"><label>辅助检查</label></td>
+									                                <td class="printUploadImg">
+									                                    
+									                                </td>
+								                                </tr>
+								                            </tbody>
+								                        </table>
+								                        <table class="table table-bordered tableInput">
+							                            <tbody>
+							                                <tr>
+							                                	<!--<td class="tableInputTitle"><label>会诊模式</label></td>
+							                                	<td class="tablesecondContent printModel">
+							                                    	
+							                                    </td>-->
+							                                    <td class="tableInputTitle"><label>会诊时间</label></td>
+							                                    <td  class="tablesecondContent printCheckTime">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>会诊医院</label></td>
+							                                	<td class="tablesecondContent printHos">
+							                                    	
+							                                    </td>
+							                                </tr>
+							                                <tr>
+							                                   	
+							                                    <td class="tableInputTitle"><label>会诊科室</label></td>
+							                                	<td class="printDepartment">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>会诊医生</label></td>
+							                                	<td class="tablesecondContent printDoctor">
+							                                    	
+							                                    </td>
+							                                </tr>
+							                                 <tr>
+							                                 	
+							                                    <td class="tableInputTitle"><label>申请医院</label></td>
+							                                	<td class="printApplyHos">
+							                                    	
+							                                    </td>
+							                                    <td class="tableInputTitle"><label>申请科室</label></td>
+								                                <td class="tablesecondContent printApplyDepartment">
+								                                	
+								                                </td>
+							                                </tr>
+							                                <tr>
+							                                	<td class="tableInputTitle"><label>申请医生</label></td>
+								                                <td class="tablesecondContent printApplyDoctor">
+								                                	
+								                                </td>
+								                                <td class="tableInputTitle"><label>联系电话</label></td>
+								                                <td class="printContactTel">
+								                                </td>
+							                                </tr>
+							                            </tbody>
+							                        </table>
+							                        <span>申请时间:</span><span class="printApplyTime"></span>
+								                    </div>
+				                                </div>
+				                            </fieldset>
+											<!--<div class="row printBtns">
+								                <button type="button" class="btn btn-w-m refuseBtn">拒绝</button>
+								                <button type="button" class="btn btn-w-m receiveBtn">接受申请</button>
+								            </div>-->
+			                            </div>
+			                            
+			                            <!--<h1>发送成功</h1>-->
+			                            <fieldset class="f3">
+			                                <div class="text-center" style="margin-top: 120px">
+			                                    <h2></h2>
+			                                </div>
+			                            </fieldset>
+			                        </form>
+	                        	</div>
+	                        	
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="../../js/plugins/staps/jquery.steps.min.js"></script>
+    <script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="../../js/plugins/validate/messages_zh.min.js"></script>
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../js/content.min.js?v=1.0.0"></script>
+    <script type="text/javascript">
+        var BASE_URL = '../../js/plugins/webuploader';
+    </script>
+    <!--<script src="../../js/plugins/webuploader/webuploader.min.js"></script>-->
+    <!--<script src="../../js/demo/webuploader-demo.min.js"></script>-->
+    <script src="../../js/plugins/jquery.jqprint-0.3.js"></script>
+    <script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+    	var teamId=localStorage.getItem("currentTeamId");	
+    	//  获取用户id       
+			var userId=sessionStorage.getItem('userId');
+			var sessionId=sessionStorage.getItem('sessionId');
+        	var currentIds=localStorage.getItem("acceptApplicationId");
+        	var msgType;
+        	if(localStorage.getItem("msgType")==null){
+        		msgType="";
+        	}else{
+        		msgType=localStorage.getItem("msgType")
+        	}
+        	console.log("msgType::::::::::jjjjj",msgType);
+        $(document).ready(function(){
+        	delCookie('sdktoken');
+			delCookie('uid');
+        	changeFrameHeight();
+        	
+        	function delCookie(cookieName) {
+	    var cookies = document.cookie.split(";");//将所有cookie键值对通过分号分割为数组
+	
+	    //循环遍历所有cookie键值对
+	    for (var i = 0; i < cookies.length; i++) {
+	        //有些cookie键值对前面会莫名其妙产生一个空格，将空格去掉
+	        if (cookies[i].indexOf(" ") == 0) {
+	            cookies[i] = cookies[i].substring(1);
+	        }
+	
+	        //比较每个cookie的名称，找到要删除的那个cookie键值对
+	        if (cookies[i].indexOf(cookieName) == 0) {
+	            var exp = new Date();//获取客户端本地当前系统时间
+	            exp.setTime(exp.getTime() - 60 * 1000);//将exp设置为客户端本地时间1分钟以前，将exp赋值给cookie作为过期时间后，就表示该cookie已经过期了, 那么浏览器就会将其立刻删除掉
+	
+	            document.cookie = cookies[i] + ";expires=" + exp.toUTCString();//设置要删除的cookie的过期时间，即在该cookie的键值对后面再添加一个expires键值对，并将上面的exp赋给expires作为值(注意expires的值必须为UTC或者GMT时间，不能用本地时间），那么浏览器就会将该cookie立刻删除掉
+	            //注意document.cookie的用法很巧妙，在对其进行赋值的时候是设置单个cookie的信息，但是获取document.cookie的值的时候是返回所有cookie的信息
+	
+	            break;//要删除的cookie已经在客户端被删除掉，跳出循环
+	        }
+	    }
+	}
+//      	视频iframe高度调整
+        	function changeFrameHeight(){
+			    var ifm= document.getElementById("myiframe"); 
+			    ifm.height=$("#leftReport").css("height");
+			}
+			window.onresize=function(){  
+			     changeFrameHeight();  
+			} 
+        	$(".contact-box").each(function(){
+        		animationHover(this,"pulse")
+			})
+        	//  获取用户id       
+//			var userId=sessionStorage.getItem('userId');
+//			var sessionId=sessionStorage.getItem('sessionId');
+//      	var currentIds=localStorage.getItem("acceptApplicationId");;
+//      	读取详情数据
+			$.ajax({
+				type:"get",
+				url:config+"/cons/applyInfo/get",
+				async:false,
+				dataType:"JSON",
+				data:{
+					id:currentIds
+				},
+				success:function(data){
+					console.log(data);
+					$(".printUserName").text(data.resultMap.applyInfo.patientName);//患者姓名
+					if(data.resultMap.applyInfo.sex=="0"){
+						$(".printSex").text("男");//患者性别
+					}else{
+						$(".printSex").text("女");//患者性别
+					}
+					$(".applyNum").text(data.resultMap.applyInfo.applyNo);//申请单号
+					$(".printAge").text(data.resultMap.applyInfo.age);//患者年龄
+					$(".printTel").text(data.resultMap.applyInfo.patientTelephone);//患者手机号
+					$(".printIdentityCode").text(data.resultMap.applyInfo.patientIdNumber);//患者身份证号
+//					$(".printModel").text(data.resultMap.applyInfo.);//会诊模式
+					$(".printCheckTime").text(data.resultMap.applyInfo.expectType);//会诊时间
+					$(".printHos").text(data.resultMap.applyInfo.assignHospitalName);//会诊医院
+					$(".printDepartment").text(data.resultMap.applyInfo.assignSectionName);//会诊科室
+					$(".printDoctor").text(data.resultMap.applyInfo.assignDoctorName);//会诊医生
+					$(".printApplyHos").text(data.resultMap.applyInfo.applyHospitalName);//申请医院
+					$(".printApplyDepartment").text(data.resultMap.applyInfo.applySectionName);//申请科室
+					$(".printApplyDoctor").text(data.resultMap.applyInfo.applyDoctorName);//申请医生
+					$(".printContactTel").text(data.resultMap.applyInfo.applyTelephone);//联系电话
+					$(".printMainSuit").text(data.resultMap.applyInfo.chiefComplaint);//主诉
+					$(".printPersonalHistory").text(data.resultMap.applyInfo.personalHistory);//个人史
+					$(".printPhysicalExamination").text(data.resultMap.applyInfo.physicalExamination);//体格检查
+					for(var i=0;i<data.resultMap.applyImageList.length;i++){
+						$(".printUploadImg").append('<img src="'+data.resultMap.applyImageList[i].imgUrl+'"style="width:110px;height:110px;">',);//辅助检查
+					}
+					$(".applyConStatus").text(data.resultMap.applyInfo.conStatusName);
+					var applyTime=new Date(data.resultMap.applyInfo.inputTime);
+					var applyYear=applyTime.getFullYear();
+					var applyMonth=applyTime.getMonth()+1;
+					var applyDate=applyTime.getDate();
+					var applyHours=applyTime.getHours()<10?"0"+applyTime.getHours():applyTime.getHours();       //获取当前小时数(0-23)
+					var applyMinutes=applyTime.getMinutes()<10?"0"+applyTime.getMinutes():applyTime.getMinutes();     //获取当前分钟数(0-59)
+					var applySeconds=applyTime.getSeconds()<10?"0"+applyTime.getSeconds():applyTime.getSeconds(); 
+					$(".printApplyTime").text(applyYear+'/'+applyMonth+'/'+applyDate+' '+applyHours+":"+applyMinutes+":"+applySeconds);//申请时间
+				},
+			});
+////			存草稿
+//			$(".saveBtn").click(function(){
+//				var ConsultationOpinion=$(".ConsultationOpinion textarea").val().trim();
+//				if(ConsultationOpinion==""||ConsultationOpinion==null){
+//					alert("请输入会诊意见！");
+//				}else{
+//					$.ajax({
+//						type:"get",
+//						url:config+"/cons/applyInfo/update",
+//						async:false,
+//						dataType:"JSON",
+//						data:{
+//							conObjective:ConsultationOpinion,
+//							id:currentIds,
+//							conObjectiveStatus:1
+//						},
+//						success:function(data){
+//							console.log(data);
+//							if(data.status==1){
+//								alert("操作成功！");
+//							}
+//						},
+//					});
+//				}
+//			});
+////			取草稿
+//			$(".dueOutBtn").click(function(){
+//				var ConsultationOpinion=$(".ConsultationOpinion textarea").val().trim();
+//					$.ajax({
+//						type:"get",
+//						url:config+"/cons/applyInfo/get",
+//						async:false,
+//						dataType:"JSON",
+//						data:{
+//							id:currentIds
+//						},
+//						success:function(data){
+//							console.log(data);
+//							$(".ConsultationOpinion textarea").val(data.resultMap.applyInfo.conObjective)
+//						},
+//					});
+//			});
+//			提交并结束问诊
+//			$(".submitBtn").click(function(){
+//				var ConsultationOpinion=$(".ConsultationOpinion textarea").val().trim();
+//				if(ConsultationOpinion==""||ConsultationOpinion==null){
+//					alert("请输入会诊意见！");
+//				}else{
+//					$.ajax({
+//						type:"get",
+//						url:config+"/cons/applyInfo/updateFinishState",
+//						async:false,
+//						dataType:"JSON",
+//						data:{
+//							conObjective:ConsultationOpinion,
+//							operatorUser:userId,
+//							id:currentIds
+//						},
+//						success:function(data){
+//							console.log(data);
+//							if(data.status==1){
+//								alert("操作成功！");
+//								closeIframe("page/remoteConsultation/checkApplicationForm.html");
+//								closeNavTabAndRefreshIframe("page/remoteConsultation/videoAndReport.html","page/remoteConsultation/waitingForConsultation.html");
+//							}
+//						},
+//					});
+//				}
+//			});
+		});
+		
+		function updateFinished(ConsultationOpinion){
+			$.ajax({
+						type:"get",
+						url:config+"/cons/applyInfo/updateFinishState",
+						async:false,
+						dataType:"JSON",
+						data:{
+							conObjective:ConsultationOpinion,
+							operatorUser:userId,
+							id:currentIds
+						},
+						success:function(data){
+							console.log(data);
+							if(data.status==1){
+								overTeam(currentIds);
+//								closeIframe("page/remoteConsultation/checkApplicationForm.html");
+//								closeNavTabAndRefreshIframe("page/remoteConsultation/videoAndReport.html","page/remoteConsultation/waitingForConsultation.html");
+							}
+						},
+					});
+		}
+		function overTeam(currentIds){
+			console.log(currentIds);
+			console.log(teamId);
+			$.ajax({
+						type:"get",
+						url:config+"/cons/applyInfo/removeTeam",
+						async:false,
+						dataType:"JSON",
+						data:{
+							id:currentIds,
+							teamId:teamId
+						},
+						success:function(data){
+							console.log(data);
+								alert("操作成功！");
+								AcceptoverConsultation("page/remoteConsultation/acceptVideo.html");
+//								closeIframe("page/remoteConsultation/checkApplicationForm.html");
+//								closeNavTabAndRefreshIframe("page/remoteConsultation/videoAndReport.html","page/remoteConsultation/waitingForConsultation.html");
+						},
+					});
+		}
+//		点击关闭按钮关闭当前页签
+		var closeTab=parent.$(window.parent.document).find(".page-tabs .active .fa-times-circle");
+		closeTab.click(function(e){
+			var ConsultationOpinion="";
+//				if(ConsultationOpinion==""||ConsultationOpinion==null){
+//					$(".overBtn").click();
+//				}else{
+//					updateFinished(ConsultationOpinion);
+//				}
+			msgType=localStorage.getItem("msgType");
+			if(msgType!=3){
+				var r=confirm("您确定要结束当前会诊吗？");
+					if (r==true){
+							//申请方发起的结束会诊 
+			  			updateFinished(ConsultationOpinion);
+					}
+			}else{
+					AcceptoverConsultation("page/remoteConsultation/acceptVideo.html");
+				}
+		});
+		function AcceptoverConsultation(parentnavid){
+			var closeTab1=parent.$(window.parent.document).find(".page-tabs .active .fa-times-circle");
+			var t = closeTab1.parents(".J_menuTab").attr("data-id"),
+            a = closeTab1.parents(".J_menuTab").width();
+            if (closeTab1.parents(".J_menuTab").prev(".J_menuTab").size()) {
+	                var i = closeTab1.parents(".J_menuTab").prev(".J_menuTab:last").attr("data-id");
+	                closeTab1.parents(".J_menuTab").prev(".J_menuTab:last").addClass("active"),
+	                    $(".J_mainContent .J_iframe").each(function() {
+	                        return closeTab1.attr("data-id") == i ? (closeTab1.show().siblings(".J_iframe").hide(), !1) : void 0
+	                    }),
+	                    closeTab1.parents(".J_menuTab").remove(),
+	                    $(".J_mainContent .J_iframe").each(function() {
+	                        return closeTab1.attr("data-id") == t ? (closeTab1.remove(), !1) : void 0
+	                    })
+	            }
+	        if (closeTab1.parents(".J_menuTab").hasClass("active")) {
+	            if (closeTab1.parents(".J_menuTab").next(".J_menuTab").size()) {
+	                var i = closeTab1.parents(".J_menuTab").next(".J_menuTab:eq(0)").attr("data-id");
+	                closeTab1.parents(".J_menuTab").next(".J_menuTab:eq(0)").addClass("active"),
+	                    $(".J_mainContent .J_iframe").each(function() {
+	                        return closeTab1.attr("data-id") == i ? (closeTab1.show().siblings(".J_iframe").hide(), !1) : void 0
+	                    });
+	                var n = parseInt($(".page-tabs-content").css("margin-left"));
+	                0 > n && $(".page-tabs-content").animate({
+	                        marginLeft: n + a + "px"
+	                    },
+	                    "fast"),
+	                    closeTab1.parents(".J_menuTab").remove(),
+	                    $(".J_mainContent .J_iframe").each(function() {
+	                        return closeTab1.attr("data-id") == t ? (closeTab1.remove(), !1) : void 0
+	                    })
+	            }
+	            
+	            
+	            var thisTabs=parent.$(window.parent.document).find(".page-tabs .J_menuTab");
+				var thisIframe=parent.$(window.parent.document).find("#content-main iframe");
+				for(var k=0;k<thisTabs.length;k++){
+					if($(thisTabs[k]).attr("data-id")==parentnavid){
+						$(thisTabs[k]).addClass("active");
+						parent.$(window.parent.document).find(thisTabs[k]).dblclick();
+						$(thisTabs[k]).siblings(".J_menuTab").removeClass("active");
+					}
+				}
+				for(var k=0;k<thisIframe.length;k++){
+					if($(thisIframe[k]).attr("data-id")==parentnavid){
+						console.log($(thisIframe[k]));
+						$(thisIframe[k]).remove();
+						$(thisIframe[k-1]).css("display","inline");
+						$(thisIframe[k-1]).siblings().css("display","none");
+//						$(thisIframe[k]).siblings("iframe").css("display","none");
+					}
+				}
+	        } else closeTab1.parents(".J_menuTab").remove(),
+	            $(".J_mainContent .J_iframe").each(function() {
+	                return closeTab1.attr("data-id") == t ? (closeTab1.remove(), !1) : void 0
+	            }),
+	            e($(".J_menuTab.active"));
+	        return ! 1
+		}
+    </script>
+    <script type="text/javascript" src="../../js/stats.js"charset="utf-8"></script>
+</body>
+
+</html>

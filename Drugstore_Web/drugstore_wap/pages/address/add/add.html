@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!-- 字体CSS -->
+		<!--<link rel="stylesheet" type="text/css" href="../../../styles/font/iconfont.css" />-->
+		<link rel="stylesheet" type="text/css" href="../../../mui/font/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="add.css">
+		<link rel="stylesheet" href="../../../styles/common_css/common_dialog.css">
+		<!-- 头底 -->
+		<link rel="stylesheet" type="text/css" href="../../../mui/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../../styles/common_css/dibu.css" />
+		<link rel="stylesheet" type="text/css" href="city/city.css" />
+		<!-- switch -->
+		<!-- <link href="switch/css/demo.css" rel="stylesheet" type="text/css" />
+		<link href="switch/css/switchery.min.css" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Istok Web:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" /> -->
+		<!--[if lt IE 9]>
+		  <script src="js/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">新增地址</span>
+			<span class="delBtn">删除</span>
+		</header>
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<form action="#" method="get">
+						<ul class="formItem">
+							<li>
+								<span>收货人</span>
+								<input type="text" value="" placeholder="请输入收货人姓名" name="" class="consignee" />
+							</li>
+							<li>
+								<span>手机号码</span>
+								<input type="text" value="" placeholder="请输入手机号码" name="" class="phone" />
+							</li>
+							<li>
+								<!-- <span>所在地区</span> -->
+								<div data-role="page" id="test">
+									<div class="ui-content">
+										<ul data-role="listview">
+											<li>
+												<span>所在地区</span><span id="city" class="city">请选择所在地区</span>
+											</li>
+										</ul>
+										<span class="mui-icon mui-icon-forward mui-pull-right"></span>
+									</div>
+								</div>
+								<!-- <input type="text" value="" placeholder="请输入所在地区" name="" class="region" />
+								<span id="arrow_right" class="mui-icon mui-icon-forward mui-pull-right"></span> -->
+							</li>
+							<!--<li>
+								<span>收货地址</span>
+								<input type="text" value="" placeholder="请输入收货地址" name="" class="address" />
+							</li>-->
+							<li>
+								<span>详细地址</span>
+								<input type="text" value="" placeholder="请输入楼层门牌" name="" class="floor" />
+							</li>
+						</ul>
+						<ul class="formItem">
+							<li class="labelBox">
+								<div class="label_title">
+									<span>标签</span>
+								</div>
+								<div class="labelItem">
+									<span>家</span>
+									<span>公司</span>
+									<span>学校</span>
+								</div>
+							</li>
+							<li class="clearFloat">
+								<span>设为默认地址</span>
+								<div class="mui-switch mui-switch-mini" id="switchBtn">
+									<div class="mui-switch-handle"></div>
+								</div>
+								<!-- <input type="checkbox" class="js-switch" checked /> -->
+							</li>
+						</ul>
+						<!-- <input type="submit" value=""/> -->
+						<div class="btnBox">
+							<!--<button type="button" class="submitBtn" value="">保存并使用</button>-->
+							<button type="button" class="submitBtn" value="">保存</button>
+						</div>
+						<div class="btnBox1">
+							<button type="button" class="submitBtn1" value="">更换</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!--提交按钮-->
+			<!-- <div id="submit_btn" class="mui-text-center btn" style="z-index: 999;">
+				<span><i class="mui-icon mui-icon-plusempty" style="vertical-align: -1px;margin-right: 5px;"></i>添加地址</span>
+			</div> -->
+		</div>
+		<script src="../../../mui/js/mui.min.js"></script>
+		<script src="../../../common/jquery-1.12.1.js"></script>
+		<script src="../../../common/common.js"></script>
+		<!-- <script src="../../../mui/js/mui.picker.js"></script>
+		<script src="../../../mui/js/mui.picker.min.js"></script>
+		<script src="../../../mui/js/mui.poppicker.js"></script>
+		<script src="../../../mui/js/city.data.js"></script>
+		<script src="../../../mui/js/city.data-3.js"></script> -->
+		<script src="city/jquery.min.js"></script>
+		<script src="city/common.js"></script>
+		<script src="city/Popt.js"></script>
+		<script src="city/cityJson.js"></script>
+		<script src="city/citySet.js"></script>
+
+		<script src="add.js"></script>
+		<script type="text/javascript">
+			
+		</script>
+		<!-- switch -->
+		<!-- <script type="text/javascript" src="switch/js/switchery.min.js"></script> -->
+		<!-- <script type="text/javascript">
+			// Default
+			// if-else statement used only for fixing <IE9 issues
+			if (Array.prototype.forEach) {
+				var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+				elems.forEach(function(html) {
+					var switchery = new Switchery(html);
+				});
+			} else {
+				var elems = document.querySelectorAll('.js-switch');
+
+				for (var i = 0; i < elems.length; i++) {
+					var switchery = new Switchery(elems[i]);
+				}
+			}
+
+			// Disabled switch
+			var disabled = document.querySelector('.js-switch-disabled');
+			var switchery = new Switchery(disabled, {
+				disabled: true
+			});
+
+			var disabledOpacity = document.querySelector('.js-switch-disabled-opacity');
+			var switchery = new Switchery(disabledOpacity, {
+				disabled: true,
+				disabledOpacity: 0.75
+			});
+
+			// Colored switches
+			var blue = document.querySelector('.js-switch-blue');
+			var switchery = new Switchery(blue, {
+				color: '#41b7f1'
+			});
+
+			var pink = document.querySelector('.js-switch-pink');
+			var switchery = new Switchery(pink, {
+				color: '#ff7791'
+			});
+
+			var teal = document.querySelector('.js-switch-teal');
+			var switchery = new Switchery(teal, {
+				color: '#3cc8ad'
+			});
+
+			var red = document.querySelector('.js-switch-red');
+			var switchery = new Switchery(red, {
+				color: '#db5554'
+			});
+
+			var secondary = document.querySelector('.js-switch-secondary');
+			var switchery = new Switchery(secondary, {
+				color: '#fec200',
+				secondaryColor: '#ff8787'
+			});
+		</script> -->
+	</body>
+</html>

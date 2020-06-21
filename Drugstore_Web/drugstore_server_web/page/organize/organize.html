@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - 客户管理</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <link href="../../css/animate.min.css" rel="stylesheet">
+    <link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="../../css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+
+    <base target="_blank">
+    <style>
+        .mainContents {
+            width: 100%;
+            overflow: hidden;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .leftTree {
+            width: 25%;
+            min-height: 500px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #EDEDED;
+        }
+
+        .innerUl {
+            display: none;
+        }
+
+        .treeTabs {
+            overflow: hidden;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #EDEDED;
+        }
+
+        .hospitalTab,
+        .otherTab {
+            width: 50%;
+            text-align: center;
+            background: #F6F6F6;
+            cursor: pointer;
+        }
+
+        .treeTabs .tabActive {
+            border-top: 1px solid #FF7410;
+            background: #fff;
+        }
+
+        .rightDataShow {
+            width: 74%;
+            overflow: hidden;
+            padding-right: 10px;
+        }
+
+        /*所有机构信息*/
+        #maintenanceAllInfo {
+            display: none;
+        }
+
+        #hospitalsAllInfo {
+            display: none;
+        }
+
+        #sectionAllInfo {
+            display: none;
+        }
+
+        #maintenanceAllInfo, #hospitalsAllInfo {
+            overflow: hidden;
+        }
+
+        /*右边机构信息*/
+        .maintenance, .hospitals {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            padding: 10px;
+            overflow: hidden;
+
+        }
+
+        .borderAndClass {
+            color: #018EE8;
+            padding: 10px 10px 0px 10px;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #018EE8;
+        }
+
+        .maintenanceInfo, .hospitalsInfo {
+            width: 100%;
+            overflow: hidden;
+            /*border:1px solid #ededed;*/
+        }
+
+        .maintenanceEveryrow, .hospitalsEveryrow {
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid #ededed;
+            margin-top: 10px;
+            border-bottom: 0px;
+
+        }
+
+        .maintenanceEveryrow, .hospitalsEveryrow {
+            width: 100%;
+        }
+
+        .firstCols {
+            width: 15%;
+            height: 30px;
+            line-height: 30px;
+            border-right: 1px solid #EDEDED;
+            text-align: center;
+        }
+
+        .rows {
+            overflow: hidden;
+            border-bottom: 1px solid #EDEDED;
+        }
+
+        .rows:nth-child(even) {
+            background: #F6F6F6;
+        }
+
+        .modelRow {
+            overflow: hidden;
+            border-bottom: 1px solid #EDEDED;
+        }
+
+        .twoCols {
+            width: 18%;
+            height: 30px;
+            line-height: 30px;
+            border-right: 1px solid #EDEDED;
+        }
+
+        .OperationState.twoCols, .hospitalOperationState.twoCols {
+            border: 0;
+        }
+
+        .longRow {
+            width: 84%;
+            height: 30px;
+            line-height: 30px;
+            /*border-right:1px solid #EDEDED;*/
+        }
+
+        .divideEquallyRow {
+            width: 24.9%;
+            height: 30px;
+            line-height: 30px;
+            border-right: 1px solid #EDEDED;
+            text-align: center;
+        }
+
+        .lastCols {
+            border: 0px;
+        }
+
+        .newMaintenance {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .newMaintenance .newBtn {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            display: none;
+            background: #008EEA;
+            color: #fff;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+		.newBtnDept{
+			 width: 100px;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+            background: #008EEA;
+            color: #fff;
+            margin: 0 auto;
+            cursor: pointer;
+		}
+        .newSubordinateBtn ,.delCurrentHosBtn,.delCurrentDeptBtn{
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+            background: #ECECEC;
+            color: #000;
+            margin: 0 auto;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .model {
+            background: #000;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 888;
+        }
+
+        /*机构信息弹框*/
+        #hospitalModels, #deptModels {
+            width: 40%;
+            /*height:500px;*/
+            background: #fff;
+            position: absolute;
+            top: 20%;
+            left: 30%;
+            z-index: 8888;
+            padding-bottom: 40px;
+        }
+
+        .changeInfoTitle {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 18px;
+            background: #1B79B6;
+            color: #fff;
+        }
+
+        .closeModel {
+            margin-top: 0px;
+            margin-right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .ModelfirstCols {
+            width: 19%;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border-right: 1px solid #EDEDED;
+        }
+
+        .ModelFourCols {
+            width: 30%;
+            height: 40px;
+            line-height: 40px;
+            border-right: 1px solid #EDEDED;
+        }
+
+        .modelTitles {
+            background: #F9F2F4;
+        }
+
+        .ModelFourCols input, .ModelFourCols select {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border: 0;
+            padding-left: 10px;
+        }
+
+        .modelLongStyle {
+            width: 80%;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .modelLongStyle select {
+            width: 30%;
+            height: 80%;
+            margin-left: 20px;
+            outline: none;
+        }
+
+        .modelLongStyle input {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border: 0;
+            padding-left: 10px;
+        }
+
+        .Modelremark {
+            height: 90px;
+            line-height: 90px;
+        }
+
+        .modelRemarks, .addModelRemarks {
+            width: 100%;
+            height: 83px;
+        }
+
+        /*模态框取消和修改*/
+        .cancelAndChangeBtn {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cancelAndChangeBtn .cancelBtn {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+            background: #008EEA;
+            color: #000;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .cancelAndChangeBtn .changeBtn {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+            background: #ECECEC;
+            color: #000;
+            margin: 0 auto;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        #deptModels, #hospitalModels, .model, #changeHospitalModels, #AddHospitalModels, #changeDeptModels, #AddDeptModels {
+            display: none;
+        }
+
+        .hosOneUl {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+        }
+
+        .hosOneUl > li {
+            padding: 10px;
+        }
+
+        .hosOneUl > li:nth-child(odd) {
+            width: 15%;
+            border-right: 1px solid #ECECEC;
+        }
+
+        .hosOneUl > li:nth-child(even) {
+            width: 30%;
+        }
+
+        .hosOneUl > li:nth-child(2) {
+            border-right: 1px solid #ECECEC;
+        }
+
+        .hosTowUl {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+        }
+
+        .hosTowUl > li {
+            padding: 10px;
+            border-right: 1px solid #ECECEC;
+        }
+
+        .hosTowUl > li:nth-child(odd) {
+            width: 10%;
+        }
+
+        .hosTowUl > li:nth-child(even) {
+            width: 20%;
+        }
+
+        .hosThreeUl {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+        }
+
+        .hosThreeUl > li {
+            padding: 10px;
+            border-right: 1px solid #ECECEC;
+            width: 25%;
+        }
+
+        .df {
+            display: flex;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+
+                <div class="ibox-content">
+                    <!--左边树-->
+                    <div class="col-sm-4">
+                        <!--选项卡tab-->
+                        <ul class="nav nav-tabs">
+                            <!--<li onclick="sHosClick()"><a data-toggle="tab" href="#tab-hos"><i
+                                    class="fa fa-user"></i> 医院架构图</a>
+                            </li>-->
+                            <li class="active" onclick="sDepthHos();"><a data-toggle="tab" href="#tab-deept"><i
+                                    class="fa fa-user"></i> 机构架构图</a>
+                            </li>
+                        </ul>
+                        <!--选项卡内容-->
+                        <div class="tab-content">
+                            <div id="tab-hos" class="tab-pane">
+                                <!--tree树-->
+                                <div id="treeview4" class="test"></div>
+                            </div>
+                            <div id="tab-deept" class="tab-pane active">
+                                <!--tree树-->
+                                <div id="treeview5" class="test"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--右边显示(表格？)-->
+                    <div class="col-sm-8">
+                        <!--医院tab-->
+                        <div id="tab1_hos"style="display: none;">
+                            <h5>医院维护：
+                            	<div class="newSubordinateBtn" onclick="setModalHos('save')" data-toggle="modal" data-target="#myModal1"style="float: right;text-align:center;width: 85px;color:#fff;height: 24px;line-height:24px;border-radius: 5px;background-color: #ff7510;font-family: "microsoft yahei";font-size: 14px;color: #FFFFFF;line-height: 24px;letter-spacing: 5px;cursor: pointer;">
+                                    新增医院
+                            	</div>
+                            </h5>
+                            
+                            <hr>
+                            <div class="hospitalsInfo">
+                                <div class="hospitalsEveryrow">
+                                    <!--第一行-->
+                                    <div class="rows">
+                                        <ul class="hosOneUl">
+                                            <li>医院名称</li>
+                                            <li class="hospitalsName"></li>
+                                            <li>运营状态</li>
+                                            <li class="hospitalOperationState"></li>
+                                        </ul>
+                                    </div>
+                                    <!--第二行-->
+                                    <div class="rows">
+                                        <ul class="hosOneUl">
+                                            <li>医院等级</li>
+                                            <li class="hospitalsLevel"></li>
+                                            <li>医院代码</li>
+                                            <li class="hospitalsShowNum"></li>
+                                        </ul>
+                                    </div>
+                                    <!--第三行-->
+                                    <div class="rows">
+                                        <ul class="hosOneUl">
+                                            <li>医院信息</li>
+                                            <li class="hospitalsInfos" style="border: 0"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--新建按钮-->
+                            <div class="newMaintenance">
+                                <div class="newBtn" onclick="setModalHos('update')" data-toggle="modal" data-target="#myModal1">
+                                    修改医院信息
+                                </div>
+                                 <div class="newSubordinateBtn"id="addNewsectionsBtn" onclick="setModalSection('save')" data-toggle="modal" data-target="#myModal2"style="display: none;">
+                                    新增科室
+                                </div>
+                                <div class="delCurrentHosBtn" id="delCurrentHosBtns"onclick="delCurrentHos()"style="display: none;">
+                                    删除当前医院
+                                </div>
+                            </div>
+                        </div>
+                        <!--科室tab -->
+                        <div id="tab1_sen" style="display: none;">
+                            <h5>科室维护：
+                            	<div class="newSubordinateBtn" onclick="setModalHos('save')" data-toggle="modal" data-target="#myModal1"style="float: right;text-align:center;width: 85px;color:#fff;height: 24px;line-height:24px;border-radius: 5px;background-color: #ff7510;font-family: "microsoft yahei";font-size: 14px;color: #FFFFFF;line-height: 24px;letter-spacing: 5px;cursor: pointer;">
+                                    新增医院
+                            	</div>
+                            </h5>
+                            <hr>
+                            <div class="hospitalsInfo">
+                                <div class="hospitalsEveryrow">
+                                    <!--第一行-->
+                                    <div class="rows">
+                                        <ul class="hosTowUl">
+                                            <li>科室名称</li>
+                                            <li class="sectionsName">name</li>
+                                            <li>科室别名</li>
+                                            <li class="sectionsAlias">启用</li>
+                                        </ul>
+                                    </div>
+                                    <!--第二行-->
+                                    <div class="rows">
+                                        <ul class="hosTowUl">
+                                            <li>科室编码</li>
+                                            <li class="sectionsCode">1</li>
+                                            <li>科室负责人</li>
+                                            <li class="sectionsLeader">233</li>
+                                        </ul>
+                                    </div>
+                                    <!--第三行-->
+                                    <div class="rows">
+                                        <ul class="hosTowUl">
+                                            <li>联系方式</li>
+                                            <li class="sectionsContact">1</li>
+                                            <li>科室信息</li>
+                                            <li class="sectionsInfos">233</li>
+                                        </ul>
+                                    </div>
+                                    <!--第四行-->
+                                    <div class="rows">
+                                        <ul class="hosTowUl">
+                                            <li>科室类型</li>
+                                            <li class="sectionsType" style="border: 0">1</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--新建科室按钮-->
+                            <div class="newMaintenance">
+                                <div class="newBtn" onclick="setModalSection('update')" data-toggle="modal" data-target="#myModal2">
+                                    修改科室信息
+                                </div>
+                             	<div class="delCurrentHosBtn" onclick="delCurrentSection()" data-target="#myModal1">
+                                    删除当前科室
+                                </div>
+                            </div>
+                        </div>
+                        <!--机构tab-->
+                        <div id="tab2_dept">
+                            <h5>机构维护：</h5>
+                            <hr>
+                            <!--机构维护所有信息显示-->
+                            <div>
+                                <div class="maintenanceInfo">
+                                    <!--第一行-->
+                                    <div class="maintenanceEveryrow">
+                                        <!--第一行-->
+                                        <div class="rows">
+                                            <ul class="hosTowUl">
+                                                <li>机构名称</li>
+                                                <li class="maintenanceName"></li>
+                                                <li>上级机构</li>
+                                                <li class="Superior"></li>
+                                                <li>运营状态</li>
+                                                <li class="OperationState"></li>
+                                            </ul>
+                                        </div>
+                                        <!--第二行-->
+                                        <div class="rows">
+                                            <ul class="hosTowUl">
+                                                <!--<li>机构等级</li>
+                                                <li class="maintenanceLevel"></li>-->
+                                                <li>联系方式</li>
+                                                <li class="ContactInformation"></li>
+                                                <li>联系地址</li>
+                                                <li class="address"></li>
+                                            </ul>
+                                        </div>
+                                        <!--第三行-->
+                                        <!--<div class="rows">
+                                            <ul class="hosTowUl">
+                                                <li>机构类型</li>
+                                                <li class="type" style="border: 0"></li>
+                                            </ul>
+                                        </div>-->
+                                        <!--第四行-->
+                                        <div class="rows">
+                                            <ul class="hosTowUl">
+                                                <li>备注</li>
+                                                <li class="remarks" style="border: 0"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--下级机构-->
+                                <div id="SubordinateDepartments" class="borderAndClass">
+                                    下级机构
+                                </div>
+                                <div id="lowerLevelDept" class="maintenanceEveryrow">
+                                    <!--<div class="rows">
+                                        <ul class="hosThreeUl">
+                                            <li>机构名称</li>
+                                            <li>机构等级</li>
+                                            <li>机构类型</li>
+                                            <li>机构地址</li>
+                                        </ul>
+                                    </div>
+                                    <div class="rows">
+                                        <ul class="hosThreeUl">
+                                            <li>机构名称</li>
+                                            <li>机构等级</li>
+                                            <li>机构类型</li>
+                                            <li>机构地址</li>
+                                        </ul>
+                                    </div>-->
+                                </div>
+                                <!--新建机构按钮-->
+                                <div class="newMaintenance">
+                                	<div class="newBtnDept" id="newAddDept"onclick="setModalDept('save')" data-toggle="modal" data-target="#myModal3" >
+                                        新建机构信息
+                                    </div>
+                                    <div class="newBtn" id="newAddDeptAll"onclick="setModalDept('update')" data-toggle="modal" data-target="#myModal3" >
+                                        新建机构信息
+                                    </div>
+                                    <div class="newSubordinateBtn" id="newAddFollowDept"onclick="setModalDept('save')" data-toggle="modal" data-target="#myModal3"style="display: none;">
+                                        新建下级机构
+                                    </div>
+                                    <div class="delCurrentDeptBtn" id="delCurrentFollowDept"onclick="delCurrentDept()"style="display: none;">
+                                    删除当前机构
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--撑住ibox-content高度-->
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="modal inmodal fade" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="allot_title">医院保存</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal m-t" id="hosForm" >
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">医院名称：</label>
+                        <div class="col-sm-6">
+                            <input id="hospitalsName" name="hosName" maxlength="10" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">运营状态：</label>
+                        <div class="col-sm-6">
+                            <select name="status" id="hospitalOperationState" class="form-control">
+                                <option value="启用">启用</option>
+                                <option value="停用">停用</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">医院等级：</label>
+                        <div class="col-sm-6">
+                            <input name="level" id="hospitalsLevel" class="form-control" type="text"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">医院代码：</label>
+                        <div class="col-sm-6">
+                            <input name="code" id="hospitalsShowNum" class="form-control" type="text"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">医院信息：</label>
+                        <div class="col-sm-6">
+                            <input name="memo" id="hospitalsInfos" class="form-control" type="text"/>
+                        </div>
+                    </div>
+
+                    <input id="modelState" name="modelState" type="hidden">
+                    <input id="hosId" name="id" type="hidden">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                <button type="button" onclick="dosubmitHos()" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal inmodal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="allot_title2">科室保存</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal m-t" id="senForm" >
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">科室名称：</label>
+                        <div class="col-sm-6">
+                            <input id="sectionName" name="sectionName" maxlength="10" class="form-control" required type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">科室别名：</label>
+                        <div class="col-sm-6">
+                            <input name="alias" id="alias" class="form-control" required type="text"/>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">科室编码：</label>
+                        <div class="col-sm-6">
+                            <input name="code" id="code" class="form-control" required type="text"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">科室电话：</label>
+                        <div class="col-sm-6">
+                            <input name="contact" id="contact" class="form-control" required type="text"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">科室负责人：</label>
+                        <div class="col-sm-6">
+                            <input name="leader" id="leader" class="form-control" required type="text"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">科室类型：</label>
+                        <div class="col-sm-6">
+                            <select name="type" id="sectionType" class="form-control" required>
+                                <option value="0">类型1</option>
+                                <option value="1">类型2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">科室信息：</label>
+                        <div class="col-sm-6">
+                            <input name="memo" id="memo" class="form-control" required type="text"/>
+                        </div>
+                    </div>
+
+                    <input id="modelState_sen" name="modelState" type="hidden">
+                    <input name="id" id="sectionId" type="hidden"/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                <button type="button" onclick="dosubmitSen()" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal inmodal fade" id="myModal3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="allot_title3">机构保存</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal m-t" id="deptForm" >
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">机构名称：</label>
+                        <div class="col-sm-6">
+                            <input id="maintenanceName" name="deptName" maxlength="10" class="form-control" required type="text">
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <label class="col-sm-4 control-label">机构类型：</label>
+                        <div class="col-sm-6">
+                            <select name="type" id="type"  class="form-control" required>
+                                <option value="">请选择</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">机构等级：</label>
+                        <div class="col-sm-6">
+                            <input name="level" id="maintenanceLevel" class="form-control" required type="text"/>
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">运营状态：</label>
+                        <div class="col-sm-6">
+                            <select name="status" id="OperationState" class="form-control" required >
+                                <option value="停用">停用</option>
+                                <option value="运营">运营</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">联系方式：</label>
+                        <div class="col-sm-6">
+                            <input name="contact" id="ContactInformation" class="form-control" required type="text"/>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <label class="col-sm-4 control-label">显示序号：</label>
+                        <div class="col-sm-6">
+                            <input name="orderNum" id="showNum" class="form-control" required type="text"/>
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">地址：</label>
+                        <div class="col-sm-6">
+                            <input name="address" id="address" class="form-control" required type="text"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">备注：</label>
+                        <div class="col-sm-6">
+                            <input name="memo" id="remarks" class="form-control" required type="text"/>
+                        </div>
+                    </div>
+
+                    <input id="modelState_dept" name="modelState" type="hidden">
+                    <input name="id" id="deptId" type="hidden"/>
+                    <input  class="form-control address"  type="hidden"/>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                <button type="button" onclick="dosubmitDept()" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+<script src="../../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../../js/content.min.js?v=1.0.0"></script>
+<script src="../../js/plugins/treeview/bootstrap-treeview.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/commonNew.js"></script>
+<script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+
+
+<!--树事件 样式 数据初始化-->
+<script>
+    $(function () {
+        treeOnInit();
+        //医院保存验证
+        var e = "<i class='fa fa-times-circle'></i> ";
+        var hosForm = $("#hosForm").validate({
+            submitHandler : function(form) {
+                hosModelSave();
+            },
+            rules: {
+                hosName: {//
+                    required: !0
+                },
+                status: {//
+                    required: !0
+                },
+                level: {//
+                    required: !0
+                },
+                code: {//
+                    required: !0
+                },
+                memo: {//
+                    required: !0
+                }
+            },
+            messages: {
+                hosName: {
+                    required: e + "不能为空"
+                },
+                status: {
+                    required: e + "不能为空"
+                },
+                level: {
+                    required: e + "不能为空"
+                },
+                code: {
+                    required: e + "不能为空"
+                },
+                memo: {
+                    required: e + "不能为空"
+                }
+            }
+        });
+        //隐藏时清空模态框
+        $('#myModal1').on('hide.bs.modal', function () {
+            //清除样式
+            hosForm.resetForm();
+
+            document.getElementById("hosForm").reset();
+        });
+
+        //科室保存验证
+        var e = "<i class='fa fa-times-circle'></i> ";
+        var senForm = $("#senForm").validate({
+            submitHandler : function(form) {
+                senModelSave();
+            }
+        });
+        //隐藏时清空模态框
+        $('#myModal2').on('hide.bs.modal', function () {
+            //清除样式
+            senForm.resetForm();
+
+            document.getElementById("senForm").reset();
+        });
+
+        //机构保存验证
+        var e = "<i class='fa fa-times-circle'></i> ";
+        var deptForm = $("#deptForm").validate({
+            submitHandler : function(form) {
+                deptModelSave();
+            },
+            rules: {
+//		      username: "required",
+//		      pw: "required",
+//		      email: {
+//		        required: true,
+//		        email: true
+//		      },
+		      contact: "mobile"
+		    },
+		    messages: {
+//		      username: "用户名是必须",
+//		      pw: "密码是必须",
+//		      email: {
+//		        required: "邮箱是必须",
+//		        email:"邮箱格式不正确"
+//		      }
+		    }
+        });
+        jQuery.validator.addMethod("mobile", function(value, element) {
+            var length = value.length;
+            return this.optional(element) || ((length == 11||length == 7||length == 8||length == 13||length == 12) && /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/.test(value));
+        }, "联系电话格式错误!");
+        //隐藏时清空模态框
+        $('#myModal3').on('hide.bs.modal', function () {
+            //清除样式
+            deptForm.resetForm();
+
+            document.getElementById("deptForm").reset();
+        });
+
+
+    });
+    function  treeOnInit() {
+        //医院树形结构
+//      ajaxGet('/sys/hospital/list', {}, function (data) {
+//          if (data.status == 1) {
+//              var treeData = data.resultMap.hospitalList; //接收到的tree数据
+//              if (treeData.length != 0) {
+//                  var hosTreeData = hosTreeDataRegroup(treeData);
+//                  console.log('hosTreeDataRegroup:', hosTreeData);
+//                  $("#treeview4").treeview({
+//                      data: hosTreeData,
+//                      onNodeSelected: function (e, o) {
+//                          console.log("您单击了 " + o.id);
+//                          var idstr = o.id.substr(0, 1);
+//                          var hosId = o.id.substr(1);
+//                          if (idstr == "A") {
+//                              //医院查询
+//                              hospitalGetData(hosId, 'hospital');
+//                              $("#addNewsectionsBtn").css("display","inline-block");
+//                              $("#delCurrentHosBtns").css("display","inline-block");
+//                          } else {
+//                              //科室查询
+//                              hospitalGetData(hosId, 'section');
+//                          }
+//                      }
+//                  });
+//              }
+//          } else {
+//              console.log(data.status);
+//          }
+//      });
+
+        //机构树形结构
+        ajaxGet('/sys/dept/tree', {}, function (data) {
+            if (data.status == 1) {
+                var treeData = data.resultMap.tree.children; //接收到的tree数据
+                if (treeData.length != 0) {
+                    var deptTreeData = deptTreeDataRegroup(treeData);
+                    console.log('deptTreeDataRegroup:', deptTreeData);
+                    $("#treeview5").treeview({
+                        data: deptTreeData,
+                        onNodeSelected: function (e, o) {
+                            console.log("您单击了 " + o.id);
+                            deptGetData(o.id);
+                            $("#newAddFollowDept").css("display","inline-block");
+                            $("#newAddDept").css("display","none");
+                            $("#newAddDeptAll").text("修改机构信息");
+                            $("#newAddDeptAll").css("display","inline-block");
+                            $("#delCurrentFollowDept").css("display","inline-block");
+                        }
+                    });
+                }
+            } else {
+                console.log(data.status);
+            }
+        });
+    }
+    function dosubmitHos(){
+        $("#hosForm").submit();
+    }
+    function dosubmitSen() {
+        $("#senForm").submit();
+    }
+    function dosubmitDept() {
+        $("#deptForm").submit();
+    }
+
+    //医院树形数据重组
+    function hosTreeDataRegroup(treeData) {
+        var hosTreeData = [];//医院树结构数据
+        //循环开始
+        for (var i = 0; i < treeData.length; i++) {
+            //子节点
+            var treeSection = treeData[i].section;
+            var nodes = [];
+            //子节点循环开始
+            for (var j = 0; j < treeSection.length; j++) {
+                var nodesObj = {
+                    "text": treeSection[j].name,
+                    "id": 'B' + treeSection[j].id,
+                    "pid": treeData[i].id
+                };
+                nodes.push(nodesObj);
+            }//子节点循环结束
+
+            var nodeObject = {
+                'text': treeData[i].name,
+                "id": 'A' + treeData[i].id,
+                "pid": 0
+            };
+            if (nodes.length > 0) {
+                nodeObject.nodes = nodes;
+            }
+            hosTreeData.push(nodeObject);
+        }
+        return hosTreeData;
+    }
+
+    //机构树形数据重组
+    function deptTreeDataRegroup(treeData) {
+        var deptTreeData = [];
+        if (treeData != null) {
+            //循环这个节点
+            for (var i = 0; i < treeData.length; i++) {
+                //逻辑 赋值 操作
+                var nodesObj = {
+                    "text": treeData[i].text,
+                    "id": treeData[i].id,
+                    "pid": treeData[i].parentId
+                };
+                //判断它自己下面是否还有子节点
+                if (treeData[i].children != null) {
+                    //有子节点，继续调用本身，去赋值给arr这个大数组
+                    var resnodes = deptTreeDataRegroup(treeData[i].children);
+                    if (resnodes.length > 0) {
+                        nodesObj.nodes = resnodes;
+                    }
+                }
+
+                deptTreeData.push(nodesObj);
+            }
+        }
+        return deptTreeData;
+
+    }
+</script>
+<script>
+    function deptGetData(id) {
+        //机构信息查询
+        $.ajax({
+            method: 'get',
+            url: config + '/sys/dept/get?id=' + id,
+            contentType: "application/json; charset=utf-8", //传到后台的数据格式
+            async: true,
+            data: {},
+            dataType: 'jsonp', //接收值的格式
+            jsonp: 'jsoncallback',
+            success: function (data) {
+                console.log(data);
+                var rm = data.resultMap.dept;
+                //机构信息渲染
+                $('#deptId').val(rm.id);//id
+
+                $('.maintenanceName').html(rm.name);//机构名称
+                $('.Superior').html(rm.parentName);//上级机构
+
+                $('.OperationState').html(rm.status);//运营状态
+                $('.maintenanceLevel').html(rm.level);//机构等级
+                $('.ContactInformation').html(rm.contact);//联系方式
+//              $('.showNum').html(rm.orderNum);//显示序号
+                $('.type').html(rm.type);//机构类型
+                $('.remarks').html(rm.memo);//机构备注
+                $('.address').html(rm.address);//机构备注
+                //下级机构渲染
+                var ldhtml = '<div class="rows">\n' +
+                    '                                        <ul class="hosThreeUl">\n' +
+                    '                                            <li>机构名称</li>\n' +
+                    '                                            <li>运行状态</li>\n' +
+                    '                                            <li>联系方式</li>\n' +
+                    '                                            <li>机构地址</li>\n' +
+                    '                                        </ul>\n' +
+                    '                                    </div>';
+                var llDept = rm.deptChildList;
+                if (llDept != null || llDept.length > 0) {
+                    for (var i = 0; i < llDept.length; i++) {
+
+                        ldhtml += '<div class="rows">\n' +
+                            '                                        <ul class="hosThreeUl">\n' +
+                            '                                            <li>' + llDept[i].name + '</li>\n' +
+                            '                                            <li>' + llDept[i].status + '</li>\n' +
+                            '                                            <li>' + llDept[i].contact + '</li>\n' +
+                            '                                            <li>' + llDept[i].address + '</li>\n' +
+                            '                                        </ul>\n' +
+                            '                                    </div>';
+                    }
+                }
+                $('#lowerLevelDept').html(ldhtml);
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        });
+    }
+
+    function hospitalGetData(id, url) {//sys/section/get/{id}
+        $.ajax({
+            method: 'get',
+            url: config + '/sys/' + url + '/get?id=' + id,
+            contentType: "application/json; charset=utf-8", //传到后台的数据格式
+            async: true,
+            data: {},
+            dataType: 'jsonp', //接收值的格式
+            jsonp: 'jsoncallback',
+            success: function (data) {
+                console.log('1111111:', data);
+                var rm = data.resultMap.hospital;
+                if (url == 'section') {
+                    rm = data.resultMap.section;
+                    if (rm != null) {
+                        //赋值给科室模态框
+                        $('#hosId').val(rm.fkHospitalId);//所属医院ID
+
+                        //科室信息渲染
+                        $('.sectionsName').html(rm.name);//科室名称
+                        $('.sectionsAlias').html(rm.alias);//科室别名
+                        $('.sectionsCode').html(rm.code);//科室编码
+                        $('.sectionsContact').html(rm.contact);//科室电话
+                        $('.sectionsLeader').html(rm.leader);//科室负责人
+                        $('.sectionsInfos').html(rm.memo);//科室信息
+                        $('.sectionsType').html(rm.type);//科室类型
+                        $('#sectionId').val(rm.id);//科室类型
+                    }
+                    sSenHDept();
+
+                } else {
+                    if (rm != null) {
+                        //医院信息渲染id
+                        $('#hosId').val(rm.id);//医院
+                        $('.hospitalsName').html(rm.name);//医院名称
+                        $('.hospitalOperationState').html(rm.status);//运营状态
+                        $('.hospitalsLevel').html(rm.level);//医院等级
+                        $('.hospitalsShowNum').html(rm.code);//医院代码
+                        $('.hospitalsInfos').html(rm.memo);//医院信息
+
+                    }
+                    sHoshDept();
+                }
+
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        });
+    }
+
+    var isSen = false;
+
+    function sHoshDept() {
+        isSen = false;
+        $("#tab2_dept").css("display", "none");//机构隐藏
+        $("#tab1_hos").css("display", "block");//医院显示
+        $("#tab1_sen").css("display", "none");//科室隐藏
+    }
+    function sDepthHos() {
+        $("#tab2_dept").css("display", "block");//机构显示
+        $("#tab1_hos").css("display", "none");//医院隐藏
+        $("#tab1_sen").css("display", "none");//科室隐藏
+    }
+
+    function sSenHDept() {
+        isSen = true;
+        $("#tab2_dept").css("display", "none");//机构隐藏
+        $("#tab1_hos").css("display", "none");//医院隐藏
+        $("#tab1_sen").css("display", "block");//科室显示
+    }
+
+    function sHosClick() {
+        if (isSen) {
+            sSenHDept();
+        } else {
+            sHoshDept();
+        }
+    }
+
+    function hosModelSave(){
+        var deptFrom = {};
+        var deptFromArray = $('#hosForm').serializeArray();
+        $.each(deptFromArray, function () {
+            deptFrom[this.name] = this.value;
+        });
+        deptFrom.name = deptFrom.hosName;
+        console.log(deptFrom);
+        var modelState=$('#modelState').val();
+        //保存
+        ajaxSave('/sys/hospital/'+modelState, deptFrom);
+    }
+    function senModelSave(){
+        var deptFrom = {};
+        var deptFromArray = $('#senForm').serializeArray();
+        $.each(deptFromArray, function () {
+            deptFrom[this.name] = this.value;
+        });
+        deptFrom.name = deptFrom.sectionName;
+        deptFrom.fkHospitalId = $('#hosId').val();
+        console.log(deptFrom);
+        var modelState_sen=$('#modelState_sen').val();
+        ajaxSave('/sys/section/'+modelState_sen,deptFrom);
+    }
+    function deptModelSave() {
+        var deptFrom = {};
+        var deptFromArray = $('#deptForm').serializeArray();
+        $.each(deptFromArray, function () {
+            deptFrom[this.name] = this.value;
+        });
+        deptFrom.name = deptFrom.deptName;
+        console.log(deptFrom);
+        var modelState_dept=$('#modelState_dept').val();
+        if(modelState_dept=="save"){
+            if($('#deptId').val()==""||$('#deptId').val()==null){
+            	deptFrom.pid =0;
+            }else{
+            	deptFrom.pid = $('#deptId').val();
+            }
+            
+        }
+        ajaxSave('/sys/dept/'+modelState_dept, deptFrom);
+    }
+    function ajaxSave(url, fromData) {
+        $.ajax({
+            method: 'get',
+            url: config + url,
+            contentType: "application/json; charset=utf-8", //传到后台的数据格式
+            async: true,
+            data: fromData,
+            dataType: 'jsonp', //接收值的格式
+            jsonp: 'jsoncallback',
+            success: function (data) {
+                console.log(data);
+                if (data.status == "1") {
+                    //treeOnInit();
+                    location.reload();
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (result) {
+                console.log(result);
+            }
+        });
+    }
+</script>
+<script>
+    //科室信息赋值给模态框，以供修改
+    function setModalSection(str) {
+        //区分修改还是保存
+        $('#modelState_sen').val(str);
+        if(str!="save"){
+            //科室信息渲染模态框
+            $('#sectionName').val($('.sectionsName').html());//科室名称
+            $('#alias').val($('.sectionsAlias').html());//科室别名
+            $('#code').val($('.sectionsCode').html());//科室编码
+            $('#contact').val($('.sectionsContact').html());//科室电话
+            $('#leader').val($('.sectionsLeader').html());//科室负责人
+            $('#memo').val($('.sectionsInfos').html());//科室信息
+            $('#sectionType').val($('.sectionsType').html());//科室类型
+            $('#sectionId').val($('#sectionId').val());//科室类型
+        }
+    }
+    //医院信息赋值给模态框，以供修改
+    function setModalHos(str) {
+        //区分修改还是保存
+        $('#modelState').val(str);
+        if(str!="save"){
+            //机构信息渲染模态框
+            $('#hospitalsName').val($('.hospitalsName').html().trim());//医院名称
+            $('#hospitalOperationState').val($('.hospitalOperationState').html().trim());//运营状态
+            $('#hospitalsLevel').val($('.hospitalsLevel').html().trim());//医院等级
+            $('#hospitalsShowNum').val($('.hospitalsShowNum').html().trim());//医院代码
+            $('#hospitalsInfos').val($('.hospitalsInfos').html().trim());//医院信息
+        }
+    }
+//删除当前医院
+	function delCurrentHos(){
+		var deptFrom = {};
+        var deptFromArray = $('#senForm').serializeArray();
+        deptFrom.id = $('#hosId').val();
+        console.log(deptFrom);
+        ajaxSave('/sys/hospital/remove',deptFrom);
+	}
+	//删除当前科室
+	function delCurrentSection(){
+		var deptFrom = {};
+        var deptFromArray = $('#senForm').serializeArray();
+        deptFrom.id = parseInt($('#sectionId').val());
+        console.log(deptFrom);
+        ajaxSave('/sys/section/remove',deptFrom);
+	}
+//	删除当前机构
+	function delCurrentDept(){
+        var deptFrom = {};
+        var deptFromArray = $('#deptForm').serializeArray();
+        console.log(deptFrom);
+        var modelState_dept=$('#modelState_dept').val();
+        deptFrom.id = $('#deptId').val();
+        ajaxSave('/sys/dept/remove', deptFrom);
+	}
+    //拿取页面机构信息赋值给模态框，以供修改
+    function setModalDept(str) {
+        $('#modelState_dept').val(str);
+        if(str!="save"){
+            //机构信息渲染模态框
+            $('#maintenanceName').val($('.maintenanceName').html().trim());//机构名称
+            $('#OperationState').val($('.OperationState').html().trim());//运营状态
+//          $('#maintenanceLevel').val($('.maintenanceLevel').html().trim());//机构等级
+            $('#ContactInformation').val($('.ContactInformation').html().trim());//联系方式
+//          $('#showNum').val($('.showNum').html().trim());//显示序号
+//          $('#type').val($('.type').html().trim());//机构类型
+            $('#remarks').val($('.remarks').html().trim());//机构备注
+            $('#address').val($('.address').html().trim());//机构备注
+//          $('.Superior').val($('.Superior').html().trim());//上级机构
+
+        }
+
+    }
+	function checkPhone(){ 
+	    var phone = document.getElementById('phone').value;
+	    if(!(/^1[3456789]\d{9}$/.test(phone))){ 
+	        alert("手机号码有误，请重填");  
+	        return false; 
+	    } 
+	}
+</script>
+</body>
+
+</html>

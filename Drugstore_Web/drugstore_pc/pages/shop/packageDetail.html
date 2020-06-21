@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>金诃药店</title>
+    <link rel="stylesheet" href="../../common/bootstrap.css"/>
+    <link rel="stylesheet" href="../../common/reset.css"/>
+    <link rel="stylesheet" href="../../common/style.css"/>
+    <link rel="stylesheet" href="../../common/common.css"/>
+    <link rel="stylesheet" href="../../css/swiper.min.css"/>
+    <link rel="stylesheet" href="../../css/headerTop.css"/>
+    <link rel="stylesheet" href="../../css/mainTop.css"/>
+    <link rel="stylesheet" href="../../css/footer.css"/>
+    <link rel="stylesheet" href="../../css/fix_right_menu.css" />
+    <link rel="stylesheet" href="../../css/shop_index.css"/>
+</head>
+<body>
+<header>
+    <div class="loadTop"></div>
+    <div class="loadHeader"></div>
+</header>
+<div id="section">
+    <!--daohang-->
+    <!--<div class="dao_div">
+        首页 > 藏药系列 > 头痛 > <span style="color: #3A82D7">如意珍宝丸</span>
+    </div>-->
+    <!--一-->
+    <div class="yi_div" id="drug_tpl_div1">
+        <script id="drug_tpl" type="text/html">
+
+            <!--左-->
+        <div style="width: 360px;">
+            <%var newimg='../../images/shop/test.png';
+            if(imgList.length>0){
+                newimg=imgList[0].fileUrl;
+            }%>
+            <div class="yi_l_1d dis_fc">
+            	<span class="jqzoom" id="jqzoom">
+            		<img id="topImg" src="<%=newimg%>" jqimg="<%=newimg%>"/>
+            	</span>
+            </div>
+            <div class="yi_l_2d">
+                <%for(var i=0;i< imgList.length;i++){%>
+                <div class="yi_l_2dd dis_fc"><img onclick="qiehuanImg(this)" src="<%=imgList[i].fileUrl%>" width="58" height="58" /></div>
+                <!--<div class="yi_l_2dd dis_fc"><img src="../../images/shop/test.png" width="60"/></div>-->
+                <!--<div class="yi_l_2dd dis_fc"><img src="../../images/shop/test.png" width="60"/></div>-->
+                <!--<div class="yi_l_2dd dis_fc"><img src="../../images/shop/test.png" width="60"/></div>-->
+                <!--<div class="yi_l_2dd dis_fc"><img src="../../images/shop/test.png" width="60"/></div>-->
+                <%}%>
+            </div>
+            <div class="yi_l_3d">
+						<span style="color: #FF9764">
+                            温馨提示：
+                        </span>
+                
+                图片仅供参考，如遇新包装上市可能存在图片更新滞后，请以实物为准。
+            </div>
+            <div></div>
+        </div>
+
+        <!--右-->
+        <div style="width: 800px;">
+            <div style="height: 376px;" >
+                    <!--<div class="yi_r_1dd"><%=data.fullName%> <%=data.comment%> <%=data.standard%></div>-->
+                    <div class="yi_r_1dd"><%=data.mealName%></div>
+                    <!--<div class="yi_r_2dd">
+                        <div>包装材料为：药品包装用PTP铝箔和聚氯乙烯固体药用硬片；</div>
+                        <div>包装规格为：<%=data.standard%></div>
+                    </div>-->
+                    <div>
+                    	<div>
+                    		<span class="reatailTitle">产品介绍：</span>
+                    		<span class="produceConternt">
+                    			<%=data.mealIntroduce%>
+                    		</span>
+                    	</div>
+                    </div>
+                    <div class="yi_r_3dd" style="height: auto;margin: 53px 0 34px 0px;padding: 0px 0 0px 20px;"><div class="smallFontGray">价格：¥<%=data.originalPrice%></div>套餐价：¥<%=data.totalPrice%> <span class="font-smallRed">节省：¥<%=data.discountPrice%></span></div>
+                    <!--<div class="yi_r_4dd"><span style="color: #9C9C9C">【药剂】:</span> <%=data.type%></div>
+                    <div class="yi_r_4dd"><span style="color: #9C9C9C">【规格】:</span> <%=data.standard%></div>
+                    <div class="yi_r_4dd"><span style="color: #9C9C9C">【单位】:</span> <%=data.unit1%></div>-->
+                    <div class="xiand"></div>
+
+                    <!--<div class="yi_r_4dd dis_fl" style="margin: 15px 0">
+                        <div class="yi_r5dd1"> 规格</div>
+                        <div class="yi_r5dd2" ><%=data.standard%></div>
+                    </div>-->
+
+                    <div class="yi_r_4dd dis_fl" style="margin: 20px 0px 14px 0px;">
+                        <div class="yi_r5dd1"> 数量</div>
+                        <div class="yi_r6d dis_fl">
+                            <div onclick="jianNum()" class="yi_r6d1 dis_fc">
+                                <div class="yi_6d_jbtn"></div>
+                            </div>
+                            <div class="yi_r6d2"><input oninput="changeNum();" onpaste="return false;" value="1" /></div>
+                            <div onclick="jiaNum()" class="yi_r6d3 dis_fc">+</div>
+                            <!--<div class="storeLimitWarn">库存不足</div>-->
+                        </div>
+
+                        <div style="margin-left: 20px;display: none;">库存<span id="qty_sp"><%=data.qty%></span>件</div>
+                    </div>
+                    <%if(data.isMail==1){%>
+                    <div class="sendProduct">
+                    	发货:天津
+                    	<span style="margin-left: 100px;cursor: pointer;"onclick="totalModal()">
+                    		免运费
+                    	</span>
+                    </div>
+                    <%}else{%>
+                    <div class="sendProduct">
+                    	发货:天津
+                    	<span style="margin-left: 100px;cursor: pointer;" onclick="totalModal()">
+                    		运费
+                    	</span>
+                    </div>
+                    <%}%>
+                    <!--运费说明-->
+					<div id="h_div3" class="detailsImgsAndDescribe">
+						<div class="goodsDescribe">
+							<div class="first_dd1">
+								<div class="er_dd1_l"></div>
+								运费说明
+							</div>
+							<div class="describes">
+								<div class="explain">
+									<span class="explain_star">
+										*
+									</span>
+									如订单中包含包邮商品，则此订单包邮
+								</div>
+								<div class="intro">
+									所有商品满<%=drugPostage.price%>元即免邮费（特殊地区除外）
+								</div>
+								<div class="th-area">
+									特殊地区
+								</div>
+								<table class="h_tab">
+									<tr>
+										<td class="hz_td">地区</td>
+										<td class="hz_td">
+											是否包邮
+										</td>
+										<td class="hz_td">
+											运费
+										</td>
+										<td class="hz_td">
+											包邮价格
+										</td>
+									</tr>
+									<%for(var k=0;k< freightList.length;k++){%>
+									<tr>
+										<td class="hz_td"><%=freightList[k].city%></td>
+										<%if (freightList[k].type == 1){%>
+										<td class="hz_td">
+											否
+										</td>
+										<%}else{ %>
+											<td class="hz_td">
+											是
+										</td>
+										<%}%>
+										<td class="hz_td">
+											<%=freightList[k].carriage%>
+										</td>
+										<%if (freightList[k].price != null){%>
+										<td class="hz_td">
+											<%=freightList[k].price%>
+										</td>
+										<%}else{ %>
+											<td class="hz_td">
+											--
+										</td>
+										<%}%>
+									</tr>
+									<%}%>
+								</table>
+							</div>
+						</div>
+					</div>
+                    
+            </div>
+            <div class="yi_r7d">
+                <div onclick="lijiPay()" class="yi_r7d1 dis_fc">立即购买</div>
+                <div onclick="select_shop(event)" class="yi_r7d2 dis_fc"id="topAddShopBtn">加入购物车</div>
+            </div>
+            <div class="yi_r8d">
+                <div class="yi_r8dd">正品保证</div>
+                <div class="yi_r8dd">药品齐全</div>
+                <div class="yi_r8dd">平台保障</div>
+                <div class="yi_r8dd">药监认证</div>
+            </div>
+
+        </div>
+        </script>
+
+    </div>
+    <!--套餐更优惠-->
+	<div class="first_div">
+		<script id="first_div_tpl" type="text/html">
+        <div class="first_dd1">
+        	<div class="er_dd1_l"></div>
+        	套餐更优惠
+        </div>
+        <div>
+        	<div id="box">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<%for(var k=0;k< mealList.length;k++){%>
+						<div class="swiper-slide" onclick="javascript:window.location.href='shop_des.html?rec=<%=mealList[k].drugId%>'">
+							<div>
+								<%var newimg='../../images/shop/test.png';
+						            if(mealList[k].fileUrl){
+						                newimg=mealList[k].fileUrl;
+						            }%>
+								<img src="<%=newimg%>" alt="" />
+							</div>
+							<div class="goodsInfoBoxs">
+								<div class="slideGoodsName">
+									<%=mealList[k].drugName%>
+								</div>
+								<div class="slidePriceAndNum"> <!--现价-->
+									¥<%=mealList[k].presentPrice%>×<%=mealList[k].drugNum%>
+								</div>
+								<div class="slideDrugPrice">  <!--原价-->
+									¥<%=mealList[k].drugPrice%>
+								</div>
+							</div>
+						</div>
+						<%}%>
+						<!--<div class="swiper-slide">
+							<div>
+								<img src="../../img/hotimg4.png" alt="" />
+							</div>
+							<div class="goodsInfoBoxs">
+								<div class="slideGoodsName">
+									三精 双黄连口服液
+								</div>
+								<div class="slidePriceAndNum">
+									¥25.00×1盒
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div>
+								<img src="../../img/hotimg4.png" alt="" />
+							</div>
+							<div class="goodsInfoBoxs">
+								<div class="slideGoodsName">
+									三精 双黄连口服液
+								</div>
+								<div class="slidePriceAndNum">
+									¥25.00×1盒
+								</div>
+							</div>
+						</div>-->
+						<!--<div class="swiper-slide">
+							<img src="../../img/left_img.png" alt="" />
+						</div>
+						<div class="swiper-slide">
+							<img src="../../img/left_img.png" alt="" />
+						</div>
+						<div class="swiper-slide">
+							<img src="../../img/left_img.png" alt="" />
+						</div>
+						<div class="swiper-slide">
+							<img src="../../img/left_img.png" alt="" />
+						</div>
+						<div class="swiper-slide">
+							<img src="../../img/left_img.png" alt="" />
+						</div>
+						<div class="swiper-slide">
+							<img src="../../img/left_img.png" alt="" />
+						</div>-->
+					</div>
+					<!--如果你需要分页-->
+					<div class="swiper-pagination"></div>
+					<!--如果你需要前进后退按钮-->
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+				</div>
+			</div>
+        </div>
+        <div class="packageToShoppingCart">
+        	<div class="packageToShopCartBtn"id="packageToShopCartBtn"onclick="select_shop(event)">
+        		一键加入购物车
+        	</div>
+        </div>
+        </script>
+    </div>
+    <!--二-->
+    <!--<div class="er_div">
+        <script id="er_div_tpl" type="text/html">
+            <div class="er_dd1 ">
+                <div class="er_dd1_l"></div>
+                产品参数
+            </div>
+            
+            <div class="er_dd3">
+                <div style="display: flex">
+                    <div style="width: 50%">商品名称：<%=data.fullName%></div>
+                    <div>生产厂商：<%=data.manufacturer%></div>
+                </div>
+
+                <div style="display: flex">
+                    <div style="width: 50%">规格：<%=data.standard%></div>
+                    <div>批准文号：<%=data.permitNo%></div>
+                </div>
+                <div style="display: flex">
+                    <div style="width: 50%">药剂：<%=data.type%></div>
+                    <div>生产日期：<%=data.addDate%></div>
+                </div>
+                <div style="display: flex">
+                    <div style="width: 50%">单位：<%=data.unit1%></div>
+                    <div>有效期：<%=data.editDate%></div>
+                </div>
+               
+            </div>
+        </script>
+    </div>-->
+
+    <!--三-->
+
+    <div class="san_div">
+        <script id="san_div_tpl" type="text/html">
+            <div class="san_dd1">
+                <div class="er_dd1_l"></div>
+                产品详情
+            </div>
+            <div class="san_dd2">
+                <%for(var i=0; i< imginfoList.length; i++){%>
+                <img width="100%" src="<%=imginfoList[i].fileUrl%>">
+                <%}%>
+                <!--<div>【成　　份】珍珠、天竺黄、西红花、丁香、肉豆蔻、豆蔻、草果、檀香、紫檀香、沉香、诃子、毛诃子、余甘子、木香、肉桂、荜茇、螃蟹、金礞石、香旱芹、人工牛黄</div>
+                <div>人工麝香、广枣、烈香杜鹃、塞北紫堇、短穗兔耳草、铁粉(制)、冬葵果、甘草、黑种草子。</div>
+                <div>【性 状】本品为胶囊剂，内容物为灰褐色的粉末；气清香，味微酸、甘。</div>
+                <div>【功能主治】开窍醒神，清热通络。用于痰瘀阻络所致的中风，语言蹇涩，半身不遂，口眼歪斜。</div>
+                <div>【规 格】每粒装0.3g。</div>
+                <div>【用法用量】口服。一次2粒，一日1～2次。</div>
+                <div>【不良反应】尚不明确。</div>
+                <div>【禁 忌】孕妇禁服。</div>
+                <div>【注意事项】服药期间禁生、冷、酸辣食物。运动员慎用。</div>
+                <div>【贮 藏】密封。</div>
+                <div>【包　　装】包装材料为：药品包装用PTP铝箔和聚氯乙烯固体药用硬片；</div>
+                <div>　　　　　  包装规格为：0.3g×10粒/盒。</div>
+
+                <div>【有 效 期】36个月。</div>
+                <div>【执行标准】中成药地方标准上升国家药品标准部分（内科脑系经络 </div>
+                <div> 　　　　　 肢体分册）；标准编号：WS-10708(ZD-0708)-2002。 </div>
+
+                <div>【批准文号】国药准字Z20026000</div>-->
+
+            </div>
+        </script>
+    </div>
+
+</div>
+<div class="loadSideBar"></div>
+<footer>
+
+</footer>
+<script type="text/javascript" src="../../common/jquery-1.12.1.js"></script>
+<script src="jquery.jqzoom.js"></script>
+<script type="text/javascript" src="../../common/common.js"></script>
+<script type="text/javascript" src="../../common/config.js"></script>
+<script type="text/javascript" src="../../common/fly.js"></script>
+<script type="text/javascript" src="../../js/swiper.min.js"></script>
+<script type="text/javascript" src="../../js/shop_index.js"></script>
+<script src="../../js/template.js"></script>
+
+
+<script>
+//  var config="http://192.31.10.197:8003";
+    if(window.user){
+    	var userId =window.user.id;
+    }
+    $(function () {
+        oninit();        
+    });
+    function qiehuanImg(that) {
+        var src=$(that).attr('src');
+        $('#topImg').attr('src',src);
+        $('#topImg').attr('jqimg',src);
+    }
+    function jianNum() {
+        var num=$('.yi_r6d2 input').val();
+        var storeLimit=$('#qty_sp').text();
+        num=num-1<1?1:num-1;
+//      if(num>parseFloat(storeLimit)){
+////      	num=storeLimit;
+////      	$(".storeLimitWarn").css("display","block");
+//      	$(".yi_r7d1").css('border','1px solid #eee');
+//      	$(".yi_r7d1").css('background','rgb(241, 237, 237)');
+//      	$(".yi_r7d1").css('color','#333');
+//      	$(".yi_r7d1").css('pointer-events','none');
+//      	$(".yi_r7d2").css('background','rgb(241, 237, 237)');
+//      	$(".yi_r7d2").css('color','#333');
+//      	$(".yi_r7d2").css('pointer-events','none');
+//      }else if(num<=parseFloat(storeLimit)){
+////      	$(".storeLimitWarn").css("display","none");
+//      	$(".yi_r7d1").css('border','1px solid rgba(6,145,249,1)');
+//      	$(".yi_r7d1").css('background','rgba(232,245,255,1)');
+//      	$(".yi_r7d1").css('color','#0691F9');
+//      	$(".yi_r7d1").css('pointer-events','auto');
+//      	$(".yi_r7d2").css('background','rgba(6,145,249,1)');
+//      	$(".yi_r7d2").css('color','#fff');
+//      	$(".yi_r7d2").css('pointer-events','auto');
+//      	
+//      }
+        if(num<=1){
+        	num=1;
+//      	$(".storeLimitWarn").css("display","none");
+        }
+        $('.yi_r6d2 input').val(num);
+    }
+    //			打开模板
+	function totalModal(){
+		$(".detailsImgsAndDescribe").toggle();
+	}
+    function jiaNum() {
+        var num=$('.yi_r6d2 input').val();
+        var qty=$('#qty_sp').text();
+//      console.log(num*1+1);
+		$('.yi_r6d2 input').val(num*1+1);
+//      if(num*1+1<=qty){
+//          $('.yi_r6d2 input').val(num*1+1);
+////          $(".storeLimitWarn").css("display","none");
+//      	$(".yi_r7d1").css('border','1px solid rgba(6,145,249,1)');
+//      	$(".yi_r7d1").css('background','rgba(232,245,255,1)');
+//      	$(".yi_r7d1").css('color','#0691F9');
+//      	$(".yi_r7d2").css('background','rgba(6,145,249,1)');
+//      	$(".yi_r7d2").css('color','#fff');
+//      	$(".yi_r7d1").css('pointer-events','auto');
+//      	$(".yi_r7d2").css('pointer-events','auto');
+//      }else{
+////      	$('.yi_r6d2 input').val(num*1)
+////      	$(".storeLimitWarn").css("display","block");
+//      	$(".yi_r7d1").css('border','1px solid #eee');
+//      	$(".yi_r7d1").css('background','rgb(241, 237, 237)');
+//      	$(".yi_r7d1").css('color','#333');
+//      	$(".yi_r7d2").css('background','rgb(241, 237, 237)');
+//      	$(".yi_r7d2").css('color','#333');
+//      	$(".yi_r7d1").css('pointer-events','none');
+//      	$(".yi_r7d2").css('pointer-events','none');
+//      }
+    }
+    //编辑数量
+//  window.onload=function(){
+    	function changeNum() {
+//  		alert("j")
+    	$('.yi_r6d2 input').val($('.yi_r6d2 input').val().replace(/\D/g,''));
+        var sp_num=$('.yi_r6d2 input').val()*1;
+        var storeLimit=$('#qty_sp').text();
+//      if(sp_num>parseFloat(storeLimit)){
+////      	sp_num=storeLimit;
+////      	$(".storeLimitWarn").css("display","block");
+//      	$(".yi_r7d1").css('border','1px solid #eee');
+//      	$(".yi_r7d1").css('background','rgb(241, 237, 237)');
+//      	$(".yi_r7d1").css('color','#333');
+//      	$(".yi_r7d2").css('background','rgb(241, 237, 237)');
+//      	$(".yi_r7d2").css('color','#333');
+//      	$(".yi_r7d1").css('pointer-events','none');
+//      	$(".yi_r7d2").css('pointer-events','none');
+//      }else if(sp_num<=parseFloat(storeLimit)){
+//      	$(".storeLimitWarn").css("display","none");
+//      	$(".storeLimitWarn").css("display","none");
+//      	$(".yi_r7d1").css('border','1px solid rgba(6,145,249,1)');
+//      	$(".yi_r7d1").css('background','rgba(232,245,255,1)');
+//      	$(".yi_r7d1").css('color','#0691F9');
+//      	$(".yi_r7d2").css('background','rgba(6,145,249,1)');
+//      	$(".yi_r7d2").css('color','#fff');
+//      	$(".yi_r7d1").css('pointer-events','auto');
+//      	$(".yi_r7d2").css('pointer-events','auto');
+//      }
+        if(sp_num<=1){
+        	sp_num=1;
+//      	$(".storeLimitWarn").css("display","none");
+        }
+        $('.yi_r6d2 input').val(sp_num);
+    };
+//  }
+	var temdata;
+    function oninit() {
+        $.ajax({
+            type: "get",
+            url: config + "/drug/info/getMealDetails",
+            dataType: "JSON",
+            async: true,
+//          jsonp: "jsoncallback",
+            data:{
+                id:getQueryVariable("packageRec"),
+//              id:27
+            },
+            success: function(data) {
+            	console.log(data);
+                if(data.status==1){
+                    var drug=data.resultMap.drugMeal;
+                    drug.startTime=formatTime(drug.outFactoryDate, 'Y-M-D');
+                    drug.endTime=formatTime(drug.validityPeriod, 'Y-M-D');
+                    //商品内容
+                    temdata = {
+                        'data':drug,
+                        'imgList':data.resultMap.drugMeal.mainPictures,
+                        'imginfoList':data.resultMap.drugMeal.detailedPictures,
+                        'mealList':data.resultMap.drugMeal.mealList,//套餐
+                    };
+                    console.log("data2::::",data);
+                    
+    				
+    				freight();
+                }else{
+                    alert(data.message);
+                }
+            },
+        });
+        //获取运费详情
+		function freight(){
+			$.ajax({
+				type: "get",
+				url: config + "/drug/postage/getDefault",
+				dataType: "jsonp",
+				jsonp: "jsoncallback",
+				data: {
+					rec:getQueryVariable("packageRec"),
+				},
+				success: function(data) {
+					var list = data.resultMap.list;
+					temdata.freightList = list;
+					temdata.drugPostage=data.resultMap.drugPostage
+					console.log(temdata)
+					var html = template.render('drug_tpl', temdata);
+                    $("#drug_tpl_div1").html(html);
+//                  var html2 = template.render('er_div_tpl', temdata);
+//                  $(".er_div").html(html2);
+                    var html3 = template.render('san_div_tpl', temdata);
+                    $(".san_div").html(html3);
+                    var html4=template.render('first_div_tpl', temdata);
+                    $(".first_div").html(html4);
+					if(temdata.mealList.length == 0) { //判断套餐更优惠是否有值
+							$(".first_div").css('display', 'none');
+						} else {
+							$(".first_div").css('display', 'block');
+						}
+					var swiper = new Swiper('.swiper-container', {
+						  loop:false,	
+					 
+					       //根据slider的宽度自动分布
+						  slidesPerView: 'auto',
+					 
+						  // active下 居中显示
+						  centeredSlides: false,	
+					 
+						  // 分页
+			//			  pagination: {
+			//			    el: '.swiper-pagination',
+			//			    clickable: true,
+			//			  },
+					 
+						//    前进后退按钮
+						  navigation: {
+						    nextEl: '.swiper-button-next',
+						    prevEl: '.swiper-button-prev',
+						  }
+						});
+						$("#jqzoom").jqueryzoom({xzoom:380,yzoom:410});
+				}
+			})
+		}
+    }
+// 格式化日期，如月、日、时、分、秒保证为2位数
+function formatNumber (n) {
+    n = n.toString()
+    return n[1] ? n : '0' + n;
+}
+// 参数number为毫秒时间戳，format为需要转换成的日期格式
+function formatTime (number, format) {
+    let time = new Date(number);
+    let newArr = [];
+    let formatArr = ['Y', 'M', 'D', 'h', 'm', 's'];
+    newArr.push(time.getFullYear());
+    newArr.push(formatNumber(time.getMonth() + 1));
+    newArr.push(formatNumber(time.getDate()));
+
+    newArr.push(formatNumber(time.getHours()));
+    newArr.push(formatNumber(time.getMinutes()));
+    newArr.push(formatNumber(time.getSeconds()));
+
+    for (let i in newArr) {
+        format = format.replace(formatArr[i], newArr[i])
+    }
+    return format;
+}
+    function getQueryVariable(variable)
+    {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
+    }
+    function lijiPay() {
+        var mealId=Number(getQueryVariable("packageRec"));
+        var num=Number($('.yi_r6d2 input').val());
+//      var storeNum=Number($('#qty_sp').text().trim());
+        sessionStorage.removeItem("haveNotBack");
+        if(window.user) {
+			window.location.href="../shoppingCart/orderSettlement.html?packagedDetailToOrder=1&mealId="+ mealId+"&number="+num;
+		} else {
+			window.location.href = window.src+"pages/login/login.html";
+		}
+    }
+var addShopNum=1;
+    //加入购物车
+    function select_shop(event) {
+//	alert(userid+" "+productid+" "+shoppingCount);
+
+		if(window.user) {
+			if($(event.target).attr('id')=='topAddShopBtn'){
+				addShopNum=Number($('.yi_r6d2 input').val());
+			}else{
+				addShopNum=1;
+			}
+			$.ajax({
+	            type: "GET",
+	            url: config + "/drug/cart/add",
+	            contentType: "json; charset=utf-8",
+	            async: true,
+	            data: {
+	            	fromType:1,
+	                mealId:Number(getQueryVariable("packageRec")),//药品id
+	                userId:userId,//用户id
+	                drugNum:addShopNum//数量
+	            },
+	            dataType: 'JSON',
+	//		JSONP: "callback",
+	            success: function(data) {
+	                console.log(data);	                
+	                if (data.status == "1") {
+	                	addProduct(event);
+	                	sideCartNum(); 
+	                }else{
+	                	alert(data.message);
+	                }	                
+	                //alert(data.message);
+	                
+	            },
+	            error: function(data) {
+	                console.log(data.message);
+	            }
+	        });
+		} else {
+			window.location.href = window.src+"pages/login/login.html";
+		}
+        
+    }
+    
+    //加入购物车飞入效果
+function addProduct(event) {
+	var thisgoodsImg=$($(".yi_l_1d img")[0]).attr("src");
+//	console.log(thisgoodsImg);
+	var offset = $('.sideCartJumpShopCart').offset(), flyer = $('<img class="u-flyer" style="width: 50px;"src="'+thisgoodsImg+'"/>');
+	var pageX=event.clientX;
+	var pageY=event.clientY;
+	console.log(pageX);
+	var offsetTop = $(window).scrollTop();
+	console.log((offset.top)-offsetTop);
+	$(window).scroll(function (){
+       // 让浮动层距离窗口顶部，始终保持80px
+　　         	var offsetTop = $(window).scrollTop(); 
+			pageY=pageY-offsetTop;
+　　    });
+	flyer.fly({
+		start: {
+			left: pageX,
+			top: pageY-50
+		},
+		end: {
+			left: offset.left,
+			top: (offset.top)-offsetTop,
+			width: 0,
+			height: 0
+		}
+	});
+}
+
+			
+
+</script>
+</body>
+</html>

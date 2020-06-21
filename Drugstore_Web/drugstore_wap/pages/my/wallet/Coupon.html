@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/coupon.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">优惠券</h1>
+		</header>
+		<div id="refreshContainer" class="mui-content">
+			<div class="mui-slider mui-fullscreen">
+				<div id="nav" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item1">
+						未使用
+					</a>
+					<a class="mui-control-item" href="#item2">
+						已过期
+					</a>
+				</div>
+				<div class="mui-slider-progress-bar mui-col-xs-6"></div>
+				<div class="mui-slider-group">
+					<div id="item1" class="mui-slider-item mui-control-content mui-active">
+						<div id="myScroll" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view list notUsedBox">
+									<!--<li class="mui-table-view-cell list-item notUsed">
+										<div class="left">
+											<p>￥<span class="pirce">5000</span></p>
+											<p>满50000可用</p>
+										</div>
+										<div class="right">
+											<h5>限商品: 平台所有商品</h5>
+											<p>券编号: 9495462157</p>
+											<p>有效期: 2018.3.10-2018-11.13
+												<a class="btn" href="#">立即使用</a>
+											</p>
+										</div>
+									</li>
+									<li class="mui-table-view-cell list-item notUsed">
+										<div class="left">
+											<p>￥<span class="pirce">5000</span></p>
+											<p>满50000可用</p>
+										</div>
+										<div class="right">
+											<h5>限商品: 平台所有商品</h5>
+											<p>券编号: 9495462157</p>
+											<p>有效期: 2018.3.10-2018-11.13
+												<a class="btn" href="#">立即使用</a>
+											</p>
+										</div>
+									</li>
+									<li class="mui-table-view-cell list-item notUsed">
+										<div class="left">
+											<p>￥<span class="pirce">5000</span></p>
+											<p>满50000可用</p>
+										</div>
+										<div class="right">
+											<h5>限商品: 平台所有商品</h5>
+											<p>券编号: 9495462157</p>
+											<p>有效期: 2018.3.10-2018-11.13
+												<a class="btn" href="#">立即使用</a>
+											</p>
+										</div>
+									</li>
+									<li class="mui-table-view-cell list-item overdue">
+										<div class="left">
+											<p>￥<span class="pirce">5000</span></p>
+											<p>满50000可用</p>
+										</div>
+										<div class="right">
+											<h5>限商品: 平台所有商品</h5>
+											<p>券编号: 9495462157</p>
+											<p>有效期: 2018.3.10-2018-11.13</p>
+										</div>
+									</li>
+									<li class="mui-table-view-cell list-item notUsed">
+										<div class="left">
+											<p>￥<span class="pirce">5000</span></p>
+											<p>满50000可用</p>
+										</div>
+										<div class="right">
+											<h5>限商品: 平台所有商品</h5>
+											<p>券编号: 9495462157</p>
+											<p>有效期: 2018.3.10-2018-11.13
+												<a class="btn" href="#">立即使用</a>
+											</p>
+										</div>
+									</li>
+									<li class="mui-table-view-cell list-item notUsed">
+										<div class="left">
+											<p>￥<span class="pirce">5000</span></p>
+											<p>满50000可用</p>
+										</div>
+										<div class="right">
+											<h5>限商品: 平台所有商品</h5>
+											<p>券编号: 9495462157</p>
+											<p>有效期: 2018.3.10-2018-11.13
+												<a class="btn" href="#">立即使用</a>
+											</p>
+										</div>
+									</li>
+									<li class="mui-table-view-cell list-item notUsed">
+										<div class="left">
+											<p>￥<span class="pirce">5000</span></p>
+											<p>满50000可用</p>
+										</div>
+										<div class="right">
+											<h5>限商品: 平台所有商品</h5>
+											<p>券编号: 9495462157</p>
+											<p>有效期: 2018.3.10-2018-11.13
+												<a class="btn" href="#">立即使用</a>
+											</p>
+										</div>
+									</li>
+									<li class="mui-table-view-cell list-item overdue">
+										<div class="left">
+											<p>￥<span class="pirce">5000</span></p>
+											<p>满50000可用</p>
+										</div>
+										<div class="right">
+											<h5>限商品: 平台所有商品</h5>
+											<p>券编号: 9495462157</p>
+											<p>有效期: 2018.3.10-2018-11.13</p>
+										</div>
+									</li>-->
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2" class="mui-slider-item mui-control-content">
+						<ul class="mui-table-view list overdueBox">
+							<!--<li class="list-item overdue">
+								<div class="left">
+									<p>￥<span class="pirce">5000</span></p>
+									<p>满50000可用</p>
+								</div>
+								<div class="right">
+									<h5>限商品: 平台所有商品</h5>
+									<p>券编号: 9495462157</p>
+									<p>有效期: 2018.3.10-2018-11.13</p>
+								</div>
+							</li>
+							<li class="list-item overdue">
+								<div class="left">
+									<p>￥<span class="pirce">5000</span></p>
+									<p>满50000可用</p>
+								</div>
+								<div class="right">
+									<h5>限商品: 平台所有商品</h5>
+									<p>券编号: 9495462157</p>
+									<p>有效期: 2018.3.10-2018-11.13</p>
+								</div>
+							</li>
+							<li class="list-item overdue">
+								<div class="left">
+									<p>￥<span class="pirce">5000</span></p>
+									<p>满50000可用</p>
+								</div>
+								<div class="right">
+									<h5>限商品: 平台所有商品</h5>
+									<p>券编号: 9495462157</p>
+									<p>有效期: 2018.3.10-2018-11.13</p>
+								</div>
+							</li>-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../../mui/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../mui/js/mui.pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../mui/js/mui.pullToRefresh.material.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../common/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../common/jquery-1.12.1.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="js/couponPR.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		mui.init()
+	</script>
+</html>

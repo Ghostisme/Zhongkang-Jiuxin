@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>药店连锁-轮播图维护</title>
+    <meta name="viewport"content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet"type="text/css" href="../../css/plugins/sweetalert/sweetalert.css" >
+    <link href="../../css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/raw_table.css">
+</head>
+<body>
+<div class="wrapper wrapper-content  animated fadeInRight h100">
+    <div class="row h100">
+        <div class="col-sm-12 h100">
+            <div class="ibox float-e-margins h100">
+                <div class="ibox-content h100">
+                    <div class="clients-list h100">
+                        <ul class="nav nav-tabs">
+                            <li id="app_li" class="active"><a data-toggle="tab" href="#tab-1"><i class="fa fa-user"></i> APP</a> </li>
+                            <li id="web_li" class=""><a data-toggle="tab" href="#tab-2"><i class="fa fa-briefcase"></i> WEB</a> </li>
+                        </ul>
+                        <div class="tab-content h100">
+                            <div id="tab-1" class="tab-pane active h100"  >
+                                <iframe id="app_if" scrolling="no" width="100%" height="100%" src="slideshow_app.html" frameborder="0" ></iframe>
+                            </div>
+                            <div id="tab-2" class="tab-pane h100"  >
+                                <iframe id="web_if"  scrolling="no" width="100%" height="100%" src="slideshow_web.html" frameborder="0" ></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--撑住ibox-content高度-->
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--app新增模态框-->
+<div class="modal inmodal fade" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+                	<span class="sr-only">Close</span></button>
+                <h4 class="modal-title" >app轮播图保存</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal m-t" id="appForm" >
+                	 <!--<div class="form-group">
+                        <label class="col-sm-4 control-label">类别：</label>
+                        <div class="col-sm-6">
+                        	<input name="accessType"class="form-control"id="goods" type="radio"checked="checked" value="1"style="float: left;display: inline-block;width: 14px;margin-top: 0px;margin-right: 5px;">
+                        	<label for="goods" style="float: left;margin-top: 8px;margin-right: 20px;">商品</label>
+							<input name="accessType"class="form-control" id="packageGoods"type="radio"value="2"style="float: left;display: inline-block;width: 14px;margin-top: 0px;margin-right: 5px;">
+							<label for="packageGoods"style="float: left;margin-top: 8px;">套餐</label>
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">图片：</label>
+                        <div class="col-sm-6">
+                            <input style="display: none;" onchange="img1Upload(this)" class="form-control" type="file">
+                            <span onclick="filebtnclick(this)" class="glyphicon glyphicon-open fileBtn" ></span>
+                            <img id="bannerUrl_img" class="simg" src="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">链接地址：</label>
+                        <div class="col-sm-6">
+                            <input id="app_accessPath" name="accessPath"  class="form-control" type="text"/>
+                        </div>
+                    </div>
+                    <input id="app_up_id" name="id" type="hidden">
+                    <input id="app_bannerUrl" name="bannerUrl" type="hidden">
+                    <!--固定值-->
+                    <input  name="type" type="hidden" value="2">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="app_dosubmit()" class="btn btn-primary">保存</button>
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--web新增模态框-->
+<div class="modal inmodal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+                	<span class="sr-only">Close</span></button>
+                <h4 class="modal-title" >web轮播图保存</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal m-t" id="webForm" >
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">图片：</label>
+                        <div class="col-sm-6">
+                            <input style="display: none;" onchange="img2Upload(this)" class="form-control" type="file">
+                            <span onclick="filebtnclick(this)" class="glyphicon glyphicon-open fileBtn" ></span>
+                            <img id="bannerUrl2_img" class="simg" src="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">链接地址：</label>
+                        <div class="col-sm-6">
+                            <input id="web_accessPath" name="accessPath"  class="form-control" type="text"/>
+                        </div>
+                    </div>
+                    <input id="web_up_id" name="id" type="hidden">
+                    <input id="web_bannerUrl" name="bannerUrl" type="hidden">
+                    <!--固定值-->
+                    <input  name="type" type="hidden" value="1">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="web_dosubmit()" class="btn btn-primary">保存</button>
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+	<script type="text/javascript" src="../../js/jquery-3.0.0.min.js"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+    <script type="text/javascript" src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../js/content.min.js?v=1.0.0"></script>
+    <script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script src="../../js/hi_home.js"></script>
+<script>
+
+    //打开模态框
+    function showM1() {
+        $('#myModal1').modal('show');
+    }
+    //图片上传
+    function img1Upload(that) {
+        uploadImg(that,function (url) {
+            $('#app_bannerUrl').val(url);
+            $(that).parent().find('.simg').attr('src',url);
+            $(that).parent().find('.simg').show();
+        });
+    }
+    //打开模态框
+    function showM2() {
+        $('#myModal2').modal('show');
+    }
+    //图片上传
+    function img2Upload(that) {
+        uploadImg(that,function (url) {
+            $('#web_bannerUrl').val(url);
+            $(that).parent().find('.simg').attr('src',url);
+            $(that).parent().find('.simg').show();
+        });
+    }
+    function modalClose() {
+        $('#myModal1').modal('hide');
+        $('#myModal2').modal('hide');
+
+    }
+</script>
+<!--app增删改等操作-->
+<script>
+    function app_dosubmit() {
+        $("#appForm").submit();
+    }
+    $(function () {
+        //保存验证
+        var e = "<i class='fa fa-times-circle'></i> ";
+        var appvaForm = $("#appForm").validate({
+            submitHandler : function(form) {
+                if($('#app_up_id').val()!=""){
+                    appUpdate();
+                }else{
+                    appSave();
+                }
+            },
+            rules: {
+                title: {
+                    required: !0
+                }
+            },
+            messages: {
+                title: {
+                    required: e + "系列名称不能为空"
+                }
+            }
+        });
+        //隐藏模态框时清空模态框
+        $('#myModal1').on('hide.bs.modal', function () {
+            appvaForm.resetForm();
+            document.getElementById("appForm").reset();
+            $('#app_up_id').val("");
+            $('.simg').hide();
+
+
+        });
+
+    });
+    function appSave() {
+        $.ajax({
+            type: "get",
+            url: config + "/admin/drug/bannerPictures/save",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data:formAjaxData('#appForm'),
+            success: function (data) {
+            	console.log(data);
+            	if(data.status==1){
+            		alert(data.message);
+            		$("#app_if")[0].contentWindow.getDateList();
+                	modalClose();
+            	}else{
+            		alert(data.message);
+            	}
+               
+            },
+        });
+    }
+    function appupdateclick_fu(data){
+    	$("input:radio[name='accessType'][value='"+data.accessType+"']").prop("checked",true);
+        $('#app_up_id').val(data.id);
+        $('#app_bannerUrl').val(data.bannerUrl);
+        $('#app_accessPath').val(data.accessPath);
+        $('#bannerUrl_img').attr('src',data.bannerUrl);
+        $('#bannerUrl_img').show();
+        showM1();
+    }
+    function appUpdate() {
+        $.ajax({
+            type: "get",
+            url: config + "/admin/drug/bannerPictures/update",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data:formAjaxData('#appForm'),
+            success: function (data) {
+            	if(data.status==1){
+            		alert(data.message);
+	                $("#app_if")[0].contentWindow.getDateList();
+	                modalClose();
+            	}else{
+            		alert(data.message);
+            	}
+                
+            },
+        });
+    }
+    function appdel(that) {
+        var r = confirm("确定删除吗？")
+    if(r == true) {
+        var del_id=$(that).attr('data-id');
+        $.ajax({
+            type: "get",
+            url: config + "/admin/drug/bannerPictures/remove",
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data:{id:del_id},
+            success: function (data) {
+            	if(data.status==1){
+            		alert(data.message);
+	                $("#app_if")[0].contentWindow.getDateList();
+	                modalClose();
+            	}else{
+            		alert(data.message);
+            	}
+                
+            },
+        });
+    }
+    }
+    //上下标
+    function app_shang(that,appList) {
+        var index=$(that).attr('data-index');
+        if(index==0){
+            alert('调整方向成功');
+            return;
+        }
+        var i2=parseInt(index)-1;
+        var s_data=appList[i2];
+        var data=appList[index];
+        sx_up3(data.id,s_data.id);
+    }
+    function app_xia(that,appList) {
+        var index=$(that).attr('data-index');
+        if(index==appList.length-1){
+            alert('调整方向成功');
+            return;
+        }
+        var i2=parseInt(index)+1;
+        var x_data=appList[i2];
+        var data=appList[index];
+        sx_up3(data.id,x_data.id);
+    }
+</script>
+<!--web增删改等操作-->
+<script>
+    function web_dosubmit() {
+        $("#webForm").submit();
+    }
+    $(function () {
+        //保存验证
+        var e = "<i class='fa fa-times-circle'></i> ";
+        var webvaForm = $("#webForm").validate({
+            submitHandler : function(form) {
+                if($('#web_up_id').val()!=""){
+                    webUpdate();
+                }else{
+                    webSave();
+                }
+            },
+            rules: {
+                title: {
+                    required: !0
+                }
+            },
+            messages: {
+                title: {
+                    required: e + "系列名称不能为空"
+                }
+            }
+        });
+        //隐藏模态框时清空模态框
+        $('#myModal2').on('hide.bs.modal', function () {
+            webvaForm.resetForm();
+            document.getElementById("webForm").reset();
+            $('#web_up_id').val("");
+            $('.simg').hide();
+            $("#bannerUrl2_img").attr("src","");
+			$("#webForm").find("input[type='file']").val("");
+			$("#web_bannerUrl").val("");
+        });
+		//隐藏新增APP模态框时清空模态框
+	        $('#myModal1').on('hide.bs.modal', function () {
+	            webvaForm.resetForm();
+	            document.getElementById("appForm").reset();
+	            $('#web_up_id').val("");
+	            $('.simg').hide();
+	            $("#bannerUrl_img").attr("src","");
+				$("#appForm").find("input[type='file']").val("");
+				$("#app_bannerUrl").val("");
+	        });
+    });
+    function webSave() {
+        $.ajax({
+            type: "get",
+            url: config + "/admin/drug/bannerPictures/save",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data:formAjaxData('#webForm'),
+            success: function (data) {
+            	if(data.status==1){
+	            	alert(data.message);
+	                $("#web_if")[0].contentWindow.getDateList();
+	                modalClose();
+            	}else{
+            		alert(data.message);
+            	}
+            },
+        });
+    }
+    function webupdateclick_fu(data){
+        $('#web_up_id').val(data.id);
+        $('#web_bannerUrl').val(data.bannerUrl);
+        $('#web_accessPath').val(data.accessPath);
+        $('#bannerUrl2_img').attr('src',data.bannerUrl);
+        $('#bannerUrl2_img').show();
+        showM2();
+    }
+    function webUpdate() {
+        $.ajax({
+            type: "get",
+            url: config + "/admin/drug/bannerPictures/update",
+            async: false,
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data:formAjaxData('#webForm'),
+            success: function (data) {
+            	if(data.status==1){
+	            	alert(data.message);
+	                $("#web_if")[0].contentWindow.getDateList();
+	                modalClose();
+            	}else{
+            		alert(data.message);
+            	}
+            },
+        });
+    }
+    function webdel(that) {
+        var r = confirm("确定删除吗？")
+    if(r == true) {
+        var del_id=$(that).attr('data-id');
+        $.ajax({
+            type: "get",
+            url: config + "/admin/drug/bannerPictures/remove",
+            dataType: "jsonp",
+            jsonp: "jsoncallback",
+            data:{id:del_id},
+            success: function (data) {
+            	if(data.status==1){
+	            	alert(data.message);
+	                $("#web_if")[0].contentWindow.getDateList();
+	                modalClose();
+            	}else{
+            		alert(data.message);
+            	}
+            },
+        });
+    }
+    }
+    //上下标
+    function web_shang(that,webList) {
+        var index=$(that).attr('data-index');
+        if(index==0){
+            alert('调整方向成功');
+            return;
+        }
+        var i2=parseInt(index)-1;
+        var s_data=webList[i2];
+        var data=webList[index];
+        sx_up3(data.id,s_data.id);
+    }
+    function web_xia(that,webList) {
+        var index=$(that).attr('data-index');
+        if(index==webList.length-1){
+            alert('调整方向成功');
+            return;
+        }
+        var i2=parseInt(index)+1;
+        var x_data=webList[i2];
+        var data=webList[index];
+        sx_up3(data.id,x_data.id);
+    }
+</script>
+
+</html>

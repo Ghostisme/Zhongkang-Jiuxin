@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>中康九和远程医疗管理系统 - 用户信息修改</title>
+
+    <meta name="keywords" content="中康九和远程医疗管理系统">
+    <meta name="description" content="中康九和远程医疗管理系统">
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/animate.min.css" rel="stylesheet">
+    <link href="../../css/style.min.css" rel="stylesheet">
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/public.css" />
+    <style>
+       .boxBorders{
+       		border-bottom: 2px solid lightgrey;
+       }
+       .gohome{
+       		display: none;
+       }
+       .titleContents{
+       		padding:0px 10px;
+       		background:#fff;
+       }
+       .ibox-title{
+       		border-top-style: none;
+       }
+       .titleContents form{
+       		margin: 5px;
+       		overflow: hidden;
+       		padding: 5px;
+       }
+       .useNameTitle{
+       	padding-left: 0px;
+       }
+       .inputTitle{
+       	overflow: hidden;
+       }
+       .input-group-btn{
+       	left: 5px;
+       }
+       .table-striped>tbody>tr:nth-of-type(odd){
+       	background:#fff;
+       }
+       .table-striped>tbody>tr:nth-of-type(even){
+       	background:#f9f9f9;
+       }
+       .lf{
+       	float: left;
+       }
+       .rt{
+       	float: right;
+       }
+       #TableTopTitle{
+       	overflow: hidden;
+       	margin-bottom: 10px;
+       }
+       .row{
+       	margin: 0px;
+       }
+       #editable_paginate{
+       	text-align: right;
+       }
+       .formBg{
+       	background: #fff;
+       }
+       .userImg{
+       	width: 80px;
+       	height: 80px;
+		border-radius: 50%;
+       }
+    </style>
+
+</head>
+<body class="gray-bg">
+
+    <div class="wrapper wrapper-content animated fadeInUp">
+        <div class="row">
+            <div class="col-sm-12 formBg">
+
+                <div class="ibox titleContents">
+                    <div class="ibox-title boxBorders">
+                        <h5>用户信息</h5>
+                    </div>
+                   <form class="form-horizontal m-t col-sm-6" id="commentForm">
+                   			<div class="form-group">
+                                <label class="col-sm-2 control-label">用户头像</label>
+                                <div class="col-sm-10">
+                                	<img src="../../img/home/userDefaultImg.jpeg.jpg" alt="" class="userImg"/>
+                                    <input id="cuserImg" type="file" class="form-control" display="none"name="userImg" required="" aria-required="true">
+                                </div>
+                            </div>
+                   			<div class="form-group">
+                                <label class="col-sm-2 control-label">所属医院</label>
+                                <div class="col-sm-10">
+                                    <input id="cHos" type="text" class="form-control" placeholder="请输入地区编码" name="hos" required="" aria-required="true">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">所属科室</label>
+                                <div class="col-sm-10">
+                                    <input id="ctechOffice" type="text" class="form-control" placeholder="请输入地区编码" name="techOffice" required="" aria-required="true">
+                                </div>
+                            </div>
+                   	
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span class="redStar">*</span>职称</label>
+                                <div class="col-sm-10">
+                                	<select class="form-control m-b" id="cprovince"name="province" required="" aria-required="true">
+                                        <option>教授</option>
+                                        <option>副教授</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span class="redStar">*</span>用户名称</label>
+                                <div class="col-sm-10">
+                                    <input id="cUserName" type="text" class="form-control" placeholder="请输入地区编码" name="UserName" required="" aria-required="true">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span class="redStar">*</span>用户性别</label>
+                                <div class="col-sm-10">
+                                	<select class="form-control m-b" id="cprovince"name="province" required="" aria-required="true">
+                                        <option>男</option>
+                                        <option>女</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span class="redStar">*</span>联系方式（登录用户）</label>
+                                <div class="col-sm-10">
+                                    <input id="ctel" type="text" class="form-control" placeholder="请输入地区编码" name="tel" required="" aria-required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span class="redStar">*</span>身份证</label>
+                                <div class="col-sm-10">
+                                    <input id="cidentifyCode" type="text" class="form-control" placeholder="请输入地区编码" name="identifyCode" required="" aria-required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span class="redStar">*</span>电子邮箱</label>
+                                <div class="col-sm-10">
+                                    <input id="cemail" type="email" class="form-control" placeholder="请输入地区编码" name="email" required="" aria-required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span class="redStar">*</span>地区名称</label>
+                                <div class="col-sm-10">
+                                    <textarea id="ccomment" name="comment" class="form-control" required="" placeholder="请输入地区名称" aria-required="true"></textarea>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-10">
+                                	<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+	                            	<button type="submit" class="btn btn-success">保存</button>
+                                    <!--<button class="btn btn-primary" type="submit">提交</button>-->
+                                </div>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+       
+   </div>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="../../js/plugins/jeditable/jquery.jeditable.js"></script>
+    <!--<script src="../../js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="../../js/plugins/dataTables/dataTables.bootstrap.js"></script>-->
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../js/distpicker.data.js"></script>
+    <script src="../../js/distpicker.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../js/content.min.js?v=1.0.0"></script>
+    <!--<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>-->
+	<!--<script src="../../js/config.js" type="text/javascript" charset="utf-8"></script>-->
+    <script>
+    	$(document).ready(function() {
+//			$(".dataTables-example").dataTable();
+//			var oTable = $("#editable").dataTable({ 
+//				searching : false, //去掉搜索框方法一：百度上的方法，但是我用这没管用
+//		        bLengthChange: false,   //去掉每页显示多少条数据方法
+//				});
+//			
+		});
+		$('.del').click(function () {
+		   alert({
+				title: "您确定要删除这条信息吗",
+				text: "删除后将无法恢复，请谨慎操作！",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "删除",
+				cancelButtonText: "取消",
+				closeOnConfirm: false,
+				closeOnCancel: false
+			}, function(isConfirm) {
+				if(isConfirm) {
+					alert("删除成功！", "您已经永久删除了这条信息。", "success")
+				} else {
+					alert("已取消", "您取消了删除操作！", "error")
+				}
+			})
+		});
+	
+		 $(document).ready(function () {
+        	
+        	$.ajax({
+				type: "get",
+				url: config+"/sys/hospital/list",
+				async: false,
+				dataType: "jsonp",
+				jsonp: "jsoncallback",
+				data: {},
+				success: function(data) {
+					console.log(data.resultMap.hospitalList);
+					oninitTable(data.resultMap.hospitalList);
+				},
+			});
+    	});
+
+    function oninitTable (listData){
+        // var url = 'http://www.fruitcoming.com/admin/user/getMemberLevelData';
+//      var data = [
+//          {
+//              'id': 0,
+//              'name': '医院编码001',
+//              'price': '$0'
+//          },
+//          {
+//              'id': 1,
+//              'name': 'Item 1',
+//              'price': '$1'
+//          },
+//          {
+//              'id': 2,
+//              'name': 'Item 2',
+//              'price': '$2'
+//          },
+//          {
+//              'id': 3,
+//              'name': 'Item 3',
+//              'price': '$3'
+//          },
+//          {
+//              'id': 4,
+//              'name': 'Item 4',
+//              'price': '$4'
+//          },
+//          {
+//              'id': 5,
+//              'name': 'Item 5',
+//              'price': '$5'
+//          }
+//      ];
+        $('#myTable').bootstrapTable({
+            method: 'get',
+            toolbar: '#toolbar', //工具按钮用哪个容器
+            striped: true,      //是否显示行间隔色
+            cache: false,      //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            // dataField: "data",//数据集名称 自己随便起
+            pagination: true,     //是否显示分页（*）
+            pageNumber: 1,      //初始化加载第一页，默认第一页
+            pageSize: 5,      //每页的记录行数（*）
+            pageList: [5,10, 20, 50],  //可供选择的每页的行数（*）
+//          url: config+"/sys/hospital/list",//这个接口需要处理bootstrap table传递的固定参数
+            //responseHandler: responseHandler,//把后台返回的数据整改成你想要的格式
+            // queryParamsType: '', //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
+                                 // 设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber
+            //queryParams: queryParams,//前端调用服务时，会默认传递上边提到的参数，如果需要添加自定义参数，可以自定义一个函数返回请求参数
+            sidePagination: "client",   //分页方式：client客户端分页，server服务端分页（*）
+            // search: true,      //是否显示表格搜索，此搜索是客户端搜索，但可以传值到服务端
+            strictSearch: true,
+            minimumCountColumns: 2,    //最少允许的列数
+            clickToSelect: true,    //是否启用点击选中行
+            //smartDisplay:true,// 智能显示(www.111cn.net) pagination 和 cardview 等
+            searchOnEnterKey: true,
+          	data:listData,
+            columns: [
+            {
+                field:"state",
+                checkbox:true,
+                align : 'center'
+            },{
+                field: 'id',
+                title: '序号',
+                align: 'center'
+            },{
+                field: 'code',
+                title: '医院编码',
+                align: 'center',
+                sortable: true
+            },{
+                field: 'name',
+                title: '医院名称',
+                align: 'center',
+                sortable: true
+            },{
+                field: 'level',
+                title: '医院等级',
+                align: 'center'
+            },{
+                field: 'areaName',
+                title: '城市-区县',
+                align: 'center'
+            },{
+                field: 'contact',
+                title: '联系电话',
+                align: 'center',
+                sortable: true
+            },{
+                field: 'modifyTime',
+                title: '更新时间',
+                align: 'center',
+                sortable: true
+            }]
+        });
+    }
+    
+	
+    </script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+    </body>
+
+</html>

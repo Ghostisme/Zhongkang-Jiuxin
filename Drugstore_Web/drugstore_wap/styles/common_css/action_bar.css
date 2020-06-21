@@ -1,0 +1,28 @@
+/*titlebar*/
+body{
+	background: #F5F5F5;
+}
+#headerBG{
+	/*background-color: #3699DC;*/
+	background-color: #ffffff;
+	height: 40px;
+	text-align:center;
+	padding-right:10px;
+}
+#headerBG span{
+	width: 100%;
+	/*color: #FFF;*/
+	color:#323232;
+	line-height: 40px;
+	font-size:1em;
+}
+#headerBG span#navTxt{
+	position:fixed;
+	left:0;
+}
+.bgColor{
+	background-color: #FFFFFF;
+}
+.mui-content{
+	margin-top: 55px;
+}

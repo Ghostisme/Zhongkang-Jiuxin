@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../styles/common_css/dibu.css">
+		<link rel="stylesheet" href="../../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" type="text/css" href="user.css" />
+	</head>
+	<body>
+		<div class="header">
+			<div class="header_top">
+				<div>我</div>
+				<div>
+					<img src="img/icon6.png" >
+				</div>
+			</div>
+			<div class="header_text">
+				<div class="header_img">
+					<img src="img/icon1.png" >
+				</div>
+				<div class="header_content">
+					<div>大海</div>
+					<div>13622609875</div>
+				</div>
+			</div>
+		</div>
+		<div class="wrapper">
+			<div class="myorder">
+				<div class="myorder_text">我的订单</div>
+				<div>
+					<ul>
+						<li>
+							<a href="../../my/order_administration.html?pageid=0">
+								<div class="item_img">
+									<img src="img/icon1.png" >
+								</div>
+								<div>全部</div>
+							</a>
+						</li>
+						<li>
+							<a href="../../my/order_administration.html?pageid=1">
+								<div class="item_img">
+									<img src="img/icon2.png" >
+								</div>
+								<div>待付款</div>
+							</a>
+						</li>
+						<li>
+							<a href="../../my/order_administration.html?pageid=2">
+								<div class="item_img">
+									<img src="img/icon3.png" >
+								</div>
+								<div>待发货</div>
+							</a>
+						</li>
+						<li>
+							<a href="../../my/order_administration.html?pageid=3">
+								<div class="item_img">
+									<img src="img/icon4.png" >
+								</div>
+								<div>待收货</div>
+							</a>
+						</li>
+						<li>
+							<a href="../../my/order_administration.html?pageid=4">
+								<div class="item_img">
+									<img src="img/icon5.png" >
+								</div>
+								<div>已完成</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--底部footer导航-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="footer" href="../../../index.html">
+				<img src="../../../styles/img/home_img/home_normal.png" />
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="footer" href="../../home/mall.html">
+				<img src="../../../styles/img/home_img/shop_normal.png" />
+				<span class="mui-tab-label">分类</span>
+			</a>
+			<!--<a class="footer" href="../resourceList/resource_list.html">
+				<img src="../../styles/img/home_img/footerResource.png" />
+				<span class="mui-tab-label">资源单</span>
+			</a>-->
+			<!--<a class="footer" href="../selected/selected.html">
+				<img src="../../styles/img/home_img/footerSelected.png" />
+				<span class="mui-tab-label">行业臻选</span>
+			</a>-->
+			<a id="go_shopcart" class="footer" href="../../shopCart/shopcart_index.html">
+				<img src="../../../styles/img/home_img/shop_cart_normal.png" />
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a id="go_person_center" class="footer footer-mui-active" href="user.html">
+				<img src="../../../styles/img/home_img/my_press.png" />
+				<span class="mui-tab-label" style="color: #0691F9;">我</span>
+			</a>
+		</nav>
+	</body>
+	<script src="../../../mui/js/mui.min.js"></script>
+	<script src="../../../common/jquery-1.12.1.js"></script>
+	<script src="../../../common/common.js"></script>
+	<script type="text/javascript">
+		if(!window.webUser){
+			window.location.href = "../../login/login.html";
+		}
+		$(document).ready(function(){
+			$(".header_top").find("div").eq(1).click(function(){
+				window.location.href = "setUp/setUp.html";
+			});
+			if (window.webUser.userName == window.webUser.userCode) {
+				$(".header_content")
+					.find("div")
+						.eq(0)
+							.text("")
+								.next()
+									.text(window.webUser.userCode);
+			}else{
+				$(".header_content")
+					.find("div")
+						.eq(0)
+							.text(window.webUser.userName)
+								.next()
+									.text(window.webUser.userCode);
+			}
+			
+		})
+	</script>
+</html>

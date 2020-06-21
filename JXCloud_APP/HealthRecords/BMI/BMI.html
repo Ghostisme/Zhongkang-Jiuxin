@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta content="telephone=no" name="format-detection">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>BMI</title>
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/init.css"/>
+		<!-- 顶部内容CSS -->
+		<!-- <link rel="stylesheet" type="text/css" href="../../css/navbar.css"> -->
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../font/iconfont.css">
+		<!-- 本页CSS -->
+		<link type="text/css" rel="stylesheet" href="css/BMI.css"/>
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../js/config.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
+		<!-- 页面跳转方法JS -->
+		<script type="text/javascript" src="../js/jumpPage.js"></script>
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/BMI.js" ></script>
+	</head>
+	<body>
+		<!-- 2019-05-24 -->
+		<!-- 内容区域 -->
+		<div class="wrapper">
+			<div class="navcontent">
+				<div class="BMI contentTitle">
+					<img src="img/icon1.png" alt="这是一个图标" title="这是一个图标">
+					<span>BMI:</span>
+					<span></span>
+				</div>
+				<div class="height contentTitle">
+					<img src="img/icon2.png" alt="这是一个图标" title="这是一个图标">
+					<span>身高:</span>
+					<span></span>
+				</div>
+				<div class="weight contentTitle">
+					<img src="img/icon3.png" alt="这是一个图标" title="这是一个图标">
+					<span>体重:</span>
+					<span></span>
+				</div>
+			</div>
+			<div class="tablecontent">
+				<div class="tableBox">
+					<table border="0" cellspacing="0" cellpadding="0" class="tableclick">
+						<thead>
+							<tr>
+								<th>日期/时间</th>
+								<th>体重(kg)</th>
+								<th>BMI</th>
+								<th>数据源</th>
+								<th>ID</th>
+							</tr>
+						</thead>
+						<tbody class="oWrapper">
+							<tr class="tpl">
+								<td>
+									<p></p>
+									<p></p>
+								</td>
+								<td class="numConversion"></td>
+								<td class="numConversion">
+									<span></span>
+									<i class="iconfont"></i>
+								</td>
+								<td>手入</td>
+								<td></td>
+							</tr>
+							<!--<tr>
+								<td>
+									<p>16:20</p>
+									<p>2019-05-13</p>
+								</td>
+								<td>62</td>
+								<td>19</td>
+								<td>手入</td>
+							</tr>
+							-->
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- <button type="button" id="btn1">手輸</button> -->
+		<script>
+			function jumpPage(clickNum){
+				if (clickNum == 1) {
+					$(location).prop('href', "../BMIinput/BMIinput.html");
+				}
+			}
+			// pageGo("#btn1", "../BMIinput/BMIinput.html")
+		</script>
+	</body>
+</html>

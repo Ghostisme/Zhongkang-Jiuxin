@@ -1,0 +1,197 @@
+/*下拉与上拉样式*/
+
+html,
+body {
+	background-color: #efeff4;
+	/*处理谷歌警告*/
+	touch-action: none;
+}
+/*需要下移的距离 标题高度+选项卡以上的内容高度*/
+.mui-bar-nav~.mui-content .mui-slider.mui-fullscreen {
+    top: 46px;
+}
+.mui-bar~.mui-content .mui-fullscreen {
+	height: auto;
+}
+
+.mui-pull-top-tips {
+	position: absolute;
+	top: -20px;
+	left: 50%;
+	margin-left: -25px;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	z-index: 1;
+}
+
+.mui-bar~.mui-pull-top-tips {
+	top: 24px;
+}
+
+.mui-pull-top-wrapper {
+	width: 42px;
+	height: 42px;
+	display: block;
+	text-align: center;
+	background-color: #efeff4;
+	border: 1px solid #ddd;
+	border-radius: 25px;
+	background-clip: padding-box;
+	box-shadow: 0 4px 10px #bbb;
+	overflow: hidden;
+}
+
+.mui-pull-top-tips.mui-transitioning {
+	-webkit-transition-duration: 200ms;
+	transition-duration: 200ms;
+}
+
+.mui-pull-top-tips .mui-pull-loading {
+	/*-webkit-backface-visibility: hidden;
+		-webkit-transition-duration: 400ms;
+		transition-duration: 400ms;*/
+	margin: 0;
+}
+
+.mui-pull-top-wrapper .mui-icon,
+.mui-pull-top-wrapper .mui-spinner {
+	margin-top: 7px;
+}
+
+.mui-pull-top-wrapper .mui-icon.mui-reverse {
+	/*-webkit-transform: rotate(180deg) translateZ(0);*/
+}
+
+.mui-pull-bottom-tips {
+	text-align: center;
+	background-color: #efeff4;
+	font-size: 15px;
+	line-height: 40px;
+	color: #777;
+}
+
+.mui-pull-top-canvas {
+	overflow: hidden;
+	background-color: #fafafa;
+	border-radius: 40px;
+	box-shadow: 0 4px 10px #bbb;
+	width: 40px;
+	height: 40px;
+	margin: 0 auto;
+}
+
+.mui-pull-top-canvas canvas {
+	width: 40px;
+}
+
+.mui-slider-indicator.mui-segmented-control {
+	background-color: #efeff4;
+}
+/*调节显示区域的高度*/
+.mui-slider .mui-slider-group .mui-slider-item {
+    height: 100%;
+}
+
+
+#header {
+	background: rgb(255, 204, 0);
+}
+
+#header a {
+	color: black;
+}
+
+#nav {
+	background: #fff;
+}
+
+.list,
+.list-item {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.list {
+	margin: 0 auto;
+}
+
+.list .list-item {
+	width: 96%;
+	margin: 15px auto;
+	padding-bottom: 10px;
+}
+
+.list-item {
+	padding: 0, 5px, 0, 5px;
+}
+
+.left {
+	display: inline-block;
+	height: 100%;
+	width: 31%;
+}
+
+.left p {
+	color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.right {
+	display: inline-block;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.pirce {
+	font-size: 25px;
+}
+
+.right p {
+	font-size: 10px;
+}
+
+.right .btn {
+	color: rgb(255, 204, 0);
+	border: 1px solid rgb(255, 204, 0);
+	border-radius: 20px;
+	margin-left: 5px;
+	padding: 5px;
+}
+
+.notUsed {
+	background: url(../img/bg-red.jpg) no-repeat;
+	background-size: cover;
+}
+
+.overdue {
+	background: url(../img/overdue.jpg) 95% 0px/contain no-repeat, url(../img/bg-gray.jpg) 0% 0%/cover no-repeat;
+}
+
+@media only screen and (min-width: 320px) {
+	html {
+		font-size: 62.5%!important;
+	}
+}
+
+@media only screen and (min-width: 360px) {
+	html {
+		font-size: 72.5%!important;
+	}
+}
+
+@media only screen and (min-width: 400px) {
+	html {
+		font-size: 82.5%!important;
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	html {
+		font-size: 94%!important;
+	}
+}

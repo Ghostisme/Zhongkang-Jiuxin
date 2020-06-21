@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../../styles/common_css/dibu.css">
+		<link href="../../../mui/css/mui.picker.css" rel="stylesheet" />
+		<link href="../../../mui/css/mui.poppicker.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../../styles/css/goodsDetail.css">
+		<title></title>
+	</head>
+
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">商品详情</span>
+		</header>
+		<!--商品详情主内容区-->
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--商品名，类别等-->
+					<div id="goodsClassify">
+						<div class="goodsCName">
+							<span>商品名称：</span>
+							<span class="pname">
+								
+							</span>
+						</div>
+						<span class="productId"></span>
+						<span class="maintenanceperiod"></span>
+						<span class="version"></span>
+						<div class="goodsCCompany">
+							<div class="Classify">
+								<span>类别：</span>
+								<span class="goodsclassify"></span>
+							</div>
+							<div class="Company">
+								<span>生产厂商：</span>
+								<span class="companyname"></span>
+							</div>
+						</div>
+						<div class="goodsVspec">
+							<div class="Vertical">
+								<span>品种：</span>
+								<span class="ver"></span>
+							</div>
+							<div class="Vender">
+								<span>规格：</span>
+								<span class="ven"></span>
+							</div>
+						</div>
+						<div class="standard">
+							<div class="standardName">
+								<span>标准：</span>
+								<span class="standardTxt"></span>
+							</div>
+							<div class="standardNum">
+								<span>标准号：</span>
+								<span class="numTxt"></span>
+							</div>
+						</div>
+						<div class="goodsCStore">
+							<span class="storeTxt">仓库：</span>
+							<span class="cStore"></span>
+						</div>
+					</div>
+					<!--商品价格，数量等-->
+					<div id="goodsPNum">
+						<ul id="ul_1" class="mui-table-view mui-table-view-chevron">
+						<li class="mui-table-view-cell">
+							<div class="mui-navigate-right item">
+								<div class="item_title">
+									<span>计价单位</span>
+								</div>
+								<div class="input_div">
+									<input class="mui-pull-right" type="text" value="" id="pputxt"placeholder="m2" />
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-navigate-right item">
+								<div class="item_title">
+									<span>单价</span>
+								</div>
+								<div class="input_div">
+									<input class="mui-pull-right" id="pricetxt"type="text" value="" placeholder="180" />
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-navigate-right item">
+								<div class="item_title">
+									<span>起订量</span>
+								</div>
+								<div class="input_div">
+									<input class="mui-pull-right"id="numtxt" type="text" value="" placeholder="10000" />
+								</div>
+							</div>
+						</li>
+						<!--<li class="mui-table-view-cell" id="inputDiv">
+							<div class="mui-navigate-right item">
+								<div class="item_title">
+									<span id="qq">仓库</span>
+								</div>
+								<div class="input_div">
+									<input class="mui-pull-right" id="gTel"type="button" value="选择仓库" placeholder="省-市-区" />
+								</div>
+							</div>
+						</li>-->
+						<li class="mui-table-view-cell">
+							<div class="mui-navigate-right item">
+								<div class="item_title">
+									<span>库存</span>
+								</div>
+								<div class="input_div">
+									<input class="mui-pull-right"id="storetxt" type="text" value="" placeholder="2000000" />
+								</div>
+							</div>
+						</li>
+					</ul>
+					</div>
+					<!--促销折扣-->
+					<div class="discount">
+						<span class="discountTxt">促销折扣：</span>
+						<span class="discountInput">
+							满 <input type="text" id="full"/>
+							减 <input type="text" id="minus"/>
+						</span>
+					</div>
+					<!--退出登录按钮-->
+					<button class="mui-btn-block quitBtn mui-btn-blue">修改并提交</button>
+				</div>
+			</div>
+		</div>
+		<script src="../../../mui/js/mui.min.js"></script>
+		<script src="../../../common/jquery-1.12.1.js"></script>
+		<script src="../../../mui/js/mui.picker.js"></script>
+		<script src="../../../mui/js/mui.poppicker.js"></script>
+		<script src="../../../mui/js/mui.picker.min.js"></script>
+		<script src="../../../mui/js/city.data.js"></script>
+		<script src="../../../mui/js/city.data-3.js"></script>
+		<script src="../../../common/common.js"></script>
+		<script src="goodsDetail.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>

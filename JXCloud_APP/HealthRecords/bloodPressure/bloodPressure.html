@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
+		<meta content="telephone=no" name="format-detection">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>血压</title>
+		<!-- 初始化CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/init.css">
+		<!-- 顶部内容CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/navbar.css">
+		<!-- 本页面CSS -->
+		<link rel="stylesheet" type="text/css" href="css/bloodPressure.css"/>
+		<!-- 字体CSS -->
+		<link rel="stylesheet" type="text/css" href="../font/iconfont.css">
+		<!-- 搜索框CSS -->
+		<link rel="stylesheet" type="text/css" href="../css/search.css">
+		<!--引入JQ库 -->
+		<script type="text/javascript" src="../js/config.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.0.0.min.js"></script>
+		<!-- 页面跳转方法JS -->
+		<script type="text/javascript" src="../js/jumpPage.js"></script>
+		<!-- 本页JS -->
+		<script type="text/javascript" src="js/bloodPressure.js" ></script>
+	</head>
+	<body>
+		<!-- 2019-05-20 -->
+		<!-- 顶部内容 -->
+		<div class="header">
+			<div class="navbar">
+				<div class="navbackbtn">
+					<i class="iconfont gobackBtn">&#xe624;</i>
+				</div>
+				<div class="navtitle">
+					<span class="title">血压</span>
+				</div>
+				<div class="right-close-btn">
+					<button type="button" class="closebtn">手动输入</button>
+				</div>
+			</div>
+		</div>
+		<!-- 选项卡 -->
+		<!-- <div class="tablist">
+			<ul>
+				<li class="Active">列表</li>
+				<li>曲线</li>
+			</ul>
+		</div> -->
+		<!-- 内容区域 -->
+		<div class="wrapper">
+			<!-- 顶部选项卡 -->
+			<div class="tablist">
+				<button type="button" class="active" data-str=" ">全部</button>
+				<button type="button" data-str="7d">近7天</button>
+				<button type="button" data-str="1m">近一个月</button>
+				<input type="hidden" value="" class="tablist-val" id="tablist-val"/>				
+			</div>
+			<!-- 正文内容 -->
+			<div class="content">
+				<table border="0" cellspacing="0" cellpadding="0" class="tableclick">
+					<thead>
+						<tr>
+							<th>
+								<p>上传日期/时间</p>
+								<p>&nbsp;</p>
+							</th>
+							<th>
+								<p>收缩压/舒张压</p>
+								<p>(mmHg)</p>
+								<!-- <i></i> -->
+							</th>
+							<th>
+								<p>心率</p>
+								<p>(bpm)</p>								
+								<!-- <i></i> -->
+							</th>
+							<!-- <th>状态</th> -->
+							<th>
+								<p>数据源</p>
+								<p>&nbsp;</p>
+							</th>
+							<th>ID</th>
+						</tr>
+					</thead>
+					<!-- 表格模板 -->
+					<tbody class="oWrapper">
+						<tr class="tpl">
+							<td>
+								<p></p>
+								<p></p>
+							</td>
+							<td class="pressure numConversion">
+								<span></span>
+								/
+								<span></span>
+								<i class="iconfont"></i>
+							</td>
+							<td class="numConversion"></td>
+							<td>手入</td>
+							<td></td>
+						</tr>
+						<!--<tr>
+							 <td>2019-05-13  16:20</td> 
+							<td>
+								<p>16:20</p>
+								<p>2019-05-13</p>								
+							</td>
+							<td>120/80</td>
+							<td>88</td>
+							 <td>正常</td> 
+							<td>手入</td>
+						</tr>
+						-->
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script type="text/javascript">
+			// 原生APP调用方法跳转页面
+			function jumpPage(clickNum){
+				if (clickNum == 1) {
+					$(location).prop('href', "../bPmanualInput/bPmanualInput.html");
+				}
+			}
+			// pageGo("#btn1", "../bPmanualInput/bPmanualInput.html")
+		</script>
+	</body>
+</html>

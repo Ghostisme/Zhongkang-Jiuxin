@@ -1,0 +1,137 @@
+/*头部色调*/
+.mui-bar{
+	background:#ffcc33;
+}
+.mui-action-back{
+	color: #323232;
+}
+
+
+/*info*/
+.info{
+	padding: 10px;
+	background: #fff;
+}
+.info>a{
+	color: #FFCC33;
+}
+
+
+.e-cash{
+	margin-top: 10px;
+	padding: 10px;
+	background: #fff;
+}
+
+.list>.mui-table-view-cell:after{
+	left: 0;
+}
+.list>li>.rebateBox{
+	float: left;
+}
+.list>li>.source{
+	float: right;
+}
+
+
+.e-cash>.drawMoney{
+	float: right;
+	background: #FFCC33;
+	border-radius: 50px;
+	padding: 2px 13px;
+	margin-top: -2px;
+}
+
+
+/*提现*/
+#popover{
+	width: 90%;
+    top: 27%;
+    left: 5%;
+}
+.drawMoneyInfo{
+	background: #FFF;
+	padding: 10px;
+	text-align: center;
+	font-size:0.75rem;
+}
+#bank{
+	font-size:0.75rem;
+}
+/*标题*/
+.drawMoneyInfo>.title{
+	font-weight: bolder;
+}
+
+/*自定义input宽度*/
+.input-row>.inputW{
+	width: 48%;
+}
+.input-row .inputW.lastoption{
+	width: 30%;
+}
+/*提示语*/
+.notice{
+	margin-left: 32%;
+	font-size: 8px;
+	color: red;
+}
+
+/*验证码按钮*/
+input#verBtn.verBtn{
+	margin-top: 7px;
+	border: 1px solid #FFCC33;
+	border-radius: 50px;
+	background: #fff;
+	color: #FFCC33;
+	font-size: 0.75rem;
+	text-align: center;
+	width:33%;
+	padding:5px 10px;
+	margin-left: 10px;
+}
+/*提交按钮*/
+.submit{
+	width: 80%;
+	background: #ffcc33;
+	color: #323232;
+	border-radius: 30px;
+}
+
+
+/*mui默认样式修改*/
+select{
+	border:1px solid #E3E3E3!important;
+	height:40px;
+}
+.input-row{
+	width: 90%;
+	margin: 0 auto;
+	text-align: left;
+	height:40px;
+}
+.input-row label{
+	display: inline-block;
+	width: 30%;
+	text-align: right;
+	font-size:0.75rem;
+}
+.input-row label~input,
+.input-row label~select, 
+.input-row label~textarea{
+	border: 1px solid #E3E3E3;
+	display: inline-block;
+	width: 55%;
+}
+.input-row label~.loginName{
+	display: inline-block;
+	width: 50%;
+	text-align: left;
+}
+
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], textarea{
+	height:30px;
+}
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea{
+	margin-bottom: 0px;
+}

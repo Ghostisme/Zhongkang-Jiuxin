@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>金诃药店</title>
+		<link rel="stylesheet" href="../../common/bootstrap.css" />
+		<link rel="stylesheet" href="../../common/common.css" />
+		<link rel="stylesheet" href="../../css/headerTop.css" />
+		<link rel="stylesheet" href="../../css/mainTop.css" />
+		<link rel="stylesheet" href="../../css/footer.css" />
+		<link rel="stylesheet" href="../../common/reset.css" />
+		<link rel="stylesheet" href="../../common/style.css" />
+		<link rel="stylesheet" href="../../css/fix_right_menu.css" />
+		<link rel="stylesheet" href="../../css/sweepCode.css" />
+	</head>
+	<body>
+		<header>
+			<div class="loadTop"></div>
+		</header>
+		<div class="wrapper">
+			<div class="top_step_box">
+				<div class="step_box">
+					<div class="logo_box">
+						<img src="../../images/logo.png"/>
+					</div>
+					<div class="step">
+						<img src="../../images/shopCart/cartStatus3.png"/>
+					</div>
+				</div>
+			</div>
+			<div class="content_box">
+				<div class="wrapper_content">
+					<div class="pay_title">微信支付</div>
+					<div class="pay_content">
+						<div class="content_left">
+							<div class="ercode_box">
+								<img src="../../images/pay/ercode.png"/>
+							</div>
+							<div class="ercode_title">
+								<img src="../../images/pay/sao.png"/>
+								<div class="ercodeMsg_content">
+									<!--<span></span>-->
+									<div>请使用微信"扫一扫"</div>
+									<div>扫描二维码支付</div>
+								</div>
+							</div>
+						</div>
+						<div class="content_tight">
+							<img src="../../images/pay/phone_msg.png"/>
+						</div>
+					</div>
+					<div class="price">
+						<span>支付:</span>
+						<span>￥140.30</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="loadMenu"></div>
+		<footer></footer>
+		<script type="text/javascript" src="../../common/jquery-1.12.1.js" ></script>
+		<script type="text/javascript" src="../../common/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="../../common/common.js"></script>
+		<script type="text/javascript" src="../../common/config.js"></script>
+		<script type="text/javascript" src="sweepCode.js" ></script>
+		<script language="javascript">
+			//防止页面后退
+			$(function(){
+				window.addEventListener('popstate', function () {
+					history.pushState(null, null, "../shop/orderList.html");
+				});
+			})
+		</script>
+	</body>
+</html>

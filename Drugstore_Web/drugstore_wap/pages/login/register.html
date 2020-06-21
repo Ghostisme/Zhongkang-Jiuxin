@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link href="../../mui/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../styles/css/login.css">
+		<!-- 头底 -->
+		<link rel="stylesheet" type="text/css" href="../../mui/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../styles/common_css/dibu.css" />
+	</head>
+		
+	<body>
+		<!--顶部导航栏-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back mui-action-back"></span>
+			</a>
+			<!--<span id="navTxt">用户登录</span>-->
+		</header>
+		<!--登录主页面-->
+		<!--<div class="mui-content">
+		    <form>
+		    	<div id="proper">
+			    	<div class="mui-input-row property mui-checkbox mui-left">
+			    	  <label for="personal">个人</label>
+			    	  <input id="personal"name="checkbox1"value="1" type="checkbox" >
+			    	</div>
+			    	<div class="mui-input-row property mui-checkbox mui-left">
+			    	  <label for="company">企业</label>
+			    	  <input id="company"name="checkbox1"value="2" type="checkbox" >
+			    	</div>
+		    	</div>
+			    <div class="inputHeight">
+			        <div><img src="../../styles/img/login/phoneY.png"></div>
+			        <div><input type="text" id="txtUserName"placeholder="请输入手机号"onblur="SetPwdAndChk()"></div>
+			    </div>
+			    <div class="inputHeight">
+			        <div><img src="../../styles/img/login/passwordY.png"></div>
+			        <div><input type="password" id="txtPassword" placeholder="请输入密码"></div>
+			    </div>
+			    <button type="button" id="loginBtn"class="mui-btn mui-btn-blue loginBtn mui-btn-block"OnClick="SetPwdAndChk()">登录</button>
+				<a type="button" class="mui-btn registerBtn registerBtn mui-btn-block"href="../register/register.html">注册</a>
+				<div class="mui-input-row mui-checkbox mui-left">
+				  <label for="chkRememberPwd">记住我？</label><a href="../changePwd/forgetPwd.html">忘记密码</a>
+				  <input id="chkRememberPwd"name="checkbox1" type="checkbox" >
+				</div>
+		    </form>
+		</div>-->
+		<div class="wrapper mui-content">
+			<div class="subTitle">
+				<span class="subTitle_text">欢迎使用</span>
+			</div>
+			<form action="#" method="post" class="formBox">
+				<!--<div class="box">
+					<div class="itemBox">
+						<div>手机号码</div>
+						<input type="number" name="phone" placeholder="请输入手机号" class="phone" />
+					</div>
+					<div class="itemBox">
+						<div>密码</div>
+						<input type="password" name="password" placeholder="请输入密码" class="password" />
+						<img src="img/closeIcon.png" width="30" height="15" />
+					</div>
+					<div class="form_bottom">
+						<div class="signinBox">
+							<button type="button" class="signin">登录</button>
+						</div>
+						<div class="pageJump">
+							<span class="newPeople">新用户注册</span>
+							<span class="forget">忘记密码</span>
+						</div>
+					</div>
+				</div>	-->
+				<div class="itemBox">
+					<div>手机号码</div>
+					<input type="number" name="phone" maxlength="11" placeholder="请输入手机号" class="phone" />
+				</div>
+				<div class="itemBox">
+					<div>验证码</div>
+					<input type="number" name="verification" maxlength="6" placeholder="请输入验证码" class="verification" />
+					<span class="sendMsg">发送验证码</span>
+				</div>
+				<div class="itemBox">
+					<div>密码</div>
+					<input type="password" name="password" maxlength="16" placeholder="请输入6~20位密码" class="password" />
+					<img src="img/closeIcon.png" width="15" height="7.5" data-show="0" class="imgicon" />
+					<!--<img src="img/openIcon.png" width="30" height="15" class="imgicon" />-->
+				</div>
+				<div class="itemBox">
+					<div>邀请门店</div>
+					<select id="inviteStore" name="inviteStore">
+						
+					</select>
+				</div>
+				<div class="form_bottom">
+					<div class="signinBox">
+						<button type="button" class="signin">注册</button>
+					</div>
+					<!--<div class="pageJump">
+						<span class="newPeople">新用户注册</span>
+						<span class="forget">忘记密码</span>
+					</div>-->
+				</div>
+			</form>
+		</div>
+		
+		<script src="../../mui/js/mui.min.js"></script>
+		<script src="../../common/jquery-1.12.1.js"></script>
+		<script src="../../common/common.js"></script>
+		<!--<script type="text/ecmascript" src="md5.js"></script>-->
+		<!--<script type="text/ecmascript" src="md51.js"></script>-->
+		<script src="register.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+	</body>
+
+</html>

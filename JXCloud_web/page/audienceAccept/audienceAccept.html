@@ -1,0 +1,361 @@
+<!---->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>远程医疗系统-组织架构</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../css/organize.css"/>
+    <style>
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+        .containDiv_hi {
+            width: auto !important;
+            height: auto !important;
+            display: flex;
+        }
+
+        .containDiv_hi > div {
+            width: 50%;
+            min-height: 500px;
+        }
+
+        .containDiv_hi > div:first-child {
+            padding: 30px;
+            border: 1px solid #EDEDED;
+        }
+
+        .videoDiv {
+            width: 100%;
+            min-height: 450px;
+            position: relative;
+
+        }
+
+        .tabDivhome {
+            display: flex;
+        }
+
+        .tabDiv {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: whitesmoke;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+
+        #remote-video-wrap {
+            position: relative;
+            height: 100%;
+        }
+
+        .videoLocal {
+            position: absolute;
+            left: 5px;
+            top: 1px;
+            z-index: 9;
+        }
+
+        .rigthTabDiv {
+            border-top: 1px solid #EDEDED;
+            width: 100%;
+            min-height: 550px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .tab1 > div {
+            width: 90%;
+            height: 30px;
+            line-height: 30px;
+            margin: 15px 0 15px 15px;
+            display: flex;
+        }
+
+        .tab1 > div > div {
+            width: 15%;
+            text-align: right;
+        }
+
+        .tab1 input {
+            border: 1px solid #EDEDED;
+            width: 60%;
+            padding-left: 15px;
+        }
+
+        .tab2 > div {
+            width: 90%;
+            height: 80px;
+            line-height: 80px;
+            margin: 15px 0 15px 15px;
+            display: flex;
+        }
+
+        .tab2 > div > div {
+            width: 15%;
+            text-align: right;
+        }
+
+        .tab2 textarea {
+            border: 1px solid #EDEDED;
+            width: 80%;
+            padding-left: 15px;
+        }
+
+        .endBtn {
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            left: 35%;
+        }
+
+        .endBtn > input {
+            width: 100px;
+            height: 35px;
+            line-height: 40px;
+            background: #008EEA;
+            color: #fff;
+            border: 0;
+        }
+
+        .on {
+            line-height: 40px;
+            background: #008EEA;
+            color: #fff;
+        }
+
+        .tab3 {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tab3 > ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .tab3ul > li {
+            border: 1px solid #CAC8C6;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .tab3ul > li > div {
+            border-right: 1px solid #CAC8C6;
+            min-width: 15%;
+            text-align: center;
+            min-height: 40px;
+            line-height: 40px;
+            width: auto;
+            display: inline-block !important;
+            display: inline;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="containDiv_hi">
+    <div>
+        <div class="videoDiv" >
+            <img id="audience_back" src="../../img/aucience_back.jpg" alt="" style="position: absolute;left: 0;top: 0;width: 100%;height: 100%">
+
+            <!--视频所需信息-->
+            <div style="display: none">
+                <input class="form-control" id="sdkappid" type="text" value="1400037025"/>
+                <input class="form-control" id="userId" type="text" value=""/>
+                <input class="form-control" id="roomid" type="text" value="113355">
+                <input class="form-control" id="privmap" type="text" value="">
+            </div>
+            <!--视频窗-->
+            <div id="remote-video-wrap">
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="tabDivhome">
+            <div class="tabDiv on" id="tabDiv1">患者信息</div>
+            <div class="tabDiv" id="tabDiv2">临床信息</div>
+
+        </div>
+        <div class="rigthTabDiv">
+            <div class="tab1">
+                <div>
+                    <div>身份证号：</div>
+                    <input disabled name="idCode" id="idCode" type="text" value="123">
+                </div>
+                <div>
+                    <div>患者姓名：</div>
+                    <input disabled name="bookingName" id="bookingName" type="text" value="王海量1">
+                </div>
+                <div>
+                    <div>性别：</div>
+                    <input disabled name="sex" id="sex" type="text" value="男1">
+                </div>
+                <!--<div>
+                    <div>年龄：</div>
+                    <input  type="text" value="29">
+                </div>-->
+                <div>
+                    <div>联系电话：</div>
+                    <input disabled name="phone" id="phone" type="text" value="13955552116">
+                </div>
+                <!--<div>
+                    <div>入院日期：</div>
+                    <input type="text" value="2018-8-8">
+                </div>
+                <div>
+                    <div>就诊类型：</div>
+                    <input type="text" value="什么类型">
+                </div>-->
+                <!--<div>
+                    <div>就诊科室：</div>
+                    <input name="stature" id="stature" type="text" value="A科室">
+                </div>-->
+
+            </div>
+            <div class="tab2" style="display: none">
+                <div>
+                    <div>主诉：</div>
+                    <textarea disabled name="subjText" id="subjText"></textarea>
+                </div>
+                <div>
+                    <div>现病史：</div>
+                    <textarea disabled name="medicalHistory" id="medicalHistory"></textarea>
+                </div>
+                <div>
+                    <div>既往史：</div>
+                    <textarea disabled name="pastHistory" id="pastHistory"></textarea>
+                </div>
+                <div>
+                    <div>过敏史：</div>
+                    <textarea disabled name="allergyHistory" id="allergyHistory"></textarea>
+                </div>
+                <div>
+                    <div>家族史：</div>
+                    <textarea disabled name="familyHistory" id="familyHistory"></textarea>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../../js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/commonNew.js"></script>
+<!-- jquery Demo用到，WebRTCAPI不依赖 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121844058-1"></script>
+<script src="../../js/bootstrap-suggest.min.js"></script>
+
+<script>
+    $(function () {
+        getAudiData();
+
+    });
+    //页面关闭 断流
+    window.onunload=function () {
+        //视频断流
+        window.parent.quitRTC();
+    };
+
+    //页面值 获取查询
+    function getAudiData() {
+        ajaxGet('/oa/patinfo/get',  {fkPatinfoId: sessionStorage.getItem('socket_patinfoId')}, function (resData) {
+            if (resData.resultMap.patinfo != null) {
+                setAudienceData(resData.resultMap.patinfo);
+            }
+        });
+        ajaxGet('/oa/interrogationInfo/get',  {id: sessionStorage.getItem('socket_queuingId')}, function (resData) {
+            if (resData.resultMap.interrogationInfo != null) {
+                $('#subjText').val(resData.resultMap.interrogationInfo.subjText);
+            }
+        });
+
+    }
+
+    //页面赋值
+    function setAudienceData(data) {
+        if (sessionStorage.getItem('subjTextQueuing') != null) {
+            $('#subjText').val(sessionStorage.getItem('subjTextQueuing'));
+        }
+        if (data != null) {
+            $('#idCode').val(data.idCode);
+            $('#bookingName').val(data.name);
+            $('#sex').val(data.sex);
+            $('#phone').val(data.phone);
+            $('#medicalHistory').val(data.medicalHistory);
+            $('#pastHistory').val(data.pastHistory);
+            $('#allergyHistory').val(data.allergyHistory);
+            $('#familyHistory').val(data.familyHistory);
+        }
+
+    }
+</script>
+<script>
+    var _mtac = {"senseHash": 0};
+    (function () {
+        var mta = document.createElement("script");
+        mta.src = "//pingjs.qq.com/h5/stats.js";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500538821");
+        mta.setAttribute("cid", "500538834");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+    })();
+
+
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-121844058-1');
+
+</script>
+
+<script>
+
+    $('#tabDiv1').click(function () {
+        $(".tab1").css("display", "block");
+        $(".tab2").css("display", "none");//隐藏
+        $("#tabDiv1").addClass('on');
+        $("#tabDiv2").removeClass('on');
+    });
+    $('#tabDiv2').click(function () {
+        $(".tab2").css("display", "block");
+        $(".tab1").css("display", "none");//隐藏
+        $("#tabDiv2").addClass('on');
+        $("#tabDiv1").removeClass('on');
+    });
+    window.onload=function () {
+        //连接视频
+        setTimeout(function () {
+            window.parent.push(sessionStorage.getItem('socket_roomId'));
+        }, 100);
+    };
+</script>
+
+
+</body>
+
+</html>

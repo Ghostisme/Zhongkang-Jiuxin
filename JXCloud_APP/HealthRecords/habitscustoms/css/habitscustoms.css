@@ -1,0 +1,47 @@
+/* 顶部编辑/保存按钮 */
+.navbar{
+	position: relative;
+}
+.right-edit-btn{
+	position: absolute;
+	right: 0.45rem;
+}
+.right-edit-btn .editbtn{
+	background-color: transparent;
+	border: 0;
+	font-weight: 600;
+	font-size: 0.45rem;
+	color: #2292FE;
+}
+.right-edit-btn .editbtn:focus{
+	outline: none;
+}
+/* 内容区域 */
+.wrapper .listbox{
+	display: flex;
+	justify-content: space-between;
+	/* padding: 0.35rem 0rem 0.35rem 0.45rem; */
+	margin: 0.35rem 0rem 0rem 0.45rem;
+	padding-bottom: 0.35rem;
+	border-bottom: 1px solid #EDEDED;
+}
+.listbox span:nth-of-type(odd){
+	margin-right: 0.125rem;
+	/* font-size: 0.45rem; */
+	font-size: 0.4rem;
+}
+.listTitle{
+	font-size: 0.4rem;
+}
+.listbox span:nth-of-type(even){
+	padding-right: 0.45rem;
+	/* font-size: 0.45rem; */
+	font-size: 0.4rem;
+}
+.listbox span:nth-of-type(2n+1) i{
+	color: #2292FE;
+	/* font-size: 0.45rem; */
+}
+.listbox span:nth-of-type(2n) i{
+	/* font-size: 0.45rem; */
+}

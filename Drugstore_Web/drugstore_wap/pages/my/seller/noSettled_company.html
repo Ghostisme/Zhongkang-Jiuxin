@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../../mui/css/mui.min.css">
+		<link rel="stylesheet" href="../../../styles/common_css/action_bar.css">
+		<link rel="stylesheet" href="../../../styles/common_css/dibu.css">
+		<link rel="stylesheet" href="../../../styles/css/noSettled_company.css">
+		<title></title>
+	</head>
+	<body>
+		<!--top bar-->
+		<header id="headerBG" class=" mui-bar mui-bar-nav mui-bar-self mui-text-center">
+			<a class="mui-action-back mui-btn mui-btn-link mui-pull-left">
+				<span class="mui-icon mui-icon-back"></span>
+			</a>
+			<span id="navTxt">账户管理</span>
+		</header>
+		<!--账户管理内容区-->
+		<div class="mui-content">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--公司头像及名称-->
+					<div id="companyDetail">
+						<div id="companyImg">
+							<img src="../../../styles/img/my_img/seller_img/companyImg.jpg" />
+						</div>
+						<div id="CompanyName">
+							<span class="page_font">企业名称</span>
+						</div>
+					</div>
+					<!--我的订单及卖家订单-->
+					<div id="Orders">
+						<!--未确认，未付款，未发货，待收货，全部订单-->
+						<ul class="orderOption mine">
+							<li id="order_no_confirm">
+								<img src="../../../styles/img/my_img/seller_img/sellerY01.png" alt="" />
+								<div class="optionTxt">
+									<span class="txt page_font">未确认</span>
+									<span class="unsure page_font">(0)</span>
+								</div>	
+							</li>
+							<li id="order_no_pay">
+								<img src="../../../styles/img/my_img/seller_img/sellerY02.png" alt="" />
+								<div class="">
+									<span class="page_font">未付款</span>
+									<span class="unpay page_font">(0)</span>
+								</div>
+							</li>
+							<li id="order_on_send">
+								<img src="../../../styles/img/my_img/seller_img/sellerY03.png" alt="" />
+								<div>
+									<span class="page_font">未发货</span>
+									<span class="unsend page_font">(0)</span>
+								</div>
+							</li>
+							<li id="order_wait">
+								<img src="../../../styles/img/my_img/seller_img/sellerY04.png" alt="" />
+								<div>
+									<span class="page_font">待收货</span>
+									<span class="unrecieve page_font">(0)</span>
+								</div>
+							</li>
+							<li id="all_order_li">
+								<img src="../../../styles/img/my_img/seller_img/sellerY05.png" alt="" />
+								<div>
+									<span class="page_font">全部订单</span>
+									<span class="AllOrder"></span>
+								</div>
+							</li>	
+						</ul>
+						
+					</div>		
+					<!--我的资源单-->
+					<div class="myresource page_font">我的资源单</div>
+					<div class="resourceManage">
+							<div class="alredyUpload">
+								<img src="../../../styles/img/my_img/seller_img/seller08.png" alt="" />
+								<div class="uploadNum">
+									<span class="page_font">已上传</span>
+									<span class="uploadcount page_font"></span>
+								</div>
+							</div>
+							<div class="goupload">
+								<img src="../../../styles/img/my_img/seller_img/seller09.png" alt="" />
+								<div class="goNum">
+									<span class="page_font">去上传</span>
+								</div>
+							</div>
+					</div>
+					<!--退出登录按钮-->
+					<button class="mui-btn-block quitBtn mui-btn-blue">安全退出</button>
+				</div>
+			</div>
+		</div>
+		<!--底部footer导航-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="footer footer-mui-active" href="../../home/index.html">
+				<img src="../../../styles/img/home_img/footerHome.png" />
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="footer" href="../../shop/shop_index.html">
+				<img src="../../../styles/img/home_img/footershopping.png" />
+				<span class="mui-tab-label">商城</span>
+			</a>
+			<a class="footer" href="../../resourceList/resource_list.html">
+				<img src="../../../styles/img/home_img/footerResource.png" />
+				<span class="mui-tab-label">资源单</span>
+			</a>
+			<a id="go_shopcart" class="footer">
+				<img src="../../../styles/img/home_img/footerShopcart.png" />
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a class="footer" href="#">
+				<img src="../../../styles/img/home_img/footerMineY.png" />
+				<span class="mui-tab-label" style="color: #ffcc00;">我的</span>
+			</a>
+		</nav>
+		<script src="../../../mui/js/mui.min.js"></script>
+		<script src="../../../common/jquery-1.12.1.js"></script>
+		<script src="../../../common/common.js"></script>
+		<script src="noSettled_company.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>
